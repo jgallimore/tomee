@@ -54,8 +54,12 @@ public class LocalBeanProxyFactory implements Opcodes {
     private static final ReentrantLock LOCK = new ReentrantLock();
 
     public static Object newProxyInstance(final ClassLoader classLoader, final InvocationHandler handler, final Class classToSubclass, final Class... interfaces) throws IllegalArgumentException {
+        return newProxyInstance(classLoader, false, handler, classToSubclass, interfaces);
+    }
+
+    public static Object newProxyInstance(final ClassLoader classLoader, boolean allowNonPublicCalls, final InvocationHandler handler, final Class classToSubclass, final Class... interfaces) throws IllegalArgumentException {
         try {
-            final Class proxyClass = createProxy(classToSubclass, classLoader, interfaces);
+            final Class proxyClass = createProxy(classToSubclass, classLoader, allowNonPublicCalls, interfaces);
             return constructProxy(proxyClass, handler);
         } catch (final Throwable e) {
             throw new InternalError("LocalBeanProxyFactory.newProxyInstance: " + Debug.printStackTrace(e));
@@ -118,6 +122,10 @@ public class LocalBeanProxyFactory implements Opcodes {
     }
 
     public static Class createProxy(final Class<?> classToProxy, final ClassLoader cl, final String proxyName, final Class... interfaces) {
+        return createProxy(classToProxy, cl, proxyName, false, interfaces);
+    }
+
+    public static Class createProxy(final Class<?> classToProxy, final ClassLoader cl, final String proxyName, boolean allowNonPublicMethodCalls, final Class... interfaces) {
         final String classFileName = proxyName.replace('.', '/');
 
         try {
@@ -137,7 +145,7 @@ public class LocalBeanProxyFactory implements Opcodes {
                 // no-op
             }
 
-            final byte[] proxyBytes = generateProxy(classToProxy, classFileName, interfaces);
+            final byte[] proxyBytes = generateProxy(classToProxy, classFileName, allowNonPublicMethodCalls, interfaces);
             return Unsafe.defineClass(classToProxy, proxyName, proxyBytes);
 
         } catch (final Exception e) {
@@ -148,10 +156,18 @@ public class LocalBeanProxyFactory implements Opcodes {
     }
 
     public static Class createProxy(final Class<?> classToProxy, final ClassLoader cl, final Class... interfaces) {
-        return createProxy(classToProxy, cl, classToProxy.getName() + "$$LocalBeanProxy", interfaces);
+        return createProxy(classToProxy, cl, false, interfaces);
+    }
+
+    public static Class createProxy(final Class<?> classToProxy, final ClassLoader cl, boolean allowNonPublicMethodCalls, final Class... interfaces) {
+        return createProxy(classToProxy, cl, classToProxy.getName() + "$$LocalBeanProxy", allowNonPublicMethodCalls, interfaces);
     }
 
     public static byte[] generateProxy(final Class<?> classToProxy, final String proxyName, final Class<?>... interfaces) throws ProxyGenerationException {
+        return generateProxy(classToProxy, proxyName, false, interfaces);
+    }
+
+    public static byte[] generateProxy(final Class<?> classToProxy, final String proxyName, boolean allowNonPublicMethodCalls, final Class<?>... interfaces) throws ProxyGenerationException {
         final ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 
         final String proxyClassFileName = proxyName.replace('.', '/');
@@ -187,9 +203,9 @@ public class LocalBeanProxyFactory implements Opcodes {
             for (final Method method : entry.getValue()) {
                 final String name = method.getName();
 
-                if (Modifier.isPublic(method.getModifiers())
+                if (allowNonPublicMethodCalls || (Modifier.isPublic(method.getModifiers())
                     || method.getParameterTypes().length == 0 && ("finalize".equals(name)
-                    || "clone".equals(name))) {
+                    || "clone".equals(name)))) {
                     // forward invocations of any public methods or 
                     // finalize/clone methods to businessHandler 
                     processMethod(cw, method, proxyClassFileName, BUSSINESS_HANDLER_NAME);

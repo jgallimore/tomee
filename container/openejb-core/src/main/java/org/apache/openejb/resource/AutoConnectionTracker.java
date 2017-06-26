@@ -22,6 +22,7 @@ import org.apache.geronimo.connector.outbound.ConnectionReturnAction;
 import org.apache.geronimo.connector.outbound.ConnectionTrackingInterceptor;
 import org.apache.geronimo.connector.outbound.ManagedConnectionInfo;
 import org.apache.geronimo.connector.outbound.connectiontracking.ConnectionTracker;
+import org.apache.openejb.util.proxy.LocalBeanProxyFactory;
 
 import javax.resource.ResourceException;
 import javax.resource.spi.DissociatableManagedConnection;
@@ -30,6 +31,7 @@ import java.lang.ref.ReferenceQueue;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Proxy;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -103,7 +105,7 @@ public class AutoConnectionTracker implements ConnectionTracker {
         try {
             final Object handle = connectionInfo.getConnectionHandle();
             final ConnectionInvocationHandler invocationHandler = new ConnectionInvocationHandler(handle);
-            final Object proxy = Proxy.newProxyInstance(handle.getClass().getClassLoader(), handle.getClass().getInterfaces(), invocationHandler);
+            final Object proxy = LocalBeanProxyFactory.newProxyInstance(handle.getClass().getClassLoader(), true, invocationHandler, handle.getClass(), handle.getClass().getInterfaces());
             connectionInfo.setConnectionProxy(proxy);
             final ProxyPhantomReference reference = new ProxyPhantomReference(interceptor, connectionInfo.getManagedConnectionInfo(), invocationHandler, referenceQueue);
             references.put(connectionInfo.getManagedConnectionInfo(), reference);
@@ -131,7 +133,25 @@ public class AutoConnectionTracker implements ConnectionTracker {
             }
 
             try {
+                final boolean accessible = method.isAccessible();
+
+                final int modifiers = method.getModifiers();
+                if (! Modifier.isAbstract(modifiers)
+                        &&  ! Modifier.isPublic(modifiers)
+                        && ! Modifier.isPrivate(modifiers)
+                        && ! Modifier.isProtected(modifiers)) {
+
+                    final Package callerPackage = Class.forName(Thread.currentThread().getStackTrace()[3].getClassName()).getPackage();
+                    final Package handlePackage = handle.getClass().getPackage();
+
+                    if (callerPackage.equals(handlePackage)) {
+                        // allow package local access
+                        method.setAccessible(true);
+                    }
+                }
+
                 final Object value = method.invoke(handle, args);
+                method.setAccessible(accessible);
                 return value;
             } catch (final InvocationTargetException ite) {
                 // catch InvocationTargetExceptions and turn them into the target exception (if there is one)
