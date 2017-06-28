@@ -38,6 +38,7 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static java.lang.Thread.sleep;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class GeronimoConnectionManagerFactoryTest {
@@ -57,8 +58,15 @@ public class GeronimoConnectionManagerFactoryTest {
         final GenericConnectionManager mgr = factory.create();
         mgr.doStart();
         try {
-            mgr.allocateConnection(mcf, new ConnectionRequestInfo() { // just to use it
+            final Object connection = mgr.allocateConnection(mcf, new ConnectionRequestInfo() { // just to use it
             });
+
+            assertNotNull(connection);
+            assertTrue(connection instanceof MyConnection); // we should be able to call methods on the class as well
+
+            final MyConnection myConnection = MyConnection.class.cast(connection);
+            myConnection.start(); // this should succeed
+
             sleep(2500);
             assertTrue(mcf.evicted.get());
             assertTrue(mcf.destroyed.get());
@@ -84,79 +92,7 @@ public class GeronimoConnectionManagerFactoryTest {
 
         @Override
         public ManagedConnection createManagedConnection(final Subject subject, final ConnectionRequestInfo cxRequestInfo) throws ResourceException {
-            return new ManagedConnection() {
-                @Override
-                public Object getConnection(Subject subject, ConnectionRequestInfo cxRequestInfo) throws ResourceException {
-                    connections.add(this);
-                    return this;
-                }
-
-                @Override
-                public void destroy() throws ResourceException {
-                    connections.remove(this);
-                    destroyed.set(true);
-                }
-
-                @Override
-                public void cleanup() throws ResourceException {
-                    // no-op
-                }
-
-                @Override
-                public void associateConnection(Object connection) throws ResourceException {
-                    // no-op
-                }
-
-                @Override
-                public void addConnectionEventListener(ConnectionEventListener listener) {
-                    // no-op
-                }
-
-                @Override
-                public void removeConnectionEventListener(ConnectionEventListener listener) {
-                    // no-op
-                }
-
-                @Override
-                public XAResource getXAResource() throws ResourceException {
-                    return null;
-                }
-
-                @Override
-                public LocalTransaction getLocalTransaction() throws ResourceException {
-                    return new LocalTransaction() {
-                        @Override
-                        public void begin() throws ResourceException {
-
-                        }
-
-                        @Override
-                        public void commit() throws ResourceException {
-
-                        }
-
-                        @Override
-                        public void rollback() throws ResourceException {
-
-                        }
-                    };
-                }
-
-                @Override
-                public ManagedConnectionMetaData getMetaData() throws ResourceException {
-                    return null;
-                }
-
-                @Override
-                public void setLogWriter(PrintWriter out) throws ResourceException {
-                    // no-op
-                }
-
-                @Override
-                public PrintWriter getLogWriter() throws ResourceException {
-                    return null;
-                }
-            };
+            return new MyConnection(this);
         }
 
         @Override
@@ -179,6 +115,91 @@ public class GeronimoConnectionManagerFactoryTest {
         public Set getInvalidConnections(final Set connectionSet) throws ResourceException {
             evicted.set(true);
             return connections;
+        }
+    }
+
+
+    public static class MyConnection implements ManagedConnection {
+        private final MyMcf mcf;
+
+        public MyConnection(final MyMcf mcf) {
+            this.mcf = mcf;
+        }
+
+        @Override
+        public Object getConnection(Subject subject, ConnectionRequestInfo cxRequestInfo) throws ResourceException {
+            mcf.connections.add(this);
+            return this;
+        }
+
+        @Override
+        public void destroy() throws ResourceException {
+            mcf.connections.remove(this);
+            mcf.destroyed.set(true);
+        }
+
+        @Override
+        public void cleanup() throws ResourceException {
+            // no-op
+        }
+
+        @Override
+        public void associateConnection(Object connection) throws ResourceException {
+            // no-op
+        }
+
+        @Override
+        public void addConnectionEventListener(ConnectionEventListener listener) {
+            // no-op
+        }
+
+        @Override
+        public void removeConnectionEventListener(ConnectionEventListener listener) {
+            // no-op
+        }
+
+        @Override
+        public XAResource getXAResource() throws ResourceException {
+            return null;
+        }
+
+        @Override
+        public LocalTransaction getLocalTransaction() throws ResourceException {
+            return new LocalTransaction() {
+                @Override
+                public void begin() throws ResourceException {
+
+                }
+
+                @Override
+                public void commit() throws ResourceException {
+
+                }
+
+                @Override
+                public void rollback() throws ResourceException {
+
+                }
+            };
+        }
+
+        @Override
+        public ManagedConnectionMetaData getMetaData() throws ResourceException {
+            return null;
+        }
+
+        @Override
+        public void setLogWriter(PrintWriter out) throws ResourceException {
+            // no-op
+        }
+
+        @Override
+        public PrintWriter getLogWriter() throws ResourceException {
+            return null;
+        }
+
+        void start() {
+            // no-op, but this package-local method should be callable from the test
         }
     }
 }
