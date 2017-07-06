@@ -61,23 +61,6 @@ public class MdbContainerTest {
 
     private static final String TEXT = "foo";
 
-    @BeforeClass
-    public static void beforeClass() throws URISyntaxException, IOException {
-        URL url = MdbContainerTest.class.getResource("/META-INF/org.apache.openejb/service-jar.txt");
-        File txtFile = new File(url.toURI());
-        File xmlFile = new File(txtFile.getParentFile(), "service-jar.xml");
-        xmlFile.createNewFile();
-        Files.copy(txtFile, xmlFile);
-
-    }
-
-    @AfterClass
-    public static void afterClass() throws URISyntaxException {
-        URL stream = MdbContainerTest.class.getResource("/META-INF/org.apache.openejb/service-jar.xml");
-        File file = new File(stream.toURI());
-        file.delete();
-    }
-
     @Configuration
     public Properties config() {
         return new PropertiesBuilder()
@@ -98,6 +81,7 @@ public class MdbContainerTest {
                 .p("xaCf.BrokerURL", "vm://localhost")
                 .p("mdb.activation.ignore", "testString")
                 .p("mdb.activation.ignore2", "testString")
+                .p("openejb.provider.default", "org.apache.openejb.actpropfalse") // service-jar.xml with FailOnUnknowActivationSpec = false
                 .build();
     }
 
