@@ -73,6 +73,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
@@ -106,6 +107,8 @@ public class MdbContainer implements RpcContainer {
     private final XAResourceWrapper xaResourceWrapper;
     private final InboundRecovery inboundRecovery;
 
+    private final Properties properties = new Properties();
+
     public MdbContainer(final Object containerID, final SecurityService securityService, final ResourceAdapter resourceAdapter,
                         final Class messageListenerInterface, final Class activationSpecClass, final int instanceLimit,
                         final boolean failOnUnknownActivationSpec) {
@@ -118,6 +121,10 @@ public class MdbContainer implements RpcContainer {
         this.failOnUnknownActivationSpec = failOnUnknownActivationSpec;
         xaResourceWrapper = SystemInstance.get().getComponent(XAResourceWrapper.class);
         inboundRecovery = SystemInstance.get().getComponent(InboundRecovery.class);
+    }
+
+    public Properties getProperties() {
+        return properties;
     }
 
     public BeanContext[] getBeanContexts() {
@@ -232,16 +239,20 @@ public class MdbContainer implements RpcContainer {
         }
     }
 
-    private static String getOrDefault(final Map<String, String> map, final String key, final String defaultValue) {
-        return map.get(key) != null ? map.get(key) : defaultValue;
-    }
-
     private ActivationSpec createActivationSpec(final BeanContext beanContext) throws OpenEJBException {
         try {
             // initialize the object recipe
             final ObjectRecipe objectRecipe = new ObjectRecipe(activationSpecClass);
             objectRecipe.allow(Option.IGNORE_MISSING_PROPERTIES);
             objectRecipe.disallow(Option.FIELD_INJECTION);
+
+            final Properties containerActivationProperties = new Properties();
+            addActivationProperties(containerActivationProperties, "mdb.container." + containerID + ".activation.", SystemInstance.get().getProperties());
+            addActivationProperties(containerActivationProperties, "activation.", properties);
+
+            for (final String propertyName : containerActivationProperties.stringPropertyNames()) {
+                objectRecipe.setMethodProperty(propertyName, containerActivationProperties.getProperty(propertyName));
+            }
 
             final Map<String, String> beanContextActivationProperties = beanContext.getActivationProperties();
             final Map<String, String> activationProperties = beanContextActivationProperties;
@@ -294,6 +305,15 @@ public class MdbContainer implements RpcContainer {
             return activationSpec;
         } catch (final Exception e) {
             throw new OpenEJBException("Unable to create activation spec", e);
+        }
+    }
+
+    private void addActivationProperties(final Properties target, final String prefix, final Properties source) {
+        for (final String propertyName : source.stringPropertyNames()) {
+            if (! propertyName.startsWith(prefix)) continue;
+
+            final String activationPropertyName = propertyName.substring(prefix.length());
+            target.setProperty(activationPropertyName, source.getProperty(propertyName));
         }
     }
 
