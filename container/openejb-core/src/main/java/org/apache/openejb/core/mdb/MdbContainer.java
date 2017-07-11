@@ -247,8 +247,8 @@ public class MdbContainer implements RpcContainer {
             objectRecipe.disallow(Option.FIELD_INJECTION);
 
             final Properties containerActivationProperties = new Properties();
-            addActivationProperties(containerActivationProperties, "mdb.container." + containerID + ".activation.", SystemInstance.get().getProperties());
             addActivationProperties(containerActivationProperties, "activation.", properties);
+            addActivationProperties(containerActivationProperties, "mdb.container." + containerID + ".activation.", SystemInstance.get().getProperties());
 
             for (final String propertyName : containerActivationProperties.stringPropertyNames()) {
                 objectRecipe.setMethodProperty(propertyName, containerActivationProperties.getProperty(propertyName));
