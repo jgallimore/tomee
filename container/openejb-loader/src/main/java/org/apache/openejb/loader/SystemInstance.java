@@ -250,8 +250,7 @@ public final class SystemInstance {
 
         T removed = null;
         if (value == null) {
-            removed = (T) components.get(type);
-            components.remove(type);
+            removed = (T) components.remove(type);
         } else {
             removed = (T) components.put(type, value);
         }
