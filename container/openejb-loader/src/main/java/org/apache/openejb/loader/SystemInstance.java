@@ -223,7 +223,7 @@ public final class SystemInstance {
         if (classname != null) {
             try {
                 final T instance = type.cast(Thread.currentThread().getContextClassLoader()
-                        .loadClass(classname).newInstance());
+                    .loadClass(classname).newInstance());
                 components.put(type, instance);
                 return instance;
             } catch (final Exception e) {
@@ -247,14 +247,8 @@ public final class SystemInstance {
      * @param type the class type of the component required
      */
     public <T> T setComponent(final Class<T> type, final T value) {
+        final T removed = (T) components.put(type, value);
 
-        T removed = null;
-        if (value == null) {
-            removed = (T) components.get(type);
-            components.remove(type);
-        } else {
-            removed = (T) components.put(type, value);
-        }
         if (removed != null) {
             fireEvent(new ComponentRemoved(type, value));
         }
