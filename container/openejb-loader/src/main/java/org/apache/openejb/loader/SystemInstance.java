@@ -22,9 +22,9 @@ import org.apache.openejb.observer.ObserverManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * This class aims to be the one and only static in the entire system
@@ -59,13 +59,13 @@ public final class SystemInstance {
     private final FileUtils home;
     private final FileUtils base;
     private final ClassLoader classLoader;
-    private final ConcurrentHashMap<Class, Object> components;
+    private final HashMap<Class, Object> components;
     private final ClassPath classPath;
     private final ObserverManager observerManager = new ObserverManager();
 
     // FIXME: Why is Exception thrown at all? It's almost impossible that it'll happen.
     private SystemInstance(final Properties properties) throws Exception {
-        this.components = new ConcurrentHashMap<Class, Object>();
+        this.components = new HashMap<Class, Object>();
 
         // import JVM system property config (if a resource/container/... is set through this way)
         final Properties clonedSystemProperties = (Properties) System.getProperties().clone();
