@@ -455,7 +455,7 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
 
                 // for compatibility with other application servers
                 if (properties.getProperty("DeliveryActive") != null && ejbDeployment.getProperties().getProperty("MdbActiveOnStartup") == null) {
-                    ejbDeployment.getProperties().setProperty("MdbActiveOnStartup", properties.getProperty("deliveryActive"));
+                    ejbDeployment.getProperties().setProperty("MdbActiveOnStartup", properties.getProperty("DeliveryActive"));
                     if (ejbDeployment.getProperties().getProperty("MdbJMXControl") == null) {
                         ejbDeployment.getProperties().setProperty("MdbJMXControl", "true");
                     }
