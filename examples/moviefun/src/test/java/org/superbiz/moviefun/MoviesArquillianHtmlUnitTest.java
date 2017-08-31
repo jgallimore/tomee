@@ -49,6 +49,12 @@ public class MoviesArquillianHtmlUnitTest {
     @Deployment
     public static WebArchive createDeployment() {
 
+      <dependency>
+        <groupId>org.glassfish.web</groupId>
+        <artifactId>javax.servlet.jsp.jstl</artifactId>
+        <version>1.2.3</version>
+      </dependency>
+
         Collection<String> dependencies = Arrays.asList("taglibs:standard", "commons-lang:commons-lang");
 
         File[] libs = Maven.resolver()
