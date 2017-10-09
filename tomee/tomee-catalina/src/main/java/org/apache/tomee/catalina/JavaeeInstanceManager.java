@@ -28,6 +28,8 @@ import javax.naming.NamingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 /**
  * @version $Rev$ $Date$
@@ -63,7 +65,32 @@ public class JavaeeInstanceManager implements InstanceManager {
 
     @Override
     public Object newInstance(final String className, final ClassLoader classLoader) throws IllegalAccessException, InvocationTargetException, NamingException, InstantiationException, ClassNotFoundException {
-        System.out.println(String.format("### newInstance() thread:%s className:%s classLoader:%s", Thread.currentThread().getName(), className, classLoader.toString()));
+        System.out.println(String.format("### newInstance() thread:%s className:%s classLoader:%s (%s)",
+                Thread.currentThread().getName(), className, classLoader.toString(),
+                classLoader.getClass().getProtectionDomain().getCodeSource().getLocation().toString()));
+
+        if (URLClassLoader.class.isInstance(classLoader)) {
+            final URLClassLoader urlClassLoader = URLClassLoader.class.cast(classLoader);
+            final URL[] urls = urlClassLoader.getURLs();
+
+            final StringBuilder sb = new StringBuilder();
+            sb.append("urls => {");
+            for (int i = 0, urLsLength = urls.length; i < urLsLength; i++) {
+                if (i > 0) {
+                    sb.append(", ");
+                }
+                sb.append(urls[i].toExternalForm());
+            }
+
+            sb.append("}");
+
+            System.out.println(String.format("URL ClassLoader URLs: %s", sb.toString()));
+
+            if (urlClassLoader.getParent() != null) {
+                System.out.println(String.format("Parent: %s", urlClassLoader.getParent().toString()));
+            }
+        }
+
         return newInstance(classLoader.loadClass(className));
     }
 
