@@ -895,7 +895,7 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
             return Collections.emptyList();
         }
 
-        final List<ContainerInfo> containerInfos = new ArrayList<>();
+        final List<ContainerInfo> containerInfos = new ArrayList<ContainerInfo>();
 
         final String prefix = module.getModuleId() + "/";
         for (final Container container : module.getContainers()) {
