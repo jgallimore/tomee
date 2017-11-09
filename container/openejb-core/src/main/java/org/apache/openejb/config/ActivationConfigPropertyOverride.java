@@ -17,18 +17,13 @@
 
 package org.apache.openejb.config;
 
-import org.apache.openejb.Container;
 import org.apache.openejb.OpenEJBException;
-import org.apache.openejb.core.mdb.MdbContainer;
-import org.apache.openejb.jee.ActivationConfig;
-import org.apache.openejb.jee.ActivationConfigProperty;
-import org.apache.openejb.jee.EjbJar;
-import org.apache.openejb.jee.EnterpriseBean;
-import org.apache.openejb.jee.MessageDrivenBean;
+import org.apache.openejb.assembler.classic.ContainerInfo;
+import org.apache.openejb.assembler.classic.MdbContainerInfo;
+import org.apache.openejb.jee.*;
 import org.apache.openejb.jee.oejb3.EjbDeployment;
 import org.apache.openejb.jee.oejb3.OpenejbJar;
 import org.apache.openejb.loader.SystemInstance;
-import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.JavaSecurityManagers;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
@@ -92,10 +87,10 @@ public class ActivationConfigPropertyOverride implements DynamicDeployer {
                 // now try to use special keys
                 final Properties overrides = new Properties();
 
-                final MdbContainer mdbContainer = getMdbContainer(ejbDeployment.getContainerId());
+                final MdbContainerInfo mdbContainer = getMdbContainer(ejbDeployment.getContainerId(), appModule);
                 if (mdbContainer != null) {
-                    overrides.putAll(ConfigurationFactory.getOverrides(properties, "mdb.container." + mdbContainer.getContainerID() + ".activation", "EnterpriseBean"));
-                    overrides.putAll(ConfigurationFactory.getOverrides(mdbContainer.getProperties(), "activation", "EnterpriseBean"));
+                    overrides.putAll(ConfigurationFactory.getOverrides(properties, "mdb.container." + mdbContainer.id + ".activation", "EnterpriseBean"));
+                    overrides.putAll(ConfigurationFactory.getOverrides(mdbContainer.properties, "activation", "EnterpriseBean"));
                 }
 
                 overrides.putAll(ConfigurationFactory.getOverrides(properties, "mdb.activation", "EnterpriseBean"));
@@ -141,27 +136,32 @@ public class ActivationConfigPropertyOverride implements DynamicDeployer {
         return appModule;
     }
 
-    private MdbContainer getMdbContainer(final String containerId) {
+    private MdbContainerInfo getMdbContainer(final String containerId, final AppModule appModule) {
 
-        final ContainerSystem containerSystem = SystemInstance.get().getComponent(ContainerSystem.class);
+        final List<ContainerInfo> containerInfoList = SystemInstance.get().getComponent(ConfigurationFactory.class).getContainerInfos();
 
         if (containerId == null || containerId.length() == 0) {
-            final Container[] containers = containerSystem.containers();
-            for (Container container : containers) {
-                if (MdbContainer.class.isInstance(container)) {
-                    return MdbContainer.class.cast(container);
+            for (ContainerInfo containerInfo : containerInfoList) {
+                if (MdbContainerInfo.class.isInstance(containerInfo)) {
+                    return MdbContainerInfo.class.cast(containerInfo);
                 }
             }
-
-            return null;
         }
 
-        final Container container = containerSystem.getContainer(containerId);
-        if (MdbContainer.class.isInstance(container)) {
-            return MdbContainer.class.cast(container);
+        for (ContainerInfo containerInfo : containerInfoList) {
+            if (MdbContainerInfo.class.isInstance(containerInfo) && (containerInfo.id).equals(appModule.getModuleId() + "/" + containerId)) {
+                return MdbContainerInfo.class.cast(containerInfo);
+            }
         }
+
+        for (ContainerInfo containerInfo : containerInfoList) {
+            if (MdbContainerInfo.class.isInstance(containerInfo) && containerInfo.id.equals(containerId)) {
+                return MdbContainerInfo.class.cast(containerInfo);
+            }
+        }
+
+
         return null;
-
     }
 
 

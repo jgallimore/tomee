@@ -292,8 +292,6 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
         chain.add(new CleanEnvEntries());
         chain.add(new LinkBuiltInTypes());
 
-        chain.add(new ActivationConfigPropertyOverride());
-
         if (offline) {
             final AutoConfig autoConfig = new AutoConfig(this);
             autoConfig.autoCreateResources(false);
@@ -303,6 +301,7 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
             chain.add(new AutoConfig(this));
         }
 
+        chain.add(new ActivationConfigPropertyOverride());
         chain.add(new ApplyOpenejbJar());
         chain.add(new MappedNameBuilder());
         chain.add(new OutputGeneratedDescriptors());

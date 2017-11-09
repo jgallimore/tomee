@@ -20,28 +20,7 @@ package org.apache.openejb.config;
 import org.apache.openejb.ClassLoaderUtil;
 import org.apache.openejb.OpenEJBException;
 import org.apache.openejb.OpenEJBRuntimeException;
-import org.apache.openejb.assembler.classic.AppInfo;
-import org.apache.openejb.assembler.classic.ClassListInfo;
-import org.apache.openejb.assembler.classic.ClientInfo;
-import org.apache.openejb.assembler.classic.ConnectorInfo;
-import org.apache.openejb.assembler.classic.EjbJarInfo;
-import org.apache.openejb.assembler.classic.EnterpriseBeanInfo;
-import org.apache.openejb.assembler.classic.EntityManagerFactoryCallable;
-import org.apache.openejb.assembler.classic.FilterInfo;
-import org.apache.openejb.assembler.classic.HandlerChainInfo;
-import org.apache.openejb.assembler.classic.IdPropertiesInfo;
-import org.apache.openejb.assembler.classic.JndiEncInfo;
-import org.apache.openejb.assembler.classic.ListenerInfo;
-import org.apache.openejb.assembler.classic.MdbContainerInfo;
-import org.apache.openejb.assembler.classic.MessageDrivenBeanInfo;
-import org.apache.openejb.assembler.classic.ParamValueInfo;
-import org.apache.openejb.assembler.classic.PersistenceUnitInfo;
-import org.apache.openejb.assembler.classic.PortInfo;
-import org.apache.openejb.assembler.classic.ResourceInfo;
-import org.apache.openejb.assembler.classic.ServiceInfo;
-import org.apache.openejb.assembler.classic.ServletInfo;
-import org.apache.openejb.assembler.classic.ValidatorBuilder;
-import org.apache.openejb.assembler.classic.WebAppInfo;
+import org.apache.openejb.assembler.classic.*;
 import org.apache.openejb.config.event.BeforeAppInfoBuilderEvent;
 import org.apache.openejb.config.sys.Container;
 import org.apache.openejb.config.sys.Resource;
@@ -88,15 +67,7 @@ import org.apache.openejb.util.References;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 import javax.xml.bind.JAXBException;
 
 import static java.util.Arrays.asList;
@@ -581,14 +552,40 @@ class AppInfoBuilder {
                 for (final MessageListener messageListener : inbound.getMessageAdapter().getMessageListener()) {
                     final String id = this.getId(messageListener, inbound, connectorModule);
 
-                    final Container container = new Container(id, "MESSAGE", null);
+                    // search through configured containers, looking for a match with "ResourceAdapter" and "MessageListenerInterface"
+                    // if we find one, we'll pull that from the configuration, so it gets created and associated with the resource
+                    // adapter as opposed to being created manually and the wiring up potentially not working
 
-                    final Properties properties = container.getProperties();
-                    properties.setProperty("ResourceAdapter", connectorInfo.resourceAdapter.id);
-                    properties.setProperty("MessageListenerInterface", messageListener.getMessageListenerType());
-                    properties.setProperty("ActivationSpecClass", messageListener.getActivationSpec().getActivationSpecClass());
+                    final List<ContainerInfo> containers = configFactory.getOpenEjbConfiguration().containerSystem.containers;
+                    final Iterator<ContainerInfo> iterator = containers.iterator();
 
-                    final MdbContainerInfo mdbContainerInfo = this.configFactory.configureService(container, MdbContainerInfo.class);
+                    MdbContainerInfo mdbContainerInfo = null;
+                    while (iterator.hasNext()) {
+                        final ContainerInfo containerInfo = iterator.next();
+                        final String resourceAdapterProperty = containerInfo.properties.getProperty("ResourceAdapter");
+                        final String messageListenerInterfaceProperty = containerInfo.properties.getProperty("MessageListenerInterface");
+
+                        if (MdbContainerInfo.class.isInstance(containerInfo) &&
+                                connectorInfo.resourceAdapter.id.equals(resourceAdapterProperty) &&
+                                messageListener.getMessageListenerType().equals(messageListenerInterfaceProperty)) {
+
+                            mdbContainerInfo = MdbContainerInfo.class.cast(containerInfo);
+                            iterator.remove();
+                            break;
+                        }
+                    }
+
+                    if (mdbContainerInfo == null) {
+                        final Container container = new Container(id, "MESSAGE", null);
+
+                        final Properties properties = container.getProperties();
+                        properties.setProperty("ResourceAdapter", connectorInfo.resourceAdapter.id);
+                        properties.setProperty("MessageListenerInterface", messageListener.getMessageListenerType());
+                        properties.setProperty("ActivationSpecClass", messageListener.getActivationSpec().getActivationSpecClass());
+
+                        mdbContainerInfo = this.configFactory.configureService(container, MdbContainerInfo.class);
+                    }
+
                     connectorInfo.inbound.add(mdbContainerInfo);
                 }
             }
