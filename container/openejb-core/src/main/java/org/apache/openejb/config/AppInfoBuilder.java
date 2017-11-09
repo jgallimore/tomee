@@ -24,6 +24,7 @@ import org.apache.openejb.assembler.classic.AppInfo;
 import org.apache.openejb.assembler.classic.ClassListInfo;
 import org.apache.openejb.assembler.classic.ClientInfo;
 import org.apache.openejb.assembler.classic.ConnectorInfo;
+import org.apache.openejb.assembler.classic.ContainerInfo;
 import org.apache.openejb.assembler.classic.EjbJarInfo;
 import org.apache.openejb.assembler.classic.EnterpriseBeanInfo;
 import org.apache.openejb.assembler.classic.EntityManagerFactoryCallable;
@@ -91,6 +92,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -570,14 +572,40 @@ class AppInfoBuilder {
                 for (final MessageListener messageListener : inbound.getMessageAdapter().getMessageListener()) {
                     final String id = this.getId(messageListener, inbound, connectorModule);
 
-                    final Container container = new Container(id, "MESSAGE", null);
+                    // search through configured containers, looking for a match with "ResourceAdapter" and "MessageListenerInterface"
+                    // if we find one, we'll pull that from the configuration, so it gets created and associated with the resource
+                    // adapter as opposed to being created manually and the wiring up potentially not working
 
-                    final Properties properties = container.getProperties();
-                    properties.setProperty("ResourceAdapter", connectorInfo.resourceAdapter.id);
-                    properties.setProperty("MessageListenerInterface", messageListener.getMessageListenerType());
-                    properties.setProperty("ActivationSpecClass", messageListener.getActivationSpec().getActivationSpecClass());
+                    final List<ContainerInfo> containers = configFactory.getOpenEjbConfiguration().containerSystem.containers;
+                    final Iterator<ContainerInfo> iterator = containers.iterator();
 
-                    final MdbContainerInfo mdbContainerInfo = this.configFactory.configureService(container, MdbContainerInfo.class);
+                    MdbContainerInfo mdbContainerInfo = null;
+                    while (iterator.hasNext()) {
+                        final ContainerInfo containerInfo = iterator.next();
+                        final String resourceAdapterProperty = containerInfo.properties.getProperty("ResourceAdapter");
+                        final String messageListenerInterfaceProperty = containerInfo.properties.getProperty("MessageListenerInterface");
+
+                        if (MdbContainerInfo.class.isInstance(containerInfo) &&
+                                connectorInfo.resourceAdapter.id.equals(resourceAdapterProperty) &&
+                                messageListener.getMessageListenerType().equals(messageListenerInterfaceProperty)) {
+
+                            mdbContainerInfo = MdbContainerInfo.class.cast(containerInfo);
+                            iterator.remove();
+                            break;
+                        }
+                    }
+
+                    if (mdbContainerInfo == null) {
+                        final Container container = new Container(id, "MESSAGE", null);
+
+                        final Properties properties = container.getProperties();
+                        properties.setProperty("ResourceAdapter", connectorInfo.resourceAdapter.id);
+                        properties.setProperty("MessageListenerInterface", messageListener.getMessageListenerType());
+                        properties.setProperty("ActivationSpecClass", messageListener.getActivationSpec().getActivationSpecClass());
+
+                        mdbContainerInfo = this.configFactory.configureService(container, MdbContainerInfo.class);
+                    }
+
                     connectorInfo.inbound.add(mdbContainerInfo);
                 }
             }

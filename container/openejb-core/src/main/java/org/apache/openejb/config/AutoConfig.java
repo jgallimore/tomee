@@ -20,6 +20,7 @@ package org.apache.openejb.config;
 import org.apache.openejb.JndiConstants;
 import org.apache.openejb.OpenEJBException;
 import org.apache.openejb.assembler.classic.ContainerInfo;
+import org.apache.openejb.assembler.classic.MdbContainerInfo;
 import org.apache.openejb.assembler.classic.ResourceInfo;
 import org.apache.openejb.config.sys.Container;
 import org.apache.openejb.config.sys.Resource;
@@ -183,12 +184,12 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
 
     @Override
     public synchronized AppModule deploy(final AppModule appModule) throws OpenEJBException {
-        final AppResources appResources = new AppResources(appModule);
+        final List<ContainerInfo> containerInfos = processApplicationContainers(appModule);
+        final AppResources appResources = new AppResources(appModule, containerInfos);
 
         appResources.dump();
 
         processApplicationResources(appModule);
-        processApplicationContainers(appModule, appResources);
 
         for (final EjbModule ejbModule : appModule.getEjbModules()) {
             processActivationConfig(ejbModule);
@@ -889,10 +890,12 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
         }
     }
 
-    private void processApplicationContainers(final AppModule module, final AppResources appResources) throws OpenEJBException {
+    private List<ContainerInfo> processApplicationContainers(final AppModule module) throws OpenEJBException {
         if (module.getContainers().isEmpty()) {
-            return;
+            return Collections.emptyList();
         }
+
+        final List<ContainerInfo> containerInfos = new ArrayList<ContainerInfo>();
 
         final String prefix = module.getModuleId() + "/";
         for (final Container container : module.getContainers()) {
@@ -904,8 +907,10 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
             }
             final ContainerInfo containerInfo = configFactory.createContainerInfo(container);
             configFactory.install(containerInfo);
-            appResources.addContainer(containerInfo);
+            containerInfos.add(containerInfo);
         }
+
+        return containerInfos;
     }
 
     private void processApplicationResources(final AppModule module) throws OpenEJBException {
@@ -2292,7 +2297,8 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
         public AppResources() {
         }
 
-        public AppResources(final AppModule appModule) {
+        public AppResources(final AppModule appModule, final List<ContainerInfo> containerInfos) {
+            this.containerInfos.addAll(containerInfos);
 
             this.appId = appModule.getModuleId();
 
@@ -2343,13 +2349,34 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
                     for (final MessageListener messageListener : inbound.getMessageAdapter().getMessageListener()) {
                         final String type = messageListener.getMessageListenerType();
 
-                        final String containerId;
+                        String containerId;
                         if (messageListener.getId() != null) {
                             containerId = messageListener.getId();
                         } else if (inbound.getMessageAdapter().getMessageListener().size() == 1) {
                             containerId = connectorModule.getModuleId();
                         } else {
                             containerId = connectorModule.getModuleId() + "-" + type;
+                        }
+
+                        // check to see if the application has defined a container for this resource adapter  --  configFactory.getOpenEjbConfiguration().containerSystem.containers
+                        // search through configured containers, looking for a match with "ResourceAdapter" and "MessageListenerInterface"
+                        // if we find one, we'll pull that from the configuration, so it gets created and associated with the resource
+                        // adapter as opposed to being created manually and the wiring up potentially not working
+
+                        final Iterator<ContainerInfo> iterator = containerInfos.iterator();
+
+                        while (iterator.hasNext()) {
+                            final ContainerInfo containerInfo = iterator.next();
+                            final String resourceAdapterProperty = containerInfo.properties.getProperty("ResourceAdapter");
+                            final String messageListenerInterfaceProperty = containerInfo.properties.getProperty("MessageListenerInterface");
+
+                            if (MdbContainerInfo.class.isInstance(containerInfo) &&
+                                    (connectorModule.getModuleId() + "RA").equals(resourceAdapterProperty) &&
+                                    messageListener.getMessageListenerType().equals(messageListenerInterfaceProperty)) {
+
+                                containerId = containerInfo.id;
+                                break;
+                            }
                         }
 
                         List<String> containerIds = containerIdsByType.get(type);
