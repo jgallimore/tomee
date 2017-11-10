@@ -906,7 +906,10 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
                 container.setId(prefix + container.getId());
             }
             final ContainerInfo containerInfo = configFactory.createContainerInfo(container);
-            configFactory.install(containerInfo);
+            containerInfo.originAppName = module.getModuleId();
+
+            // TODO: JRG - don't do this. We should lob the containerInfo on AppInfo instead and deploy it _slightly_ later
+            //configFactory.install(containerInfo);
             containerInfos.add(containerInfo);
         }
 

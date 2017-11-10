@@ -80,6 +80,7 @@ import org.apache.openejb.core.ivm.naming.IvmContext;
 import org.apache.openejb.core.ivm.naming.IvmJndiFactory;
 import org.apache.openejb.core.ivm.naming.LazyObjectReference;
 import org.apache.openejb.core.ivm.naming.Reference;
+import org.apache.openejb.core.mdb.MdbContainer;
 import org.apache.openejb.core.security.SecurityContextHandler;
 import org.apache.openejb.core.timer.EjbTimerServiceImpl;
 import org.apache.openejb.core.timer.MemoryTimerStore;
@@ -565,6 +566,9 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
 
         // Containers
         for (final ContainerInfo serviceInfo : containerSystemInfo.containers) {
+
+            // skip app specific conatiners, we'll create these in createApplication() below.
+            if (serviceInfo.originAppName != null) continue;
             createContainer(serviceInfo);
         }
 
@@ -686,6 +690,21 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
     }
 
     private AppContext createApplication(final AppInfo appInfo, ClassLoader classLoader, final boolean start) throws OpenEJBException, IOException, NamingException {
+
+        // create any application specific containers
+        final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
+        try {
+            Thread.currentThread().setContextClassLoader(classLoader);
+            final List<ContainerInfo> containers = this.configFactory.getOpenEjbConfiguration().containerSystem.containers;
+            for (ContainerInfo container : containers) {
+                if (appInfo.appId.equals(container.originAppName)) {
+                    createContainer(container);
+                }
+            }
+        } finally {
+            Thread.currentThread().setContextClassLoader(oldCl);
+        }
+
         try {
             mergeServices(appInfo);
         } catch (final URISyntaxException e) {

@@ -107,6 +107,8 @@ import org.apache.openejb.jee.WebApp;
 import org.apache.openejb.loader.IO;
 import org.apache.openejb.loader.ProvisioningUtil;
 import org.apache.openejb.loader.SystemInstance;
+import org.apache.openejb.loader.event.ComponentAdded;
+import org.apache.openejb.observer.Observes;
 import org.apache.openejb.server.httpd.BeginWebBeansListener;
 import org.apache.openejb.server.httpd.EndWebBeansListener;
 import org.apache.openejb.spi.ContainerSystem;
@@ -232,7 +234,7 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
     /**
      * OpenEJB configuration factory instance
      */
-    private final ConfigurationFactory configurationFactory;
+    private ConfigurationFactory configurationFactory = null;
     /**
      * Tomcat host config elements
      */
@@ -326,9 +328,16 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
         }
 
         SystemInstance.get().addObserver(new ClusterObserver(clusters));
+        SystemInstance.get().addObserver(this);
 
-        configurationFactory = new ConfigurationFactory();
         deploymentLoader = new DeploymentLoader();
+    }
+
+    public void observeComponentAdded(@Observes final ComponentAdded<ConfigurationFactory> component) {
+        if (ConfigurationFactory.class.equals(component.getType())) {
+            this.configurationFactory = component.getComponent();
+            SystemInstance.get().removeObserver(this);
+        }
     }
 
     private void forceEEServerEndpointConfigurator() {
