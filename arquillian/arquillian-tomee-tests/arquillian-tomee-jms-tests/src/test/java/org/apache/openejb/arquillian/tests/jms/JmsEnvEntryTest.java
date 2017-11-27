@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -42,53 +42,54 @@ public class JmsEnvEntryTest {
 
         final EjbJarDescriptor ejbJarDescriptor = Descriptors.create(EjbJarDescriptor.class);
         ejbJarDescriptor.getOrCreateEnterpriseBeans()
-            .createMessageDriven()
+                .createMessageDriven()
                 .ejbName("RedBean")
-                .ejbClass(RedBean.class.getName())
+                .ejbClass(ColoredBean.class.getName())
                 .messagingType("javax.jms.MessageListener")
                 .transactionType("Container")
                 .messageDestinationType("javax.jms.Topic")
                 .getOrCreateActivationConfig()
-                    .createActivationConfigProperty()
-                        .activationConfigPropertyName("destinationType")
-                        .activationConfigPropertyValue("javax.jms.Topic").up()
-                    .createActivationConfigProperty()
-                        .activationConfigPropertyName("destination")
-                        .activationConfigPropertyValue("red").up().up()
-                .createEnvEntry().envEntryName("color").envEntryType("java.lang.String").envEntryValue("red").up().up()
-            .createMessageDriven()
+                .createActivationConfigProperty()
+                .activationConfigPropertyName("destinationType")
+                .activationConfigPropertyValue("javax.jms.Topic").up()
+                .createActivationConfigProperty()
+                .activationConfigPropertyName("destination")
+                .activationConfigPropertyValue("red").up().up()
+                .createEnvEntry().envEntryName("color").envEntryType("java.lang.String").envEntryValue("red").up()
+                .createEnvEntry().envEntryName("shade").envEntryType("java.lang.String").envEntryValue("dark").up().up()
+                .createMessageDriven()
                 .ejbName("BlueBean")
-                .ejbClass(BlueBean.class.getName())
+                .ejbClass(ColoredBean.class.getName())
                 .messagingType("javax.jms.MessageListener")
                 .transactionType("Container")
                 .messageDestinationType("javax.jms.Topic")
                 .getOrCreateActivationConfig()
-                    .createActivationConfigProperty()
-                        .activationConfigPropertyName("destinationType")
-                        .activationConfigPropertyValue("javax.jms.Topic").up()
-                    .createActivationConfigProperty()
-                        .activationConfigPropertyName("destination")
-                        .activationConfigPropertyValue("blue").up().up()
-                .createEnvEntry().envEntryName("color").envEntryType("java.lang.String").envEntryValue("blue").up().up()
-            .createMessageDriven()
+                .createActivationConfigProperty()
+                .activationConfigPropertyName("destinationType")
+                .activationConfigPropertyValue("javax.jms.Topic").up()
+                .createActivationConfigProperty()
+                .activationConfigPropertyName("destination")
+                .activationConfigPropertyValue("blue").up().up()
+                .createEnvEntry().envEntryName("color").envEntryType("java.lang.String").envEntryValue("blue").up()
+                .createEnvEntry().envEntryName("shade").envEntryType("java.lang.String").envEntryValue("light").up().up()
+                .createMessageDriven()
                 .ejbName("NoColorBean")
-                .ejbClass(NoColorSpecifiedBean.class.getName())
+                .ejbClass(ColoredBean.class.getName())
                 .messagingType("javax.jms.MessageListener")
                 .transactionType("Container")
                 .messageDestinationType("javax.jms.Topic")
                 .getOrCreateActivationConfig()
-                    .createActivationConfigProperty()
-                        .activationConfigPropertyName("destinationType")
-                        .activationConfigPropertyValue("javax.jms.Topic").up()
-                    .createActivationConfigProperty()
-                        .activationConfigPropertyName("destination")
-                        .activationConfigPropertyValue("nocolor").up().up();
+                .createActivationConfigProperty()
+                .activationConfigPropertyName("destinationType")
+                .activationConfigPropertyValue("javax.jms.Topic").up()
+                .createActivationConfigProperty()
+                .activationConfigPropertyName("destination")
+                .activationConfigPropertyValue("nocolor").up().up();
 
         final String ejbJarXml = ejbJarDescriptor.exportAsString();
 
-
         final JavaArchive archive = ShrinkWrap.create(JavaArchive.class, "jms-env-entry.jar")
-                .addClasses(BaseMdbBean.class, BlueBean.class, Color.class, NoColorSpecifiedBean.class, RedBean.class, MessageBean.class)
+                .addClasses(BaseMdbBean.class, ColoredBean.class, Color.class, MessageBean.class)
                 .add(new StringAsset("<beans/>"), "META-INF/beans.xml")
                 .add(new StringAsset(ejbJarXml), "META-INF/ejb-jar.xml");
 
@@ -103,17 +104,17 @@ public class JmsEnvEntryTest {
 
         messageBean.callRed();
         assertXMessages(1);
-        assertEquals("red",messageBean.getColors().get(0));
+        assertEquals("red-dark", messageBean.getColors().get(0));
         messageBean.clear();
 
         messageBean.callBlue();
         assertXMessages(1);
-        assertEquals("blue",messageBean.getColors().get(0));
+        assertEquals("blue-light", messageBean.getColors().get(0));
         messageBean.clear();
 
         messageBean.callNoColor();
         assertXMessages(1);
-        assertEquals("<not specified>",messageBean.getColors().get(0));
+        assertEquals("<not specified>-null", messageBean.getColors().get(0));
         messageBean.clear();
     }
 
