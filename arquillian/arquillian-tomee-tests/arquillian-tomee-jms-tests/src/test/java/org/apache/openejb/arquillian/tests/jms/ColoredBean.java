@@ -16,17 +16,19 @@
  */
 package org.apache.openejb.arquillian.tests.jms;
 
-import javax.inject.Inject;
+import javax.annotation.PostConstruct;
 import javax.jms.Message;
-import javax.jms.MessageListener;
 
-public class RedBean extends BaseMdbBean implements MessageListener {
+public class ColoredBean extends BaseMdbBean {
 
-    @Inject
-    private Color color;
+    @PostConstruct
+    public void postContruct() {
+        System.out.println( "Call super postconstruct ");
+        super.postConstruct();
+    }
 
     @Override
     public void onMessage(Message message) {
-        color.add(getColor());
+        color.add(getColor(), getShade());
     }
 }

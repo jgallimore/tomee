@@ -29,8 +29,8 @@ public class Color {
         return colors;
     }
 
-    public void add(final String color) {
-        colors.add(color);
+    public void add(final String color, final String shade) {
+        colors.add(color + "-" + shade);
     }
 
     public void clear() {

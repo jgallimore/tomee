@@ -16,11 +16,28 @@
  */
 package org.apache.openejb.arquillian.tests.jms;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.jms.Message;
+import javax.jms.MessageListener;
 import javax.naming.InitialContext;
 import javax.naming.NameNotFoundException;
 import javax.naming.NamingException;
 
-public class BaseMdbBean {
+public class BaseMdbBean implements MessageListener {
+    @Inject
+    public Color color;
+
+    private String colorString;
+
+    @Resource(name="shade")
+    private String shade;
+
+
+    public void postConstruct() {
+        colorString = getColor();
+    }
 
     public String getColor() {
         try {
@@ -30,6 +47,14 @@ public class BaseMdbBean {
         } catch (NamingException e) {
             throw new IllegalStateException(e);
         }
+    }
+    public String getShade() {
+        return shade;
+    }
+
+    @Override
+    public void onMessage(Message message) {
+        color.add(colorString, shade);
     }
 
 }
