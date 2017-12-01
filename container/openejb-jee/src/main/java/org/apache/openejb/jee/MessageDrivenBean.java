@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 
 /**
@@ -104,6 +105,8 @@ import java.util.Map;
     "securityIdentity"
 })
 public class MessageDrivenBean implements EnterpriseBean, TimerConsumer, Invokable {
+
+    private static final Logger LOG = Logger.getLogger(MessageDrivenBean.class.getName());
 
     @XmlTransient
     protected TextMap description = new TextMap();
@@ -420,6 +423,10 @@ public class MessageDrivenBean implements EnterpriseBean, TimerConsumer, Invokab
     }
 
     public Collection<EnvEntry> getEnvEntry() {
+
+        final String caller = Thread.currentThread().getStackTrace()[1].toString();
+        LOG.info(String.format("Bean %s env-entry changed from %s", getEjbName(), caller));
+
         if (envEntry == null) {
             envEntry = new KeyedCollection<String, EnvEntry>();
         }
