@@ -129,6 +129,12 @@ public class EnvEntriesPropertiesDeployer implements DynamicDeployer {
 
         // Must not be an override, just add the new entry
         log.debug("envprops.add", componentName, newEntry.getName(), newEntry.getEnvEntryValue());
+
+        log.info(String.format("*** [%s] Applying env-entry %s to context %s ***",
+                EnvEntriesPropertiesDeployer.class.getSimpleName(),
+                newEntry.getEnvEntryName(),
+                bean.getJndiConsumerName()));
+
         bean.getEnvEntry().add(newEntry);
     }
 

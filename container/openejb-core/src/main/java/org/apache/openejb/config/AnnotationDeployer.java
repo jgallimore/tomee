@@ -4193,6 +4193,12 @@ public class AnnotationDeployer implements DynamicDeployer {
                     if (!lookupName.equals("")) {
                         final EnvEntry envEntry = new EnvEntry();
                         envEntry.setName(refName);
+
+                        logger.info(String.format("*** [%s] (lookup) Applying env-entry %s to context %s ***",
+                                AnnotationDeployer.class.getSimpleName(),
+                                envEntry.getEnvEntryName(),
+                                consumer.getJndiConsumerName()));
+
                         consumer.getEnvEntry().add(envEntry);
 
                         envEntry.setLookupName(lookupName);
@@ -4201,6 +4207,12 @@ public class AnnotationDeployer implements DynamicDeployer {
                     } else if (isShareableJNDINamespace(refName)) {
                         final EnvEntry envEntry = new EnvEntry();
                         envEntry.setName(refName);
+
+                        logger.info(String.format("*** [%s] (shareable) Applying env-entry %s to context %s ***",
+                                AnnotationDeployer.class.getSimpleName(),
+                                envEntry.getEnvEntryName(),
+                                consumer.getJndiConsumerName()));
+
                         consumer.getEnvEntry().add(envEntry);
                         reference = envEntry;
                     } else {
@@ -4213,6 +4225,12 @@ public class AnnotationDeployer implements DynamicDeployer {
                             if (reference == null) {
                                 final EnvEntry envEntry = new EnvEntry();
                                 envEntry.setName(refName);
+
+                                logger.info(String.format("*** [%s] Applying env-entry %s to context %s ***",
+                                        AnnotationDeployer.class.getSimpleName(),
+                                        envEntry.getEnvEntryName(),
+                                        consumer.getJndiConsumerName()));
+
                                 consumer.getEnvEntry().add(envEntry);
                                 reference = envEntry;
                             }
