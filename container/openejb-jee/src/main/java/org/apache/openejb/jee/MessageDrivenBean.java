@@ -424,7 +424,7 @@ public class MessageDrivenBean implements EnterpriseBean, TimerConsumer, Invokab
 
     public Collection<EnvEntry> getEnvEntry() {
 
-        final String caller = Thread.currentThread().getStackTrace()[1].toString();
+        final String caller = Thread.currentThread().getStackTrace()[2].toString();
         LOG.info(String.format("Bean %s env-entry changed from %s", getEjbName(), caller));
 
         if (envEntry == null) {
