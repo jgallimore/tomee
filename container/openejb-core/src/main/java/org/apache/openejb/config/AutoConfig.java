@@ -848,8 +848,14 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
             }
 
             // create the container if it doesn't exist
-            final List<String> containerIds = configFactory.getContainerIds();
+            final Set<String> containerIds = new HashSet<String>();
+            containerIds.addAll(configFactory.getContainerIds());
             containerIds.addAll(appResources.getContainerIds());
+            final Collection<ContainerInfo> containerInfos = appResources.getContainerInfos();
+            for (final ContainerInfo containerInfo : containerInfos) {
+                containerIds.add(containerInfo.id);
+            }
+
             if (!containerIds.contains(ejbDeployment.getContainerId()) && !skipMdb(bean)) {
                 createContainer(containerInfoType, ejbDeployment, bean);
             }
