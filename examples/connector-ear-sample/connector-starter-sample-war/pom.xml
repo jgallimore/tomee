@@ -112,7 +112,7 @@
             <configuration>
               <systemPropertyVariables>
                 <tomee.classifier>${tomee.classifier}</tomee.classifier>
-                <tomee.version>${tomee.version}</tomee.version>
+                <tomee.version>7.0.5</tomee.version>
               </systemPropertyVariables>
             </configuration>
           </plugin>
