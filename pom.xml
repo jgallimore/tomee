@@ -125,7 +125,7 @@
     <openejb.osgi.dynamic.import>${openejb.osgi.dynamic.import.pkg}</openejb.osgi.dynamic.import>
     <openejb.osgi.symbolic.name>${project.groupId}.${project.artifactId}</openejb.osgi.symbolic.name>
 
-    <batchee.version>0.4-incubating</batchee.version>
+    <batchee.version>0.4-incubating</batchee.version>    
 
     <version.arquillian>1.1.13.Final</version.arquillian>
     <version.shrinkwrap.descriptor>2.0.0</version.shrinkwrap.descriptor>
@@ -356,7 +356,7 @@
           <!-- the following settings are important when working with git -->
           <localCheckout>true</localCheckout>
           <pushChanges>false</pushChanges>
-          <releaseProfiles>tomee-release</releaseProfiles>
+          <releaseProfiles></releaseProfiles>
           <autoVersionSubmodules>true</autoVersionSubmodules>
         </configuration>
       </plugin>
@@ -510,33 +510,6 @@
         <module>container</module>
         <module>server</module>
         <module>examples</module>
-        <module>assembly</module>
-        <module>tck</module>
-        <module>arquillian</module>
-        <module>utils</module>
-        <module>tomee</module>
-      </modules>
-      <repositories>
-        <repository>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-          <releases>
-            <enabled>false</enabled>
-          </releases>
-          <id>Apache Snapshots</id>
-          <url>https://repository.apache.org/content/repositories/snapshots</url>
-        </repository>
-      </repositories>
-    </profile>
-    <profile>
-      <id>tomee-release</id>
-      <modules>
-        <module>itests</module>
-        <module>maven</module>
-        <module>gradle</module>
-        <module>container</module>
-        <module>server</module>
         <module>assembly</module>
         <module>tck</module>
         <module>arquillian</module>
@@ -1767,3 +1740,4 @@
     </plugins>
   </reporting>
 </project>
+
