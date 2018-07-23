@@ -1746,9 +1746,9 @@
             <version>1.2.0</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.corba</groupId>
-            <artifactId>orb</artifactId>
-            <version>9.1</version>
+            <groupId>org.jacorb</groupId>
+            <artifactId>jacorb</artifactId>
+            <version>3.9</version>
         </dependency>
     </dependencies>
 
