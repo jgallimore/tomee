@@ -1745,8 +1745,13 @@
             <artifactId>javax.activation-api</artifactId>
             <version>1.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.corba</groupId>
+            <artifactId>orb</artifactId>
+            <version>9.1</version>
+        </dependency>
     </dependencies>
-    
+
     <reporting>
         <plugins>
             <plugin>
