@@ -19,6 +19,7 @@ package org.apache.openejb.server.ejbd;
 import org.apache.openejb.ProxyInfo;
 import org.apache.openejb.core.ServerFederation;
 import org.apache.openejb.server.ServiceException;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.ejb.EJBHome;
 import javax.ejb.EJBMetaData;
@@ -100,10 +101,10 @@ public class EjbServer implements org.apache.openejb.server.ServerService, org.a
         final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
 
         try {
-            Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+            TCCLUtil.setThreadContextClassLoader(getClass().getClassLoader());
             server.service(inputStream, outputStream);
         } finally {
-            Thread.currentThread().setContextClassLoader(oldCl);
+            TCCLUtil.setThreadContextClassLoader(oldCl);
         }
     }
 

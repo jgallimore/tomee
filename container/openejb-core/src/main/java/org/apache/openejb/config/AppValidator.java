@@ -45,6 +45,7 @@ import org.apache.openejb.config.rules.CheckUserTransactionRefs;
 import org.apache.openejb.config.rules.ValidationBase;
 import org.apache.openejb.util.Messages;
 import org.apache.openejb.util.OpenEjbVersion;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.enterprise.inject.spi.DefinitionException;
 import java.io.File;
@@ -95,7 +96,7 @@ public class AppValidator {
     // START SNIPPET : code2
     public AppModule validate(final AppModule appModule) {
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(appModule.getClassLoader()); // be sure to not mix classloaders
+        TCCLUtil.setThreadContextClassLoader(appModule.getClassLoader()); // be sure to not mix classloaders
         try {
             final ValidationRule[] rules = getValidationRules();
             for (int i = 0; i < rules.length; i++) {
@@ -110,7 +111,7 @@ public class AppValidator {
             err.setDetails(e.getMessage());
             appModule.getValidation().addError(err);
         } finally {
-            Thread.currentThread().setContextClassLoader(loader);
+            TCCLUtil.setThreadContextClassLoader(loader);
         }
         return appModule;
     }

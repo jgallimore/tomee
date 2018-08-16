@@ -29,6 +29,7 @@ import org.apache.openejb.core.ThreadContextListener;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.spi.SecurityService;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.proxy.LocalBeanProxyFactory;
 
 import javax.ejb.AccessLocalException;
@@ -317,13 +318,13 @@ public abstract class BaseEjbProxyHandler implements InvocationHandler, Serializ
 
                 IntraVmCopyMonitor.pre(strategy);
                 final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
-                Thread.currentThread().setContextClassLoader(getBeanContext().getClassLoader());
+                TCCLUtil.setThreadContextClassLoader(getBeanContext().getClassLoader());
                 try {
                     args = copyArgs(args);
                     method = copyMethod(method);
                     interfce = copyObj(interfce);
                 } finally {
-                    Thread.currentThread().setContextClassLoader(oldClassLoader);
+                    TCCLUtil.setThreadContextClassLoader(oldClassLoader);
                     IntraVmCopyMonitor.post();
                 }
 

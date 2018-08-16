@@ -21,6 +21,7 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.monitoring.Managed;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -229,7 +230,7 @@ public class ServicePool extends ServerServiceFilter {
                 final Thread thread = Thread.currentThread();
                 try {
                     cl = thread.getContextClassLoader();
-                    thread.setContextClassLoader(tccl);
+                    TCCLUtil.setThreadContextClassLoader(thread, tccl);
 
                     if (stop.get()) {
                         return;
@@ -274,7 +275,7 @@ public class ServicePool extends ServerServiceFilter {
                         }
                     }
 
-                    thread.setContextClassLoader(cl);
+                    TCCLUtil.setThreadContextClassLoader(thread, cl);
                 }
             }
         };

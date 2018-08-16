@@ -32,6 +32,7 @@ import org.apache.openejb.server.cxf.transport.util.CxfUtil;
 import org.apache.openejb.server.rest.RESTService;
 import org.apache.openejb.server.rest.RsHttpListener;
 import org.apache.openejb.threads.task.CUTask;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.annotation.AnyLiteral;
 import org.apache.webbeans.annotation.EmptyAnnotationLiteral;
 import org.apache.webbeans.config.WebBeansContext;
@@ -197,7 +198,7 @@ public class CxfRSService extends RESTService {
         final Bus bus = CxfUtil.getBus();
 
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(CxfUtil.initBusLoader());
+        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
         try {
             // force init of bindings
             if (!CxfUtil.hasService(JAXRSBindingFactory.JAXRS_BINDING_ID)) {

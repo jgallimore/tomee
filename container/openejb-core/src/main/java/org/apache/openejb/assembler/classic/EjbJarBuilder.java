@@ -24,6 +24,7 @@ import org.apache.openejb.Injection;
 import org.apache.openejb.ModuleContext;
 import org.apache.openejb.ModuleTestContext;
 import org.apache.openejb.OpenEJBException;
+import org.apache.openejb.util.TCCLUtil;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -62,7 +63,7 @@ public class EjbJarBuilder {
 
         for (final EnterpriseBeanInfo ejbInfo : ejbJar.enterpriseBeans) {
             final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-            Thread.currentThread().setContextClassLoader(moduleContext.getClassLoader());
+            TCCLUtil.setThreadContextClassLoader(moduleContext.getClassLoader());
             try {
                 final EnterpriseBeanBuilder deploymentBuilder = new EnterpriseBeanBuilder(ejbInfo, moduleContext, moduleInjections);
                 final BeanContext bean = deploymentBuilder.build();
@@ -84,7 +85,7 @@ public class EjbJarBuilder {
             } catch (final Throwable e) {
                 throw new OpenEJBException("Error building bean '" + ejbInfo.ejbName + "'.  Exception: " + e.getClass() + ": " + e.getMessage(), e);
             } finally {
-                Thread.currentThread().setContextClassLoader(loader);
+                TCCLUtil.setThreadContextClassLoader(loader);
             }
         }
         return deployments;

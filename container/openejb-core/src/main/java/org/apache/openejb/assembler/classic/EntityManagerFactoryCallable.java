@@ -22,6 +22,7 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.persistence.PersistenceUnitInfoImpl;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.webbeans.container.InjectableBeanManager;
 
@@ -66,20 +67,20 @@ public class EntityManagerFactoryCallable implements Callable<EntityManagerFacto
             return provider;
         }
         final ClassLoader old = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(appClassLoader);
+        TCCLUtil.setThreadContextClassLoader(appClassLoader);
         try {
             return (provider = appClassLoader.loadClass(persistenceProviderClassName));
         } catch (final ClassNotFoundException e) {
             throw new IllegalArgumentException(e);
         } finally {
-            Thread.currentThread().setContextClassLoader(old);
+            TCCLUtil.setThreadContextClassLoader(old);
         }
     }
 
     @Override
     public EntityManagerFactory call() throws Exception {
         final ClassLoader old = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(appClassLoader);
+        TCCLUtil.setThreadContextClassLoader(appClassLoader);
         try {
             final Class<?> clazz = appClassLoader.loadClass(persistenceProviderClassName);
             final PersistenceProvider persistenceProvider = (PersistenceProvider) clazz.newInstance();
@@ -132,7 +133,7 @@ public class EntityManagerFactoryCallable implements Callable<EntityManagerFacto
 
             return emf;
         } finally {
-            Thread.currentThread().setContextClassLoader(old);
+            TCCLUtil.setThreadContextClassLoader(old);
         }
     }
 

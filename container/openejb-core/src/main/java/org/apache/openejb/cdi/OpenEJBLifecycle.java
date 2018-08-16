@@ -25,6 +25,7 @@ import org.apache.openejb.assembler.classic.Assembler;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.component.BuiltInOwbBean;
 import org.apache.webbeans.component.SimpleProducerFactory;
 import org.apache.webbeans.component.WebBeansType;
@@ -143,7 +144,7 @@ public class OpenEJBLifecycle implements ContainerLifecycle {
         final long begin = System.currentTimeMillis();
 
         try {
-            Thread.currentThread().setContextClassLoader(stuff.getClassLoader());
+            TCCLUtil.setThreadContextClassLoader(stuff.getClassLoader());
 
             final AppContext appContext = stuff.getAppContext();
             if (stuff.getWebContext() == null) { // do it before any other things to keep our singleton finder working
@@ -231,7 +232,7 @@ public class OpenEJBLifecycle implements ContainerLifecycle {
                 starts(beanManager, clazz);
             }
         } finally {
-            Thread.currentThread().setContextClassLoader(oldCl);
+            TCCLUtil.setThreadContextClassLoader(oldCl);
 
             // cleanup threadlocal used to enrich cdi context manually
             OptimizedLoaderService.ADDITIONAL_EXTENSIONS.remove();

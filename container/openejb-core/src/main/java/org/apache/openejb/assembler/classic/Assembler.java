@@ -122,24 +122,7 @@ import org.apache.openejb.spi.ApplicationServer;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.spi.SecurityService;
 import org.apache.openejb.threads.impl.ManagedExecutorServiceImpl;
-import org.apache.openejb.util.Contexts;
-import org.apache.openejb.util.DaemonThreadFactory;
-import org.apache.openejb.util.Duration;
-import org.apache.openejb.util.ExecutorBuilder;
-import org.apache.openejb.util.JavaSecurityManagers;
-import org.apache.openejb.util.Join;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.Messages;
-import org.apache.openejb.util.OpenEJBErrorHandler;
-import org.apache.openejb.util.PropertiesHelper;
-import org.apache.openejb.util.PropertyPlaceHolderHelper;
-import org.apache.openejb.util.References;
-import org.apache.openejb.util.SafeToolkit;
-import org.apache.openejb.util.SetAccessible;
-import org.apache.openejb.util.SuperProperties;
-import org.apache.openejb.util.URISupport;
-import org.apache.openejb.util.URLs;
+import org.apache.openejb.util.*;
 import org.apache.openejb.util.classloader.ClassLoaderAwareHandler;
 import org.apache.openejb.util.classloader.URLClassLoaderFirst;
 import org.apache.openejb.util.proxy.ProxyFactory;
@@ -618,14 +601,14 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
 
             try {
                 if (classLoader != null) {
-                    Thread.currentThread().setContextClassLoader(classLoader);
+                    TCCLUtil.setThreadContextClassLoader(classLoader);
                 }
 
                 for (final ContainerInfo containerInfo : containerInfos) {
                     createContainer(containerInfo);
                 }
             } finally {
-                Thread.currentThread().setContextClassLoader(oldCl);
+                TCCLUtil.setThreadContextClassLoader(oldCl);
             }
         }
 
@@ -794,12 +777,12 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
 
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
             try {
-                Thread.currentThread().setContextClassLoader(classLoader);
+                TCCLUtil.setThreadContextClassLoader(classLoader);
                 for (final ContainerInfo container : appInfo.containers) {
                     createContainer(container);
                 }
             } finally {
-                Thread.currentThread().setContextClassLoader(oldCl);
+                TCCLUtil.setThreadContextClassLoader(oldCl);
             }
 
             //Construct the global and app jndi contexts for this app
@@ -932,7 +915,7 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                 // Connectors
                 for (final ConnectorInfo connector : appInfo.connectors) {
                     final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
-                    Thread.currentThread().setContextClassLoader(classLoader);
+                    TCCLUtil.setThreadContextClassLoader(classLoader);
                     try {
                         // todo add undeployment code for these
                         if (connector.resourceAdapter != null) {
@@ -949,7 +932,7 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                             createResource(null, adminObject);
                         }
                     } finally {
-                        Thread.currentThread().setContextClassLoader(oldClassLoader);
+                        TCCLUtil.setThreadContextClassLoader(oldClassLoader);
                     }
                 }
 
@@ -1252,7 +1235,7 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
         final ClassLoader oldCl = thread.getContextClassLoader();
 
         try {
-            thread.setContextClassLoader(classLoader);
+            TCCLUtil.setThreadContextClassLoader(thread, classLoader);
 
             final List<ResourceInfo> resourceList = config.facilities.resources;
 
@@ -1361,7 +1344,7 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                 }
             }
         } finally {
-            thread.setContextClassLoader(oldCl);
+            TCCLUtil.setThreadContextClassLoader(thread, oldCl);
         }
     }
 
@@ -2270,13 +2253,13 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                 final WebBeansContext webBeansContext = appContext.getWebBeansContext();
                 if (webBeansContext != null) {
                     final ClassLoader old = Thread.currentThread().getContextClassLoader();
-                    Thread.currentThread().setContextClassLoader(classLoader);
+                    TCCLUtil.setThreadContextClassLoader(classLoader);
                     try {
                         final ServletContext context = appContext.isStandaloneModule() && appContext.getWebContexts().iterator().hasNext() ?
                                 appContext.getWebContexts().iterator().next().getServletContext() : null;
                         webBeansContext.getService(ContainerLifecycle.class).stopApplication(context);
                     } finally {
-                        Thread.currentThread().setContextClassLoader(old);
+                        TCCLUtil.setThreadContextClassLoader(old);
                     }
                 }
                 final Map<String, Object> cb = appContext.getBindings();
@@ -3012,13 +2995,13 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                 final ClassLoader old = thread.getContextClassLoader();
                 if (!appClassLoader) {
                     final ClassLoader classLoader = Assembler.class.getClassLoader();
-                    thread.setContextClassLoader(classLoader == null ? ClassLoader.getSystemClassLoader() : classLoader);
+                    TCCLUtil.setThreadContextClassLoader(thread, classLoader == null ? ClassLoader.getSystemClassLoader() : classLoader);
                 } // else contextually we should have the app loader
 
                 try {
                     return doCreateResource(infos, serviceInfo);
                 } finally {
-                    thread.setContextClassLoader(old);
+                    TCCLUtil.setThreadContextClassLoader(thread, old);
                 }
             }
         });

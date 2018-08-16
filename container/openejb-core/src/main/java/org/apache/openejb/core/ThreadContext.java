@@ -21,6 +21,7 @@ import org.apache.openejb.BeanContext;
 import org.apache.openejb.core.transaction.TransactionPolicy;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -48,7 +49,7 @@ public class ThreadContext {
         // set the thread context class loader
         final Thread thread = Thread.currentThread();
         newContext.oldClassLoader = thread.getContextClassLoader();
-        thread.setContextClassLoader(newContext.beanContext.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(thread, newContext.beanContext.getClassLoader());
 
         // update thread local
         final ThreadContext oldContext = threadStorage.get();
@@ -74,7 +75,7 @@ public class ThreadContext {
         }
 
         // set the thread context class loader back
-        Thread.currentThread().setContextClassLoader(exitingContext.oldClassLoader);
+        TCCLUtil.setThreadContextClassLoader(exitingContext.oldClassLoader);
         exitingContext.oldClassLoader = null;
 
         // update thread local

@@ -23,6 +23,7 @@ import org.apache.openejb.server.httpd.EndWebBeansListener;
 import org.apache.openejb.server.httpd.HttpSession;
 import org.apache.openejb.util.DaemonThreadFactory;
 import org.apache.openejb.util.Duration;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.config.WebBeansContext;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class SessionManager {
 
         final Thread tc = Thread.currentThread();
         final ClassLoader tccl = tc.getContextClassLoader();
-        tc.setContextClassLoader(app.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(tc, app.getClassLoader());
         try {
             final Iterator<SessionWrapper> iterator = sessions.values().iterator();
             while (iterator.hasNext()) {
@@ -61,7 +62,7 @@ public class SessionManager {
                 }
             }
         } finally {
-            tc.setContextClassLoader(tccl);
+            TCCLUtil.setThreadContextClassLoader(tc, tccl);
         }
     }
 

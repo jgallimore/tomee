@@ -24,6 +24,7 @@ import org.apache.openejb.config.ValidationRule;
 import org.apache.openejb.config.WebModule;
 import org.apache.openejb.jee.EnterpriseBean;
 import org.apache.openejb.jee.SessionBean;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Application;
@@ -42,7 +43,7 @@ public class CheckRestMethodArePublic implements ValidationRule {
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
         try {
             for (final EjbModule ejb : appModule.getEjbModules()) {
-                Thread.currentThread().setContextClassLoader(ejb.getClassLoader());
+                TCCLUtil.setThreadContextClassLoader(ejb.getClassLoader());
 
                 for (final EnterpriseBean bean : ejb.getEjbJar().getEnterpriseBeans()) {
                     if (bean instanceof SessionBean && ((SessionBean) bean).isRestService()) {
@@ -53,7 +54,7 @@ public class CheckRestMethodArePublic implements ValidationRule {
             }
 
             for (final WebModule web : appModule.getWebModules()) {
-                Thread.currentThread().setContextClassLoader(web.getClassLoader());
+                TCCLUtil.setThreadContextClassLoader(web.getClassLoader());
 
                 // build the list of classes to validate
                 final Collection<String> classes = new ArrayList<String>();
@@ -109,7 +110,7 @@ public class CheckRestMethodArePublic implements ValidationRule {
                 classes.clear();
             }
         } finally {
-            Thread.currentThread().setContextClassLoader(loader);
+            TCCLUtil.setThreadContextClassLoader(loader);
         }
 
         standAloneClasses.clear();

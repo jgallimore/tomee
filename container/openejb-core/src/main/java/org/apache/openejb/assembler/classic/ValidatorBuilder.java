@@ -26,6 +26,7 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.util.AppFinder;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.webbeans.container.BeanManagerImpl;
 
@@ -108,7 +109,7 @@ public final class ValidatorBuilder {
         final Thread thread = Thread.currentThread();
         final ClassLoader oldContextLoader = thread.getContextClassLoader();
         try {
-            thread.setContextClassLoader(classLoader);
+            TCCLUtil.setThreadContextClassLoader(thread, classLoader);
             if (config == null) {
                 factory = Validation.buildDefaultValidatorFactory();
             } else {
@@ -116,9 +117,9 @@ public final class ValidatorBuilder {
                 try {
                     factory = configuration.buildValidatorFactory();
                 } catch (final ValidationException ve) {
-                    thread.setContextClassLoader(ValidatorBuilder.class.getClassLoader());
+                    TCCLUtil.setThreadContextClassLoader(thread, ValidatorBuilder.class.getClassLoader());
                     factory = Validation.buildDefaultValidatorFactory();
-                    thread.setContextClassLoader(classLoader);
+                    TCCLUtil.setThreadContextClassLoader(thread, classLoader);
 
                     logger.warning("Unable create validator factory with config " + config
                         + " (" + ve.getMessage() + ")."
@@ -126,7 +127,7 @@ public final class ValidatorBuilder {
                 }
             }
         } finally {
-            thread.setContextClassLoader(oldContextLoader);
+            TCCLUtil.setThreadContextClassLoader(thread, oldContextLoader);
         }
         return factory;
     }
@@ -158,9 +159,9 @@ public final class ValidatorBuilder {
         }
         if (target == null) {
             // force to use container provider to ignore any conflicting configuration
-            thread.setContextClassLoader(ValidatorBuilder.class.getClassLoader());
+            TCCLUtil.setThreadContextClassLoader(thread, ValidatorBuilder.class.getClassLoader());
             target = Validation.byDefaultProvider().configure();
-            thread.setContextClassLoader(classLoader);
+            TCCLUtil.setThreadContextClassLoader(thread, classLoader);
         }
 
         final Set<ExecutableType> types = new HashSet<>();

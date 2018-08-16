@@ -28,6 +28,7 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.observer.Observes;
 import org.apache.openejb.observer.event.ObserverAdded;
 import org.apache.openejb.util.AppFinder;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.classloader.Unwrappable;
 import org.apache.webbeans.config.WebBeansContext;
 
@@ -52,7 +53,7 @@ public class BatchEEServiceManager implements ServicesManagerLocator {
 
         final Thread thread = Thread.currentThread();
         final ClassLoader current = thread.getContextClassLoader();
-        thread.setContextClassLoader(context.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(thread, context.getClassLoader());
         final ServicesManager servicesManager = new ServicesManager();
         final Properties properties = new Properties(SystemInstance.get().getProperties());
         properties.putAll(context.getProperties());
@@ -65,7 +66,7 @@ public class BatchEEServiceManager implements ServicesManagerLocator {
             }
             servicesManager.init(properties); // will look for batchee.properties so need the right classloader
         } finally {
-            thread.setContextClassLoader(current);
+            TCCLUtil.setThreadContextClassLoader(thread, current);
         }
 
         context.set(ServicesManager.class, servicesManager);
@@ -104,11 +105,11 @@ public class BatchEEServiceManager implements ServicesManagerLocator {
         public void executeTask(final Runnable work, final Object config) {
             final Thread thread = Thread.currentThread();
             final ClassLoader tccl = thread.getContextClassLoader();
-            thread.setContextClassLoader(unwrap(tccl));
+            TCCLUtil.setThreadContextClassLoader(thread, unwrap(tccl));
             try {
                 super.executeTask(work, config);
             } finally {
-                thread.setContextClassLoader(tccl);
+                TCCLUtil.setThreadContextClassLoader(thread, tccl);
             }
         }
     }

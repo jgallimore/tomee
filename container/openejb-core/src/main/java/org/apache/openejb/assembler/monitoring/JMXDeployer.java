@@ -25,6 +25,7 @@ import org.apache.openejb.assembler.Deployer;
 import org.apache.openejb.assembler.DeployerEjb;
 import org.apache.openejb.assembler.classic.AppInfo;
 import org.apache.openejb.core.LocalInitialContextFactory;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -102,11 +103,11 @@ public class JMXDeployer {
         p.setProperty(Context.INITIAL_CONTEXT_FACTORY, LocalInitialContextFactory.class.getName());
 
         final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(DeployerEjb.class.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(DeployerEjb.class.getClassLoader());
         try {
             return (Deployer) new InitialContext(p).lookup("openejb/DeployerBusinessRemote");
         } finally {
-            Thread.currentThread().setContextClassLoader(oldCl);
+            TCCLUtil.setThreadContextClassLoader(oldCl);
         }
     }
 }

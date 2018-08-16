@@ -53,6 +53,7 @@ import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
 import org.apache.openejb.util.StringTemplate;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.naming.Context;
 import javax.xml.namespace.QName;
@@ -285,7 +286,7 @@ public abstract class WsService implements ServerService, SelfManaging {
                         continue;
 
                     final ClassLoader old = Thread.currentThread().getContextClassLoader();
-                    Thread.currentThread().setContextClassLoader(beanContext.getClassLoader());
+                    TCCLUtil.setThreadContextClassLoader(beanContext.getClassLoader());
                     try {
                         final PortData port = WsBuilder.toPortData(portInfo, beanContext.getInjections(), moduleBaseUrl, beanContext.getClassLoader());
 
@@ -337,7 +338,7 @@ public abstract class WsService implements ServerService, SelfManaging {
                     } catch (final Throwable e) {
                         logger.error("Error deploying JAX-WS Web Service for EJB " + beanContext.getDeploymentID(), e);
                     } finally {
-                        Thread.currentThread().setContextClassLoader(old);
+                        TCCLUtil.setThreadContextClassLoader(old);
                     }
                 }
             }
@@ -406,7 +407,7 @@ public abstract class WsService implements ServerService, SelfManaging {
 
             final ClassLoader old = Thread.currentThread().getContextClassLoader();
             final ClassLoader classLoader = webContext.getClassLoader();
-            Thread.currentThread().setContextClassLoader(classLoader);
+            TCCLUtil.setThreadContextClassLoader(classLoader);
             try {
                 final Collection<Injection> injections = webContext.getInjections();
                 final Context context = webContext.getJndiEnc();
@@ -448,7 +449,7 @@ public abstract class WsService implements ServerService, SelfManaging {
             } catch (final Throwable e) {
                 logger.error("Error deploying CXF webservice for servlet " + portInfo.serviceLink, e);
             } finally {
-                Thread.currentThread().setContextClassLoader(old);
+                TCCLUtil.setThreadContextClassLoader(old);
             }
         }
     }

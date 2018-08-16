@@ -20,6 +20,7 @@ import org.apache.openejb.assembler.classic.WebAppBuilder;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.naming.CompositeName;
 import javax.naming.InvalidNameException;
@@ -66,7 +67,7 @@ public class TomcatResourceFactory {
 
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
         final ClassLoader tccl = info.standardContext.getLoader().getClassLoader();
-        Thread.currentThread().setContextClassLoader(tccl);
+        TCCLUtil.setThreadContextClassLoader(tccl);
         try {
             // lookup can't work because of the lifecycle
             // return new InitialContext().lookup(jndiName);
@@ -87,7 +88,7 @@ public class TomcatResourceFactory {
         } catch (final Exception e) {
             LOGGER.error("Can't create resource " + jndiName, e);
         } finally {
-            Thread.currentThread().setContextClassLoader(loader);
+            TCCLUtil.setThreadContextClassLoader(loader);
         }
 
         return null;

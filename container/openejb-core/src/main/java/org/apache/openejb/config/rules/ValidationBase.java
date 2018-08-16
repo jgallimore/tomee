@@ -31,6 +31,7 @@ import org.apache.openejb.jee.PersistenceType;
 import org.apache.openejb.util.Classes;
 import org.apache.openejb.util.Join;
 import org.apache.openejb.util.Messages;
+import org.apache.openejb.util.TCCLUtil;
 
 import java.lang.reflect.Method;
 
@@ -44,19 +45,19 @@ public abstract class ValidationBase implements ValidationRule {
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
         try {
             for (final EjbModule ejbModule : appModule.getEjbModules()) {
-                Thread.currentThread().setContextClassLoader(ejbModule.getClassLoader());
+                TCCLUtil.setThreadContextClassLoader(ejbModule.getClassLoader());
 
                 module = ejbModule;
                 validate(ejbModule);
             }
             for (final ClientModule clientModule : appModule.getClientModules()) {
-                Thread.currentThread().setContextClassLoader(clientModule.getClassLoader());
+                TCCLUtil.setThreadContextClassLoader(clientModule.getClassLoader());
 
                 module = clientModule;
                 validate(clientModule);
             }
         } finally {
-            Thread.currentThread().setContextClassLoader(loader);
+            TCCLUtil.setThreadContextClassLoader(loader);
         }
     }
 

@@ -36,6 +36,7 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.spi.SecurityService;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.security.auth.login.LoginException;
 import java.io.ObjectInputStream;
@@ -132,7 +133,7 @@ class EjbRequestHandler extends RequestHandler {
 
                 //Need to set this for deserialization of the body - Will always be reset by EjbDaemon
                 final ClassLoader classLoader = di.getBeanClass().getClassLoader();
-                Thread.currentThread().setContextClassLoader(classLoader);
+                TCCLUtil.setThreadContextClassLoader(classLoader);
 
                 res.start(EJBResponse.Time.DESERIALIZATION);
 

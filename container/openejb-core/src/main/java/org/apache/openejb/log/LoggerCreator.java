@@ -19,6 +19,7 @@ package org.apache.openejb.log;
 
 import org.apache.openejb.core.ParentClassLoaderFinder;
 import org.apache.openejb.loader.SystemInstance;
+import org.apache.openejb.util.TCCLUtil;
 
 import java.util.Properties;
 import java.util.concurrent.Callable;
@@ -54,7 +55,7 @@ public class LoggerCreator implements Callable<Logger> {
                 if (logger == null) {
                     final Thread thread = Thread.currentThread();
                     final ClassLoader originalLoader = thread.getContextClassLoader();
-                    thread.setContextClassLoader(ParentClassLoaderFinder.Helper.get());
+                    TCCLUtil.setThreadContextClassLoader(thread, ParentClassLoaderFinder.Helper.get());
                     try {
                         try {
                             logger = Logger.getLogger(name);
@@ -72,7 +73,7 @@ public class LoggerCreator implements Callable<Logger> {
                             }
                         }
                     } finally {
-                        thread.setContextClassLoader(originalLoader);
+                        TCCLUtil.setThreadContextClassLoader(thread, originalLoader);
                     }
                 }
             }
@@ -91,13 +92,13 @@ public class LoggerCreator implements Callable<Logger> {
 
         private static Logger exec(final LoggerCreator creator) {
             final ClassLoader old = Thread.currentThread().getContextClassLoader();
-            Thread.currentThread().setContextClassLoader(ParentClassLoaderFinder.Helper.get());
+            TCCLUtil.setThreadContextClassLoader(ParentClassLoaderFinder.Helper.get());
             try {
                 return creator.call();
             } catch (final Exception e) { // shouldn't occur regarding the impl we use
                 return Logger.getLogger("default");
             } finally {
-                Thread.currentThread().setContextClassLoader(old);
+                TCCLUtil.setThreadContextClassLoader(old);
             }
         }
 

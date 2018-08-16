@@ -48,6 +48,7 @@ import org.apache.openejb.server.httpd.HttpListenerRegistry;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.xbean.finder.MetaAnnotatedClass;
 
@@ -135,7 +136,7 @@ public abstract class RESTService implements ServerService, SelfManaging {
         }
 
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(classLoader);
+        TCCLUtil.setThreadContextClassLoader(classLoader);
 
         final Collection<Object> additionalProviders = new HashSet<>();
         addAppProvidersIfNeeded(appInfo, webApp, classLoader, additionalProviders);
@@ -298,7 +299,7 @@ public abstract class RESTService implements ServerService, SelfManaging {
                 fullServletDeployment(appInfo, webApp, webContext, restEjbs, classLoader, injections, owbCtx, context, additionalProviders, pojoConfigurations);
             }
         } finally {
-            Thread.currentThread().setContextClassLoader(oldLoader);
+            TCCLUtil.setThreadContextClassLoader(oldLoader);
         }
     }
 
@@ -613,7 +614,7 @@ public abstract class RESTService implements ServerService, SelfManaging {
             if (appInfo.webApps.size() == 0) {
                 final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
                 final ClassLoader appClassLoader = getClassLoader(containerSystem.getAppContext(appInfo.appId).getClassLoader());
-                Thread.currentThread().setContextClassLoader(appClassLoader);
+                TCCLUtil.setThreadContextClassLoader(appClassLoader);
 
                 try {
                     final Map<String, EJBRestServiceInfo> restEjbs = getRestEjbs(appInfo, null);
@@ -675,7 +676,7 @@ public abstract class RESTService implements ServerService, SelfManaging {
                         }
                     }
                 } finally {
-                    Thread.currentThread().setContextClassLoader(oldLoader);
+                    TCCLUtil.setThreadContextClassLoader(oldLoader);
                 }
             } else {
                 for (final WebAppInfo webApp : appInfo.webApps) {

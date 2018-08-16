@@ -26,6 +26,7 @@ import org.apache.openejb.loader.IO;
 import org.apache.openejb.util.Join;
 import org.apache.openejb.util.Messages;
 import org.apache.openejb.util.Saxs;
+import org.apache.openejb.util.TCCLUtil;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -300,11 +301,11 @@ public abstract class JaxbOpenejb {
         if (jaxbContext == null) {
             final Thread thread = Thread.currentThread();
             final ClassLoader old = thread.getContextClassLoader();
-            thread.setContextClassLoader(JaxbOpenejb.class.getClassLoader());
+            TCCLUtil.setThreadContextClassLoader(thread, JaxbOpenejb.class.getClassLoader());
             try {
                 jaxbContext = JAXBContextFactory.newInstance(type);
             } finally {
-                thread.setContextClassLoader(old);
+                TCCLUtil.setThreadContextClassLoader(thread, old);
             }
             jaxbContexts.put(type, jaxbContext);
         }

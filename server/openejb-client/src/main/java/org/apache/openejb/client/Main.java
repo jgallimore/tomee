@@ -16,6 +16,8 @@
  */
 package org.apache.openejb.client;
 
+import org.apache.openejb.client.util.TCCLUtil;
+
 import javax.naming.InitialContext;
 import javax.naming.NameNotFoundException;
 import javax.security.auth.Subject;
@@ -61,7 +63,7 @@ public class Main {
         } else {
             classLoader = new URLClassLoader(new URL[]{file.toURI().toURL()}, classLoader);
         }
-        Thread.currentThread().setContextClassLoader(classLoader);
+        TCCLUtil.setThreadContextClassLoader(classLoader);
 
         // load the main class and get the main method
         // do this first so we fail fast on a bad class path

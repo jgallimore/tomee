@@ -38,6 +38,7 @@ import org.apache.openejb.server.cxf.JaxWsImplementorInfoImpl;
 import org.apache.openejb.util.AppFinder;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.component.AbstractOwbBean;
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.webbeans.container.BeanManagerImpl;
@@ -105,7 +106,7 @@ public class PojoEndpoint extends CxfEndpoint {
         implementor = null;
 
         final ClassLoader old = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(loader);
+        TCCLUtil.setThreadContextClassLoader(loader);
         try {
             final WebBeansContext webBeansContext = AppFinder.findAppContextOrWeb(
                     Thread.currentThread().getContextClassLoader(), AppFinder.WebBeansContextTransformer.INSTANCE);
@@ -164,7 +165,7 @@ public class PojoEndpoint extends CxfEndpoint {
         } catch (final Exception e) {
             throw new WebServiceException("Service resource injection failed", e);
         } finally {
-            Thread.currentThread().setContextClassLoader(old);
+            TCCLUtil.setThreadContextClassLoader(old);
         }
 
         this.injector = injector;

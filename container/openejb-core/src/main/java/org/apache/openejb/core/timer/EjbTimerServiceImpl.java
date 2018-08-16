@@ -46,6 +46,7 @@ import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
 import org.apache.openejb.util.SetAccessible;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.ejb.EJBContext;
 import javax.ejb.EJBException;
@@ -177,15 +178,15 @@ public class EjbTimerServiceImpl implements EjbTimerService, Serializable {
                     // start in container context to avoid thread leaks
                     final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
                     if (useTccl) {
-                        Thread.currentThread().setContextClassLoader(deployment.getClassLoader());
+                        TCCLUtil.setThreadContextClassLoader(deployment.getClassLoader());
                     } else {
-                        Thread.currentThread().setContextClassLoader(EjbTimerServiceImpl.class.getClassLoader());
+                        TCCLUtil.setThreadContextClassLoader(EjbTimerServiceImpl.class.getClassLoader());
                     }
                     try {
                         thisScheduler = new StdSchedulerFactory(properties).getScheduler();
                         thisScheduler.start();
                     } finally {
-                        Thread.currentThread().setContextClassLoader(oldCl);
+                        TCCLUtil.setThreadContextClassLoader(oldCl);
                     }
 
                     //durability is configured with true, which means that the job will be kept in the store even if no trigger is attached to it.
@@ -794,7 +795,7 @@ public class EjbTimerServiceImpl implements EjbTimerService, Serializable {
 
                     // if app registered Synchronization we need it for commit()/rollback()
                     // so forcing it and not relying on container for it
-                    thread.setContextClassLoader(deployment.getClassLoader() != null ? deployment.getClassLoader() : loader);
+                    TCCLUtil.setThreadContextClassLoader(thread, deployment.getClassLoader() != null ? deployment.getClassLoader() : loader);
 
                     SetAccessible.on(ejbTimeout);
                     container.invoke(deployment.getDeploymentID(),
@@ -852,7 +853,7 @@ public class EjbTimerServiceImpl implements EjbTimerService, Serializable {
             log.warning("Error occured while calling ejbTimeout", e);
             throw e;
         } finally {
-            thread.setContextClassLoader(loader);
+            TCCLUtil.setThreadContextClassLoader(thread, loader);
 
             // clean up the timer store
             //TODO shall we do all this via Quartz listener ???

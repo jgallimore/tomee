@@ -108,6 +108,7 @@ import org.apache.openejb.server.httpd.HttpSession;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.URLs;
 import org.apache.openejb.util.proxy.LocalBeanProxyFactory;
 import org.apache.openejb.util.reflection.Reflections;
@@ -1167,7 +1168,7 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
         // bind jta before the app starts to ensure we have it in CDI
         final Thread thread = Thread.currentThread();
         final ClassLoader originalLoader = thread.getContextClassLoader();
-        thread.setContextClassLoader(classLoader);
+        TCCLUtil.setThreadContextClassLoader(thread, classLoader);
 
         final String listenerName = standardContext.getNamingContextListener().getName();
         ContextAccessController.setWritable(listenerName, standardContext.getNamingToken());
@@ -1184,7 +1185,7 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
         } catch (final NamingException e) {
             // no-op
         } finally {
-            thread.setContextClassLoader(originalLoader);
+            TCCLUtil.setThreadContextClassLoader(thread, originalLoader);
             ContextAccessController.setReadOnly(listenerName);
         }
 
@@ -1692,11 +1693,11 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
         final Thread thread = Thread.currentThread();
         final ClassLoader originalLoader = thread.getContextClassLoader();
         if (realm != null && !(realm instanceof TomEERealm) && (standardContext.getParent() == null || (!realm.equals(standardContext.getParent().getRealm())))) {
-            thread.setContextClassLoader(classLoader);
+            TCCLUtil.setThreadContextClassLoader(thread, classLoader);
             try {
                 standardContext.setRealm(tomeeRealm(realm));
             } finally {
-                thread.setContextClassLoader(originalLoader);
+                TCCLUtil.setThreadContextClassLoader(thread, originalLoader);
             }
         }
 
@@ -1721,7 +1722,7 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
 
         // bind extra stuff at the java:comp level which can only be
         // bound after the context is created
-        thread.setContextClassLoader(classLoader);
+        TCCLUtil.setThreadContextClassLoader(thread, classLoader);
 
         final NamingContextListener ncl = standardContext.getNamingContextListener();
         final String listenerName = ncl.getName();
@@ -1771,11 +1772,11 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
                 SystemInstance.get().fireEvent(new AfterApplicationCreated(contextInfo.appInfo, webApp));
             }
 
-            thread.setContextClassLoader(originalLoader);
+            TCCLUtil.setThreadContextClassLoader(thread, originalLoader);
             ContextAccessController.setReadOnly(listenerName);
         }
 
-        thread.setContextClassLoader(classLoader);
+        TCCLUtil.setThreadContextClassLoader(thread, classLoader);
         try {
             // owb integration filters
             final WebBeansContext webBeansContext = getWebBeansContext(contextInfo);
@@ -1840,7 +1841,7 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
                 }
             }
         } finally {
-            thread.setContextClassLoader(originalLoader);
+            TCCLUtil.setThreadContextClassLoader(thread, originalLoader);
         }
 
         LinkageErrorProtection.preload(standardContext);

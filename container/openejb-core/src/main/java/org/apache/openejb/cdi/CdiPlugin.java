@@ -23,6 +23,7 @@ import org.apache.openejb.InterfaceType;
 import org.apache.openejb.OpenEJBException;
 import org.apache.openejb.OpenEJBRuntimeException;
 import org.apache.openejb.core.ivm.IntraVmProxy;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.proxy.ProxyManager;
 import org.apache.webbeans.component.AbstractOwbBean;
 import org.apache.webbeans.component.OwbBean;
@@ -173,7 +174,7 @@ public class CdiPlugin extends AbstractOwbPlugin implements OpenWebBeansJavaEEPl
         final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
         try {
             // Setting context class loader for cleaning
-            Thread.currentThread().setContextClassLoader(classLoader);
+            TCCLUtil.setThreadContextClassLoader(classLoader);
 
             // Fire shut down
             webBeansContext.getBeanManagerImpl().fireEvent(new BeforeShutdownImpl());
@@ -203,7 +204,7 @@ public class CdiPlugin extends AbstractOwbPlugin implements OpenWebBeansJavaEEPl
         } catch (final Exception e) {
             throw new OpenEJBException(e);
         } finally {
-            Thread.currentThread().setContextClassLoader(oldCl);
+            TCCLUtil.setThreadContextClassLoader(oldCl);
         }
     }
 

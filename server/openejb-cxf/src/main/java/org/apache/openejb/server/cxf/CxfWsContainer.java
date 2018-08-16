@@ -27,6 +27,7 @@ import org.apache.openejb.server.cxf.transport.util.CxfUtil;
 import org.apache.openejb.server.httpd.HttpListener;
 import org.apache.openejb.server.httpd.HttpRequest;
 import org.apache.openejb.server.httpd.HttpResponse;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.management.ObjectName;
 
@@ -80,7 +81,7 @@ public abstract class CxfWsContainer implements HttpListener {
     @Override
     public void onMessage(final HttpRequest request, final HttpResponse response) throws Exception {
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(CxfUtil.initBusLoader());
+        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
         try {
             destination.invoke(null, request.getServletContext(), request, response);
         } finally {

@@ -19,6 +19,7 @@ package org.apache.openejb.client;
 import org.apache.openejb.client.proxy.ProxyManager;
 import org.apache.openejb.client.serializer.SerializationWrapper;
 import org.apache.openejb.client.util.ClassLoaderUtil;
+import org.apache.openejb.client.util.TCCLUtil;
 
 import javax.ejb.EJBException;
 import javax.ejb.EJBObject;
@@ -136,13 +137,13 @@ public abstract class EJBObjectHandler extends EJBInvocationHandler {
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
             final boolean parent = ClassLoaderUtil.isParent(getClass().getClassLoader(), oldCl);
             if (!parent) {
-                Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+                TCCLUtil.setThreadContextClassLoader(getClass().getClassLoader());
             }
             try {
                 ejbObject = (EJBObjectProxy) ProxyManager.newProxyInstance(interfaces.toArray(new Class[interfaces.size()]), this);
             } finally {
                 if (!parent) {
-                    Thread.currentThread().setContextClassLoader(oldCl);
+                    TCCLUtil.setThreadContextClassLoader(oldCl);
                 }
             }
         } catch (IllegalAccessException e) {

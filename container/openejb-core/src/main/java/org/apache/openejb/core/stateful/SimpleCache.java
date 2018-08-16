@@ -21,6 +21,7 @@ import org.apache.openejb.OpenEJBRuntimeException;
 import org.apache.openejb.util.Duration;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -105,7 +106,7 @@ public class SimpleCache<K, V> implements Cache<K, V> {
 
             // start any thread in container loader to avoid leaks
             final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-            Thread.currentThread().setContextClassLoader(SimpleCache.class.getClassLoader());
+            TCCLUtil.setThreadContextClassLoader(SimpleCache.class.getClassLoader());
             try {
                 future = executor.scheduleWithFixedDelay(new Runnable() {
                     public void run() {
@@ -113,7 +114,7 @@ public class SimpleCache<K, V> implements Cache<K, V> {
                     }
                 }, frequency, frequency, TimeUnit.MILLISECONDS);
             } finally {
-                Thread.currentThread().setContextClassLoader(loader);
+                TCCLUtil.setThreadContextClassLoader(loader);
             }
         }
     }

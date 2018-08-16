@@ -17,6 +17,7 @@
 package org.apache.openejb.junit;
 
 import org.apache.openejb.testing.ApplicationComposers;
+import org.apache.openejb.util.TCCLUtil;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
@@ -47,7 +48,7 @@ public class ApplicationRule implements TestRule {
                     statement.evaluate();
                 } finally {
                     composers.stopApplication();
-                    thread.setContextClassLoader(old);
+                    TCCLUtil.setThreadContextClassLoader(thread, old);
                 }
             }
         };

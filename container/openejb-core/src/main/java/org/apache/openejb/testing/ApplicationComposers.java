@@ -74,12 +74,7 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.rest.RESTResourceFinder;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.testing.rest.ContextProvider;
-import org.apache.openejb.util.JavaSecurityManagers;
-import org.apache.openejb.util.Join;
-import org.apache.openejb.util.NetworkUtil;
-import org.apache.openejb.util.PropertyPlaceHolderHelper;
-import org.apache.openejb.util.ServiceManagerProxy;
-import org.apache.openejb.util.URLs;
+import org.apache.openejb.util.*;
 import org.apache.openejb.util.reflection.Reflections;
 import org.apache.openejb.web.LightweightWebAppBuilder;
 import org.apache.webbeans.inject.OWBInjector;
@@ -1103,7 +1098,7 @@ public class ApplicationComposers {
         } finally {
             runAll(afterRunnables);
             if (originalLoader != null) {
-                Thread.currentThread().setContextClassLoader(originalLoader);
+                TCCLUtil.setThreadContextClassLoader(originalLoader);
             }
             if (originalProperties != null) {
                 System.setProperties(originalProperties);

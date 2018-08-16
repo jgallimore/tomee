@@ -41,10 +41,7 @@ import org.apache.openejb.core.WebContext;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.observer.Event;
 import org.apache.openejb.spi.ContainerSystem;
-import org.apache.openejb.util.ArrayEnumeration;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.OpenEjbVersion;
+import org.apache.openejb.util.*;
 import org.apache.webbeans.spi.ContainerLifecycle;
 import org.apache.webbeans.web.lifecycle.test.MockServletContext;
 import org.apache.webbeans.web.lifecycle.test.MockServletContextEvent;
@@ -233,11 +230,11 @@ public class LightweightWebAppBuilder implements WebAppBuilder {
             if (webContext.getWebBeansContext() != null && webContext.getWebBeansContext().getBeanManagerImpl().isInUse()) {
                 final Thread thread = Thread.currentThread();
                 final ClassLoader old = thread.getContextClassLoader();
-                thread.setContextClassLoader(webContext.getClassLoader());
+                TCCLUtil.setThreadContextClassLoader(thread, webContext.getClassLoader());
                 try {
                     OpenEJBLifecycle.class.cast(webContext.getWebBeansContext().getService(ContainerLifecycle.class)).startServletContext(sce.getServletContext());
                 } finally {
-                    thread.setContextClassLoader(old);
+                    TCCLUtil.setThreadContextClassLoader(thread, old);
                 }
             }
 

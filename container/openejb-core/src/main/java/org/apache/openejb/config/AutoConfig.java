@@ -55,15 +55,7 @@ import org.apache.openejb.jee.oejb3.OpenejbJar;
 import org.apache.openejb.jee.oejb3.ResourceLink;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.resource.jdbc.DataSourceFactory;
-import org.apache.openejb.util.IntrospectionSupport;
-import org.apache.openejb.util.Join;
-import org.apache.openejb.util.LinkResolver;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.PropertyPlaceHolderHelper;
-import org.apache.openejb.util.SuperProperties;
-import org.apache.openejb.util.URISupport;
-import org.apache.openejb.util.URLs;
+import org.apache.openejb.util.*;
 
 import javax.annotation.ManagedBean;
 import javax.ejb.TimerService;
@@ -934,11 +926,11 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
 
             final Thread thread = Thread.currentThread();
             final ClassLoader oldCl = thread.getContextClassLoader();
-            thread.setContextClassLoader(module.getClassLoader());
+            TCCLUtil.setThreadContextClassLoader(thread, module.getClassLoader());
             try {
                 resource.getProperties().putAll(PropertyPlaceHolderHelper.holds(resource.getProperties()));
             } finally {
-                thread.setContextClassLoader(oldCl);
+                TCCLUtil.setThreadContextClassLoader(thread, oldCl);
             }
 
             final Collection<String> aliases = resource.getAliases();

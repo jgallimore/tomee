@@ -44,6 +44,7 @@ import org.apache.openejb.server.ServiceManager;
 import org.apache.openejb.server.ejbd.EjbServer;
 import org.apache.openejb.spi.Service;
 import org.apache.openejb.util.OptionsLog;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.reflection.Reflections;
 import org.apache.tomcat.util.file.Matcher;
 import org.apache.tomee.catalina.deployment.TomcatWebappDeployer;
@@ -420,14 +421,14 @@ public class TomcatLoader implements Loader {
                                     // context already started
                                     standardContext.addParameter("openejb.start.late", "true");
                                     final ClassLoader oldCL = Thread.currentThread().getContextClassLoader();
-                                    Thread.currentThread().setContextClassLoader(standardContext.getLoader().getClassLoader());
+                                    TCCLUtil.setThreadContextClassLoader(standardContext.getLoader().getClassLoader());
                                     try {
                                         tomcatWebAppBuilder.init(standardContext);
                                         tomcatWebAppBuilder.beforeStart(standardContext);
                                         tomcatWebAppBuilder.start(standardContext);
                                         tomcatWebAppBuilder.afterStart(standardContext);
                                     } finally {
-                                        Thread.currentThread().setContextClassLoader(oldCL);
+                                        TCCLUtil.setThreadContextClassLoader(oldCL);
                                     }
                                     standardContext.removeParameter("openejb.start.late");
                                 }

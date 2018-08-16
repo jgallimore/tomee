@@ -34,10 +34,7 @@ import org.apache.openejb.config.QuickJarsTxtParser;
 import org.apache.openejb.core.ParentClassLoaderFinder;
 import org.apache.openejb.loader.Files;
 import org.apache.openejb.loader.SystemInstance;
-import org.apache.openejb.util.AppFinder;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.URLs;
+import org.apache.openejb.util.*;
 import org.apache.openejb.util.classloader.URLClassLoaderFirst;
 import org.apache.openejb.util.reflection.Reflections;
 
@@ -286,7 +283,7 @@ public class TomEEWebappClassLoader extends ParallelWebappClassLoader {
         // to be sure we reset the right loggers
         final Thread thread = Thread.currentThread();
         final ClassLoader loader = thread.getContextClassLoader();
-        thread.setContextClassLoader(this);
+        TCCLUtil.setThreadContextClassLoader(this);
         try {
             super.stop();
             // super.destroy();
@@ -296,7 +293,7 @@ public class TomEEWebappClassLoader extends ParallelWebappClassLoader {
             }
             stopped = true;
         } finally {
-            thread.setContextClassLoader(loader);
+            TCCLUtil.setThreadContextClassLoader(loader);
             if (!forceStopPhase) {
                 cleanUpClassLoader();
             }

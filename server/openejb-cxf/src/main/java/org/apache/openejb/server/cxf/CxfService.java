@@ -35,6 +35,7 @@ import org.apache.openejb.server.cxf.transport.util.CxfUtil;
 import org.apache.openejb.server.httpd.HttpListener;
 import org.apache.openejb.server.webservices.WsService;
 import org.apache.openejb.util.AppFinder;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.naming.Context;
 import java.net.URL;
@@ -89,7 +90,7 @@ public class CxfService extends WsService {
         final Bus bus = CxfUtil.getBus();
 
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(CxfUtil.initBusLoader());
+        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
         try {
             CxfCatalogUtils.loadOASISCatalog(bus, moduleBaseUrl, "META-INF/jax-ws-catalog.xml");
 
@@ -111,7 +112,7 @@ public class CxfService extends WsService {
         Bus bus = CxfUtil.getBus();
 
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(CxfUtil.initBusLoader());
+        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
         try {
             CxfCatalogUtils.loadOASISCatalog(bus, moduleBaseUrl, "META-INF/jax-ws-catalog.xml");
 
@@ -141,7 +142,7 @@ public class CxfService extends WsService {
         CxfWsContainer container = wsContainers.remove(serviceId);
         if (container != null) {
             final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-            Thread.currentThread().setContextClassLoader(CxfUtil.initBusLoader());
+            TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
             try {
                 container.destroy();
                 SystemInstance.get().fireEvent(new ServerDestroyed(container.getEndpoint().getServer()));

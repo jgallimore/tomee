@@ -25,6 +25,7 @@ import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
 import org.apache.openejb.util.PropertyPlaceHolderHelper;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.config.WebBeansContext;
 
 import java.net.InetAddress;
@@ -116,16 +117,16 @@ public class OpenEJBHttpRegistry {
                         httpRequest.setApplication(web);
 
                         if (web.getClassLoader() != null) {
-                            thread.setContextClassLoader(web.getClassLoader());
+                            TCCLUtil.setThreadContextClassLoader(thread, web.getClassLoader());
                         } else if (web.getAppContext().getClassLoader() != null) {
-                            thread.setContextClassLoader(web.getAppContext().getClassLoader());
+                            TCCLUtil.setThreadContextClassLoader(thread, web.getAppContext().getClassLoader());
                         }
 
                         final String ctx = (web.getContextRoot().startsWith("/") ? "" : "/") + web.getContextRoot();
                         httpRequest.initPathFromContext(ctx);
                         wbc = web.getWebbeansContext() != null ? web.getWebbeansContext() : web.getAppContext().getWebBeansContext();
                     } else {
-                        thread.setContextClassLoader(classLoader);
+                        TCCLUtil.setThreadContextClassLoader(thread, classLoader);
 
                         if (SystemInstance.isInitialized()) { // avoid to rely on default if we didnt init it and then create lazily a context
                             try { // surely an issue or something just tolerated for fake webapps
@@ -147,7 +148,7 @@ public class OpenEJBHttpRegistry {
                     HttpRequestImpl.class.cast(request).destroy();
                 }
 
-                thread.setContextClassLoader(oldCl);
+                TCCLUtil.setThreadContextClassLoader(thread, oldCl);
             }
         }
 

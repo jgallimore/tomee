@@ -34,11 +34,7 @@ import org.apache.openejb.core.transaction.TransactionPolicy;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.resource.XAResourceWrapper;
 import org.apache.openejb.spi.SecurityService;
-import org.apache.openejb.util.DaemonThreadFactory;
-import org.apache.openejb.util.Duration;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.Pool;
+import org.apache.openejb.util.*;
 import org.apache.xbean.recipe.ObjectRecipe;
 import org.apache.xbean.recipe.Option;
 
@@ -521,11 +517,11 @@ public class MdbPoolContainer implements RpcContainer, BaseMdbContainer {
 
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
             try {
-                Thread.currentThread().setContextClassLoader(classLoader);
+                TCCLUtil.setThreadContextClassLoader(classLoader);
                 resourceAdapter.endpointActivation(endpointFactory, activationSpec);
                 logger.info("Activated endpoint for " + beanContext.getDeploymentID());
             } finally {
-                Thread.currentThread().setContextClassLoader(oldCl);
+                TCCLUtil.setThreadContextClassLoader(oldCl);
             }
 
         }
@@ -537,11 +533,11 @@ public class MdbPoolContainer implements RpcContainer, BaseMdbContainer {
 
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
             try {
-                Thread.currentThread().setContextClassLoader(classLoader);
+                TCCLUtil.setThreadContextClassLoader(classLoader);
                 resourceAdapter.endpointDeactivation(endpointFactory, activationSpec);
                 logger.info("Deactivated endpoint for " + beanContext.getDeploymentID());
             } finally {
-                Thread.currentThread().setContextClassLoader(oldCl);
+                TCCLUtil.setThreadContextClassLoader(oldCl);
             }
         }
     }

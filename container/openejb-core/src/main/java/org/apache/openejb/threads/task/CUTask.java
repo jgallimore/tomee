@@ -25,6 +25,7 @@ import org.apache.openejb.spi.SecurityService;
 import org.apache.openejb.util.Join;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.security.auth.login.LoginException;
 import java.util.ArrayList;
@@ -176,7 +177,7 @@ public abstract class CUTask<T> extends ManagedTaskListenerTask implements Compa
             final Thread thread = Thread.currentThread();
 
             final ClassLoader oldCl = thread.getContextClassLoader();
-            thread.setContextClassLoader(loader);
+            TCCLUtil.setThreadContextClassLoader(thread, loader);
 
             final Object threadState;
             if (associate) {
@@ -267,7 +268,7 @@ public abstract class CUTask<T> extends ManagedTaskListenerTask implements Compa
             }
             */
 
-            Thread.currentThread().setContextClassLoader(currentContext.loader);
+            TCCLUtil.setThreadContextClassLoader(currentContext.loader);
             if (currentContext.stack == null) {
                 CURRENT.remove();
             } else {

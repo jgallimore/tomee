@@ -38,6 +38,7 @@ import org.apache.openejb.loader.provisining.ProvisioningResolver;
 import org.apache.openejb.util.JavaSecurityManagers;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.ejb.Lock;
 import javax.ejb.Remote;
@@ -261,7 +262,7 @@ public class DeployerEjb implements Deployer {
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
             final ClassLoader appClassLoader = assembler.createAppClassLoader(appInfo);
             try {
-                Thread.currentThread().setContextClassLoader(appClassLoader);
+                TCCLUtil.setThreadContextClassLoader(appClassLoader);
 
                 for (final ResourceInfo resource : configuration.facilities.resources) {
                     assembler.createResource(resource);
@@ -272,7 +273,7 @@ public class DeployerEjb implements Deployer {
                 }
 
             } finally {
-                Thread.currentThread().setContextClassLoader(oldCl);
+                TCCLUtil.setThreadContextClassLoader(oldCl);
             }
 
             assembler.createApplication(appInfo, appClassLoader);

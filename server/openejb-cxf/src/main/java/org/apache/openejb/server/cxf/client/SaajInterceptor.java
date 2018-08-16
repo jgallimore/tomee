@@ -23,6 +23,7 @@ import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.openejb.server.cxf.transport.util.CxfUtil;
 import org.apache.openejb.server.webservices.saaj.SaajUniverse;
+import org.apache.openejb.util.TCCLUtil;
 
 public abstract class SaajInterceptor extends AbstractPhaseInterceptor<Message> {
     private static boolean interceptorsRegistered = false;
@@ -37,7 +38,7 @@ public abstract class SaajInterceptor extends AbstractPhaseInterceptor<Message> 
         if (!interceptorsRegistered) {
             final Bus bus = CxfUtil.getBus();
             final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-            Thread.currentThread().setContextClassLoader(CxfUtil.initBusLoader());
+            TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
             try {
                 SaajUniverse universe = new SaajUniverse();
                 bus.getOutInterceptors().add(new SaajOutInterceptor(universe));

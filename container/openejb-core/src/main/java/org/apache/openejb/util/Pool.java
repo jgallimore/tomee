@@ -1278,7 +1278,7 @@ public class Pool<T> {
         public Thread newThread(final Runnable r) {
             final ClassLoader loader = Thread.currentThread().getContextClassLoader();
             final ClassLoader containerLoader = ParentClassLoaderFinder.Helper.get();
-            Thread.currentThread().setContextClassLoader(containerLoader);
+            TCCLUtil.setThreadContextClassLoader(containerLoader);
             try {
                 final Thread t = new Thread(group, r, "org.apache.openejb.pool.scheduler." + count.getAndIncrement());
                 if (!t.isDaemon()) {
@@ -1289,11 +1289,11 @@ public class Pool<T> {
                     t.setPriority(Thread.NORM_PRIORITY);
                 }
 
-                t.setContextClassLoader(containerLoader);
+                TCCLUtil.setThreadContextClassLoader(t, containerLoader);
 
                 return t;
             } finally {
-                Thread.currentThread().setContextClassLoader(loader);
+                TCCLUtil.setThreadContextClassLoader(loader);
             }
         }
     }

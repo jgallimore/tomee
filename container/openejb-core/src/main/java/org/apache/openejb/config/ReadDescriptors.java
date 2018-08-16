@@ -60,11 +60,7 @@ import org.apache.openejb.sxc.HandlerChainsXml;
 import org.apache.openejb.sxc.TldTaglibXml;
 import org.apache.openejb.sxc.WebXml;
 import org.apache.openejb.sxc.WebservicesXml;
-import org.apache.openejb.util.LengthInputStream;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.Saxs;
-import org.apache.openejb.util.URLs;
+import org.apache.openejb.util.*;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -713,11 +709,11 @@ public class ReadDescriptors implements DynamicDeployer {
 
         final Thread thread = Thread.currentThread();
         final ClassLoader original = thread.getContextClassLoader();
-        thread.setContextClassLoader(Saxs.class.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(thread, Saxs.class.getClassLoader());
         try {
             parser = Saxs.namespaceAwareFactory().newSAXParser();
         } finally {
-            thread.setContextClassLoader(original);
+            TCCLUtil.setThreadContextClassLoader(thread, original);
         }
 
         try {

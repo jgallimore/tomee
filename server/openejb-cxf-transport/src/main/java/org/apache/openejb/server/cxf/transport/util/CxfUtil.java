@@ -48,6 +48,7 @@ import org.apache.openejb.observer.Observes;
 import org.apache.openejb.server.cxf.transport.OpenEJBHttpDestinationFactory;
 import org.apache.openejb.server.cxf.transport.event.BusCreated;
 import org.apache.openejb.util.PropertiesHelper;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.reflection.Reflections;
 
 import javax.management.MBeanServer;
@@ -98,7 +99,7 @@ public final class CxfUtil {
 
     private static Bus initDefaultBus() {
         final ClassLoader cl = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(CxfUtil.class.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(CxfUtil.class.getClassLoader());
         try { // create the bus reusing cxf logic but skipping factory lookup
             final Bus bus = BusFactory.newInstance(CXFBusFactory.class.getName()).createBus();
             bus.setId(SystemInstance.get().getProperty("openejb.cxf.bus.id", "openejb.cxf.bus"));
@@ -129,7 +130,7 @@ public final class CxfUtil {
 
             return bus; // we keep as internal the real bus and just expose to cxf the client aware bus to be able to cast it easily
         } finally {
-            Thread.currentThread().setContextClassLoader(cl);
+            TCCLUtil.setThreadContextClassLoader(cl);
         }
     }
 
@@ -174,7 +175,7 @@ public final class CxfUtil {
                 && (old == null || !CxfContainerClassLoader.class.isInstance(old))) {
             CxfContainerClassLoader.class.cast(loader).clear();
         }
-        Thread.currentThread().setContextClassLoader(old);
+        TCCLUtil.setThreadContextClassLoader(old);
     }
 
     public static void configureEndpoint(final AbstractEndpointFactory svrFactory, final ServiceConfiguration configuration, final String prefix) {

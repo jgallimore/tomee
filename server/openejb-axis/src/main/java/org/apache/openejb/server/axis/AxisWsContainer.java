@@ -35,6 +35,7 @@ import org.apache.openejb.server.webservices.WsConstants;
 import org.apache.openejb.server.webservices.saaj.SaajUniverse;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.w3c.dom.Element;
 
 import javax.servlet.http.HttpServletResponse;
@@ -127,7 +128,7 @@ public class AxisWsContainer implements HttpListener {
                 }
                 final SOAPService service = messageContext.getService();
 
-                Thread.currentThread().setContextClassLoader(classLoader);
+                TCCLUtil.setThreadContextClassLoader(classLoader);
                 service.invoke(messageContext);
 
                 responseMessage = messageContext.getResponseMessage();
@@ -189,7 +190,7 @@ public class AxisWsContainer implements HttpListener {
                 logger.warning(Messages.getMessage("exception00"), e);
             }
         } finally {
-            Thread.currentThread().setContextClassLoader(oldClassLoader);
+            TCCLUtil.setThreadContextClassLoader(oldClassLoader);
         }
     }
 

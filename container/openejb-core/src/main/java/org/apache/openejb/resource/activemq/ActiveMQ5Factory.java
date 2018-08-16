@@ -35,6 +35,7 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.xbean.propertyeditor.PropertyEditorException;
 import org.apache.xbean.propertyeditor.PropertyEditors;
 import org.apache.xbean.recipe.ObjectRecipe;
@@ -192,7 +193,7 @@ public class ActiveMQ5Factory implements BrokerFactoryHandler {
                 @Override
                 public void run() {
 
-                    Thread.currentThread().setContextClassLoader(ActiveMQResourceAdapter.class.getClassLoader());
+                    TCCLUtil.setThreadContextClassLoader(ActiveMQResourceAdapter.class.getClassLoader());
 
                     try {
                         //Start before returning - this is known to be safe.

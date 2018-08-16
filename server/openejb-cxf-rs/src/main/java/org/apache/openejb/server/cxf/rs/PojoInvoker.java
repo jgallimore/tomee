@@ -21,6 +21,7 @@ import org.apache.cxf.message.Exchange;
 import org.apache.cxf.message.Message;
 import org.apache.openejb.ApplicationException;
 import org.apache.openejb.InvalidateReferenceException;
+import org.apache.openejb.util.TCCLUtil;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -37,13 +38,13 @@ public class PojoInvoker extends JAXRSInvoker {
         ClassLoader oldLoader = null;
         if (tcclToUse != null) {
             oldLoader = thread.getContextClassLoader();
-            thread.setContextClassLoader(tcclToUse);
+            TCCLUtil.setThreadContextClassLoader(thread, tcclToUse);
         }
         try {
             return m.invoke(serviceObject, args);
         } finally {
             if (tcclToUse != null) {
-                thread.setContextClassLoader(oldLoader);
+                TCCLUtil.setThreadContextClassLoader(thread, oldLoader);
             }
         }
     }

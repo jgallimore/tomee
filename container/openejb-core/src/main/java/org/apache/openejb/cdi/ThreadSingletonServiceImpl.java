@@ -24,10 +24,7 @@ import org.apache.openejb.cdi.transactional.TransactionContext;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.threads.impl.ManagedExecutorServiceImpl;
 import org.apache.openejb.threads.impl.ManagedThreadFactoryImpl;
-import org.apache.openejb.util.AppFinder;
-import org.apache.openejb.util.ExecutorBuilder;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.*;
 import org.apache.openejb.util.classloader.MultipleClassLoader;
 import org.apache.webbeans.config.OpenWebBeansConfiguration;
 import org.apache.webbeans.config.WebBeansContext;
@@ -196,7 +193,7 @@ public class ThreadSingletonServiceImpl implements ThreadSingletonService {
         } else {
             cl = oldClassLoader;
         }
-        Thread.currentThread().setContextClassLoader(cl);
+        TCCLUtil.setThreadContextClassLoader(cl);
 
         final WebBeansContext webBeansContext;
         Object old = null;
@@ -230,7 +227,7 @@ public class ThreadSingletonServiceImpl implements ThreadSingletonService {
             }
         } finally {
             contextExited(old);
-            Thread.currentThread().setContextClassLoader(oldClassLoader);
+            TCCLUtil.setThreadContextClassLoader(oldClassLoader);
         }
     }
 

@@ -21,12 +21,7 @@ import org.apache.openejb.config.event.BeforeDeploymentEvent;
 import org.apache.openejb.loader.Files;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.observer.Observes;
-import org.apache.openejb.util.JarCreator;
-import org.apache.openejb.util.JarExtractor;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.Saxs;
-import org.apache.openejb.util.URLs;
+import org.apache.openejb.util.*;
 import org.apache.openejb.util.classloader.URLClassLoaderFirst;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -139,7 +134,7 @@ public class DeployTimeEnhancer {
 
         LOGGER.info("Enhancing url(s): " + usedUrls);
 
-        Thread.currentThread().setContextClassLoader(fakeClassLoader);
+        TCCLUtil.setThreadContextClassLoader(fakeClassLoader);
         try {
             for (final Map.Entry<String, List<String>> entry : classesByPXml.entrySet()) {
                 final Properties opts = new Properties();
@@ -163,7 +158,7 @@ public class DeployTimeEnhancer {
                 }
             }
         } finally {
-            Thread.currentThread().setContextClassLoader(tccl);
+            TCCLUtil.setThreadContextClassLoader(tccl);
             usedUrls.clear();
         }
 

@@ -23,6 +23,7 @@ import org.apache.openejb.loader.IO;
 import org.apache.openejb.util.JavaSecurityManagers;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.w3c.dom.Element;
 
 import javax.jws.WebService;
@@ -85,15 +86,15 @@ public class ProviderWrapper extends Provider {
 
         final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
         if (oldClassLoader != null) {
-            Thread.currentThread().setContextClassLoader(new ProviderClassLoader(oldClassLoader));
+            TCCLUtil.setThreadContextClassLoader(new ProviderClassLoader(oldClassLoader));
         } else {
-            Thread.currentThread().setContextClassLoader(new ProviderClassLoader());
+            TCCLUtil.setThreadContextClassLoader(new ProviderClassLoader());
         }
         threadPortRefs.set(new ProviderWrapperData(portRefData, oldClassLoader, customizer, properties));
     }
 
     public static void afterCreate() {
-        Thread.currentThread().setContextClassLoader(threadPortRefs.get().callerClassLoader);
+        TCCLUtil.setThreadContextClassLoader(threadPortRefs.get().callerClassLoader);
         threadPortRefs.set(null);
     }
 

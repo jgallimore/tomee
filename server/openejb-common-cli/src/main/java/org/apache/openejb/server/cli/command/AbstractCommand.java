@@ -18,6 +18,7 @@ package org.apache.openejb.server.cli.command;
 
 import org.apache.openejb.core.LocalInitialContextFactory;
 import org.apache.openejb.server.cli.StreamManager;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -43,11 +44,11 @@ public abstract class AbstractCommand {
         p.setProperty(Context.INITIAL_CONTEXT_FACTORY, LocalInitialContextFactory.class.getName());
 
         ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(getClass().getClassLoader());
         try {
             return (T) new InitialContext(p).lookup(jndiName);
         } finally {
-            Thread.currentThread().setContextClassLoader(oldCl);
+            TCCLUtil.setThreadContextClassLoader(oldCl);
         }
     }
 }

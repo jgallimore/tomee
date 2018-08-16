@@ -29,10 +29,7 @@ import org.apache.openejb.resource.jdbc.plugin.AbstractDataSourcePlugin;
 import org.apache.openejb.resource.jdbc.plugin.DataSourcePlugin;
 import org.apache.openejb.resource.jdbc.pool.DataSourceCreator;
 import org.apache.openejb.resource.jdbc.pool.DefaultDataSourceCreator;
-import org.apache.openejb.util.Duration;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.SuperProperties;
+import org.apache.openejb.util.*;
 import org.apache.xbean.recipe.ExecutionContext;
 import org.apache.xbean.recipe.ObjectRecipe;
 import org.apache.xbean.recipe.Option;
@@ -150,14 +147,14 @@ public class DataSourceFactory {
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
         if (useContainerLoader) {
             final ClassLoader containerLoader = DataSourceFactory.class.getClassLoader();
-            Thread.currentThread().setContextClassLoader(containerLoader);
+            TCCLUtil.setThreadContextClassLoader(containerLoader);
             try {
                 useContainerLoader = basicChecksThatDataSourceCanBeCreatedFromContainerLoader(properties, containerLoader);
             } finally {
-                Thread.currentThread().setContextClassLoader(oldLoader);
+                TCCLUtil.setThreadContextClassLoader(oldLoader);
             }
             if (useContainerLoader) {
-                Thread.currentThread().setContextClassLoader(containerLoader);
+                TCCLUtil.setThreadContextClassLoader(containerLoader);
             } else {
                 LOGGER.info("Can't use container loader to create datasource " + name + " so using application one");
             }
@@ -303,7 +300,7 @@ public class DataSourceFactory {
             return ds;
         } finally {
             if (useContainerLoader) {
-                Thread.currentThread().setContextClassLoader(oldLoader);
+                TCCLUtil.setThreadContextClassLoader(oldLoader);
             }
         }
     }

@@ -25,6 +25,7 @@ import org.apache.openejb.InjectionProcessor;
 import org.apache.openejb.OpenEJBException;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.component.InjectionTargetBean;
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.webbeans.container.BeanManagerImpl;
@@ -167,7 +168,7 @@ public abstract class CdiResourceProvider implements ResourceProvider {
         // important to switch of classloader to get the right InitialContext
         final Thread thread = Thread.currentThread();
         final ClassLoader oldLoader = thread.getContextClassLoader();
-        thread.setContextClassLoader(classLoader);
+        TCCLUtil.setThreadContextClassLoader(thread, classLoader);
         Object instance;
         try {
             instance = creator.create();
@@ -176,7 +177,7 @@ public abstract class CdiResourceProvider implements ResourceProvider {
             m.put(BeanCreator.class, creator);
             instance = creator.create();
         } finally {
-            thread.setContextClassLoader(oldLoader);
+            TCCLUtil.setThreadContextClassLoader(thread, oldLoader);
         }
 
         m.getExchange().put(INSTANCE_KEY, instance);

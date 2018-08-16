@@ -16,6 +16,7 @@
  */
 package org.apache.openejb.cdi.logging;
 
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.logger.WebBeansLoggerFactory;
 
 import java.util.Locale;
@@ -27,11 +28,11 @@ public class ContainerJULLoggerFactory implements WebBeansLoggerFactory {
     public Logger getLogger(final Class<?> clazz, final Locale desiredLocale) {
         final Thread th = Thread.currentThread();
         final ClassLoader l = th.getContextClassLoader();
-        th.setContextClassLoader(WebBeansLoggerFactory.class.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(th, WebBeansLoggerFactory.class.getClassLoader());
         try {
             return Logger.getLogger(clazz.getName(), ResourceBundle.getBundle("openwebbeans/Messages", desiredLocale).toString());
         } finally {
-            th.setContextClassLoader(l);
+            TCCLUtil.setThreadContextClassLoader(th, l);
         }
     }
 
@@ -39,11 +40,11 @@ public class ContainerJULLoggerFactory implements WebBeansLoggerFactory {
     public Logger getLogger(final Class<?> clazz) {
         final Thread th = Thread.currentThread();
         final ClassLoader l = th.getContextClassLoader();
-        th.setContextClassLoader(WebBeansLoggerFactory.class.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(th, WebBeansLoggerFactory.class.getClassLoader());
         try {
             return Logger.getLogger(clazz.getName(), "openwebbeans/Messages");
         } finally {
-            th.setContextClassLoader(l);
+            TCCLUtil.setThreadContextClassLoader(th, l);
         }
     }
 }

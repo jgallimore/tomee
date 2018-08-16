@@ -29,6 +29,7 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.spi.CallerPrincipal;
 import org.apache.openejb.spi.SecurityService;
 import org.apache.openejb.util.JavaSecurityManagers;
+import org.apache.openejb.util.TCCLUtil;
 
 import javax.security.auth.Subject;
 import javax.security.auth.login.LoginException;
@@ -345,7 +346,7 @@ public abstract class AbstractSecurityService implements DestroyableResource, Se
             if (JavaSecurityManagers.getSystemProperty(providerKey) == null) {
                 JavaSecurityManagers.setSystemProperty(providerKey, JaccProvider.Factory.class.getName());
                 final ClassLoader cl = JaccProvider.Factory.class.getClassLoader();
-                Thread.currentThread().setContextClassLoader(cl);
+                TCCLUtil.setThreadContextClassLoader(cl);
             }
 
             // Force the loading of the javax.security.jacc.PolicyConfigurationFactory.provider
@@ -355,7 +356,7 @@ public abstract class AbstractSecurityService implements DestroyableResource, Se
         } catch (final Exception e) {
             throw new IllegalStateException("Could not install JACC Policy Configuration Factory: " + JavaSecurityManagers.getSystemProperty(providerKey), e);
         } finally {
-            Thread.currentThread().setContextClassLoader(contextClassLoader);
+            TCCLUtil.setThreadContextClassLoader(contextClassLoader);
         }
 
         final String policyProvider = SystemInstance.get().getOptions().get("javax.security.jacc.policy.provider", JaccProvider.Policy.class.getName());

@@ -59,7 +59,7 @@ public class DaemonThreadFactory implements ThreadFactory {
     @Override
     public Thread newThread(final Runnable runnable) {
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(ParentClassLoaderFinder.Helper.get());
+        TCCLUtil.setThreadContextClassLoader(ParentClassLoaderFinder.Helper.get());
         try {
             final Thread thread = new Thread(group, runnable, name + " - " + ids.incrementAndGet());
             if (!thread.isDaemon()) {
@@ -70,7 +70,7 @@ public class DaemonThreadFactory implements ThreadFactory {
             }
             return thread;
         } finally {
-            Thread.currentThread().setContextClassLoader(loader);
+            TCCLUtil.setThreadContextClassLoader(loader);
         }
     }
 }

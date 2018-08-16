@@ -124,12 +124,7 @@ import org.apache.openejb.jee.WebserviceDescription;
 import org.apache.openejb.jee.oejb3.OpenejbJar;
 import org.apache.openejb.loader.JarLocation;
 import org.apache.openejb.loader.SystemInstance;
-import org.apache.openejb.util.Classes;
-import org.apache.openejb.util.Join;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.SuperProperties;
-import org.apache.openejb.util.URLs;
+import org.apache.openejb.util.*;
 import org.apache.openejb.util.proxy.DynamicProxyImplFactory;
 import org.apache.xbean.finder.Annotated;
 import org.apache.xbean.finder.AnnotationFinder;
@@ -374,7 +369,7 @@ public class AnnotationDeployer implements DynamicDeployer {
 
     public AppModule deploy(AppModule appModule) throws OpenEJBException {
         final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(appModule.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(appModule.getClassLoader());
         setModule(appModule);
         try {
             appModule = discoverAnnotatedBeans.deploy(appModule);
@@ -387,7 +382,7 @@ public class AnnotationDeployer implements DynamicDeployer {
             return appModule;
         } finally {
             envEntriesPropertiesDeployer.resetAdditionalEnvEntries();
-            Thread.currentThread().setContextClassLoader(classLoader);
+            TCCLUtil.setThreadContextClassLoader(classLoader);
             removeModule();
         }
     }
@@ -401,7 +396,7 @@ public class AnnotationDeployer implements DynamicDeployer {
     public WebModule deploy(WebModule webModule) throws OpenEJBException {
         setModule(webModule);
         final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(webModule.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(webModule.getClassLoader());
         try {
             webModule = discoverAnnotatedBeans.deploy(webModule);
             webModule = envEntriesPropertiesDeployer.deploy(webModule);
@@ -409,7 +404,7 @@ public class AnnotationDeployer implements DynamicDeployer {
             return webModule;
         } finally {
             envEntriesPropertiesDeployer.resetAdditionalEnvEntries();
-            Thread.currentThread().setContextClassLoader(classLoader);
+            TCCLUtil.setThreadContextClassLoader(classLoader);
             removeModule();
         }
     }

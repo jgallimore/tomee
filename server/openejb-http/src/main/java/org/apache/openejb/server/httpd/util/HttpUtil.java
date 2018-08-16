@@ -24,6 +24,7 @@ import org.apache.openejb.server.httpd.FilterListener;
 import org.apache.openejb.server.httpd.HttpListener;
 import org.apache.openejb.server.httpd.HttpListenerRegistry;
 import org.apache.openejb.server.httpd.ServletListener;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.container.InjectableBeanManager;
 
 import javax.servlet.Filter;
@@ -106,7 +107,7 @@ public final class HttpUtil {
                     try {
                         servletContextListener.contextInitialized(new ServletContextEvent(servletContext));
                     } finally {
-                        thread.setContextClassLoader(old);
+                        TCCLUtil.setThreadContextClassLoader(thread, old);
                     }
                     servletContext.removeAttribute("javax.enterprise.inject.spi.BeanManager");
                 } catch (final Exception e) {
@@ -143,7 +144,7 @@ public final class HttpUtil {
 
                 });
             } finally {
-                thread.setContextClassLoader(old);
+                TCCLUtil.setThreadContextClassLoader(thread, old);
             }
         } catch (final Exception e) {
             throw new OpenEJBRuntimeException(e);
@@ -166,7 +167,7 @@ public final class HttpUtil {
 
     private static ClassLoader setClassLoader(final WebContext wc, final Thread thread) {
         final ClassLoader old = thread.getContextClassLoader();
-        thread.setContextClassLoader(wc.getClassLoader() == null ? wc.getAppContext().getClassLoader() : wc.getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(thread, wc.getClassLoader() == null ? wc.getAppContext().getClassLoader() : wc.getClassLoader());
         return old;
     }
 

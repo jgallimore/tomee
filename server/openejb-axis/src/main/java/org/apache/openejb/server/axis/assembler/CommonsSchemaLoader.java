@@ -23,6 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.openejb.OpenEJBException;
 import org.apache.openejb.server.ServerRuntimeException;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.ws.commons.schema.XmlSchemaCollection;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
@@ -148,7 +149,7 @@ public class CommonsSchemaLoader {
 
         Thread thread = Thread.currentThread();
         ClassLoader oldCl = thread.getContextClassLoader();
-        thread.setContextClassLoader(this.getClass().getClassLoader());
+        TCCLUtil.setThreadContextClassLoader(thread, this.getClass().getClassLoader());
         try {
             try {
                 definition = wsdlReader.readWSDL(wsdlLocator);
@@ -158,7 +159,7 @@ public class CommonsSchemaLoader {
                 throw new OpenEJBException(e.getMessage(), e);
             }
         } finally {
-            thread.setContextClassLoader(oldCl);
+            TCCLUtil.setThreadContextClassLoader(thread, oldCl);
         }
 
         return definition;

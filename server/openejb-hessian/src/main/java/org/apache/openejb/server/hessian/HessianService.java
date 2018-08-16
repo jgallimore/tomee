@@ -34,6 +34,7 @@ import org.apache.openejb.server.httpd.HttpListenerRegistry;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.proxy.ProxyEJB;
 
 import java.io.IOException;
@@ -71,7 +72,7 @@ public class HessianService implements ServerService, SelfManaging {
 
             final ClassLoader old = Thread.currentThread().getContextClassLoader();
             final ClassLoader classLoader = beanContext.getClassLoader();
-            Thread.currentThread().setContextClassLoader(classLoader);
+            TCCLUtil.setThreadContextClassLoader(classLoader);
 
             try {
                 final HessianServer server;
@@ -100,7 +101,7 @@ public class HessianService implements ServerService, SelfManaging {
                     throw new OpenEJBRuntimeException(e);
                 }
             } finally {
-                Thread.currentThread().setContextClassLoader(old);
+                TCCLUtil.setThreadContextClassLoader(old);
             }
         }
     }

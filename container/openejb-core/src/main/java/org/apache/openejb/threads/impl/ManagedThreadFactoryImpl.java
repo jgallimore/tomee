@@ -16,6 +16,8 @@
  */
 package org.apache.openejb.threads.impl;
 
+import org.apache.openejb.util.TCCLUtil;
+
 import javax.enterprise.concurrent.ManageableThread;
 import javax.enterprise.concurrent.ManagedThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,7 +40,7 @@ public class ManagedThreadFactoryImpl implements ManagedThreadFactory {
         final Thread thread = new ManagedThread(r);
         thread.setDaemon(true);
         thread.setName(prefix + ID.incrementAndGet());
-        thread.setContextClassLoader(ManagedThreadFactoryImpl.class.getClassLoader()); // ensure we use container loader as main context classloader to avoid leaks
+        TCCLUtil.setThreadContextClassLoader(thread, ManagedThreadFactoryImpl.class.getClassLoader()); // ensure we use container loader as main context classloader to avoid leaks
         return thread;
     }
 

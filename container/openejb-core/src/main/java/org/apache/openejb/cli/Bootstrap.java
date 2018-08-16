@@ -22,6 +22,7 @@ import org.apache.openejb.loader.IO;
 import org.apache.openejb.loader.SystemClassPath;
 import org.apache.openejb.util.JavaSecurityManagers;
 import org.apache.openejb.util.PropertyPlaceHolderHelper;
+import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.URLs;
 
 import java.io.File;
@@ -149,7 +150,7 @@ public class Bootstrap {
         setupHome(args);
         final ClassLoader loader = setupClasspath();
         if (loader != null) {
-            Thread.currentThread().setContextClassLoader(loader);
+            TCCLUtil.setThreadContextClassLoader(loader);
             if (loader != ClassLoader.getSystemClassLoader()) {
                 System.setProperty("openejb.classloader.first.disallow-system-loading", "true");
             }
