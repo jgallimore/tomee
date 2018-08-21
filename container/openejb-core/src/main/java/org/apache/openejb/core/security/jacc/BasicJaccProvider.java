@@ -19,20 +19,31 @@ package org.apache.openejb.core.security.jacc;
 
 import org.apache.openejb.core.security.JaccProvider;
 
-import javax.security.jacc.PolicyConfiguration;
-import javax.security.jacc.PolicyContext;
-import javax.security.jacc.PolicyContextException;
+import javax.security.jacc.*;
 import java.security.CodeSource;
 import java.security.Permission;
 import java.security.PermissionCollection;
 import java.security.ProtectionDomain;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @version $Rev$ $Date$
  */
 public class BasicJaccProvider extends JaccProvider {
+
+    private static final Set<Class> JACC_PERMISSIONS = new HashSet<Class>() {
+        {
+            add(EJBMethodPermission.class);
+            add(EJBRoleRefPermission.class);
+            add(WebResourcePermission.class);
+            add(WebRoleRefPermission.class);
+            add(WebUserDataPermission.class);
+        }
+    };
+
     static {
         // force preloading to avoid to loop under SecurityManager
         try {
@@ -82,7 +93,7 @@ public class BasicJaccProvider extends JaccProvider {
     public boolean implies(final ProtectionDomain domain, final Permission permission) {
         final String contextID = PolicyContext.getContextID();
 
-        if (contextID != null) {
+        if (contextID != null && JACC_PERMISSIONS.contains(permission.getClass())) {
             try {
                 final BasicPolicyConfiguration configuration = configurations.get(contextID);
 
