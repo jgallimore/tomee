@@ -197,7 +197,7 @@
     <microprofile.config.version>1.2</microprofile.config.version>
     <!-- Already supports MP Config 1.3, but compatible to 1.2. Updated to fix GERONIMO-6600 -->
     <microprofile.config.impl.version>1.2</microprofile.config.impl.version>
-    <microprofile.jwt.version>1.0</microprofile.jwt.version>
+    <microprofile.jwt.version>1.1</microprofile.jwt.version>
     <microprofile.jwt.impl.version>${project.version}</microprofile.jwt.impl.version>
     <microprofile.fault-tolerance.version>1.0</microprofile.fault-tolerance.version>
     <microprofile.fault-tolerance.impl.version>1.0</microprofile.fault-tolerance.impl.version>
@@ -555,6 +555,7 @@
         <module>gradle</module>
         <module>container</module>
         <module>server</module>
+        <module>mp-jwt</module>
         <module>assembly</module>
         <module>arquillian</module>
         <module>utils</module>
