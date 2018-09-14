@@ -1,1 +1,2 @@
 org.apache.tomee.microprofile.jwt.jaxrs.MPJWPProviderRegistration
+org.apache.tomee.microprofile.jwt.config.ConfigurableJWTAuthContextInfo
