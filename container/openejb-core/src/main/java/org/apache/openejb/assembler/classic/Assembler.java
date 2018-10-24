@@ -180,7 +180,12 @@ import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.DefinitionException;
 import javax.enterprise.inject.spi.DeploymentException;
-import javax.management.*;
+import javax.management.DynamicMBean;
+import javax.management.InstanceNotFoundException;
+import javax.management.MBeanRegistrationException;
+import javax.management.MBeanServer;
+import javax.management.MalformedObjectNameException;
+import javax.management.ObjectName;
 import javax.naming.Binding;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -383,7 +388,7 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                             loader.loadClass("org.apache.bval.cdi.BValExtension$AnnotatedTypeFilter"))
                         .invoke(null, filter);
             } catch (final Throwable th) {
-                // ignore, bval not compatible or not present
+                logger.warning("Can't setup BVal filtering, this can impact negatively performances: " + th.getMessage());
             }
         }
     }
