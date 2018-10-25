@@ -62,7 +62,7 @@ BROKEN, see TOMEE-2140
     <module>change-jaxws-url</module>
     <module>component-interfaces</module>
     <module>client-resource-lookup-preview</module>
-    <module>connector-ear</module>
+    <!--<module>connector-ear</module>-->
     <module>connector-war</module>
     <module>cucumber-jvm</module>
     <module>custom-injection</module>
@@ -109,7 +109,7 @@ BROKEN, see TOMEE-2140
     <module>myfaces-codi-demo</module>
     <module>persistence-fragment</module>
     <module>pojo-webservice</module>
-    <module>polling-parent</module>
+    <!--<module>polling-parent</module>-->
     <module>projectstage-demo</module>
     <module>quartz-app</module>
     <module>realm-in-tomee</module>
@@ -117,21 +117,21 @@ BROKEN, see TOMEE-2140
     <module>resources-declared-in-webapp</module>
     <module>rest-applicationcomposer-mockito</module>
     <module>rest-applicationcomposer</module>
-    <module>rest-cdi</module>
+    <!--<module>rest-cdi</module>-->
     <module>rest-jaas</module>
-    <module>rest-mp-jwt</module>
-    <module>rest-on-ejb</module>
-    <module>rest-example</module>
-    <module>rest-example-with-application</module>
-    <module>rest-xml-json</module>
-    <module>scala-basic</module>
+    <!--<module>rest-mp-jwt</module>-->
+    <!--<module>rest-on-ejb</module>-->
+    <!--<module>rest-example</module>-->
+    <!--<module>rest-example-with-application</module>-->
+    <!--<module>rest-xml-json</module>-->
+    <!--<module>scala-basic</module>-->
     <module>schedule-expression</module>
     <module>schedule-events</module>
     <module>schedule-methods-meta</module>
     <module>schedule-methods</module>
     <module>server-events</module>
     <module>simple-cdi-interceptor</module>
-    <module>simple-ear</module>
+    <!--<module>simple-ear</module>-->
     <module>simple-cmp2</module>
     <module>simple-mdb-and-cdi</module>
     <module>simple-mdb</module>
@@ -162,14 +162,14 @@ BROKEN, see TOMEE-2140
     <module>transaction-rollback</module>
     <module>troubleshooting</module>
     <module>webservice-attachments</module>
-    <module>webservice-inheritance</module>
+    <!--<module>webservice-inheritance</module>-->
     <module>webservice-security</module>
     <module>webservice-ws-security</module>
     <module>webservice-ws-with-resources-config</module>
     <module>webservice-handlerchain</module>
     <module>webservice-holder</module>
     <module>moviefun</module>
-    <module>moviefun-rest</module>
+    <!--<module>moviefun-rest</module>-->
     <module>resources-jmx-example</module>
   </modules>
 
