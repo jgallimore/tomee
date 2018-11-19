@@ -99,11 +99,14 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <surefire.version>2.21.0</surefire.version>
 
+    <!-- for the default name of the module. Needs to be overridden -->
+    <tomee.build.name>${project.groupId}.${project.artifactId}</tomee.build.name>
+
     <!-- To easily change the javaee api version -->
     <version.javaee-api>8.0</version.javaee-api>
 
     <openjpa.version>3.0.0</openjpa.version>
-    <openwebbeans.version>2.0.7</openwebbeans.version>
+    <openwebbeans.version>2.0.8</openwebbeans.version>
     <jcs.version>2.1</jcs.version>
     <johnzon.version>1.1.9</johnzon.version>
 
@@ -111,7 +114,7 @@
     <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
 
     <!-- This is used by a manifest classpath entry -->
-    <xbeanVersion>4.10</xbeanVersion>
+    <xbeanVersion>4.12</xbeanVersion>
 
     <!-- OSGi bundles properties -->
     <openejb.bundle.activator/>
@@ -135,7 +138,7 @@
 
     <tomcat.version>9.0.12</tomcat.version>
 
-    <cxf.version>3.2.6</cxf.version>
+    <cxf.version>3.2.7</cxf.version>
     <ehcache.version>2.10.3</ehcache.version>
     <!-- used by cxf for security (replay attack) -->
     <jetty.version>7.5.3.v20111011</jetty.version>
@@ -167,7 +170,7 @@
     <commons-io.version>2.4</commons-io.version>
     <commons-net.version>3.3</commons-net.version>
 
-    <bval.version>2.0.0-SNAPSHOT</bval.version>
+    <bval.version>2.0.0</bval.version>
     <org.apache.activemq.version>5.15.6</org.apache.activemq.version>
     <org.springframework.version>3.1.4.RELEASE</org.springframework.version>
     <junit.version>4.12</junit.version>
@@ -455,8 +458,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <archive>
+          <archive combine.children="append">
             <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+            <manifestEntries>
+              <Automatic-Module-Name>${tomee.build.name}</Automatic-Module-Name>
+            </manifestEntries>
           </archive>
         </configuration>
       </plugin>
@@ -1261,7 +1267,7 @@
       </dependency>
       <dependency>
         <groupId>org.apache.xbean</groupId>
-        <artifactId>xbean-asm6-shaded</artifactId>
+        <artifactId>xbean-asm7-shaded</artifactId>
         <version>${xbeanVersion}</version>
       </dependency>
       <dependency>

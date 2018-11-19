@@ -32,6 +32,7 @@
   <packaging>jar</packaging>
   <name>OpenEJB :: TomEE :: Webapp</name>
   <properties>
+    <tomee.build.name>${project.groupId}.tomee.webapp</tomee.build.name>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <build>
@@ -76,6 +77,11 @@
             <include>META-INF/**/*</include>
             <include>juli.properties</include>
           </includes>
+          <archive combine.children="append">
+            <manifestEntries>
+              <Automatic-Module-Name>${tomee.build.name}</Automatic-Module-Name>
+            </manifestEntries>
+          </archive>
         </configuration>
       </plugin>
       <plugin>
