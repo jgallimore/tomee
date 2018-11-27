@@ -185,7 +185,7 @@ public class TomEEWebappContainer extends TomEEContainer<TomEEWebappConfiguratio
                 tmpContainer.getServer().waitFor();
             }
 
-            container = new RemoteServer();
+            container = new RemoteServer(60, true);
             container.setPortStartup(httpPort);
             container.start(Arrays.asList(
                     "-Dopenejb.system.apps=true",
