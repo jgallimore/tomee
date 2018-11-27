@@ -108,7 +108,6 @@ import org.apache.openejb.server.httpd.HttpSession;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.URLs;
 import org.apache.openejb.util.proxy.LocalBeanProxyFactory;
 import org.apache.openejb.util.reflection.Reflections;
@@ -156,6 +155,8 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -1170,10 +1171,36 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
         ContextInfo contextInfo = getContextInfo(standardContext);
         ClassLoader classLoader = standardContext.getLoader().getClassLoader();
 
+        final ClassLoader scLoader = classLoader;
+
         // bind jta before the app starts to ensure we have it in CDI
         final Thread thread = Thread.currentThread();
         final ClassLoader originalLoader = thread.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(thread, classLoader);
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = scLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
 
         final String listenerName = standardContext.getNamingContextListener().getName();
         ContextAccessController.setWritable(listenerName, standardContext.getNamingToken());
@@ -1190,7 +1217,32 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
         } catch (final NamingException e) {
             // no-op
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, originalLoader);
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (originalLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = originalLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(originalLoader);
+            }
+
             ContextAccessController.setReadOnly(listenerName);
         }
 
@@ -1698,11 +1750,61 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
         final Thread thread = Thread.currentThread();
         final ClassLoader originalLoader = thread.getContextClassLoader();
         if (realm != null && !(realm instanceof TomEERealm) && (standardContext.getParent() == null || (!realm.equals(standardContext.getParent().getRealm())))) {
-            TCCLUtil.setThreadContextClassLoader(thread, classLoader);
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread.setContextClassLoader(classLoader);
+            }
+
             try {
                 standardContext.setRealm(tomeeRealm(realm));
             } finally {
-                TCCLUtil.setThreadContextClassLoader(thread, originalLoader);
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (originalLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = originalLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(originalLoader);
+                }
+
             }
         }
 
@@ -1727,7 +1829,31 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
 
         // bind extra stuff at the java:comp level which can only be
         // bound after the context is created
-        TCCLUtil.setThreadContextClassLoader(thread, classLoader);
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader2 = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa2 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa2);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
 
         final NamingContextListener ncl = standardContext.getNamingContextListener();
         final String listenerName = ncl.getName();
@@ -1787,11 +1913,61 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
                 servletContextHandler.getContexts().remove(classLoader);
             }
 
-            TCCLUtil.setThreadContextClassLoader(thread, originalLoader);
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (originalLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = originalLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(originalLoader);
+            }
+
             ContextAccessController.setReadOnly(listenerName);
         }
 
-        TCCLUtil.setThreadContextClassLoader(thread, classLoader);
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
+
         try {
             // owb integration filters
             final WebBeansContext webBeansContext = getWebBeansContext(contextInfo);
@@ -1856,7 +2032,32 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
                 }
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, originalLoader);
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (originalLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = originalLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(originalLoader);
+            }
+
         }
 
         LinkageErrorProtection.preload(standardContext);

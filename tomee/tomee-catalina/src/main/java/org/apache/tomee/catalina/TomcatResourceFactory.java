@@ -20,7 +20,6 @@ import org.apache.openejb.assembler.classic.WebAppBuilder;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.naming.CompositeName;
 import javax.naming.InvalidNameException;
@@ -28,6 +27,8 @@ import javax.naming.NamingException;
 import javax.naming.Reference;
 import javax.naming.spi.NamingManager;
 import javax.naming.spi.ObjectFactory;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 public class TomcatResourceFactory {
     private static final Logger LOGGER = Logger.getInstance(LogCategory.OPENEJB, TomcatResourceFactory.class);
@@ -67,7 +68,33 @@ public class TomcatResourceFactory {
 
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
         final ClassLoader tccl = info.standardContext.getLoader().getClassLoader();
-        TCCLUtil.setThreadContextClassLoader(tccl);
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (tccl == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = tccl;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(tccl);
+        }
+
         try {
             // lookup can't work because of the lifecycle
             // return new InitialContext().lookup(jndiName);
@@ -88,7 +115,33 @@ public class TomcatResourceFactory {
         } catch (final Exception e) {
             LOGGER.error("Can't create resource " + jndiName, e);
         } finally {
-            TCCLUtil.setThreadContextClassLoader(loader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (loader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = loader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(loader);
+            }
+
         }
 
         return null;

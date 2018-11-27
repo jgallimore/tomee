@@ -44,7 +44,6 @@ import org.apache.openejb.server.ServiceManager;
 import org.apache.openejb.server.ejbd.EjbServer;
 import org.apache.openejb.spi.Service;
 import org.apache.openejb.util.OptionsLog;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.reflection.Reflections;
 import org.apache.tomcat.util.file.Matcher;
 import org.apache.tomee.catalina.deployment.TomcatWebappDeployer;
@@ -57,6 +56,8 @@ import org.apache.xbean.finder.filter.Filter;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.security.Security;
 import java.util.ArrayList;
 import java.util.List;
@@ -421,14 +422,67 @@ public class TomcatLoader implements Loader {
                                     // context already started
                                     standardContext.addParameter("openejb.start.late", "true");
                                     final ClassLoader oldCL = Thread.currentThread().getContextClassLoader();
-                                    TCCLUtil.setThreadContextClassLoader(standardContext.getLoader().getClassLoader());
+                                    final ClassLoader classLoader = standardContext.getLoader().getClassLoader();
+                                    final Thread thread1 = Thread.currentThread();
+                                    if (thread1 == null) {
+                                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                                    }
+
+                                    if (classLoader == null) {
+                                        throw new NullPointerException("Attempting to set null context classloader thread");
+                                    }
+
+                                    final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+                                    if ((System.getSecurityManager() != null)) {
+                                        PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                                            private final ClassLoader cl = classLoader;
+                                            private final Thread t = thread1;
+
+                                            @Override
+                                            public Void run() {
+                                                t.setContextClassLoader(cl);
+                                                return null;
+                                            }
+                                        };
+                                        AccessController.doPrivileged(pa1);
+                                    } else {
+                                        thread1.setContextClassLoader(classLoader);
+                                    }
+
                                     try {
                                         tomcatWebAppBuilder.init(standardContext);
                                         tomcatWebAppBuilder.beforeStart(standardContext);
                                         tomcatWebAppBuilder.start(standardContext);
                                         tomcatWebAppBuilder.afterStart(standardContext);
                                     } finally {
-                                        TCCLUtil.setThreadContextClassLoader(oldCL);
+                                        final Thread thread = Thread.currentThread();
+                                        if (thread == null) {
+                                            throw new NullPointerException("Attempting to set context classloader on null thread");
+                                        }
+
+                                        if (oldCL == null) {
+                                            throw new NullPointerException("Attempting to set null context classloader thread");
+                                        }
+
+                                        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                                        if ((System.getSecurityManager() != null)) {
+                                            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                                                private final ClassLoader cl = oldCL;
+                                                private final Thread t = thread;
+
+                                                @Override
+                                                public Void run() {
+                                                    t.setContextClassLoader(cl);
+                                                    return null;
+                                                }
+                                            };
+                                            AccessController.doPrivileged(pa);
+                                        } else {
+                                            thread.setContextClassLoader(oldCL);
+                                        }
+
                                     }
                                     standardContext.removeParameter("openejb.start.late");
                                 }
