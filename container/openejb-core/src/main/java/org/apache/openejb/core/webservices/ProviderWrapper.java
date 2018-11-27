@@ -23,7 +23,6 @@ import org.apache.openejb.loader.IO;
 import org.apache.openejb.util.JavaSecurityManagers;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.w3c.dom.Element;
 
 import javax.jws.WebService;
@@ -50,6 +49,8 @@ import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -86,15 +87,95 @@ public class ProviderWrapper extends Provider {
 
         final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
         if (oldClassLoader != null) {
-            TCCLUtil.setThreadContextClassLoader(new ProviderClassLoader(oldClassLoader));
+            final ClassLoader classLoader = new ProviderClassLoader(oldClassLoader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(classLoader);
+            }
+
         } else {
-            TCCLUtil.setThreadContextClassLoader(new ProviderClassLoader());
+            final ClassLoader classLoader = new ProviderClassLoader();
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(classLoader);
+            }
+
         }
         threadPortRefs.set(new ProviderWrapperData(portRefData, oldClassLoader, customizer, properties));
     }
 
     public static void afterCreate() {
-        TCCLUtil.setThreadContextClassLoader(threadPortRefs.get().callerClassLoader);
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (threadPortRefs.get().callerClassLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = threadPortRefs.get().callerClassLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(threadPortRefs.get().callerClassLoader);
+        }
+
         threadPortRefs.set(null);
     }
 

@@ -29,7 +29,6 @@ import org.apache.openejb.core.ThreadContextListener;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.spi.SecurityService;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.proxy.LocalBeanProxyFactory;
 
 import javax.ejb.AccessLocalException;
@@ -66,6 +65,8 @@ import java.rmi.AccessException;
 import java.rmi.NoSuchObjectException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -318,13 +319,66 @@ public abstract class BaseEjbProxyHandler implements InvocationHandler, Serializ
 
                 IntraVmCopyMonitor.pre(strategy);
                 final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
-                TCCLUtil.setThreadContextClassLoader(getBeanContext().getClassLoader());
+                final ClassLoader classLoader = getBeanContext().getClassLoader();
+                final Thread thread1 = Thread.currentThread();
+                if (thread1 == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (classLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader2 = thread1.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = classLoader;
+                        private final Thread t = thread1;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa1);
+                } else {
+                    thread1.setContextClassLoader(classLoader);
+                }
+
                 try {
                     args = copyArgs(args);
                     method = copyMethod(method);
                     interfce = copyObj(interfce);
                 } finally {
-                    TCCLUtil.setThreadContextClassLoader(oldClassLoader);
+                    final Thread thread = Thread.currentThread();
+                    if (thread == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (oldClassLoader == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = oldClassLoader;
+                            private final Thread t = thread;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread.setContextClassLoader(oldClassLoader);
+                    }
+
                     IntraVmCopyMonitor.post();
                 }
 

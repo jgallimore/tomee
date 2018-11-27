@@ -17,11 +17,12 @@
 package org.apache.openejb.junit;
 
 import org.apache.openejb.testing.ApplicationComposers;
-import org.apache.openejb.util.TCCLUtil;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Objects;
 
 public class ApplicationRule implements TestRule {
@@ -48,7 +49,33 @@ public class ApplicationRule implements TestRule {
                     statement.evaluate();
                 } finally {
                     composers.stopApplication();
-                    TCCLUtil.setThreadContextClassLoader(thread, old);
+                    final Thread thread1 = Thread.currentThread();
+                    if (thread1 == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (old == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = old;
+                            private final Thread t = thread1;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread1.setContextClassLoader(old);
+                    }
+
                 }
             }
         };

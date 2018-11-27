@@ -22,7 +22,6 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.persistence.PersistenceUnitInfoImpl;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.webbeans.container.InjectableBeanManager;
 
@@ -37,6 +36,8 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -67,20 +68,98 @@ public class EntityManagerFactoryCallable implements Callable<EntityManagerFacto
             return provider;
         }
         final ClassLoader old = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(appClassLoader);
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (appClassLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = appClassLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(appClassLoader);
+        }
+
         try {
             return (provider = appClassLoader.loadClass(persistenceProviderClassName));
         } catch (final ClassNotFoundException e) {
             throw new IllegalArgumentException(e);
         } finally {
-            TCCLUtil.setThreadContextClassLoader(old);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (old == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = old;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(old);
+            }
+
         }
     }
 
     @Override
     public EntityManagerFactory call() throws Exception {
         final ClassLoader old = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(appClassLoader);
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (appClassLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = appClassLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(appClassLoader);
+        }
+
         try {
             final Class<?> clazz = appClassLoader.loadClass(persistenceProviderClassName);
             final PersistenceProvider persistenceProvider = (PersistenceProvider) clazz.newInstance();
@@ -133,7 +212,33 @@ public class EntityManagerFactoryCallable implements Callable<EntityManagerFacto
 
             return emf;
         } finally {
-            TCCLUtil.setThreadContextClassLoader(old);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (old == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = old;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(old);
+            }
+
         }
     }
 

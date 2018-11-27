@@ -28,11 +28,12 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.observer.Observes;
 import org.apache.openejb.observer.event.ObserverAdded;
 import org.apache.openejb.util.AppFinder;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.classloader.Unwrappable;
 import org.apache.webbeans.config.WebBeansContext;
 
 import javax.enterprise.inject.spi.BeanManager;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Properties;
 
 public class BatchEEServiceManager implements ServicesManagerLocator {
@@ -53,7 +54,34 @@ public class BatchEEServiceManager implements ServicesManagerLocator {
 
         final Thread thread = Thread.currentThread();
         final ClassLoader current = thread.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(thread, context.getClassLoader());
+        final ClassLoader classLoader = context.getClassLoader();
+        final Thread thread2 = Thread.currentThread();
+        if (thread2 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread2.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread2;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread2.setContextClassLoader(classLoader);
+        }
+
         final ServicesManager servicesManager = new ServicesManager();
         final Properties properties = new Properties(SystemInstance.get().getProperties());
         properties.putAll(context.getProperties());
@@ -66,7 +94,33 @@ public class BatchEEServiceManager implements ServicesManagerLocator {
             }
             servicesManager.init(properties); // will look for batchee.properties so need the right classloader
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, current);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (current == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = current;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread1.setContextClassLoader(current);
+            }
+
         }
 
         context.set(ServicesManager.class, servicesManager);
@@ -105,11 +159,64 @@ public class BatchEEServiceManager implements ServicesManagerLocator {
         public void executeTask(final Runnable work, final Object config) {
             final Thread thread = Thread.currentThread();
             final ClassLoader tccl = thread.getContextClassLoader();
-            TCCLUtil.setThreadContextClassLoader(thread, unwrap(tccl));
+            final ClassLoader classLoader = unwrap(tccl);
+            final Thread thread2 = Thread.currentThread();
+            if (thread2 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread2.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread2;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread2.setContextClassLoader(classLoader);
+            }
+
             try {
                 super.executeTask(work, config);
             } finally {
-                TCCLUtil.setThreadContextClassLoader(thread, tccl);
+                final Thread thread1 = Thread.currentThread();
+                if (thread1 == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (tccl == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = tccl;
+                        private final Thread t = thread1;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread1.setContextClassLoader(tccl);
+                }
+
             }
         }
     }

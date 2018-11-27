@@ -249,6 +249,8 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -369,7 +371,34 @@ public class AnnotationDeployer implements DynamicDeployer {
 
     public AppModule deploy(AppModule appModule) throws OpenEJBException {
         final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(appModule.getClassLoader());
+        final ClassLoader classLoader1 = appModule.getClassLoader();
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader1 == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader1;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(classLoader1);
+        }
+
         setModule(appModule);
         try {
             appModule = discoverAnnotatedBeans.deploy(appModule);
@@ -382,7 +411,33 @@ public class AnnotationDeployer implements DynamicDeployer {
             return appModule;
         } finally {
             envEntriesPropertiesDeployer.resetAdditionalEnvEntries();
-            TCCLUtil.setThreadContextClassLoader(classLoader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(classLoader);
+            }
+
             removeModule();
         }
     }
@@ -396,7 +451,34 @@ public class AnnotationDeployer implements DynamicDeployer {
     public WebModule deploy(WebModule webModule) throws OpenEJBException {
         setModule(webModule);
         final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(webModule.getClassLoader());
+        final ClassLoader classLoader1 = webModule.getClassLoader();
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader1 == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader1;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(classLoader1);
+        }
+
         try {
             webModule = discoverAnnotatedBeans.deploy(webModule);
             webModule = envEntriesPropertiesDeployer.deploy(webModule);
@@ -404,7 +486,33 @@ public class AnnotationDeployer implements DynamicDeployer {
             return webModule;
         } finally {
             envEntriesPropertiesDeployer.resetAdditionalEnvEntries();
-            TCCLUtil.setThreadContextClassLoader(classLoader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(classLoader);
+            }
+
             removeModule();
         }
     }

@@ -24,12 +24,13 @@ import org.apache.openejb.config.ValidationRule;
 import org.apache.openejb.config.WebModule;
 import org.apache.openejb.jee.EnterpriseBean;
 import org.apache.openejb.jee.SessionBean;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Application;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -43,7 +44,33 @@ public class CheckRestMethodArePublic implements ValidationRule {
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
         try {
             for (final EjbModule ejb : appModule.getEjbModules()) {
-                TCCLUtil.setThreadContextClassLoader(ejb.getClassLoader());
+                final ClassLoader classLoader = ejb.getClassLoader();
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (classLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = classLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(classLoader);
+                }
 
                 for (final EnterpriseBean bean : ejb.getEjbJar().getEnterpriseBeans()) {
                     if (bean instanceof SessionBean && ((SessionBean) bean).isRestService()) {
@@ -54,7 +81,33 @@ public class CheckRestMethodArePublic implements ValidationRule {
             }
 
             for (final WebModule web : appModule.getWebModules()) {
-                TCCLUtil.setThreadContextClassLoader(web.getClassLoader());
+                final ClassLoader classLoader = web.getClassLoader();
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (classLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = classLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(classLoader);
+                }
 
                 // build the list of classes to validate
                 final Collection<String> classes = new ArrayList<String>();
@@ -110,7 +163,33 @@ public class CheckRestMethodArePublic implements ValidationRule {
                 classes.clear();
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(loader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (loader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = loader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(loader);
+            }
+
         }
 
         standAloneClasses.clear();

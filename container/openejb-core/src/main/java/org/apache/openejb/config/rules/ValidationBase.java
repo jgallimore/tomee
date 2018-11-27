@@ -31,9 +31,10 @@ import org.apache.openejb.jee.PersistenceType;
 import org.apache.openejb.util.Classes;
 import org.apache.openejb.util.Join;
 import org.apache.openejb.util.Messages;
-import org.apache.openejb.util.TCCLUtil;
 
 import java.lang.reflect.Method;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 /**
  * @version $Rev$ $Date$
@@ -45,19 +46,97 @@ public abstract class ValidationBase implements ValidationRule {
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
         try {
             for (final EjbModule ejbModule : appModule.getEjbModules()) {
-                TCCLUtil.setThreadContextClassLoader(ejbModule.getClassLoader());
+                final ClassLoader classLoader = ejbModule.getClassLoader();
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (classLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = classLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(classLoader);
+                }
 
                 module = ejbModule;
                 validate(ejbModule);
             }
             for (final ClientModule clientModule : appModule.getClientModules()) {
-                TCCLUtil.setThreadContextClassLoader(clientModule.getClassLoader());
+                final ClassLoader classLoader = clientModule.getClassLoader();
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (classLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = classLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(classLoader);
+                }
 
                 module = clientModule;
                 validate(clientModule);
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(loader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (loader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = loader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(loader);
+            }
+
         }
     }
 

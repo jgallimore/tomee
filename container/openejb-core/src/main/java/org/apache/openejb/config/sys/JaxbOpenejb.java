@@ -26,7 +26,6 @@ import org.apache.openejb.loader.IO;
 import org.apache.openejb.util.Join;
 import org.apache.openejb.util.Messages;
 import org.apache.openejb.util.Saxs;
-import org.apache.openejb.util.TCCLUtil;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -50,6 +49,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -301,11 +302,64 @@ public abstract class JaxbOpenejb {
         if (jaxbContext == null) {
             final Thread thread = Thread.currentThread();
             final ClassLoader old = thread.getContextClassLoader();
-            TCCLUtil.setThreadContextClassLoader(thread, JaxbOpenejb.class.getClassLoader());
+            final ClassLoader classLoader = JaxbOpenejb.class.getClassLoader();
+            final Thread thread2 = Thread.currentThread();
+            if (thread2 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread2.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread2;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread2.setContextClassLoader(classLoader);
+            }
+
             try {
                 jaxbContext = JAXBContextFactory.newInstance(type);
             } finally {
-                TCCLUtil.setThreadContextClassLoader(thread, old);
+                final Thread thread1 = Thread.currentThread();
+                if (thread1 == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (old == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = old;
+                        private final Thread t = thread1;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread1.setContextClassLoader(old);
+                }
+
             }
             jaxbContexts.put(type, jaxbContext);
         }

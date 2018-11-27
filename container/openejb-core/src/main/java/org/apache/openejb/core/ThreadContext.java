@@ -21,8 +21,9 @@ import org.apache.openejb.BeanContext;
 import org.apache.openejb.core.transaction.TransactionPolicy;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +50,33 @@ public class ThreadContext {
         // set the thread context class loader
         final Thread thread = Thread.currentThread();
         newContext.oldClassLoader = thread.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(thread, newContext.beanContext.getClassLoader());
+        final ClassLoader classLoader = newContext.beanContext.getClassLoader();
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread1.setContextClassLoader(classLoader);
+        }
 
         // update thread local
         final ThreadContext oldContext = threadStorage.get();
@@ -75,7 +102,33 @@ public class ThreadContext {
         }
 
         // set the thread context class loader back
-        TCCLUtil.setThreadContextClassLoader(exitingContext.oldClassLoader);
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (exitingContext.oldClassLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = exitingContext.oldClassLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(exitingContext.oldClassLoader);
+        }
+
         exitingContext.oldClassLoader = null;
 
         // update thread local

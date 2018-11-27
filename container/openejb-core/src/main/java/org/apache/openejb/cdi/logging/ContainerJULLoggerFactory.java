@@ -16,9 +16,10 @@
  */
 package org.apache.openejb.cdi.logging;
 
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.logger.WebBeansLoggerFactory;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
@@ -28,11 +29,64 @@ public class ContainerJULLoggerFactory implements WebBeansLoggerFactory {
     public Logger getLogger(final Class<?> clazz, final Locale desiredLocale) {
         final Thread th = Thread.currentThread();
         final ClassLoader l = th.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(th, WebBeansLoggerFactory.class.getClassLoader());
+        final ClassLoader classLoader = WebBeansLoggerFactory.class.getClassLoader();
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(classLoader);
+        }
+
         try {
             return Logger.getLogger(clazz.getName(), ResourceBundle.getBundle("openwebbeans/Messages", desiredLocale).toString());
         } finally {
-            TCCLUtil.setThreadContextClassLoader(th, l);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (l == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = l;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(l);
+            }
+
         }
     }
 
@@ -40,11 +94,64 @@ public class ContainerJULLoggerFactory implements WebBeansLoggerFactory {
     public Logger getLogger(final Class<?> clazz) {
         final Thread th = Thread.currentThread();
         final ClassLoader l = th.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(th, WebBeansLoggerFactory.class.getClassLoader());
+        final ClassLoader classLoader = WebBeansLoggerFactory.class.getClassLoader();
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(classLoader);
+        }
+
         try {
             return Logger.getLogger(clazz.getName(), "openwebbeans/Messages");
         } finally {
-            TCCLUtil.setThreadContextClassLoader(th, l);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (l == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = l;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(l);
+            }
+
         }
     }
 }

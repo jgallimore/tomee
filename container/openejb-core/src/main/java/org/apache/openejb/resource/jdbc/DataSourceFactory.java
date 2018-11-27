@@ -45,6 +45,8 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.sql.Driver;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -147,14 +149,92 @@ public class DataSourceFactory {
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
         if (useContainerLoader) {
             final ClassLoader containerLoader = DataSourceFactory.class.getClassLoader();
-            TCCLUtil.setThreadContextClassLoader(containerLoader);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (containerLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = containerLoader;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread1.setContextClassLoader(containerLoader);
+            }
+
             try {
                 useContainerLoader = basicChecksThatDataSourceCanBeCreatedFromContainerLoader(properties, containerLoader);
             } finally {
-                TCCLUtil.setThreadContextClassLoader(oldLoader);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (oldLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = oldLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(oldLoader);
+                }
+
             }
             if (useContainerLoader) {
-                TCCLUtil.setThreadContextClassLoader(containerLoader);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (containerLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = containerLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(containerLoader);
+                }
+
             } else {
                 LOGGER.info("Can't use container loader to create datasource " + name + " so using application one");
             }
@@ -300,7 +380,33 @@ public class DataSourceFactory {
             return ds;
         } finally {
             if (useContainerLoader) {
-                TCCLUtil.setThreadContextClassLoader(oldLoader);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (oldLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = oldLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(oldLoader);
+                }
+
             }
         }
     }

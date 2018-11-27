@@ -29,7 +29,6 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.spi.CallerPrincipal;
 import org.apache.openejb.spi.SecurityService;
 import org.apache.openejb.util.JavaSecurityManagers;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.security.auth.Subject;
 import javax.security.auth.login.LoginException;
@@ -346,7 +345,33 @@ public abstract class AbstractSecurityService implements DestroyableResource, Se
             if (JavaSecurityManagers.getSystemProperty(providerKey) == null) {
                 JavaSecurityManagers.setSystemProperty(providerKey, JaccProvider.Factory.class.getName());
                 final ClassLoader cl = JaccProvider.Factory.class.getClassLoader();
-                TCCLUtil.setThreadContextClassLoader(cl);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (cl == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl1 = cl;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl1);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(cl);
+                }
+
             }
 
             // Force the loading of the javax.security.jacc.PolicyConfigurationFactory.provider
@@ -356,7 +381,33 @@ public abstract class AbstractSecurityService implements DestroyableResource, Se
         } catch (final Exception e) {
             throw new IllegalStateException("Could not install JACC Policy Configuration Factory: " + JavaSecurityManagers.getSystemProperty(providerKey), e);
         } finally {
-            TCCLUtil.setThreadContextClassLoader(contextClassLoader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (contextClassLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = contextClassLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(contextClassLoader);
+            }
+
         }
 
         final String policyProvider = SystemInstance.get().getOptions().get("javax.security.jacc.policy.provider", JaccProvider.Policy.class.getName());

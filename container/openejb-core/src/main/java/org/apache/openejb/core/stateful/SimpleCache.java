@@ -21,8 +21,9 @@ import org.apache.openejb.OpenEJBRuntimeException;
 import org.apache.openejb.util.Duration;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -106,7 +107,34 @@ public class SimpleCache<K, V> implements Cache<K, V> {
 
             // start any thread in container loader to avoid leaks
             final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-            TCCLUtil.setThreadContextClassLoader(SimpleCache.class.getClassLoader());
+            final ClassLoader classLoader = SimpleCache.class.getClassLoader();
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread1.setContextClassLoader(classLoader);
+            }
+
             try {
                 future = executor.scheduleWithFixedDelay(new Runnable() {
                     public void run() {
@@ -114,7 +142,33 @@ public class SimpleCache<K, V> implements Cache<K, V> {
                     }
                 }, frequency, frequency, TimeUnit.MILLISECONDS);
             } finally {
-                TCCLUtil.setThreadContextClassLoader(loader);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (loader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = loader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(loader);
+                }
+
             }
         }
     }

@@ -38,7 +38,6 @@ import org.apache.openejb.loader.provisining.ProvisioningResolver;
 import org.apache.openejb.util.JavaSecurityManagers;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.ejb.Lock;
 import javax.ejb.Remote;
@@ -51,6 +50,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.Iterator;
@@ -262,7 +263,32 @@ public class DeployerEjb implements Deployer {
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
             final ClassLoader appClassLoader = assembler.createAppClassLoader(appInfo);
             try {
-                TCCLUtil.setThreadContextClassLoader(appClassLoader);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (appClassLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = appClassLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(appClassLoader);
+                }
 
                 for (final ResourceInfo resource : configuration.facilities.resources) {
                     assembler.createResource(resource);
@@ -273,7 +299,33 @@ public class DeployerEjb implements Deployer {
                 }
 
             } finally {
-                TCCLUtil.setThreadContextClassLoader(oldCl);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (oldCl == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = oldCl;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(oldCl);
+                }
+
             }
 
             assembler.createApplication(appInfo, appClassLoader);

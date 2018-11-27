@@ -46,7 +46,6 @@ import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
 import org.apache.openejb.util.SetAccessible;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.ejb.EJBContext;
 import javax.ejb.EJBException;
@@ -63,6 +62,8 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -178,15 +179,95 @@ public class EjbTimerServiceImpl implements EjbTimerService, Serializable {
                     // start in container context to avoid thread leaks
                     final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
                     if (useTccl) {
-                        TCCLUtil.setThreadContextClassLoader(deployment.getClassLoader());
+                        final ClassLoader classLoader = deployment.getClassLoader();
+                        final Thread thread = Thread.currentThread();
+                        if (thread == null) {
+                            throw new NullPointerException("Attempting to set context classloader on null thread");
+                        }
+
+                        if (classLoader == null) {
+                            throw new NullPointerException("Attempting to set null context classloader thread");
+                        }
+
+                        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                        if ((System.getSecurityManager() != null)) {
+                            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                                private final ClassLoader cl = classLoader;
+                                private final Thread t = thread;
+
+                                @Override
+                                public Void run() {
+                                    t.setContextClassLoader(cl);
+                                    return null;
+                                }
+                            };
+                            AccessController.doPrivileged(pa);
+                        } else {
+                            thread.setContextClassLoader(classLoader);
+                        }
+
                     } else {
-                        TCCLUtil.setThreadContextClassLoader(EjbTimerServiceImpl.class.getClassLoader());
+                        final ClassLoader classLoader = EjbTimerServiceImpl.class.getClassLoader();
+                        final Thread thread = Thread.currentThread();
+                        if (thread == null) {
+                            throw new NullPointerException("Attempting to set context classloader on null thread");
+                        }
+
+                        if (classLoader == null) {
+                            throw new NullPointerException("Attempting to set null context classloader thread");
+                        }
+
+                        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                        if ((System.getSecurityManager() != null)) {
+                            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                                private final ClassLoader cl = classLoader;
+                                private final Thread t = thread;
+
+                                @Override
+                                public Void run() {
+                                    t.setContextClassLoader(cl);
+                                    return null;
+                                }
+                            };
+                            AccessController.doPrivileged(pa);
+                        } else {
+                            thread.setContextClassLoader(classLoader);
+                        }
+
                     }
                     try {
                         thisScheduler = new StdSchedulerFactory(properties).getScheduler();
                         thisScheduler.start();
                     } finally {
-                        TCCLUtil.setThreadContextClassLoader(oldCl);
+                        final Thread thread = Thread.currentThread();
+                        if (thread == null) {
+                            throw new NullPointerException("Attempting to set context classloader on null thread");
+                        }
+
+                        if (oldCl == null) {
+                            throw new NullPointerException("Attempting to set null context classloader thread");
+                        }
+
+                        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                        if ((System.getSecurityManager() != null)) {
+                            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                                private final ClassLoader cl = oldCl;
+                                private final Thread t = thread;
+
+                                @Override
+                                public Void run() {
+                                    t.setContextClassLoader(cl);
+                                    return null;
+                                }
+                            };
+                            AccessController.doPrivileged(pa);
+                        } else {
+                            thread.setContextClassLoader(oldCl);
+                        }
+
                     }
 
                     //durability is configured with true, which means that the job will be kept in the store even if no trigger is attached to it.
@@ -795,7 +876,33 @@ public class EjbTimerServiceImpl implements EjbTimerService, Serializable {
 
                     // if app registered Synchronization we need it for commit()/rollback()
                     // so forcing it and not relying on container for it
-                    TCCLUtil.setThreadContextClassLoader(thread, deployment.getClassLoader() != null ? deployment.getClassLoader() : loader);
+                    final ClassLoader classLoader = deployment.getClassLoader() != null ? deployment.getClassLoader() : loader;
+                    final Thread thread1 = Thread.currentThread();
+                    if (thread1 == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (classLoader == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = classLoader;
+                            private final Thread t = thread1;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread1.setContextClassLoader(classLoader);
+                    }
 
                     SetAccessible.on(ejbTimeout);
                     container.invoke(deployment.getDeploymentID(),
@@ -853,7 +960,32 @@ public class EjbTimerServiceImpl implements EjbTimerService, Serializable {
             log.warning("Error occured while calling ejbTimeout", e);
             throw e;
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, loader);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (loader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = loader;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread1.setContextClassLoader(loader);
+            }
 
             // clean up the timer store
             //TODO shall we do all this via Quartz listener ???

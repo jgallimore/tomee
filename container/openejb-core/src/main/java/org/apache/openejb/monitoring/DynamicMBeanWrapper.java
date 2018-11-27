@@ -26,7 +26,6 @@ import org.apache.openejb.api.jmx.NotificationInfo;
 import org.apache.openejb.api.jmx.NotificationInfos;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.config.WebBeansContext;
 
 import java.lang.annotation.Annotation;
@@ -35,6 +34,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Proxy;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -342,13 +343,65 @@ public class DynamicMBeanWrapper implements DynamicMBean, MBeanRegistration {
         ReflectionException {
         if (getters.containsKey(attribute)) {
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
-            TCCLUtil.setThreadContextClassLoader(classloader);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classloader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classloader;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread1.setContextClassLoader(classloader);
+            }
+
             try {
                 return getters.get(attribute).invoke(instance);
             } catch (final IllegalArgumentException | InvocationTargetException | IllegalAccessException e) {
                 logger.error("can't get " + attribute + " value", e);
             } finally {
-                TCCLUtil.setThreadContextClassLoader(oldCl);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (oldCl == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = oldCl;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(oldCl);
+                }
+
             }
         }
         throw new AttributeNotFoundException();
@@ -360,13 +413,65 @@ public class DynamicMBeanWrapper implements DynamicMBean, MBeanRegistration {
         MBeanException, ReflectionException {
         if (setters.containsKey(attribute.getName())) {
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
-            TCCLUtil.setThreadContextClassLoader(classloader);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classloader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classloader;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread1.setContextClassLoader(classloader);
+            }
+
             try {
                 setters.get(attribute.getName()).invoke(instance, attribute.getValue());
             } catch (final IllegalArgumentException | InvocationTargetException | IllegalAccessException e) {
                 logger.error("can't set " + attribute + " value", e);
             } finally {
-                TCCLUtil.setThreadContextClassLoader(oldCl);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (oldCl == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = oldCl;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(oldCl);
+                }
+
             }
         } else {
             throw new AttributeNotFoundException();
@@ -406,13 +511,65 @@ public class DynamicMBeanWrapper implements DynamicMBean, MBeanRegistration {
         throws MBeanException, ReflectionException {
         if (operations.containsKey(actionName)) {
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
-            TCCLUtil.setThreadContextClassLoader(classloader);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classloader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classloader;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread1.setContextClassLoader(classloader);
+            }
+
             try {
                 return operations.get(actionName).invoke(instance, params);
             } catch (final IllegalArgumentException | InvocationTargetException | IllegalAccessException e) {
                 logger.error(actionName + "can't be invoked", e);
             } finally {
-                TCCLUtil.setThreadContextClassLoader(oldCl);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (oldCl == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = oldCl;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(oldCl);
+                }
+
             }
         }
         throw new MBeanException(new IllegalArgumentException(), actionName + " doesn't exist");
@@ -422,14 +579,66 @@ public class DynamicMBeanWrapper implements DynamicMBean, MBeanRegistration {
     public ObjectName preRegister(final MBeanServer server, final ObjectName name) throws Exception {
         final Thread thread = Thread.currentThread();
         final ClassLoader oldCl = thread.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(thread, classloader);
+        final Thread thread2 = Thread.currentThread();
+        if (thread2 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classloader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread2.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classloader;
+                private final Thread t = thread2;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread2.setContextClassLoader(classloader);
+        }
+
         try {
             if (MBeanRegistration.class.isInstance(instance)) {
                 return MBeanRegistration.class.cast(instance).preRegister(server, name);
             }
             return name;
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, oldCl);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldCl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldCl;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread1.setContextClassLoader(oldCl);
+            }
+
         }
     }
 
@@ -437,13 +646,65 @@ public class DynamicMBeanWrapper implements DynamicMBean, MBeanRegistration {
     public void postRegister(final Boolean registrationDone) {
         final Thread thread = Thread.currentThread();
         final ClassLoader oldCl = thread.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(thread, classloader);
+        final Thread thread2 = Thread.currentThread();
+        if (thread2 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classloader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread2.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classloader;
+                private final Thread t = thread2;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread2.setContextClassLoader(classloader);
+        }
+
         try {
             if (MBeanRegistration.class.isInstance(instance)) {
                 MBeanRegistration.class.cast(instance).postRegister(registrationDone);
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, oldCl);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldCl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldCl;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread1.setContextClassLoader(oldCl);
+            }
+
         }
     }
 
@@ -451,13 +712,65 @@ public class DynamicMBeanWrapper implements DynamicMBean, MBeanRegistration {
     public void preDeregister() throws Exception {
         final Thread thread = Thread.currentThread();
         final ClassLoader oldCl = thread.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(thread, classloader);
+        final Thread thread2 = Thread.currentThread();
+        if (thread2 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classloader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread2.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classloader;
+                private final Thread t = thread2;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread2.setContextClassLoader(classloader);
+        }
+
         try {
             if (MBeanRegistration.class.isInstance(instance)) {
                 MBeanRegistration.class.cast(instance).preDeregister();
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, oldCl);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldCl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldCl;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread1.setContextClassLoader(oldCl);
+            }
+
         }
     }
 
@@ -465,13 +778,65 @@ public class DynamicMBeanWrapper implements DynamicMBean, MBeanRegistration {
     public void postDeregister() {
         final Thread thread = Thread.currentThread();
         final ClassLoader oldCl = thread.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(thread, classloader);
+        final Thread thread2 = Thread.currentThread();
+        if (thread2 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classloader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread2.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classloader;
+                private final Thread t = thread2;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread2.setContextClassLoader(classloader);
+        }
+
         try {
             if (MBeanRegistration.class.isInstance(instance)) {
                 MBeanRegistration.class.cast(instance).postDeregister();
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, oldCl);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldCl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldCl;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread1.setContextClassLoader(oldCl);
+            }
+
         }
     }
 

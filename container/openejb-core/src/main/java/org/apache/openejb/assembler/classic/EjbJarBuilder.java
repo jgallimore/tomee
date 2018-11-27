@@ -24,8 +24,9 @@ import org.apache.openejb.Injection;
 import org.apache.openejb.ModuleContext;
 import org.apache.openejb.ModuleTestContext;
 import org.apache.openejb.OpenEJBException;
-import org.apache.openejb.util.TCCLUtil;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -63,7 +64,34 @@ public class EjbJarBuilder {
 
         for (final EnterpriseBeanInfo ejbInfo : ejbJar.enterpriseBeans) {
             final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-            TCCLUtil.setThreadContextClassLoader(moduleContext.getClassLoader());
+            final ClassLoader classLoader1 = moduleContext.getClassLoader();
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader1 == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader1;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread1.setContextClassLoader(classLoader1);
+            }
+
             try {
                 final EnterpriseBeanBuilder deploymentBuilder = new EnterpriseBeanBuilder(ejbInfo, moduleContext, moduleInjections);
                 final BeanContext bean = deploymentBuilder.build();
@@ -85,7 +113,33 @@ public class EjbJarBuilder {
             } catch (final Throwable e) {
                 throw new OpenEJBException("Error building bean '" + ejbInfo.ejbName + "'.  Exception: " + e.getClass() + ": " + e.getMessage(), e);
             } finally {
-                TCCLUtil.setThreadContextClassLoader(loader);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (loader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = loader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(loader);
+                }
+
             }
         }
         return deployments;

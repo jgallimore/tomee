@@ -35,7 +35,6 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.xbean.propertyeditor.PropertyEditorException;
 import org.apache.xbean.propertyeditor.PropertyEditors;
 import org.apache.xbean.recipe.ObjectRecipe;
@@ -51,6 +50,8 @@ import java.lang.reflect.Modifier;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -193,7 +194,33 @@ public class ActiveMQ5Factory implements BrokerFactoryHandler {
                 @Override
                 public void run() {
 
-                    TCCLUtil.setThreadContextClassLoader(ActiveMQResourceAdapter.class.getClassLoader());
+                    final ClassLoader classLoader = ActiveMQResourceAdapter.class.getClassLoader();
+                    final Thread thread = currentThread();
+                    if (thread == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (classLoader == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = classLoader;
+                            private final Thread t1 = thread;
+
+                            @Override
+                            public Void run() {
+                                t1.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread.setContextClassLoader(classLoader);
+                    }
 
                     try {
                         //Start before returning - this is known to be safe.

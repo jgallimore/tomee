@@ -45,10 +45,11 @@ import org.apache.openejb.config.rules.CheckUserTransactionRefs;
 import org.apache.openejb.config.rules.ValidationBase;
 import org.apache.openejb.util.Messages;
 import org.apache.openejb.util.OpenEjbVersion;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.enterprise.inject.spi.DefinitionException;
 import java.io.File;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,7 +97,35 @@ public class AppValidator {
     // START SNIPPET : code2
     public AppModule validate(final AppModule appModule) {
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(appModule.getClassLoader()); // be sure to not mix classloaders
+        // be sure to not mix classloaders
+        final ClassLoader classLoader = appModule.getClassLoader();
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(classLoader);
+        }
+
         try {
             final ValidationRule[] rules = getValidationRules();
             for (int i = 0; i < rules.length; i++) {
@@ -111,7 +140,33 @@ public class AppValidator {
             err.setDetails(e.getMessage());
             appModule.getValidation().addError(err);
         } finally {
-            TCCLUtil.setThreadContextClassLoader(loader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (loader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = loader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(loader);
+            }
+
         }
         return appModule;
     }

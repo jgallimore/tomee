@@ -22,13 +22,14 @@ import org.apache.openejb.loader.IO;
 import org.apache.openejb.loader.SystemClassPath;
 import org.apache.openejb.util.JavaSecurityManagers;
 import org.apache.openejb.util.PropertyPlaceHolderHelper;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.URLs;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.StringTokenizer;
 
 /**
@@ -150,7 +151,33 @@ public class Bootstrap {
         setupHome(args);
         final ClassLoader loader = setupClasspath();
         if (loader != null) {
-            TCCLUtil.setThreadContextClassLoader(loader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (loader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = loader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(loader);
+            }
+
             if (loader != ClassLoader.getSystemClassLoader()) {
                 System.setProperty("openejb.classloader.first.disallow-system-loading", "true");
             }

@@ -16,10 +16,10 @@
  */
 package org.apache.openejb.threads.impl;
 
-import org.apache.openejb.util.TCCLUtil;
-
 import javax.enterprise.concurrent.ManageableThread;
 import javax.enterprise.concurrent.ManagedThreadFactory;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ManagedThreadFactoryImpl implements ManagedThreadFactory {
@@ -40,7 +40,35 @@ public class ManagedThreadFactoryImpl implements ManagedThreadFactory {
         final Thread thread = new ManagedThread(r);
         thread.setDaemon(true);
         thread.setName(prefix + ID.incrementAndGet());
-        TCCLUtil.setThreadContextClassLoader(thread, ManagedThreadFactoryImpl.class.getClassLoader()); // ensure we use container loader as main context classloader to avoid leaks
+        // ensure we use container loader as main context classloader to avoid leaks
+        final ClassLoader classLoader = ManagedThreadFactoryImpl.class.getClassLoader();
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread1.setContextClassLoader(classLoader);
+        }
+
         return thread;
     }
 

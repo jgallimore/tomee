@@ -25,7 +25,6 @@ import org.apache.openejb.assembler.classic.Assembler;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.component.BuiltInOwbBean;
 import org.apache.webbeans.component.SimpleProducerFactory;
 import org.apache.webbeans.component.WebBeansType;
@@ -68,6 +67,8 @@ import javax.servlet.jsp.JspFactory;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 import java.lang.reflect.Type;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -144,7 +145,33 @@ public class OpenEJBLifecycle implements ContainerLifecycle {
         final long begin = System.currentTimeMillis();
 
         try {
-            TCCLUtil.setThreadContextClassLoader(stuff.getClassLoader());
+            final ClassLoader classLoader = stuff.getClassLoader();
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(classLoader);
+            }
 
             final AppContext appContext = stuff.getAppContext();
             if (stuff.getWebContext() == null) { // do it before any other things to keep our singleton finder working
@@ -232,7 +259,32 @@ public class OpenEJBLifecycle implements ContainerLifecycle {
                 starts(beanManager, clazz);
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(oldCl);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldCl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldCl;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(oldCl);
+            }
 
             // cleanup threadlocal used to enrich cdi context manually
             OptimizedLoaderService.ADDITIONAL_EXTENSIONS.remove();

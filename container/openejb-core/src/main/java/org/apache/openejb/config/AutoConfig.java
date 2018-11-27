@@ -81,6 +81,8 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Providers;
 import java.net.URI;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -926,11 +928,64 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
 
             final Thread thread = Thread.currentThread();
             final ClassLoader oldCl = thread.getContextClassLoader();
-            TCCLUtil.setThreadContextClassLoader(thread, module.getClassLoader());
+            final ClassLoader classLoader = module.getClassLoader();
+            final Thread thread2 = Thread.currentThread();
+            if (thread2 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread2.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread2;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread2.setContextClassLoader(classLoader);
+            }
+
             try {
                 resource.getProperties().putAll(PropertyPlaceHolderHelper.holds(resource.getProperties()));
             } finally {
-                TCCLUtil.setThreadContextClassLoader(thread, oldCl);
+                final Thread thread1 = Thread.currentThread();
+                if (thread1 == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (oldCl == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = oldCl;
+                        private final Thread t = thread1;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread1.setContextClassLoader(oldCl);
+                }
+
             }
 
             final Collection<String> aliases = resource.getAliases();

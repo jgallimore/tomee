@@ -212,6 +212,8 @@ import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -603,14 +605,66 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
 
             try {
                 if (classLoader != null) {
-                    TCCLUtil.setThreadContextClassLoader(classLoader);
+                    final Thread thread = Thread.currentThread();
+                    if (thread == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (classLoader == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = classLoader;
+                            private final Thread t = thread;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread.setContextClassLoader(classLoader);
+                    }
+
                 }
 
                 for (final ContainerInfo containerInfo : containerInfos) {
                     createContainer(containerInfo);
                 }
             } finally {
-                TCCLUtil.setThreadContextClassLoader(oldCl);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (oldCl == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = oldCl;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(oldCl);
+                }
+
             }
         }
 
@@ -780,12 +834,65 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
 
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
             try {
-                TCCLUtil.setThreadContextClassLoader(classLoader);
+                final ClassLoader classLoader1 = classLoader;
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (classLoader1 == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = classLoader1;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(classLoader1);
+                }
+
                 for (final ContainerInfo container : appInfo.containers) {
                     createContainer(container);
                 }
             } finally {
-                TCCLUtil.setThreadContextClassLoader(oldCl);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (oldCl == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = oldCl;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(oldCl);
+                }
+
             }
 
             //Construct the global and app jndi contexts for this app
@@ -918,7 +1025,34 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                 // Connectors
                 for (final ConnectorInfo connector : appInfo.connectors) {
                     final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
-                    TCCLUtil.setThreadContextClassLoader(classLoader);
+                    final ClassLoader classLoader1 = classLoader;
+                    final Thread thread1 = Thread.currentThread();
+                    if (thread1 == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (classLoader1 == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader2 = thread1.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = classLoader1;
+                            private final Thread t = thread1;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa1);
+                    } else {
+                        thread1.setContextClassLoader(classLoader1);
+                    }
+
                     try {
                         // todo add undeployment code for these
                         if (connector.resourceAdapter != null) {
@@ -935,7 +1069,33 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                             createResource(null, adminObject);
                         }
                     } finally {
-                        TCCLUtil.setThreadContextClassLoader(oldClassLoader);
+                        final Thread thread = Thread.currentThread();
+                        if (thread == null) {
+                            throw new NullPointerException("Attempting to set context classloader on null thread");
+                        }
+
+                        if (oldClassLoader == null) {
+                            throw new NullPointerException("Attempting to set null context classloader thread");
+                        }
+
+                        final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+                        if ((System.getSecurityManager() != null)) {
+                            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                                private final ClassLoader cl = oldClassLoader;
+                                private final Thread t = thread;
+
+                                @Override
+                                public Void run() {
+                                    t.setContextClassLoader(cl);
+                                    return null;
+                                }
+                            };
+                            AccessController.doPrivileged(pa);
+                        } else {
+                            thread.setContextClassLoader(oldClassLoader);
+                        }
+
                     }
                 }
 
@@ -1238,7 +1398,32 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
         final ClassLoader oldCl = thread.getContextClassLoader();
 
         try {
-            TCCLUtil.setThreadContextClassLoader(thread, classLoader);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread1.setContextClassLoader(classLoader);
+            }
 
             final List<ResourceInfo> resourceList = config.facilities.resources;
 
@@ -1347,7 +1532,33 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                 }
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, oldCl);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldCl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldCl;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread1.setContextClassLoader(oldCl);
+            }
+
         }
     }
 
@@ -2291,13 +2502,65 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                 final WebBeansContext webBeansContext = appContext.getWebBeansContext();
                 if (webBeansContext != null) {
                     final ClassLoader old = Thread.currentThread().getContextClassLoader();
-                    TCCLUtil.setThreadContextClassLoader(classLoader);
+                    final Thread thread1 = Thread.currentThread();
+                    if (thread1 == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (classLoader == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = classLoader;
+                            private final Thread t = thread1;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa1);
+                    } else {
+                        thread1.setContextClassLoader(classLoader);
+                    }
+
                     try {
                         final ServletContext context = appContext.isStandaloneModule() && appContext.getWebContexts().iterator().hasNext() ?
                                 appContext.getWebContexts().iterator().next().getServletContext() : null;
                         webBeansContext.getService(ContainerLifecycle.class).stopApplication(context);
                     } finally {
-                        TCCLUtil.setThreadContextClassLoader(old);
+                        final Thread thread = Thread.currentThread();
+                        if (thread == null) {
+                            throw new NullPointerException("Attempting to set context classloader on null thread");
+                        }
+
+                        if (old == null) {
+                            throw new NullPointerException("Attempting to set null context classloader thread");
+                        }
+
+                        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                        if ((System.getSecurityManager() != null)) {
+                            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                                private final ClassLoader cl = old;
+                                private final Thread t = thread;
+
+                                @Override
+                                public Void run() {
+                                    t.setContextClassLoader(cl);
+                                    return null;
+                                }
+                            };
+                            AccessController.doPrivileged(pa);
+                        } else {
+                            thread.setContextClassLoader(old);
+                        }
+
                     }
                 }
                 final Map<String, Object> cb = appContext.getBindings();
@@ -3033,13 +3296,66 @@ public class Assembler extends AssemblerTool implements org.apache.openejb.spi.A
                 final ClassLoader old = thread.getContextClassLoader();
                 if (!appClassLoader) {
                     final ClassLoader classLoader = Assembler.class.getClassLoader();
-                    TCCLUtil.setThreadContextClassLoader(thread, classLoader == null ? ClassLoader.getSystemClassLoader() : classLoader);
+                    final ClassLoader classLoader1 = classLoader == null ? ClassLoader.getSystemClassLoader() : classLoader;
+                    final Thread thread1 = Thread.currentThread();
+                    if (thread1 == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (classLoader1 == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = classLoader1;
+                            private final Thread t = thread1;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread1.setContextClassLoader(classLoader1);
+                    }
+
                 } // else contextually we should have the app loader
 
                 try {
                     return doCreateResource(infos, serviceInfo);
                 } finally {
-                    TCCLUtil.setThreadContextClassLoader(thread, old);
+                    final Thread thread1 = Thread.currentThread();
+                    if (thread1 == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (old == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread1.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = old;
+                            private final Thread t = thread1;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread1.setContextClassLoader(old);
+                    }
+
                 }
             }
         });
