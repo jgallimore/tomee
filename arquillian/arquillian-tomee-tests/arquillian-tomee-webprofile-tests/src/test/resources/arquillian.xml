@@ -108,8 +108,8 @@
 
         # try to save some permgen mem
         openejb.cdi.activated-on-ejb = false
-        java.security.policy=file:///Users/jgallimore/mypolicy.policy
-        java.security.manager=org.apache.openejb.util.DebugSecurityManager
+        #java.security.policy=file:///Users/jgallimore/mypolicy.policy
+        #java.security.manager=org.apache.openejb.util.DebugSecurityManager
       </property>
     </configuration>
   </container>
