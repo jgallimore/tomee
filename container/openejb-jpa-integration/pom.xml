@@ -30,10 +30,14 @@
   <artifactId>openejb-jpa-integration</artifactId>
   <name>OpenEJB :: Container :: JPA Integration</name>
 
+  <properties>
+    <tomee.build.name>${project.groupId}.container.jpa</tomee.build.name>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-asm6-shaded</artifactId>
+      <artifactId>xbean-asm7-shaded</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>

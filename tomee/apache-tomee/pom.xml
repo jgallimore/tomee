@@ -33,6 +33,7 @@
   <name>OpenEJB :: TomEE :: Apache TomEE</name>
 
   <properties>
+    <tomee.build.name>${project.groupId}.tomee.tomee</tomee.build.name>
     <webprofile.work-dir>${project.build.directory}/webprofile-work-dir</webprofile.work-dir>
     <plus.work-dir>${project.build.directory}/plus-work-dir</plus.work-dir>
     <plume.work-dir>${project.build.directory}/plume-work-dir</plume.work-dir>
@@ -140,6 +141,11 @@
             <include>**/RemoteTomEEEJBContainer*.class</include>
             <include>**/META-INF/services/javax.ejb.spi.EJBContainerProvider</include>
           </includes>
+          <archive combine.children="append">
+            <manifestEntries>
+              <Automatic-Module-Name>${tomee.build.name}</Automatic-Module-Name>
+            </manifestEntries>
+          </archive>
         </configuration>
       </plugin>
       <plugin>
@@ -281,7 +287,7 @@
           </dependency>
           <dependency>
             <groupId>org.apache.xbean</groupId>
-            <artifactId>xbean-asm6-shaded</artifactId>
+            <artifactId>xbean-asm7-shaded</artifactId>
             <version>${xbeanVersion}</version>
           </dependency>
           <dependency>
