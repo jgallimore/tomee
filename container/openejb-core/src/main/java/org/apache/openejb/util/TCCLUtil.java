@@ -36,7 +36,16 @@ public class TCCLUtil {
         final ClassLoader oldClassLoader = thread.getContextClassLoader();
 
         if (IS_SECURITY_ENABLED) {
-            PrivilegedAction<Void> pa = new SetTcclAction(thread, classLoader);
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
             AccessController.doPrivileged(pa);
         } else {
             thread.setContextClassLoader(classLoader);
@@ -49,20 +58,4 @@ public class TCCLUtil {
         return setThreadContextClassLoader(Thread.currentThread(), classLoader);
     }
 
-    public static class SetTcclAction implements PrivilegedAction<Void> {
-
-        private final ClassLoader cl;
-        private final Thread t;
-
-        public SetTcclAction(Thread t, ClassLoader cl) {
-            this.t = t;
-            this.cl = cl;
-        }
-
-        @Override
-        public Void run() {
-            t.setContextClassLoader(cl);
-            return null;
-        }
-    }
 }
