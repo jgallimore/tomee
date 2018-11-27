@@ -119,7 +119,7 @@ public class RemoteTomEEContainer extends TomEEContainer<RemoteTomEEConfiguratio
                 System.setProperty(RemoteServer.SERVER_DEBUG_PORT, Integer.toString(configuration.getDebugPort()));
             }
 
-            container = new RemoteServer();
+            container = new RemoteServer(60, true);
             container.setPortStartup(httpPort);
 
             try {
