@@ -22,8 +22,6 @@ import java.security.PrivilegedAction;
 
 public class TCCLUtil {
 
-    public static final boolean IS_SECURITY_ENABLED = (System.getSecurityManager() != null);
-
     public static ClassLoader setThreadContextClassLoader(final Thread thread, final ClassLoader classLoader) {
         if (thread == null) {
             throw new NullPointerException("Attempting to set context classloader on null thread");
@@ -35,7 +33,7 @@ public class TCCLUtil {
 
         final ClassLoader oldClassLoader = thread.getContextClassLoader();
 
-        if (IS_SECURITY_ENABLED) {
+        if ((System.getSecurityManager() != null)) {
             PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
                 private final ClassLoader cl = classLoader;
                 private final Thread t = thread;
@@ -55,7 +53,34 @@ public class TCCLUtil {
     }
 
     public static ClassLoader setThreadContextClassLoader(final ClassLoader classLoader) {
-        return setThreadContextClassLoader(Thread.currentThread(), classLoader);
+        final Thread thread = Thread.currentThread();
+		if (thread == null) {
+		    throw new NullPointerException("Attempting to set context classloader on null thread");
+		}
+		
+		if (classLoader == null) {
+		    throw new NullPointerException("Attempting to set null context classloader thread");
+		}
+		
+		final ClassLoader oldClassLoader = thread.getContextClassLoader();
+		
+		if ((System.getSecurityManager() != null)) {
+		    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+		        private final ClassLoader cl = classLoader;
+		        private final Thread t = thread;
+		
+		        @Override
+		        public Void run() {
+		            t.setContextClassLoader(cl);
+		            return null;
+		        }
+		    };
+		    AccessController.doPrivileged(pa);
+		} else {
+		    thread.setContextClassLoader(classLoader);
+		}
+		
+		return oldClassLoader;
     }
 
 }
