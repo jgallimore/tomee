@@ -36,12 +36,13 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.spi.SecurityService;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.security.auth.login.LoginException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -133,7 +134,32 @@ class EjbRequestHandler extends RequestHandler {
 
                 //Need to set this for deserialization of the body - Will always be reset by EjbDaemon
                 final ClassLoader classLoader = di.getBeanClass().getClassLoader();
-                TCCLUtil.setThreadContextClassLoader(classLoader);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (classLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = classLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(classLoader);
+                }
 
                 res.start(EJBResponse.Time.DESERIALIZATION);
 

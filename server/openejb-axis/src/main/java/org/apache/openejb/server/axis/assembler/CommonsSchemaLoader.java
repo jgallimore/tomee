@@ -23,7 +23,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.openejb.OpenEJBException;
 import org.apache.openejb.server.ServerRuntimeException;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.ws.commons.schema.XmlSchemaCollection;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
@@ -42,6 +41,8 @@ import javax.xml.namespace.QName;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -149,7 +150,33 @@ public class CommonsSchemaLoader {
 
         Thread thread = Thread.currentThread();
         ClassLoader oldCl = thread.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(thread, this.getClass().getClassLoader());
+        final ClassLoader classLoader = this.getClass().getClassLoader();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
+
         try {
             try {
                 definition = wsdlReader.readWSDL(wsdlLocator);
@@ -159,7 +186,32 @@ public class CommonsSchemaLoader {
                 throw new OpenEJBException(e.getMessage(), e);
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, oldCl);
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldCl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldCl;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(oldCl);
+            }
+
         }
 
         return definition;

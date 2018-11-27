@@ -23,9 +23,9 @@ import org.apache.openejb.server.httpd.EndWebBeansListener;
 import org.apache.openejb.server.httpd.HttpSession;
 import org.apache.openejb.util.DaemonThreadFactory;
 import org.apache.openejb.util.Duration;
-import org.apache.openejb.util.TCCLUtil;
-import org.apache.webbeans.config.WebBeansContext;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -51,7 +51,33 @@ public class SessionManager {
 
         final Thread tc = Thread.currentThread();
         final ClassLoader tccl = tc.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(tc, app.getClassLoader());
+        final ClassLoader classLoader = app.getClassLoader();
+        if (tc == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = tc.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = tc;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            tc.setContextClassLoader(classLoader);
+        }
+
         try {
             final Iterator<SessionWrapper> iterator = sessions.values().iterator();
             while (iterator.hasNext()) {
@@ -62,7 +88,32 @@ public class SessionManager {
                 }
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(tc, tccl);
+            if (tc == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (tccl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = tc.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = tccl;
+                    private final Thread t = tc;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                tc.setContextClassLoader(tccl);
+            }
+
         }
     }
 

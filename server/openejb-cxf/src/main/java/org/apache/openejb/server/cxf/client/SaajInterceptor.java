@@ -18,12 +18,13 @@
 package org.apache.openejb.server.cxf.client;
 
 import org.apache.cxf.Bus;
-import org.apache.cxf.BusFactory;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.openejb.server.cxf.transport.util.CxfUtil;
 import org.apache.openejb.server.webservices.saaj.SaajUniverse;
-import org.apache.openejb.util.TCCLUtil;
+
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 public abstract class SaajInterceptor extends AbstractPhaseInterceptor<Message> {
     private static boolean interceptorsRegistered = false;
@@ -38,7 +39,34 @@ public abstract class SaajInterceptor extends AbstractPhaseInterceptor<Message> 
         if (!interceptorsRegistered) {
             final Bus bus = CxfUtil.getBus();
             final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-            TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
+            final ClassLoader classLoader = CxfUtil.initBusLoader();
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(classLoader);
+            }
+
             try {
                 SaajUniverse universe = new SaajUniverse();
                 bus.getOutInterceptors().add(new SaajOutInterceptor(universe));

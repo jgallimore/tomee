@@ -48,7 +48,6 @@ import org.apache.openejb.server.httpd.HttpListenerRegistry;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.xbean.finder.MetaAnnotatedClass;
 
@@ -75,6 +74,8 @@ import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -136,7 +137,32 @@ public abstract class RESTService implements ServerService, SelfManaging {
         }
 
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(classLoader);
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(classLoader);
+        }
 
         final Collection<Object> additionalProviders = new HashSet<>();
         addAppProvidersIfNeeded(appInfo, webApp, classLoader, additionalProviders);
@@ -299,7 +325,33 @@ public abstract class RESTService implements ServerService, SelfManaging {
                 fullServletDeployment(appInfo, webApp, webContext, restEjbs, classLoader, injections, owbCtx, context, additionalProviders, pojoConfigurations);
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(oldLoader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(oldLoader);
+            }
+
         }
     }
 
@@ -614,7 +666,32 @@ public abstract class RESTService implements ServerService, SelfManaging {
             if (appInfo.webApps.size() == 0) {
                 final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
                 final ClassLoader appClassLoader = getClassLoader(containerSystem.getAppContext(appInfo.appId).getClassLoader());
-                TCCLUtil.setThreadContextClassLoader(appClassLoader);
+                final Thread thread1 = Thread.currentThread();
+                if (thread1 == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (appClassLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = appClassLoader;
+                        private final Thread t = thread1;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa1);
+                } else {
+                    thread1.setContextClassLoader(appClassLoader);
+                }
 
                 try {
                     final Map<String, EJBRestServiceInfo> restEjbs = getRestEjbs(appInfo, null);
@@ -676,7 +753,33 @@ public abstract class RESTService implements ServerService, SelfManaging {
                         }
                     }
                 } finally {
-                    TCCLUtil.setThreadContextClassLoader(oldLoader);
+                    final Thread thread = Thread.currentThread();
+                    if (thread == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (oldLoader == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = oldLoader;
+                            private final Thread t = thread;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread.setContextClassLoader(oldLoader);
+                    }
+
                 }
             } else {
                 for (final WebAppInfo webApp : appInfo.webApps) {

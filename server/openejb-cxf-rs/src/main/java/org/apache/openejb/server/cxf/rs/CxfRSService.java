@@ -32,7 +32,6 @@ import org.apache.openejb.server.cxf.transport.util.CxfUtil;
 import org.apache.openejb.server.rest.RESTService;
 import org.apache.openejb.server.rest.RsHttpListener;
 import org.apache.openejb.threads.task.CUTask;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.annotation.AnyLiteral;
 import org.apache.webbeans.annotation.EmptyAnnotationLiteral;
 import org.apache.webbeans.config.WebBeansContext;
@@ -69,6 +68,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.lang.reflect.Type;
 import java.net.Socket;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -198,7 +199,34 @@ public class CxfRSService extends RESTService {
         final Bus bus = CxfUtil.getBus();
 
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
+        final ClassLoader classLoader = CxfUtil.initBusLoader();
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
+
         try {
             // force init of bindings
             if (!CxfUtil.hasService(JAXRSBindingFactory.JAXRS_BINDING_ID)) {

@@ -21,12 +21,13 @@ import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.monitoring.Managed;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Properties;
@@ -230,7 +231,31 @@ public class ServicePool extends ServerServiceFilter {
                 final Thread thread = Thread.currentThread();
                 try {
                     cl = thread.getContextClassLoader();
-                    TCCLUtil.setThreadContextClassLoader(thread, tccl);
+                    if (thread == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (tccl == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl1 = tccl;
+                            private final Thread t = thread;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl1);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread.setContextClassLoader(tccl);
+                    }
 
                     if (stop.get()) {
                         return;
@@ -275,7 +300,33 @@ public class ServicePool extends ServerServiceFilter {
                         }
                     }
 
-                    TCCLUtil.setThreadContextClassLoader(thread, cl);
+                    if (thread == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (cl == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        final ClassLoader loader = cl;
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl1 = loader;
+                            private final Thread t = thread;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl1);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread.setContextClassLoader(cl);
+                    }
+
                 }
             }
         };

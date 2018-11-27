@@ -35,7 +35,6 @@ import org.apache.openejb.server.webservices.WsConstants;
 import org.apache.openejb.server.webservices.saaj.SaajUniverse;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.w3c.dom.Element;
 
 import javax.servlet.http.HttpServletResponse;
@@ -47,6 +46,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -128,7 +129,33 @@ public class AxisWsContainer implements HttpListener {
                 }
                 final SOAPService service = messageContext.getService();
 
-                TCCLUtil.setThreadContextClassLoader(classLoader);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (classLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = classLoader;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(classLoader);
+                }
+
                 service.invoke(messageContext);
 
                 responseMessage = messageContext.getResponseMessage();
@@ -190,7 +217,33 @@ public class AxisWsContainer implements HttpListener {
                 logger.warning(Messages.getMessage("exception00"), e);
             }
         } finally {
-            TCCLUtil.setThreadContextClassLoader(oldClassLoader);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldClassLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldClassLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(oldClassLoader);
+            }
+
         }
     }
 

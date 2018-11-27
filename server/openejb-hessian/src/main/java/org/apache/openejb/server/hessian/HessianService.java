@@ -34,7 +34,6 @@ import org.apache.openejb.server.httpd.HttpListenerRegistry;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.proxy.ProxyEJB;
 
 import java.io.IOException;
@@ -42,6 +41,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.URISyntaxException;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Collection;
 import java.util.Properties;
 
@@ -72,7 +73,32 @@ public class HessianService implements ServerService, SelfManaging {
 
             final ClassLoader old = Thread.currentThread().getContextClassLoader();
             final ClassLoader classLoader = beanContext.getClassLoader();
-            TCCLUtil.setThreadContextClassLoader(classLoader);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread1.setContextClassLoader(classLoader);
+            }
 
             try {
                 final HessianServer server;
@@ -101,7 +127,33 @@ public class HessianService implements ServerService, SelfManaging {
                     throw new OpenEJBRuntimeException(e);
                 }
             } finally {
-                TCCLUtil.setThreadContextClassLoader(old);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (old == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = old;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(old);
+                }
+
             }
         }
     }

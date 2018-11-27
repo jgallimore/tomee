@@ -38,7 +38,6 @@ import org.apache.openejb.server.cxf.JaxWsImplementorInfoImpl;
 import org.apache.openejb.util.AppFinder;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.component.AbstractOwbBean;
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.webbeans.container.BeanManagerImpl;
@@ -54,6 +53,8 @@ import javax.naming.Context;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.WebServiceException;
 import java.lang.reflect.Type;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -106,7 +107,33 @@ public class PojoEndpoint extends CxfEndpoint {
         implementor = null;
 
         final ClassLoader old = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(loader);
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (loader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = loader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(loader);
+        }
+
         try {
             final WebBeansContext webBeansContext = AppFinder.findAppContextOrWeb(
                     Thread.currentThread().getContextClassLoader(), AppFinder.WebBeansContextTransformer.INSTANCE);
@@ -165,7 +192,33 @@ public class PojoEndpoint extends CxfEndpoint {
         } catch (final Exception e) {
             throw new WebServiceException("Service resource injection failed", e);
         } finally {
-            TCCLUtil.setThreadContextClassLoader(old);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (old == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = old;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(old);
+            }
+
         }
 
         this.injector = injector;

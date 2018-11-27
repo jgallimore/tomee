@@ -48,13 +48,14 @@ import org.apache.openejb.observer.Observes;
 import org.apache.openejb.server.cxf.transport.OpenEJBHttpDestinationFactory;
 import org.apache.openejb.server.cxf.transport.event.BusCreated;
 import org.apache.openejb.util.PropertiesHelper;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.reflection.Reflections;
 
 import javax.management.MBeanServer;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -99,7 +100,34 @@ public final class CxfUtil {
 
     private static Bus initDefaultBus() {
         final ClassLoader cl = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(CxfUtil.class.getClassLoader());
+        final ClassLoader classLoader = CxfUtil.class.getClassLoader();
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl1 = classLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl1);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(classLoader);
+        }
+
         try { // create the bus reusing cxf logic but skipping factory lookup
             final Bus bus = BusFactory.newInstance(CXFBusFactory.class.getName()).createBus();
             bus.setId(SystemInstance.get().getProperty("openejb.cxf.bus.id", "openejb.cxf.bus"));
@@ -130,7 +158,33 @@ public final class CxfUtil {
 
             return bus; // we keep as internal the real bus and just expose to cxf the client aware bus to be able to cast it easily
         } finally {
-            TCCLUtil.setThreadContextClassLoader(cl);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (cl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl1 = cl;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl1);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(cl);
+            }
+
         }
     }
 
@@ -175,7 +229,33 @@ public final class CxfUtil {
                 && (old == null || !CxfContainerClassLoader.class.isInstance(old))) {
             CxfContainerClassLoader.class.cast(loader).clear();
         }
-        TCCLUtil.setThreadContextClassLoader(old);
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (old == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = old;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(old);
+        }
+
     }
 
     public static void configureEndpoint(final AbstractEndpointFactory svrFactory, final ServiceConfiguration configuration, final String prefix) {

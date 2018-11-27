@@ -27,9 +27,10 @@ import org.apache.openejb.server.cxf.transport.util.CxfUtil;
 import org.apache.openejb.server.httpd.HttpListener;
 import org.apache.openejb.server.httpd.HttpRequest;
 import org.apache.openejb.server.httpd.HttpResponse;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.management.ObjectName;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 public abstract class CxfWsContainer implements HttpListener {
     protected final Bus bus;
@@ -81,7 +82,34 @@ public abstract class CxfWsContainer implements HttpListener {
     @Override
     public void onMessage(final HttpRequest request, final HttpResponse response) throws Exception {
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
+        final ClassLoader classLoader = CxfUtil.initBusLoader();
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
+
         try {
             destination.invoke(null, request.getServletContext(), request, response);
         } finally {

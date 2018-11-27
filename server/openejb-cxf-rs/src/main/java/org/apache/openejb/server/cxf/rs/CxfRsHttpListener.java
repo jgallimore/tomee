@@ -84,7 +84,6 @@ import org.apache.openejb.server.rest.RsHttpListener;
 import org.apache.openejb.util.AppFinder;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.openejb.util.proxy.ProxyEJB;
 import org.apache.openejb.util.reflection.Reflections;
 import org.apache.webbeans.config.WebBeansContext;
@@ -121,6 +120,8 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -249,7 +250,34 @@ public class CxfRsHttpListener implements RsHttpListener {
         httpRequest.setAttribute("org.apache.cxf.transport.endpoint.address", baseURL);
 
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
+        final ClassLoader classLoader = CxfUtil.initBusLoader();
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
+
         try {
             destination.invoke(null, httpRequest.getServletContext(), httpRequest, httpResponse);
         } finally {
@@ -367,7 +395,34 @@ public class CxfRsHttpListener implements RsHttpListener {
                         final Application app, final Invoker invoker, final Collection<Object> additionalProviders, final ServiceConfiguration configuration,
                         final WebBeansContext webBeansContext) {
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
+        final ClassLoader classLoader = CxfUtil.initBusLoader();
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
+
         try {
             final JAXRSServerFactoryBean factory = newFactory(address, createServiceJmxName(clazz.getClassLoader()), createEndpointName(app));
             configureFactory(additionalProviders, configuration, factory, webBeansContext);
@@ -551,7 +606,34 @@ public class CxfRsHttpListener implements RsHttpListener {
         }
 
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
+        final ClassLoader classLoader = CxfUtil.initBusLoader();
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
+
         try {
             server.destroy();
             SystemInstance.get().fireEvent(new ServerDestroyed(server));
@@ -574,7 +656,34 @@ public class CxfRsHttpListener implements RsHttpListener {
                                   final Collection<Injection> injections, final Context context, final WebBeansContext owbCtx,
                                   final ServiceConfiguration serviceConfiguration) {
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(CxfUtil.initBusLoader());
+        final ClassLoader classLoader1 = CxfUtil.initBusLoader();
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader1 == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader1;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(classLoader1);
+        }
+
         try {
             final JAXRSServerFactoryBean factory = newFactory(prefix, createServiceJmxName(classLoader), createEndpointName(application));
             configureFactory(additionalProviders, serviceConfiguration, factory, owbCtx);

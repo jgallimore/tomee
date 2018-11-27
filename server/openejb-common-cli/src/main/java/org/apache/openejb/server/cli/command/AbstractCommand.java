@@ -18,11 +18,12 @@ package org.apache.openejb.server.cli.command;
 
 import org.apache.openejb.core.LocalInitialContextFactory;
 import org.apache.openejb.server.cli.StreamManager;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Properties;
 
 public abstract class AbstractCommand {
@@ -44,11 +45,64 @@ public abstract class AbstractCommand {
         p.setProperty(Context.INITIAL_CONTEXT_FACTORY, LocalInitialContextFactory.class.getName());
 
         ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(getClass().getClassLoader());
+        final ClassLoader classLoader = getClass().getClassLoader();
+        final Thread thread1 = Thread.currentThread();
+        if (thread1 == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread1.setContextClassLoader(classLoader);
+        }
+
         try {
             return (T) new InitialContext(p).lookup(jndiName);
         } finally {
-            TCCLUtil.setThreadContextClassLoader(oldCl);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldCl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldCl;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(oldCl);
+            }
+
         }
     }
 }

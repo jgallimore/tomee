@@ -19,7 +19,6 @@ package org.apache.openejb.server.ejbd;
 import org.apache.openejb.ProxyInfo;
 import org.apache.openejb.core.ServerFederation;
 import org.apache.openejb.server.ServiceException;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.ejb.EJBHome;
 import javax.ejb.EJBMetaData;
@@ -30,6 +29,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -101,10 +102,63 @@ public class EjbServer implements org.apache.openejb.server.ServerService, org.a
         final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
 
         try {
-            TCCLUtil.setThreadContextClassLoader(getClass().getClassLoader());
+            final ClassLoader classLoader = getClass().getClassLoader();
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(classLoader);
+            }
+
             server.service(inputStream, outputStream);
         } finally {
-            TCCLUtil.setThreadContextClassLoader(oldCl);
+            final Thread thread = Thread.currentThread();
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldCl == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldCl;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(oldCl);
+            }
+
         }
     }
 

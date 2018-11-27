@@ -25,7 +25,6 @@ import org.apache.openejb.InjectionProcessor;
 import org.apache.openejb.OpenEJBException;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.TCCLUtil;
 import org.apache.webbeans.component.InjectionTargetBean;
 import org.apache.webbeans.config.WebBeansContext;
 import org.apache.webbeans.container.BeanManagerImpl;
@@ -48,6 +47,8 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -168,7 +169,32 @@ public abstract class CdiResourceProvider implements ResourceProvider {
         // important to switch of classloader to get the right InitialContext
         final Thread thread = Thread.currentThread();
         final ClassLoader oldLoader = thread.getContextClassLoader();
-        TCCLUtil.setThreadContextClassLoader(thread, classLoader);
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader1 = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = classLoader;
+                private final Thread t = thread;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa1);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
+
         Object instance;
         try {
             instance = creator.create();
@@ -177,7 +203,32 @@ public abstract class CdiResourceProvider implements ResourceProvider {
             m.put(BeanCreator.class, creator);
             instance = creator.create();
         } finally {
-            TCCLUtil.setThreadContextClassLoader(thread, oldLoader);
+            if (thread == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (oldLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = oldLoader;
+                    private final Thread t = thread;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa);
+            } else {
+                thread.setContextClassLoader(oldLoader);
+            }
+
         }
 
         m.getExchange().put(INSTANCE_KEY, instance);

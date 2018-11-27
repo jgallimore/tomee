@@ -53,7 +53,6 @@ import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
 import org.apache.openejb.util.StringTemplate;
-import org.apache.openejb.util.TCCLUtil;
 
 import javax.naming.Context;
 import javax.xml.namespace.QName;
@@ -64,6 +63,8 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -286,7 +287,34 @@ public abstract class WsService implements ServerService, SelfManaging {
                         continue;
 
                     final ClassLoader old = Thread.currentThread().getContextClassLoader();
-                    TCCLUtil.setThreadContextClassLoader(beanContext.getClassLoader());
+                    final ClassLoader classLoader1 = beanContext.getClassLoader();
+                    final Thread thread1 = Thread.currentThread();
+                    if (thread1 == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (classLoader1 == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = classLoader1;
+                            private final Thread t = thread1;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa1);
+                    } else {
+                        thread1.setContextClassLoader(classLoader1);
+                    }
+
                     try {
                         final PortData port = WsBuilder.toPortData(portInfo, beanContext.getInjections(), moduleBaseUrl, beanContext.getClassLoader());
 
@@ -338,7 +366,33 @@ public abstract class WsService implements ServerService, SelfManaging {
                     } catch (final Throwable e) {
                         logger.error("Error deploying JAX-WS Web Service for EJB " + beanContext.getDeploymentID(), e);
                     } finally {
-                        TCCLUtil.setThreadContextClassLoader(old);
+                        final Thread thread = Thread.currentThread();
+                        if (thread == null) {
+                            throw new NullPointerException("Attempting to set context classloader on null thread");
+                        }
+
+                        if (old == null) {
+                            throw new NullPointerException("Attempting to set null context classloader thread");
+                        }
+
+                        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                        if ((System.getSecurityManager() != null)) {
+                            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                                private final ClassLoader cl = old;
+                                private final Thread t = thread;
+
+                                @Override
+                                public Void run() {
+                                    t.setContextClassLoader(cl);
+                                    return null;
+                                }
+                            };
+                            AccessController.doPrivileged(pa);
+                        } else {
+                            thread.setContextClassLoader(old);
+                        }
+
                     }
                 }
             }
@@ -407,7 +461,33 @@ public abstract class WsService implements ServerService, SelfManaging {
 
             final ClassLoader old = Thread.currentThread().getContextClassLoader();
             final ClassLoader classLoader = webContext.getClassLoader();
-            TCCLUtil.setThreadContextClassLoader(classLoader);
+            final Thread thread1 = Thread.currentThread();
+            if (thread1 == null) {
+                throw new NullPointerException("Attempting to set context classloader on null thread");
+            }
+
+            if (classLoader == null) {
+                throw new NullPointerException("Attempting to set null context classloader thread");
+            }
+
+            final ClassLoader oldClassLoader1 = thread1.getContextClassLoader();
+
+            if ((System.getSecurityManager() != null)) {
+                PrivilegedAction<Void> pa1 = new PrivilegedAction<Void>() {
+                    private final ClassLoader cl = classLoader;
+                    private final Thread t = thread1;
+
+                    @Override
+                    public Void run() {
+                        t.setContextClassLoader(cl);
+                        return null;
+                    }
+                };
+                AccessController.doPrivileged(pa1);
+            } else {
+                thread1.setContextClassLoader(classLoader);
+            }
+
             try {
                 final Collection<Injection> injections = webContext.getInjections();
                 final Context context = webContext.getJndiEnc();
@@ -449,7 +529,33 @@ public abstract class WsService implements ServerService, SelfManaging {
             } catch (final Throwable e) {
                 logger.error("Error deploying CXF webservice for servlet " + portInfo.serviceLink, e);
             } finally {
-                TCCLUtil.setThreadContextClassLoader(old);
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (old == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = old;
+                        private final Thread t = thread;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(old);
+                }
+
             }
         }
     }
