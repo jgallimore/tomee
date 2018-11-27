@@ -19,12 +19,13 @@ package org.apache.openejb.client;
 import org.apache.openejb.client.proxy.ProxyManager;
 import org.apache.openejb.client.serializer.SerializationWrapper;
 import org.apache.openejb.client.util.ClassLoaderUtil;
-import org.apache.openejb.client.util.TCCLUtil;
 
 import javax.ejb.EJBException;
 import javax.ejb.EJBObject;
 import java.lang.reflect.Method;
 import java.rmi.RemoteException;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -137,13 +138,70 @@ public abstract class EJBObjectHandler extends EJBInvocationHandler {
             final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
             final boolean parent = ClassLoaderUtil.isParent(getClass().getClassLoader(), oldCl);
             if (!parent) {
-                TCCLUtil.setThreadContextClassLoader(getClass().getClassLoader());
+                final ClassLoader classLoader = getClass().getClassLoader();
+                final Thread thread = Thread.currentThread();
+                if (thread == null) {
+                    throw new NullPointerException("Attempting to set context classloader on null thread");
+                }
+
+                if (classLoader == null) {
+                    throw new NullPointerException("Attempting to set null context classloader thread");
+                }
+
+                final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                if ((System.getSecurityManager() != null)) {
+                    Thread t1 = thread;
+                    ClassLoader cl1 = classLoader;
+                    PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                        private final ClassLoader cl = cl1;
+                        private final Thread t = t1;
+
+                        @Override
+                        public Void run() {
+                            t.setContextClassLoader(cl);
+                            return null;
+                        }
+                    };
+                    AccessController.doPrivileged(pa);
+                } else {
+                    thread.setContextClassLoader(classLoader);
+                }
+
             }
             try {
                 ejbObject = (EJBObjectProxy) ProxyManager.newProxyInstance(interfaces.toArray(new Class[interfaces.size()]), this);
             } finally {
                 if (!parent) {
-                    TCCLUtil.setThreadContextClassLoader(oldCl);
+                    final Thread thread = Thread.currentThread();
+                    if (thread == null) {
+                        throw new NullPointerException("Attempting to set context classloader on null thread");
+                    }
+
+                    if (oldCl == null) {
+                        throw new NullPointerException("Attempting to set null context classloader thread");
+                    }
+
+                    final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+                    if ((System.getSecurityManager() != null)) {
+                        Thread t1 = thread;
+                        ClassLoader cl1 = oldCl;
+                        PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                            private final ClassLoader cl = cl1;
+                            private final Thread t = t1;
+
+                            @Override
+                            public Void run() {
+                                t.setContextClassLoader(cl);
+                                return null;
+                            }
+                        };
+                        AccessController.doPrivileged(pa);
+                    } else {
+                        thread.setContextClassLoader(oldCl);
+                    }
+
                 }
             }
         } catch (IllegalAccessException e) {

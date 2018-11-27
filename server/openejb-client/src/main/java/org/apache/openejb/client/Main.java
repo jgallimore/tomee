@@ -16,8 +16,6 @@
  */
 package org.apache.openejb.client;
 
-import org.apache.openejb.client.util.TCCLUtil;
-
 import javax.naming.InitialContext;
 import javax.naming.NameNotFoundException;
 import javax.security.auth.Subject;
@@ -63,7 +61,34 @@ public class Main {
         } else {
             classLoader = new URLClassLoader(new URL[]{file.toURI().toURL()}, classLoader);
         }
-        TCCLUtil.setThreadContextClassLoader(classLoader);
+        final Thread thread = Thread.currentThread();
+        if (thread == null) {
+            throw new NullPointerException("Attempting to set context classloader on null thread");
+        }
+
+        if (classLoader == null) {
+            throw new NullPointerException("Attempting to set null context classloader thread");
+        }
+
+        final ClassLoader oldClassLoader = thread.getContextClassLoader();
+
+        if ((System.getSecurityManager() != null)) {
+            Thread t1 = thread;
+            ClassLoader cl1 = classLoader;
+            PrivilegedAction<Void> pa = new PrivilegedAction<Void>() {
+                private final ClassLoader cl = cl1;
+                private final Thread t = t1;
+
+                @Override
+                public Void run() {
+                    t.setContextClassLoader(cl);
+                    return null;
+                }
+            };
+            AccessController.doPrivileged(pa);
+        } else {
+            thread.setContextClassLoader(classLoader);
+        }
 
         // load the main class and get the main method
         // do this first so we fail fast on a bad class path
