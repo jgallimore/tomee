@@ -87,6 +87,7 @@ public class AutoConnectionTrackerTest extends TestCase {
     public static final int LOOP_SIZE = 200;
     public static final int NUM_THREADS = 4;
 
+    @Ignore
     public void test() throws Exception {
         System.setProperty("openejb.log.async", "false");
         final Logger logger = Logger.getInstance(LogCategory.OPENEJB_CONNECTOR, AutoConnectionTrackerTest.class);
