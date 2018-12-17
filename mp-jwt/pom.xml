@@ -27,11 +27,21 @@
   <packaging>jar</packaging>
   <name>OpenEJB :: Microprofile JWT</name>
 
+  <properties>
+    <tomee.build.name>${project.groupId}.microprofile.jwt</tomee.build.name>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.eclipse.microprofile.jwt</groupId>
       <artifactId>microprofile-jwt-auth-api</artifactId>
       <version>${microprofile.jwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.microprofile.config</groupId>
+      <artifactId>microprofile-config-api</artifactId>
+      <version>${microprofile.config.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -62,6 +72,12 @@
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-catalina</artifactId>
       <version>${tomcat.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-catalina</artifactId>
+      <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

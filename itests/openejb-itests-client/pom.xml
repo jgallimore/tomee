@@ -33,6 +33,9 @@
   <packaging>jar</packaging>
   <name>OpenEJB :: iTests :: Client</name>
 
+  <properties>
+    <tomee.build.name>${project.groupId}.itests.client</tomee.build.name>
+  </properties>
   <build>
     <resources>
       <resource>
@@ -45,11 +48,14 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <archive>
+          <archive combine.children="append">
             <manifest>
               <mainClass>org.apache.openejb.test.Main</mainClass>
               <addClasspath>true</addClasspath>
             </manifest>
+            <manifestEntries>
+              <Automatic-Module-Name>${tomee.build.name}</Automatic-Module-Name>
+            </manifestEntries>
           </archive>
         </configuration>
       </plugin>

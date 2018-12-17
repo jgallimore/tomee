@@ -6,6 +6,7 @@ target
 *.ipr
 *.iml
 *.log
+*.vscode
 *~
 quick.bat
 /tomee/tomee-plume-webapp/overlays/
@@ -13,3 +14,5 @@ quick.bat
 /temp
 /report.txt
 nb-configuration.xml
+.factorypath
+.history

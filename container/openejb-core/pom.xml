@@ -35,6 +35,7 @@
   <name>OpenEJB :: Container :: Core</name>
 
   <properties>
+    <tomee.build.name>${project.groupId}.container.core</tomee.build.name>
     <openejb.osgi.import.pkg>
       javax.annotation;version="[1.1.0,2.0.0)",
       javax.annotation.security;version="[1.1.0,2.0.0)",
@@ -392,12 +393,13 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <archive>
+          <archive combine.children="append">
             <manifest>
               <mainClass>org.apache.openejb.cli.Bootstrap</mainClass>
               <!--<addClasspath>true</addClasspath>-->
             </manifest>
             <manifestEntries>
+              <Automatic-Module-Name>${tomee.build.name}</Automatic-Module-Name>
               <Class-Path>openejb-loader-${project.version}.jar openejb-client-${project.version}.jar
                 xbean-finder-shaded-${xbeanVersion}.jar xbean-asm7-shaded-${xbeanVersion}.jar
               </Class-Path>
