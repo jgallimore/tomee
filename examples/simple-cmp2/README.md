@@ -6,7 +6,7 @@ title=EJB 2.1 CMP EntityBeans (CMP2)
 
 
 
-OpenEJB, the EJB Container for TomEE and Geronimo,  does support all of EJB 1.1 to 3.1, including CMP2.
+OpenEJB, the EJB Container for TomEE and Geronimo, does support all of EJB 1.1 to 3.1, including CMP2.
 
 The CMP2 implementation is actually done by adapting the CMP2 bean into a JPA Entity dynamically at deploy time.
 
@@ -252,8 +252,7 @@ The majority of work in CMP2 is done in the xml:
 
 # CMP2 to JPA
 
-As mentioned OpenEJB will implement the abstract CMP2 `EntityBean` as a JPA `@Entity`, create a `persistence.xml` file and convert all `ejb-jar.xml` mapping and queries to
-a JPA `entity-mappings.xml` file.
+As mentioned OpenEJB will implement the abstract CMP2 `EntityBean` as a JPA `@Entity`, create a `persistence.xml` file and convert all `ejb-jar.xml` mapping and queries to a JPA `entity-mappings.xml` file.
 
 Both of these files will be written to disk by setting the system property `openejb.descriptors.output` to `true`.  In the testcase
 above, this can be done via the `InitialContext` parameters via code like this:
@@ -267,6 +266,15 @@ above, this can be done via the `InitialContext` parameters via code like this:
     p.put("openejb.descriptors.output", "true");
 
     Context context = new InitialContext(p);
+
+When running in Apache TomEE, adding `openejb.descriptors.output = true` in `conf/system.properties` can achieve the same effect.
+The files that are generated with this option can picked up and included in your application, and you can tailor them to suit
+your needs, if required.
+
+NOTE: The CMP-JPA conversion that takes place as your application deploys creates JPA classes for the Entity beans. These
+have the same class name as your CMP beans, but the package is prefixed with `openejb.`. For example, `org.superbiz.cmp2.MovieBean`
+becomes `openejb.org.superbiz.cmp2.MovieBean`. If you customized the generated XML files, be sure to use the correct class name
+to reference the entities.
 
 Below are the generated `persistence.xml` and `mapping.xml` files for our CMP2 `EntityBean`
 
@@ -316,3 +324,15 @@ accordingly.
             </attributes>
         </entity>
     </entity-mappings>
+
+You may wish to update entity mappings in this file. A simple example may be that you wish to use specific column names or lengths for the
+fields. As an example, if we wanted to allow up to 200 characters for a movie title, and wanted the database column to be called `MOVIE_TITLE`
+this element:
+
+<basic name="title"/>
+
+could become:
+
+    <basic name="title">
+        <column name="MOVIE_TITLE" length="200"/>
+    </basic>
