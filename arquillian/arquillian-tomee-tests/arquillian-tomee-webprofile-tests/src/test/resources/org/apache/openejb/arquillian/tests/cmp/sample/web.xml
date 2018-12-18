@@ -30,7 +30,7 @@
 
     <servlet-mapping>
         <servlet-name>RosterServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/test</url-pattern>
     </servlet-mapping>
 
     <ejb-ref>

@@ -23,11 +23,13 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
+import org.jboss.shrinkwrap.api.exporter.ZipExporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.File;
 import java.net.URL;
 
 /**
@@ -59,7 +61,7 @@ public class CustomOrmXmlTest {
     @Test
     @RunAsClient
     public void checkCmpJpaEntityORMMappings() throws Exception {
-        final String output = IO.slurp(new URL(url.toExternalForm()));
+        final String output = IO.slurp(new URL(url.toExternalForm() + "test"));
         System.out.println(output);
 
         Assert.assertTrue(output.contains("TABLE_NAME: ACTOR, COLUMN_NAME: ACTORID, DATA_TYPE: INTEGER, CHARACTER_MAXIMUM_LENGTH: null"));

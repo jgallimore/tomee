@@ -27,6 +27,7 @@
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true, Indexes=false, IgnoreErrors=true)"/>
             <property name="openjpa.Log" value="DefaultLevel=INFO"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.weaving" value="false"/>
         </properties>
     </persistence-unit>
 </persistence>

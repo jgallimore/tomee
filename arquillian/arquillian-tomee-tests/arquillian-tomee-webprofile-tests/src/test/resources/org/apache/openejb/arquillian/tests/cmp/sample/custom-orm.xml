@@ -25,7 +25,7 @@
         </named-query>
         <attributes>
             <id name="movieId">
-                <generated-value strategy="IDENTITY"/>
+                <generated-value strategy="SEQUENCE"/>
             </id>
             <basic name="name">
                 <column name="movie_name" length="250"/>
@@ -42,7 +42,7 @@
         </named-query>
         <attributes>
             <id name="actorId">
-                <generated-value strategy="IDENTITY"/>
+                <generated-value strategy="SEQUENCE"/>
             </id>
             <basic name="name">
                 <column name="actor_name" length="250"/>
