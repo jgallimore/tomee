@@ -43,6 +43,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.eclipse.microprofile.metrics</groupId>
+            <artifactId>microprofile-metrics-api</artifactId>
+            <version>${microprofile.metrics.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.geronimo.safeguard</groupId>
             <artifactId>safeguard-impl</artifactId>
             <version>${microprofile.fault-tolerance.impl.version}</version>
