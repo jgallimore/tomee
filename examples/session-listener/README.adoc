@@ -1,0 +1,23 @@
+= Session Listener
+:index-group: Misc
+:jbake-type: page
+:jbake-status: published
+
+This example demonstrates the use of filters and listeners in TomEE
+
+== Run the application:
+
+....
+mvn clean install tomee:run 
+....
+
+The application will use a filter and session listener to track sessions created and unique users logged in.
+
+== To access the application call:
+
+....
+GET http://localhost:8080/session-listener/
+....
+
+
+
