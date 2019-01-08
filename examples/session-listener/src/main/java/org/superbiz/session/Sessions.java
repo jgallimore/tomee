@@ -19,10 +19,12 @@ package org.superbiz.session;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Sessions {
 
     private static final Map<String, String> SESSION_PRINCIPALS = new ConcurrentHashMap<>();
+    private static final AtomicInteger ACTIVE_SESSIONS = new AtomicInteger(0);
 
     private Sessions() {
         //NO-OP
@@ -36,8 +38,16 @@ public class Sessions {
         return new HashSet<>(SESSION_PRINCIPALS.values()).size();
     }
 
+    public static int activeSessions() {
+        return ACTIVE_SESSIONS.get();
+    }
 
     public static void sessionDestroyed(final String sessionId) {
+        ACTIVE_SESSIONS.decrementAndGet();
         SESSION_PRINCIPALS.remove(sessionId);
+    }
+
+    public static void sessionCreated(final String sessionId) {
+        ACTIVE_SESSIONS.incrementAndGet();
     }
 }

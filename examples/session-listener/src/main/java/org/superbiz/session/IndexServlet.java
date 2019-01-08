@@ -26,8 +26,8 @@ public class IndexServlet extends HttpServlet {
 
     @Override
     protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("Hello world!");
         resp.getWriter().println(String.format("There are %d unique users currently logged in", Sessions.userCount()));
+        resp.getWriter().println(String.format("There are %d active sessions", Sessions.userCount()));
         resp.getWriter().flush();
     }
 }
