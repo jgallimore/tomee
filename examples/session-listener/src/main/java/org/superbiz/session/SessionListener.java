@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSessionListener;
 public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(final HttpSessionEvent se) {
-        // NO-OP
+        Sessions.sessionCreated(se.getSession().getId());
     }
 
     @Override
