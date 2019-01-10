@@ -1,0 +1,5 @@
+= JMS with ActiveMQ Artemis
+:index-group: JMS and MDBs
+:jbake-type: page
+:jbake-status: published
+

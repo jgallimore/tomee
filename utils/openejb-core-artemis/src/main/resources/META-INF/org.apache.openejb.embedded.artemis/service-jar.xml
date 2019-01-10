@@ -74,6 +74,7 @@
           constructor="destination"
           class-name="org.apache.activemq.artemis.jms.client.ActiveMQQueue">
     destination
+    ResourceAdapter = Artemis JMS Resource Adapter
   </ServiceProvider>
 
   <ServiceProvider
@@ -83,6 +84,7 @@
           constructor="destination"
           class-name="org.apache.activemq.artemis.jms.client.ActiveMQTopic">
     destination
+    ResourceAdapter = Artemis JMS Resource Adapter
   </ServiceProvider>
   <ServiceProvider id="Default ORB" parent="org.apache.openejb.embedded:Default ORB"/>
   <ServiceProvider id="Default Mail Session" parent="org.apache.openejb.embedded:Default Mail Session"/>
