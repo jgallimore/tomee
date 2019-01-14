@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<resources>
+  <Resource id="ActiveMQ" type="ActiveMQResourceAdapter">
+    # Do not start the embedded ActiveMQ broker
+    BrokerXmlConfig  =
+    ServerUrl = ssl://b-2fec5ac8-9b64-4970-90d0-cfc09191c51d-1.mq.eu-west-1.amazonaws.com:61617
+    userName = XXXXXX
+    password = XXXXXX
+  </Resource>
+
+  <Resource id="CF" type="javax.jms.ConnectionFactory">
+    ResourceAdapter = ActiveMQ
+  </Resource>
+
+  <Resource id="testTopic" type="Topic">
+    destination robot-command
+  </Resource>
+</resources>
