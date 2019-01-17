@@ -30,6 +30,7 @@ import java.net.URL;
 
 
 @RunWith(Arquillian.class)
+@RequireExternalBroker
 public class ExternalJmsBrokerTest {
 
     @ArquillianResource
