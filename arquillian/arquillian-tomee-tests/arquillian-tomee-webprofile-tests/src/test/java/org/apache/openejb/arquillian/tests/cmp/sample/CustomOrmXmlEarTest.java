@@ -60,7 +60,7 @@ public class CustomOrmXmlEarTest {
                 .addClass(MoviesServlet.class)
                 .addAsWebInfResource(new ClassLoaderAsset("org/apache/openejb/arquillian/tests/cmp/sample/web.xml"), "web.xml");
 
-        final EnterpriseArchive archive = ShrinkWrap.create(EnterpriseArchive.class, CustomOrmXmlEarTest.class.getSimpleName() + ".ear")
+        final EnterpriseArchive archive = ShrinkWrap.create(EnterpriseArchive.class, "test.ear")
                 .addAsLibrary(clientJar)
                 .addAsModule(ejbJar)
                 .addAsModule(testWar);
@@ -73,7 +73,7 @@ public class CustomOrmXmlEarTest {
     @Test
     @RunAsClient
     public void checkCmpJpaEntityORMMappings() throws Exception {
-        final String output = IO.slurp(new URL(url.toExternalForm()));
+        final String output = IO.slurp(new URL(url.toExternalForm() + "/test/test/"));
         System.out.println(output);
 
         Assert.assertTrue(output.contains("TABLE_NAME: ACTOR, COLUMN_NAME: ACTORID, DATA_TYPE: INTEGER, CHARACTER_MAXIMUM_LENGTH: null"));
