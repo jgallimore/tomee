@@ -19,20 +19,19 @@
 
 <!-- $Rev: 636494 $ $Date: 2008-03-12 21:24:02 +0100 (Wed, 12 Mar 2008) $ -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.superbiz</groupId>
   <artifactId>simple-cmp2</artifactId>
   <packaging>jar</packaging>
-  <version>1.1.0-SNAPSHOT</version>
+  <version>7.1.1-SNAPSHOT</version>
   <name>OpenEJB :: Examples :: Simple CMP2 Entity</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>7.0.5-SNAPSHOT</tomee.version>
+    <tomee.version>7.1.1-SNAPSHOT</tomee.version>
   </properties>
 
   <build>
@@ -52,7 +51,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.18.1</version>
         <configuration>
-          <argLine>-javaagent:${basedir}/target/openejb-javaagent-${tomee.version}.jar</argLine>
+          <argLine>-javaagent:${basedir}/target/openejb-javaagent-7.1.1-SNAPSHOT.jar</argLine>
           <workingDirectory>${basedir}/target</workingDirectory>
         </configuration>
       </plugin>
@@ -73,7 +72,7 @@
                 <artifactItem>
                   <groupId>org.apache.tomee</groupId>
                   <artifactId>openejb-javaagent</artifactId>
-                  <version>${tomee.version}</version>
+                  <version>7.1.1-SNAPSHOT</version>
                   <outputDirectory>${project.build.directory}</outputDirectory>
                 </artifactItem>
               </artifactItems>
@@ -111,7 +110,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>openejb-core</artifactId>
-      <version>${tomee.version}</version>
+      <version>7.1.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
 
