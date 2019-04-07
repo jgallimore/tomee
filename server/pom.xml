@@ -50,7 +50,6 @@
     <module>openejb-common-cli</module>
     <module>openejb-bonecp</module>
     <module>openejb-hessian</module>
-    <module>openejb-activemq-http</module>
   </modules>
 </project>
 
