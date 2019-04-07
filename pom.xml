@@ -104,7 +104,7 @@
     <!-- To easily change the javaee api version -->
     <version.javaee-api>8.0</version.javaee-api>
 
-    <openjpa.version>3.0.0</openjpa.version>
+    <openjpa.version>3.1.0</openjpa.version>
     <openwebbeans.version>2.0.9</openwebbeans.version>
     <jcs.version>2.1</jcs.version>
     <johnzon.version>1.1.11</johnzon.version>
@@ -866,6 +866,17 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
+    <repository>
+      <id>OpenJPA Staging Repository</id>
+      <url>https://repository.apache.org/content/repositories/orgapacheopenjpa-1005/</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
@@ -877,6 +888,16 @@
       </releases>
       <snapshots>
         <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>OpenJPA Staging Repository</id>
+      <url>https://repository.apache.org/content/repositories/orgapacheopenjpa-1005/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
