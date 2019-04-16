@@ -2,6 +2,10 @@
 
 == Change log
 
+=== Changes in TomEE EAP 1.7.6-TT.13
+
+CVE-2019-0232 Update to Tomcat 7.0.94 to mitigate CVE-2019-0232. When running on Windows with enableCmdLineArguments enabled, the CGI Servlet is vulnerable to Remote Code Execution due to a bug in the way the JRE passes command line arguments to Windows. 
+
 === Changes in TomEE EAP 1.7.6-TT.12
 
 This release fixes the following issue:
