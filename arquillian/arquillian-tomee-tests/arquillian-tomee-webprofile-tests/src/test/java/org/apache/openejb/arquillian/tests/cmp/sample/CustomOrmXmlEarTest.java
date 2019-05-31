@@ -23,6 +23,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
+import org.jboss.shrinkwrap.api.exporter.ZipExporter;
 import org.jboss.shrinkwrap.api.spec.EnterpriseArchive;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
@@ -30,6 +31,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.File;
 import java.net.URL;
 
 /**
@@ -49,12 +51,18 @@ public class CustomOrmXmlEarTest {
                         LocalMovie.class, LocalMovieHome.class, MovieDetails.class,
                         MoviesBusiness.class, MoviesBusinessHome.class);
 
-        final JavaArchive ejbJar = ShrinkWrap.create(JavaArchive.class, "ejb-jar.jar")
-                .addClasses(ActorBean.class, MovieBean.class, MovieDetails.class, MoviesBusinessBean.class)
+        final JavaArchive commonJar = ShrinkWrap.create(JavaArchive.class, "common.jar")
+                .addClasses(ActorBean.class, MovieBean.class, MovieDetails.class, MoviesBusinessBean.class);
+
+        final JavaArchive ejbJar1 = ShrinkWrap.create(JavaArchive.class, "ejb-jar-one.jar")
                 .addAsResource(new ClassLoaderAsset("org/apache/openejb/arquillian/tests/cmp/sample/custom-orm.xml"), "META-INF/openejb-cmp-generated-orm.xml")
                 .addAsResource(new ClassLoaderAsset("org/apache/openejb/arquillian/tests/cmp/sample/persistence.xml"), "META-INF/persistence.xml")
                 .addAsResource(new ClassLoaderAsset("org/apache/openejb/arquillian/tests/cmp/sample/openejb-jar.xml"), "META-INF/openejb-jar.xml")
                 .addAsResource(new ClassLoaderAsset("org/apache/openejb/arquillian/tests/cmp/sample/ejb-jar.xml"), "META-INF/ejb-jar.xml");
+
+        final JavaArchive ejbJar2 = ShrinkWrap.create(JavaArchive.class, "ejb-jar-two.jar")
+                .addClasses(User.class, UserBean.class)
+                .addAsResource(new ClassLoaderAsset("org/apache/openejb/arquillian/tests/cmp/sample/persistence2.xml"), "META-INF/persistence.xml");
 
         final WebArchive testWar = ShrinkWrap.create(WebArchive.class, "test.war")
                 .addClass(MoviesServlet.class)
@@ -62,10 +70,13 @@ public class CustomOrmXmlEarTest {
 
         final EnterpriseArchive archive = ShrinkWrap.create(EnterpriseArchive.class, "test.ear")
                 .addAsLibrary(clientJar)
-                .addAsModule(ejbJar)
+                .addAsLibrary(commonJar)
+                .addAsModule(ejbJar1)
+                .addAsModule(ejbJar2)
                 .addAsModule(testWar);
 
         System.out.println(archive.toString(true));
+        archive.as(ZipExporter.class).exportTo(new File("/tmp/test.ear"), true);
         return archive;
     }
 

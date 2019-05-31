@@ -23,6 +23,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
@@ -34,6 +35,9 @@ import javax.sql.DataSource;
 
 
 public class MoviesServlet extends HttpServlet {
+
+    @EJB
+    private UserBean userBean;
 
     @Override
     protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
@@ -48,6 +52,13 @@ public class MoviesServlet extends HttpServlet {
 
             final MoviesBusiness moviesBusiness = home.create();
             moviesBusiness.doLogic();
+            moviesBusiness.doLogic();
+            moviesBusiness.doLogic();
+            moviesBusiness.doLogic();
+            moviesBusiness.doLogic();
+            moviesBusiness.doLogic();
+
+            userBean.addUser(1L, "Super", "Hero");
 
             final DataSource ds = (DataSource) initial.lookup("java:comp/env/db/DataSource");
             Connection connection = null;
