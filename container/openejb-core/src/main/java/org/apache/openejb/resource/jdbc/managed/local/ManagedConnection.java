@@ -39,8 +39,12 @@ import java.lang.reflect.Proxy;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Wrapper;
+import java.util.Arrays;
 
 public class ManagedConnection implements InvocationHandler {
+
+    private static final Logger LOGGER = Logger.getInstance(LogCategory.OPENEJB_RESOURCE_JDBC, ManagedConnection.class);
+
     private final TransactionManager transactionManager;
     private final Key key;
     private final TransactionSynchronizationRegistry registry;
@@ -49,6 +53,7 @@ public class ManagedConnection implements InvocationHandler {
     protected XAConnection xaConnection;
     private Transaction currentTransaction;
     private boolean closed;
+    private StackTraceElement[] createdAt;
 
     public ManagedConnection(final CommonDataSource ds,
                              final TransactionManager txMgr,
@@ -58,6 +63,10 @@ public class ManagedConnection implements InvocationHandler {
         registry = txRegistry;
         closed = false;
         key = new Key(ds, user, password);
+
+        if (LOGGER.isDebugEnabled()) {
+            createdAt = new Throwable().getStackTrace();
+        }
     }
 
     public XAResource getXAResource() throws SQLException {
@@ -150,11 +159,11 @@ public class ManagedConnection implements InvocationHandler {
                             setAutoCommit(false);
                         } catch (final SQLException xae) { // we are alreay in a transaction so this can't be called from a user perspective - some XA DataSource prevents it in their code
                             final String message = "Can't set auto commit to false cause the XA datasource doesn't support it, this is likely an issue";
-                            final Logger logger = Logger.getInstance(LogCategory.OPENEJB_RESOURCE_JDBC, ManagedConnection.class);
-                            if (logger.isDebugEnabled()) { // we don't want to print the exception by default
-                                logger.warning(message, xae);
+
+                            if (LOGGER.isDebugEnabled()) { // we don't want to print the exception by default
+                                LOGGER.warning(message, xae);
                             } else {
-                                logger.warning(message);
+                                LOGGER.warning(message);
                             }
                         }
                     }
@@ -202,9 +211,31 @@ public class ManagedConnection implements InvocationHandler {
             xaResource = xaConnection.getXAResource();
             delegate = xaConnection.getConnection();
         } else {
+            if (LOGGER.isDebugEnabled() && xaConnection == null) {
+                final StringBuilder sb = new StringBuilder();
+                sb.append(Thread.currentThread().getName()).append(" - ");
+                sb.append("Creating connection with delegate only: " + this.toString() + ", at " + Arrays.toString(new Throwable().getStackTrace()));
+                LOGGER.debug(sb.toString());
+            }
+
             delegate = Connection.class.cast(connection);
             xaResource = new LocalXAResource(delegate);
         }
+
+//        if (LOGGER.isDebugEnabled()) {
+//            LOGGER.debug("Created new " +
+//                ((XAConnection.class.isInstance(connection)) ? "XAConnection" : "Connection") +
+//                " xaConnection = " +
+//                ((xaConnection == null) ? "null" : xaConnection.toString()) +
+//                " delegate = " +
+//                ((delegate == null) ? "null" : delegate.toString())
+//            );
+//        }
+
+        if (LOGGER.isDebugEnabled()) {
+            this.createdAt = new Throwable().getStackTrace();
+        }
+
         return connection;
     }
 
@@ -269,6 +300,21 @@ public class ManagedConnection implements InvocationHandler {
     }
 
     private void closeConnection(final boolean force) {
+        if (LOGGER.isDebugEnabled() && xaConnection == null) {
+
+            final StringBuilder sb = new StringBuilder();
+            sb.append(Thread.currentThread().getName()).append(" - ");
+            sb.append("Closing connection " + this.toString() + ", force = " + force + ", closed = " + this.closed);
+
+            if (createdAt != null) {
+                sb.append("Connection created at: " + Arrays.toString(createdAt));
+            }
+
+            sb.append("Connection closed at: " + Arrays.toString(new Throwable().getStackTrace()));
+
+            LOGGER.debug(sb.toString());
+        }
+
         if (!force && closed) {
             return;
         }
@@ -283,6 +329,20 @@ public class ManagedConnection implements InvocationHandler {
         } finally {
             close(); // set the flag
         }
+    }
+
+    @Override
+    public String toString() {
+        return "ManagedConnection{" +
+                "transactionManager=" + transactionManager +
+                ", key=" + key +
+                ", registry=" + registry +
+                ", xaResource=" + xaResource +
+                ", delegate=" + delegate +
+                ", xaConnection=" + xaConnection +
+                ", currentTransaction=" + currentTransaction +
+                ", closed=" + closed +
+                '}';
     }
 
     private static final class Key {
