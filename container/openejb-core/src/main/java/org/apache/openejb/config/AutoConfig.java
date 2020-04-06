@@ -23,30 +23,7 @@ import org.apache.openejb.assembler.classic.ContainerInfo;
 import org.apache.openejb.assembler.classic.MdbContainerInfo;
 import org.apache.openejb.assembler.classic.ResourceInfo;
 import org.apache.openejb.config.sys.Resource;
-import org.apache.openejb.jee.ActivationConfig;
-import org.apache.openejb.jee.ActivationConfigProperty;
-import org.apache.openejb.jee.AdminObject;
-import org.apache.openejb.jee.AssemblyDescriptor;
-import org.apache.openejb.jee.ConnectionDefinition;
-import org.apache.openejb.jee.Connector;
-import org.apache.openejb.jee.EnterpriseBean;
-import org.apache.openejb.jee.EntityBean;
-import org.apache.openejb.jee.InboundResourceadapter;
-import org.apache.openejb.jee.InjectionTarget;
-import org.apache.openejb.jee.JndiConsumer;
-import org.apache.openejb.jee.JndiReference;
-import org.apache.openejb.jee.MessageDestination;
-import org.apache.openejb.jee.MessageDestinationRef;
-import org.apache.openejb.jee.MessageDrivenBean;
-import org.apache.openejb.jee.MessageListener;
-import org.apache.openejb.jee.OutboundResourceAdapter;
-import org.apache.openejb.jee.PersistenceContextRef;
-import org.apache.openejb.jee.PersistenceRef;
-import org.apache.openejb.jee.PersistenceType;
-import org.apache.openejb.jee.ResourceAdapter;
-import org.apache.openejb.jee.ResourceRef;
-import org.apache.openejb.jee.SessionBean;
-import org.apache.openejb.jee.SessionType;
+import org.apache.openejb.jee.*;
 import org.apache.openejb.jee.jpa.unit.Persistence;
 import org.apache.openejb.jee.jpa.unit.PersistenceUnit;
 import org.apache.openejb.jee.jpa.unit.TransactionType;
@@ -248,13 +225,25 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
 
         final String componentName = component.getJndiConsumerName();
         final ValidationContext validation = module.getValidation();
-        for (final PersistenceRef ref : component.getPersistenceUnitRef()) {
 
-            processPersistenceRef(persistenceUnits, ref, moduleURI, componentName, validation);
+        final Iterator<PersistenceUnitRef> persistenceUnitRefs = component.getPersistenceUnitRef().iterator();
+        while (persistenceUnitRefs.hasNext()) {
+            final PersistenceUnitRef ref = persistenceUnitRefs.next();
+
+            final PersistenceUnit unit = processPersistenceRef(persistenceUnits, ref, moduleURI, componentName, validation);
+            if (unit == null) {
+                persistenceUnitRefs.remove();
+            }
         }
-        for (final PersistenceRef ref : component.getPersistenceContextRef()) {
 
-            processPersistenceRef(persistenceUnits, ref, moduleURI, componentName, validation);
+        final Iterator<PersistenceContextRef> persistenceContextRefs = component.getPersistenceContextRef().iterator();
+        while (persistenceContextRefs.hasNext()) {
+            final PersistenceContextRef ref = persistenceContextRefs.next();
+            final PersistenceUnit persistenceUnit = processPersistenceRef(persistenceUnits, ref, moduleURI, componentName, validation);
+
+            if (persistenceUnit == null) {
+                persistenceContextRefs.remove();
+            }
         }
     }
 
@@ -331,12 +320,12 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
                 if (unitName == null) {
                     unitName = refShortName;
                 }
-                validation.fail(componentName, refType + ".noPersistenceUnits", refShortName, unitName);
+                validation.warn(componentName, refType + ".noPersistenceUnits", refShortName, unitName);
             } else if ((ref.getPersistenceUnitName() == null || ref.getPersistenceUnitName().length() == 0) && availableUnits.size() > 1) {
                 // Print a correct example of unitName in a ref
                 // DMB: Idea, the ability to set a default unit-name in openejb-jar.xml via a property
                 final String sampleUnitName = availableUnits.get(0);
-                validation.fail(componentName, refType + ".noUnitName", refShortName, Join.join(", ", availableUnits), sampleUnitName);
+                validation.warn(componentName, refType + ".noUnitName", refShortName, Join.join(", ", availableUnits), sampleUnitName);
             } else {
                 final Collection<PersistenceUnit> vagueMatches = persistenceUnits.values(ref.getPersistenceUnitName());
                 if (vagueMatches.size() != 0) {
@@ -356,9 +345,9 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
 
                     Collections.sort(possibleUnits);
 
-                    validation.fail(componentName, refType + ".vagueMatches", refShortName, unitName, possibleUnits.size(), Join.join("\n", possibleUnits));
+                    validation.warn(componentName, refType + ".vagueMatches", refShortName, unitName, possibleUnits.size(), Join.join("\n", possibleUnits));
                 } else {
-                    validation.fail(componentName, refType + ".noMatches", refShortName, unitName, Join.join(", ", availableUnits));
+                    validation.warn(componentName, refType + ".noMatches", refShortName, unitName, Join.join(", ", availableUnits));
                 }
             }
         }
