@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Notice this changes the global jndi name -->
+  <module-name>wombat</module-name>
+
+  <enterprise-beans>
+
+    <session>
+      <ejb-name>BlueBean</ejb-name>
+      <business-local>org.superbiz.ejblookup.Friend</business-local>
+      <ejb-class>org.superbiz.ejblookup.BlueBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <ejb-local-ref>
+        <ejb-ref-name>myFriend</ejb-ref-name>
+        <local>org.superbiz.ejblookup.Friend</local>
+        <ejb-link>RedBean</ejb-link>
+      </ejb-local-ref>
+    </session>
+
+    <session>
+      <ejb-name>RedBean</ejb-name>
+      <business-local>org.superbiz.ejblookup.Friend</business-local>
+      <ejb-class>org.superbiz.ejblookup.RedBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <ejb-local-ref>
+        <ejb-ref-name>myFriend</ejb-ref-name>
+        <local>org.superbiz.ejblookup.Friend</local>
+        <ejb-link>BlueBean</ejb-link>
+      </ejb-local-ref>
+    </session>
+
+  </enterprise-beans>
+</ejb-jar>
