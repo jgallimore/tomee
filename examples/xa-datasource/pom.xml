@@ -63,6 +63,7 @@
           <tomeeClassifier>webprofile</tomeeClassifier>
           <tomeeHttpPort>9080</tomeeHttpPort>
           <tomeeShutdownPort>9005</tomeeShutdownPort>
+          <tomeeClassifier>plus</tomeeClassifier>
         </configuration>
       </plugin>
     </plugins>

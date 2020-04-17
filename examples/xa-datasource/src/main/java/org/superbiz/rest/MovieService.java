@@ -27,6 +27,8 @@ import javax.ejb.EJB;
 import javax.ejb.Lock;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.jms.ConnectionFactory;
+import javax.jms.Topic;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
@@ -45,8 +47,6 @@ import java.util.logging.Logger;
 
 import static javax.ejb.LockType.READ;
 
-@Lock(READ)
-@Singleton
 @Path("/")
 @Startup
 public class MovieService {
@@ -58,6 +58,12 @@ public class MovieService {
 
     @EJB
     private Movies movies;
+
+    @Resource
+    private ConnectionFactory cf;
+
+    @Resource(name = "testTopic")
+    private Topic topic;
 
     @GET
     @Path("setup")

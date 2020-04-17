@@ -19,6 +19,8 @@ package org.superbiz.injection.jpa;
 
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.jms.ConnectionFactory;
+import javax.jms.Topic;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.RollbackException;
@@ -41,6 +43,8 @@ public class MoviesXA {
 
     @Resource
     private TransactionManager transactionManager;
+
+
 
     private volatile boolean fail = false;
     private volatile boolean before = false;
