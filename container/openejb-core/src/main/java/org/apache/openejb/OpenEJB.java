@@ -25,12 +25,7 @@ import org.apache.openejb.spi.ApplicationServer;
 import org.apache.openejb.spi.Assembler;
 import org.apache.openejb.spi.ContainerSystem;
 import org.apache.openejb.spi.SecurityService;
-import org.apache.openejb.util.LogCategory;
-import org.apache.openejb.util.Logger;
-import org.apache.openejb.util.Messages;
-import org.apache.openejb.util.OpenEjbVersion;
-import org.apache.openejb.util.OptionsLog;
-import org.apache.openejb.util.SafeToolkit;
+import org.apache.openejb.util.*;
 
 import javax.transaction.TransactionManager;
 import java.util.Date;
@@ -117,6 +112,8 @@ public final class OpenEJB {
 
             //OWB support.  The classloader has to be able to load all OWB components including the ones supplied by OpenEjb.
             CdiBuilder.initializeOWB();
+
+            SystemInstance.get().addObserver(new AppJndiWriter());
 
             final String className = system.getOptions().get("openejb.assembler", (String) null);
 

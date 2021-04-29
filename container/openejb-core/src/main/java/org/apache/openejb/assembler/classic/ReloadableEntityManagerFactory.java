@@ -58,12 +58,7 @@ import javax.persistence.spi.PersistenceUnitInfo;
 import javax.persistence.spi.PersistenceUnitTransactionType;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectStreamException;
-import java.io.Serializable;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -92,6 +87,8 @@ public class ReloadableEntityManagerFactory implements EntityManagerFactory, Ser
 
     private final boolean logCriteriaJpql;
     private final String logCriteriaJpqlLevel;
+    private StackTraceElement[] closedAt = null;
+
 
     public ReloadableEntityManagerFactory(final ClassLoader cl, final EntityManagerFactoryCallable callable, final PersistenceUnitInfoImpl unitInfo) {
         classLoader = cl;
@@ -144,6 +141,7 @@ public class ReloadableEntityManagerFactory implements EntityManagerFactory, Ser
             }
 
             JPAThreadContext.infos.clear();
+            closedAt = null;
         }
     }
 
@@ -160,6 +158,17 @@ public class ReloadableEntityManagerFactory implements EntityManagerFactory, Ser
     public EntityManager createEntityManager() {
         EntityManager em;
         try {
+            if ((! isOpen()) && closedAt != null) {
+                final StringWriter stringWriter = new StringWriter();
+                final PrintWriter printWriter = new PrintWriter(stringWriter);
+
+                for (StackTraceElement traceElement : closedAt)
+                    printWriter.println("\tat " + traceElement);
+
+                printWriter.flush();
+
+                LOGGER.error("create entity manager called on closed EM. EM closed at " + stringWriter.toString());
+            }
             em = delegate().createEntityManager();
         } catch (final LinkageError le) {
             em = delegate.createEntityManager();
@@ -252,6 +261,8 @@ public class ReloadableEntityManagerFactory implements EntityManagerFactory, Ser
     @Override
     public synchronized void close() {
         if (delegate != null) {
+
+            this.closedAt = Thread.currentThread().getStackTrace();
             delegate.close();
         }
     }
