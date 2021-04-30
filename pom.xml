@@ -142,7 +142,7 @@
 
     <batchee.version>0.6</batchee.version>
 
-    <version.arquillian>1.1.13.Final</version.arquillian>
+    <version.arquillian>1.7.0.Alpha9</version.arquillian>
     <version.shrinkwrap.descriptor>2.0.0</version.shrinkwrap.descriptor>
     <version.shrinkwrap.shrinkwrap>1.2.6</version.shrinkwrap.shrinkwrap>
 
