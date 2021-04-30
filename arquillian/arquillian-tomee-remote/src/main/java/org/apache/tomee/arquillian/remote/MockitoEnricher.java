@@ -14,24 +14,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.tomee.arquillian.remote;
 
-import org.jboss.arquillian.container.test.spi.RemoteLoadableExtension;
 import org.jboss.arquillian.test.spi.TestEnricher;
-import org.jboss.arquillian.transaction.spi.provider.TransactionProvider;
 
-public class RemoteTomEERemoteExtension implements RemoteLoadableExtension {
+import java.lang.reflect.Method;
+
+/**
+ * do it by reflection to avoid to need mockito
+ */
+public class MockitoEnricher implements TestEnricher {
+    private static final String MOCKITO_CLASS = "org.mockito.MockitoAnnotations";
 
     @Override
-    public void register(final ExtensionBuilder builder) {
-        builder.observer(RemoteTomEEObserver.class)
-                .service(TestEnricher.class, TomEEInjectionEnricher.class);
-
+    public void enrich(final Object testCase) {
         try {
-            builder.service(TransactionProvider.class, OpenEJBTransactionProvider.class);
-        } catch (final Throwable t) {
-            // skip, not mandatory
+            final Class<?> clazz = testCase.getClass().getClassLoader().loadClass(MOCKITO_CLASS);
+            final Method injectMethod = clazz.getMethod("initMocks", Object.class);
+            injectMethod.invoke(null, testCase);
+        } catch (final Exception e) {
+            // no-op: can't use mockito, not a big deal for common cases
         }
+    }
+
+    @Override
+    public Object[] resolve(final Method method) {
+        return new Object[method.getParameterTypes().length];
     }
 }

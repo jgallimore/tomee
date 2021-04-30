@@ -34,12 +34,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>arquillian-openejb-transaction-provider</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-
-    <dependency>
       <groupId>org.jboss.arquillian.container</groupId>
       <artifactId>arquillian-container-spi</artifactId>
       <version>${version.arquillian}</version>
@@ -119,14 +113,6 @@
       <artifactId>openejb-client</artifactId>
       <version>${project.version}</version>
       <type>jar</type>
-    </dependency>
-
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>arquillian-tomee-common</artifactId>
-      <version>8.0.7-SNAPSHOT</version>
-      <type>jar</type>
-      <scope>compile</scope>
     </dependency>
 
     <dependency>
