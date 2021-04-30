@@ -39,6 +39,12 @@
       <artifactId>tomee-embedded</artifactId>
       <version>${project.version}</version>
       <classifier>uber</classifier>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -141,5 +147,32 @@
       <version>${project.version}</version>
     </dependency>
   </dependencies>
+
+  <!--<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution> 
+            <id>uber-shade</id>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <shadedClassifierName>uber</shadedClassifierName>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <useBaseVersion>true</useBaseVersion>
+          <createDependencyReducedPom>false</createDependencyReducedPom>
+          <shadedArtifactAttached>true</shadedArtifactAttached>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>-->
 
 </project>
