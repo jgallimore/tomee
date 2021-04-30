@@ -148,13 +148,13 @@
     </dependency>
   </dependencies>
 
-  <!--<build>
+  <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <executions>
-          <execution> 
+          <execution>
             <id>uber-shade</id>
             <phase>package</phase>
             <goals>
@@ -173,6 +173,6 @@
       </plugin>
 
     </plugins>
-  </build>-->
+  </build>
 
 </project>
