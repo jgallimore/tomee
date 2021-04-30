@@ -68,6 +68,7 @@
       <artifactId>arquillian-tomee-remote</artifactId>
       <version>${project.version}</version>
       <scope>test</scope>
+      <classifier>uber</classifier>
       <exclusions>
         <exclusion>
           <groupId>org.jboss.shrinkwrap</groupId>
