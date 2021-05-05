@@ -172,6 +172,27 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire.version}</version> <!-- 2.21 snapshot has a bug with classloader due to j9 work -->
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>uber-shade</id>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <shadedClassifierName>uber</shadedClassifierName>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <useBaseVersion>true</useBaseVersion>
+          <createDependencyReducedPom>false</createDependencyReducedPom>
+          <shadedArtifactAttached>true</shadedArtifactAttached>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>

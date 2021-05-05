@@ -62,6 +62,20 @@
             </goals>
             <configuration>
               <shadedClassifierName>uber</shadedClassifierName>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>org.apache.tomee.embedded.Main</mainClass>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/cxf/bus-extensions.txt</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/openwebbeans/openwebbeans.properties</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/services/javax.enterprise.inject.spi.Extension</resource>
+                </transformer>
+              </transformers>
               <artifactSet>
                 <excludes>
                   <exclude>junit:junit</exclude>

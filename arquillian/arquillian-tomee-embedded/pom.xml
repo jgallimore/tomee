@@ -38,6 +38,13 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>tomee-embedded</artifactId>
       <version>${project.version}</version>
+      <classifier>uber</classifier>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -80,11 +87,11 @@
       </exclusions>
     </dependency>
 
-    <dependency>
+    <!--<dependency>
       <groupId>org.apache.myfaces.core</groupId>
       <artifactId>myfaces-api</artifactId>
       <version>${myfaces.version}</version>
-    </dependency>
+    </dependency>-->
 
     <dependency>
       <groupId>junit</groupId>
@@ -126,12 +133,13 @@
       <version>${project.version}</version>
     </dependency>
 
-    <dependency>
+    <!-- JRG: comment this out -->
+    <!--<dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>tomee-webservices</artifactId>
       <version>${project.version}</version>
       <scope>test</scope>
-    </dependency>
+    </dependency>-->
 
     <dependency>
       <groupId>${project.groupId}</groupId>
@@ -140,4 +148,29 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>uber-shade</id>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <shadedClassifierName>uber</shadedClassifierName>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <useBaseVersion>true</useBaseVersion>
+          <createDependencyReducedPom>false</createDependencyReducedPom>
+          <shadedArtifactAttached>true</shadedArtifactAttached>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
