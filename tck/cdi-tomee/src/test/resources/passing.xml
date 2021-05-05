@@ -34,7 +34,6 @@
         <listener class-name="org.apache.openejb.tck.testng.HTMLReporter"/>
         -->
     </listeners>
-
     <test name="JSR-365 TCK">
         <groups>
             <run>
@@ -46,6 +45,11 @@
             </run>
         </groups>
 
+        <packages>
+            <package name="org.jboss.cdi.tck.tests.*">
+            </package>
+        </packages>
+
         <classes>
             <!-- somehow blocks forever, we finally need to pass this test, just commented out temporarily! -->
             <class name="org.jboss.cdi.tck.tests.context.conversation.determination.ConversationDeterminationTest">
@@ -53,8 +57,6 @@
                     <exclude name=".*"/>
                 </methods>
             </class>
-
-
             <!-- Tests broken in the CDI-2.0 TCK: -->
 
             <!-- https://issues.jboss.org/projects/CDITCK/issues/CDITCK-602, invalid assumption that a situation cannot be resolved -->
@@ -394,14 +396,8 @@
                 <methods><exclude name=".*" /></methods>
             </class>
 
-
-
         </classes>
 
-        <packages>
-            <package name="org.jboss.cdi.tck.tests.*">
-            </package>
-        </packages>
     </test>
 </suite>
 
