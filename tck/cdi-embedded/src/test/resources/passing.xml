@@ -46,6 +46,11 @@
             </run>
         </groups>
 
+        <packages>
+            <package name="org.jboss.cdi.tck.tests.*">
+            </package>
+        </packages>
+
         <classes>
             <!-- somehow blocks forever, we finally need to pass this test, just commented out temporarily! -->
             <class name="org.jboss.cdi.tck.tests.context.conversation.determination.ConversationDeterminationTest">
@@ -336,11 +341,5 @@
 
 
         </classes>
-
-        <packages>
-            <package name="org.jboss.cdi.tck.tests.*">
-            </package>
-        </packages>
     </test>
 </suite>
-
