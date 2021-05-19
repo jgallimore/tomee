@@ -16,10 +16,15 @@
  */
 package org.superbiz.calculator.ws;
 
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.jws.WebService;
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
+import java.util.logging.Logger;
 
-@Stateless
 @WebService(
         portName = "CalculatorPort",
         serviceName = "CalculatorService",
@@ -27,11 +32,29 @@ import javax.jws.WebService;
         endpointInterface = "org.superbiz.calculator.ws.CalculatorWs")
 public class Calculator implements CalculatorWs {
 
+    private static final Logger LOG = Logger.getLogger(Calculator.class.getName());
+
+    @Resource
+    private WebServiceContext wsc;
+
+    @Inject
+    private ServiceContext context;
+
     public int sum(int add1, int add2) {
+        context.setSomeState("Hello");
+        LOG.info("Remote source: " + getRemoteAddress());
+        LOG.info(context.getSomeState());
+
         return add1 + add2;
     }
 
     public int multiply(int mul1, int mul2) {
         return mul1 * mul2;
+    }
+
+    private String getRemoteAddress() {
+        final MessageContext mc = wsc.getMessageContext();
+        final HttpServletRequest request = (HttpServletRequest) mc.get(MessageContext.SERVLET_REQUEST);
+        return request.getRemoteAddr();
     }
 }
