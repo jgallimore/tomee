@@ -72,7 +72,7 @@ public class WebServiceContextTest {
 
     @WebService
     public static class EchoWS implements Echo {
-
+        @Resource
         private WebServiceContext wsc;
 
         @Inject
@@ -89,11 +89,6 @@ public class WebServiceContextTest {
         @Log
         public String echo(String input) {
             return input;
-        }
-
-        @Resource
-        public void setWebServiceContext(final WebServiceContext webServiceContext) {
-            this.wsc = webServiceContext;
         }
     }
 
