@@ -52,7 +52,7 @@
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
     <repository>
       <releases>
@@ -72,7 +72,7 @@
     <pluginRepository>
       <id>apache-m2-plugin-snapshot</id>
       <name>Apache Snapshot Plugin Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </pluginRepository>
     <pluginRepository>
       <releases>
