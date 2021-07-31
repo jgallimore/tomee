@@ -27,6 +27,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <tomee.version>1.7.6-TT.26</tomee.version>
     <version.shrinkwrap.resolver>2.1.0</version.shrinkwrap.resolver>
+    <surefire.version>2.21.0</surefire.version>
   </properties>
 
   <repositories>
@@ -77,6 +78,21 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire.version}</version>
+        <configuration>
+          <systemProperties>
+            <property>
+              <name>tomee.version</name>
+              <value>${tomee.version}</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
   <!-- This section allows you to configure where to publish libraries for
