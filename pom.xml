@@ -835,7 +835,7 @@
     <repository>
       <id>apache-snapshots</id>
       <name>Apache Snapshots Repository</name>
-      <url>http://repository.apache.org/content/groups/snapshots-group</url>
+      <url>https://repository.apache.org/content/groups/snapshots-group</url>
       <releases>
         <enabled>false</enabled>
       </releases>
@@ -868,7 +868,7 @@
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache M2 Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots/</url>
+      <url>https://repository.apache.org/snapshots/</url>
       <releases>
         <enabled>false</enabled>
       </releases>
@@ -919,7 +919,7 @@
     <pluginRepository>
       <id>apache-m2-snapshot</id>
       <name>Apache Software Foundation M2 Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots/</url>
+      <url>https://repository.apache.org/snapshots/</url>
       <releases>
         <enabled>false</enabled>
       </releases>
