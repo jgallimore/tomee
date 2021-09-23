@@ -1,4 +1,36 @@
-= TomEE EAP 7.0.8-TT.6
+= TomEE EAP 7.0.10-TT.7
+
+=== Changes in TomEE EAP 7.0.10-TT.7
+* Updated javax.faces from 2.2.20 to 2.2.21-TT.1 to mitigate CVE-2020-6950
+* Updated cxf to 3.1.19-TT.7 to mitigate CVE-2021-30468
+* Updated to tomcat 8.5.68
+
+
+=== Changes in TomEE EAP 7.0.10-TT.6
+* Updated tomcat to 8.5.65
+* Updated cxf to 3.1.19-TT.6 to mitigate CVE-2021-22696
+
+=== Changes in TomEE EAP 7.0.10-TT.5
+* Updated to bcprov-jdk15on 1.68
+
+=== Changes in TomEE EAP 7.0.10-TT.4
+* Updated myfaces to 2.2.14 to mitigate CVE-2021-26296	
+
+=== Changes in TomEE EAP 7.0.10-TT.3
+* Updated Tomcat to 8.5.63
+* Updated ActiveMQ to 5.15.6-TT.2 to mitigate CVE-2021-26117
+* Updated commons-dbcp to 2.1-TT.1 to mitigate sonatype-2020-1349
+
+=== Changes in TomEE EAP 7.0.10-TT.2
+* Update to Tomcat 8.5.60
+
+=== Changes in TomEE EAP 7.0.10-TT.1
+* Update to CXF 3.1.19-TT.5 to mitigate CVE-2020-13954
+* Update to bcprov-jdk15on 1.67 to mitigate CVE-2020-0187 and sonatype-2020-0770
+
+=== Changes in TomEE EAP 7.0.8-TT.7
+* Update to Tomcat 8.5.59 to mitigate CVE-2020-13943
+* Update to cryptacular 1.1.4 to mitigate CVE-2020-7226
 
 === Changes in TomEE EAP 7.0.8-TT.6
 

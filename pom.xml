@@ -33,7 +33,7 @@
   <groupId>org.apache.tomee</groupId>
   <artifactId>tomee-project</artifactId>
   <packaging>pom</packaging>
-  <version>7.0.8-TT.6</version>
+  <version>7.0.10-TT.7</version>
 
   <name>Apache OpenEJB</name>
   <description>Apache OpenEJB is an open source, modular, configurable and extensible EJB Container System and EJB Server.</description>
@@ -93,7 +93,7 @@
 
   <properties>
 
-    <tomee.version>7.0.8-TT.6</tomee.version>
+    <tomee.version>7.0.10-TT.7</tomee.version>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
 
@@ -131,8 +131,8 @@
     <version.shrinkwrap.descriptor>2.0.0</version.shrinkwrap.descriptor>
     <version.shrinkwrap.shrinkwrap>1.2.6</version.shrinkwrap.shrinkwrap>
 
-    <tomcat.version>8.5.59</tomcat.version>
-    <cxf.version>3.1.19-TT.4</cxf.version>
+    <tomcat.version>8.5.68</tomcat.version>
+    <cxf.version>3.1.19-TT.7</cxf.version>
     <version.shrinkwrap.shrinkwrap>1.2.6</version.shrinkwrap.shrinkwrap>
     <version.shrinkwrap.descriptor>2.0.0</version.shrinkwrap.descriptor>
     <version.arquillian>1.1.13.Final</version.arquillian>
@@ -157,7 +157,7 @@
     <commons-cli.version>1.2</commons-cli.version>
     <commons-logging.version>1.2</commons-logging.version>
     <commons-logging-api.version>1.1</commons-logging-api.version>
-    <commons-dbcp.version>2.1-TT.0</commons-dbcp.version>
+    <commons-dbcp.version>2.1-TT.1</commons-dbcp.version>
     <commons-pool.version>2.3</commons-pool.version>
     <commons-collections.version>3.2.2</commons-collections.version>
     <commons-codec.version>1.10-TT.2</commons-codec.version>
@@ -168,7 +168,7 @@
     <commons-net.version>3.3</commons-net.version>
 
     <bval.version>1.1.2</bval.version>
-    <org.apache.activemq.version>5.15.6-TT.1</org.apache.activemq.version>
+    <org.apache.activemq.version>5.15.6-TT.2</org.apache.activemq.version>
     <org.springframework.version>3.1.4.RELEASE</org.springframework.version>
     <junit.version>4.12</junit.version>
     <org.apache.axis2.version>1.4.1</org.apache.axis2.version>
@@ -176,8 +176,8 @@
     <geronimo.connector.version>3.1.4</geronimo.connector.version>
     <geronimo-osgi.version>1.1</geronimo-osgi.version>
     <geronimo-javamail_1.4_spec.version>1.9.0-alpha-2</geronimo-javamail_1.4_spec.version>
-    <myfaces.version>2.2.13-TT.1</myfaces.version>
-    <mojarra.version>2.2.20</mojarra.version>
+    <myfaces.version>2.2.14</myfaces.version>
+    <mojarra.version>2.2.21-TT.1</mojarra.version>
     <slf4j.version>1.7.21</slf4j.version>
     <log4j.version>1.2.17</log4j.version>
     <log4j2.version>2.0.1</log4j2.version>
@@ -519,6 +519,7 @@
         <module>arquillian</module>
         <module>utils</module>
         <module>tomee</module>
+        <module>boms</module>
       </modules>
       <repositories>
         <repository>
@@ -555,6 +556,7 @@
         <module>arquillian</module>
         <module>utils</module>
         <module>tomee</module>
+        <module>boms</module>
       </modules>
     </profile>
     <profile>
@@ -717,6 +719,7 @@
         <module>assembly</module>
         <module>utils</module>
         <module>tomee</module>
+        <module>boms</module>
       </modules>
       <build>
         <plugins>
