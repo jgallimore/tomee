@@ -27,13 +27,13 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <version.openejb>4.7.6-TT.21</version.openejb>
+    <version.openejb>4.7.6-TT.26</version.openejb>
   </properties>
 
   <repositories>
     <repository>
       <id>snapshots-apache</id>
-      <url>http://repository.apache.org/content/groups/snapshots/</url>
+      <url>https://repository.apache.org/content/groups/snapshots/</url>
     </repository>
   </repositories>
 

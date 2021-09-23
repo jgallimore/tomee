@@ -28,8 +28,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.test.version>1.7.6-TT.21</tomee.test.version>
-    <openejb.test.version>4.7.6-TT.21</openejb.test.version>
+    <tomee.test.version>1.7.6-TT.26</tomee.test.version>
+    <openejb.test.version>4.7.6-TT.26</openejb.test.version>
   </properties>
 
   <modules>
@@ -109,7 +109,7 @@
       <dependency>
         <groupId>org.apache.openejb</groupId>
         <artifactId>arquillian-tomee-remote</artifactId>
-        <version>1.7.6-TT.21</version>
+        <version>1.7.6-TT.26</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -137,7 +137,7 @@
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
     <repository>
       <releases>
@@ -162,7 +162,7 @@
     <pluginRepository>
       <id>apache-m2-snapshot-plugin</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </pluginRepository>
     <pluginRepository>
       <id>jboss-public-repository-group</id>

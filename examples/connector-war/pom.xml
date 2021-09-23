@@ -21,14 +21,14 @@
   <name>OpenEJB :: Connector Examples :: Connector in WAR</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>1.7.6-TT.21</tomee.version>
+    <tomee.version>1.7.6-TT.26</tomee.version>
     <version.shrinkwrap.resolver>2.1.0</version.shrinkwrap.resolver>
   </properties>
   <repositories>
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
   </repositories>
   <build>
@@ -47,7 +47,7 @@
       <plugin>
         <groupId>org.apache.openejb.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
-        <version>1.7.6-TT.21</version>
+        <version>1.7.6-TT.26</version>
         <configuration>
           <tomeeClassifier>plus</tomeeClassifier>
           <args>-Xmx512m -XX:PermSize=256m</args>

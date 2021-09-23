@@ -26,7 +26,7 @@
   <name>OpenEJB :: Examples :: CDI Realm</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>1.7.6-TT.21</tomee.version>
+    <tomee.version>1.7.6-TT.26</tomee.version>
   </properties>
   <build>
     <defaultGoal>install</defaultGoal>
@@ -51,7 +51,7 @@
       <plugin>
         <groupId>org.apache.openejb.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
-        <version>1.7.6-TT.21</version>
+        <version>1.7.6-TT.26</version>
       </plugin>
     </plugins>
   </build>
@@ -59,7 +59,7 @@
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
   </repositories>
   <dependencies>

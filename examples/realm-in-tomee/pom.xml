@@ -46,7 +46,7 @@
       <plugin>
         <groupId>org.apache.openejb.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
-        <version>1.7.6-TT.21</version>
+        <version>1.7.6-TT.26</version>
       </plugin>
     </plugins>
   </build>
@@ -54,7 +54,7 @@
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
   </repositories>
   <dependencies>

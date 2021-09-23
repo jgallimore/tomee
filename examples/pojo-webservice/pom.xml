@@ -25,13 +25,13 @@
   <name>OpenEJB :: Web Examples :: Pojo WS</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>1.7.6-TT.21</tomee.version>
+    <tomee.version>1.7.6-TT.26</tomee.version>
   </properties>
   <repositories>
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
     <repository>
       <id>tomcat-m2-repo</id>
@@ -43,7 +43,7 @@
     <pluginRepository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </pluginRepository>
   </pluginRepositories>
   <build>
@@ -62,7 +62,7 @@
       <plugin> <!-- http://localhost:8080/pojo-webservice?wsdl -->
         <groupId>org.apache.openejb.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
-        <version>1.7.6-TT.21</version>
+        <version>1.7.6-TT.26</version>
         <configuration>
           <tomeeVersion>${tomee.version}</tomeeVersion>
           <tomeeClassifier>plus</tomeeClassifier>

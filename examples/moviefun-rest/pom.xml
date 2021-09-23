@@ -21,22 +21,22 @@
   <name>OpenEJB :: Web Examples :: Moviefun Rest</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>1.7.6-TT.21</tomee.version>
+    <tomee.version>1.7.6-TT.26</tomee.version>
     <version.shrinkwrap.resolver>2.0.0</version.shrinkwrap.resolver>
-    <version.openejb>4.7.6-TT.21</version.openejb>
+    <version.openejb>4.7.6-TT.26</version.openejb>
   </properties>
   <repositories>
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </pluginRepository>
   </pluginRepositories>
   <build>

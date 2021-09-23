@@ -90,7 +90,7 @@
       <plugin>
         <groupId>org.apache.openejb.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
-        <version>1.7.6-TT.21</version>
+        <version>1.7.6-TT.26</version>
         <configuration>
           <systemVariables>
             <com.sun.jersey.server.impl.cdi.lookupExtensionInBeanManager>true</com.sun.jersey.server.impl.cdi.lookupExtensionInBeanManager>
@@ -104,19 +104,19 @@
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
     <repository>
       <id>eclipselink-repo</id>
       <name>EclipseLink Repository</name>
-      <url>http://www.eclipse.org/downloads/download.php?r=1&amp;nf=1&amp;file=/rt/eclipselink/maven.repo</url>
+      <url>https://www.eclipse.org/downloads/download.php?r=1&amp;nf=1&amp;file=/rt/eclipselink/maven.repo</url>
     </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
       <id>apache-m2-snapshot-plugin</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </pluginRepository>
   </pluginRepositories>
 

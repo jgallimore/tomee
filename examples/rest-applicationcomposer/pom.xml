@@ -49,7 +49,7 @@
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
   </repositories>
 
@@ -75,13 +75,13 @@
     <dependency>
       <groupId>org.apache.openejb</groupId>
       <artifactId>openejb-core</artifactId>
-      <version>4.7.6-TT.21</version>
+      <version>4.7.6-TT.26</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.openejb</groupId>
       <artifactId>openejb-cxf-rs</artifactId>
-      <version>4.7.6-TT.21</version>
+      <version>4.7.6-TT.26</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
