@@ -1,4 +1,7 @@
-= TomEE EAP 7.1.5-TT.7
+= TomEE EAP 7.1.5-TT.8
+
+=== Changes in TomEE EAP 7.1.5-TT.8
+* Updated xmlsec to 2.0.11-TT.2 to mitigate CVE-2021-40690
 
 === Changes in TomEE EAP 7.1.5-TT.7
 * Updated javax.faces from 2.2.20 to 2.2.21-TT.1 to mitigate CVE-2020-6950
