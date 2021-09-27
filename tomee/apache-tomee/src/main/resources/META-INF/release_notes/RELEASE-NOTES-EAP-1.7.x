@@ -1,4 +1,7 @@
-= TomEE EAP 1.7.6-TT.26
+= TomEE EAP 1.7.6-TT.27
+
+=== Changes in TomEE EAP 1.7.6-TT.27
+* Updated xmlsec to 1.5.9-TT.1 to mitigate CVE-2021-40690
 
 === Changes in TomEE EAP 1.7.6-TT.26
 * Update Tomcat to 7.0.109-TT.1 in order to mitigate CVE-2021-30640 and CVE-2021-33037
