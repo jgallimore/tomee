@@ -62,7 +62,8 @@ public class SingletonDeploymentTest {
 
         final JavaArchive commonJarArchive = ShrinkWrap.create(JavaArchive.class, "common.jar");
         commonJarArchive.addClass(ExampleSingletonService.class)
-                .addClass(SingletonService.class);
+                .addClass(SingletonService.class)
+                .addClass(SingletonDeploymentTest.class);
 
         commonJarArchive.addAsManifestResource(new StringAsset("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<beans xmlns=\"http://xmlns.jcp.org/xml/ns/javaee\"\n" +
