@@ -1,4 +1,7 @@
-= TomEE EAP 7.1.5-TT.9
+= TomEE EAP 7.1.5-TT.10
+
+=== Changes in TomEE EAP 7.1.5-TT.10
+* Updated to jackson-databind to 2.12.6 to mitigate sonatype-2021-4682
 
 === Changes in TomEE EAP 7.1.5-TT.9
 * Updated to Tomcat 8.5.72 to mitigate CVE-2021-42340
