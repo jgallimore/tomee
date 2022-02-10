@@ -1,4 +1,7 @@
-= TomEE EAP 1.7.6-TT.27
+= TomEE EAP 1.7.6-TT.28
+
+=== Changes in TomEE EAP 1.7.6-TT.28
+* Updated to Tomcaat 7.0.109-TT.2 to mitigate CVE-2022-23181
 
 === Changes in TomEE EAP 1.7.6-TT.27
 * Updated xmlsec to 1.5.9-TT.1 to mitigate CVE-2021-40690
