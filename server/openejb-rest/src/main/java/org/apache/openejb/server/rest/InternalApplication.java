@@ -16,6 +16,9 @@
  */
 package org.apache.openejb.server.rest;
 
+import org.apache.openejb.util.LogCategory;
+import org.apache.openejb.util.Logger;
+
 import javax.ws.rs.core.Application;
 import java.util.Collections;
 import java.util.HashSet;
@@ -23,16 +26,37 @@ import java.util.Map;
 import java.util.Set;
 
 public class InternalApplication extends Application {
-    private final Set<Class<?>> classes = new HashSet<Class<?>>();
-    private final Set<Object> singletons = new HashSet<Object>();
+    public static final Logger LOGGER = Logger.getInstance(LogCategory.OPENEJB_RS, InternalApplication.class);
+
+    private final Set<Class<?>> classes;
+    private final Set<Object> singletons;
     private final Application original;
 
     public InternalApplication(final Application original) {
         this.original = original;
+
+        final HashSet<Object> singletons = new HashSet<>();
+        final HashSet<Class<?>> classes = new HashSet<>();
+
         if (original != null) {
             singletons.addAll(original.getSingletons());
             classes.addAll(original.getClasses());
         }
+
+        this.classes = Collections.unmodifiableSet(classes);
+        this.singletons = Collections.unmodifiableSet(singletons);
+
+        LOGGER.info("Create InternalApplication@" + hashCode() + "{original=" + (original != null ? original.getClass().getName() : "null") + "}");
+        int classesCount = 0;
+        for (final Class<?> aClass : classes) {
+            LOGGER.info("InternalApplication.classes[" + classesCount++ + "]=" + (aClass != null ? aClass.getName() : "null"));
+        }
+        int singletonsCount = 0;
+        for (final Object object : singletons) {
+            LOGGER.info("InternalApplication.singletons[" + singletonsCount++ + "]=" + (object != null ? object.getClass().getName() : "null"));
+        }
+
+        LOGGER.info("InternalApplication Created", new Throwable());
     }
 
     @Override
@@ -53,4 +77,5 @@ public class InternalApplication extends Application {
     public Application getOriginal() {
         return original;
     }
+
 }

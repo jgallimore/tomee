@@ -654,21 +654,29 @@ public class CxfRsHttpListener implements RsHttpListener {
         Thread.currentThread().setContextClassLoader(CxfUtil.initBusLoader());
 
         if (application != null) {
-            LOGGER.info("Processing application: " + application.getClass().getName());
+            LOGGER.info("Processing application: " + application.getClass().getName() + "@" + application.hashCode());
         } else {
             LOGGER.info("Processing, application is null");
         }
 
 
         try {
-            final JAXRSServerFactoryBean factory = newFactory(prefix, createServiceJmxName(classLoader), createEndpointName(application));
+            final String endpointName = createEndpointName(application);
+            final JAXRSServerFactoryBean factory = newFactory(prefix, createServiceJmxName(classLoader), endpointName);
             configureFactory(additionalProviders, serviceConfiguration, factory, owbCtx, application);
             factory.setApplication(application);
+
+            LOGGER.info("Constructing JAX-RS Application " + endpointName);
 
             final List<Class<?>> classes = new ArrayList<>();
 
             for (final Class<?> clazz : application.getClasses()) {
-                if (!additionalProviders.contains(clazz) && !clazz.isInterface()) {
+                if (clazz.isInterface()) {
+                    LOGGER.info("Skipping " + clazz.getName() + " as it is an interface");
+                } else if (additionalProviders.contains(clazz)) {
+                    LOGGER.info("Skipping " + clazz.getName() + " as it was already provided");
+                } else {
+                    LOGGER.info("Adding " + clazz.getName());
                     classes.add(clazz);
 
                     final EJBRestServiceInfo restServiceInfo = getEjbRestServiceInfo(restEjbs, clazz);

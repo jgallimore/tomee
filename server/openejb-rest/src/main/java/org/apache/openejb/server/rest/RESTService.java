@@ -163,6 +163,13 @@ public abstract class RESTService implements ServerService, SelfManaging {
             boolean deploymentWithApplication = "true".equalsIgnoreCase(appInfo.properties.getProperty(OPENEJB_USE_APPLICATION_PROPERTY, APPLICATION_DEPLOYMENT));
             if (deploymentWithApplication) {
                 Class<?> appClazz;
+                if (webApp.restApplications.size() > 1) {
+                    LOGGER.warning("Multiple JAX-RS Application subclasses found.  Only one will be processed");
+                    int count = 0;
+                    for (final String className : webApp.restApplications) {
+                        LOGGER.warning("Application[" + count + "] " + className);
+                    }
+                }
                 for (final String app : webApp.restApplications) {
                     Application application;
                     boolean appSkipped = false;
