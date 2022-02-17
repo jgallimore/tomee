@@ -652,6 +652,14 @@ public class CxfRsHttpListener implements RsHttpListener {
                                   final ServiceConfiguration serviceConfiguration) {
         final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
         Thread.currentThread().setContextClassLoader(CxfUtil.initBusLoader());
+
+        if (application != null) {
+            LOGGER.info("Processing application: " + application.getClass().getName());
+        } else {
+            LOGGER.info("Processing, application is null");
+        }
+
+
         try {
             final JAXRSServerFactoryBean factory = newFactory(prefix, createServiceJmxName(classLoader), createEndpointName(application));
             configureFactory(additionalProviders, serviceConfiguration, factory, owbCtx, application);
@@ -723,6 +731,9 @@ public class CxfRsHttpListener implements RsHttpListener {
                     }
                 }
             }
+
+            final String classesNames = classes.stream().map(Class::getName).collect(Collectors.joining(", "));
+            LOGGER.info("Using the following classes: " + classesNames);
 
             factory.setResourceClasses(classes);
             factory.setInvoker(new AutoJAXRSInvoker(restEjbs));
