@@ -56,7 +56,7 @@ public class InternalApplication extends Application {
             LOGGER.info("InternalApplication.singletons[" + singletonsCount++ + "]=" + (object != null ? object.getClass().getName() : "null"));
         }
 
-        LOGGER.info("InternalApplication Created", new Throwable());
+        LOGGER.info("InternalApplication Created", new Throwable("No error occurred.  Call stack printed for debug purposes."));
     }
 
     @Override
