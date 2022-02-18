@@ -43,8 +43,8 @@ public class InternalApplication extends Application {
             classes.addAll(original.getClasses());
         }
 
-        this.classes = Collections.unmodifiableSet(classes);
-        this.singletons = Collections.unmodifiableSet(singletons);
+        this.classes = classes;
+        this.singletons = singletons;
 
         LOGGER.info("Create InternalApplication@" + hashCode() + "{original=" + (original != null ? original.getClass().getName() : "null") + "}");
         int classesCount = 0;
