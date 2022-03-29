@@ -191,7 +191,8 @@
     <version.eclipselink>2.6.4</version.eclipselink>
     <version.groovy>2.4.12</version.groovy>
 
-    <jackson.version>2.12.6</jackson.version>
+    <jackson.version>2.12.6.1</jackson.version>
+    <jackson.core.version>2.12.6</jackson.core.version>
 
     <!-- arquillian related -->
     <version.arquillian.bom>1.1.13.Final</version.arquillian.bom>
@@ -1193,7 +1194,7 @@
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
-        <version>${jackson.version}</version>
+        <version>${jackson.core.version}</version>
       </dependency>
       <dependency>
         <groupId>xalan</groupId>
