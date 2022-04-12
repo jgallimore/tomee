@@ -272,7 +272,8 @@ public class MdbContainer implements RpcContainer, BaseMdbContainer {
         }
     }
 
-    private ActivationSpec createActivationSpec(final BeanContext beanContext) throws OpenEJBException {
+    // visibility to allow unit testing
+    public ActivationSpec createActivationSpec(final BeanContext beanContext) throws OpenEJBException {
         try {
             // initialize the object recipe
             final ObjectRecipe objectRecipe = new ObjectRecipe(activationSpecClass);
