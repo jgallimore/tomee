@@ -85,6 +85,8 @@
         </exclusion>
       </exclusions>
     </dependency>
+
+
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
@@ -156,22 +158,6 @@
             <com.sun.jersey.server.impl.cdi.lookupExtensionInBeanManager>true</com.sun.jersey.server.impl.cdi.lookupExtensionInBeanManager>
           </systemVariables>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.tomitribe.transformer</groupId>
-        <artifactId>org.eclipse.transformer.maven</artifactId>
-        <version>0.1.1</version>
-        <configuration>
-          <classifier>jakartaee9</classifier>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <phase>package</phase>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

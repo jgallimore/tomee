@@ -13,7 +13,8 @@
   <groupId>org.superbiz</groupId>
   <artifactId>cdi-request-scope</artifactId>
   <name>TomEE :: Examples :: CDI Request Scope</name>
-  <version>8.0.12-SNAPSHOT</version>
+  <version>8.0.3-SNAPSHOT</version>
+
   <build>
     <defaultGoal>install</defaultGoal>
     <plugins>
@@ -25,22 +26,6 @@
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.tomitribe.transformer</groupId>
-        <artifactId>org.eclipse.transformer.maven</artifactId>
-        <version>0.1.1</version>
-        <configuration>
-          <classifier>jakartaee9</classifier>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <phase>package</phase>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

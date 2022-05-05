@@ -14,7 +14,8 @@
   <groupId>org.superbiz</groupId>
   <artifactId>deltaspike-fullstack</artifactId>
   <name>TomEE :: Examples :: JSF2/CDI/BV/JPA/DeltaSpike</name>
-  <version>8.0.12-SNAPSHOT</version>
+  <version>8.0.3-SNAPSHOT</version>
+
   <packaging>war</packaging>
 
   <properties>
@@ -88,22 +89,6 @@
             <logging.level.OpenEJB.startup>FINEST</logging.level.OpenEJB.startup>
           </systemPropertyVariables>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.tomitribe.transformer</groupId>
-        <artifactId>org.eclipse.transformer.maven</artifactId>
-        <version>0.1.1</version>
-        <configuration>
-          <classifier>jakartaee9</classifier>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <phase>package</phase>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
