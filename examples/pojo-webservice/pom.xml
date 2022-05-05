@@ -58,8 +58,7 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>3.1.0</version>
       </plugin>
-      <plugin>
-        <!-- http://localhost:8080/pojo-webservice?wsdl -->
+      <plugin> <!-- http://localhost:8080/pojo-webservice?wsdl -->
         <groupId>org.apache.tomee.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
         <version>8.0.12-SNAPSHOT</version>
@@ -70,7 +69,7 @@
       <plugin>
         <groupId>org.tomitribe.transformer</groupId>
         <artifactId>org.eclipse.transformer.maven</artifactId>
-        <version>0.1.1a</version>
+        <version>0.1.1</version>
         <configuration>
           <classifier>jakartaee9</classifier>
         </configuration>

@@ -49,7 +49,7 @@
       <plugin>
         <groupId>org.tomitribe.transformer</groupId>
         <artifactId>org.eclipse.transformer.maven</artifactId>
-        <version>0.1.1a</version>
+        <version>0.1.1</version>
         <configuration>
           <classifier>jakartaee9</classifier>
         </configuration>
@@ -84,6 +84,7 @@
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+
     <!--
     The <scope>test</scope> guarantees that non of your runtime
     code is dependent on any OpenEJB classes.
@@ -95,6 +96,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -110,4 +112,6 @@
       <url>file://${basedir}/target/snapshot-repo/</url>
     </snapshotRepository>
   </distributionManagement>
+
 </project>
+
