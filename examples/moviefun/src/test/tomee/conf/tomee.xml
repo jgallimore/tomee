@@ -1,0 +1,8 @@
+<tomee>
+    <Resource id="jdbc/TradeDataSource" type="DataSource">
+        JdbcDriver   org.postgresql.Driver
+        JdbcUrl  jdbc:postgresql://localhost/daytrader
+        UserName     postgres
+        Password     mysecretpassword
+    </Resource>
+</tomee>

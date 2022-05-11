@@ -17,17 +17,30 @@
 
 package org.apache.openejb.resource.activemq;
 
-import org.apache.activemq.ActiveMQConnection;
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.RedeliveryPolicy;
+import org.apache.activemq.*;
+import org.apache.activemq.advisory.DestinationSource;
+import org.apache.activemq.blob.BlobTransferPolicy;
 import org.apache.activemq.broker.BrokerService;
+import org.apache.activemq.broker.region.policy.RedeliveryPolicyMap;
+import org.apache.activemq.command.*;
+import org.apache.activemq.command.Message;
+import org.apache.activemq.management.JMSConnectionStatsImpl;
+import org.apache.activemq.management.JMSStatsImpl;
+import org.apache.activemq.management.StatsImpl;
 import org.apache.activemq.ra.ActiveMQConnectionRequestInfo;
 import org.apache.activemq.ra.ActiveMQEndpointActivationKey;
 import org.apache.activemq.ra.ActiveMQEndpointWorker;
 import org.apache.activemq.ra.ActiveMQManagedConnection;
 import org.apache.activemq.ra.MessageActivationSpec;
+import org.apache.activemq.thread.Scheduler;
+import org.apache.activemq.thread.TaskRunnerFactory;
+import org.apache.activemq.transport.Transport;
+import org.apache.activemq.transport.TransportListener;
+import org.apache.activemq.util.IdGenerator;
+import org.apache.activemq.util.LongSequenceGenerator;
 import org.apache.openejb.BeanContext;
 import org.apache.openejb.core.mdb.MdbContainer;
+import org.apache.openejb.dyni.DynamicSubclass;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.resource.AutoConnectionTracker;
 import org.apache.openejb.resource.activemq.jms2.TomEEConnectionFactory;
@@ -38,29 +51,24 @@ import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
 import org.apache.openejb.util.URISupport;
 import org.apache.openejb.util.URLs;
+import org.apache.openejb.util.proxy.LocalBeanProxyFactory;
 import org.apache.openejb.util.reflection.Reflections;
 
-import javax.jms.Connection;
-import javax.jms.JMSException;
+import javax.jms.*;
+import javax.jms.Queue;
 import javax.management.ObjectName;
 import javax.naming.NamingException;
 import javax.resource.ResourceException;
 import javax.resource.spi.BootstrapContext;
 import javax.resource.spi.ResourceAdapterInternalException;
 import javax.resource.spi.TransactionSupport;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
+import java.io.IOException;
+import java.io.Serializable;
+import java.lang.IllegalStateException;
+import java.lang.reflect.*;
 import java.net.URISyntaxException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
+import java.util.concurrent.*;
 
 @SuppressWarnings("UnusedDeclaration")
 public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQResourceAdapter {
@@ -69,6 +77,11 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
     private String useDatabaseLock;
     private String startupTimeout = "60000";
     private BootstrapContext bootstrapContext;
+
+    private boolean shareMdbConnections = false;
+    private final Map<ConnectionKey, ActiveMQConnection> sharedMdbConnections = new ConcurrentHashMap<>();
+    private final ConcurrentMap<Class<?>, Class<?>> proxies = new ConcurrentHashMap<>();
+
     private final Map<BeanContext, ObjectName> mbeanNames = new ConcurrentHashMap<>();
     private static final Map<String,String> PREVENT_CREATION_PARAMS = new HashMap<String, String>() { {
         put("create", "false");
@@ -97,6 +110,14 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
             startupTimeout.setUnit(TimeUnit.MILLISECONDS);
         }
         this.startupTimeout = String.valueOf(TimeUnit.MILLISECONDS.convert(startupTimeout.getTime(), startupTimeout.getUnit()));
+    }
+
+    public boolean isShareMdbConnections() {
+        return shareMdbConnections;
+    }
+
+    public void setShareMdbConnections(boolean shareMdbConnections) {
+        this.shareMdbConnections = shareMdbConnections;
     }
 
     @Override
@@ -291,7 +312,79 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
                 }
             }
         }
-        return super.makeConnection(activationSpec);
+
+        if (! isShareMdbConnections()) {
+            return super.makeConnection(activationSpec);
+        }
+
+        String userName = defaultValue(activationSpec.getUserName(), getInfo().getUserName());
+        String password = defaultValue(activationSpec.getPassword(), getInfo().getPassword());
+        String clientId = defaultValue(activationSpec.getClientId(), getInfo().getClientid());
+
+        final ConnectionKey connectionKey = new ConnectionKey(userName, password, clientId);
+        if (sharedMdbConnections.containsKey(connectionKey)) {
+            return sharedMdbConnections.get(connectionKey);
+        }
+
+        final ActiveMQConnection wrappedConnection = wrap(super.makeConnection(activationSpec));
+        sharedMdbConnections.put(connectionKey, wrappedConnection);
+        return wrappedConnection;
+    }
+
+    private ActiveMQConnection wrap(ActiveMQConnection connection) {
+        final Object wrapped = LocalBeanProxyFactory.Unsafe.allocateInstance(getProxy(connection.getClass(), connection.getClass().getClassLoader()));
+        DynamicSubclass.setHandler(wrapped, new InvocationHandler() {
+            @Override
+            public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+                switch (method.getName()) {
+                    case "toString":
+                        return "Shared JMS Connection: " + connection;
+                    case "setClientID":
+                        // Handle setClientID method: throw exception if not compatible.
+                        String currentClientId = connection.getClientID();
+                        if (currentClientId != null && currentClientId.equals(args[0])) {
+                            return null;
+                        } else {
+                            throw new IllegalStateException(
+                                    "setClientID call not supported on proxy for shared Connection. " +
+                                            "Set the 'clientId' property on the SingleConnectionFactory instead.");
+                        }
+                    case "start":
+                        if (! connection.isStarted()) {
+                            connection.start();
+                        }
+
+                        return null;
+                    case "stop":
+                        return null;
+                    case "close":
+                        return null;
+                }
+
+                try {
+                    return method.invoke(connection, args);
+                }
+                catch (InvocationTargetException ex) {
+                    throw ex.getTargetException();
+                }
+            }
+        });
+
+        return (ActiveMQConnection) wrapped;
+    }
+
+    private Class getProxy(final Class<?> cls, final ClassLoader classLoader) {
+        Class<?> found = proxies.get(cls);
+        if (found == null) {
+            synchronized (this) {
+                found = proxies.get(cls);
+                if (found == null) {
+                    proxies.put(cls, DynamicSubclass.createSubclass(cls, classLoader, true));
+                    found = proxies.get(cls);
+                }
+            }
+        }
+        return found;
     }
 
     private ActiveMQConnection getActiveMQConnection(MessageActivationSpec activationSpec, InvocationHandler invocationHandler) {
@@ -358,6 +451,106 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
             method.invoke(null);
         } catch (final Throwable e) {
             //Ignore
+        }
+    }
+
+    /**
+     * This overridden version of {@link org.apache.activemq.ra.ActiveMQResourceAdapter#makeConnection(ActiveMQConnectionRequestInfo, ActiveMQConnectionFactory)}
+     * enables connection sharing between message driven beans. If sharedMdbConnections is set to true in this resource adapter, any message driven beans
+     * with the same userName, password and clientId combination (which can be specified as properties on {@link org.apache.activemq.ra.ActiveMQActivationSpec}),
+     * will share the same physical connection to the ActiveMQ broker, with the connection being referenced by the connection key in the sharedMdbConnections Map.
+     * @param connectionRequestInfo The connection request information used to create the connection
+     * @return The connection to the ActiveMQ broker
+     * @throws JMSException thrown if an exception occurs
+     */
+    @Override
+    public ActiveMQConnection makeConnection(ActiveMQConnectionRequestInfo connectionRequestInfo) throws JMSException {
+        if (! isShareMdbConnections()) {
+            return super.makeConnection(connectionRequestInfo);
+        }
+
+        final ConnectionKey connectionKey = new ConnectionKey(connectionRequestInfo);
+        if (sharedMdbConnections.containsKey(connectionKey)) {
+            return sharedMdbConnections.get(connectionKey);
+        }
+
+        final ActiveMQConnection connection = super.makeConnection(connectionRequestInfo);
+        sharedMdbConnections.put(connectionKey, connection);
+        return connection;
+    }
+
+    /**
+     * This overridden version of {@link org.apache.activemq.ra.ActiveMQResourceAdapter#makeConnection(ActiveMQConnectionRequestInfo, ActiveMQConnectionFactory)}
+     * enables connection sharing between message driven beans. If sharedMdbConnections is set to true in this resource adapter, any message driven beans
+     * with the same userName, password and clientId combination (which can be specified as properties on {@link org.apache.activemq.ra.ActiveMQActivationSpec}),
+     * will share the same physical connection to the ActiveMQ broker, with the connection being referenced by the connection key in the sharedMdbConnections Map.
+     * @param connectionRequestInfo The connection request information used to create the connection
+     * @param connectionFactory The connection factory to use to create a new connection, if needed
+     * @return The connection to the ActiveMQ broker
+     * @throws JMSException thrown if an exception occurs
+     */
+    @Override
+    public ActiveMQConnection makeConnection(final ActiveMQConnectionRequestInfo connectionRequestInfo, final ActiveMQConnectionFactory connectionFactory) throws JMSException {
+        if (! isShareMdbConnections()) {
+            return super.makeConnection(connectionRequestInfo, connectionFactory);
+        }
+
+        final ConnectionKey connectionKey = new ConnectionKey(connectionRequestInfo);
+        if (sharedMdbConnections.containsKey(connectionKey)) {
+            return sharedMdbConnections.get(connectionKey);
+        }
+
+        final ActiveMQConnection connection = super.makeConnection(connectionRequestInfo, connectionFactory);
+        sharedMdbConnections.put(connectionKey, connection);
+        return connection;
+    }
+
+    /**
+     * This is a simple POJO to hold key connection details - userName, password and clientID, enabling
+     * connections to be shared.
+     */
+    public static class ConnectionKey implements Serializable {
+        private final String userName;
+        private final String password;
+        private final String cliendId;
+
+        public ConnectionKey(final String userName, final String password, final String cliendId) {
+            this.userName = userName;
+            this.password = password;
+            this.cliendId = cliendId;
+        }
+
+        public ConnectionKey(final ActiveMQConnectionRequestInfo connectionRequestInfo) {
+            this.userName = connectionRequestInfo.getUserName();
+            this.password = connectionRequestInfo.getPassword();
+            this.cliendId = connectionRequestInfo.getClientid();
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public String getCliendId() {
+            return cliendId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            ConnectionKey that = (ConnectionKey) o;
+            return Objects.equals(userName, that.userName) &&
+                    Objects.equals(password, that.password) &&
+                    Objects.equals(cliendId, that.cliendId);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(userName, password, cliendId);
         }
     }
 }

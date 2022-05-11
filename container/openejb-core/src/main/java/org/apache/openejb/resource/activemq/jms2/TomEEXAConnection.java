@@ -61,4 +61,14 @@ public class TomEEXAConnection extends ActiveMQXAConnection {
                                                              final ServerSessionPool sessionPool, final int maxMessages) throws JMSException {
         throw new IllegalStateException("Not allowed in a RA");
     }
+
+    @Override
+    public void start() throws JMSException {
+        super.start();
+    }
+
+    @Override
+    public void stop() throws JMSException {
+        super.stop();
+    }
 }
