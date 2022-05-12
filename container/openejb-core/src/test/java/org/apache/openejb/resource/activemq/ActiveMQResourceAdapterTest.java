@@ -18,11 +18,14 @@
 package org.apache.openejb.resource.activemq;
 
 import junit.framework.TestCase;
+import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.broker.BrokerService;
+import org.apache.activemq.ra.ActiveMQActivationSpec;
 import org.apache.openejb.util.Duration;
 import org.apache.openejb.util.NetworkUtil;
 import org.apache.openejb.util.reflection.Reflections;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class ActiveMQResourceAdapterTest extends TestCase {
@@ -69,5 +72,28 @@ public class ActiveMQResourceAdapterTest extends TestCase {
         resourceAdapter.start(null);
         assertFalse(Boolean.class.cast(Reflections.get(ActiveMQFactory.getBrokers().iterator().next(), "schedulerSupport")));
         resourceAdapter.stop();
+    }
+
+    public void testShareConnections() throws Exception {
+        final ActiveMQResourceAdapter resourceAdapter = new ActiveMQResourceAdapter();
+        final String localAddress = NetworkUtil.getLocalAddress("tcp://", "");
+        final String brokerAddress = "broker:(" + localAddress + ")?useJmx=false";
+        resourceAdapter.setBrokerXmlConfig(brokerAddress);
+        resourceAdapter.setServerUrl(localAddress);
+        resourceAdapter.setStartupTimeout(new Duration(10, TimeUnit.SECONDS));
+        resourceAdapter.setShareMdbConnections(true);
+        resourceAdapter.start(null);
+
+        ActiveMQActivationSpec spec = new ActiveMQActivationSpec();
+        spec.setUserName("");
+        spec.setPassword("");
+        spec.setClientId("MyClient");
+        final ActiveMQConnection connectionOne = resourceAdapter.makeConnection(spec);
+        final ActiveMQConnection connectionTwo = resourceAdapter.makeConnection(spec);
+
+        connectionOne.start();
+        connectionTwo.start();
+
+        new CountDownLatch(1).await();
     }
 }

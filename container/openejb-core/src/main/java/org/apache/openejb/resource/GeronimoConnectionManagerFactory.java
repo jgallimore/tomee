@@ -84,6 +84,7 @@ public class GeronimoConnectionManagerFactory {
 
     // pooling properties
     private boolean pooling = true;
+    private boolean single = false;
     private String partitionStrategy; //: none, by-subject, by-connector-properties
     private int poolMaxSize = 10;
     private int poolMinSize;
@@ -149,6 +150,14 @@ public class GeronimoConnectionManagerFactory {
 
     public void setPooling(final boolean pooling) {
         this.pooling = pooling;
+    }
+
+    public boolean isSingle() {
+        return single;
+    }
+
+    public void setSingle(boolean single) {
+        this.single = single;
     }
 
     public String getPartitionStrategy() {
@@ -316,10 +325,20 @@ public class GeronimoConnectionManagerFactory {
 
 
     private PoolingSupport createPoolingSupport() {
+        // don't use pooling, or even multiple connections. Just get a single physical
+        // connection, and proxy it for anyone who wants it.
+        // Intended to work in a similar fashion to Spring's SingleConnectionFactory support for JMS.
+        // There are absolutely no guarantees that this would work - it would largely be down to the
+        // resource adapter being used. We test it with JMS using ActiveMQ -- but that is it.
+        if (single) {
+            return new SingletonConnection();
+        }
+
         // pooling off?
         if (!pooling) {
             return new NoPool();
         }
+
 
         if (partitionStrategy == null || "none".equalsIgnoreCase(partitionStrategy)) {
 
