@@ -16,8 +16,10 @@
  */
 package org.apache.openejb.core.mdb;
 
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.broker.TransportConnector;
+import org.apache.activemq.command.ActiveMQTopic;
 import org.apache.openejb.jee.EjbJar;
 import org.apache.openejb.jee.MessageDrivenBean;
 import org.apache.openejb.junit.ApplicationComposer;
@@ -109,8 +111,8 @@ public class MdbSharedConnectionTest {
 
     @Test
     public void messageDrivenBeansShouldShareAConnection() throws Exception {
-        sendMessageTo(this.targetOne);
-        sendMessageTo(this.targetTwo);
+        sendMessageTo("targetOne");
+        sendMessageTo("targetTwo");
 
         BeanOne.latch.await();
         BeanTwo.latch.await();
@@ -141,12 +143,16 @@ public class MdbSharedConnectionTest {
 //        Assert.assertTrue(pattern.matcher(uniquePart).matches());
     }
 
-    private void sendMessageTo(final Destination destination) throws JMSException {
-        final Connection connection = cf.createConnection();
+    private void sendMessageTo(final String destination) throws Exception {
+        final int port = broker.getTransportConnectors().iterator().next().getConnectUri().getPort();
+        final ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:" + port);
+        final ActiveMQTopic topic = new ActiveMQTopic(destination);
+
+        final Connection connection = connectionFactory.createConnection();
         connection.start();
 
-        final Session session = connection.createSession();
-        final MessageProducer producer = session.createProducer(destination);
+        final Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        final MessageProducer producer = session.createProducer(topic);
         final TextMessage msg = session.createTextMessage("Hello");
         producer.send(msg);
         producer.close();
@@ -157,7 +163,7 @@ public class MdbSharedConnectionTest {
     @MessageDriven(activationConfig = {
             @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
             @ActivationConfigProperty(propertyName = "destination", propertyValue = "targetOne"),
-            @ActivationConfigProperty(propertyName = "clientId", propertyValue = "UnitTest")
+//            @ActivationConfigProperty(propertyName = "clientId", propertyValue = "UnitTest")
     })
     public static class BeanOne implements MessageListener {
         public static CountDownLatch latch = new CountDownLatch(1);
@@ -171,7 +177,7 @@ public class MdbSharedConnectionTest {
     @MessageDriven(activationConfig = {
             @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
             @ActivationConfigProperty(propertyName = "destination", propertyValue = "targetTwo"),
-            @ActivationConfigProperty(propertyName = "clientId", propertyValue = "UnitTest")
+//            @ActivationConfigProperty(propertyName = "clientId", propertyValue = "UnitTest")
     })
     public static class BeanTwo implements MessageListener {
         public static CountDownLatch latch = new CountDownLatch(1);
