@@ -623,7 +623,7 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
             }
 
             try {
-                return method.invoke(getConnectionHolder(), args);
+                return method.invoke(getConnectionHolder().getConnection(), args);
             }
             catch (InvocationTargetException ex) {
                 throw ex.getTargetException();
