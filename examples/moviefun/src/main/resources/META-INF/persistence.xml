@@ -27,6 +27,7 @@
     <properties>
       <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
       <property name="eclipselink.ddl-generation" value="create-tables"/>
+      <property name="tomee.jpa.cdi" value="false" />
     </properties>
   </persistence-unit>
 </persistence>
