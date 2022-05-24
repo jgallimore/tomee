@@ -1,4 +1,7 @@
-= TomEE EAP 8.0.10-TT.3
+= TomEE EAP 8.0.11-TT.1
+
+=== Changes in TomEE EAP 8.0.11-TT.1
+* Updated to Tomcat 9.0.63 to mitigate CVE-2022-29885
 
 === Changes in TomEE EAP 8.0.10-TT.3
 * Updated to Tomcat 9.0.62
