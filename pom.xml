@@ -31,7 +31,7 @@
   <groupId>org.apache.tomee</groupId>
   <artifactId>tomee-project</artifactId>
   <packaging>pom</packaging>
-  <version>8.0.10-TT.4-SNAPSHOT</version>
+  <version>8.0.11-TT.1-SNAPSHOT</version>
 
   <name>Apache OpenEJB</name>
   <description>Apache OpenEJB is an open source, modular, configurable and extensible EJB Container System and EJB Server.</description>
@@ -145,7 +145,7 @@
     <version.shrinkwrap.descriptor>2.0.0</version.shrinkwrap.descriptor>
     <version.shrinkwrap.shrinkwrap>1.2.6</version.shrinkwrap.shrinkwrap>
 
-    <tomcat.version>9.0.62</tomcat.version>
+    <tomcat.version>9.0.63</tomcat.version>
 
     <cxf.version>3.4.5</cxf.version>
     <ehcache.version>2.10.3</ehcache.version>
