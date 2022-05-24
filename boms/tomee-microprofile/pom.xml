@@ -752,7 +752,7 @@
     <dependency>
       <groupId>org.apache.openjpa</groupId>
       <artifactId>openjpa</artifactId>
-      <version>3.2.1</version>
+      <version>3.2.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2106,17 +2106,6 @@
       <groupId>wsdl4j</groupId>
       <artifactId>wsdl4j</artifactId>
       <version>1.6.3</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>xml-apis</groupId>
-      <artifactId>xml-apis</artifactId>
-      <version>1.4.01</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
