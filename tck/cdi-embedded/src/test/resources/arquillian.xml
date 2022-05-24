@@ -33,6 +33,7 @@
         jms = new://Resource?type=javax.jms.ConnectionFactory
         queue = new://Resource?type=Queue
         topic = new://Resource?type=Topic
+        tomee.jpa.cdi=false
       </property>
       <property name="startDefaultScopes">true</property>
     </configuration>

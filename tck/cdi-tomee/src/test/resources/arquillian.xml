@@ -52,6 +52,7 @@
         jdbc = new://Resource?type=DataSource
 
         cdiTckExcludeDummy = true
+        tomee.jpa.cdi=false
       </property>
       <property name="additionalLibs">
         target/test-classes/org
