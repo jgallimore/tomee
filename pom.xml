@@ -1636,6 +1636,10 @@
             <groupId>commons-pool</groupId>
             <artifactId>commons-pool</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-asm5-shaded</artifactId>
+          </exclusion>
 
           <!-- regarding maven rules, we don't need to exclude those deps
      because we already depend on -->
@@ -1945,6 +1949,10 @@
           <exclusion>
             <groupId>org.apache.xbean</groupId>
             <artifactId>xbean-finder-shaded</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-asm5-shaded</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
