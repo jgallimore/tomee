@@ -28,9 +28,9 @@ import org.apache.openejb.loader.IO;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.util.Join;
 import org.apache.openejb.util.PropertyPlaceHolderHelper;
-import org.apache.xbean.asm5.ClassWriter;
-import org.apache.xbean.asm5.MethodVisitor;
-import org.apache.xbean.asm5.Opcodes;
+import org.apache.xbean.asm9.ClassWriter;
+import org.apache.xbean.asm9.MethodVisitor;
+import org.apache.xbean.asm9.Opcodes;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -52,11 +52,11 @@ import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import static org.apache.xbean.asm5.Opcodes.ACC_PUBLIC;
-import static org.apache.xbean.asm5.Opcodes.ACC_SUPER;
-import static org.apache.xbean.asm5.Opcodes.ALOAD;
-import static org.apache.xbean.asm5.Opcodes.INVOKESPECIAL;
-import static org.apache.xbean.asm5.Opcodes.RETURN;
+import static org.apache.xbean.asm9.Opcodes.ACC_PUBLIC;
+import static org.apache.xbean.asm9.Opcodes.ACC_SUPER;
+import static org.apache.xbean.asm9.Opcodes.ALOAD;
+import static org.apache.xbean.asm9.Opcodes.INVOKESPECIAL;
+import static org.apache.xbean.asm9.Opcodes.RETURN;
 
 /**
  * @version $Rev$ $Date$

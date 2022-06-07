@@ -18,12 +18,12 @@
 package org.apache.openejb.core.cmp.cmp2;
 
 import org.apache.openejb.OpenEJBRuntimeException;
-import org.apache.xbean.asm5.ClassWriter;
-import org.apache.xbean.asm5.FieldVisitor;
-import org.apache.xbean.asm5.Label;
-import org.apache.xbean.asm5.MethodVisitor;
-import org.apache.xbean.asm5.Opcodes;
-import org.apache.xbean.asm5.Type;
+import org.apache.xbean.asm9.ClassWriter;
+import org.apache.xbean.asm9.FieldVisitor;
+import org.apache.xbean.asm9.Label;
+import org.apache.xbean.asm9.MethodVisitor;
+import org.apache.xbean.asm9.Opcodes;
+import org.apache.xbean.asm9.Type;
 
 import javax.ejb.EntityContext;
 import java.lang.reflect.Field;

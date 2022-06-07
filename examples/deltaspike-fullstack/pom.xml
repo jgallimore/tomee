@@ -100,7 +100,7 @@
           <groupId>org.slf4j</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>xbean-asm5-shaded</artifactId>
+          <artifactId>xbean-asm9-shaded</artifactId>
           <groupId>org.apache.xbean</groupId>
         </exclusion>
         <exclusion>
@@ -119,8 +119,8 @@
     </dependency>
     <dependency>
       <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-asm5-shaded</artifactId>
-      <version>3.18</version>
+      <artifactId>xbean-asm9-shaded</artifactId>
+      <version>4.21</version>
     </dependency>
     <dependency>
       <artifactId>commons-lang3</artifactId>
