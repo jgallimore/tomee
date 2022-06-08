@@ -101,7 +101,7 @@
     <tomee.version>1.7.6-SNAPSHOT</tomee.version>
 
     <openjpa.version>2.4.2</openjpa.version>
-    <org.apache.openwebbeans.version>1.2.8</org.apache.openwebbeans.version>
+    <org.apache.openwebbeans.version>1.2.8-TT.1</org.apache.openwebbeans.version>
 
     <!-- Maven module versions -->
     <maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
@@ -1636,10 +1636,6 @@
             <groupId>commons-pool</groupId>
             <artifactId>commons-pool</artifactId>
           </exclusion>
-          <exclusion>
-            <groupId>org.apache.xbean</groupId>
-            <artifactId>xbean-asm5-shaded</artifactId>
-          </exclusion>
 
           <!-- regarding maven rules, we don't need to exclude those deps
      because we already depend on -->
@@ -1949,10 +1945,6 @@
           <exclusion>
             <groupId>org.apache.xbean</groupId>
             <artifactId>xbean-finder-shaded</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.xbean</groupId>
-            <artifactId>xbean-asm5-shaded</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
