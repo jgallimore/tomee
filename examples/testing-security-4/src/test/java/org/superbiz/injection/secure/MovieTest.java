@@ -21,7 +21,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.ejb.EJBAccessException;
 import javax.ejb.embeddable.EJBContainer;
@@ -43,7 +42,6 @@ public class MovieTest {
         final Properties p = new Properties();
         p.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.openejb.core.LocalInitialContextFactory");
         p.setProperty("openejb.authentication.realmName", "ScriptLogin");
-        p.setProperty("openejb.embedded.initialcontext.close", "destroy");
         p.put(Context.SECURITY_PRINCIPAL, user);
         p.put(Context.SECURITY_CREDENTIALS, pass);
 
@@ -61,15 +59,11 @@ public class MovieTest {
         p.put("movieDatabase.JdbcUrl", "jdbc:hsqldb:mem:moviedb");
 
         this.container = EJBContainer.createEJBContainer(p);
-        try {
             this.container.getContext().bind("inject", this);
-        } catch (final Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @After
-    public void after() {
+    public void tearDown() {
         this.container.close();
     }
 

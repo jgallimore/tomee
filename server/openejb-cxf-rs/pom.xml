@@ -19,7 +19,7 @@
   <parent>
     <artifactId>server</artifactId>
     <groupId>org.apache.openejb</groupId>
-    <version>4.7.6-SNAPSHOT</version>
+    <version>4.7.6-TT.28</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -47,7 +47,7 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.tomee.patch</groupId>
+      <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-frontend-jaxrs</artifactId>
       <version>${cxf.version}</version>
       <exclusions>
@@ -74,22 +74,22 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.apache.tomee.patch</groupId>
+      <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-extension-providers</artifactId>
       <version>${cxf.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.tomee.patch</groupId>
+      <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-extension-search</artifactId>
       <version>${cxf.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.tomee.patch</groupId>
+      <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-security-cors</artifactId>
       <version>${cxf.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.tomee.patch</groupId>
+      <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-security-oauth2</artifactId>
       <version>${cxf.version}</version>
       <exclusions>

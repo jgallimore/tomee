@@ -52,7 +52,7 @@
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
     <repository>
       <releases>
@@ -61,13 +61,18 @@
       <id>staged-releases</id>
       <url>https://repository.apache.org/content/repositories/orgapachetomee-1109/</url>
     </repository>
+    <repository>
+      <id>tomitribe-all</id>
+      <name>Tomitribe Repository</name>
+      <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
+    </repository>
   </repositories>
 
   <pluginRepositories>
     <pluginRepository>
       <id>apache-m2-plugin-snapshot</id>
       <name>Apache Snapshot Plugin Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </pluginRepository>
     <pluginRepository>
       <releases>
@@ -150,9 +155,9 @@
 
       <!-- client -->
       <dependency>
-        <groupId>org.apache.tomee.patch</groupId>
+        <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-bundle</artifactId>
-        <version>2.6.17-TomEE</version>
+        <version>2.6.17-TT.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.xbean</groupId>
@@ -180,8 +185,8 @@
   <properties>
     <xbean.version>3.17</xbean.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <version.tomee>1.7.6-SNAPSHOT</version.tomee>
-    <version.openejb>4.7.6-SNAPSHOT</version.openejb>
+    <version.tomee>1.7.6-TT.28</version.tomee>
+    <version.openejb>4.7.6-TT.28</version.openejb>
   </properties>
 
   <!--

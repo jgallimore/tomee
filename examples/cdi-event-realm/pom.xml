@@ -26,9 +26,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <openejb.version>4.7.6-SNAPSHOT</openejb.version>
-    <tomee.version>1.7.6-SNAPSHOT</tomee.version>
-    <tomcat.version>7.0.99</tomcat.version>
+    <openejb.version>4.7.6-TT.28</openejb.version>
+    <tomee.version>1.7.6-TT.28</tomee.version>
+    <tomcat.version>7.0.104</tomcat.version>
   </properties>
 
   <build>
@@ -63,7 +63,7 @@
     <repository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
     <repository>
       <id>tomcat-m2-repo</id>
@@ -76,7 +76,7 @@
     <pluginRepository>
       <id>apache-m2-snapshot</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
     </pluginRepository>
   </pluginRepositories>
 

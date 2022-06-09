@@ -18,7 +18,6 @@ package org.superbiz.injection.secure;
 
 //START SNIPPET: code
 
-import javax.annotation.PreDestroy;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateful;
@@ -28,7 +27,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateful
@@ -50,7 +48,8 @@ public class Movies {
     @PermitAll
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Movie> getMovies() throws Exception {
-        return entityManager.createQuery("SELECT m from Movie as m", Movie.class).getResultList();
+        Query query = entityManager.createQuery("SELECT m from Movie as m");
+        return query.getResultList();
     }
 }
 //END SNIPPET: code
