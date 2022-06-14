@@ -77,6 +77,7 @@
     <module>ejb-remote-call</module>
     <module>ejb-remote-call-2</module>
     <module>ejb-webservice</module>
+    <module>filter-cdi</module>
     <module>groovy-cdi</module>
     <module>groovy-jpa</module>
     <module>groovy-spock</module>
@@ -219,6 +220,7 @@
     <module>mp-faulttolerance-timeout</module>
     <module>xa-datasource</module>
     <module>websocket-jms</module>
+    <module>properties-provider</module>
 
     <!-- Jakarta Security Examples -->
     <module>security-tomcat-user-identitystore</module>

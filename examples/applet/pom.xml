@@ -21,7 +21,7 @@
   <groupId>org.superbiz.applet</groupId>
   <artifactId>applet</artifactId>
   <packaging>war</packaging>
-  <version>8.0.11-TT.1-SNAPSHOT</version>
+  <version>8.0.11-TT.2-SNAPSHOT</version>
   <name>TomEE :: Web Examples :: Signed Applet EJB Client</name>
   <url>http://tomee.apache.org</url>
   <properties>
@@ -37,7 +37,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>javaee-api</artifactId>
-      <version>8.0-5</version>
+      <version>8.0-6</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

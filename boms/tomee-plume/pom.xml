@@ -268,7 +268,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-broker</artifactId>
-      <version>5.16.4</version>
+      <version>5.16.5</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -279,7 +279,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-client</artifactId>
-      <version>5.16.4</version>
+      <version>5.16.5</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -290,7 +290,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-jdbc-store</artifactId>
-      <version>5.16.4</version>
+      <version>5.16.5</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -301,7 +301,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-kahadb-store</artifactId>
-      <version>5.16.4</version>
+      <version>5.16.5</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -312,7 +312,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-openwire-legacy</artifactId>
-      <version>5.16.4</version>
+      <version>5.16.5</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -323,7 +323,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-ra</artifactId>
-      <version>5.16.4</version>
+      <version>5.16.5</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -695,6 +695,17 @@
       </exclusions>
     </dependency>
     <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jcache_1.0_spec</artifactId>
+      <version>1.0-alpha-1</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
       <groupId>org.apache.geronimo</groupId>
       <artifactId>geronimo-health</artifactId>
       <version>1.0.1</version>
@@ -763,7 +774,7 @@
     <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-core</artifactId>
-      <version>1.2.16</version>
+      <version>1.2.18</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -774,7 +785,7 @@
     <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-jaxrs</artifactId>
-      <version>1.2.16</version>
+      <version>1.2.18</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -785,7 +796,7 @@
     <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-jsonb</artifactId>
-      <version>1.2.16</version>
+      <version>1.2.18</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -796,7 +807,7 @@
     <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-jsonp-strict</artifactId>
-      <version>1.2.16</version>
+      <version>1.2.18</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -807,7 +818,7 @@
     <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-mapper</artifactId>
-      <version>1.2.16</version>
+      <version>1.2.18</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -851,7 +862,7 @@
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-ee</artifactId>
-      <version>2.0.26</version>
+      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -862,7 +873,7 @@
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-ee-common</artifactId>
-      <version>2.0.26</version>
+      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -873,7 +884,7 @@
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-ejb</artifactId>
-      <version>2.0.26</version>
+      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -884,7 +895,7 @@
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-el22</artifactId>
-      <version>2.0.26</version>
+      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -895,7 +906,7 @@
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-impl</artifactId>
-      <version>2.0.26</version>
+      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -906,7 +917,7 @@
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-jsf</artifactId>
-      <version>2.0.26</version>
+      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -917,7 +928,7 @@
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-spi</artifactId>
-      <version>2.0.26</version>
+      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -928,7 +939,7 @@
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-web</artifactId>
-      <version>2.0.26</version>
+      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1192,7 +1203,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>javaee-api</artifactId>
-      <version>8.0-5</version>
+      <version>8.0-6</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1643,7 +1654,7 @@
     <dependency>
       <groupId>org.apache.xbean</groupId>
       <artifactId>xbean-asm9-shaded</artifactId>
-      <version>4.20</version>
+      <version>4.21</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1654,7 +1665,7 @@
     <dependency>
       <groupId>org.apache.xbean</groupId>
       <artifactId>xbean-bundleutils</artifactId>
-      <version>4.20</version>
+      <version>4.21</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1665,7 +1676,7 @@
     <dependency>
       <groupId>org.apache.xbean</groupId>
       <artifactId>xbean-finder-shaded</artifactId>
-      <version>4.20</version>
+      <version>4.21</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1676,7 +1687,7 @@
     <dependency>
       <groupId>org.apache.xbean</groupId>
       <artifactId>xbean-naming</artifactId>
-      <version>4.20</version>
+      <version>4.21</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1687,7 +1698,7 @@
     <dependency>
       <groupId>org.apache.xbean</groupId>
       <artifactId>xbean-reflect</artifactId>
-      <version>4.20</version>
+      <version>4.21</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1962,7 +1973,7 @@
     <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
-      <version>2.3.4</version>
+      <version>2.5.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
