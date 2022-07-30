@@ -99,7 +99,7 @@
     <test.coverage.skip>false</test.coverage.skip>
     <openejb.version>4.7.6-TT.28</openejb.version>
     <tomee.version>1.7.6-TT.28</tomee.version>
-    <openjpa.version>2.4.3</openjpa.version>
+    <openjpa.version>2.4.3-TT.1</openjpa.version>
     <org.apache.openwebbeans.version>1.2.8-TT.1</org.apache.openwebbeans.version>
 
     <!-- Maven module versions -->
