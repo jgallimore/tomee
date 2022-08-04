@@ -17,17 +17,21 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.superbiz</groupId>
   <artifactId>rest-example</artifactId>
   <packaging>war</packaging>
   <version>8.0.12-TT.1-SNAPSHOT</version>
   <name>TomEE :: Web Examples :: REST Example</name>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <tomee.version>8.0.12-TT.1-SNAPSHOT</tomee.version>
     <version.openjpa>3.0.0</version.openjpa>
   </properties>
+
   <repositories>
     <repository>
       <id>apache-m2-snapshot</id>
@@ -40,6 +44,7 @@
       <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
     </repository>
   </repositories>
+
   <pluginRepositories>
     <pluginRepository>
       <id>apache-m2-snapshot</id>
@@ -47,6 +52,7 @@
       <url>https://repository.apache.org/content/groups/snapshots</url>
     </pluginRepository>
   </pluginRepositories>
+
   <build>
     <finalName>${project.artifactId}</finalName>
     <defaultGoal>package</defaultGoal>
@@ -121,6 +127,7 @@
 
     </plugins>
   </build>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.tomee</groupId>
@@ -129,9 +136,15 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>8.0.13-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -174,6 +187,7 @@
       <version>2.5.1</version>
     </dependency>
   </dependencies>
+
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:

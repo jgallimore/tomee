@@ -18,14 +18,17 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.superbiz</groupId>
   <artifactId>projectstage-demo</artifactId>
   <version>8.0.12-TT.1-SNAPSHOT</version>
   <name>TomEE :: Examples :: DeltaSpike ProjectStage</name>
+
   <properties>
     <tomee.version>8.0.12-TT.1-SNAPSHOT</tomee.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
   <repositories>
     <repository>
       <id>apache-m2-snapshot</id>
@@ -38,6 +41,7 @@
       <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
     </repository>
   </repositories>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.tomee</groupId>
@@ -50,6 +54,7 @@
       <artifactId>deltaspike-core-api</artifactId>
       <version>1.0.0</version>
     </dependency>
+
     <dependency>
       <groupId>org.jboss.arquillian.junit</groupId>
       <artifactId>arquillian-junit-container</artifactId>
@@ -71,10 +76,11 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <distributionManagement>
     <repository>
       <id>localhost</id>
@@ -85,6 +91,7 @@
       <url>file://${basedir}/target/snapshot-repo/</url>
     </snapshotRepository>
   </distributionManagement>
+
   <build>
     <plugins>
       <plugin>

@@ -18,17 +18,21 @@
  * under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.superbiz.jsf</groupId>
   <artifactId>jsf-managedBean-and-ejb</artifactId>
   <packaging>war</packaging>
   <name>TomEE :: Web Examples :: JSF - ManangedBean and EJB</name>
   <version>8.0.12-TT.1-SNAPSHOT</version>
   <url>http://tomee.apache.org</url>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <version.myfaces-api>2.1.16</version.myfaces-api>
   </properties>
+
   <build>
     <finalName>jsf-managedBean-and-ejb</finalName>
     <plugins>
@@ -54,6 +58,7 @@
 
     </plugins>
   </build>
+
   <repositories>
     <repository>
       <releases>
@@ -69,6 +74,7 @@
       <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
     </repository>
   </repositories>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.myfaces.core</groupId>
@@ -107,7 +113,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -117,6 +123,7 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:

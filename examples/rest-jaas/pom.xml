@@ -18,11 +18,13 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.superbiz</groupId>
   <artifactId>rest-jaas</artifactId>
   <version>8.0.12-TT.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>TomEE :: Examples :: JAXRS and JAAS</name>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.tomee</groupId>
@@ -31,6 +33,7 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
   <build>
     <defaultGoal>install</defaultGoal>
     <plugins>
@@ -65,6 +68,7 @@
 
     </plugins>
   </build>
+
   <repositories>
     <repository>
       <id>apache-m2-snapshot</id>
@@ -84,6 +88,7 @@
       <url>https://repository.apache.org/content/groups/snapshots</url>
     </pluginRepository>
   </pluginRepositories>
+
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -99,6 +104,7 @@
       <url>file://${basedir}/target/snapshot-repo/</url>
     </snapshotRepository>
   </distributionManagement>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>

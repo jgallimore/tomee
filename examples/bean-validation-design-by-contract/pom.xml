@@ -17,15 +17,18 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.superbiz</groupId>
   <artifactId>bean-validation-design-by-contract</artifactId>
   <packaging>jar</packaging>
   <version>8.0.12-TT.1-SNAPSHOT</version>
   <name>TomEE :: Examples :: Bean Validation Design By Contract</name>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>8.0.7-SNAPSHOT</tomee.version>
+    <tomee.version>8.0.11</tomee.version>
   </properties>
+
   <build>
     <defaultGoal>install</defaultGoal>
     <plugins>
@@ -63,7 +66,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
     <!--
@@ -91,4 +94,5 @@
       <url>file://${basedir}/target/snapshot-repo/</url>
     </snapshotRepository>
   </distributionManagement>
+
 </project>

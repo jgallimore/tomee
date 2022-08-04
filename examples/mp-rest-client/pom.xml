@@ -16,13 +16,18 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.superbiz</groupId>
   <artifactId>mp-rest-client</artifactId>
   <version>8.0.12-TT.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>TomEE :: Examples :: Microprofile REST Client</name>
+
+
   <properties>
     <microprofile.rest-client.version>1.1</microprofile.rest-client.version>
     <version.javaee-api>8.0</version.javaee-api>
@@ -30,6 +35,8 @@
     <junit.version>4.12</junit.version>
     <tomee.version>8.0.12-TT.1-SNAPSHOT</tomee.version>
   </properties>
+
+
   <dependencies>
     <dependency>
       <groupId>org.apache.tomee</groupId>
@@ -38,11 +45,20 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>8.0.13-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
       <groupId>org.eclipse.microprofile.rest.client</groupId>
       <artifactId>microprofile-rest-client-api</artifactId>
       <version>${microprofile.rest-client.version}</version>
       <scope>provided</scope>
     </dependency>
+
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -76,6 +92,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -106,6 +123,7 @@
 
     </plugins>
   </build>
+
   <!-- This section allows you to configure where to publish libraries for
   sharing. It is not required and may be deleted. For more information see:
   http://maven.apache.org/plugins/maven-deploy-plugin/ -->

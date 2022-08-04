@@ -13,15 +13,18 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.superbiz</groupId>
   <artifactId>myfaces-codi-demo</artifactId>
+
   <name>TomEE :: Examples :: JSF2/CDI/BV/JPA/CODI</name>
   <version>8.0.12-TT.1-SNAPSHOT</version>
   <packaging>war</packaging>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <myfaces2.version>2.2.4</myfaces2.version>
     <myfaces.codi.version>1.0.5</myfaces.codi.version>
     <extval.version>2.0.8</extval.version>
   </properties>
+
   <build>
     <defaultGoal>install</defaultGoal>
     <plugins>
@@ -72,16 +75,19 @@
       <version>8.0-5</version>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>org.apache.myfaces.extensions.cdi.bundles</groupId>
       <artifactId>myfaces-extcdi-bundle-jsf20</artifactId>
       <version>${myfaces.codi.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.apache.myfaces.extensions.validator</groupId>
       <artifactId>myfaces-extval-core</artifactId>
       <version>${extval.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.apache.myfaces.extensions.validator.validation-modules</groupId>
       <artifactId>myfaces-extval-property-validation</artifactId>
@@ -93,6 +99,7 @@
         </exclusion>
       </exclusions>
     </dependency>
+
     <dependency>
       <groupId>org.apache.myfaces.extensions.validator.validation-modules</groupId>
       <artifactId>myfaces-extval-bean-validation</artifactId>
@@ -104,12 +111,14 @@
         </exclusion>
       </exclusions>
     </dependency>
+
     <dependency>
       <groupId>org.apache.myfaces.core</groupId>
       <artifactId>myfaces-api</artifactId>
       <version>${myfaces2.version}</version>
       <scope>provided</scope>
     </dependency>
+
     <!-- 3rd party libs -->
     <dependency>
       <groupId>org.primefaces</groupId>
@@ -117,6 +126,7 @@
       <version>2.2</version>
     </dependency>
   </dependencies>
+
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -132,4 +142,6 @@
       <url>file://${basedir}/target/snapshot-repo/</url>
     </snapshotRepository>
   </distributionManagement>
+
 </project>
+

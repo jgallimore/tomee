@@ -202,7 +202,7 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-dbcp2</artifactId>
-      <version>2.3.0</version>
+      <version>2.9.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -311,7 +311,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-rs-security-jose</artifactId>
+      <artifactId>cxf-rt-rs-security-jose-jaxrs</artifactId>
       <version>3.4.5</version>
       <exclusions>
         <exclusion>
@@ -322,7 +322,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-rs-security-jose-jaxrs</artifactId>
+      <artifactId>cxf-rt-rs-security-jose</artifactId>
       <version>3.4.5</version>
       <exclusions>
         <exclusion>
@@ -466,7 +466,7 @@
     <dependency>
       <groupId>org.apache.myfaces.core</groupId>
       <artifactId>myfaces-api</artifactId>
-      <version>2.3.9</version>
+      <version>2.3.10</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -477,7 +477,7 @@
     <dependency>
       <groupId>org.apache.myfaces.core</groupId>
       <artifactId>myfaces-impl</artifactId>
-      <version>2.3.9</version>
+      <version>2.3.10</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -619,7 +619,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-catalina</artifactId>
+      <artifactId>tomcat-catalina-ha</artifactId>
       <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
@@ -630,7 +630,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-catalina-ha</artifactId>
+      <artifactId>tomcat-catalina</artifactId>
       <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
@@ -674,7 +674,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jasper</artifactId>
+      <artifactId>tomcat-jasper-el</artifactId>
       <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
@@ -685,7 +685,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jasper-el</artifactId>
+      <artifactId>tomcat-jasper</artifactId>
       <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
@@ -784,17 +784,6 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-util</artifactId>
-      <version>${tomcat.version}</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-util-scan</artifactId>
       <version>${tomcat.version}</version>
       <exclusions>
@@ -806,7 +795,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-websocket</artifactId>
+      <artifactId>tomcat-util</artifactId>
       <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
@@ -818,6 +807,17 @@
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-websocket-api</artifactId>
+      <version>${tomcat.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-websocket</artifactId>
       <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
@@ -960,7 +960,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomee</groupId>
-      <artifactId>openejb-jee</artifactId>
+      <artifactId>openejb-jee-accessors</artifactId>
       <version>${project.version}</version>
       <exclusions>
         <exclusion>
@@ -971,7 +971,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomee</groupId>
-      <artifactId>openejb-jee-accessors</artifactId>
+      <artifactId>openejb-jee</artifactId>
       <version>${project.version}</version>
       <exclusions>
         <exclusion>

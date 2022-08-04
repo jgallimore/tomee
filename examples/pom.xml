@@ -18,16 +18,21 @@
 -->
 <!--test 2-->
 <!-- $Rev$ $Date$ -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <artifactId>tomee-project</artifactId>
     <groupId>org.apache.tomee</groupId>
     <version>8.0.12-TT.1-SNAPSHOT</version>
   </parent>
+
   <artifactId>examples</artifactId>
   <packaging>pom</packaging>
   <name>TomEE :: Examples</name>
+
   <modules>
     <module>access-timeout-meta</module>
     <module>access-timeout</module>
@@ -44,6 +49,7 @@
     <module>cdi-alternative-and-stereotypes</module>
     <module>cdi-application-scope</module>
     <module>cdi-basic</module>
+    <module>cdi-dynamic-inject</module>
     <module>cdi-ejbcontext-jaas</module>
     <module>cdi-events</module>
     <module>cdi-interceptors</module>
@@ -113,6 +119,7 @@
     <module>mp-config-source-database</module>
     <module>mp-faulttolerance-fallback</module>
     <module>mp-faulttolerance-retry</module>
+    <module>mp-jsonb-configuration</module>
     <module>mp-jwt-bean-validation</module>
     <module>mp-jwt-bean-validation-strongly-typed</module>
     <module>mp-metrics-counted</module>
@@ -145,6 +152,7 @@
     <module>rest-on-ejb</module>
     <module>rest-example</module>
     <module>rest-example-with-application</module>
+    <module>rest-sse-example</module>
     <module>rest-xml-json</module>
     <module>scala-basic</module>
     <module>schedule-expression</module>
@@ -227,6 +235,7 @@
     <module>security-custom-identitystore</module>
 
   </modules>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.openjpa</groupId>
@@ -234,6 +243,7 @@
       <version>${openjpa.version}</version>
     </dependency>
   </dependencies>
+
   <profiles>
     <profile>
       <id>apache-release</id>
