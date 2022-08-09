@@ -1,4 +1,7 @@
-= TomEE EAP 1.7.6-TT.28
+= TomEE EAP 1.7.6-TT.29
+
+=== Changes in TomEE EAP 1.7.6-TT.29
+* Updated to geronimo-xbean 4.5-TT.1
 
 === Changes in TomEE EAP 1.7.6-TT.28
 * Updated to Tomcaat 7.0.109-TT.2 to mitigate CVE-2022-23181
