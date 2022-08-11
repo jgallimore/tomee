@@ -79,6 +79,17 @@
       </exclusions>
     </dependency>
     <dependency>
+      <groupId>com.sun.xml.messaging.saaj</groupId>
+      <artifactId>saaj-impl</artifactId>
+      <version>1.5.3</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
       <version>1.9.4</version>
@@ -156,6 +167,17 @@
       </exclusions>
     </dependency>
     <dependency>
+      <groupId>jakarta.jws</groupId>
+      <artifactId>jakarta.jws-api</artifactId>
+      <version>2.1.0</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
       <groupId>jakarta.ws.rs</groupId>
       <artifactId>jakarta.ws.rs-api</artifactId>
       <version>2.1.6</version>
@@ -169,6 +191,28 @@
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
       <artifactId>jakarta.xml.bind-api</artifactId>
+      <version>2.3.3</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.xml.soap</groupId>
+      <artifactId>jakarta.xml.soap-api</artifactId>
+      <version>1.4.2</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.xml.ws</groupId>
+      <artifactId>jakarta.xml.ws-api</artifactId>
       <version>2.3.3</version>
       <exclusions>
         <exclusion>
@@ -409,6 +453,17 @@
       </exclusions>
     </dependency>
     <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jta_1.1_spec</artifactId>
+      <version>1.1.1</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-core</artifactId>
       <version>1.2.18</version>
@@ -509,7 +564,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-ee</artifactId>
+      <artifactId>openwebbeans-ee-common</artifactId>
       <version>2.0.27</version>
       <exclusions>
         <exclusion>
@@ -520,7 +575,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-ee-common</artifactId>
+      <artifactId>openwebbeans-ee</artifactId>
       <version>2.0.27</version>
       <exclusions>
         <exclusion>
@@ -1324,7 +1379,19 @@
     <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
-      <version>2.5.2</version>
+      <version>${version.hsqldb}</version>
+      <classifier>jdk8</classifier>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.staxex</groupId>
+      <artifactId>stax-ex</artifactId>
+      <version>1.8.3</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>

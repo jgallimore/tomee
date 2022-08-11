@@ -1,4 +1,7 @@
-= TomEE EAP 8.0.12-TT.1
+= TomEE EAP 8.0.13-TT.1
+
+=== Changes in TomEE EAP 8.0.13-TT.1
+* Patch taglibs-shaded to mitigate CVE-2022-34169
 
 === Changes in TomEE EAP 8.0.12-TT.1
 * Updated to Tomcat 9.0.64
