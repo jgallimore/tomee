@@ -1,4 +1,7 @@
-= TomEE EAP 8.0.13-TT.1
+= TomEE EAP 8.0.13-TT.2
+
+=== Changes in TomEE EAP 8.0.13-TT.2
+* Updated jackson-dataformat-yaml to mitigate CVE-2022-25857
 
 === Changes in TomEE EAP 8.0.13-TT.1
 * Patch taglibs-shaded to mitigate CVE-2022-34169
