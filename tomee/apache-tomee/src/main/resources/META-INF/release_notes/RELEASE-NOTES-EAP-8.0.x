@@ -1,4 +1,7 @@
-= TomEE EAP 8.0.13-TT.2
+= TomEE EAP 8.0.13-TT.3
+
+=== Changes in TomEE EAP 8.0.13-TT.3
+* Updated snakeyaml to 1.32 to mitigate CVE-2022-38752
 
 === Changes in TomEE EAP 8.0.13-TT.2
 * Updated jackson-dataformat-yaml to mitigate CVE-2022-25857
