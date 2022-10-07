@@ -1,4 +1,9 @@
-= TomEE EAP 8.0.13-TT.3
+= TomEE EAP 8.0.13-TT.4
+
+=== Changes in TomEE EAP 8.0.13-TT.4
+* Updated jackson to 2.14.0-rc1 to mitigate CVE-2022-42003 & CVE-2022-42004
+* Updated Jettison to 1.5.1 to mitigate CVE-2022-40149 & CVE-2022-40150
+* Updated Tomcat to 9.0.68
 
 === Changes in TomEE EAP 8.0.13-TT.3
 * Updated snakeyaml to 1.32 to mitigate CVE-2022-38752
