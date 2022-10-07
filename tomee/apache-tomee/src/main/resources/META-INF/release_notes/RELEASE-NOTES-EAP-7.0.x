@@ -1,5 +1,8 @@
-= TomEE EAP 7.0.10-TT.11
+= TomEE EAP 7.0.10-TT.12
 
+=== Changes in TomEE EAP 7.0.10-TT.12
+* Updated to Jettison 1.5.1  to mitigate CVE-2022-40149 and CVE-2022-40150
+* Updated to Tomcat 8.5.82
 
 === Changes in TomEE EAP 7.0.10-TT.11
 * Updated Tomcat to 8.5.79 to mitigate CVE-2022-29885
