@@ -147,7 +147,7 @@ Uma parte importante dessa configuração é a inclusão do jar do Jettison dura
 
 [source,xml]
 ----
-<property name="additionalLibs">mvn:org.codehaus.jettison:jettison:1.3.7</property>
+<property name="additionalLibs">mvn:org.codehaus.jettison:jettison:1.5.1</property>
 ----
 
 Se uma versão> 1.3.7 for usada, a saída JSON começará a mudar para um formato padrão moderno: valores booleanos e numéricos não são mais cercados por aspas duplas.

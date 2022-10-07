@@ -33,7 +33,7 @@
       <property name="cleanOnStartUp">true</property>
       <property name="dir">target/server</property>
       <property name="appWorkingDir">target/arquillian</property>
-      <property name="additionalLibs">mvn:org.codehaus.jettison:jettison:1.3.7</property>
+      <property name="additionalLibs">mvn:org.codehaus.jettison:jettison:1.5.1</property>
     </configuration>
   </container>
 </arquillian>
