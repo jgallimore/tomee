@@ -2,6 +2,7 @@
 
 === Changes in TomEE EAP 1.7.6-TT.30
 * Updated to jettison 1.5.1 to mitigate CVE-2022-40149 and CVE-2022-40150
+* Updated to Tomcat 7.0.109-TT.4 to mitigate CVE-2021-43980
 
 === Changes in TomEE EAP 1.7.6-TT.29
 * Updated to geronimo-xbean 4.5-TT.1
