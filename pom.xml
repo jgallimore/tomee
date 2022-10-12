@@ -132,7 +132,7 @@
     <version.shrinkwrap.descriptor>2.0.0</version.shrinkwrap.descriptor>
     <version.shrinkwrap.shrinkwrap>1.2.6</version.shrinkwrap.shrinkwrap>
 
-    <tomcat.version>8.5.79</tomcat.version>
+    <tomcat.version>8.5.83</tomcat.version>
 
     <cxf.version>3.1.19-TT.7</cxf.version>
     <version.shrinkwrap.shrinkwrap>1.2.6</version.shrinkwrap.shrinkwrap>
@@ -191,7 +191,8 @@
     <version.eclipselink>2.6.4</version.eclipselink>
     <version.groovy>2.4.12</version.groovy>
 
-    <jackson.version>2.12.6.1</jackson.version>
+    <!--Please replace TT version after 2.12.7.1 or 2.12.8 gets released.-->
+    <jackson.version>2.12.7-TT.1</jackson.version>
     <jackson.core.version>2.12.6</jackson.core.version>
 
     <!-- arquillian related -->
