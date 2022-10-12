@@ -1,4 +1,9 @@
-= TomEE EAP 7.1.5-TT.13
+= TomEE EAP 7.1.5-TT.14
+
+=== Changes in TomEE EAP 7.1.5-TT.14
+* Updated to Tomcat 8.5.83
+* Updated to jackson-databind 2.12.7-TT.1 to mitigate CVE-2022-42003 and CVE-2022-42004
+* Updated to Jettison 1.5.1 to mitigate CVE-2022-40149 and CVE-2022-40150
 
 === Changes in TomEE EAP 7.1.5-TT.13
 * Updated to Tomcat 8.5.79 to mitigate CVE-2022-29885 
