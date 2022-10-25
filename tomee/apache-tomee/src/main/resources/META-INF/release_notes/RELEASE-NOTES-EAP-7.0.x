@@ -1,4 +1,7 @@
-= TomEE EAP 7.1.5-TT.14
+= TomEE EAP 7.1.5-TT.15
+
+=== Changes in TomEE EAP 7.1.5-TT.15
+* Updated to hsqldb 2.7.1 to mitigate CVE-2022-41853
 
 === Changes in TomEE EAP 7.1.5-TT.14
 * Updated to Tomcat 8.5.83

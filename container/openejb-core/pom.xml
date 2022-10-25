@@ -601,6 +601,7 @@
     <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
+      <classifier>jdk8</classifier>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
