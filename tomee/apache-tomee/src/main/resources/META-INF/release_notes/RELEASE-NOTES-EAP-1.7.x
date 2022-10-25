@@ -1,4 +1,7 @@
-= TomEE EAP 1.7.6-TT.30
+= TomEE EAP 1.7.6-TT.31
+
+=== Changes in TomEE EAP 1.7.6-TT.31
+* Updated to hsqldb 2.7.1 to mitigate CVE-2022-41853
 
 === Changes in TomEE EAP 1.7.6-TT.30
 * Updated to jettison 1.5.1 to mitigate CVE-2022-40149 and CVE-2022-40150
