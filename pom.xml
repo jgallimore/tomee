@@ -1278,6 +1278,7 @@
         <groupId>org.hsqldb</groupId>
         <artifactId>hsqldb</artifactId>
         <version>${version.hsqldb}</version>
+        <classifier>jdk8</classifier>
       </dependency>
       <dependency>
         <groupId>idb</groupId>
