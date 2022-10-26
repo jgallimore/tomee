@@ -216,7 +216,7 @@
     <version.eclipselink>2.7.11</version.eclipselink>
     <version.hibernate>5.6.12.Final</version.hibernate>
     <version.derby>10.14.2.0</version.derby>
-    <version.hsqldb>2.7.0</version.hsqldb>
+    <version.hsqldb>2.7.1</version.hsqldb>
 
     <!-- arquillian related -->
     <version.arquillian.bom>1.1.13.Final</version.arquillian.bom>
