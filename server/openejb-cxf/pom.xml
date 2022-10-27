@@ -83,7 +83,7 @@
           <artifactId>geronimo-javamail_1.4_mail</artifactId>
         </exclusion>
         <exclusion>
-          <groupId>org.ehcache</groupId>
+          <groupId>net.sf.ehcache</groupId>
           <artifactId>ehcache</artifactId>
         </exclusion>
         <exclusion>
@@ -125,7 +125,7 @@
       <version>${wss4j.version}</version>
       <exclusions>
         <exclusion>
-          <groupId>org.ehcache</groupId>
+          <groupId>net.sf.ehcache</groupId>
           <artifactId>ehcache</artifactId>
         </exclusion>
         <exclusion>
