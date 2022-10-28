@@ -96,7 +96,7 @@
             <!--Notice that jettisson > 1.3.7 changes the json output format:
                 Boolean and numeric values are not longer surrounded with double quotes
             -->
-            <lib>org.codehaus.jettison:jettison:1.5.1</lib>
+            <lib>org.codehaus.jettison:jettison:1.3.7</lib>
           </libs>
         </configuration>
       </plugin>

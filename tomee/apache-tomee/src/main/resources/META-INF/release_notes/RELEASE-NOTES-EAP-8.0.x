@@ -1,4 +1,7 @@
-= TomEE EAP 8.0.13-TT.4
+= TomEE EAP 8.0.13-TT.5
+
+=== Changes in TomEE EAP 8.0.13-TT.5
+* Updated to hsqldb 2.7.1 to mitigate CVE-2022-41853
 
 === Changes in TomEE EAP 8.0.13-TT.4
 * Updated jackson to 2.14.0-rc1 to mitigate CVE-2022-42003 & CVE-2022-42004
