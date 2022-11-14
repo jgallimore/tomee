@@ -1,4 +1,7 @@
-= TomEE EAP 1.7.6-TT.31
+= TomEE EAP 1.7.6-TT.32
+
+=== Changes in TomEE EAP 1.7.6-TT.32
+* Updated to Tomcat 7.0.109-TT.5 to mitigate CVE-2022-42252
 
 === Changes in TomEE EAP 1.7.6-TT.31
 * Updated to hsqldb 2.7.1 to mitigate CVE-2022-41853
