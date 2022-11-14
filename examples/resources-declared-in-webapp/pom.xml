@@ -26,7 +26,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <openejb.version>4.7.6-TT.31</openejb.version>
+    <openejb.version>4.7.6-TT.32</openejb.version>
   </properties>
 
   <repositories>
