@@ -21,7 +21,7 @@
   <parent>
     <artifactId>arquillian</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>8.0.13-TT.6-SNAPSHOT</version>
+    <version>8.0.14-SNAPSHOT</version>
   </parent>
   <artifactId>arquillian-tomee-common</artifactId>
   <packaging>jar</packaging>
@@ -84,7 +84,7 @@
     <dependency>
       <groupId>org.apache.xbean</groupId>
       <artifactId>xbean-finder-shaded</artifactId>
-      <version>${xbeanVersion}</version>
+      <version>${version.xbean}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

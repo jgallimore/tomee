@@ -1,4 +1,4 @@
-name: CI tomee-8.0.x-TT.x
+name: CI Pull Request Main
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - tomee-8.0.x-TT.x
   pull_request:
     branches:
-      - tomee-8.0.x-TT.x
+      - main
   workflow_dispatch:
 
 jobs:

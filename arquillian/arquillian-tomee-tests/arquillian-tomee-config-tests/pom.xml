@@ -21,7 +21,7 @@
   <parent>
     <artifactId>arquillian-tomee-tests</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>8.0.13-TT.6-SNAPSHOT</version>
+    <version>8.0.14-SNAPSHOT</version>
   </parent>
 
   <artifactId>arquillian-tomee-config-tests</artifactId>
@@ -31,7 +31,7 @@
     <dependency>
       <artifactId>commons-lang3</artifactId>
       <groupId>org.apache.commons</groupId>
-      <version>${commons-lang3.version}</version>
+      <version>${version.commons-lang3}</version>
     </dependency>
   </dependencies>
 

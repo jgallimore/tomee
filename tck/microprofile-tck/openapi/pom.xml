@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.apache.tomee</groupId>
     <artifactId>microprofile-tck</artifactId>
-    <version>8.0.13-TT.6-SNAPSHOT</version>
+    <version>8.0.14-SNAPSHOT</version>
   </parent>
 
   <artifactId>microprofile-openapi-tck</artifactId>
@@ -97,14 +97,12 @@
     <dependency>
       <groupId>org.eclipse.microprofile.openapi</groupId>
       <artifactId>microprofile-openapi-api</artifactId>
-      <version>${microprofile.openapi.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.microprofile.openapi</groupId>
       <artifactId>microprofile-openapi-tck</artifactId>
-      <version>${microprofile.openapi.version}</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -133,7 +131,7 @@
       <!-- required by the MP TCK -->
       <groupId>org.yaml</groupId>
       <artifactId>snakeyaml</artifactId>
-      <version>${snakeyaml.version}</version>
+      <version>${version.snakeyaml}</version>
       <scope>test</scope>
     </dependency>
 

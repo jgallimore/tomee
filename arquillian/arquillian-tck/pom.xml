@@ -22,7 +22,7 @@
   <parent>
     <artifactId>arquillian</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>8.0.13-TT.6-SNAPSHOT</version>
+    <version>8.0.14-SNAPSHOT</version>
   </parent>
 
   <artifactId>arquillian-tck</artifactId>
@@ -97,7 +97,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>${surefire.version}</version>
+        <version>${version.surefire}</version>
         <configuration>
           <threadCount>1</threadCount>
           <reuseForks>true</reuseForks>

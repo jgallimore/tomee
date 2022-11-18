@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.apache.tomee</groupId>
     <artifactId>microprofile-tck</artifactId>
-    <version>8.0.13-TT.6-SNAPSHOT</version>
+    <version>8.0.14-SNAPSHOT</version>
   </parent>
 
   <artifactId>microprofile-config-tck</artifactId>
@@ -99,14 +99,12 @@
     <dependency>
       <groupId>org.eclipse.microprofile.config</groupId>
       <artifactId>microprofile-config-api</artifactId>
-      <version>${microprofile.config.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.microprofile.config</groupId>
       <artifactId>microprofile-config-tck</artifactId>
-      <version>${microprofile.config.version}</version>
       <scope>test</scope>
     </dependency>
 

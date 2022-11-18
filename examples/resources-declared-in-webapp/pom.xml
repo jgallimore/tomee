@@ -23,7 +23,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>resources-declared-in-webapp</artifactId>
   <packaging>war</packaging>
-  <version>8.0.13-TT.6-SNAPSHOT</version>
+  <version>8.0.14-SNAPSHOT</version>
   <name>TomEE :: Web Examples :: Resource Declared In A Webapp</name>
 
   <properties>
@@ -82,7 +82,7 @@
             <webappArtifact>
               <groupId>org.apache.tomee</groupId>
               <artifactId>openejb-tomcat-plus-webapp</artifactId>
-              <version>8.0.13-TT.5-SNAPSHOT</version>
+              <version>8.0.14-SNAPSHOT</version>
               <contextPath>openejb</contextPath>
             </webappArtifact>
           </webapps>

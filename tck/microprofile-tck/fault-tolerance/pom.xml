@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.apache.tomee</groupId>
     <artifactId>microprofile-tck</artifactId>
-    <version>8.0.13-TT.6-SNAPSHOT</version>
+    <version>8.0.14-SNAPSHOT</version>
   </parent>
 
   <artifactId>microprofile-fault-tolerance-tck</artifactId>
@@ -86,14 +86,12 @@
     <dependency>
       <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
       <artifactId>microprofile-fault-tolerance-api</artifactId>
-      <version>${microprofile.fault-tolerance.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
       <artifactId>microprofile-fault-tolerance-tck</artifactId>
-      <version>${microprofile.fault-tolerance.version}</version>
       <scope>test</scope>
     </dependency>
 
