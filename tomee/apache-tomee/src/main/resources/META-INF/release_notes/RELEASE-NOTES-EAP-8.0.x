@@ -1,4 +1,7 @@
-= TomEE EAP 8.0.13-TT.5
+= TomEE EAP 8.0.14-TT.2
+
+=== Changes in TomEE EAP 8.0.14-TT.2
+* Updated to Woodstox 6.4.0 to mitigate CVE-2022-40156, CVE-2022-40155, CVE-2022-40154, CVE-2022-40153
 
 === Changes in TomEE EAP 8.0.13-TT.5
 * Updated to hsqldb 2.7.1 to mitigate CVE-2022-41853
