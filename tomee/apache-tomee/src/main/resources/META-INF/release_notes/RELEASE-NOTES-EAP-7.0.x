@@ -1,4 +1,8 @@
-= TomEE EAP 7.1.5-TT.15
+= TomEE EAP 7.1.5-TT.16
+
+=== Changes in TomEE EAP 7.1.5-TT.16
+* Upgraded xmlsec to 2.0.11-TT.3 to mitigate CVE-2022-40152, CVE-2022-40153, CVE-2022-40154, CVE-2022-40155, CVE-2022-40156
+
 
 === Changes in TomEE EAP 7.1.5-TT.15
 * Updated to hsqldb 2.7.1 to mitigate CVE-2022-41853
