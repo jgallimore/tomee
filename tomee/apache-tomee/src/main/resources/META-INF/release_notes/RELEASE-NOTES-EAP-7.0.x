@@ -1,4 +1,7 @@
-= TomEE EAP 7.0.10-TT.14
+= TomEE EAP 7.0.10-TT.15
+
+=== Changes in TomEE EAP 7.0.10-TT.15
+* Upgraded xmlsec to 2.0.11-TT.3 to mitigate CVE-2022-40152, CVE-2022-40153, CVE-2022-40154, CVE-2022-40155, CVE-2022-40156
 
 === Changes in TomEE EAP 7.0.10-TT.14
 * Updated to Tomcat 8.5.83 to mitigate CVE-2022-42252
