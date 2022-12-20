@@ -1,4 +1,8 @@
-= TomEE EAP 1.7.6-TT.32
+= TomEE EAP 1.7.6-TT.33
+
+=== Changes in TomEE EAP 1.7.6-TT.33
+* Updated to CXF 2.6.17-TT.9 to mitigate CVE-2022-46363 and CVE-2022-46364
+* Updated to jettison 1.5.3 to mitigate CVE-2022-45685
 
 === Changes in TomEE EAP 1.7.6-TT.32
 * Updated to Tomcat 7.0.109-TT.5 to mitigate CVE-2022-42252
