@@ -1,8 +1,11 @@
-= TomEE EAP 7.1.5-TT.16
+= TomEE EAP 7.1.5-TT.17
+
+=== Changes in TomEE EAP 7.1.5-TT.17
+* Updated CXF to 3.1.19-TT.8 to mitigate CVE-2022-46363 and CVE-2022-46364
+* Updated to Jettison 1.5.3 to mitigate CVE-2022-45685
 
 === Changes in TomEE EAP 7.1.5-TT.16
 * Upgraded xmlsec to 2.0.11-TT.3 to mitigate CVE-2022-40152, CVE-2022-40153, CVE-2022-40154, CVE-2022-40155, CVE-2022-40156
-
 
 === Changes in TomEE EAP 7.1.5-TT.15
 * Updated to hsqldb 2.7.1 to mitigate CVE-2022-41853
