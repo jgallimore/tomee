@@ -1,4 +1,14 @@
-= TomEE EAP 8.0.14-TT.2
+= TomEE EAP 8.0.14-TT.5
+
+=== Changes in TomEE EAP 8.0.14-TT.5
+* Updated CXF to 3.4.10 to mitigate CVE-2022-46363 and CVE-2022-46364
+* Updated to Jettison 1.5.3 to mitigate CVE-2022-45685
+
+=== Changes in TomEE EAP 8.0.14-TT.4
+* TOMEE-4014 - Fix for IntelliJ IDEA plugin
+
+=== Changes in TomEE EAP 8.0.14-TT.3
+* This release provides the `openejb.cache.cdi-type-resolution-failure` system property (false by default), which will cache CDI bean lookup by type failures. This may provide better performance when looking up CDI beans that are defined in EAR libraries from web applications.
 
 === Changes in TomEE EAP 8.0.14-TT.2
 * Updated to Woodstox 6.4.0 to mitigate CVE-2022-40156, CVE-2022-40155, CVE-2022-40154, CVE-2022-40153
