@@ -1,4 +1,7 @@
-= TomEE EAP 7.0.10-TT.16
+= TomEE EAP 7.0.10-TT.17
+
+=== Changes in TomEE EAP 7.0.10-TT.17
+* Update to Tomcat 8.5.84 to mitigate CVE-2022-45143
 
 === Changes in TomEE EAP 7.0.10-TT.16
 * Updated CXF to 3.1.19-TT.8 to mitigate CVE-2022-46363 and CVE-2022-46364
