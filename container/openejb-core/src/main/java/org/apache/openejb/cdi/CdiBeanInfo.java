@@ -17,24 +17,9 @@
 
 package org.apache.openejb.cdi;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import org.apache.openejb.Injection;
-import org.apache.openejb.jee.DataSource;
-import org.apache.openejb.jee.EjbLocalRef;
-import org.apache.openejb.jee.EjbRef;
-import org.apache.openejb.jee.EnvEntry;
-import org.apache.openejb.jee.JMSConnectionFactory;
-import org.apache.openejb.jee.JMSDestination;
-import org.apache.openejb.jee.JndiConsumer;
-import org.apache.openejb.jee.KeyedCollection;
-import org.apache.openejb.jee.LifecycleCallback;
-import org.apache.openejb.jee.MessageDestinationRef;
-import org.apache.openejb.jee.PersistenceContextRef;
-import org.apache.openejb.jee.PersistenceUnitRef;
-import org.apache.openejb.jee.ResourceEnvRef;
-import org.apache.openejb.jee.ResourceRef;
-import org.apache.openejb.jee.SecurityIdentity;
-import org.apache.openejb.jee.SecurityRoleRef;
-import org.apache.openejb.jee.ServiceRef;
+import org.apache.openejb.jee.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -65,6 +50,8 @@ public class CdiBeanInfo implements JndiConsumer {
     private String beanName;
     private ClassLoader classLoader;
     private List<Injection> injections;
+    @XmlElement(name="context-service")
+    private KeyedCollection<String, ContextService> contextService;
 
     public String getBeanName() {
         return beanName;
@@ -320,5 +307,13 @@ public class CdiBeanInfo implements JndiConsumer {
 
     public Class<?> getBeanClass() {
         return this.beanClass;
+    }
+
+    @Override
+    public Map<String, ContextService> getContextServiceMap() {
+        if (contextService == null) {
+            contextService = new KeyedCollection<String, ContextService>();
+        }
+        return this.contextService.toMap();
     }
 }

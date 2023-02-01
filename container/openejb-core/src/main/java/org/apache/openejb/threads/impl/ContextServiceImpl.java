@@ -39,6 +39,11 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ContextServiceImpl implements ContextService {
+
+    public ContextServiceImpl() {
+        System.out.println("Hello");
+    }
+
     private static final HashMap<String, String> EMPTY_PROPS = new HashMap<String, String>();
 
     @Override

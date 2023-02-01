@@ -16,6 +16,15 @@
  */
 package org.apache.openejb.config;
 
+import jakarta.ejb.ApplicationException;
+import jakarta.ejb.Local;
+import jakarta.ejb.LocalBean;
+import jakarta.ejb.Lock;
+import jakarta.ejb.LockType;
+import jakarta.ejb.Singleton;
+import jakarta.ejb.Stateless;
+import jakarta.enterprise.concurrent.ContextService;
+import jakarta.enterprise.concurrent.ContextServiceDefinition;
 import org.apache.openejb.OpenEJB;
 import org.apache.openejb.assembler.classic.AppInfo;
 import org.apache.openejb.assembler.classic.Assembler;
@@ -37,10 +46,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import jakarta.annotation.Resource;
-import jakarta.ejb.ApplicationException;
-import jakarta.ejb.Local;
-import jakarta.ejb.LocalBean;
-import jakarta.ejb.Stateless;
+
+import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.naming.Reference;
 import jakarta.resource.Referenceable;
@@ -76,6 +83,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -84,6 +92,10 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+
+import static jakarta.enterprise.concurrent.ContextServiceDefinition.ALL_REMAINING;
+import static jakarta.enterprise.concurrent.ContextServiceDefinition.APPLICATION;
+import static jakarta.enterprise.concurrent.ContextServiceDefinition.TRANSACTION;
 
 /**
  * @version $Rev$ $Date$
@@ -545,6 +557,50 @@ public class AnnotationDeployerTest {
                 add(new RESTMethod());
                 add(new RESTMethod());
             }};
+        }
+    }
+
+    @Test
+    public void testShouldReadContextServiceDefinitionAnnotations() throws Exception {
+        final EjbJar ejbJar = new EjbJar();
+        final EjbModule ejbModule = new EjbModule(ejbJar);
+        ejbModule.setFinder(new ClassFinder(TestBean.class));
+        final AnnotationDeployer.DiscoverAnnotatedBeans discvrAnnBeans = new AnnotationDeployer.DiscoverAnnotatedBeans();
+        discvrAnnBeans.deploy(ejbModule);
+
+        final AnnotationDeployer.ProcessAnnotatedBeans processAnnotatedBeans = new AnnotationDeployer.ProcessAnnotatedBeans(false);
+        processAnnotatedBeans.deploy(ejbModule);
+
+        final EnterpriseBean bean = ejbModule.getEjbJar().getEnterpriseBeans()[0];
+        final Map<String, org.apache.openejb.jee.ContextService> contextServiceMap = bean.getContextServiceMap();
+        Assert.assertFalse(contextServiceMap.isEmpty());
+        final org.apache.openejb.jee.ContextService contextService = contextServiceMap.get("java:comp/concurrency/contextA");
+        Assert.assertEquals(1, contextService.getPropagated().size());
+        Assert.assertEquals(APPLICATION, contextService.getPropagated().get(0));
+        Assert.assertEquals(1, contextService.getUnchanged().size());
+        Assert.assertEquals(TRANSACTION, contextService.getUnchanged().get(0));
+        Assert.assertEquals(1, contextService.getCleared().size());
+        Assert.assertEquals(ALL_REMAINING, contextService.getCleared().get(0));
+    }
+
+    @Singleton
+    @Lock(LockType.READ)
+    @ContextServiceDefinition(
+            name="java:comp/concurrency/contextA",
+            propagated = APPLICATION,
+            unchanged = TRANSACTION,
+            cleared = ALL_REMAINING)
+    public static class TestBean {
+
+        public boolean isOk() {
+            try {
+                final ContextService cs = InitialContext.doLookup("java:comp/concurrency/contextA");
+                return true;
+            } catch (Exception e) {
+                // ignore
+            }
+
+            return false;
         }
     }
 }
