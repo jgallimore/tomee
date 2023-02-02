@@ -16,18 +16,25 @@
  */
 package org.apache.openejb.threads.impl;
 
+import jakarta.enterprise.concurrent.spi.ThreadContextProvider;
 import org.apache.openejb.OpenEJB;
 import org.apache.openejb.threads.task.CUTask;
 
 import jakarta.enterprise.concurrent.ContextService;
 import jakarta.enterprise.concurrent.ManagedTask;
 import jakarta.transaction.Transaction;
+import org.apache.openejb.util.Join;
+
 import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.ServiceLoader;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -45,6 +52,54 @@ public class ContextServiceImpl implements ContextService {
     }
 
     private static final HashMap<String, String> EMPTY_PROPS = new HashMap<String, String>();
+
+    private final List<String> propagated = new ArrayList<>();
+    private final List<String> cleared = new ArrayList<>();
+    private final List<String> unchanged = new ArrayList<>();
+
+    public String getPropagated() {
+        return Join.join(",", propagated);
+    }
+
+    public void setPropagated(final String propagated) {
+        this.propagated.clear();
+        if (propagated != null && propagated.length() > 0) {
+            this.propagated.addAll(Arrays.asList(propagated.split(" *, *")));
+        }
+    }
+
+    public String getCleared() {
+        return Join.join(",", cleared);
+    }
+
+    public void setCleared(final String cleared) {
+        this.cleared.clear();
+        if (cleared != null && cleared.length() > 0) {
+            this.cleared.addAll(Arrays.asList(cleared.split(" *, *")));
+        }
+    }
+
+    public String getUnchanged() {
+        return Join.join(",", unchanged);
+    }
+
+    public void setUnchanged(final String unchanged) {
+        this.unchanged.clear();
+        if (unchanged != null && unchanged.length() > 0) {
+            this.unchanged.addAll(Arrays.asList(unchanged.split(" *, *")));
+        }
+    }
+
+    protected List<ThreadContextProvider> getThreadContextProviders() {
+        final List<ThreadContextProvider> result = new ArrayList<>();
+        for (ThreadContextProvider tcp : ServiceLoader.load(ThreadContextProvider.class)) {
+            result.add(tcp);
+        }
+
+        return result;
+    }
+
+
 
     @Override
     public <R> Callable<R> contextualCallable(final Callable<R> callable) {
@@ -131,6 +186,9 @@ public class ContextServiceImpl implements ContextService {
             this.instance = instance;
             this.properties = props;
             this.suspendTx = ManagedTask.SUSPEND.equals(props.get(ManagedTask.TRANSACTION));
+
+
+
         }
 
         @Override

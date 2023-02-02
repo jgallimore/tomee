@@ -22,6 +22,8 @@ import jakarta.enterprise.concurrent.ContextService;
 import jakarta.enterprise.concurrent.ContextServiceDefinition;
 import org.apache.openejb.junit.ApplicationComposer;
 import org.apache.openejb.testing.Module;
+import org.apache.openejb.threads.impl.ContextServiceImpl;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -57,7 +59,14 @@ public class ContextServiceDefinitionTest {
 
     @Test
     public void assertContextServiceDefinitionCreated() throws Exception {
-        assertNotNull(singleContextDefinition.lookupContextService());
+        final ContextService contextService = singleContextDefinition.lookupContextService();
+        assertNotNull(contextService);
+        Assert.assertTrue(contextService instanceof ContextServiceImpl);
+
+        final ContextServiceImpl impl = (ContextServiceImpl) contextService;
+        Assert.assertEquals("Application,Orange", impl.getPropagated());
+        Assert.assertEquals("Blue", impl.getCleared());
+        Assert.assertEquals("Transaction", impl.getUnchanged());
     }
 
 }
