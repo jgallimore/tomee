@@ -18,6 +18,7 @@ package org.apache.openejb.resource.activemq.jms2;
 
 import org.apache.activemq.ra.ActiveMQManagedConnection;
 import org.apache.activemq.ra.ManagedConnectionProxy;
+import org.apache.activemq.ra.ManagedSessionProxy;
 import org.apache.openejb.OpenEJB;
 
 import javax.jms.Connection;
@@ -37,12 +38,17 @@ import javax.resource.spi.TransactionSupport.TransactionSupportLevel;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.Transaction;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class TomEEManagedConnectionProxy extends ManagedConnectionProxy
     // cause org.apache.openejb.resource.AutoConnectionTracker.proxyConnection() just uses getInterfaces()
     implements Connection, QueueConnection, TopicConnection, ExceptionListener, XAConnection {
 
     private volatile ActiveMQManagedConnection connection;
+
+    private final Collection<Session> sessions = Collections.synchronizedSet(new HashSet<>());
 
     public TomEEManagedConnectionProxy(final ActiveMQManagedConnection managedConnection, final ConnectionRequestInfo info) {
         super(managedConnection, info);
@@ -52,6 +58,13 @@ public class TomEEManagedConnectionProxy extends ManagedConnectionProxy
     @Override
     public void cleanup() {
         super.cleanup();
+        for (Session s : sessions) {
+            try {
+                s.close();
+            } catch (JMSException ignore) {
+            }
+        }
+        sessions.clear();
         connection = null;
     }
 
@@ -95,7 +108,9 @@ public class TomEEManagedConnectionProxy extends ManagedConnectionProxy
         if (xa) {
             return createXASession();
         } else {
-            return connection.getPhysicalConnection().createSession(mode);
+            final Session session = connection.getPhysicalConnection().createSession(mode);
+            sessions.add(session);
+            return session;
         }
     }
 
@@ -134,6 +149,7 @@ public class TomEEManagedConnectionProxy extends ManagedConnectionProxy
         } else {
             final Session session = connection.getPhysicalConnection().createSession(mode);
             enlistInTransactionIfNeeded(session);
+            sessions.add(session);
             return session;
         }
     }
@@ -171,6 +187,7 @@ public class TomEEManagedConnectionProxy extends ManagedConnectionProxy
         } else {
             final Session session = connection.getPhysicalConnection().createSession(mode);
             enlistInTransactionIfNeeded(session);
+            sessions.add(session);
             return session;
         }
     }
@@ -192,6 +209,8 @@ public class TomEEManagedConnectionProxy extends ManagedConnectionProxy
     public XASession createXASession() throws JMSException {
         XASession session = ((XAConnection) connection.getPhysicalConnection()).createXASession();
         enlistInTransactionIfNeeded(session);
+
+        sessions.add(session);
         return session;
     }
 

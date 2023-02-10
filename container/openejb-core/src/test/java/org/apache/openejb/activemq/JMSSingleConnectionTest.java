@@ -16,10 +16,15 @@
  */
 package org.apache.openejb.activemq;
 
+import org.apache.activemq.ActiveMQConnection;
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.ActiveMQXAConnectionFactory;
+import org.apache.activemq.ra.ActiveMQConnectionRequestInfo;
 import org.apache.commons.lang3.SerializationUtils;
+import org.apache.openejb.jee.EjbJar;
 import org.apache.openejb.jee.MessageDrivenBean;
 import org.apache.openejb.junit.ApplicationComposer;
+import org.apache.openejb.resource.activemq.jms2.TomEEManagedConnectionFactory;
 import org.apache.openejb.testing.Classes;
 import org.apache.openejb.testing.Configuration;
 import org.apache.openejb.testing.Module;
@@ -33,10 +38,25 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.annotation.Resource;
-import javax.ejb.*;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.EJB;
+import javax.ejb.MessageDriven;
+import javax.ejb.Singleton;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.jms.*;
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSConnectionFactory;
+import javax.jms.JMSConsumer;
+import javax.jms.JMSContext;
+import javax.jms.JMSException;
+import javax.jms.JMSRuntimeException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.Queue;
+import javax.jms.TextMessage;
+import javax.jms.XAConnectionFactory;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
 import javax.transaction.HeuristicMixedException;
@@ -48,6 +68,8 @@ import javax.transaction.TransactionScoped;
 import javax.transaction.UserTransaction;
 import java.io.Serializable;
 import java.lang.management.ManagementFactory;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
@@ -55,15 +77,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static java.lang.Thread.sleep;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 @SimpleLog
 @RunWith(ApplicationComposer.class)
-public class JMS2AMQTest {
+public class JMSSingleConnectionTest {
     private static final String TEXT = "foo";
 
     @Configuration
@@ -73,14 +91,32 @@ public class JMS2AMQTest {
                 .p("amq", "new://Resource?type=ActiveMQResourceAdapter")
                 .p("amq.DataSource", "")
                 .p("amq.BrokerXmlConfig", "broker:(vm://localhost)")
+                .p("amq.ServerUrl", "vm://localhost?waitForStart=20000&jms.prefetchPolicy.all=1")
 
                 .p("target", "new://Resource?type=Queue")
+                .p("count", "new://Resource?type=Queue")
 
                 .p("mdbs", "new://Container?type=MESSAGE")
                 .p("mdbs.ResourceAdapter", "amq")
+                .p("mdbs.activation.ConnectionFactoryLookup", "incf")
 
-                .p("cf", "new://Resource?type=" + ConnectionFactory.class.getName())
+                .p("cf", "new://Resource?type=" + ConnectionFactory.class.getName() + "&class-name=" + TestTomEEConnectionFactory.class.getName())
                 .p("cf.ResourceAdapter", "amq")
+                .p("cf.singleton", "true")
+                .p("cf.TransactionSupport", "xa")
+                .p("cf.PoolMaxSize", "10")
+                .p("cf.PoolMinSize", "0")
+                .p("cf.ConnectionMaxWaitTime", "5 seconds")
+                .p("cf.ConnectionMaxIdleTime", "15 minutes")
+
+                .p("incf", "new://Resource?type=" + ConnectionFactory.class.getName() + "&class-name=" + TestTomEEConnectionFactory.class.getName())
+                .p("incf.ResourceAdapter", "amq")
+                .p("incf.singleton", "true")
+                .p("incf.TransactionSupport", "xa")
+                .p("incf.PoolMaxSize", "10")
+                .p("incf.PoolMinSize", "0")
+                .p("incf.ConnectionMaxWaitTime", "5 seconds")
+                .p("incf.ConnectionMaxIdleTime", "15 minutes")
 
                 .p("xaCf", "new://Resource?class-name=" + ActiveMQXAConnectionFactory.class.getName())
                 .p("xaCf.BrokerURL", "vm://localhost")
@@ -89,9 +125,11 @@ public class JMS2AMQTest {
     }
 
     @Module
-    @Classes(cdi = true, value = { JustHereToCheckDeploymentIsOk.class, ProducerBean.class })
-    public MessageDrivenBean jar() {
-        return new MessageDrivenBean(Listener.class);
+    @Classes(cdi = true, value = { JMSSingleConnectionTest.JustHereToCheckDeploymentIsOk.class, JMSSingleConnectionTest.ProducerBean.class })
+    public EjbJar jar() {
+        final EjbJar ejbJar = new EjbJar();
+        ejbJar.addEnterpriseBean(new MessageDrivenBean(JMSSingleConnectionTest.Listener.class));
+        return ejbJar;
     }
 
     @Resource(name = "target")
@@ -109,25 +147,33 @@ public class JMS2AMQTest {
     @Resource(name = "cf")
     private ConnectionFactory cf;
 
+    @Resource(name = "incf")
+    private ConnectionFactory incf;
+
     @Inject
     @JMSConnectionFactory("cf")
     private JMSContext context;
+
+    @Inject
+    @JMSConnectionFactory("incf")
+    private JMSContext inContext;
 
     @Inject // just there to ensure the injection works and we don't require @JMSConnectionFactory
     private JMSContext defaultContext;
 
     @Inject
-    private JustHereToCheckDeploymentIsOk session;
+    private JMSSingleConnectionTest.JustHereToCheckDeploymentIsOk session;
 
     @Resource
     private UserTransaction ut;
 
     @EJB
     private ProducerBean pb;
-
+    
     @Before
     public void resetLatch() {
         Listener.reset();
+        TestTomEEConnectionFactory.reset();
     }
 
     @Test
@@ -147,7 +193,7 @@ public class JMS2AMQTest {
         final CountDownLatch over = new CountDownLatch(1);
         new Thread() {
             {
-                setName(JMS2AMQTest.class.getName() + ".cdi#receiver");
+                setName(JMSSingleConnectionTest.class.getName() + ".cdi#receiver");
             }
 
             @Override
@@ -156,7 +202,7 @@ public class JMS2AMQTest {
                 contextsService.startContext(RequestScoped.class, null); // spec defines it for request scope an transaction scope
                 try {
                     ready.countDown();
-                    assertEquals(text, context.createConsumer(destination3).receiveBody(String.class, TimeUnit.MINUTES.toMillis(1)));
+                    assertEquals(text, inContext.createConsumer(destination3).receiveBody(String.class, TimeUnit.MINUTES.toMillis(1)));
 
                     // ensure we dont do a NPE if there is nothing to read
                     assertNull(context.createConsumer(destination3).receiveBody(String.class, 100));
@@ -187,6 +233,7 @@ public class JMS2AMQTest {
             exception.printStackTrace();
         }
         assertNull(exception == null ? "ok" : exception.getMessage(), exception);
+        assertEquals(2, TestTomEEConnectionFactory.getConnectionsCreatedCount());
     }
 
     @Test
@@ -198,7 +245,7 @@ public class JMS2AMQTest {
         final CountDownLatch over = new CountDownLatch(1);
         new Thread() {
             {
-                setName(JMS2AMQTest.class.getName() + ".cdiListenerAPI#receiver");
+                setName(JMSSingleConnectionTest.class.getName() + ".cdiListenerAPI#receiver");
             }
 
             @Override
@@ -206,7 +253,7 @@ public class JMS2AMQTest {
                 final ContextsService contextsService = WebBeansContext.currentInstance().getContextsService();
                 contextsService.startContext(RequestScoped.class, null);
                 try {
-                    final JMSConsumer consumer = context.createConsumer(destination3);
+                    final JMSConsumer consumer = inContext.createConsumer(destination3);
                     consumer.setMessageListener(new MessageListener() {
                         @Override
                         public void onMessage(final Message message) {
@@ -251,13 +298,15 @@ public class JMS2AMQTest {
             exception.printStackTrace();
         }
         assertNull(exception == null ? "ok" : exception.getMessage(), exception);
+        assertEquals(2, TestTomEEConnectionFactory.getConnectionsCreatedCount());
     }
 
     @Test
     public void sendToMdb() throws Exception {
         try (final JMSContext context = cf.createContext()) {
             context.createProducer().send(destination, TEXT);
-            assertTrue(Listener.sync());
+            assertTrue(JMSSingleConnectionTest.Listener.sync());
+            assertEquals(1, TestTomEEConnectionFactory.getConnectionsCreatedCount());
         } catch (final JMSRuntimeException ex) {
             fail(ex.getMessage());
         }
@@ -269,7 +318,8 @@ public class JMS2AMQTest {
             Message message = context.createMessage();
             message.setStringProperty("text", TEXT);
             context.createProducer().send(destination, message);
-            assertTrue(Listener.sync());
+            assertTrue(JMSSingleConnectionTest.Listener.sync());
+            assertEquals(1, TestTomEEConnectionFactory.getConnectionsCreatedCount());
         } catch (final JMSRuntimeException ex) {
             fail(ex.getMessage());
         }
@@ -278,7 +328,8 @@ public class JMS2AMQTest {
     @Test
     public void sendToMdbWithDefaultCf() throws Exception {
         defaultContext.createProducer().send(destination, TEXT);
-        assertTrue(Listener.sync());
+        assertTrue(JMSSingleConnectionTest.Listener.sync());
+        assertEquals(1, TestTomEEConnectionFactory.getConnectionsCreatedCount());
     }
 
     @Test
@@ -287,7 +338,8 @@ public class JMS2AMQTest {
             pb.sendInNewTx();
         }
 
-        assertTrue(Listener.sync());
+        assertTrue(JMSSingleConnectionTest.Listener.sync());
+        assertEquals(1, TestTomEEConnectionFactory.getConnectionsCreatedCount());
 
         final MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
         Set<ObjectName> objs = mBeanServer.queryNames(new ObjectName("org.apache.activemq:type=Broker,brokerName=localhost,endpoint=dynamicProducer,*"), null);
@@ -304,10 +356,10 @@ public class JMS2AMQTest {
             @Override
             public void run() {
                 {
-                    setName(JMS2AMQTest.class.getName() + ".receive#receiver");
+                    setName(JMSSingleConnectionTest.class.getName() + ".receive#receiver");
                 }
 
-                try (final JMSContext context = cf.createContext()) {
+                try (final JMSContext context = incf.createContext()) {
                     try (final JMSConsumer consumer = context.createConsumer(destination2)) {
                         ready.countDown();
                         assertEquals(text, consumer.receiveBody(String.class, TimeUnit.MINUTES.toMillis(1)));
@@ -338,6 +390,7 @@ public class JMS2AMQTest {
             exception.printStackTrace();
         }
         assertNull(exception == null ? "ok" : exception.getMessage(), exception);
+        assertEquals(2, TestTomEEConnectionFactory.getConnectionsCreatedCount());
     }
 
     @Test
@@ -350,10 +403,10 @@ public class JMS2AMQTest {
             @Override
             public void run() {
                 {
-                    setName(JMS2AMQTest.class.getName() + ".receiveGetBody#receiver");
+                    setName(JMSSingleConnectionTest.class.getName() + ".receiveGetBody#receiver");
                 }
 
-                try (final JMSContext context = cf.createContext()) {
+                try (final JMSContext context = incf.createContext()) {
                     try (final JMSConsumer consumer = context.createConsumer(destination2)) {
                         ready.countDown();
                         final Message receive = consumer.receive(TimeUnit.MINUTES.toMillis(1));
@@ -385,6 +438,7 @@ public class JMS2AMQTest {
             exception.printStackTrace();
         }
         assertNull(exception == null ? "ok" : exception.getMessage(), exception);
+        assertEquals(2, TestTomEEConnectionFactory.getConnectionsCreatedCount());
     }
 
     @MessageDriven(activationConfig = {
@@ -444,6 +498,25 @@ public class JMS2AMQTest {
         @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
         public void sendInNewTx() {
             context.createProducer().send(destination, TEXT);
+        }
+    }
+
+    public static class TestTomEEConnectionFactory extends TomEEManagedConnectionFactory {
+        private static final Set<Integer> CONNECTIONS_CREATED = Collections.synchronizedSet(new HashSet<>());
+
+        public static void reset() {
+            CONNECTIONS_CREATED.clear();
+        }
+
+        public static int getConnectionsCreatedCount() {
+            return CONNECTIONS_CREATED.size();
+        }
+
+        @Override
+        public ActiveMQConnection makeConnection(ActiveMQConnectionRequestInfo connectionRequestInfo, ActiveMQConnectionFactory connectionFactory) throws JMSException {
+            final ActiveMQConnection activeMQConnection = super.makeConnection(connectionRequestInfo, connectionFactory);
+            CONNECTIONS_CREATED.add(activeMQConnection.hashCode());
+            return activeMQConnection;
         }
     }
 }

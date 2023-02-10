@@ -30,6 +30,7 @@ import java.util.Collection;
 
 public class TomEEManagedConnection extends ActiveMQManagedConnection {
     private static final Field PROXY_CONNECTIONS_FIELD;
+    private final boolean singleton;
     private TransactionSupportLevel transactionSupportLevel;
 
     static {
@@ -45,8 +46,9 @@ public class TomEEManagedConnection extends ActiveMQManagedConnection {
 
     @SuppressWarnings("unchecked")
     public TomEEManagedConnection(final Subject subject, final ActiveMQConnection physicalConnection,
-                                  final ActiveMQConnectionRequestInfo info, TransactionSupportLevel transactionSupportLevel) throws ResourceException {
+                                  final ActiveMQConnectionRequestInfo info, TransactionSupportLevel transactionSupportLevel, boolean singleton) throws ResourceException {
         super(subject, physicalConnection, info);
+        this.singleton = singleton;
         try {
             proxyConnections = Collection.class.cast(PROXY_CONNECTIONS_FIELD.get(this));
         } catch (final IllegalAccessException e) {
@@ -60,6 +62,18 @@ public class TomEEManagedConnection extends ActiveMQManagedConnection {
         final ManagedConnectionProxy proxy = new TomEEManagedConnectionProxy(this, info);
         proxyConnections.add(proxy);
         return proxy;
+    }
+
+    @Override
+    public void cleanup() throws ResourceException {
+        for (ManagedConnectionProxy proxy:proxyConnections) {
+            proxy.cleanup();
+        }
+        proxyConnections.clear();
+
+        if (! singleton) {
+            super.cleanup();
+        }
     }
 
     public TransactionSupportLevel getTransactionSupportLevel() {

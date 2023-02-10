@@ -26,8 +26,13 @@ import javax.jms.JMSException;
 import javax.jms.ServerSessionPool;
 import javax.jms.Session;
 import javax.jms.Topic;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TomEEXAConnection extends ActiveMQXAConnection {
+
+    private Set<TomEEXASession> sessionsCreated = new HashSet<>();
+
     protected TomEEXAConnection(final Transport transport, final IdGenerator clientIdGenerator,
                                 final IdGenerator connectionIdGenerator, final JMSStatsImpl factoryStats) throws Exception {
         super(transport, clientIdGenerator, connectionIdGenerator, factoryStats);
@@ -37,7 +42,9 @@ public class TomEEXAConnection extends ActiveMQXAConnection {
     public Session createSession(final boolean transacted, final int acknowledgeMode) throws JMSException {
         checkClosedOrFailed();
         ensureConnectionInfoSent();
-        return new TomEEXASession(this, getNextSessionId(), getXaAckMode() > 0 ? getXaAckMode() : Session.SESSION_TRANSACTED, isDispatchAsync());
+        final TomEEXASession session = new TomEEXASession(this, getNextSessionId(), getXaAckMode() > 0 ? getXaAckMode() : Session.SESSION_TRANSACTED, isDispatchAsync());
+        sessionsCreated.add(session);
+        return session;
     }
 
     @Override

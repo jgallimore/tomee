@@ -16,13 +16,17 @@
  */
 package org.apache.openejb.resource.activemq.jms2;
 
+import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.ra.ActiveMQConnectionRequestInfo;
 import org.apache.activemq.ra.ActiveMQManagedConnectionFactory;
 import org.apache.activemq.ra.MessageActivationSpec;
 import org.apache.activemq.ra.SimpleConnectionManager;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import javax.jms.JMSException;
 import javax.resource.ResourceException;
@@ -35,6 +39,9 @@ import javax.security.auth.Subject;
 public class TomEEManagedConnectionFactory extends ActiveMQManagedConnectionFactory {
     private static final long serialVersionUID = 1L;
     private TransactionSupportLevel transactionSupportLevel;
+    private final Map<ActiveMQConnectionRequestInfo, ActiveMQConnection> physicalConnections = new HashMap<>();
+
+    private boolean singleton = false;
 
     @Override
     public Object createConnectionFactory(final ConnectionManager manager) throws ResourceException {
@@ -64,10 +71,29 @@ public class TomEEManagedConnectionFactory extends ActiveMQManagedConnectionFact
             amqInfo = getInfo();
         }
         try {
-            return new TomEEManagedConnection(subject, makeConnection(amqInfo), amqInfo, transactionSupportLevel);
+            return new TomEEManagedConnection(subject, makeConnection(amqInfo), amqInfo, transactionSupportLevel, singleton);
         } catch (final JMSException e) {
             throw new ResourceException("Could not create connection.", e);
         }
+    }
+
+    @Override
+    public ActiveMQConnection makeConnection(ActiveMQConnectionRequestInfo connectionRequestInfo, ActiveMQConnectionFactory connectionFactory) throws JMSException {
+        ActiveMQConnection activeMQConnection = null;
+
+        if (singleton) {
+            synchronized (this) {
+                activeMQConnection = physicalConnections.get(connectionRequestInfo);
+                if (activeMQConnection == null) {
+                    activeMQConnection = super.makeConnection(connectionRequestInfo, connectionFactory);
+                    physicalConnections.put(connectionRequestInfo, activeMQConnection);
+                }
+            }
+        } else {
+            activeMQConnection = super.makeConnection(connectionRequestInfo, connectionFactory);
+        }
+
+        return activeMQConnection;
     }
 
     @Override
@@ -107,5 +133,13 @@ public class TomEEManagedConnectionFactory extends ActiveMQManagedConnectionFact
                     throw new IllegalArgumentException("transactionSupport must be xa, local, or none:" + transactionSupport);
             }
         }
+    }
+
+    public boolean isSingleton() {
+        return singleton;
+    }
+
+    public void setSingleton(boolean singleton) {
+        this.singleton = singleton;
     }
 }
