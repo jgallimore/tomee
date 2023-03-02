@@ -1,4 +1,7 @@
-= TomEE EAP 1.7.6-TT.33
+= TomEE EAP 1.7.6-TT.34
+
+=== Changes in TomEE EAP 1.7.6-TT.33
+* Updated to Tomcat 7.0.109-TT.6 and commons-fileupload 1.5 to mitigate CVE-2023-24998
 
 === Changes in TomEE EAP 1.7.6-TT.33
 * Updated to CXF 2.6.17-TT.9 to mitigate CVE-2022-46363 and CVE-2022-46364
