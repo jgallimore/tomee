@@ -63,7 +63,7 @@ public class MovieServiceTest {
 
     @Test
     public void addMovie() {
-        final WebClient client = WebClient.create(serverURI).accept(MediaType.APPLICATION_JSON);
+        final WebClient client = WebClient.create(serverURI).accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON);
 
         final Movie movie = new Movie("Shanghai Noon", "Tom Dey", "Comedy", 7, 2000);
         final Movie posted = client.path("/api/movies").post(movie, Movie.class);
