@@ -1,4 +1,10 @@
-= TomEE EAP 8.0.14-TT.5
+= TomEE EAP 8.0.14-TT.7
+
+=== Changes in TomEE EAP 8.0.14-TT.7
+* Updated Tomcat to 9.0.72 and to Commons FileUpload 1.5 to mitigate CVE-2023-24998
+
+=== Changes in TomEE EAP 8.0.14-TT.6
+* Fix for TOMEE-4181 - BC jar losing signature during build
 
 === Changes in TomEE EAP 8.0.14-TT.5
 * Updated CXF to 3.4.10 to mitigate CVE-2022-46363 and CVE-2022-46364
