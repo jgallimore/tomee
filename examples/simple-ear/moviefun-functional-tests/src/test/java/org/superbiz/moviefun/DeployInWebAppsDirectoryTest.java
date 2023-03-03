@@ -58,7 +58,7 @@ public class DeployInWebAppsDirectoryTest {
             final File webapps = new File(configuration.getDir(), "apache-tomee-" + configuration.getClassifier() + "-" + configuration.getVersion() + "/webapps");
             webapps.mkdirs();
 
-            final File enterpriseArchive = Maven.resolver().resolve("org.superbiz:moviefun-ear:ear:7.0.7-TT.2")
+            final File enterpriseArchive = Maven.resolver().resolve("org.superbiz:moviefun-ear:ear:7.0.10-TT.18")
                     .withoutTransitivity().asSingleFile();
 
             IO.copy(enterpriseArchive, new File(webapps, "moviefun-ear.ear"));
