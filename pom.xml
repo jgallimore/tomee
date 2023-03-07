@@ -788,6 +788,11 @@
             <enabled>true</enabled>
           </snapshots>
         </repository>
+        <repository>
+          <id>tomitribe-all</id>
+          <name>Tomitribe Repository</name>
+          <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
+        </repository>
       </repositories>
     </profile>
 
@@ -967,6 +972,22 @@
   </profiles>
   <repositories>
     <repository>
+      <id>tomitribe-all</id>
+      <name>Tomitribe Repository</name>
+      <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
+    </repository>
+    <repository>
+      <id>staging</id>
+      <name>Staging</name>
+      <url>https://repository.tomitribe.com/content/repositories/tomitribe-1473</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
       <id>apache-snapshots</id>
       <name>Apache Snapshots Repository</name>
       <url>https://repository.apache.org/content/groups/snapshots</url>
@@ -1020,13 +1041,13 @@
         <enabled>true</enabled>
       </releases>
     </repository>
-    <repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
       <id>tomitribe-all</id>
       <name>Tomitribe Repository</name>
       <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
-    </repository>
-  </repositories>
-  <pluginRepositories>
+    </pluginRepository>
     <pluginRepository>
       <id>apache-plugin-snapshot</id>
       <name>Apache Software Foundation Plugin Snapshot Repository</name>
