@@ -101,28 +101,6 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>failureaccess</artifactId>
-      <version>1.0.1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>30.1-jre</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
       <groupId>com.sun.activation</groupId>
       <artifactId>jakarta.activation</artifactId>
       <version>1.2.1</version>
@@ -136,7 +114,7 @@
     <dependency>
       <groupId>com.sun.istack</groupId>
       <artifactId>istack-commons-runtime</artifactId>
-      <version>3.0.12</version>
+      <version>4.0.1</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -236,17 +214,6 @@
       <groupId>io.churchkey</groupId>
       <artifactId>churchkey</artifactId>
       <version>1.22</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>io.dropwizard.metrics</groupId>
-      <artifactId>metrics-core</artifactId>
-      <version>3.1.5</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -530,42 +497,9 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>jakarta.xml.ws</groupId>
-      <artifactId>jakarta.xml.ws-api</artifactId>
-      <version>3.0.1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>javax.cache</groupId>
-      <artifactId>cache-api</artifactId>
-      <version>1.1.0</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-      <version>2.10.10</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
       <groupId>net.shibboleth.utilities</groupId>
       <artifactId>java-support</artifactId>
-      <version>7.5.2</version>
+      <version>8.3.1</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -655,85 +589,8 @@
     </dependency>
     <dependency>
       <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-activation_2.0_spec</artifactId>
-      <version>1.0.0-M1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-j2ee-connector_1.6_spec</artifactId>
-      <version>1.0</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jms_1.1_spec</artifactId>
-      <version>1.1.1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jpa_2.2_spec</artifactId>
-      <version>1.1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jta_1.1_spec</artifactId>
-      <version>1.1.1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
       <artifactId>geronimo-mail_2.1_spec</artifactId>
       <version>1.0.0-M1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-validation_1.0_spec</artifactId>
-      <version>1.1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.johnzon</groupId>
-      <artifactId>johnzon-core</artifactId>
-      <version>1.2.19</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -782,17 +639,6 @@
       <artifactId>johnzon-jsonp-strict</artifactId>
       <version>1.2.19</version>
       <classifier>jakarta</classifier>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.johnzon</groupId>
-      <artifactId>johnzon-mapper</artifactId>
-      <version>1.2.19</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -872,17 +718,6 @@
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-ee-common</artifactId>
       <version>2.0.27</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-ee-common</artifactId>
-      <version>2.0.27</version>
       <classifier>jakarta</classifier>
       <exclusions>
         <exclusion>
@@ -919,29 +754,7 @@
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-el22</artifactId>
       <version>2.0.27</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-el22</artifactId>
-      <version>2.0.27</version>
       <classifier>jakarta</classifier>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-impl</artifactId>
-      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -977,29 +790,7 @@
       <groupId>org.apache.openwebbeans</groupId>
       <artifactId>openwebbeans-spi</artifactId>
       <version>2.0.27</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-spi</artifactId>
-      <version>2.0.27</version>
       <classifier>jakarta</classifier>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-web</artifactId>
-      <version>2.0.27</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1693,7 +1484,7 @@
     <dependency>
       <groupId>org.apache.wss4j</groupId>
       <artifactId>wss4j-bindings</artifactId>
-      <version>2.4.1</version>
+      <version>3.0.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1868,8 +1659,19 @@
     </dependency>
     <dependency>
       <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-jdk15on</artifactId>
+      <version>1.70</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk15on</artifactId>
-      <version>1.64</version>
+      <version>1.70</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1880,6 +1682,28 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk15to18</artifactId>
+      <version>1.70</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk18on</artifactId>
+      <version>1.71</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcutil-jdk15on</artifactId>
       <version>1.70</version>
       <exclusions>
         <exclusion>
@@ -1913,7 +1737,7 @@
     <dependency>
       <groupId>org.cryptacular</groupId>
       <artifactId>cryptacular</artifactId>
-      <version>1.2.4</version>
+      <version>1.2.5</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2021,21 +1845,9 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
-      <version>3.10.0</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
-      <version>3.10.1</version>
-      <classifier>jakarta</classifier>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-core</artifactId>
+      <version>3.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2057,7 +1869,7 @@
     <dependency>
       <groupId>org.glassfish.jaxb</groupId>
       <artifactId>txw2</artifactId>
-      <version>2.3.5</version>
+      <version>3.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2134,7 +1946,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-core</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2145,7 +1957,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-profile-api</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2156,7 +1968,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-saml-api</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2167,7 +1979,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-saml-impl</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2178,7 +1990,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-security-api</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2189,7 +2001,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-security-impl</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2200,7 +2012,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-soap-api</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2211,7 +2023,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xacml-api</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2222,7 +2034,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xacml-impl</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2233,7 +2045,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xacml-saml-api</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2244,7 +2056,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xacml-saml-impl</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2255,7 +2067,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xmlsec-api</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2266,7 +2078,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xmlsec-impl</artifactId>
-      <version>3.4.6</version>
+      <version>4.2.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2333,17 +2145,6 @@
       <groupId>wsdl4j</groupId>
       <artifactId>wsdl4j</artifactId>
       <version>1.6.3</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>xml-resolver</groupId>
-      <artifactId>xml-resolver</artifactId>
-      <version>1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
