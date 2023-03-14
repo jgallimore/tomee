@@ -140,6 +140,7 @@
     <version.groovy>2.4.12</version.groovy>
     <version.ecj>4.6.1</version.ecj>
     <version.jetty>11.0.8</version.jetty>
+    <version.jetty.continuation>9.4.51.v20230217</version.jetty.continuation>
     <version.ehcache>3.10.0</version.ehcache>
     <junit.version>4.13.2</junit.version>
     <junit.jupiter.version>5.8.2</junit.jupiter.version>
@@ -1165,7 +1166,7 @@
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-continuation</artifactId>
-        <version>${version.jetty}</version>
+        <version>${version.jetty.continuation}</version>
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>

@@ -46,6 +46,7 @@
       <artifactId>groovy-all</artifactId>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -579,6 +580,7 @@
               <select>apache-tomee-(plus|plume|webprofile|microprofile).*\.zip</select>
               <skipTransform>true</skipTransform>
               <createTarGz>true</createTarGz>
+<!--              <attach>true</attach>-->
               <skips>
                 <jars>
                   <bcpkix-jdk15on-1.70.jar>org.bouncycastle:bcpkix-jdk15on:jar:1.70</bcpkix-jdk15on-1.70.jar>
@@ -814,6 +816,7 @@
               <select>apache-tomee-(plus|plume|webprofile|microprofile).*\.zip</select>
               <skipTransform>true</skipTransform>
               <createTarGz>true</createTarGz>
+              <attach>true</attach>
               <replace>
                 <resources>
                   <ServerInfo.properties>${project.build.sourceDirectory}/ServerInfo.properties</ServerInfo.properties>
