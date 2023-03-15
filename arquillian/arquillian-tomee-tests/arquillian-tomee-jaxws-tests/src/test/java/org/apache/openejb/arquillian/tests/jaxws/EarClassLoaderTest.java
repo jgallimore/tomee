@@ -48,7 +48,7 @@ public class EarClassLoaderTest {
                                         Maven.configureResolver()
                                                 .workOffline()
                                                 .withClassPathResolution(true)
-                                                .resolve("joda-time:joda-time:2.5")
+                                                .resolve("joda-time:joda-time:2.10.10")
                                                 .using(new AcceptScopesStrategy(ScopeType.COMPILE, ScopeType.RUNTIME))
                                                 .asFile()
                                 )
