@@ -26,7 +26,7 @@ else
     echo "\nGIT STATUS SHOULD NOT SHOW ANY STAGING CHANGE AT THIS POINT:"
     git status
     echo "\nUpdating old TomEE version in poms..."
-   	find . -type f -name pom.xml -exec sed -i '' "s/${OLD_TOMEE_VERSION}<\//${TOMEE_VERSION}<\//g" {} \;
+   	find . -type f -name pom.xml -exec sed -i "s/${OLD_TOMEE_VERSION}<\//${TOMEE_VERSION}<\//g" {} \;
     echo Stagging changes to local git repo...
     git add .
     echo Committing changes to local git repo...
