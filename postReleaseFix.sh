@@ -1,7 +1,5 @@
 #! /bin/sh
-#This script help to fix the post release pom files that are not :
-# - increase TomEE version in the project pom.xml files
-# - Stage and commit to local repository the change.
+#This script help to fix the post release pom files that didn't were updated by the maven-release-plugin
 
 findTomEEVersion(){
   xmllint --xpath '/*[local-name()="project"]/*[local-name()="version"]/text()' pom.xml
@@ -19,13 +17,13 @@ OLD_TOMEE_VERSION=$(findOldTomEEVersion)
 
 
 if [ "$TOMEE_VERSION" = "$OLD_TOMEE_VERSION" ]; then
-    echo "\nThere are not inconsistencies for the curren TomEE version: " $TOMEE_VERSION
+    echo "\n There are not inconsistencies for the curren TomEE version: " $TOMEE_VERSION
     exit 0
 else
-    echo "\nOld TomEE version was found :" $OLD_TOMEE_VERSION " and poms will be updated to current project version: " $TOMEE_VERSION
-    echo "\nGIT STATUS SHOULD NOT SHOW ANY STAGING CHANGE AT THIS POINT:"
+    echo "\n Old TomEE version was found :" $OLD_TOMEE_VERSION " and poms will be updated to current project version: " $TOMEE_VERSION
+    echo "\n GIT STATUS SHOULD NOT SHOW ANY STAGING CHANGE AT THIS POINT:"
     git status
-    echo "\nUpdating old TomEE version in poms..."
+    echo "\n Updating old TomEE version in poms..."
    	find . -type f -name pom.xml -exec sed -i "s/${OLD_TOMEE_VERSION}<\//${TOMEE_VERSION}<\//g" {} \;
    	git status
     echo Stagging changes to local git repo...
