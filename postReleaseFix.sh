@@ -27,6 +27,7 @@ else
     git status
     echo "\nUpdating old TomEE version in poms..."
    	find . -type f -name pom.xml -exec sed -i "s/${OLD_TOMEE_VERSION}<\//${TOMEE_VERSION}<\//g" {} \;
+   	git status
     echo Stagging changes to local git repo...
     git add .
     echo Committing changes to local git repo...
