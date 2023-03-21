@@ -1,4 +1,8 @@
-= TomEE EAP 8.0.14-TT.7
+= TomEE EAP 8.0.14-TT.8
+
+
+=== Changes in TomEE EAP 8.0.14-TT.8
+* Updated snakeyaml to 2.0 to mitigate CVE-2022-1471
 
 === Changes in TomEE EAP 8.0.14-TT.7
 * Updated Tomcat to 9.0.72 and to Commons FileUpload 1.5 to mitigate CVE-2023-24998
