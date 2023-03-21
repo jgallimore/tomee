@@ -23,8 +23,17 @@ else
     echo "\n Old TomEE version was found :" $OLD_TOMEE_VERSION " and poms will be updated to current project version: " $TOMEE_VERSION
     echo "\n GIT STATUS SHOULD NOT SHOW ANY STAGING CHANGE AT THIS POINT:"
     git status
-    echo "\n Updating old TomEE version in poms..."
-   	find . -type f -name pom.xml -exec sed -i "s/${OLD_TOMEE_VERSION}<\//${TOMEE_VERSION}<\//g" {} \;
+
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+            echo "\n Darwing OS detected, updating old TomEE version in poms..."
+            find . -type f -name pom.xml -exec sed -i '' "s/${OLD_TOMEE_VERSION}<\//${TOMEE_VERSION}<\//g" {} \;
+            find . -type f -name arquillian.xml -exec sed -i '' "s/mvn:org.superbiz:properties-provider-impl:${OLD_TOMEE_VERSION}/mvn:org.superbiz:properties-provider-impl:${TOMEE_VERSION}/g" {} \;
+    else
+            echo "\n Unix OS detected, updating old TomEE version in poms..."
+            find . -type f -name pom.xml -exec sed -i "s/${OLD_TOMEE_VERSION}<\//${TOMEE_VERSION}<\//g" {} \;
+            find . -type f -name arquillian.xml -exec sed -i "s/mvn:org.superbiz:properties-provider-impl:${OLD_TOMEE_VERSION}/mvn:org.superbiz:properties-provider-impl:${TOMEE_VERSION}/g" {} \;
+    fi
+
    	git status
     echo Stagging changes to local git repo...
     git add .
