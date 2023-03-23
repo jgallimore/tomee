@@ -26,8 +26,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <openejb.version>4.7.6-TT.34</openejb.version>
-    <tomee.version>1.7.6-TT.34</tomee.version>
+    <openejb.version>4.7.6-TT.35</openejb.version>
+    <tomee.version>1.7.6-TT.35</tomee.version>
     <tomcat.version>7.0.104</tomcat.version>
   </properties>
 
