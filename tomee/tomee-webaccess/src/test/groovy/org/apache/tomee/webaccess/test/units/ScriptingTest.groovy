@@ -57,7 +57,7 @@ class ScriptingTest {
     void test() throws Exception {
         Utilities.withClient(deploymentURL, { CloseableHttpClient client ->
             Assert.assertEquals(
-                    '{"scriptingResultDto":{"output":"Hi there!"}}',
+                    '{"scriptingResultDto":{"output":"Hi there!\\n"}}',
                     Utilities.post(deploymentURL, client, 'rest/scripting',
                             new BasicNameValuePair('engine', 'js'),
                             new BasicNameValuePair('script', 'print("Hi there!");')
