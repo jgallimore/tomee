@@ -195,8 +195,9 @@
     <version.microprofile.impl.openapi>3.0.1</version.microprofile.impl.openapi>
     <version.microprofile.impl.opentracing>3.0.0</version.microprofile.impl.opentracing>
 
-    <!-- Jackson required by OpenAPI Impl -->
+    <!-- Jackson and snakeyaml required by OpenAPI Impl -->
     <version.jackson>2.15.0-rc1</version.jackson>
+    <version.snakeyaml>2.0</version.snakeyaml>
 
     <!-- Jakarta EE API -->
     <!-- we currently rely on Mail API from Geronimo, this might change in the future -->
@@ -2008,6 +2009,18 @@
         <groupId>com.fasterxml.jackson.dataformat</groupId>
         <artifactId>jackson-dataformat-yaml</artifactId>
         <version>${version.jackson}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <!-- Jackson Dataformat Yaml requires snakeyaml -->
+      <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>${version.snakeyaml}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

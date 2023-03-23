@@ -272,7 +272,7 @@
       </exclusions>
     </dependency>
 
-    <!-- Jacksonrequired by OpenAPI Impl -->
+    <!-- Jackson and snakeyaml required by OpenAPI Impl -->
     <dependency>
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-yaml</artifactId>
@@ -280,6 +280,10 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
     </dependency>
 
     <!-- Other Micro Profile Impl. -->
