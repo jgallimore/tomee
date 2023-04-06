@@ -1,4 +1,7 @@
-= TomEE EAP 7.0.10-TT.18
+= TomEE EAP 7.0.10-TT.19
+
+=== Changes in TomEE EAP 7.0.10-TT.19
+* Update to Tomcat 8.5.87 to mitigate CVE-2023-28708
 
 === Changes in TomEE EAP 7.0.10-TT.18
 * Update to Tomcat 8.5.85 and commons-fileupload 1.5 to mitigate CVE-2023-24998
