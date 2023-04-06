@@ -22,6 +22,7 @@ import org.apache.catalina.Engine;
 import org.apache.catalina.Host;
 import org.apache.catalina.Service;
 import org.apache.catalina.connector.Connector;
+import org.apache.catalina.core.StandardHost;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.server.cxf.rs.CxfRsHttpListener;
 import org.apache.openejb.server.httpd.HttpListener;
@@ -48,16 +49,9 @@ public class TomcatRsRegistry implements RsRegistry {
     private static final Logger LOGGER = Logger.getInstance(LogCategory.OPENEJB_STARTUP, TomcatRsRegistry.class);
     private final Hosts hosts;
 
-    private List<Connector> connectors;
     private final Map<Key, HttpListener> listeners = new TreeMap<>();
 
     public TomcatRsRegistry() {
-        for (final Service service : TomcatHelper.getServer().findServices()) {
-            if (service.getContainer() instanceof Engine) {
-                connectors = Arrays.asList(service.findConnectors());
-                break;
-            }
-        }
         hosts = SystemInstance.get().getComponent(Hosts.class);
     }
 
@@ -136,6 +130,7 @@ public class TomcatRsRegistry implements RsRegistry {
 
         Registrations.addFilterConfig(context, filterDef);
 
+        final List<Connector> connectors = TomcatHelper.getConnectors((StandardHost) host);
         path = address(connectors, host.getName(), webContext);
         final String key = address(connectors, host.getName(), completePath);
         listeners.put(new Key(appId, key), listener);

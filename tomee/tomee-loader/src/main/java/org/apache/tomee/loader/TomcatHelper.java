@@ -17,10 +17,8 @@
  */
 package org.apache.tomee.loader;
 
-import org.apache.catalina.Context;
-import org.apache.catalina.Realm;
-import org.apache.catalina.Server;
-import org.apache.catalina.Wrapper;
+import org.apache.catalina.*;
+import org.apache.catalina.connector.Connector;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.core.StandardServer;
 import org.apache.openejb.loader.SystemInstance;
@@ -33,6 +31,8 @@ import javax.management.ObjectName;
 import java.lang.management.ManagementFactory;
 import java.lang.reflect.Method;
 import java.security.Principal;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 public class TomcatHelper {
@@ -150,6 +150,27 @@ public class TomcatHelper {
             e.printStackTrace();
         }
         return false;
+    }
+
+    /**
+     * Helper method to identify the correct connectors available for the given host. It is possible to define
+     * multiple Service nodes in server.xml with their own Connector, Engine and Host configs. This method
+     * ensures we pickup the correct connector, as opposed to the first connector.
+     * @param host The host to find the connectors for
+     * @return The list of connectors for the host
+     */
+    public static List<Connector> getConnectors(final Host host) {
+        if (host == null) {
+            throw new NullPointerException("Host cannot be null");
+        }
+
+        final Container parent = host.getParent();
+        if (!(parent instanceof Engine)) {
+            throw new IllegalArgumentException("Expected an <Engine> to be the parent of the <Host> node");
+        }
+
+        final Engine engine = (Engine) host.getParent();
+        return Arrays.asList(engine.getService().findConnectors());
     }
 
     public static boolean isTomcat7() {
