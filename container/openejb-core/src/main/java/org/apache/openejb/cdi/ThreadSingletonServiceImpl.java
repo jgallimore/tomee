@@ -236,7 +236,7 @@ public class ThreadSingletonServiceImpl implements ThreadSingletonService {
         Object old = null;
         try {
             if (startupObject.getWebContext() == null) {
-                webBeansContext = new WebBeansContext(services, properties);
+                webBeansContext = new AppWebBeansContext(services, properties);
                 appContext.set(WebBeansContext.class, webBeansContext);
             } else {
                 webBeansContext = new WebappWebBeansContext(services, properties, appContext.getWebBeansContext());
