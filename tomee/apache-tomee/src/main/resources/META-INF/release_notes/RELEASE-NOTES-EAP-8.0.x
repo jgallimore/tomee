@@ -1,5 +1,7 @@
-= TomEE EAP 8.0.14-TT.8
+= TomEE EAP 8.0.14-TT.9
 
+=== Changes in TomEE EAP 8.0.14-TT.9
+* Update to jose4j 0.9.3 to mitigate sonatype-2023-1971
 
 === Changes in TomEE EAP 8.0.14-TT.8
 * Updated snakeyaml to 2.0 to mitigate CVE-2022-1471
