@@ -143,7 +143,7 @@
     <version.junit.jupiter>5.8.2</version.junit.jupiter>
     <version.osgi.framework>4.2.0</version.osgi.framework>
     <version.aether>1.13.1</version.aether>
-    <version.xalan>2.7.2</version.xalan>
+    <version.xalan>2.7.3</version.xalan>
 
     <!-- Logging frameworks -->
     <version.slf4j>1.7.36</version.slf4j>
