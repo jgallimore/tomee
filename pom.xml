@@ -132,7 +132,7 @@
     <version.junit.jupiter>5.9.2</version.junit.jupiter>
     <version.osgi.framework>4.2.0</version.osgi.framework>
     <version.aether>1.13.1</version.aether>
-    <version.xalan>2.7.3</version.xalan>
+    <version.xalan>2.7.2</version.xalan>
 
     <!-- Logging frameworks -->
     <version.slf4j>1.7.36</version.slf4j>
@@ -189,7 +189,7 @@
     <version.geronimo-javamail_1.6_spec>1.0.1</version.geronimo-javamail_1.6_spec>
 
     <!-- Jakarta EE Impl. -->
-    <tomcat.version>9.0.75</tomcat.version>
+    <tomcat.version>9.0.74</tomcat.version>
     <!-- com.sun -->
     <version.impl.saaj>1.5.3</version.impl.saaj>
     <!-- org.apache -->
