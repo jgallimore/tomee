@@ -1,4 +1,7 @@
-= TomEE EAP 9.0.1-TT.4
+= TomEE EAP 9.0.1-TT.5
+
+=== Changes in TomEE EAP 9.0.1-TT.5
+* Updated Tomcat to 10.0.28-TT.3 to mitigate CVE-2023-28709
 
 === Changes in TomEE EAP 9.0.1-TT.4
 * Update to jose4j 0.9.3 to mitigate sonatype-2023-1971
