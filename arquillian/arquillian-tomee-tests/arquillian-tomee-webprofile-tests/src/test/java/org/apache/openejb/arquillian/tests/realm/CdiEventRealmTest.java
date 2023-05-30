@@ -81,6 +81,18 @@ public class CdiEventRealmTest {
         assertArrayEquals(actual, expected);
     }
 
+
+    @Test
+    public void newDigest() {
+        final GenericPrincipal gp = getGenericPrincipal(new CdiEventRealm().authenticate("ryan", "md5", "nonce", "nc", "cnonce", "qop", "realm", "md5a2","algorithm"));
+        final String[] actual = gp.getRoles();
+        final String[] expected = new String[] {"ryan", "md5", "nonce", "nc", "cnonce", "qop", "realm", "md5a2","algorithm"};
+
+        Arrays.sort(actual);
+        Arrays.sort(expected);
+
+        assertArrayEquals(actual, expected);
+    }
     @Test
     public void gss() {
         final GenericPrincipal gp = getGenericPrincipal(new CdiEventRealm().authenticate(mock(GSSContext.class), false));
