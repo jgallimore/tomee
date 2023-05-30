@@ -83,6 +83,15 @@ public class MyCdiLazyRealm implements Realm {
     }
 
     @Override
+    public Principal authenticate(final String username, final String digest,
+                                  final String nonce, final String nc, final String cnonce,
+                                  final String qop, final String realm,
+                                  final String digestA2, final String algorithm){
+
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public Principal authenticate(final GSSContext gssContext, final boolean storeCreds) {
         throw new UnsupportedOperationException();
     }
