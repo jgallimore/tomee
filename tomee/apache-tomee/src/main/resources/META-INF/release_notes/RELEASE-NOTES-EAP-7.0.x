@@ -1,4 +1,7 @@
-= TomEE EAP 7.1.5-TT.21
+= TomEE EAP 7.1.5-TT.22
+
+=== Changes in TomEE EAP 7.1.5-TT.22
+*  Update to Tomcat 8.5.89 to mitigate CVE-2023-28709
 
 === Changes in TomEE EAP 7.1.5-TT.21
 * Update jose4j to 0.9.3 to mitigate sonatype-2023-1971
