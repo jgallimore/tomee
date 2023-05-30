@@ -15,7 +15,7 @@
   <artifactId>myfaces-codi-demo</artifactId>
 
   <name>TomEE :: Examples :: JSF2/CDI/BV/JPA/CODI</name>
-  <version>8.0.14-TT.10-SNAPSHOT</version>
+  <version>8.0.15-TT.1-SNAPSHOT</version>
 
   <packaging>war</packaging>
 
@@ -46,7 +46,7 @@
       <plugin>
         <groupId>org.apache.tomee.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
-        <version>8.0.14-TT.10-SNAPSHOT</version>
+        <version>8.0.15-TT.1-SNAPSHOT</version>
       </plugin>
 
     </plugins>
@@ -73,7 +73,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>javaee-api</artifactId>
-      <version>8.0-5</version>
+      <version>8.0-6</version>
       <scope>provided</scope>
     </dependency>
 

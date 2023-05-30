@@ -167,7 +167,7 @@ _may_ be safe to deserialize.
 
 * Groovy 2.4.4
 * Commons Collections 3.2.2
-* Xalan 2.7.2
+* Xalan 2.7.3
 
 As Ejbd transport is tunneled over HTTP please make sure that the
 `ServerServlet` is not publicly accessible. When the applications

@@ -97,13 +97,14 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
     protected static final String NS_MAPPER_PROPERTY_RI_INT = "com.sun.xml.internal.bind.namespacePrefixMapper";
     private static final String JAXB_DEFAULT_NAMESPACE = "##default";
     private static final String JAXB_DEFAULT_NAME = "##default";
-    private static final Set<Class<?>> UNSUPPORTED_CLASSES = 
+    private static final Set<Class<?>> UNSUPPORTED_CLASSES =
         new HashSet<Class<?>>(Arrays.asList(InputStream.class,
-                                            OutputStream.class,
-                                            StreamingOutput.class));
+            OutputStream.class,
+            StreamingOutput.class));
     protected Set<Class<?>> collectionContextClasses = ConcurrentHashMap.newKeySet();
 
     protected Map<String, String> jaxbElementClassMap = Collections.emptyMap();
+    protected Map<String, Boolean> objectFactoryOrIndexMap = new ConcurrentHashMap<>();
     protected boolean unmarshalAsJaxbElement;
     protected boolean marshalAsJaxbElement;
     protected boolean xmlTypeAsJaxbElementOnly;
@@ -146,7 +147,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
     private DocumentDepthProperties depthProperties;
     private String namespaceMapperPropertyName;
 
-    private static JAXBContext newJAXBContextInstance(Class<?>[] classes, Map<String, Object> cProperties) 
+    private static JAXBContext newJAXBContextInstance(Class<?>[] classes, Map<String, Object> cProperties)
         throws JAXBException {
 
         try {
@@ -176,7 +177,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
     }
 
     protected static void setMarshallerProp(Marshaller ms, Object value,
-                                          String name1, String name2) throws Exception {
+                                            String name1, String name2) throws Exception {
         try {
             ms.setProperty(name1, value);
         } catch (PropertyException ex) {
@@ -360,9 +361,9 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
             || isSupported(type, genericType, anns);
     }
     public void writeTo(T t, Type genericType, Annotation[] annotations,
-                 MediaType mediaType,
-                 MultivaluedMap<String, Object> httpHeaders,
-                 OutputStream entityStream) throws IOException, WebApplicationException {
+                        MediaType mediaType,
+                        MultivaluedMap<String, Object> httpHeaders,
+                        OutputStream entityStream) throws IOException, WebApplicationException {
         @SuppressWarnings("unchecked")
         Class<T> type = (Class<T>)t.getClass();
         writeTo(t, type, genericType, annotations, mediaType, httpHeaders, entityStream);
@@ -552,7 +553,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
         final String packageName = PackageUtils.getPackageName(type);
         return packageContexts.computeIfAbsent(packageName, p -> {
             try {
-                final ClassLoader loader = AccessController.doPrivileged((PrivilegedAction<ClassLoader>) 
+                final ClassLoader loader = AccessController.doPrivileged((PrivilegedAction<ClassLoader>)
                     () -> {
                         return type.getClassLoader();
                     });
@@ -574,7 +575,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
                 }
             } catch (JAXBException ex) {
                 LOG.fine("Error creating a JAXBContext using ObjectFactory : "
-                            + ex.getMessage());
+                    + ex.getMessage());
             }
             return null;
         });
@@ -597,8 +598,15 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
     }
 
     protected boolean objectFactoryOrIndexAvailable(Class<?> type) {
-        return type.getResource("ObjectFactory.class") != null
-               || type.getResource("jaxb.index") != null;
+        if (this.objectFactoryOrIndexMap.get(type.getName()) != null) {
+            return this.objectFactoryOrIndexMap.get(type.getName());
+        } else {
+            boolean ret = type.getResource("ObjectFactory.class") != null
+                || type.getResource("jaxb.index") != null;
+            this.objectFactoryOrIndexMap.put(type.getName(), ret);
+            return ret;
+        }
+
     }
 
     private boolean objectFactoryForType(Type genericType) {
@@ -613,7 +621,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
     protected Unmarshaller createUnmarshaller(Class<?> cls, Type genericType, boolean isCollection)
         throws JAXBException {
         JAXBContext context = isCollection ? getCollectionContext(cls)
-                                           : getJAXBContext(cls, genericType);
+            : getJAXBContext(cls, genericType);
         Unmarshaller unmarshaller = context.createUnmarshaller();
         if (validateInputIfPossible) {
             Schema theSchema = getSchema(cls);
@@ -639,7 +647,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
         throws JAXBException {
 
         Class<?> objClazz = JAXBElement.class.isAssignableFrom(cls)
-                            ? ((JAXBElement<?>)obj).getDeclaredType() : cls;
+            ? ((JAXBElement<?>)obj).getDeclaredType() : cls;
 
         JAXBContext context = getJAXBContext(objClazz, genericType);
         Marshaller marshaller = context.createMarshaller();
@@ -707,6 +715,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
     public void clearContexts() {
         classContexts.clear();
         packageContexts.clear();
+        objectFactoryOrIndexMap.clear();
     }
 
     //TODO: move these methods into the dedicated utility class
@@ -757,7 +766,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
         }
         Throwable t = linked != null ? linked : e.getCause() != null ? e.getCause() : e;
         String message = new org.apache.cxf.common.i18n.Message("JAXB_EXCEPTION",
-                             BUNDLE, sb.toString()).toString();
+            BUNDLE, sb.toString()).toString();
         handleExceptionEnd(t, message, read);
     }
 
@@ -806,19 +815,19 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
                                                             OutputStream os,
                                                             boolean dropAtXmlLevel) {
         return TransformUtils.createTransformWriterIfNeeded(writer, os,
-                                                      outElementsMap,
-                                                      dropAtXmlLevel ? outDropElements : null,
-                                                      outAppendMap,
-                                                      attributesToElements,
-                                                      null);
+            outElementsMap,
+            dropAtXmlLevel ? outDropElements : null,
+            outAppendMap,
+            attributesToElements,
+            null);
     }
 
     protected XMLStreamReader createTransformReaderIfNeeded(XMLStreamReader reader, InputStream is) {
         return TransformUtils.createTransformReaderIfNeeded(reader, is,
-                                                            inDropElements,
-                                                            inElementsMap,
-                                                            inAppendMap,
-                                                            true);
+            inDropElements,
+            inElementsMap,
+            inAppendMap,
+            true);
     }
 
     protected XMLStreamReader createDepthReaderIfNeeded(XMLStreamReader reader, InputStream is) {
@@ -921,7 +930,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
                     List<Object> newList = new ArrayList<>(theList.size());
                     for (Object o : theList) {
                         newList.add(org.apache.cxf.jaxrs.utils.JAXBUtils.useAdapter(
-                                        ((JAXBElement<?>)o).getValue(), adapter, false));
+                            ((JAXBElement<?>)o).getValue(), adapter, false));
                     }
                     theList = newList;
                 } else if (!(first instanceof JAXBElement) && isJaxbElement) {
@@ -940,7 +949,7 @@ public abstract class AbstractJAXBProvider<T> extends AbstractConfigurableProvid
                 T[] values = (T[])Array.newInstance(type, theList.size());
                 for (int i = 0; i < theList.size(); i++) {
                     values[i] = (T)org.apache.cxf.jaxrs.utils.JAXBUtils.useAdapter(
-                                       theList.get(i), adapter, false);
+                        theList.get(i), adapter, false);
                 }
                 return values;
             }

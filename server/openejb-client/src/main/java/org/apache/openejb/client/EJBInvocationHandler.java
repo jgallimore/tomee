@@ -37,6 +37,8 @@ import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -202,29 +204,35 @@ public abstract class EJBInvocationHandler implements InvocationHandler, Seriali
     }
 
     protected static void registerHandler(final Object key, final EJBInvocationHandler handler) {
-        Set<WeakReference<EJBInvocationHandler>> set = liveHandleRegistry.get(key);
+    	final ReentrantLock l = lock;
+    	l.lock();
 
-        if (set == null) {
-            set = new HashSet<WeakReference<EJBInvocationHandler>>();
-            final Set<WeakReference<EJBInvocationHandler>> current = liveHandleRegistry.putIfAbsent(key, set);
-            // someone else added the set
-            if (current != null) {
-                set = current;
-            }
-        }
+    	try {
+        	// this map lookup must be synchronized even though it is a ConcurrentHashMap to avoid race condition with the cleanup below
+            final Set<WeakReference<EJBInvocationHandler>> set = liveHandleRegistry.computeIfAbsent(key, k -> new HashSet<>());
+            set.add(new WeakReference<>(handler));
 
-        final ReentrantLock l = lock;
-        l.lock();
-
-        try {
-            set.add(new WeakReference<EJBInvocationHandler>(handler));
-        } finally {
-            l.unlock();
-        }
+    		// loop through and remove old references that have been garbage collected
+    		for (Iterator<Map.Entry<Object,Set<WeakReference<EJBInvocationHandler>>>> i = liveHandleRegistry.entrySet().iterator(); i.hasNext(); ) {
+                final Map.Entry<Object,Set<WeakReference<EJBInvocationHandler>>> entry = i.next();
+                final Set<WeakReference<EJBInvocationHandler>> s = entry.getValue();
+    			for (Iterator<WeakReference<EJBInvocationHandler>> j = s.iterator(); j.hasNext(); ) {
+                    final WeakReference<EJBInvocationHandler> ref = j.next();
+    				if (ref.get() == null) {
+    					j.remove(); // clean up old WeakReference
+    				}
+    			}
+    			if (s.isEmpty()) {
+    				i.remove(); // no more handlers for this primary key, remove map entry
+    			}
+    		}
+    	} finally {
+    		l.unlock();
+    	}
     }
 
     /**
-     * Renamed method so it shows up with a much more understandable purpose as it
+     * Renamed method, so it shows up with a much more understandable purpose as it
      * will be the top element in the stacktrace
      *
      * @param e      Throwable
@@ -239,7 +247,7 @@ public abstract class EJBInvocationHandler implements InvocationHandler, Seriali
                 return new TransactionRolledbackLocalException(e.getMessage()).initCause(getCause(e));
             }
 
-            /**
+            /*
              * If a client attempts to invoke a method on a removed bean's business interface,
              * we must throw a javax.ejb.NoSuchEJBException. If the business interface is a
              * remote business interface that extends java.rmi.Remote, the
