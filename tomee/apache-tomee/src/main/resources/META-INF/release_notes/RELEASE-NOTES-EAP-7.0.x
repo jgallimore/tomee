@@ -1,4 +1,7 @@
-= TomEE EAP 7.0.10-TT.19
+= TomEE EAP 7.0.10-TT.20
+
+=== Changes in TomEE EAP 7.0.10-TT.20
+* Update to Tomcat 8.5.89 to mitigate CVE-2023-28709
 
 === Changes in TomEE EAP 7.0.10-TT.19
 * Update to Tomcat 8.5.87 to mitigate CVE-2023-28708
