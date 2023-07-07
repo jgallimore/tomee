@@ -1,4 +1,7 @@
-= TomEE EAP 7.0.10-TT.20
+= TomEE EAP 7.0.10-TT.21
+
+=== Changes in TomEE EAP 7.0.10-TT.20
+* Update to bcprov-jdk15to18 1.75 to mitigate CVE-2023-33201
 
 === Changes in TomEE EAP 7.0.10-TT.20
 * Update to Tomcat 8.5.89 to mitigate CVE-2023-28709
