@@ -1,4 +1,8 @@
-= TomEE EAP 8.0.15-TT.1
+= TomEE EAP 8.0.15-TT.2
+
+
+=== Changes in TomEE EAP 8.0.15-TT.12
+* Update to bcprov-jdk15to18 1.75 to mitigate CVE-2023-33201
 
 === Changes in TomEE EAP 8.0.15-TT.1
 * Update to Tomcat 9.0.75 to mitigate CVE-2023-28709
@@ -65,7 +69,7 @@
 * Updated to Tomcat 9.0.58 to mitigate CVE-2022-23181
 
 === Changes in TomEE EAP 8.0.9-TT.6
-* Updated to tomee-patch-plugin to 0.8 and skipped bcprov-jdk15on 1.69 signed jar
+* Updated to tomee-patch-plugin to 0.8 and skipped bcprov-jdk15to18 1.69 signed jar
 
 
 === Changes in TomEE EAP 8.0.9-TT.5
