@@ -3,6 +3,7 @@
 
 === Changes in TomEE EAP 8.0.15-TT.12
 * Update to bcprov-jdk15to18 1.75 to mitigate CVE-2023-33201
+* Update to johnzon 1.2.21 to mitigate CVE-2023-33008
 
 === Changes in TomEE EAP 8.0.15-TT.1
 * Update to Tomcat 9.0.75 to mitigate CVE-2023-28709
