@@ -82,6 +82,10 @@
       <version>${version.wss4j}</version>
       <exclusions>
         <exclusion>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcprov-jdk15on</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>org.apache.santuario</groupId>
           <artifactId>xmlsec</artifactId>
         </exclusion>
@@ -126,8 +130,8 @@
     <!-- Override the bcprov from the previous artifact -->
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk15on</artifactId>
-      <version>1.70</version>
+      <artifactId>bcprov-jdk15to18</artifactId>
+      <version>1.75</version>
     </dependency>
     <dependency>
       <groupId>org.apache.wss4j</groupId>
