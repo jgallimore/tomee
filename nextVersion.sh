@@ -31,6 +31,7 @@ case $yn in
     echo Committing changes to local git repo...
     git commit -m "Prepare for release ${NEXT_TOMEE_VERSION}"
     echo Operation succed. Now you just need to execut GIT PUSH.
+    echo *** DONT FORGET TO RUN GenerateBoms.java FROM IDE ***
 	;;
 	no|n ) echo Operation has been cancel by user.;
 		exit;;
