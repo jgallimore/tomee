@@ -24,11 +24,14 @@ case $yn in
 	yes|y )
     echo Updating TomEE version in poms...
 	  find . -type f -name pom.xml -exec sed -i '' "s/${TOMEE_VERSION}<\//${NEXT_TOMEE_VERSION}<\//g" {} \;
+	  #Changes the version for pom-template.xml. Execute this after boms has been updated
+	  find . -type f -name pom-template.xml -exec sed -i '' "s/${TOMEE_VERSION}<\//${NEXT_TOMEE_VERSION}<\//g" {} \;
     echo Stagging changes to local git repo...
     git add .
     echo Committing changes to local git repo...
     git commit -m "Prepare for release ${NEXT_TOMEE_VERSION}"
     echo Operation succed. Now you just need to execut GIT PUSH.
+    echo *** DONT FORGET TO RUN GenerateBoms.java FROM IDE ***
 	;;
 	no|n ) echo Operation has been cancel by user.;
 		exit;;

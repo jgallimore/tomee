@@ -37,7 +37,8 @@ public class MoviesArquillianHtmlUnitTest {
 
     @Deployment
     public static EnterpriseArchive createDeployment() {
-        final EnterpriseArchive enterpriseArchive = Maven.resolver().resolve("org.superbiz:moviefun-ear:ear:7.0.10-TT.18")
+        final String earCoordinates = "org.superbiz:moviefun-ear:ear:"+System.getProperty("tomee.version");
+        final EnterpriseArchive enterpriseArchive = Maven.resolver().resolve(earCoordinates)
                 .withoutTransitivity().asSingle(EnterpriseArchive.class);
 
         System.out.println(enterpriseArchive.toString(true));
