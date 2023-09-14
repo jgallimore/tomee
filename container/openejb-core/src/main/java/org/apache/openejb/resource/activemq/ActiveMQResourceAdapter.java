@@ -28,6 +28,7 @@ import org.apache.activemq.ra.ActiveMQManagedConnection;
 import org.apache.activemq.ra.MessageActivationSpec;
 import org.apache.openejb.BeanContext;
 import org.apache.openejb.core.mdb.MdbContainer;
+import org.apache.openejb.dyni.DynamicSubclass;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.resource.AutoConnectionTracker;
 import org.apache.openejb.resource.activemq.jms2.TomEEConnectionFactory;
@@ -38,6 +39,7 @@ import org.apache.openejb.util.LogCategory;
 import org.apache.openejb.util.Logger;
 import org.apache.openejb.util.URISupport;
 import org.apache.openejb.util.URLs;
+import org.apache.openejb.util.proxy.LocalBeanProxyFactory;
 import org.apache.openejb.util.reflection.Reflections;
 
 import jakarta.jms.Connection;
@@ -53,14 +55,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.URISyntaxException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 @SuppressWarnings("UnusedDeclaration")
 public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQResourceAdapter {
@@ -70,11 +68,17 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
     private String startupTimeout = "60000";
     private BootstrapContext bootstrapContext;
     private final Map<BeanContext, ObjectName> mbeanNames = new ConcurrentHashMap<>();
+
+    private static final Set<Object> WHATEVER = new HashSet<>(); // stash stuff in here so it is never ever garbage collected
+
     private static final Map<String,String> PREVENT_CREATION_PARAMS = new HashMap<String, String>() { {
         put("create", "false");
     }};
 
     private static final Logger LOGGER = Logger.getInstance(LogCategory.ACTIVEMQ, ActiveMQ5Factory.class);
+
+    private static final Class AMQ_CONNECTION_PROXY = DynamicSubclass.createSubclass(
+            ActiveMQConnection.class, ActiveMQConnection.class.getClassLoader(), true);
 
     public String getDataSource() {
         return dataSource;
@@ -250,12 +254,13 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
                             .lookup("openejb:Resource/" + s.getConnectionFactoryLookup());
                     if (!ActiveMQConnectionFactory.class.isInstance(lookup)) {
                         final org.apache.activemq.ra.ActiveMQConnectionFactory connectionFactory = org.apache.activemq.ra.ActiveMQConnectionFactory.class.cast(lookup);
-                        Connection connection = connectionFactory.createConnection();
+                        final Connection connection = connectionFactory.createConnection();
                         if (Proxy.isProxyClass(connection.getClass())) { // not great, we should find a better want without bypassing ra layer
                             final InvocationHandler invocationHandler = Proxy.getInvocationHandler(connection);
                             final ActiveMQConnection physicalConnection = getActiveMQConnection(activationSpec, invocationHandler);
                             if (physicalConnection != null) {
-                                return physicalConnection;
+                                WHATEVER.add(connection);
+                                return wrap(physicalConnection, connection);
                             }
                         }
 
@@ -269,7 +274,8 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
                                 final InvocationHandler invocationHandler = InvocationHandler.class.cast(o);
                                 final ActiveMQConnection physicalConnection = getActiveMQConnection(activationSpec, invocationHandler);
                                 if (physicalConnection != null) {
-                                    return physicalConnection;
+                                    WHATEVER.add(connection);
+                                    return wrap(physicalConnection, connection);
                                 }
                             }
                         } catch (NoSuchFieldException | IllegalAccessException e) {
@@ -292,6 +298,12 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
             }
         }
         return super.makeConnection(activationSpec);
+    }
+
+    private ActiveMQConnection wrap(final ActiveMQConnection connection, final Object proxyRef) {
+        final Object proxy = LocalBeanProxyFactory.Unsafe.allocateInstance(AMQ_CONNECTION_PROXY);
+        DynamicSubclass.setHandler(proxy, new ConnectionInvocationHandler(connection, proxyRef));
+        return (ActiveMQConnection) proxy;
     }
 
     private ActiveMQConnection getActiveMQConnection(MessageActivationSpec activationSpec, InvocationHandler invocationHandler) {
@@ -358,6 +370,37 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
             method.invoke(null);
         } catch (final Throwable e) {
             //Ignore
+        }
+    }
+
+    private static class ConnectionInvocationHandler implements InvocationHandler {
+
+        private static final Map<ActiveMQConnection, Set<Object>> CONNECTION_REFS = new HashMap<>();
+        private final ActiveMQConnection connection;
+        private final Object ref;
+
+
+        public ConnectionInvocationHandler(final ActiveMQConnection connection, final Object ref) {
+            this.connection = connection;
+            this.ref = ref;
+
+            final Set<Object> refs = CONNECTION_REFS.computeIfAbsent(connection, c -> new HashSet<>());
+            refs.add(ref);
+        }
+
+        @Override
+        public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+            if ("close".equals(method.getName())) {
+                final Set<Object> connectionRefs = CONNECTION_REFS.get(connection);
+                connectionRefs.remove(ref);
+                if (connectionRefs.isEmpty()) {
+                    return method.invoke(connection);
+                } else {
+                    return null;
+                }
+            } else {
+                return method.invoke(connection);
+            }
         }
     }
 }
