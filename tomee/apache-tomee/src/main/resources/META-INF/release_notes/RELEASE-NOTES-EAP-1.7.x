@@ -1,8 +1,10 @@
-= TomEE EAP 1.7.6-TT.37
+= TomEE EAP 1.7.6-TT.38
+
+=== Changes in TomEE EAP 1.7.6-TT.38
+* Updated to Tomcat 7.0.109-TT.9 to mitigate CVE-2023-41080
 
 === Changes in TomEE EAP 1.7.6-TT.37
 * Updated to Tomcat 7.0.109-TT.8 to mitigate CVE-2023-28709
-
 
 === Changes in TomEE EAP 1.7.6-TT.36
 * Updated to Tomcat 7.0.109-TT.7 to mitigate CVE-2023-28708
