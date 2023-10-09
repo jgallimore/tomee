@@ -23,7 +23,7 @@
   <parent>
     <artifactId>tomee</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>8.0.14-TT.7-SNAPSHOT</version>
+    <version>8.0.15-TT.4-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -564,7 +564,7 @@
               <createTarGz>true</createTarGz>
               <skips>
                 <jars>
-                  <bcprov-jdk15on-1.70.jar>org.bouncycastle:bcprov-jdk15on:jar:1.70</bcprov-jdk15on-1.70.jar>
+                  <bcprov-jdk15to18-1.75.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.75</bcprov-jdk15to18-1.75.jar>
                 </jars>
               </skips>
             </configuration>
@@ -793,11 +793,11 @@
               <select>apache-tomee-(plus|plume|webprofile|microprofile).*\.zip</select>
               <skipTransform>true</skipTransform>
               <createTarGz>true</createTarGz>
-              <replace>
-                <resources>
-                  <ServerInfo.properties>${project.build.sourceDirectory}/ServerInfo.properties</ServerInfo.properties>
-                </resources>
-              </replace>
+              <skips>
+                <jars>
+                  <bcprov-jdk15to18-1.75.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.75</bcprov-jdk15to18-1.75.jar>
+                </jars>
+              </skips>
             </configuration>
             <executions>
               <execution>

@@ -1,4 +1,27 @@
-= TomEE EAP 8.0.14-TT.5
+= TomEE EAP 8.0.15-TT.3
+
+=== Changes in TomEE EAP 8.0.15-TT.13
+* Update to Tomcat 9.0.80 to mitigate CVE-2023-41080
+
+=== Changes in TomEE EAP 8.0.15-TT.12
+* Update to bcprov-jdk15to18 1.75 to mitigate CVE-2023-33201
+* Update to johnzon 1.2.21 to mitigate CVE-2023-33008
+* Update to Tomcat 9.0.78 proactively
+
+=== Changes in TomEE EAP 8.0.15-TT.1
+* Update to Tomcat 9.0.75 to mitigate CVE-2023-28709
+
+=== Changes in TomEE EAP 8.0.14-TT.9
+* Update to jose4j 0.9.3 to mitigate sonatype-2023-1971
+
+=== Changes in TomEE EAP 8.0.14-TT.8
+* Updated snakeyaml to 2.0 to mitigate CVE-2022-1471
+
+=== Changes in TomEE EAP 8.0.14-TT.7
+* Updated Tomcat to 9.0.72 and to Commons FileUpload 1.5 to mitigate CVE-2023-24998
+
+=== Changes in TomEE EAP 8.0.14-TT.6
+* Fix for TOMEE-4181 - BC jar losing signature during build
 
 === Changes in TomEE EAP 8.0.14-TT.5
 * Updated CXF to 3.4.10 to mitigate CVE-2022-46363 and CVE-2022-46364
@@ -50,7 +73,7 @@
 * Updated to Tomcat 9.0.58 to mitigate CVE-2022-23181
 
 === Changes in TomEE EAP 8.0.9-TT.6
-* Updated to tomee-patch-plugin to 0.8 and skipped bcprov-jdk15on 1.69 signed jar
+* Updated to tomee-patch-plugin to 0.8 and skipped bcprov-jdk15to18 1.69 signed jar
 
 
 === Changes in TomEE EAP 8.0.9-TT.5
