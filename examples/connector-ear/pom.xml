@@ -92,7 +92,7 @@
           <systemProperties>
             <property>
               <name>tomee.version</name>
-              <value>8.0.15-TT.4-SNAPSHOT</value>
+              <value>8.0.15-TT.5-SNAPSHOT</value>
             </property>
           </systemProperties>
         </configuration>
