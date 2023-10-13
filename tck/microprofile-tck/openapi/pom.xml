@@ -127,13 +127,13 @@
       <scope>test</scope>
     </dependency>
 
-<!--    <dependency>-->
-<!--      &lt;!&ndash; required by the MP TCK &ndash;&gt;-->
-<!--      <groupId>org.yaml</groupId>-->
-<!--      <artifactId>snakeyaml</artifactId>-->
-<!--      <version>${version.snakeyaml}</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
+    <dependency>
+      <!-- required by the MP TCK -->
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+      <version>${version.snakeyaml}</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
       <groupId>${project.groupId}</groupId>

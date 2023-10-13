@@ -147,7 +147,6 @@
           <config>${project.basedir}/src/main/tomee/</config>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 

@@ -61,14 +61,13 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
       </plugin>
-
     </plugins>
   </build>
   <dependencies>
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>javaee-api</artifactId>
-      <version>8.0-5</version>
+      <version>8.0-6</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

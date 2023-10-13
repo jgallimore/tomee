@@ -46,7 +46,6 @@
           <argLine>-Djdk.attach.allowAttachSelf</argLine>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
   <repositories>

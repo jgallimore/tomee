@@ -74,6 +74,7 @@
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+
     <!--
     The <scope>test</scope> guarantees that non of your runtime
     code is dependent on any OpenEJB classes.
@@ -84,7 +85,9 @@
       <version>8.0.15-TT.5-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
+
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -100,4 +103,5 @@
       <url>file://${basedir}/target/snapshot-repo/</url>
     </snapshotRepository>
   </distributionManagement>
+
 </project>

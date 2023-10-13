@@ -91,7 +91,6 @@
           <context>${project.artifactId}</context>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 

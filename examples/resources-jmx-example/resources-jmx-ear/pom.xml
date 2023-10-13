@@ -51,7 +51,6 @@
           </modules>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
   <dependencies>

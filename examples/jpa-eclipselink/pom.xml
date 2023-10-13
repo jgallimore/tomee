@@ -50,7 +50,6 @@
           <argLine>${surefire.argline}</argLine>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
   <repositories>

@@ -154,7 +154,6 @@
           </systemVariables>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 
