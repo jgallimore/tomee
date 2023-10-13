@@ -847,6 +847,8 @@
                 <exclude>**/tomee-deb/src/main/resources/**/*.template</exclude>
                 <exclude>**/tomee-deb/**/precompiled-changelog</exclude>
 
+                <exclude>tomee/apache-tomee/src/main/resources/META-INF/release_notes/**</exclude>
+
                 <!-- left around after creating the site -->
                 <exclude>**/cobertura.ser</exclude>
 
