@@ -75,7 +75,7 @@
         <version>8.0.15-TT.6-SNAPSHOT</version>
         <configuration>
           <simpleLog>true</simpleLog>
-          <tomeeVersion>8.0.15-TT.5-SNAPSHOT</tomeeVersion>
+          <tomeeVersion>8.0.15-TT.6-SNAPSHOT</tomeeVersion>
           <tomeeClassifier>plus</tomeeClassifier>
         </configuration>
       </plugin>
