@@ -82,13 +82,12 @@
             <webappArtifact>
               <groupId>org.apache.tomee</groupId>
               <artifactId>openejb-tomcat-plus-webapp</artifactId>
-              <version>8.0.15-TT.4-SNAPSHOT</version>
+              <version>8.0.15-TT.5-SNAPSHOT</version>
               <contextPath>openejb</contextPath>
             </webappArtifact>
           </webapps>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 

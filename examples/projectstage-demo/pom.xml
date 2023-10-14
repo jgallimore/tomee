@@ -117,7 +117,6 @@ checkManagerValue(org.superbiz.projectstage.TestingProjectStageTest) Time elapse
 java.lang.ClassCastException: $Proxy52 cannot be cast to org.junit.runner.RunWith -->
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 </project>

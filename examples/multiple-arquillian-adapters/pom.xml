@@ -124,7 +124,6 @@
           <threadCount>1</threadCount>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 

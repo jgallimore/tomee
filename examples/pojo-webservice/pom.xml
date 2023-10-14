@@ -71,7 +71,6 @@
           <tomeeClassifier>plus</tomeeClassifier>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
   <dependencies>

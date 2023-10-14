@@ -54,7 +54,6 @@
           </url>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
   <repositories>

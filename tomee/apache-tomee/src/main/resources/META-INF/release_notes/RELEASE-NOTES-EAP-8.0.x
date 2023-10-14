@@ -1,9 +1,15 @@
-= TomEE EAP 8.0.15-TT.3
+= TomEE EAP 8.0.15-TT.5
 
-=== Changes in TomEE EAP 8.0.15-TT.13
+=== Changes in TomEE EAP 8.0.15-TT.5
+* Update to Tomcat 9.0.82 to mitigate CVE-2023-44487, CVE-2023-42794, CVE-2023-42795, CVE-2023-45648
+
+=== Changes in TomEE EAP 8.0.15-TT.4
+* Release to avoid guava as dependency
+
+=== Changes in TomEE EAP 8.0.15-TT.3
 * Update to Tomcat 9.0.80 to mitigate CVE-2023-41080
 
-=== Changes in TomEE EAP 8.0.15-TT.12
+=== Changes in TomEE EAP 8.0.15-TT.2
 * Update to bcprov-jdk15to18 1.75 to mitigate CVE-2023-33201
 * Update to johnzon 1.2.21 to mitigate CVE-2023-33008
 * Update to Tomcat 9.0.78 proactively

@@ -18,15 +18,18 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>jug</groupId>
   <artifactId>polling-parent</artifactId>
   <version>8.0.15-TT.5-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>TomEE :: Examples :: Polling</name>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <tomee.version>8.0.15-TT.5-SNAPSHOT</tomee.version>
   </properties>
+
   <build>
     <defaultGoal>install</defaultGoal>
     <plugins>
@@ -46,6 +49,7 @@
       </plugin>
     </plugins>
   </build>
+
   <repositories>
     <repository>
       <id>apache-m2-snapshot</id>
@@ -58,6 +62,7 @@
       <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
     </repository>
   </repositories>
+
   <pluginRepositories>
     <pluginRepository>
       <id>apache-m2-plugin-snapshot</id>
@@ -65,12 +70,14 @@
       <url>https://repository.apache.org/content/groups/snapshots</url>
     </pluginRepository>
   </pluginRepositories>
+
   <modules>
     <module>polling-domain</module>
     <module>polling-core</module>
     <module>polling-web</module>
     <module>polling-client</module>
   </modules>
+
   <dependencyManagement>
     <dependencies>
       <!-- API -->
@@ -80,6 +87,7 @@
         <version>${tomee.version}</version>
         <scope>provided</scope>
       </dependency>
+
       <!-- impl - for standard code scope test is fine -->
       <dependency>
         <groupId>org.apache.tomee.bom</groupId>
@@ -87,6 +95,7 @@
         <version>${tomee.version}</version>
         <scope>test</scope>
       </dependency>
+
       <!-- test -->
       <dependency>
         <groupId>org.jboss.arquillian.junit</groupId>
@@ -130,6 +139,7 @@
         <version>2.0.1</version>
         <scope>test</scope>
       </dependency>
+
       <!-- client -->
       <dependency>
         <groupId>jline</groupId>
@@ -143,6 +153,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:

@@ -380,10 +380,6 @@
       <exclusions>
         <!-- Exclude some weird transient dependency to jaxb-runtime from ehcache -->
         <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcprov-jdk15on</artifactId>
-        </exclusion>
-        <exclusion>
           <groupId>org.glassfish.jaxb</groupId>
           <artifactId>jaxb-runtime</artifactId>
         </exclusion>

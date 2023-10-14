@@ -54,7 +54,6 @@
           <argLine>"-javaagent:${settings.localRepository}/org/apache/tomee/openejb-javaagent/${tomee.version}/openejb-javaagent-${tomee.version}.jar"</argLine>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 

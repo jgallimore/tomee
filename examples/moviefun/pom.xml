@@ -115,7 +115,6 @@
           <args>-Xmx512m -XX:PermSize=256m</args>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
   <dependencyManagement>

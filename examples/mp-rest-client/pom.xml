@@ -120,7 +120,6 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 

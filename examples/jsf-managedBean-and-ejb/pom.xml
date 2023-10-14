@@ -55,7 +55,6 @@
         <artifactId>tomee-maven-plugin</artifactId>
         <version>8.0.15-TT.5-SNAPSHOT</version>
       </plugin>
-
     </plugins>
   </build>
 

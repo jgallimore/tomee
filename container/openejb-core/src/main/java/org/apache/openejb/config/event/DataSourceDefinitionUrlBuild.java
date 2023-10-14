@@ -14,31 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.tomee.security.http;
 
+package org.apache.openejb.config.event;
 
-import java.security.Principal;
-import java.util.Set;
+import org.apache.openejb.jee.DataSource;
+import org.apache.openejb.observer.Event;
 
-import static java.util.Collections.unmodifiableSet;
+@Event
+public class DataSourceDefinitionUrlBuild {
 
-import java.io.Serializable;
+    private final DataSource ds;
 
-public final class SavedAuthentication implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private final Principal principal;
-    private final Set<String> groups;
-
-    SavedAuthentication(final Principal principal, final Set<String> groups) {
-        this.principal = principal;
-        this.groups = unmodifiableSet(groups);
+    public DataSourceDefinitionUrlBuild(DataSource ds) {
+        this.ds = ds;
     }
 
-    public Principal getPrincipal() {
-        return principal;
-    }
-
-    public Set<String> getGroups() {
-        return groups;
+    public DataSource getDataSource() {
+        return ds;
     }
 }
