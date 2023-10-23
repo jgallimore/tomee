@@ -26,7 +26,7 @@
   <parent>
     <artifactId>container</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>9.0.1-TT.6-SNAPSHOT</version>
+    <version>9.1.1-TT.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>openejb-core</artifactId>
@@ -397,7 +397,8 @@
             </manifest>
             <manifestEntries>
               <Automatic-Module-Name>${tomee.build.name}</Automatic-Module-Name>
-              <Class-Path>openejb-loader-${project.version}.jar openejb-client-${project.version}.jar xbean-finder-shaded-${version.xbean}.jar xbean-asm9-shaded-${version.xbean}.jar
+              <Class-Path>openejb-loader-${project.version}.jar openejb-client-${project.version}.jar
+                xbean-finder-shaded-${version.xbean}.jar xbean-asm9-shaded-${version.xbean}.jar
               </Class-Path>
               <J2EE-DeploymentFactory-Implementation-Class>
                 org.apache.openejb.config.VmDeploymentFactory

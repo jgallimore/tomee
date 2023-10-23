@@ -24,7 +24,7 @@
   <parent>
     <artifactId>tomee-microprofile</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>9.0.1-TT.6-SNAPSHOT</version>
+    <version>9.1.1-TT.1-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -53,12 +53,6 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>mp-common</artifactId>
       <version>${project.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.cxf</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
@@ -81,10 +75,6 @@
           <groupId>${project.groupId}</groupId>
           <artifactId>jakartaee-api</artifactId>
         </exclusion>
-        <exclusion>
-          <groupId>org.apache.cxf</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
       </exclusions>
     </dependency>
     <dependency>
@@ -95,10 +85,6 @@
         <exclusion>
           <groupId>${project.groupId}</groupId>
           <artifactId>jakartaee-api</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.cxf</groupId>
-          <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
     </dependency>

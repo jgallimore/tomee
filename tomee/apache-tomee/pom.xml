@@ -23,7 +23,7 @@
   <parent>
     <artifactId>tomee</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>9.0.1-TT.6-SNAPSHOT</version>
+    <version>9.1.1-TT.1-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -580,12 +580,13 @@
               <select>apache-tomee-(plus|plume|webprofile|microprofile).*\.zip</select>
               <skipTransform>true</skipTransform>
               <createTarGz>true</createTarGz>
-<!--              <attach>true</attach>-->
               <skips>
                 <jars>
-                  <bcpkix-jdk15to18-1.75.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.75</bcpkix-jdk15to18-1.75.jar>
-                  <bcprov-jdk15to18-1.75.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.75</bcprov-jdk15to18-1.75.jar>
-                  <bcutil-jdk15to18-1.75.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.75</bcutil-jdk15to18-1.75.jar>
+                  <bcpkix-jdk15to18-1.76.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.76</bcpkix-jdk15to18-1.76.jar>
+                  <bcprov-jdk15to18-1.76.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.76</bcprov-jdk15to18-1.76.jar>
+                  <bcutil-jdk15to18-1.76.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.76</bcutil-jdk15to18-1.76.jar>
+                  <!-- Don't modify bootstrap.jar. Current patch plugin 0.10 has an ambiguity adding classes in more than one target jar if the packages are matching -->
+                  <bootstrap.jar>bootstrap.jar</bootstrap.jar>
                 </jars>
               </skips>
             </configuration>
@@ -816,9 +817,11 @@
               <createTarGz>true</createTarGz>
               <skips>
                 <jars>
-                  <bcpkix-jdk15to18-1.75.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.75</bcpkix-jdk15to18-1.75.jar>
-                  <bcprov-jdk15to18-1.75.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.75</bcprov-jdk15to18-1.75.jar>
-                  <bcutil-jdk15to18-1.75.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.75</bcutil-jdk15to18-1.75.jar>
+                  <bcpkix-jdk15to18-1.76.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.76</bcpkix-jdk15to18-1.76.jar>
+                  <bcprov-jdk15to18-1.76.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.76</bcprov-jdk15to18-1.76.jar>
+                  <bcutil-jdk15to18-1.76.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.76</bcutil-jdk15to18-1.76.jar>
+                  <!-- Don't modify bootstrap.jar. Current patch plugin 0.10 has an ambiguity adding classes in more than one target jar if the packages are matching -->
+                  <bootstrap.jar>bootstrap.jar</bootstrap.jar>
                 </jars>
               </skips>
             </configuration>
