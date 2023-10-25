@@ -1,6 +1,7 @@
-= TomEE EAP 9.0.1-TT.6
+= TomEE EAP 9.1.1-TT.1
 
-=== Changes in TomEE EAP 9.0.1-TT.6
+=== Changes in TomEE EAP 9.1.1-TT.1
+* Updated Tomcat to 10.0.28-TT.6 to backport Fix BZ 66331
 * Updated Tomcat to 10.0.28-TT.5 to mitigate CVE-2023-45648, CVE-2023-42795, CVE-2023-44487
 * Updated Tomcat to 10.0.28-TT.4 to mitigate CVE-2023-41080
 
