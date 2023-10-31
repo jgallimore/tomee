@@ -1,4 +1,8 @@
-= TomEE EAP 8.0.15-TT.5
+= TomEE EAP 8.0.16-TT.1
+
+=== Changes in TomEE EAP 8.0.16-TT.1
+
+* Update to ActiveMQ 5.16.7-TT.1 to mitigate CVE-2023-46604
 
 === Changes in TomEE EAP 8.0.15-TT.5
 * Update to Tomcat 9.0.82 to mitigate CVE-2023-44487, CVE-2023-42794, CVE-2023-42795, CVE-2023-45648
