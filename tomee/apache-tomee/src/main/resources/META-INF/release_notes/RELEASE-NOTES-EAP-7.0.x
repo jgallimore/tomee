@@ -1,11 +1,7 @@
-= TomEE EAP 7.1.5-TT.24
-
-=== Changes in TomEE EAP 7.1.5-TT.24
-
-* Update to ActiveMQ 5.16.7-TT.1 to mitigate CVE-2023-46604
-
+= TomEE EAP 7.1.5-TT.23
 
 === Changes in TomEE EAP 7.1.5-TT.23
+* Update to ActiveMQ 5.16.7-TT.1 to mitigate CVE-2023-46604
 * Update to Tomcat 8.5.95 to mitigate CVE-2023-45648, CVE-2023-42795, CVE-2023-42794, CVE-2023-44487
 *  Update to Tomcat 8.5.93 to mitigate CVE-2023-41080
 *  Update to bcprov-jdk15to18 1.75 to mitigate CVE-2023-33201
