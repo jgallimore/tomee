@@ -1,4 +1,10 @@
-= TomEE EAP 9.0.1-TT.5
+= TomEE EAP 9.0.1-TT.6
+
+=== Changes in TomEE EAP 9.0.1-TT.6
+* Updated to ActiveMQ 5.18.3 to mitigate CVE-2023-46604
+* Updated Tomcat to 10.0.28-TT.6 to backport Fix BZ 66331
+* Updated Tomcat to 10.0.28-TT.5 to mitigate CVE-2023-45648, CVE-2023-42795, CVE-2023-44487
+* Updated Tomcat to 10.0.28-TT.4 to mitigate CVE-2023-41080
 
 === Changes in TomEE EAP 9.0.1-TT.5
 * Updated Tomcat to 10.0.28-TT.3 to mitigate CVE-2023-28709
