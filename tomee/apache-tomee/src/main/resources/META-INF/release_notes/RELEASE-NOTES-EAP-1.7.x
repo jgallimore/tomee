@@ -1,4 +1,7 @@
-= TomEE EAP 1.7.6-TT.38
+= TomEE EAP 1.7.6-TT.39
+
+=== Changes in TomEE EAP 1.7.6-TT.39
+* Updated to Tomcat 7.0.109-TT.10 to mitigate CVE-2023-45648, CVE-2023-42795, CVE-2023-46589
 
 === Changes in TomEE EAP 1.7.6-TT.38
 * Updated to ActiveMQ 5.14.6-TT.3 to mitigate CVE-2023-46604
