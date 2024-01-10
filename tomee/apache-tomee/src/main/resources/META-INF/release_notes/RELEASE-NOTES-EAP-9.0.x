@@ -1,4 +1,10 @@
-= TomEE EAP 9.0.1-TT.6
+= TomEE EAP 9.0.1-TT.8
+
+=== Changes in TomEE EAP 9.0.1-TT.8
+* TOMEE-3902 - Placeholders in MDB activation config
+
+=== Changes in TomEE EAP 9.0.1-TT.7
+* Updated Tomcat to 10.0.28-TT.7 to mitigate CVE-2023-46589
 
 === Changes in TomEE EAP 9.0.1-TT.6
 * Updated to ActiveMQ 5.18.3 to mitigate CVE-2023-46604
