@@ -20,7 +20,7 @@
   <parent>
     <artifactId>tomee-microprofile</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>9.1.1-TT.3-SNAPSHOT</version>
+    <version>9.1.3-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -220,6 +220,10 @@
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance</artifactId>
       <exclusions>
+        <exclusion>
+          <groupId>jakarta.enterprise</groupId>
+          <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>*</groupId>
           <artifactId>microprofile-fault-tolerance-api</artifactId>

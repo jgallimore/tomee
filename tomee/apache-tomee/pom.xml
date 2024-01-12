@@ -23,7 +23,7 @@
   <parent>
     <artifactId>tomee</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>9.1.1-TT.3-SNAPSHOT</version>
+    <version>9.1.3-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -589,6 +589,11 @@
                   <bootstrap.jar>bootstrap.jar</bootstrap.jar>
                 </jars>
               </skips>
+              <add>
+                <resources>
+                  <tomcat-coyote.jar>.*BadRequestException.*</tomcat-coyote.jar>
+                </resources>
+              </add>
             </configuration>
             <executions>
               <execution>

@@ -31,7 +31,7 @@
   <groupId>org.apache.tomee</groupId>
   <artifactId>tomee-project</artifactId>
   <packaging>pom</packaging>
-  <version>9.1.1-TT.3-SNAPSHOT</version>
+  <version>9.1.3-SNAPSHOT</version>
 
   <name>Apache OpenEJB</name>
   <description>Apache OpenEJB is an open source, modular, configurable and extensible EJB Container System and EJB Server.</description>
@@ -83,10 +83,10 @@
   </ciManagement>
 
   <scm>
-    <connection>scm:git:https://github.com/tomitribe/tomee.git</connection>
-    <developerConnection>scm:git:https://github.com/tomitribe/tomee.git</developerConnection>
-    <url>https://github.com/tomitribe/tomee.git</url>
-    <tag>HEAD</tag>
+    <connection>scm:git:https://git-wip-us.apache.org/repos/asf/tomee.git</connection>
+    <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/tomee.git</developerConnection>
+    <url>http://git-wip-us.apache.org/repos/asf/tomee.git</url>
+    <tag>tomee-project-9.1.1</tag>
   </scm>
 
   <properties>
@@ -149,24 +149,24 @@
     <version.xalan>2.7.2</version.xalan>
 
     <!-- Logging frameworks -->
-    <version.slf4j>1.7.36</version.slf4j>
+    <version.slf4j>2.0.9</version.slf4j>
     <version.log4j>1.2.17</version.log4j>
-    <version.log4j2>2.20.0</version.log4j2>
+    <version.log4j2>2.21.1</version.log4j2>
     <version.commons-logging>1.2</version.commons-logging>
     <version.commons-logging-api>1.1</version.commons-logging-api>
 
     <!-- Apache Commons -->
     <version.commons-beanutils>1.9.4</version.commons-beanutils>
-    <version.commons-cli>1.5.0</version.commons-cli>
-    <version.commons-codec>1.15</version.commons-codec>
+    <version.commons-cli>1.6.0</version.commons-cli>
+    <version.commons-codec>1.16.0</version.commons-codec>
     <version.commons-collections>3.2.2</version.commons-collections>
-    <version.commons-dbcp2>2.9.0</version.commons-dbcp2>
+    <version.commons-dbcp2>2.11.0</version.commons-dbcp2>
     <version.commons-discovery>0.5</version.commons-discovery>
     <version.commons-fileupload>1.5</version.commons-fileupload>
-    <version.commons-io>2.11.0</version.commons-io>
+    <version.commons-io>2.15.0</version.commons-io>
     <version.commons-jcs-cache>2.1</version.commons-jcs-cache>
-    <version.commons-lang3>3.12.0</version.commons-lang3>
-    <version.commons-pool>2.11.1</version.commons-pool>
+    <version.commons-lang3>3.13.0</version.commons-lang3>
+    <version.commons-pool>2.12.0</version.commons-pool>
 
     <!-- Java SE version -->
     <maven.compiler.source>11</maven.compiler.source>
@@ -195,7 +195,7 @@
     <version.microprofile.impl.opentracing>3.0.3</version.microprofile.impl.opentracing>
 
     <!-- Jackson and snakeyaml required by OpenAPI Impl -->
-    <version.jackson>2.15.2</version.jackson>
+    <version.jackson>2.15.3</version.jackson>
     <version.snakeyaml>2.2</version.snakeyaml>
 
     <!-- Jakarta EE API -->
@@ -219,7 +219,7 @@
     <version.openjpa>3.2.2</version.openjpa>
     <version.openwebbeans>2.0.27</version.openwebbeans>
     <!-- org.eclipse -->
-    <version.eclipselink>3.0.3</version.eclipselink>
+    <version.eclipselink>3.0.4</version.eclipselink>
     <!-- org.glassfish -->
     <version.mojarra>3.0.5</version.mojarra>
     <!-- org.hibernate -->
@@ -227,8 +227,8 @@
     <version.hibernate.validator>7.0.5.Final</version.hibernate.validator>
 
     <!-- Other API and Impl. not in Jakarta EE -->
-    <version.wss4j>3.0.1</version.wss4j>
-    <version.xmlsec>3.0.2</version.xmlsec>
+    <version.wss4j>3.0.2</version.wss4j>
+    <version.xmlsec>3.0.3</version.xmlsec>
     <version.geronimo-jcache_1.0_spec>1.0-alpha-1</version.geronimo-jcache_1.0_spec>
     <version.krazo>2.0.2</version.krazo>
     <version.deltaspike>1.9.6</version.deltaspike>
@@ -873,6 +873,8 @@
                 <exclude>**/*.log</exclude>
                 <exclude>**/*.json</exclude>
                 <exclude>**/*.jwk</exclude>
+                <exclude>**/*.yml</exclude>
+                <exclude>**/*.yaml</exclude>
                 <exclude>**/src/main/resources/META-INF/**/*.xsd</exclude>
                 <exclude>**/src/main/xsdlist/xsdlist.txt</exclude>
                 <exclude>**/META-INF/services/**</exclude>
