@@ -132,6 +132,7 @@ import org.apache.tomee.catalina.cluster.ClusterObserver;
 import org.apache.tomee.catalina.cluster.TomEEClusterListener;
 import org.apache.tomee.catalina.environment.Hosts;
 import org.apache.tomee.catalina.event.AfterApplicationCreated;
+import org.apache.tomee.catalina.event.BeforeApplicationDestroyed;
 import org.apache.tomee.catalina.routing.RouterValve;
 import org.apache.tomee.catalina.security.TomcatSecurityConstaintsToJaccPermissionsTransformer;
 import org.apache.tomee.common.NamingUtil;
@@ -2085,6 +2086,10 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
     @Override
     public void beforeStop(final StandardContext standardContext) {
         final ClassLoader classLoader = standardContext.getLoader().getClassLoader();
+
+        final ContextInfo contextInfo = getContextInfo(standardContext);
+
+        SystemInstance.get().fireEvent(new BeforeApplicationDestroyed(contextInfo.appInfo));
 
         // if it is not our custom loader clean up now otherwise wait afterStop
         if (!(standardContext.getLoader() instanceof LazyStopLoader)) {
