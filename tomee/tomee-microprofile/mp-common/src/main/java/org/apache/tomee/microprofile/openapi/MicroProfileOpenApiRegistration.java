@@ -26,6 +26,7 @@ import io.smallrye.openapi.runtime.OpenApiProcessor;
 import io.smallrye.openapi.runtime.OpenApiStaticFile;
 import io.smallrye.openapi.runtime.io.Format;
 import io.smallrye.openapi.runtime.scanner.FilteredIndexView;
+import io.smallrye.openapi.runtime.scanner.SchemaRegistry;
 import jakarta.servlet.ServletContainerInitializer;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -112,6 +113,7 @@ public class MicroProfileOpenApiRegistration implements ServletContainerInitiali
 
         } finally {
             document.reset();
+            SchemaRegistry.remove(); // clean up a thread local that is left behind
         }
     }
 
