@@ -36,7 +36,7 @@ public class BeforeApplicationDestroyed {
 
     @Override
     public String toString() {
-        return "AfterApplicationCreated{" +
+        return "BeforeApplicationCreated{" +
                 "app=" + (app == null ? null : app.appId) +
                 '}';
     }
