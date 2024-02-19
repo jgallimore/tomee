@@ -71,7 +71,8 @@ public class TomEEWebappLoader extends WebappLoader {
 
     @Override
     protected void stopInternal() throws LifecycleException {
-        loader = getClassLoader();
+        //        loader = getClassLoader();
+        clearLoader();
         super.stopInternal();
     }
 
