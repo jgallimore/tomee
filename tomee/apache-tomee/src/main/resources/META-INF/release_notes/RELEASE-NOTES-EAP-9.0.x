@@ -1,6 +1,6 @@
-= TomEE EAP 9.1.1-TT.3
+= TomEE EAP 9.1.1-TT.4
 
-=== Changes in TomEE EAP 9.1.1-TT.3
+=== Changes in TomEE EAP 9.1.1-TT.4
 * Update jose4j 0.9.6 to mitigate CVE-2023-51775
 
 === Changes in TomEE EAP 9.1.1-TT.2
