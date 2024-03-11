@@ -1,4 +1,7 @@
-= TomEE EAP 7.1.5-TT.24
+= TomEE EAP 7.1.5-TT.25
+
+=== Changes in TomEE EAP 7.1.5-TT.25
+* Update to Tomcat 8.5.99
 
 === Changes in TomEE EAP 7.1.5-TT.24
 * Update to Tomcat 8.5.96 to mitigate CVE-2023-42795
