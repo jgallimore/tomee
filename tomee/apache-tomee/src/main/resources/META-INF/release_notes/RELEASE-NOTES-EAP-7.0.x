@@ -1,4 +1,7 @@
-= TomEE EAP 7.0.10-TT.23
+= TomEE EAP 7.0.10-TT.24
+
+=== Changes in TomEE EAP 7.0.10-TT.24
+* Upgrade to Tomcat 8.5.100 to mitigate CVE-2024-24549 and CVE-2024-23672
 
 === Changes in TomEE EAP 7.0.10-TT.23
 * Upgrade to Tomcat 8.5.96 to mitigate CVE-2023-42795
