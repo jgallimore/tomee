@@ -1,4 +1,8 @@
-= TomEE EAP 7.0.10-TT.23
+= TomEE EAP 7.0.10-TT.24
+
+=== Changes in TomEE EAP 7.0.10-TT.24
+* Update to Tomcat 8.5.100-TT.1 to mitigate regression introduced by f29b3127049c1275d02ea0c1dab17b97dd912f5f
+* Upgrade to Tomcat 8.5.100 to mitigate CVE-2024-24549 and CVE-2024-23672
 
 === Changes in TomEE EAP 7.0.10-TT.23
 * Upgrade to Tomcat 8.5.96 to mitigate CVE-2023-42795
