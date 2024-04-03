@@ -2,6 +2,7 @@
 
 === Changes in TomEE EAP 9.1.1-TT.4
 * Update jose4j 0.9.6 to mitigate CVE-2023-51775
+* Updated Tomcat to 10.0.28-TT.8 to mitigate CVE-2024-24549 and CVE-2024-23672
 
 === Changes in TomEE EAP 9.1.1-TT.2
 * Updated Tomcat to 10.0.28-TT.7 to mitigate CVE-2023-46589
