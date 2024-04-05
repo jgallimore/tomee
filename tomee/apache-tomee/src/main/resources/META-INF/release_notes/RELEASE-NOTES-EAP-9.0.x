@@ -1,8 +1,19 @@
-= TomEE EAP 9.1.1-TT.4
+= TomEE EAP 9.1.3-TT.4
 
-=== Changes in TomEE EAP 9.1.1-TT.4
+=== Changes in TomEE EAP 9.1.3-TT.4
 * Update jose4j 0.9.6 to mitigate CVE-2023-51775
 * Updated Tomcat to 10.0.28-TT.8 to mitigate CVE-2024-24549 and CVE-2024-23672
+* Update to CXF 4.0.4 to mitigate CVE-2024-28752
+
+=== Changes in TomEE EAP 9.1.3-TT.3
+* Prevent classloader leak in SmallRye MicroProfile OpenAPI ThreadLocal
+* Prevent classloader leak in SmallRye MicroProfile Config Provider
+
+=== Changes in TomEE EAP 9.1.3-TT.2
+* Prevent classloader leak in SmallRye MicroProfile Config Provider
+
+=== Changes in TomEE EAP 9.1.3-TT.1
+* TOMEE-3902 - Placeholders in MDB activation config
 
 === Changes in TomEE EAP 9.1.1-TT.2
 * Updated Tomcat to 10.0.28-TT.7 to mitigate CVE-2023-46589
