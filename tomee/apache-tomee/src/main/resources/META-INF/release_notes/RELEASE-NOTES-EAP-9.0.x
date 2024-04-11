@@ -1,4 +1,9 @@
-= TomEE EAP 9.0.1-TT.8
+= TomEE EAP 9.0.1-TT.9
+
+=== Changes in TomEE EAP 9.0.1-TT.9
+* Update jose4j 0.9.6 to mitigate CVE-2023-51775
+* Updated Tomcat to 10.0.28-TT.8 to mitigate CVE-2024-24549 and CVE-2024-23672
+* Update to CXF 4.0.4 to mitigate CVE-2024-28752
 
 === Changes in TomEE EAP 9.0.1-TT.8
 * TOMEE-3902 - Placeholders in MDB activation config
