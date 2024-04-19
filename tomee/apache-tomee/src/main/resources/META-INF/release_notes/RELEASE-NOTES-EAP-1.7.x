@@ -1,4 +1,7 @@
-= TomEE EAP 1.7.6-TT.39
+= TomEE EAP 1.7.6-TT.40
+
+=== Changes in TomEE EAP 1.7.6-TT.40
+* Upgrade to CXF 2.6.17-TT.10 to mitigate CVE-2024-28752
 
 === Changes in TomEE EAP 1.7.6-TT.39
 * Updated to Tomcat 7.0.109-TT.10 to mitigate CVE-2023-45648, CVE-2023-42795, CVE-2023-46589
