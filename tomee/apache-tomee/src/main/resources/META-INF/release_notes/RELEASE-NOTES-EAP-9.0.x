@@ -1,4 +1,7 @@
-= TomEE EAP 9.0.1-TT.9
+= TomEE EAP 9.0.1-TT.10
+
+=== Changes in TomEE EAP 9.0.1-TT.10
+* Upgrade to Bouncy Castle 1.78 to mitigate CVE-2024-29857, CVE-2024-30171, CVE-2024-30172, CVE-2024-301XX.
 
 === Changes in TomEE EAP 9.0.1-TT.9
 * Update jose4j 0.9.6 to mitigate CVE-2023-51775

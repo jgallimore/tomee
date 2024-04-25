@@ -20,11 +20,11 @@
   <groupId>org.superbiz</groupId>
   <artifactId>mbean-auto-registration</artifactId>
   <packaging>jar</packaging>
-  <version>9.0.1-TT.9</version>
+  <version>9.0.1-TT.10</version>
   <name>TomEE :: Examples :: MBean Auto Registration</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>9.0.1-TT.9</tomee.version>
+    <tomee.version>9.0.1-TT.10</tomee.version>
   </properties>
   <build>
     <defaultGoal>install</defaultGoal>
