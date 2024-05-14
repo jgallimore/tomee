@@ -1,4 +1,8 @@
-= TomEE EAP 8.0.16-TT.1
+= TomEE EAP 8.0.16-TT.2
+
+=== Changes in TomEE EAP 8.0.16-TT.2
+
+* Experimental change for serialization in HttpServletRequest, HttpSession and ServletContext proxy objects
 
 === Changes in TomEE EAP 8.0.16-TT.1
 
