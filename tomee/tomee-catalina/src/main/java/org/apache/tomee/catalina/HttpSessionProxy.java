@@ -32,7 +32,7 @@ public interface HttpSessionProxy extends HttpServletRequest, Serializable {
 
     public static HttpSession get() {
         return (HttpSession) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
-                new Class<?>[] { HttpSession.class, Serializable.class },
+                new Class<?>[] { HttpSessionProxy.class, HttpSession.class, Serializable.class },
                 new Handler());
     }
 
@@ -55,7 +55,7 @@ public interface HttpSessionProxy extends HttpServletRequest, Serializable {
     }
 
     public static class Serialized implements Serializable {
-        public Object writeReplace() throws ObjectStreamException {
+        public Object readResolve() throws ObjectStreamException {
             return HttpSessionProxy.get();
         }
     }

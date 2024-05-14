@@ -40,7 +40,7 @@ public interface ServletContextProxy extends HttpServletRequest, Serializable {
 
     public static ServletContext get() {
         return (ServletContext) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
-                new Class<?>[] { ServletContext.class, CdiAppContextsService.FiredManually.class, Serializable.class },
+                new Class<?>[] { ServletContextProxy.class, ServletContext.class, CdiAppContextsService.FiredManually.class, Serializable.class },
                 new Handler());
     }
 
@@ -77,7 +77,7 @@ public interface ServletContextProxy extends HttpServletRequest, Serializable {
     }
 
     public static class Serialized implements Serializable {
-        public Object writeReplace() throws ObjectStreamException {
+        public Object readResolve() throws ObjectStreamException {
             return ServletContextProxy.get();
         }
     }
