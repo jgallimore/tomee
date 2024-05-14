@@ -1,11 +1,20 @@
-= TomEE EAP 8.0.16-TT.2
+= TomEE EAP 8.0.16-TT.5
+=== Changes in TomEE EAP 8.0.16-TT.5
+
+* Experimental change for serialization in HttpServletRequest, HttpSession and ServletContext proxy object
+
+=== Changes in TomEE EAP 8.0.16-TT.4
+* Upgrade to Bouncy Castle 1.78 to mitigate CVE-2024-29857, CVE-2024-30171, CVE-2024-30172, CVE-2024-301XX.
+
+=== Changes in TomEE EAP 8.0.16-TT.3
+* Update jose4j 0.9.6 to mitigate CVE-2023-51775
+* Upgrade to Tomcat 9.0.87 to mitigate CVE-2024-23672 and CVE-2024-24549
+* Update to CXF 3.5.8 to mitigate CVE-2024-28752
 
 === Changes in TomEE EAP 8.0.16-TT.2
-
-* Experimental change for serialization in HttpServletRequest, HttpSession and ServletContext proxy objects
+* Update to Tomcat 9.0.83 to mitigate CVE-2023-42795
 
 === Changes in TomEE EAP 8.0.16-TT.1
-
 * Update to ActiveMQ 5.16.7-TT.1 to mitigate CVE-2023-46604
 
 === Changes in TomEE EAP 8.0.15-TT.5

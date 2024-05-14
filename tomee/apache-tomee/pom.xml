@@ -23,7 +23,7 @@
   <parent>
     <artifactId>tomee</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>8.0.15-TT.6-SNAPSHOT</version>
+    <version>8.0.16-TT.5-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -564,9 +564,9 @@
               <createTarGz>true</createTarGz>
               <skips>
                 <jars>
-                  <bcpkix-jdk15to18-1.76.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.76</bcpkix-jdk15to18-1.76.jar>
-                  <bcprov-jdk15to18-1.76.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.76</bcprov-jdk15to18-1.76.jar>
-                  <bcutil-jdk15to18-1.76.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.76</bcutil-jdk15to18-1.76.jar>
+                  <bcpkix-jdk15to18-1.78.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.78</bcpkix-jdk15to18-1.78.jar>
+                  <bcprov-jdk15to18-1.78.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.78</bcprov-jdk15to18-1.78.jar>
+                  <bcutil-jdk15to18-1.78.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.78</bcutil-jdk15to18-1.78.jar>
                 </jars>
               </skips>
             </configuration>
@@ -797,9 +797,9 @@
               <createTarGz>true</createTarGz>
               <skips>
                 <jars>
-                  <bcpkix-jdk15to18-1.76.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.76</bcpkix-jdk15to18-1.76.jar>
-                  <bcprov-jdk15to18-1.76.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.76</bcprov-jdk15to18-1.76.jar>
-                  <bcutil-jdk15to18-1.76.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.76</bcutil-jdk15to18-1.76.jar>
+                  <bcpkix-jdk15to18-1.78.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.78</bcpkix-jdk15to18-1.78.jar>
+                  <bcprov-jdk15to18-1.78.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.78</bcprov-jdk15to18-1.78.jar>
+                  <bcutil-jdk15to18-1.78.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.78</bcutil-jdk15to18-1.78.jar>
                 </jars>
               </skips>
             </configuration>

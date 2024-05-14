@@ -24,14 +24,14 @@
   <parent>
     <artifactId>tomee</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>8.0.15-TT.6-SNAPSHOT</version>
+    <version>8.0.16-TT.5-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <artifactId>tomee-embedded</artifactId>
   <packaging>jar</packaging>
   <name>TomEE :: TomEE :: TomEE Embedded</name>
-  <version>8.0.15-TT.6-SNAPSHOT</version>
+  <version>8.0.16-TT.5-SNAPSHOT</version>
 
   <build>
     <plugins>
@@ -499,7 +499,7 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcmail-jdk15to18</artifactId>
-      <version>1.76</version>
+      <version>1.78</version>
       <scope>test</scope>
     </dependency>
 
