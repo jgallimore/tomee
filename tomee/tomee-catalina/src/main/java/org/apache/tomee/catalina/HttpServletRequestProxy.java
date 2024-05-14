@@ -31,7 +31,7 @@ public interface HttpServletRequestProxy extends HttpServletRequest, Serializabl
 
     public static HttpServletRequest get() {
         return (HttpServletRequest) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
-                new Class<?>[] { HttpServletRequest.class, Serializable.class },
+                new Class<?>[] { HttpServletRequestProxy.class, HttpServletRequest.class, Serializable.class },
                 new Handler());
     }
 
@@ -52,7 +52,7 @@ public interface HttpServletRequestProxy extends HttpServletRequest, Serializabl
     }
 
     public static class Serialized implements Serializable {
-        public Object writeReplace() throws ObjectStreamException {
+        public Object readResolve() throws ObjectStreamException {
             return HttpServletRequestProxy.get();
         }
     }
