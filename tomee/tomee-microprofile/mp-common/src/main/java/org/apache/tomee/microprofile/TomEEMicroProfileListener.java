@@ -56,6 +56,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -190,12 +191,22 @@ public class TomEEMicroProfileListener {
 
                 for (File classFile : classFiles) {
                     try (InputStream in = new FileInputStream(classFile)) {
-                        indexer.index(in);
+                        try {
+                            indexer.index(in);
+                        } catch (IOException e) {
+                            LOGGER.warning("Error indexing " + classFile + ": " + e.getMessage());
+                            throw e;
+                        }
                     }
                 }
             } else if (file.isFile() && file.getName().endsWith(".class")) {
                 try (InputStream in = new FileInputStream(file)) {
-                    indexer.index(in);
+                    try {
+                        indexer.index(in);
+                    } catch (IOException e) {
+                        LOGGER.warning("Error indexing " + file + ": " + e.getMessage());
+                        throw e;
+                    }
                 }
             } else if (file.isFile() && file.getName().endsWith(".jar")) {
                 if (NewLoaderLogic.skip(file.toURI().toURL())) {
@@ -207,7 +218,12 @@ public class TomEEMicroProfileListener {
                         JarEntry entry = entries.nextElement();
                         if (entry.getName().endsWith(".class")) {
                             try (InputStream in = jarFile.getInputStream(entry)) {
-                                indexer.index(in);
+                                try {
+                                    indexer.index(in);
+                                } catch (IOException e) {
+                                    LOGGER.warning("Error indexing " + entry.getName() + " in " + file + ": " + e.getMessage());
+                                    throw e;
+                                }
                             }
                         }
                     }
@@ -219,6 +235,4 @@ public class TomEEMicroProfileListener {
 
         return indexer.complete();
     }
-
-
 }
