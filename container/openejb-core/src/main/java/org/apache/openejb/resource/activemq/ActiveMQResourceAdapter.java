@@ -55,19 +55,28 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
+import java.util.function.Supplier;
 
 @SuppressWarnings("UnusedDeclaration")
 public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQResourceAdapter {
 
     private String dataSource;
     private String useDatabaseLock;
+    private boolean singleton;
     private String startupTimeout = "60000";
     private BootstrapContext bootstrapContext;
     private final Map<BeanContext, ObjectName> mbeanNames = new ConcurrentHashMap<>();
+    private final ConnectionMap physicalConnections = new ConnectionMap();
 
     private static final Set<Object> WHATEVER = new HashSet<>(); // stash stuff in here so it is never ever garbage collected
 
@@ -94,6 +103,14 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
 
     public int getStartupTimeout() {
         return Integer.parseInt(this.startupTimeout);
+    }
+
+    public boolean isSingleton() {
+        return singleton;
+    }
+
+    public void setSingleton(boolean singleton) {
+        this.singleton = singleton;
     }
 
     public void setStartupTimeout(final Duration startupTimeout) {
@@ -297,6 +314,29 @@ public class ActiveMQResourceAdapter extends org.apache.activemq.ra.ActiveMQReso
                 }
             }
         }
+
+        if (isSingleton()) {
+            try {
+                return physicalConnections.getConnection(
+                        activationSpec.getUserName(),
+                        activationSpec.getPassword(),
+                        activationSpec.getClientId(),
+                        () -> doMakeConnection(activationSpec));
+
+            } catch (Exception e) {
+                if (e instanceof JMSException) {
+                    throw (JMSException) e;
+                } else {
+                    // this shouldn't happen
+                    throw new RuntimeException(e);
+                }
+            }
+        } else {
+            return doMakeConnection(activationSpec);
+        }
+    }
+
+    private ActiveMQConnection doMakeConnection(MessageActivationSpec activationSpec) throws JMSException {
         return super.makeConnection(activationSpec);
     }
 

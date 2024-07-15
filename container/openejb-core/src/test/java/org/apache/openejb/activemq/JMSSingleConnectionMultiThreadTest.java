@@ -171,6 +171,7 @@ public class JMSSingleConnectionMultiThreadTest {
 
         @Override
         public void onMessage(Message message) {
+            System.out.println("Received");
             COUNTER.incrementAndGet();
             if (LATCH != null) {
                 LATCH.countDown();
@@ -219,6 +220,7 @@ public class JMSSingleConnectionMultiThreadTest {
 
                 final TextMessage textMessage = session.createTextMessage("Hello from test!");
                 producer.send(textMessage);
+                System.out.println("Sent");
             } catch (Exception e) {
                 System.out.println("Caught exception here");
                 e.printStackTrace();

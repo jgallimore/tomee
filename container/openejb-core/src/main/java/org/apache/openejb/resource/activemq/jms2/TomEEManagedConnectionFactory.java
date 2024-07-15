@@ -16,12 +16,10 @@
  */
 package org.apache.openejb.resource.activemq.jms2;
 
+import jakarta.resource.spi.ResourceAdapter;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.ra.ActiveMQConnectionRequestInfo;
-import org.apache.activemq.ra.ActiveMQManagedConnectionFactory;
-import org.apache.activemq.ra.MessageActivationSpec;
-import org.apache.activemq.ra.SimpleConnectionManager;
+import org.apache.activemq.ra.*;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -34,12 +32,14 @@ import jakarta.resource.spi.ConnectionManager;
 import jakarta.resource.spi.ConnectionRequestInfo;
 import jakarta.resource.spi.ManagedConnection;
 import jakarta.resource.spi.TransactionSupport.TransactionSupportLevel;
+import org.apache.openejb.resource.activemq.ConnectionMap;
+
 import javax.security.auth.Subject;
 
 public class TomEEManagedConnectionFactory extends ActiveMQManagedConnectionFactory {
     private static final long serialVersionUID = 1L;
     private TransactionSupportLevel transactionSupportLevel;
-    private final Map<ActiveMQConnectionRequestInfo, ActiveMQConnection> physicalConnections = new HashMap<>();
+    private final ConnectionMap physicalConnections = new ConnectionMap();
 
     private boolean singleton = false;
 
@@ -82,18 +82,28 @@ public class TomEEManagedConnectionFactory extends ActiveMQManagedConnectionFact
         ActiveMQConnection activeMQConnection = null;
 
         if (singleton) {
-            synchronized (this) {
-                activeMQConnection = physicalConnections.get(connectionRequestInfo);
-                if (activeMQConnection == null) {
-                    activeMQConnection = super.makeConnection(connectionRequestInfo, connectionFactory);
-                    physicalConnections.put(connectionRequestInfo, activeMQConnection);
+            try {
+                activeMQConnection = physicalConnections.getConnection(
+                        connectionRequestInfo.getUserName(),
+                        connectionRequestInfo.getPassword(),
+                        connectionRequestInfo.getClientid(),
+                        () -> doMakeConnection(connectionRequestInfo, connectionFactory));
+            } catch (Exception e) {
+                if (e instanceof JMSException) {
+                    throw (JMSException) e;
+                } else {
+                    throw new RuntimeException("Could not create connection.", e);
                 }
             }
         } else {
-            activeMQConnection = super.makeConnection(connectionRequestInfo, connectionFactory);
+            activeMQConnection = doMakeConnection(connectionRequestInfo, connectionFactory);
         }
 
         return activeMQConnection;
+    }
+
+    public ActiveMQConnection doMakeConnection(ActiveMQConnectionRequestInfo connectionRequestInfo, ActiveMQConnectionFactory connectionFactory) throws JMSException {
+        return super.makeConnection(connectionRequestInfo, connectionFactory);
     }
 
     @Override
