@@ -1,6 +1,9 @@
-= TomEE EAP 8.0.16-TT.5
-=== Changes in TomEE EAP 8.0.16-TT.5
+= TomEE EAP 8.0.16-TT.6
 
+=== Changes in TomEE EAP 8.0.16-TT.6
+* Update to Tomcat 9.0.91 to mitigate CVE-2024-34750
+
+=== Changes in TomEE EAP 8.0.16-TT.5
 * Experimental change for serialization in HttpServletRequest, HttpSession and ServletContext proxy object
 
 === Changes in TomEE EAP 8.0.16-TT.4

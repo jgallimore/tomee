@@ -31,7 +31,7 @@
   <groupId>org.apache.tomee</groupId>
   <artifactId>tomee-project</artifactId>
   <packaging>pom</packaging>
-  <version>8.0.16-TT.5-SNAPSHOT</version>
+  <version>8.0.16-TT.6-SNAPSHOT</version>
 
   <name>Apache OpenEJB</name>
   <description>Apache OpenEJB is an open source, modular, configurable and extensible EJB Container System and EJB Server.</description>
@@ -189,7 +189,7 @@
     <version.geronimo-javamail_1.6_spec>1.0.1</version.geronimo-javamail_1.6_spec>
 
     <!-- Jakarta EE Impl. -->
-    <tomcat.version>9.0.87</tomcat.version>
+    <tomcat.version>9.0.91</tomcat.version>
     <!-- com.sun -->
     <version.impl.saaj>1.5.3</version.impl.saaj>
     <!-- org.apache -->

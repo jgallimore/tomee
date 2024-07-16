@@ -20,7 +20,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>connector-ear</artifactId>
   <packaging>pom</packaging>
-  <version>8.0.16-TT.5-SNAPSHOT</version>
+  <version>8.0.16-TT.6-SNAPSHOT</version>
   <name>TomEE :: Connector Examples :: Connector in EAR</name>
 
   <properties>
@@ -92,7 +92,7 @@
           <systemProperties>
             <property>
               <name>tomee.version</name>
-              <value>8.0.16-TT.5-SNAPSHOT</value>
+              <value>8.0.16-TT.6-SNAPSHOT</value>
             </property>
           </systemProperties>
         </configuration>
