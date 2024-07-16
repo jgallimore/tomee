@@ -1,4 +1,7 @@
-= TomEE EAP 7.1.5-TT.25
+= TomEE EAP 7.1.5-TT.26
+
+=== Changes in TomEE EAP 7.1.5-TT.26
+* Update to Tomcat 8.5.100-TT.2 to Mitigate CVE-2024-34750
 
 === Changes in TomEE EAP 7.1.5-TT.25
 * Update to Tomcat 8.5.100-TT.1 to mitigate regression introduced by f29b3127049c1275d02ea0c1dab17b97dd912f5f
