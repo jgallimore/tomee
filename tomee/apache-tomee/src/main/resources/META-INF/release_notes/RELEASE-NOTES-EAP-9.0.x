@@ -1,4 +1,14 @@
-= TomEE EAP 9.1.3-TT.5
+= TomEE EAP 9.1.3-TT.8
+
+=== Changes in TomEE EAP 9.1.3-TT.8
+* Updated to Tomcat 10.0.28-TT.9 to mitigate CVE-2024-34750
+
+=== Changes in TomEE EAP 9.1.3-TT.7
+* Update Geronimo Mail spec to resolve GERONIMO-6870, duplicate mail headers
+* Update CXF and add org.apache.cxf.useRFC210 setting so transport cookie values $Version, $Path and $Domain are used.
+
+=== Changes in TomEE EAP 9.1.3-TT.6
+* Add logging to TomEEMicroProfileListener.
 
 === Changes in TomEE EAP 9.1.3-TT.5
 * Upgrade to Bouncy Castle 1.78 to mitigate CVE-2024-29857, CVE-2024-30171, CVE-2024-30172, CVE-2024-301XX.
