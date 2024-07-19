@@ -2,6 +2,7 @@
 
 === Changes in TomEE EAP 8.0.16-TT.6
 * Update to Tomcat 9.0.91 to mitigate CVE-2024-34750
+* Update to CXF 3.5.9 to mitigate CVE-2024-29736, CVE-2024-32007
 
 === Changes in TomEE EAP 8.0.16-TT.5
 * Experimental change for serialization in HttpServletRequest, HttpSession and ServletContext proxy object
