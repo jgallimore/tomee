@@ -2089,7 +2089,9 @@ public class TomcatWebAppBuilder implements WebAppBuilder, ContextListener, Pare
 
         final ContextInfo contextInfo = getContextInfo(standardContext);
 
-        SystemInstance.get().fireEvent(new BeforeApplicationDestroyed(contextInfo.appInfo));
+        if (contextInfo != null) {
+            SystemInstance.get().fireEvent(new BeforeApplicationDestroyed(contextInfo.appInfo));
+        }
 
         // if it is not our custom loader clean up now otherwise wait afterStop
         if (!(standardContext.getLoader() instanceof LazyStopLoader)) {
