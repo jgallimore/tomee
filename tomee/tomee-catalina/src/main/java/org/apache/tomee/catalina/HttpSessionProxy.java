@@ -26,7 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public interface HttpSessionProxy extends HttpServletRequest, Serializable {
+public interface HttpSessionProxy extends HttpSession, Serializable {
 
     public Object writeReplace() throws ObjectStreamException;
 

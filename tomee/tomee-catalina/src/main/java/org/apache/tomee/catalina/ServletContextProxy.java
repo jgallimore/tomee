@@ -17,6 +17,7 @@
 
 package org.apache.tomee.catalina;
 
+import javax.servlet.ServletContext;
 import org.apache.catalina.connector.Request;
 import org.apache.openejb.AppContext;
 import org.apache.openejb.cdi.CdiAppContextsService;
@@ -24,8 +25,6 @@ import org.apache.openejb.core.WebContext;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.spi.ContainerSystem;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
@@ -34,7 +33,7 @@ import java.lang.reflect.Proxy;
 
 import static org.apache.tomee.catalina.TomcatWebAppBuilder.CONTEXTS;
 
-public interface ServletContextProxy extends HttpServletRequest, Serializable {
+public interface ServletContextProxy extends ServletContext, Serializable {
 
     public Object writeReplace() throws ObjectStreamException;
 
