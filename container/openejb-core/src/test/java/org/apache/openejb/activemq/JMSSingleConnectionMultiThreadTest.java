@@ -23,6 +23,7 @@ import org.apache.activemq.ra.ActiveMQConnectionRequestInfo;
 import org.apache.openejb.jee.EjbJar;
 import org.apache.openejb.jee.MessageDrivenBean;
 import org.apache.openejb.junit.ApplicationComposer;
+import org.apache.openejb.resource.activemq.ConnectionMap;
 import org.apache.openejb.resource.activemq.jms2.TomEEManagedConnectionFactory;
 import org.apache.openejb.testing.Classes;
 import org.apache.openejb.testing.Configuration;
@@ -57,6 +58,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @SimpleLog
 @RunWith(ApplicationComposer.class)
@@ -70,12 +72,12 @@ public class JMSSingleConnectionMultiThreadTest {
                 .p("amq.DataSource", "")
                 .p("amq.BrokerXmlConfig", "broker:(vm://localhost)")
                 .p("amq.ServerUrl", "vm://localhost?waitForStart=20000&jms.prefetchPolicy.all=1")
+                .p("Singleton", "true")
 
                 .p("count", "new://Resource?type=Queue")
 
                 .p("mdbs", "new://Container?type=MESSAGE")
                 .p("mdbs.ResourceAdapter", "amq")
-                .p("mdbs.activation.ConnectionFactoryLookup", "incf")
 
                 .p("cf", "new://Resource?type=" + ConnectionFactory.class.getName() + "&class-name=" + TestTomEEConnectionFactory.class.getName())
                 .p("cf.ResourceAdapter", "amq")
@@ -85,15 +87,6 @@ public class JMSSingleConnectionMultiThreadTest {
                 .p("cf.PoolMinSize", "0")
                 .p("cf.ConnectionMaxWaitTime", "5 seconds")
                 .p("cf.ConnectionMaxIdleTime", "15 minutes")
-
-                .p("incf", "new://Resource?type=" + ConnectionFactory.class.getName() + "&class-name=" + TestTomEEConnectionFactory.class.getName())
-                .p("incf.ResourceAdapter", "amq")
-                .p("incf.singleton", "true")
-                .p("incf.TransactionSupport", "xa")
-                .p("incf.PoolMaxSize", "10")
-                .p("incf.PoolMinSize", "0")
-                .p("incf.ConnectionMaxWaitTime", "5 seconds")
-                .p("incf.ConnectionMaxIdleTime", "15 minutes")
 
                 .build();
     }
@@ -149,6 +142,8 @@ public class JMSSingleConnectionMultiThreadTest {
 
         long end = System.currentTimeMillis();
         System.out.println("Test completed in " + (end - start) + " ms");
+
+        assertTrue(ConnectionMap.getConnectionsCreatedCount() <= 2);
     }
 
     @MessageDriven(activationConfig = {

@@ -22,19 +22,33 @@ import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ConnectionMap {
 
     private final Map<ConnectionKey, ActiveMQConnection> connections = new ConcurrentHashMap<>();
+    private static final AtomicInteger CONNECTIONS_CREATED = new AtomicInteger(0);
 
     public synchronized ActiveMQConnection getConnection(String username, String password, String clientID, Callable<ActiveMQConnection> connectionSupplier) throws Exception {
-        ActiveMQConnection connection = connections.get(new ConnectionKey(username, password, clientID));
+        final ConnectionKey key = new ConnectionKey(username, password, clientID);
+        ActiveMQConnection connection = connections.get(key);
+
+        if (connection != null && connection.isClosed()) {
+            connections.remove(key);
+            connection = null;
+        }
+
         if (connection == null) {
             connection = connectionSupplier.call();
-            connections.put(new ConnectionKey(username, password, clientID), connection);
+            CONNECTIONS_CREATED.incrementAndGet();
+            connections.put(key, connection);
         }
 
         return connection;
+    }
+
+    public static int getConnectionsCreatedCount() {
+        return CONNECTIONS_CREATED.get();
     }
 
     public static class ConnectionKey {
