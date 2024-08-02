@@ -21,11 +21,11 @@
   <groupId>org.superbiz</groupId>
   <artifactId>pojo-webservice</artifactId>
   <packaging>war</packaging>
-  <version>9.0.1-TT.10</version>
+  <version>9.0.1-TT.11</version>
   <name>TomEE :: Web Examples :: Pojo WS</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>9.0.1-TT.10</tomee.version>
+    <tomee.version>9.0.1-TT.11</tomee.version>
   </properties>
   <repositories>
     <repository>
@@ -66,7 +66,7 @@
         <!-- http://localhost:8080/pojo-webservice?wsdl -->
         <groupId>org.apache.tomee.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
-        <version>9.0.1-TT.10</version>
+        <version>9.0.1-TT.11</version>
         <configuration>
           <tomeeVersion>${tomee.version}</tomeeVersion>
           <tomeeClassifier>plus</tomeeClassifier>
