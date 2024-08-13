@@ -1,4 +1,7 @@
-= TomEE EAP 8.0.16-TT.6
+= TomEE EAP 8.0.16-TT.7
+
+=== Changes in TomEE EAP 8.0.16-TT.7
+* Update xmlsec to 2.3.4 to mitigate CVE-2023-44483
 
 === Changes in TomEE EAP 8.0.16-TT.6
 * Update to Tomcat 9.0.91 to mitigate CVE-2024-34750
