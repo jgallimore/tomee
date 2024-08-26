@@ -1774,7 +1774,7 @@
       <dependency>
         <artifactId>xmlsec</artifactId>
         <groupId>org.apache.santuario</groupId>
-        <version>1.5.9-TT.1</version>
+        <version>1.5.9-TT.2</version>
       </dependency>
       <dependency>
         <groupId>wsdl4j</groupId>

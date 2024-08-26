@@ -1,4 +1,7 @@
-= TomEE EAP 1.7.6-TT.40
+= TomEE EAP 1.7.6-TT.41
+
+=== Changes in TomEE EAP 1.7.6-TT.41
+* Update to Santuario xmlsec 1.5.9-TT.2 to mitigate CVE-2023-44483
 
 === Changes in TomEE EAP 1.7.6-TT.40
 * Upgrade to CXF 2.6.17-TT.10 to mitigate CVE-2024-28752
