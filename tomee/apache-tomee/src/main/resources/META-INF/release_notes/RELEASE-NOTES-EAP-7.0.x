@@ -1,4 +1,7 @@
-= TomEE EAP 7.0.10-TT.25
+= TomEE EAP 7.0.10-TT.26
+
+=== Changes in TomEE EAP 7.0.10-TT.26
+* Update to Santuario xmlsec 2.0.11-TT.4 to mitigate CVE-2023-44483
 
 === Changes in TomEE EAP 7.0.10-TT.25
 * Upgrade to Tomcat 8.5.100-TT.2 to mitigate CVE-2024-34750
