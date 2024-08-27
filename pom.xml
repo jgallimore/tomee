@@ -31,7 +31,7 @@
   <groupId>org.apache.tomee</groupId>
   <artifactId>tomee-project</artifactId>
   <packaging>pom</packaging>
-  <version>8.0.16-TT.6-SNAPSHOT</version>
+  <version>8.0.16-TT.8-SNAPSHOT</version>
 
   <name>Apache OpenEJB</name>
   <description>Apache OpenEJB is an open source, modular, configurable and extensible EJB Container System and EJB Server.</description>
@@ -196,7 +196,7 @@
     <version.activemq>5.16.7-TT.1</version.activemq>
     <version.batchee>1.0.2</version.batchee>
     <version.bval>2.0.5</version.bval>
-    <version.cxf>3.5.8</version.cxf>
+    <version.cxf>3.5.9</version.cxf>
     <version.geronimo.components>3.1.5</version.geronimo.components>
     <version.geronimo-javamail_1.6_mail>1.0.1</version.geronimo-javamail_1.6_mail>
     <version.johnzon>1.2.21</version.johnzon>
@@ -213,7 +213,7 @@
 
     <!-- Other API and Impl. not in Jakarta EE -->
     <version.woodstox>6.4.0</version.woodstox>
-    <version.xmlsec>2.3.2</version.xmlsec>
+    <version.xmlsec>2.3.4</version.xmlsec>
     <version.wss4j>2.4.1</version.wss4j>
     <version.ehcache>2.10.6</version.ehcache>
     <version.geronimo-jcache_1.0_spec>1.0-alpha-1</version.geronimo-jcache_1.0_spec>
