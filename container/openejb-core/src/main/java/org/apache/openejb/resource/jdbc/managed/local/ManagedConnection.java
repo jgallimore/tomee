@@ -214,9 +214,10 @@ public class ManagedConnection implements InvocationHandler {
     }
 
     protected Object newConnection() throws SQLException {
-        final Object connection = DataSource.class.isInstance(key.getDs()) ?
-                (key.getUser() == null ? DataSource.class.cast(key.getDs()).getConnection() : DataSource.class.cast(key.getDs()).getConnection(key.getUser(), key.getPwd())) :
-                (key.getUser() == null ? XADataSource.class.cast(key.getDs()).getXAConnection() : XADataSource.class.cast(key.getDs()).getXAConnection(key.getUser(), key.getPwd()));
+        final Object connection = XADataSource.class.isInstance(key.getDs()) ?
+                (key.getUser() == null ? XADataSource.class.cast(key.getDs()).getXAConnection() : XADataSource.class.cast(key.getDs()).getXAConnection(key.getUser(), key.getPwd())):
+                (key.getUser() == null ? DataSource.class.cast(key.getDs()).getConnection() : DataSource.class.cast(key.getDs()).getConnection(key.getUser(), key.getPwd()));
+
 
         if (XAConnection.class.isInstance(connection)) {
             xaConnection = XAConnection.class.cast(connection);
