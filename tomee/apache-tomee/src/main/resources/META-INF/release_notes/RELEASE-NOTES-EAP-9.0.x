@@ -1,4 +1,8 @@
-= TomEE EAP 9.0.1-TT.11
+= TomEE EAP 9.0.1-TT.12
+
+=== Changes in TomEE EAP 9.0.1-TT.12
+* Updated to Tomcat 10.0.28-TT.10 to mitigate CVE-2024-38286
+* Updated to Commons Collections 3.2.2-TT.1 to mitigate sonatype-2024-3350
 
 === Changes in TomEE EAP 9.0.1-TT.11
 * Updated to Tomcat 10.0.28-TT.9 to mitigate CVE-2024-34750
