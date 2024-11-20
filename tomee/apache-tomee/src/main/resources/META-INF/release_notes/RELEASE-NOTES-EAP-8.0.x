@@ -2,6 +2,7 @@
 
 === Changes in TomEE EAP 8.0.16-TT.8
 Update Tomcat to 9.0.97 to mitigate CVE-2024-52316
+Update Geronimo Mail to mitigate CVE-2024-21742
 
 === Changes in TomEE EAP 8.0.16-TT.7
 * Update xmlsec to 2.3.4 to mitigate CVE-2023-44483
