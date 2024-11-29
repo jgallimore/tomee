@@ -23,7 +23,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>rest-example-with-application</artifactId>
   <packaging>war</packaging>
-  <version>8.0.16-TT.10-SNAPSHOT</version>
+  <version>8.0.17-TT.1-SNAPSHOT</version>
   <name>TomEE :: Web Examples :: REST Example With Application</name>
 
   <properties>
@@ -82,7 +82,7 @@
             <webappArtifact>
               <groupId>org.apache.tomee</groupId>
               <artifactId>tomee-plus-webapp</artifactId>
-              <version>8.0.16-TT.10-SNAPSHOT</version>
+              <version>8.0.17-TT.1-SNAPSHOT</version>
               <contextPath>openejb</contextPath>
             </webappArtifact>
           </webapps>
