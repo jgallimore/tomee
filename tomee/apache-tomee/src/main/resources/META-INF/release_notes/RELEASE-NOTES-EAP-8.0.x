@@ -1,4 +1,7 @@
-= TomEE EAP 8.0.16-TT.9
+= TomEE EAP 8.0.17-TT.1
+
+=== Changes in TomEE EAP 8.0.17-TT.1
+* Update to Tomcat 9.0.98
 
 === Changes in TomEE EAP 8.0.16-TT.9
 Update Tomcat to 9.0.97 to mitigate CVE-2024-52316
