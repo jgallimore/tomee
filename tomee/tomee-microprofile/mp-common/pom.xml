@@ -221,6 +221,10 @@
       <artifactId>smallrye-fault-tolerance</artifactId>
       <exclusions>
         <exclusion>
+          <groupId>jakarta.enterprise</groupId>
+          <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>*</groupId>
           <artifactId>microprofile-fault-tolerance-api</artifactId>
         </exclusion>
@@ -231,6 +235,18 @@
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-health</artifactId>
       <exclusions>
+        <exclusion>
+          <groupId>jakarta.enterprise</groupId>
+          <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>jakarta.json</groupId>
+          <artifactId>jakarta.json-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.glassfish</groupId>
+          <artifactId>jakarta.json</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>*</groupId>
           <artifactId>microprofile-health-api</artifactId>
