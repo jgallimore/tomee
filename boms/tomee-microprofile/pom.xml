@@ -169,7 +169,7 @@
     <dependency>
       <groupId>commons-collections</groupId>
       <artifactId>commons-collections</artifactId>
-      <version>3.2.2</version>
+      <version>3.2.2-TT.1</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -499,7 +499,7 @@
     <dependency>
       <groupId>net.shibboleth.utilities</groupId>
       <artifactId>java-support</artifactId>
-      <version>8.3.1</version>
+      <version>8.4.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -590,7 +590,7 @@
     <dependency>
       <groupId>org.apache.geronimo.specs</groupId>
       <artifactId>geronimo-mail_2.1_spec</artifactId>
-      <version>1.0.0-M1</version>
+      <version>1.0.0-TT.3</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -813,7 +813,7 @@
     <dependency>
       <groupId>org.apache.santuario</groupId>
       <artifactId>xmlsec</artifactId>
-      <version>3.0.1</version>
+      <version>3.0.3</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1484,7 +1484,7 @@
     <dependency>
       <groupId>org.apache.wss4j</groupId>
       <artifactId>wss4j-bindings</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1495,7 +1495,7 @@
     <dependency>
       <groupId>org.apache.wss4j</groupId>
       <artifactId>wss4j-policy</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1506,7 +1506,7 @@
     <dependency>
       <groupId>org.apache.wss4j</groupId>
       <artifactId>wss4j-ws-security-common</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1517,7 +1517,7 @@
     <dependency>
       <groupId>org.apache.wss4j</groupId>
       <artifactId>wss4j-ws-security-dom</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1528,7 +1528,7 @@
     <dependency>
       <groupId>org.apache.wss4j</groupId>
       <artifactId>wss4j-ws-security-policy-stax</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1539,7 +1539,7 @@
     <dependency>
       <groupId>org.apache.wss4j</groupId>
       <artifactId>wss4j-ws-security-stax</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1659,19 +1659,8 @@
     </dependency>
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcpkix-jdk15on</artifactId>
-      <version>1.70</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk15on</artifactId>
-      <version>1.70</version>
+      <artifactId>bcpkix-jdk15to18</artifactId>
+      <version>1.78.1</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1682,7 +1671,7 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk15to18</artifactId>
-      <version>1.70</version>
+      <version>1.78.1</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1692,19 +1681,8 @@
     </dependency>
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk18on</artifactId>
-      <version>1.71</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcutil-jdk15on</artifactId>
-      <version>1.70</version>
+      <artifactId>bcutil-jdk15to18</artifactId>
+      <version>1.78.1</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1737,7 +1715,7 @@
     <dependency>
       <groupId>org.cryptacular</groupId>
       <artifactId>cryptacular</artifactId>
-      <version>1.2.5</version>
+      <version>1.2.6</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1878,17 +1856,6 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.glassfish</groupId>
-      <artifactId>jakarta.json</artifactId>
-      <version>2.0.1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
       <version>2.7.1</version>
@@ -1946,7 +1913,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-core</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1957,7 +1924,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-profile-api</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1968,7 +1935,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-saml-api</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1979,7 +1946,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-saml-impl</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1990,7 +1957,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-security-api</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2001,7 +1968,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-security-impl</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2012,7 +1979,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-soap-api</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2023,7 +1990,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xacml-api</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2034,7 +2001,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xacml-impl</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2045,7 +2012,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xacml-saml-api</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2056,7 +2023,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xacml-saml-impl</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2067,7 +2034,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xmlsec-api</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2078,7 +2045,7 @@
     <dependency>
       <groupId>org.opensaml</groupId>
       <artifactId>opensaml-xmlsec-impl</artifactId>
-      <version>4.2.0</version>
+      <version>4.3.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
