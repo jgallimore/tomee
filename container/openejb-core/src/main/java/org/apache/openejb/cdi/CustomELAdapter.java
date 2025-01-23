@@ -19,7 +19,6 @@ package org.apache.openejb.cdi;
 
 import org.apache.openejb.AppContext;
 import org.apache.webbeans.config.WebBeansContext;
-import org.apache.webbeans.el22.WebBeansELResolver;
 import org.apache.webbeans.el22.WrappedExpressionFactory;
 import org.apache.webbeans.spi.adaptor.ELAdaptor;
 
@@ -48,7 +47,7 @@ public class CustomELAdapter implements ELAdaptor {
             exit = true;
         }
         try {
-            return new WebBeansELResolver();
+            return new CustomWebBeansELResolver();
         } finally {
             if (exit) {
                 ThreadSingletonServiceImpl.exit(old);
