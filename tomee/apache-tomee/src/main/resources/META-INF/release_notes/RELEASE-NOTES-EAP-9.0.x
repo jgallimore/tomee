@@ -1,4 +1,7 @@
-= TomEE EAP 9.1.4-TT.2
+= TomEE EAP 9.1.4-TT.3
+
+=== Changes in TomEE EAP 9.1.4-TT.3
+* Update to CXF 4.0.7-TT.1 to mitigate CVE-2025-23184
 
 === Changes in TomEE EAP 9.1.4-TT.2
 * Update to Tomcat 10.0.28-TT.12
