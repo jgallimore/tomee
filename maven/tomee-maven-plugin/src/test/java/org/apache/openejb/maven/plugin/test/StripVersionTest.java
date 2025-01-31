@@ -29,6 +29,10 @@ import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertTrue;
 
 public class StripVersionTest {
+
+    // Read the plexus-utils version from system properties (set via Maven Surefire plugin)
+    private static final String PLEXUS_UTILS_VERSION = System.getProperty("plexus-utils.version", "2.6.2");
+
     @Rule
     public TomEEMavenPluginRule TMPRule = new TomEEMavenPluginRule();
 
@@ -36,7 +40,7 @@ public class StripVersionTest {
     private final List<String> javaagents = singletonList("org.apache.sirona:sirona-javaagent:0.2-incubating:jar:shaded");
 
     @Config
-    private final List<String> libs = singletonList("org.codehaus.plexus:plexus-utils:3.0.17");
+    private final List<String> libs = singletonList("org.codehaus.plexus:plexus-utils:"+PLEXUS_UTILS_VERSION);
 
     @Config
     private final List<String> webapps = singletonList("org.apache.tomee:tomee-webaccess:7.0.0" /*use release to avoid nasty deps*/);

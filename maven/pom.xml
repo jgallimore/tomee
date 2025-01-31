@@ -31,6 +31,7 @@
 
   <properties>
     <maven.version>2.2.1</maven.version>
+    <plexus-utils.version>3.0.24</plexus-utils.version>
   </properties>
 
   <modules>
@@ -53,7 +54,7 @@
       <dependency>
         <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-utils</artifactId>
-        <version>3.0.24</version>
+        <version>${plexus-utils.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.maven</groupId>

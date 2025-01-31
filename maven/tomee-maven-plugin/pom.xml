@@ -141,6 +141,7 @@
         <configuration>
           <systemPropertyVariables>
             <log4j.version>${version.log4j2}</log4j.version>
+            <plexus-utils.version>${plexus-utils.version}</plexus-utils.version>
           </systemPropertyVariables>
         </configuration>
       </plugin>
