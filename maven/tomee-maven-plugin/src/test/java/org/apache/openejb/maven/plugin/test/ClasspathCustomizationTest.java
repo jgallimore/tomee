@@ -30,11 +30,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ClasspathCustomizationTest {
+
+    // Read the Log4j version from system properties (set via Maven Surefire plugin)
+    private static final String LOG4J_VERSION = System.getProperty("log4j.version", "2.6.2");
+
     @Rule
     public TomEEMavenPluginRule TMPRule = new TomEEMavenPluginRule();
 
     @Config
-    private final List<String> classpaths = asList("org.apache.logging.log4j:log4j-api:2.6.2", "org.apache.logging.log4j:log4j-jul:2.6.2");
+    private final List<String> classpaths = asList("org.apache.logging.log4j:log4j-api:"+LOG4J_VERSION, "org.apache.logging.log4j:log4j-jul:"+LOG4J_VERSION);
 
     @Config
     private final File catalinaBase = new File("target/tomee-classpath");
@@ -46,7 +50,7 @@ public class ClasspathCustomizationTest {
         assertEquals(2, boot.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(final File dir, final String name) {
-                return name.startsWith("log4j-") && name.endsWith("-2.6.2.jar");
+                return name.startsWith("log4j-") && name.endsWith("-"+LOG4J_VERSION+".jar");
             }
         }).length);
     }
