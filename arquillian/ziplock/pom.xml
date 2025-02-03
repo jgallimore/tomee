@@ -17,60 +17,60 @@
 -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>arquillian10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <artifactId>arquillian</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <artifactId>ziplock10.0.1-TT.2-SNAPSHOT</artifactId>
-  <name>TomEE :: Arquillian Adaptors Parent :: ZipLock10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>ziplock</artifactId>
+  <name>TomEE :: Arquillian Adaptors Parent :: ZipLock</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.arquillian.ziplock10.0.1-TT.2-SNAPSHOT</tomee.build.name>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    <tomee.build.name>${project.groupId}.arquillian.ziplock</tomee.build.name>
+  </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.jboss.shrinkwrap10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>shrinkwrap-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${version.shrinkwrap.shrinkwrap}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.jboss.shrinkwrap</groupId>
+      <artifactId>shrinkwrap-api</artifactId>
+      <version>${version.shrinkwrap.shrinkwrap}</version>
+    </dependency>
 
     <dependency>
-      <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>shrinkwrap-resolver-impl-maven10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${version.shrinkwrap.resolver.bom}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.jboss.shrinkwrap.resolver</groupId>
+      <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+      <version>${version.shrinkwrap.resolver.bom}</version>
+      <scope>provided</scope>
+    </dependency>
 
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-jee10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-jee</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${version.jakartaee-api}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>jakartaee-api</artifactId>
+      <version>${version.jakartaee-api}</version>
+    </dependency>
 
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.jboss.shrinkwrap10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>shrinkwrap-impl-base10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${version.shrinkwrap.shrinkwrap}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.jboss.shrinkwrap</groupId>
+      <artifactId>shrinkwrap-impl-base</artifactId>
+      <version>${version.shrinkwrap.shrinkwrap}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>slf4j-simple10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.7.2110.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.21</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

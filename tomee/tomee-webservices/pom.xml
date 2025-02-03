@@ -21,91 +21,91 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>tomee10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <artifactId>tomee-webservices10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: TomEE :: Web Services10.0.1-TT.2-SNAPSHOT</name>
-  <description>This module contains the classes that will be added to the catalina class loader10.0.1-TT.2-SNAPSHOT</description>
+    <artifactId>tomee</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>tomee-webservices</artifactId>
+  <packaging>jar</packaging>
+  <name>TomEE :: TomEE :: Web Services</name>
+  <description>This module contains the classes that will be added to the catalina class loader</description>
   <properties>
-    <tomee.build.name>${project.groupId}.tomee.webservices10.0.1-TT.2-SNAPSHOT</tomee.build.name>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    <tomee.build.name>${project.groupId}.tomee.webservices</tomee.build.name>
+  </properties>
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <classifier>tomcat10.0.1-TT.2-SNAPSHOT</classifier>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>jakartaee-api</artifactId>
+      <classifier>tomcat</classifier>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-webservices10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-webservices</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-rest10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-rest</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-cxf-rs10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-cxf-rs</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-cxf10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-cxf</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <groupId>javax.xml.stream10.0.1-TT.2-SNAPSHOT</groupId>
-          <artifactId>stax-api10.0.1-TT.2-SNAPSHOT</artifactId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <groupId>javax.xml.stream</groupId>
+          <artifactId>stax-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-common10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>tomee-common</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-loader10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>tomee-loader</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>tomee-catalina</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-server10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-server</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-ejbd10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-ejbd</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-http10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-http</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-catalina</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-jaxrs10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>tomee-jaxrs</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+</project>
 

@@ -18,157 +18,157 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>deps10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>deps</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-  <artifactId>taglibs-shade10.0.1-TT.2-SNAPSHOT</artifactId>
-  <name>TomEE :: Deps :: Taglibs Shade10.0.1-TT.2-SNAPSHOT</name>
+  <groupId>org.apache.tomee</groupId>
+  <artifactId>taglibs-shade</artifactId>
+  <name>TomEE :: Deps :: Taglibs Shade</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.taglibs10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>taglibs-standard-impl10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.2.510.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-impl</artifactId>
+      <version>1.2.5</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.taglibs10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>taglibs-standard-jstlel10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.2.510.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-jstlel</artifactId>
+      <version>1.2.5</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.taglibs10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>taglibs-standard-spec10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.2.510.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-spec</artifactId>
+      <version>1.2.5</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>xalan10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xalan10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.7.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>xalan</groupId>
+      <artifactId>xalan</artifactId>
+      <version>2.7.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>xalan10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>serializer10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.7.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>xalan</groupId>
+      <artifactId>serializer</artifactId>
+      <version>2.7.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-shade-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.6.010.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.6.0</version>
         <executions>
           <execution>
-            <phase>package10.0.1-TT.2-SNAPSHOT</phase>
+            <phase>package</phase>
             <goals>
-              <goal>shade10.0.1-TT.2-SNAPSHOT</goal>
-            10.0.1-TT.2-SNAPSHOT</goals>
+              <goal>shade</goal>
+            </goals>
             <configuration>
-              <createSourcesJar>true10.0.1-TT.2-SNAPSHOT</createSourcesJar>
-              <useBaseVersion>true10.0.1-TT.2-SNAPSHOT</useBaseVersion>
-              <createDependencyReducedPom>false10.0.1-TT.2-SNAPSHOT</createDependencyReducedPom>
+              <createSourcesJar>true</createSourcesJar>
+              <useBaseVersion>true</useBaseVersion>
+              <createDependencyReducedPom>false</createDependencyReducedPom>
               <relocations>
                 <relocation>
-                  <pattern>org.apache.bcel10.0.1-TT.2-SNAPSHOT</pattern>
-                  <shadedPattern>openejb.shade.org.apache.bcel10.0.1-TT.2-SNAPSHOT</shadedPattern>
-                10.0.1-TT.2-SNAPSHOT</relocation>
+                  <pattern>org.apache.bcel</pattern>
+                  <shadedPattern>openejb.shade.org.apache.bcel</shadedPattern>
+                </relocation>
                 <relocation>
-                  <pattern>org.apache.regexp10.0.1-TT.2-SNAPSHOT</pattern>
-                  <shadedPattern>openejb.shade.org.apache.regexp10.0.1-TT.2-SNAPSHOT</shadedPattern>
-                10.0.1-TT.2-SNAPSHOT</relocation>
+                  <pattern>org.apache.regexp</pattern>
+                  <shadedPattern>openejb.shade.org.apache.regexp</shadedPattern>
+                </relocation>
                 <relocation>
-                  <pattern>org.apache.xalan10.0.1-TT.2-SNAPSHOT</pattern>
-                  <shadedPattern>openejb.shade.org.apache.xalan10.0.1-TT.2-SNAPSHOT</shadedPattern>
-                10.0.1-TT.2-SNAPSHOT</relocation>
+                  <pattern>org.apache.xalan</pattern>
+                  <shadedPattern>openejb.shade.org.apache.xalan</shadedPattern>
+                </relocation>
                 <relocation>
-                  <pattern>org.apache.xml10.0.1-TT.2-SNAPSHOT</pattern>
-                  <shadedPattern>openejb.shade.org.apache.xml10.0.1-TT.2-SNAPSHOT</shadedPattern>
-                10.0.1-TT.2-SNAPSHOT</relocation>
+                  <pattern>org.apache.xml</pattern>
+                  <shadedPattern>openejb.shade.org.apache.xml</shadedPattern>
+                </relocation>
                 <relocation>
-                  <pattern>org.apache.xpath10.0.1-TT.2-SNAPSHOT</pattern>
-                  <shadedPattern>openejb.shade.org.apache.xpath10.0.1-TT.2-SNAPSHOT</shadedPattern>
-                10.0.1-TT.2-SNAPSHOT</relocation>
+                  <pattern>org.apache.xpath</pattern>
+                  <shadedPattern>openejb.shade.org.apache.xpath</shadedPattern>
+                </relocation>
                 <relocation>
-                  <pattern>trac10.0.1-TT.2-SNAPSHOT</pattern>
-                  <shadedPattern>openejb.shade.trax10.0.1-TT.2-SNAPSHOT</shadedPattern>
-                10.0.1-TT.2-SNAPSHOT</relocation>
+                  <pattern>trac</pattern>
+                  <shadedPattern>openejb.shade.trax</shadedPattern>
+                </relocation>
                 <relocation>
-                  <pattern>javax.servlet10.0.1-TT.2-SNAPSHOT</pattern>
-                  <shadedPattern>jakarta.servlet10.0.1-TT.2-SNAPSHOT</shadedPattern>
-                10.0.1-TT.2-SNAPSHOT</relocation>
+                  <pattern>javax.servlet</pattern>
+                  <shadedPattern>jakarta.servlet</shadedPattern>
+                </relocation>
                 <relocation>
-                  <pattern>javax.el10.0.1-TT.2-SNAPSHOT</pattern>
-                  <shadedPattern>jakarta.el10.0.1-TT.2-SNAPSHOT</shadedPattern>
-                10.0.1-TT.2-SNAPSHOT</relocation>
-              10.0.1-TT.2-SNAPSHOT</relocations>
+                  <pattern>javax.el</pattern>
+                  <shadedPattern>jakarta.el</shadedPattern>
+                </relocation>
+              </relocations>
               <filters>
                 <filter>
-                  <artifact>xalan:xalan10.0.1-TT.2-SNAPSHOT</artifact>
+                  <artifact>xalan:xalan</artifact>
                   <includes>
-                    <include>*/**10.0.1-TT.2-SNAPSHOT</include>
-                  10.0.1-TT.2-SNAPSHOT</includes>
+                    <include>*/**</include>
+                  </includes>
                   <excludes>
-                    <exclude>META-INF/services/javax*10.0.1-TT.2-SNAPSHOT</exclude>
-                  10.0.1-TT.2-SNAPSHOT</excludes>
-                10.0.1-TT.2-SNAPSHOT</filter>
-              10.0.1-TT.2-SNAPSHOT</filters>
-            10.0.1-TT.2-SNAPSHOT</configuration>
-          10.0.1-TT.2-SNAPSHOT</execution>
-        10.0.1-TT.2-SNAPSHOT</executions>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+                    <exclude>META-INF/services/javax*</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
-        <groupId>org.apache.tomee.patch10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomee-patch-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.apache.tomee.patch</groupId>
+        <artifactId>tomee-patch-plugin</artifactId>
         <configuration>
-          <select>taglibs-shade-.*\.jar10.0.1-TT.2-SNAPSHOT</select>
-          <transformSources>false10.0.1-TT.2-SNAPSHOT</transformSources>
-          <source>1.810.0.1-TT.2-SNAPSHOT</source>
-          <target>1.810.0.1-TT.2-SNAPSHOT</target>
-        10.0.1-TT.2-SNAPSHOT</configuration>
+          <select>taglibs-shade-.*\.jar</select>
+          <transformSources>false</transformSources>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
         <executions>
           <execution>
             <goals>
-              <goal>run10.0.1-TT.2-SNAPSHOT</goal>
-            10.0.1-TT.2-SNAPSHOT</goals>
-            <phase>package10.0.1-TT.2-SNAPSHOT</phase>
-          10.0.1-TT.2-SNAPSHOT</execution>
-        10.0.1-TT.2-SNAPSHOT</executions>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+              <goal>run</goal>
+            </goals>
+            <phase>package</phase>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <!--
         Purpose of build-helper-maven-plugin is to ensure that IntelliJ sees shaded classes.
@@ -181,45 +181,45 @@
         build-helper-maven-plugin can be removed completely with no effect on the "mvn clean" and "mvn install",
         which is handled by maven-shade-plugin.
         -->
-        <groupId>org.codehaus.mojo10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>build-helper-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.6.010.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.6.0</version>
         <executions>
           <execution>
-            <id>workaround-makeItVisibleOnIntellij10.0.1-TT.2-SNAPSHOT</id>
-            <phase>none10.0.1-TT.2-SNAPSHOT</phase>
+            <id>workaround-makeItVisibleOnIntellij</id>
+            <phase>none</phase>
             <goals>
-              <goal>attach-artifact10.0.1-TT.2-SNAPSHOT</goal>
-            10.0.1-TT.2-SNAPSHOT</goals>
+              <goal>attach-artifact</goal>
+            </goals>
             <configuration>
               <artifacts>
                 <artifact>
-                  <file>${project.build.directory}/taglibs-shade-10.0.1-TT.1-SNAPSHOT.jar10.0.1-TT.2-SNAPSHOT</file>
-                  <type>jar10.0.1-TT.2-SNAPSHOT</type>
-                  <classifier>optional10.0.1-TT.2-SNAPSHOT</classifier>
-                10.0.1-TT.2-SNAPSHOT</artifact>
-              10.0.1-TT.2-SNAPSHOT</artifacts>
-            10.0.1-TT.2-SNAPSHOT</configuration>
-          10.0.1-TT.2-SNAPSHOT</execution>
-        10.0.1-TT.2-SNAPSHOT</executions>
-      10.0.1-TT.2-SNAPSHOT</plugin>
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+                  <file>${project.build.directory}/taglibs-shade-10.0.1-TT.1-SNAPSHOT.jar</file>
+                  <type>jar</type>
+                  <classifier>optional</classifier>
+                </artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
   <profiles>
     <profile>
-      <id>rat10.0.1-TT.2-SNAPSHOT</id>
+      <id>rat</id>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.apache.rat10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>apache-rat-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+            <groupId>org.apache.rat</groupId>
+            <artifactId>apache-rat-plugin</artifactId>
             <configuration>
-              <skip>true10.0.1-TT.2-SNAPSHOT</skip>
-            10.0.1-TT.2-SNAPSHOT</configuration>
-          10.0.1-TT.2-SNAPSHOT</plugin>
-        10.0.1-TT.2-SNAPSHOT</plugins>
-      10.0.1-TT.2-SNAPSHOT</build>
-    10.0.1-TT.2-SNAPSHOT</profile>
-  10.0.1-TT.2-SNAPSHOT</profiles>
-10.0.1-TT.2-SNAPSHOT</project>
+              <skip>true</skip>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

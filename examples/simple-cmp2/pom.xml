@@ -18,94 +18,94 @@
 -->
 <!-- $Rev: 636494 $ $Date: 2008-03-12 21:24:02 +0100 (Wed, 12 Mar 2008) $ -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-  <artifactId>simple-cmp210.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
-  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  <name>TomEE :: Examples :: Simple CMP2 Entity10.0.1-TT.2-SNAPSHOT</name>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.superbiz</groupId>
+  <artifactId>simple-cmp2</artifactId>
+  <packaging>jar</packaging>
+  <version>10.0.1-TT.2-SNAPSHOT</version>
+  <name>TomEE :: Examples :: Simple CMP2 Entity</name>
   <properties>
-    <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
-    <tomee.version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</tomee.version>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <tomee.version>10.0.1-TT.2-SNAPSHOT</tomee.version>
+  </properties>
   <build>
-    <defaultGoal>install10.0.1-TT.2-SNAPSHOT</defaultGoal>
+    <defaultGoal>install</defaultGoal>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.13.010.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
         <configuration>
-          <source>1.810.0.1-TT.2-SNAPSHOT</source>
-          <target>1.810.0.1-TT.2-SNAPSHOT</target>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.5.210.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.2</version>
         <configuration>
-          <argLine>-javaagent:${basedir}/target/openejb-javaagent-${tomee.version}.jar10.0.1-TT.2-SNAPSHOT</argLine>
-          <workingDirectory>${basedir}/target10.0.1-TT.2-SNAPSHOT</workingDirectory>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <argLine>-javaagent:${basedir}/target/openejb-javaagent-${tomee.version}.jar</argLine>
+          <workingDirectory>${basedir}/target</workingDirectory>
+        </configuration>
+      </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.8.010.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.8.0</version>
         <executions>
           <execution>
-            <id>copy10.0.1-TT.2-SNAPSHOT</id>
-            <phase>process-resources10.0.1-TT.2-SNAPSHOT</phase>
+            <id>copy</id>
+            <phase>process-resources</phase>
             <goals>
-              <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
-            10.0.1-TT.2-SNAPSHOT</goals>
+              <goal>copy</goal>
+            </goals>
             <configuration>
-              <useBaseVersion>true10.0.1-TT.2-SNAPSHOT</useBaseVersion>
+              <useBaseVersion>true</useBaseVersion>
               <artifactItems>
                 <artifactItem>
-                  <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-                  <artifactId>openejb-javaagent10.0.1-TT.2-SNAPSHOT</artifactId>
-                  <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-                  <outputDirectory>${project.build.directory}10.0.1-TT.2-SNAPSHOT</outputDirectory>
-                10.0.1-TT.2-SNAPSHOT</artifactItem>
-              10.0.1-TT.2-SNAPSHOT</artifactItems>
-            10.0.1-TT.2-SNAPSHOT</configuration>
-          10.0.1-TT.2-SNAPSHOT</execution>
-        10.0.1-TT.2-SNAPSHOT</executions>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+                  <groupId>org.apache.tomee</groupId>
+                  <artifactId>openejb-javaagent</artifactId>
+                  <version>${tomee.version}</version>
+                  <outputDirectory>${project.build.directory}</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+    </plugins>
+  </build>
   <repositories>
     <repository>
-      <id>apache-m2-snapshot10.0.1-TT.2-SNAPSHOT</id>
-      <name>Apache Snapshot Repository10.0.1-TT.2-SNAPSHOT</name>
-      <url>https://repository.apache.org/content/groups/snapshots10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</repository>
-  10.0.1-TT.2-SNAPSHOT</repositories>
+      <id>apache-m2-snapshot</id>
+      <name>Apache Snapshot Repository</name>
+      <url>https://repository.apache.org/content/groups/snapshots</url>
+    </repository>
+  </repositories>
   <dependencies>
     <!-- spec apis such as jakarta.persistence -->
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>10.010.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>jakartaee-api</artifactId>
+      <version>10.0</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.13.210.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
     <!-- openejb container for running tests -->
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-core</artifactId>
+      <version>${tomee.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -113,12 +113,12 @@
   -->
   <distributionManagement>
     <repository>
-      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
-      <url>file://${basedir}/target/repo/10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</repository>
+      <id>localhost</id>
+      <url>file://${basedir}/target/repo/</url>
+    </repository>
     <snapshotRepository>
-      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
-      <url>file://${basedir}/target/snapshot-repo/10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</snapshotRepository>
-  10.0.1-TT.2-SNAPSHOT</distributionManagement>
-10.0.1-TT.2-SNAPSHOT</project>
+      <id>localhost</id>
+      <url>file://${basedir}/target/snapshot-repo/</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>

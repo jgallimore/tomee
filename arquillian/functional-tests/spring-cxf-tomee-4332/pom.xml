@@ -17,136 +17,136 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>functional-tests10.0.1-TT.2-SNAPSHOT</artifactId>
-        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</parent>
+        <artifactId>functional-tests</artifactId>
+        <groupId>org.apache.tomee</groupId>
+        <version>10.0.1-TT.2-SNAPSHOT</version>
+    </parent>
 
-    <artifactId>spring-cxf-tomee-433210.0.1-TT.2-SNAPSHOT</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-    <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
-    <name>TomEE :: Arquillian :: Functional Tests :: Spring CXF Test10.0.1-TT.2-SNAPSHOT</name>
+    <artifactId>spring-cxf-tomee-4332</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>TomEE :: Arquillian :: Functional Tests :: Spring CXF Test</name>
 
     <properties>
-        <version.spring-boot>3.4.210.0.1-TT.2-SNAPSHOT</version.spring-boot>
-        <version.shrinkwrap.resolver>3.3.310.0.1-TT.2-SNAPSHOT</version.shrinkwrap.resolver>
+        <version.spring-boot>3.4.2</version.spring-boot>
+        <version.shrinkwrap.resolver>3.3.3</version.shrinkwrap.resolver>
 
         <!-- junit 5.11 is broken for some reason here -->
-        <junit.jupiter.version>5.10.510.0.1-TT.2-SNAPSHOT</junit.jupiter.version>
-    10.0.1-TT.2-SNAPSHOT</properties>
+        <junit.jupiter.version>5.10.5</junit.jupiter.version>
+    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>spring-boot-starter-web10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${version.spring-boot}10.0.1-TT.2-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${version.spring-boot}</version>
 
             <exclusions>
                 <exclusion>
-                    <groupId>ch.qos.logback10.0.1-TT.2-SNAPSHOT</groupId>
-                    <artifactId>logback-classic10.0.1-TT.2-SNAPSHOT</artifactId>
-                10.0.1-TT.2-SNAPSHOT</exclusion>
-            10.0.1-TT.2-SNAPSHOT</exclusions>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>spring-boot-starter-tomcat10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${version.spring-boot}10.0.1-TT.2-SNAPSHOT</version>
-            <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${version.spring-boot}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
-            <groupId>org.springframework.boot10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>spring-boot-starter-test10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${version.spring-boot}10.0.1-TT.2-SNAPSHOT</version>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${version.spring-boot}</version>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
-                    <groupId>org.junit.jupiter10.0.1-TT.2-SNAPSHOT</groupId>
-                    <artifactId>junit-jupiter10.0.1-TT.2-SNAPSHOT</artifactId>
-                10.0.1-TT.2-SNAPSHOT</exclusion>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter</artifactId>
+                </exclusion>
                 <exclusion>
-                    <groupId>org.junit.jupiter10.0.1-TT.2-SNAPSHOT</groupId>
-                    <artifactId>junit-jupiter-api10.0.1-TT.2-SNAPSHOT</artifactId>
-                10.0.1-TT.2-SNAPSHOT</exclusion>
-            10.0.1-TT.2-SNAPSHOT</exclusions>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
-            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-            <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>jakartaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
-            <groupId>org.jboss.arquillian.junit510.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>arquillian-junit5-container10.0.1-TT.2-SNAPSHOT</artifactId>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.jboss.arquillian.junit5</groupId>
+            <artifactId>arquillian-junit5-container</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>shrinkwrap-resolver-depchain10.0.1-TT.2-SNAPSHOT</artifactId>
-            <type>pom10.0.1-TT.2-SNAPSHOT</type>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-depchain</artifactId>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
         <dependency>
-            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>arquillian-tomee-remote</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
-            <groupId>org.junit.jupiter10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>junit-jupiter-api10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${junit.jupiter.version}10.0.1-TT.2-SNAPSHOT</version>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
-            <groupId>org.junit.jupiter10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>junit-jupiter-engine10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${junit.jupiter.version}10.0.1-TT.2-SNAPSHOT</version>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
-    10.0.1-TT.2-SNAPSHOT</dependencies>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
-                <artifactId>shrinkwrap-resolver-bom10.0.1-TT.2-SNAPSHOT</artifactId>
-                <version>${version.shrinkwrap.resolver}10.0.1-TT.2-SNAPSHOT</version>
-                <scope>import10.0.1-TT.2-SNAPSHOT</scope>
-                <type>pom10.0.1-TT.2-SNAPSHOT</type>
-            10.0.1-TT.2-SNAPSHOT</dependency>
+                <groupId>org.jboss.shrinkwrap.resolver</groupId>
+                <artifactId>shrinkwrap-resolver-bom</artifactId>
+                <version>${version.shrinkwrap.resolver}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
-                <groupId>org.jboss.arquillian10.0.1-TT.2-SNAPSHOT</groupId>
-                <artifactId>arquillian-bom10.0.1-TT.2-SNAPSHOT</artifactId>
-                <version>1.9.3.Final10.0.1-TT.2-SNAPSHOT</version>
-                <scope>import10.0.1-TT.2-SNAPSHOT</scope>
-                <type>pom10.0.1-TT.2-SNAPSHOT</type>
-            10.0.1-TT.2-SNAPSHOT</dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>1.9.3.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
-                <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-                <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
-                <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-                <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-            10.0.1-TT.2-SNAPSHOT</dependency>
-        10.0.1-TT.2-SNAPSHOT</dependencies>
-    10.0.1-TT.2-SNAPSHOT</dependencyManagement>
+                <groupId>org.apache.tomee</groupId>
+                <artifactId>arquillian-tomee-remote</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
     <build>
-        <finalName>demo10.0.1-TT.2-SNAPSHOT</finalName>
+        <finalName>demo</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
-                <artifactId>tomee-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-                <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+                <groupId>org.apache.tomee.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>${project.version}</version>
                 <configuration>
-                    <context>ROOT10.0.1-TT.2-SNAPSHOT</context>
-                    <runtimeWorkingDir>${project.artifactId}10.0.1-TT.2-SNAPSHOT</runtimeWorkingDir>
-                10.0.1-TT.2-SNAPSHOT</configuration>
-            10.0.1-TT.2-SNAPSHOT</plugin>
-        10.0.1-TT.2-SNAPSHOT</plugins>
-    10.0.1-TT.2-SNAPSHOT</build>
-10.0.1-TT.2-SNAPSHOT</project>
+                    <context>ROOT</context>
+                    <runtimeWorkingDir>${project.artifactId}</runtimeWorkingDir>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

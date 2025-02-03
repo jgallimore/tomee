@@ -20,13 +20,13 @@
 <!-- $Rev$ $Date$ -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.apache.tomee.itests10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-itests-optional-classes10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</parent>
+        <groupId>org.apache.tomee.itests</groupId>
+        <artifactId>openejb-itests-optional-classes</artifactId>
+        <version>10.0.1-TT.2-SNAPSHOT</version>
+    </parent>
 
-    <artifactId>opt-3rdparty10.0.1-TT.2-SNAPSHOT</artifactId>
-10.0.1-TT.2-SNAPSHOT</project>
+    <artifactId>opt-3rdparty</artifactId>
+</project>

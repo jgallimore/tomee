@@ -18,56 +18,56 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>polling-parent10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>jug10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.1-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>polling-parent</artifactId>
+    <groupId>jug</groupId>
+    <version>10.0.1-TT.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>polling-domain10.0.1-TT.2-SNAPSHOT</artifactId>
-  <name>TomEE :: Examples :: Polling :: Domain10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>polling-domain</artifactId>
+  <name>TomEE :: Examples :: Polling :: Domain</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-plus-api10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>tomee-plus-api</artifactId>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.openjpa10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openjpa-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>4.0.010.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.openjpa</groupId>
+        <artifactId>openjpa-maven-plugin</artifactId>
+        <version>4.0.0</version>
         <configuration>
-          <includes>jug/domain/*.class10.0.1-TT.2-SNAPSHOT</includes>
-          <addDefaultConstructor>true10.0.1-TT.2-SNAPSHOT</addDefaultConstructor>
-          <enforcePropertyRestrictions>true10.0.1-TT.2-SNAPSHOT</enforcePropertyRestrictions>
-        10.0.1-TT.2-SNAPSHOT</configuration>
+          <includes>jug/domain/*.class</includes>
+          <addDefaultConstructor>true</addDefaultConstructor>
+          <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
+        </configuration>
         <executions>
           <execution>
-            <id>enhancer10.0.1-TT.2-SNAPSHOT</id>
-            <phase>process-classes10.0.1-TT.2-SNAPSHOT</phase>
+            <id>enhancer</id>
+            <phase>process-classes</phase>
             <goals>
-              <goal>enhance10.0.1-TT.2-SNAPSHOT</goal>
-            10.0.1-TT.2-SNAPSHOT</goals>
-          10.0.1-TT.2-SNAPSHOT</execution>
-        10.0.1-TT.2-SNAPSHOT</executions>
+              <goal>enhance</goal>
+            </goals>
+          </execution>
+        </executions>
         <dependencies>
           <dependency>
-            <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>tomee-plus-api10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-          10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.apache.tomee.bom</groupId>
+            <artifactId>tomee-plus-api</artifactId>
+            <version>${tomee.version}</version>
+          </dependency>
           <dependency>
-            <groupId>org.apache.openjpa10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>openjpa10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>4.0.010.0.1-TT.2-SNAPSHOT</version>
-          10.0.1-TT.2-SNAPSHOT</dependency>
-        10.0.1-TT.2-SNAPSHOT</dependencies>
-      10.0.1-TT.2-SNAPSHOT</plugin>
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+            <groupId>org.apache.openjpa</groupId>
+            <artifactId>openjpa</artifactId>
+            <version>4.0.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
 
-10.0.1-TT.2-SNAPSHOT</project>
+</project>

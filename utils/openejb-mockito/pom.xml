@@ -18,34 +18,34 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>utils10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>utils</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>openejb-mockito10.0.1-TT.2-SNAPSHOT</artifactId>
-  <name>TomEE :: Utils :: Mockito10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>openejb-mockito</artifactId>
+  <name>TomEE :: Utils :: Mockito</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.util.mockito10.0.1-TT.2-SNAPSHOT</tomee.build.name>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    <tomee.build.name>${project.groupId}.util.mockito</tomee.build.name>
+  </properties>
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>org.mockito10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>mockito-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>5.15.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>5.15.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>hamcrest-core10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>org.hamcrest10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+          <artifactId>hamcrest-core</artifactId>
+          <groupId>org.hamcrest</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+</project>

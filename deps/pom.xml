@@ -18,29 +18,29 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>tomee-project10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <artifactId>deps10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Deps10.0.1-TT.2-SNAPSHOT</name>
+    <artifactId>tomee-project</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>deps</artifactId>
+  <packaging>pom</packaging>
+  <name>TomEE :: Deps</name>
 
   <modules>
-    <module>taglibs-shade10.0.1-TT.2-SNAPSHOT</module>
-    <module>commons-dbcp2-shade10.0.1-TT.2-SNAPSHOT</module>
-  10.0.1-TT.2-SNAPSHOT</modules>
+    <module>taglibs-shade</module>
+    <module>commons-dbcp2-shade</module>
+  </modules>
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-javadoc-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.plugin.javadoc}10.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${version.plugin.javadoc}</version>
         <configuration>
-          <skip>true10.0.1-TT.2-SNAPSHOT</skip>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
-10.0.1-TT.2-SNAPSHOT</project>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

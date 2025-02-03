@@ -21,20 +21,20 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <artifactId>server10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <artifactId>server</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <artifactId>openejb-client10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Server :: Client10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>openejb-client</artifactId>
+  <packaging>jar</packaging>
+  <name>TomEE :: Server :: Client</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.server.client10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+    <tomee.build.name>${project.groupId}.server.client</tomee.build.name>
     <openejb.osgi.import.pkg>
       jakarta.ejb,
       jakarta.jws,
@@ -61,95 +61,95 @@
       org.apache.geronimo.osgi.locator,
       org.osgi.framework,
       org.w3c.dom
-    10.0.1-TT.2-SNAPSHOT</openejb.osgi.import.pkg>
+    </openejb.osgi.import.pkg>
     <openejb.osgi.export.pkg>
       org.apache.openejb*,org.openejb*
-    10.0.1-TT.2-SNAPSHOT</openejb.osgi.export.pkg>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    </openejb.osgi.export.pkg>
+  </properties>
   <build>
     <resources>
       <resource>
-        <directory>src/main/resources10.0.1-TT.2-SNAPSHOT</directory>
-        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
-      10.0.1-TT.2-SNAPSHOT</resource>
-    10.0.1-TT.2-SNAPSHOT</resources>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-jar-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <archive combine.children="append">
             <manifest>
-              <mainClass>org.apache.openejb.client.Main10.0.1-TT.2-SNAPSHOT</mainClass>
-            10.0.1-TT.2-SNAPSHOT</manifest>
+              <mainClass>org.apache.openejb.client.Main</mainClass>
+            </manifest>
             <manifestEntries>
-              <Automatic-Module-Name>${tomee.build.name}10.0.1-TT.2-SNAPSHOT</Automatic-Module-Name>
-            10.0.1-TT.2-SNAPSHOT</manifestEntries>
-          10.0.1-TT.2-SNAPSHOT</archive>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+              <Automatic-Module-Name>${tomee.build.name}</Automatic-Module-Name>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <useFile>false10.0.1-TT.2-SNAPSHOT</useFile>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <useFile>false</useFile>
+        </configuration>
+      </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-antrun-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
         <executions>
           <execution>
-            <phase>process-classes10.0.1-TT.2-SNAPSHOT</phase>
+            <phase>process-classes</phase>
             <goals>
-              <goal>run10.0.1-TT.2-SNAPSHOT</goal>
-            10.0.1-TT.2-SNAPSHOT</goals>
+              <goal>run</goal>
+            </goals>
             <configuration>
               <target>
                 <tstamp>
                   <format property="TSTAMP" pattern="hh:mm" />
-                10.0.1-TT.2-SNAPSHOT</tstamp>
+                </tstamp>
                 <replace file="target/classes/openejb-client-version.properties" token="@DATE-REPLACED-BY-MAVEN@" value="${DSTAMP}" />
                 <replace file="target/classes/openejb-client-version.properties" token="@TIME-REPLACED-BY-MAVEN@" value="${TSTAMP}" />
-              10.0.1-TT.2-SNAPSHOT</target>
-            10.0.1-TT.2-SNAPSHOT</configuration>
-          10.0.1-TT.2-SNAPSHOT</execution>
-        10.0.1-TT.2-SNAPSHOT</executions>
-      10.0.1-TT.2-SNAPSHOT</plugin>
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>jakartaee-api</artifactId>
+    </dependency>
 
     <dependency>
-      <groupId>org.apache.geronimo.mail10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>geronimo-mail_2.1_provider10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.geronimo.mail</groupId>
+      <artifactId>geronimo-mail_2.1_provider</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
-      <type>pom10.0.1-TT.2-SNAPSHOT</type>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <type>pom</type>
+    </dependency>
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>com.agical.rmock10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>rmock10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>com.agical.rmock</groupId>
+      <artifactId>rmock</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>bcmail-jdk15to1810.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.8010.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcmail-jdk15to18</artifactId>
+      <version>1.80</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

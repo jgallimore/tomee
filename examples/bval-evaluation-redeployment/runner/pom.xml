@@ -18,43 +18,43 @@
     under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-    <artifactId>bval-evaluation-redeployment10.0.1-TT.2-SNAPSHOT</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <artifactId>runner10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
+    <groupId>org.superbiz</groupId>
+    <artifactId>bval-evaluation-redeployment</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <artifactId>runner</artifactId>
+  <packaging>jar</packaging>
   <dependencies>
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>arquillian-tomee-remote</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-webprofile10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>tomee-webprofile</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-      <type>zip10.0.1-TT.2-SNAPSHOT</type>
-      <classifier>webprofile10.0.1-TT.2-SNAPSHOT</classifier>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>apache-tomee</artifactId>
+      <version>10.0.1-TT.2-SNAPSHOT</version>
+      <type>zip</type>
+      <classifier>webprofile</classifier>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <properties>
-    <maven.compiler.source>1.810.0.1-TT.2-SNAPSHOT</maven.compiler.source>
-    <maven.compiler.target>1.810.0.1-TT.2-SNAPSHOT</maven.compiler.target>
-  10.0.1-TT.2-SNAPSHOT</properties>
-10.0.1-TT.2-SNAPSHOT</project>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+</project>

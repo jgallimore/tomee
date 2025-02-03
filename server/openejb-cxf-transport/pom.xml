@@ -17,36 +17,36 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>server10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>server</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>openejb-cxf-transport10.0.1-TT.2-SNAPSHOT</artifactId>
-  <name>TomEE :: Server :: CXF Transport10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>openejb-cxf-transport</artifactId>
+  <name>TomEE :: Server :: CXF Transport</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.server.cxf.transport10.0.1-TT.2-SNAPSHOT</tomee.build.name>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    <tomee.build.name>${project.groupId}.server.cxf.transport</tomee.build.name>
+  </properties>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-http10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-http</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-core10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-core</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-transports-http10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-transports-http</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-management10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-management</artifactId>
+    </dependency>
+  </dependencies>
+</project>

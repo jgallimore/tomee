@@ -18,27 +18,27 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>tomee-project10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <artifactId>tomee-project</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <artifactId>container10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Container10.0.1-TT.2-SNAPSHOT</name>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>container</artifactId>
+  <packaging>pom</packaging>
+  <name>TomEE :: Container</name>
 
   <modules>
-    <module>mbean-annotation-api10.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-api10.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-core10.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-loader10.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-javaagent10.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-jee10.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-jee-accessors10.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-jpa-integration10.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-junit10.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-junit510.0.1-TT.2-SNAPSHOT</module>
-    <module>openejb-junit5-backward10.0.1-TT.2-SNAPSHOT</module>
-  10.0.1-TT.2-SNAPSHOT</modules>
-10.0.1-TT.2-SNAPSHOT</project>
+    <module>mbean-annotation-api</module>
+    <module>openejb-api</module>
+    <module>openejb-core</module>
+    <module>openejb-loader</module>
+    <module>openejb-javaagent</module>
+    <module>openejb-jee</module>
+    <module>openejb-jee-accessors</module>
+    <module>openejb-jpa-integration</module>
+    <module>openejb-junit</module>
+    <module>openejb-junit5</module>
+    <module>openejb-junit5-backward</module>
+  </modules>
+</project>

@@ -17,160 +17,160 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <artifactId>microprofile-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <groupId>org.apache.tomee</groupId>
+    <artifactId>microprofile-tck</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <artifactId>microprofile-metrics-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-  <name>TomEE :: TCK :: MicroProfile Metrics TCK10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>microprofile-metrics-tck</artifactId>
+  <name>TomEE :: TCK :: MicroProfile Metrics TCK</name>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.5.210.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.2</version>
         <configuration>
-          <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
+          <reuseForks>false</reuseForks>
           <dependenciesToScan>
-            <dependency>org.eclipse.microprofile.metrics:microprofile-metrics-api-tck10.0.1-TT.2-SNAPSHOT</dependency>
-            <dependency>org.eclipse.microprofile.metrics:microprofile-metrics-rest-tck10.0.1-TT.2-SNAPSHOT</dependency>
-            <dependency>org.eclipse.microprofile.metrics:microprofile-metrics-optional-tck10.0.1-TT.2-SNAPSHOT</dependency>
-          10.0.1-TT.2-SNAPSHOT</dependenciesToScan>
+            <dependency>org.eclipse.microprofile.metrics:microprofile-metrics-api-tck</dependency>
+            <dependency>org.eclipse.microprofile.metrics:microprofile-metrics-rest-tck</dependency>
+            <dependency>org.eclipse.microprofile.metrics:microprofile-metrics-optional-tck</dependency>
+          </dependenciesToScan>
           <excludes>
             <!-- Exclude some of the OPTIONAL tests because they aren't supported in TomEE and result in failures atm -->
             <!-- MPMetricBaseMetricsTest.testGcTimeMetrics -->
-            <exclude>**/MPMetricBaseMetricsTest.java10.0.1-TT.2-SNAPSHOT</exclude>
+            <exclude>**/MPMetricBaseMetricsTest.java</exclude>
             <!--
              org.eclipse.microprofile.metrics.test.optional.MpMetricOptionalTest.testGetUnmappedArithException
              org.eclipse.microprofile.metrics.test.optional.MpMetricOptionalTest.testPostUnmappedArithException
             -->
-            <exclude>**/MpMetricOptionalTest.java10.0.1-TT.2-SNAPSHOT</exclude>
-          10.0.1-TT.2-SNAPSHOT</excludes>
+            <exclude>**/MpMetricOptionalTest.java</exclude>
+          </excludes>
           <environmentVariables>
-            <MP_METRICS_TAGS>tier=integration10.0.1-TT.2-SNAPSHOT</MP_METRICS_TAGS>
-          10.0.1-TT.2-SNAPSHOT</environmentVariables>
+            <MP_METRICS_TAGS>tier=integration</MP_METRICS_TAGS>
+          </environmentVariables>
           <systemPropertyVariables>
-            <java.io.tmpdir>./target10.0.1-TT.2-SNAPSHOT</java.io.tmpdir>
-          10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+            <java.io.tmpdir>./target</java.io.tmpdir>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
   <profiles>
     <profile>
-      <id>mp-tck-all10.0.1-TT.2-SNAPSHOT</id>
+      <id>mp-tck-all</id>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
             <executions>
               <execution>
-                <id>tomee-plus10.0.1-TT.2-SNAPSHOT</id>
+                <id>tomee-plus</id>
                 <goals>
-                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
-                10.0.1-TT.2-SNAPSHOT</goals>
+                  <goal>test</goal>
+                </goals>
                 <configuration>
-                  <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
+                  <reuseForks>false</reuseForks>
                   <systemPropertyVariables>
-                    <arquillian.launch>tomee-plus10.0.1-TT.2-SNAPSHOT</arquillian.launch>
-                    <java.io.tmpdir>./target10.0.1-TT.2-SNAPSHOT</java.io.tmpdir>
-                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
-                10.0.1-TT.2-SNAPSHOT</configuration>
-              10.0.1-TT.2-SNAPSHOT</execution>
+                    <arquillian.launch>tomee-plus</arquillian.launch>
+                    <java.io.tmpdir>./target</java.io.tmpdir>
+                  </systemPropertyVariables>
+                </configuration>
+              </execution>
               <execution>
-                <id>tomee-plume10.0.1-TT.2-SNAPSHOT</id>
+                <id>tomee-plume</id>
                 <goals>
-                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
-                10.0.1-TT.2-SNAPSHOT</goals>
+                  <goal>test</goal>
+                </goals>
                 <configuration>
-                  <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
+                  <reuseForks>false</reuseForks>
                   <systemPropertyVariables>
-                    <arquillian.launch>tomee-plume10.0.1-TT.2-SNAPSHOT</arquillian.launch>
-                    <java.io.tmpdir>./target10.0.1-TT.2-SNAPSHOT</java.io.tmpdir>
-                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
-                10.0.1-TT.2-SNAPSHOT</configuration>
-              10.0.1-TT.2-SNAPSHOT</execution>
-            10.0.1-TT.2-SNAPSHOT</executions>
-          10.0.1-TT.2-SNAPSHOT</plugin>
-        10.0.1-TT.2-SNAPSHOT</plugins>
-      10.0.1-TT.2-SNAPSHOT</build>
-    10.0.1-TT.2-SNAPSHOT</profile>
-  10.0.1-TT.2-SNAPSHOT</profiles>
+                    <arquillian.launch>tomee-plume</arquillian.launch>
+                    <java.io.tmpdir>./target</java.io.tmpdir>
+                  </systemPropertyVariables>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
-      <groupId>org.eclipse.microprofile.metrics10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-metrics-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.eclipse.microprofile.metrics</groupId>
+      <artifactId>microprofile-metrics-api</artifactId>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
-      <groupId>org.eclipse.microprofile.metrics10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-metrics-api-tck10.0.1-TT.2-SNAPSHOT</artifactId>
+      <groupId>org.eclipse.microprofile.metrics</groupId>
+      <artifactId>microprofile-metrics-api-tck</artifactId>
       <exclusions>
         <exclusion>
-          <groupId>org.jboss.arquillian.container10.0.1-TT.2-SNAPSHOT</groupId>
-          <artifactId>arquillian-wlp-managed-8.510.0.1-TT.2-SNAPSHOT</artifactId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <groupId>org.jboss.arquillian.container</groupId>
+          <artifactId>arquillian-wlp-managed-8.5</artifactId>
+        </exclusion>
+      </exclusions>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
-      <groupId>org.eclipse.microprofile.metrics10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-metrics-rest-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.eclipse.microprofile.metrics</groupId>
+      <artifactId>microprofile-metrics-rest-tck</artifactId>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
-      <groupId>org.eclipse.microprofile.metrics10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-metrics-optional-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${version.microprofile.metrics}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.eclipse.microprofile.metrics</groupId>
+      <artifactId>microprofile-metrics-optional-tck</artifactId>
+      <version>${version.microprofile.metrics}</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
-      <groupId>org.hamcrest10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>hamcrest-all10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.310.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-all</artifactId>
+      <version>1.3</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      <type>zip10.0.1-TT.2-SNAPSHOT</type>
-      <classifier>microprofile10.0.1-TT.2-SNAPSHOT</classifier>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>apache-tomee</artifactId>
+      <version>${project.version}</version>
+      <type>zip</type>
+      <classifier>microprofile</classifier>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>arquillian-tomee-remote</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
-      <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <version>${version.arquillian}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-10.0.1-TT.2-SNAPSHOT</project>
+</project>

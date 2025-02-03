@@ -21,103 +21,103 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>tomee10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <artifactId>tomee</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <artifactId>tomee-security10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: TomEE :: Security10.0.1-TT.2-SNAPSHOT</name>
-  <description>Implementation of Java EE Security JSR-37510.0.1-TT.2-SNAPSHOT</description>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>tomee-security</artifactId>
+  <packaging>jar</packaging>
+  <name>TomEE :: TomEE :: Security</name>
+  <description>Implementation of Java EE Security JSR-375</description>
 
   <properties>
     <!-- Reset Jetty Version to not clash with HtmlUnit -->
     <version.jetty />
-  10.0.1-TT.2-SNAPSHOT</properties>
+  </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.myfaces.core10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>myfaces-api10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-api</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>jakartaee-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-catalina</artifactId>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-loader10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-loader</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-catalina</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-lang310.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
 
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-spi10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-spi</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-impl10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-impl</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-ejb10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-ejb</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-ee10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-ee</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-el2210.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-el22</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.bval10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>bval-jsr10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.bval</groupId>
+      <artifactId>bval-jsr</artifactId>
+    </dependency>
 
     <dependency>
-      <groupId>org.bitbucket.b_c10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jose4j10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${version.jose4j}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.bitbucket.b_c</groupId>
+      <artifactId>jose4j</artifactId>
+      <version>${version.jose4j}</version>
+    </dependency>
 
     <!-- Test -->
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>tomee-embedded</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-mockito10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-mockito</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.htmlunit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>htmlunit10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.4.010.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+      <groupId>org.htmlunit</groupId>
+      <artifactId>htmlunit</artifactId>
+      <version>4.4.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

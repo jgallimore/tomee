@@ -29,1562 +29,1562 @@
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
   <parent>
-    <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-    <artifactId>boms10.0.1-TT.2-SNAPSHOT</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <groupId>org.apache.tomee.bom</groupId>
+    <artifactId>boms</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <artifactId>tomee-webprofile10.0.1-TT.2-SNAPSHOT</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>tomee-webprofile</artifactId>
 
-  <name>TomEE :: BOMs :: TomEE WebProfile10.0.1-TT.2-SNAPSHOT</name>
+  <name>TomEE :: BOMs :: TomEE WebProfile</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-bootstrap10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-bootstrap</artifactId>
+      <version>10.0.1-TT.2-SNAPSHOT</version>
+    </dependency>
     <dependency>
-      <groupId>com.fasterxml.woodstox10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>woodstox-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>6.6.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>com.fasterxml.woodstox</groupId>
+      <artifactId>woodstox-core</artifactId>
+      <version>6.6.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>com.sun.istack10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>istack-commons-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>com.sun.istack</groupId>
+      <artifactId>istack-commons-runtime</artifactId>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>com.sun.xml.messaging.saaj10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>saaj-impl10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>com.sun.xml.messaging.saaj</groupId>
+      <artifactId>saaj-impl</artifactId>
+      <version>2.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>commons-cli10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-cli10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.9.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>commons-cli</groupId>
+      <artifactId>commons-cli</artifactId>
+      <version>1.9.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>commons-codec10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-codec10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.17.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.17.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>commons-daemon10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-daemon10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>commons-daemon</groupId>
+      <artifactId>commons-daemon</artifactId>
+      <version>1.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>commons-logging10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-logging10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.3.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.3.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>io.github.rzo1.org.metatype.sxc10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>sxc-jaxb-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>0.910.0.1-TT.2-SNAPSHOT</version>
+      <groupId>io.github.rzo1.org.metatype.sxc</groupId>
+      <artifactId>sxc-jaxb-core</artifactId>
+      <version>0.9</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>io.github.rzo1.org.metatype.sxc10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>sxc-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>0.910.0.1-TT.2-SNAPSHOT</version>
+      <groupId>io.github.rzo1.org.metatype.sxc</groupId>
+      <artifactId>sxc-runtime</artifactId>
+      <version>0.9</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.bval10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>bval-jsr10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.bval</groupId>
+      <artifactId>bval-jsr</artifactId>
+      <version>3.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-lang310.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.17.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.17.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-pool210.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.12.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-pool2</artifactId>
+      <version>2.12.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-core</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-bindings-soap10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-bindings-soap</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-bindings-xml10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-bindings-xml</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-databinding-jaxb10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-databinding-jaxb</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-frontend-jaxrs10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-frontend-jaxws10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-frontend-jaxws</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-frontend-simple10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-frontend-simple</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-management10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-management</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-rs-client10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-rs-client</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-rs-extension-providers10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-rs-extension-providers</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-rs-service-description10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-rs-service-description</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-rs-sse10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-rs-sse</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-security-saml10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-security-saml</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-security10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-security</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-transports-http10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-transports-http</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-ws-addr10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-ws-addr</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-ws-policy10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-ws-policy</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-ws-security10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-ws-security</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cxf-rt-wsdl10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.1.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-wsdl</artifactId>
+      <version>4.1.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.components10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>geronimo-connector10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.geronimo.components</groupId>
+      <artifactId>geronimo-connector</artifactId>
+      <version>4.0.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.components10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>geronimo-transaction10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.geronimo.components</groupId>
+      <artifactId>geronimo-transaction</artifactId>
+      <version>4.0.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.mail10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>geronimo-mail_2.1_provider10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.0.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.geronimo.mail</groupId>
+      <artifactId>geronimo-mail_2.1_provider</artifactId>
+      <version>1.0.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.specs10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>geronimo-mail_2.1_spec10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.0.0-M110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-mail_2.1_spec</artifactId>
+      <version>1.0.0-M1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>johnzon-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.johnzon</groupId>
+      <artifactId>johnzon-core</artifactId>
+      <version>2.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>johnzon-jaxrs10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.johnzon</groupId>
+      <artifactId>johnzon-jaxrs</artifactId>
+      <version>2.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>johnzon-jsonb10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.johnzon</groupId>
+      <artifactId>johnzon-jsonb</artifactId>
+      <version>2.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>johnzon-mapper10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.johnzon</groupId>
+      <artifactId>johnzon-mapper</artifactId>
+      <version>2.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.myfaces.core10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>myfaces-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-api</artifactId>
+      <version>4.0.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.myfaces.core10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>myfaces-impl10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-impl</artifactId>
+      <version>4.0.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.neethi10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>neethi10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.2.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.neethi</groupId>
+      <artifactId>neethi</artifactId>
+      <version>3.2.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openejb.shade10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>quartz-openejb-shade10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.2.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openejb.shade</groupId>
+      <artifactId>quartz-openejb-shade</artifactId>
+      <version>2.2.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openjpa10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openjpa10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openjpa</groupId>
+      <artifactId>openjpa</artifactId>
+      <version>4.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-ee-common10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-ee-common</artifactId>
+      <version>4.0.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-ee10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-ee</artifactId>
+      <version>4.0.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-ejb10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-ejb</artifactId>
+      <version>4.0.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-el2210.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-el22</artifactId>
+      <version>4.0.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-impl10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-impl</artifactId>
+      <version>4.0.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-jsf10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-jsf</artifactId>
+      <version>4.0.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-spi10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-spi</artifactId>
+      <version>4.0.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openwebbeans-web10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.openwebbeans</groupId>
+      <artifactId>openwebbeans-web</artifactId>
+      <version>4.0.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.santuario10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xmlsec10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.510.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.santuario</groupId>
+      <artifactId>xmlsec</artifactId>
+      <version>3.0.5</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-catalina-ha10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-catalina-ha</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-catalina</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-coyote-ffm10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-coyote-ffm</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-coyote10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-coyote</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-dbcp10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-dbcp</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-el-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-el-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-jasper-el10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jasper-el</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-jasper10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jasper</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-jaspic-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jaspic-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-jdbc10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jdbc</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-jni10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jni</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-jsp-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jsp-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-servlet-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-servlet-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-ssi10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-ssi</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-storeconfig10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-storeconfig</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-tribes10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-tribes</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-util-scan10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-util-scan</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-util10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-util</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-websocket-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-websocket-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-websocket-client-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-websocket-client-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-websocket10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-websocket</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-dbcp2-shade10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>commons-dbcp2-shade</artifactId>
+      <version>10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>10.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>jakartaee-api</artifactId>
+      <version>10.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>mbean-annotation-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>mbean-annotation-api</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-api</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-client10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-client</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-core</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-cxf-rs10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-cxf-rs</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-cxf-transport10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-cxf-transport</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-cxf10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-cxf</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-ejbd10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-ejbd</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-hsql10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-hsql</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-http10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-http</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-javaagent10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-javaagent</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-jee-accessors10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-jee-accessors</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-jee10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-jee</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-jpa-integration10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-jpa-integration</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-loader10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-loader</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-rest10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-rest</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-server10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-server</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-webservices10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-webservices</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>taglibs-shade10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>taglibs-shade</artifactId>
+      <version>10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-catalina</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-common10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-common</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-config10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-config</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-jaxrs10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-jaxrs</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-jdbc10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-jdbc</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-juli10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-juli</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-loader10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-loader</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-mojarra10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-mojarra</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-myfaces10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-myfaces</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-security10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-security</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-webapp10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-webapp</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.ws.xmlschema10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xmlschema-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.3.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.ws.xmlschema</groupId>
+      <artifactId>xmlschema-core</artifactId>
+      <version>2.3.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>wss4j-bindings10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.wss4j</groupId>
+      <artifactId>wss4j-bindings</artifactId>
+      <version>3.0.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>wss4j-policy10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.wss4j</groupId>
+      <artifactId>wss4j-policy</artifactId>
+      <version>3.0.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>wss4j-ws-security-common10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.wss4j</groupId>
+      <artifactId>wss4j-ws-security-common</artifactId>
+      <version>3.0.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>wss4j-ws-security-dom10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.wss4j</groupId>
+      <artifactId>wss4j-ws-security-dom</artifactId>
+      <version>3.0.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>wss4j-ws-security-policy-stax10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.wss4j</groupId>
+      <artifactId>wss4j-ws-security-policy-stax</artifactId>
+      <version>3.0.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>wss4j-ws-security-stax10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.wss4j</groupId>
+      <artifactId>wss4j-ws-security-stax</artifactId>
+      <version>3.0.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xbean-asm9-shaded10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.2610.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-asm9-shaded</artifactId>
+      <version>4.26</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xbean-bundleutils10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.2610.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-bundleutils</artifactId>
+      <version>4.26</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xbean-finder-shaded10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.2610.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-finder-shaded</artifactId>
+      <version>4.26</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xbean-naming10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.2610.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-naming</artifactId>
+      <version>4.26</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xbean-reflect10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.2610.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-reflect</artifactId>
+      <version>4.26</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.bitbucket.b_c10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jose4j10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>0.9.610.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.bitbucket.b_c</groupId>
+      <artifactId>jose4j</artifactId>
+      <version>0.9.6</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>bcpkix-jdk15to1810.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.8010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-jdk15to18</artifactId>
+      <version>1.80</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>bcprov-jdk15to1810.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.8010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15to18</artifactId>
+      <version>1.80</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>bcutil-jdk15to1810.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.8010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcutil-jdk15to18</artifactId>
+      <version>1.80</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.codehaus.woodstox10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>stax2-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.2.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.codehaus.woodstox</groupId>
+      <artifactId>stax2-api</artifactId>
+      <version>4.2.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.cryptacular10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>cryptacular10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.2.710.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.cryptacular</groupId>
+      <artifactId>cryptacular</artifactId>
+      <version>1.2.7</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.eclipse.angus10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>angus-activation10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.0.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.eclipse.angus</groupId>
+      <artifactId>angus-activation</artifactId>
+      <version>2.0.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.eclipse.jdt10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>ecj10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.40.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.eclipse.jdt</groupId>
+      <artifactId>ecj</artifactId>
+      <version>3.40.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.glassfish.jaxb10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jaxb-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-core</artifactId>
+      <version>4.0.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.glassfish.jaxb10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>4.0.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.glassfish.jaxb10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>txw210.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>txw2</artifactId>
+      <version>4.0.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.hsqldb10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>hsqldb10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.7.410.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <version>2.7.4</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.jasypt10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jasypt10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.9.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.jasypt</groupId>
+      <artifactId>jasypt</artifactId>
+      <version>1.9.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.jvnet.staxex10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>stax-ex10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.jvnet.staxex</groupId>
+      <artifactId>stax-ex</artifactId>
+      <version>2.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.objectweb.howl10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>howl10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.0.1-110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.objectweb.howl</groupId>
+      <artifactId>howl</artifactId>
+      <version>1.0.1-1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.ow2.asm10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>asm10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>9.7.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>9.7.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>slf4j-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.0.1610.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.16</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>slf4j-jdk1410.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.0.1610.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>2.0.16</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.tomitribe10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>swizzle10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.tomitribe</groupId>
+      <artifactId>swizzle</artifactId>
+      <version>1.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>wsdl4j10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>wsdl4j10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.6.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>wsdl4j</groupId>
+      <artifactId>wsdl4j</artifactId>
+      <version>1.6.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>xml-resolver10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xml-resolver10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>xml-resolver</groupId>
+      <artifactId>xml-resolver</artifactId>
+      <version>1.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+</project>
 

@@ -17,79 +17,79 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <artifactId>polling-parent10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>jug10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.1-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <artifactId>polling-parent</artifactId>
+    <groupId>jug</groupId>
+    <version>10.0.1-TT.1-SNAPSHOT</version>
+  </parent>
 
-  <artifactId>polling-web10.0.1-TT.2-SNAPSHOT</artifactId>
-  <name>TomEE :: Examples :: Polling :: Web10.0.1-TT.2-SNAPSHOT</name>
-  <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
+  <artifactId>polling-web</artifactId>
+  <name>TomEE :: Examples :: Polling :: Web</name>
+  <packaging>war</packaging>
 
   <dependencies>
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-plus10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>tomee-plus</artifactId>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-tomee-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>arquillian-tomee-embedded</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>ziplock10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>ziplock</artifactId>
+    </dependency>
     <dependency>
-      <groupId>commons-io10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-io10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>polling-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>polling-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-war-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.4.010.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
         <configuration>
-          <failOnMissingWebXml>false10.0.1-TT.2-SNAPSHOT</failOnMissingWebXml>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
       <plugin>
-        <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomee-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+        <groupId>org.apache.tomee.maven</groupId>
+        <artifactId>tomee-maven-plugin</artifactId>
+        <version>${tomee.version}</version>
+      </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.5.110.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
         <configuration>
-          <source>1.810.0.1-TT.2-SNAPSHOT</source>
-          <target>1.810.0.1-TT.2-SNAPSHOT</target>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>2.18.110.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.18.1</version>
         <configuration> <!-- arquillian tomee embedded and openejb can conflict, since first one is suite scoped -->
-          <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
-10.0.1-TT.2-SNAPSHOT</project>
+          <reuseForks>false</reuseForks>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -29,226 +29,226 @@
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
   <parent>
-    <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-    <artifactId>boms10.0.1-TT.2-SNAPSHOT</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <groupId>org.apache.tomee.bom</groupId>
+    <artifactId>boms</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <artifactId>tomee-plume-api10.0.1-TT.2-SNAPSHOT</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>tomee-plume-api</artifactId>
 
-  <name>TomEE :: BOMs :: TomEE Plume API10.0.1-TT.2-SNAPSHOT</name>
+  <name>TomEE :: BOMs :: TomEE Plume API</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.geronimo.specs10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>geronimo-mail_2.1_spec10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.0.0-M110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-mail_2.1_spec</artifactId>
+      <version>1.0.0-M1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-el-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-el-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-jaspic-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jaspic-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-jsp-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jsp-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-servlet-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-servlet-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-websocket-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-websocket-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-websocket-client-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-websocket-client-api</artifactId>
+      <version>${tomcat.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>10.010.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>jakartaee-api</artifactId>
+      <version>10.0</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>mbean-annotation-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>mbean-annotation-api</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-api</artifactId>
+      <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.eclipse.microprofile.config10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-config-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.310.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.eclipse.microprofile.config</groupId>
+      <artifactId>microprofile-config-api</artifactId>
+      <version>3.0.3</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.eclipse.microprofile.fault-tolerance10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-fault-tolerance-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
+      <artifactId>microprofile-fault-tolerance-api</artifactId>
+      <version>4.0.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.eclipse.microprofile.health10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-health-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.eclipse.microprofile.health</groupId>
+      <artifactId>microprofile-health-api</artifactId>
+      <version>4.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.eclipse.microprofile.jwt10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-jwt-auth-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>2.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.eclipse.microprofile.jwt</groupId>
+      <artifactId>microprofile-jwt-auth-api</artifactId>
+      <version>2.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.eclipse.microprofile.metrics10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-metrics-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>5.0.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.eclipse.microprofile.metrics</groupId>
+      <artifactId>microprofile-metrics-api</artifactId>
+      <version>5.0.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.eclipse.microprofile.openapi10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-openapi-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.1.210.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.eclipse.microprofile.openapi</groupId>
+      <artifactId>microprofile-openapi-api</artifactId>
+      <version>3.1.2</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.eclipse.microprofile.rest.client10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>microprofile-rest-client-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.0.110.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.eclipse.microprofile.rest.client</groupId>
+      <artifactId>microprofile-rest-client-api</artifactId>
+      <version>3.0.1</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.glassfish10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakarta.faces10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.0.810.0.1-TT.2-SNAPSHOT</version>
+      <groupId>org.glassfish</groupId>
+      <artifactId>jakarta.faces</artifactId>
+      <version>4.0.8</version>
       <exclusions>
         <exclusion>
-          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+</project>
 

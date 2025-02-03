@@ -18,64 +18,64 @@
 -->
 <!-- $Rev: 661532 $ $Date: 2008-05-29 16:46:42 -0700 (Thu, 29 May 2008) $ -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-  <artifactId>ear-testing10.0.1-TT.2-SNAPSHOT</artifactId>
-  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Examples :: Ear Testing10.0.1-TT.2-SNAPSHOT</name>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.superbiz</groupId>
+  <artifactId>ear-testing</artifactId>
+  <version>10.0.1-TT.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>TomEE :: Examples :: Ear Testing</name>
   <modules>
-    <module>business-model10.0.1-TT.2-SNAPSHOT</module>
-    <module>business-logic10.0.1-TT.2-SNAPSHOT</module>
-  10.0.1-TT.2-SNAPSHOT</modules>
+    <module>business-model</module>
+    <module>business-logic</module>
+  </modules>
   <properties>
-    <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <repositories>
     <repository>
-      <id>apache-m2-snapshot10.0.1-TT.2-SNAPSHOT</id>
-      <name>Apache Snapshot Repository10.0.1-TT.2-SNAPSHOT</name>
-      <url>https://repository.apache.org/content/groups/snapshots/10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</repository>
-  10.0.1-TT.2-SNAPSHOT</repositories>
+      <id>apache-m2-snapshot</id>
+      <name>Apache Snapshot Repository</name>
+      <url>https://repository.apache.org/content/groups/snapshots/</url>
+    </repository>
+  </repositories>
   <build>
-    <defaultGoal>install10.0.1-TT.2-SNAPSHOT</defaultGoal>
+    <defaultGoal>install</defaultGoal>
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-          <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-          <version>3.13.010.0.1-TT.2-SNAPSHOT</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.13.0</version>
           <configuration>
-            <source>1.810.0.1-TT.2-SNAPSHOT</source>
-            <target>1.810.0.1-TT.2-SNAPSHOT</target>
-          10.0.1-TT.2-SNAPSHOT</configuration>
-        10.0.1-TT.2-SNAPSHOT</plugin>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>
         <plugin>
-          <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-          <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-          <version>3.5.210.0.1-TT.2-SNAPSHOT</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.5.2</version>
           <configuration>
-            <argLine>-Djdk.attach.allowAttachSelf10.0.1-TT.2-SNAPSHOT</argLine>
-          10.0.1-TT.2-SNAPSHOT</configuration>
-        10.0.1-TT.2-SNAPSHOT</plugin>
-      10.0.1-TT.2-SNAPSHOT</plugins>
-    10.0.1-TT.2-SNAPSHOT</pluginManagement>
-  10.0.1-TT.2-SNAPSHOT</build>
+            <argLine>-Djdk.attach.allowAttachSelf</argLine>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>10.010.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.tomee</groupId>
+        <artifactId>jakartaee-api</artifactId>
+        <version>10.0</version>
+      </dependency>
       <dependency>
-        <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>4.13.210.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
-    10.0.1-TT.2-SNAPSHOT</dependencies>
-  10.0.1-TT.2-SNAPSHOT</dependencyManagement>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.2</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -83,12 +83,12 @@
   -->
   <distributionManagement>
     <repository>
-      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
-      <url>file://${basedir}/target/repo/10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</repository>
+      <id>localhost</id>
+      <url>file://${basedir}/target/repo/</url>
+    </repository>
     <snapshotRepository>
-      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
-      <url>file://${basedir}/target/snapshot-repo/10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</snapshotRepository>
-  10.0.1-TT.2-SNAPSHOT</distributionManagement>
-10.0.1-TT.2-SNAPSHOT</project>
+      <id>localhost</id>
+      <url>file://${basedir}/target/snapshot-repo/</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>

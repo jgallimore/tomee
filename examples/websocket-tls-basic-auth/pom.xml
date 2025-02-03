@@ -17,85 +17,85 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-  <artifactId>websocket-tls-basic-auth10.0.1-TT.2-SNAPSHOT</artifactId>
-  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Examples :: WebSocket with tls and basic auth Example10.0.1-TT.2-SNAPSHOT</name>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.superbiz</groupId>
+  <artifactId>websocket-tls-basic-auth</artifactId>
+  <version>10.0.1-TT.2-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>TomEE :: Examples :: WebSocket with tls and basic auth Example</name>
   <properties>
-    <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
-    <jakartaee-api.version>10.010.0.1-TT.2-SNAPSHOT</jakartaee-api.version>
-    <jakarta.websocket-api.version>2.0.010.0.1-TT.2-SNAPSHOT</jakarta.websocket-api.version>
-    <tomee.classifier>webprofile10.0.1-TT.2-SNAPSHOT</tomee.classifier>
-    <tomcat.version>10.1.3410.0.1-TT.2-SNAPSHOT</tomcat.version>
-    <junit.version>4.13.210.0.1-TT.2-SNAPSHOT</junit.version>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jakartaee-api.version>10.0</jakartaee-api.version>
+    <jakarta.websocket-api.version>2.0.0</jakarta.websocket-api.version>
+    <tomee.classifier>webprofile</tomee.classifier>
+    <tomcat.version>10.1.34</tomcat.version>
+    <junit.version>4.13.2</junit.version>
+  </properties>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${jakartaee-api.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>jakartaee-api</artifactId>
+      <version>${jakartaee-api.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-api</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomcat-websocket10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-websocket</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>jakarta.websocket10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakarta.websocket-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${jakarta.websocket-api.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>jakarta.websocket</groupId>
+      <artifactId>jakarta.websocket-api</artifactId>
+      <version>${jakarta.websocket-api.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <!--tests-->
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${junit.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>arquillian-tomee-remote</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.9.3.Final10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <version>1.9.3.Final</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.container10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-container-test-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.9.3.Final10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>org.jboss.arquillian.container</groupId>
+      <artifactId>arquillian-container-test-api</artifactId>
+      <version>1.9.3.Final</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.13.010.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
         <configuration>
-          <source>1.810.0.1-TT.2-SNAPSHOT</source>
-          <target>1.810.0.1-TT.2-SNAPSHOT</target>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
       
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+    </plugins>
+  </build>
   <!--
    This section allows you to configure where to publish libraries for sharing.
    It is not required and may be deleted.  For more information see:
@@ -103,12 +103,12 @@
    -->
   <distributionManagement>
     <repository>
-      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
-      <url>file://${basedir}/target/repo/10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</repository>
+      <id>localhost</id>
+      <url>file://${basedir}/target/repo/</url>
+    </repository>
     <snapshotRepository>
-      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
-      <url>file://${basedir}/target/snapshot-repo/10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</snapshotRepository>
-  10.0.1-TT.2-SNAPSHOT</distributionManagement>
-10.0.1-TT.2-SNAPSHOT</project>
+      <id>localhost</id>
+      <url>file://${basedir}/target/snapshot-repo/</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>

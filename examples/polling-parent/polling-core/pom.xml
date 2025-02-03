@@ -18,34 +18,34 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>polling-parent10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>jug10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.1-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>polling-parent</artifactId>
+    <groupId>jug</groupId>
+    <version>10.0.1-TT.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>polling-core10.0.1-TT.2-SNAPSHOT</artifactId>
-  <name>TomEE :: Examples :: Polling :: Core10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>polling-core</artifactId>
+  <name>TomEE :: Examples :: Polling :: Core</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-plus-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>tomee-plus-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-plus10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>tomee-plus</artifactId>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>polling-domain10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>polling-domain</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+</project>

@@ -20,348 +20,348 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <artifactId>tomee-project10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <artifactId>tomee-project</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <artifactId>tomee10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: TomEE10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>tomee</artifactId>
+  <packaging>pom</packaging>
+  <name>TomEE :: TomEE</name>
 
 
   <!-- just set the good JPA provider. As openejb-core is needed in all modules it is easier to do it here -->
   <profiles>
     <profile>
-      <id>main10.0.1-TT.2-SNAPSHOT</id>
+      <id>main</id>
       <activation>
-        <activeByDefault>true10.0.1-TT.2-SNAPSHOT</activeByDefault>
-      10.0.1-TT.2-SNAPSHOT</activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
       <modules>
-        <module>tomee-config10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-bootstrap10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-loader10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-catalina10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-common10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-myfaces10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-mojarra10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-jdbc10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-jaxrs10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-webapp10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-webaccess10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-plus-webapp10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-plume-webapp10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-webservices10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-embedded10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-microprofile10.0.1-TT.2-SNAPSHOT</module>
-        <module>apache-tomee10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-util10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-juli10.0.1-TT.2-SNAPSHOT</module>
-        <module>tomee-overlay-runner10.0.1-TT.2-SNAPSHOT</module>
-        <!--<module>tomee-deb10.0.1-TT.2-SNAPSHOT</module>-->
-        <module>tomee-security10.0.1-TT.2-SNAPSHOT</module>
-      10.0.1-TT.2-SNAPSHOT</modules>
-    10.0.1-TT.2-SNAPSHOT</profile>
+        <module>tomee-config</module>
+        <module>tomee-bootstrap</module>
+        <module>tomee-loader</module>
+        <module>tomee-catalina</module>
+        <module>tomee-common</module>
+        <module>tomee-myfaces</module>
+        <module>tomee-mojarra</module>
+        <module>tomee-jdbc</module>
+        <module>tomee-jaxrs</module>
+        <module>tomee-webapp</module>
+        <module>tomee-webaccess</module>
+        <module>tomee-plus-webapp</module>
+        <module>tomee-plume-webapp</module>
+        <module>tomee-webservices</module>
+        <module>tomee-embedded</module>
+        <module>tomee-microprofile</module>
+        <module>apache-tomee</module>
+        <module>tomee-util</module>
+        <module>tomee-juli</module>
+        <module>tomee-overlay-runner</module>
+        <!--<module>tomee-deb</module>-->
+        <module>tomee-security</module>
+      </modules>
+    </profile>
     <profile>
-      <id>plume10.0.1-TT.2-SNAPSHOT</id>
+      <id>plume</id>
       <modules>
-        <module>tomee-plume-webapp10.0.1-TT.2-SNAPSHOT</module>
-        <module>apache-tomee10.0.1-TT.2-SNAPSHOT</module>
-      10.0.1-TT.2-SNAPSHOT</modules>
-    10.0.1-TT.2-SNAPSHOT</profile>
+        <module>tomee-plume-webapp</module>
+        <module>apache-tomee</module>
+      </modules>
+    </profile>
     <profile>
-      <id>openjpa10.0.1-TT.2-SNAPSHOT</id>
+      <id>openjpa</id>
       <activation>
-        <activeByDefault>true10.0.1-TT.2-SNAPSHOT</activeByDefault>
-      10.0.1-TT.2-SNAPSHOT</activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
       <dependencies>
         <dependency>
-          <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-          <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>openejb-core</artifactId>
           <exclusions>
             <exclusion>
-              <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-              <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-            10.0.1-TT.2-SNAPSHOT</exclusion>
-          10.0.1-TT.2-SNAPSHOT</exclusions>
-        10.0.1-TT.2-SNAPSHOT</dependency>
-      10.0.1-TT.2-SNAPSHOT</dependencies>
-    10.0.1-TT.2-SNAPSHOT</profile>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>jakartaee-api</artifactId>
+            </exclusion>
+          </exclusions>
+        </dependency>
+      </dependencies>
+    </profile>
     <profile>
-      <id>hibernate10.0.1-TT.2-SNAPSHOT</id>
+      <id>hibernate</id>
       <activation>
         <property>
-          <name>hibernate10.0.1-TT.2-SNAPSHOT</name>
-        10.0.1-TT.2-SNAPSHOT</property>
-      10.0.1-TT.2-SNAPSHOT</activation>
+          <name>hibernate</name>
+        </property>
+      </activation>
       <dependencies>
         <dependency> <!-- to avoid to force exclusions everywhere -->
-          <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-          <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>openejb-core</artifactId>
           <exclusions>
             <exclusion>
-              <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-              <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-            10.0.1-TT.2-SNAPSHOT</exclusion>
-          10.0.1-TT.2-SNAPSHOT</exclusions>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>jakartaee-api</artifactId>
+            </exclusion>
+          </exclusions>
+        </dependency>
         <dependency>
-          <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-          <artifactId>openejb-core-hibernate10.0.1-TT.2-SNAPSHOT</artifactId>
-          <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-          <type>pom10.0.1-TT.2-SNAPSHOT</type>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>openejb-core-hibernate</artifactId>
+          <version>${project.version}</version>
+          <type>pom</type>
           <exclusions>
             <exclusion>
-              <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
-              <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-            10.0.1-TT.2-SNAPSHOT</exclusion>
-          10.0.1-TT.2-SNAPSHOT</exclusions>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+              <groupId>*</groupId>
+              <artifactId>*</artifactId>
+            </exclusion>
+          </exclusions>
+        </dependency>
         <dependency>
-          <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-          <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-          <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
-      10.0.1-TT.2-SNAPSHOT</dependencies>
-    10.0.1-TT.2-SNAPSHOT</profile>
-  10.0.1-TT.2-SNAPSHOT</profiles>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-          <artifactId>maven-pmd-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        10.0.1-TT.2-SNAPSHOT</plugin>
-      10.0.1-TT.2-SNAPSHOT</plugins>
-    10.0.1-TT.2-SNAPSHOT</pluginManagement>
-  10.0.1-TT.2-SNAPSHOT</build>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.eclipse.jdt10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>ecj10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.ecj}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.eclipse.jdt</groupId>
+        <artifactId>ecj</artifactId>
+        <version>${version.ecj}</version>
+      </dependency>
       <dependency>
-        <groupId>jakarta.servlet10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>jstl10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>1.210.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.velocity10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>velocity-engine-core10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>2.4.110.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.velocity</groupId>
+        <artifactId>velocity-engine-core</artifactId>
+        <version>2.4.1</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.geronimo.specs10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>geronimo-j2ee-deployment_1.1_spec10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>1.110.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.geronimo.specs</groupId>
+        <artifactId>geronimo-j2ee-deployment_1.1_spec</artifactId>
+        <version>1.1</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.ant10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>ant-nodeps10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>1.8.110.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.ant</groupId>
+        <artifactId>ant-nodeps</artifactId>
+        <version>1.8.1</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomcat-jdbc10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jdbc</artifactId>
+        <version>${tomcat.version}</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomcat-dbcp10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-dbcp</artifactId>
+        <version>${tomcat.version}</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomcat-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-catalina</artifactId>
+        <version>${tomcat.version}</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomcat-catalina-ha10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-catalina-ha</artifactId>
+        <version>${tomcat.version}</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomcat-coyote10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-coyote</artifactId>
+        <version>${tomcat.version}</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomcat-jasper10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jasper</artifactId>
+        <version>${tomcat.version}</version>
         <exclusions>
           <exclusion>
-            <groupId>org.eclipse.jdt10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>ecj10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
-        10.0.1-TT.2-SNAPSHOT</exclusions>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.eclipse.jdt</groupId>
+            <artifactId>ecj</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
       <dependency>
-        <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openwebbeans-jsf10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.openwebbeans}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.openwebbeans</groupId>
+        <artifactId>openwebbeans-jsf</artifactId>
+        <version>${version.openwebbeans}</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.myfaces.core10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>myfaces-api10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.myfaces}10.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.myfaces.core</groupId>
+        <artifactId>myfaces-api</artifactId>
+        <version>${version.myfaces}</version>
         <exclusions>
           <exclusion>
-            <groupId>org.apache.geronimo.specs10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>*</artifactId>
+          </exclusion>
           <exclusion>
-            <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>*</artifactId>
+          </exclusion>
           <exclusion>
-            <groupId>jakarta.enterprise10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakarta.enterprise.cdi-api10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+          </exclusion>
           <exclusion>
-            <groupId>jakarta.inject10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakarta.inject-api10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
-        10.0.1-TT.2-SNAPSHOT</exclusions>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
       <dependency>
-        <groupId>org.apache.myfaces.core10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>myfaces-impl10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.myfaces}10.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.myfaces.core</groupId>
+        <artifactId>myfaces-impl</artifactId>
+        <version>${version.myfaces}</version>
         <exclusions>
           <exclusion>
-            <groupId>org.apache.geronimo.specs10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>*</artifactId>
+          </exclusion>
           <exclusion>
-            <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>*</artifactId>
+          </exclusion>
           <exclusion>
-            <groupId>jakarta.validation10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakarta.validation-api10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+          </exclusion>
           <exclusion>
-            <groupId>jakarta.annotation10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakarta.annotation-api10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+          </exclusion>
           <exclusion>
-            <groupId>jakarta.enterprise10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakarta.enterprise.cdi-api10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+          </exclusion>
           <exclusion>
-            <groupId>jakarta.inject10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakarta.inject-api10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
-        10.0.1-TT.2-SNAPSHOT</exclusions>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-client10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-client</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomcat10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-        <type>zip10.0.1-TT.2-SNAPSHOT</type>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat</artifactId>
+        <version>${tomcat.version}</version>
+        <type>zip</type>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-server10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-server</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-ejbd10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-ejbd</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-rest10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-rest</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-cxf-rs10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-cxf-rs</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-http10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-http</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomcat-websocket10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-websocket</artifactId>
+        <version>${tomcat.version}</version>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-cxf-transport10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-cxf-transport</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-loader10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-loader</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-jee10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-jee</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>org.glassfish10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>jakarta.faces10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.mojarra}10.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.glassfish</groupId>
+        <artifactId>jakarta.faces</artifactId>
+        <version>${version.mojarra}</version>
         <exclusions>
           <exclusion>
-            <groupId>jakarta.annotation10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakarta.annotation-api10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
-        10.0.1-TT.2-SNAPSHOT</exclusions>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-webservices10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-webservices</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-cxf10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-cxf</artifactId>
+        <version>${project.version}</version>
         <exclusions>
           <exclusion>
-            <groupId>jakarta.xml.soap10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakarta.xml.soap-api10.0.1-TT.2-SNAPSHOT</artifactId>
-          10.0.1-TT.2-SNAPSHOT</exclusion>
-        10.0.1-TT.2-SNAPSHOT</exclusions>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>jakarta.xml.soap</groupId>
+            <artifactId>jakarta.xml.soap-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
       <dependency>
-        <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>openejb-core-eclipselink10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      10.0.1-TT.2-SNAPSHOT</dependency>
-    10.0.1-TT.2-SNAPSHOT</dependencies>
-  10.0.1-TT.2-SNAPSHOT</dependencyManagement>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>openejb-core-eclipselink</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
+</project>

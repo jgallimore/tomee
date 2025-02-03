@@ -18,20 +18,20 @@
 <!-- $Rev: 1387962 $ $Date: 2012-09-20 05:53:17 -0500 (Thu, 20 Sep 2012)
   $ -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-    <artifactId>connector-ear10.0.1-TT.2-SNAPSHOT</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <artifactId>connector-sample-api10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Connector Examples :: Connector in EAR :: API10.0.1-TT.2-SNAPSHOT</name>
+    <groupId>org.superbiz</groupId>
+    <artifactId>connector-ear</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <artifactId>connector-sample-api</artifactId>
+  <packaging>jar</packaging>
+  <name>TomEE :: Connector Examples :: Connector in EAR :: API</name>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>jakartaee-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>

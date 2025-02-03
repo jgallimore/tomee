@@ -18,48 +18,48 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>maven10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>maven</artifactId>
+    <groupId>org.apache.tomee.maven</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>applicationcomposer-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>maven-plugin10.0.1-TT.2-SNAPSHOT</packaging>
-  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  <name>TomEE :: Maven Plugins :: ApplicationComposer Maven Plugin10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>applicationcomposer-maven-plugin</artifactId>
+  <packaging>maven-plugin</packaging>
+  <version>10.0.1-TT.2-SNAPSHOT</version>
+  <name>TomEE :: Maven Plugins :: ApplicationComposer Maven Plugin</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>maven-plugin-api10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>maven-project10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-project</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-cxf-rs10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-cxf-rs</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>maven-util10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.parent.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>maven-util</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
     <dependency>
-      <groupId>org.apache.maven.plugin-tools10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>maven-plugin-annotations10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.maven.plugin-tools</groupId>
+      <artifactId>maven-plugin-annotations</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>maven-archiver10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.6.310.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-archiver</artifactId>
+      <version>3.6.3</version>
+    </dependency>
+  </dependencies>
 
   <properties>
-    <maven-plugin.prefix>applicationcomposer10.0.1-TT.2-SNAPSHOT</maven-plugin.prefix>
-  10.0.1-TT.2-SNAPSHOT</properties>
-10.0.1-TT.2-SNAPSHOT</project>
+    <maven-plugin.prefix>applicationcomposer</maven-plugin.prefix>
+  </properties>
+</project>

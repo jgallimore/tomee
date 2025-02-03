@@ -17,151 +17,151 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</parent>
+        <artifactId>tck</artifactId>
+        <groupId>org.apache.tomee</groupId>
+        <version>10.0.1-TT.2-SNAPSHOT</version>
+    </parent>
 
-    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-    <artifactId>concurrency-signature-test10.0.1-TT.2-SNAPSHOT</artifactId>
-    <name>TomEE :: TCK :: Concurrency Signature Tests10.0.1-TT.2-SNAPSHOT</name>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>concurrency-signature-test</artifactId>
+    <name>TomEE :: TCK :: Concurrency Signature Tests</name>
 
     <properties>
-        <jakarta.concurrent.version>3.0.410.0.1-TT.2-SNAPSHOT</jakarta.concurrent.version>
-        <sigtest.version>2.310.0.1-TT.2-SNAPSHOT</sigtest.version>
-    10.0.1-TT.2-SNAPSHOT</properties>
+        <jakarta.concurrent.version>3.0.4</jakarta.concurrent.version>
+        <sigtest.version>2.3</sigtest.version>
+    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.enterprise.concurrent10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>jakarta.enterprise.concurrent-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${jakarta.concurrent.version}10.0.1-TT.2-SNAPSHOT</version>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>jakarta.enterprise.concurrent</groupId>
+            <artifactId>jakarta.enterprise.concurrent-tck</artifactId>
+            <version>${jakarta.concurrent.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
-            <groupId>jakarta.tck10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>sigtest-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${sigtest.version}10.0.1-TT.2-SNAPSHOT</version>
-            <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>jakarta.tck</groupId>
+            <artifactId>sigtest-maven-plugin</artifactId>
+            <version>${sigtest.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
-            <groupId>org.testng10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>testng10.0.1-TT.2-SNAPSHOT</artifactId>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+        </dependency>
         <dependency>
-            <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>slf4j-api10.0.1-TT.2-SNAPSHOT</artifactId>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
-            <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>slf4j-jdk1410.0.1-TT.2-SNAPSHOT</artifactId>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- Arquillian Implementation for TestNG -->
         <dependency>
-            <groupId>org.jboss.arquillian.testng10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>arquillian-testng-container10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.jboss.arquillian.testng</groupId>
+            <artifactId>arquillian-testng-container</artifactId>
+            <version>${version.arquillian}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- Arquillian Deps for Apache TomEE -->
         <dependency>
-            <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-            <type>zip10.0.1-TT.2-SNAPSHOT</type>
-            <classifier>plus10.0.1-TT.2-SNAPSHOT</classifier>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>apache-tomee</artifactId>
+            <version>${project.version}</version>
+            <type>zip</type>
+            <classifier>plus</classifier>
+            <scope>test</scope>
+        </dependency>
         <dependency>
-            <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
-    10.0.1-TT.2-SNAPSHOT</dependencies>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>arquillian-tomee-remote</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <profiles>
         <profile>
-            <id>tck-concurrency10.0.1-TT.2-SNAPSHOT</id>
+            <id>tck-concurrency</id>
             <build>
                 <testResources>
                     <testResource>
-                        <directory>src/test/resources10.0.1-TT.2-SNAPSHOT</directory>
-                        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
-                    10.0.1-TT.2-SNAPSHOT</testResource>
-                10.0.1-TT.2-SNAPSHOT</testResources>
+                        <directory>src/test/resources</directory>
+                        <filtering>true</filtering>
+                    </testResource>
+                </testResources>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-                        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>copy10.0.1-TT.2-SNAPSHOT</id>
-                                <phase>generate-test-resources10.0.1-TT.2-SNAPSHOT</phase>
+                                <id>copy</id>
+                                <phase>generate-test-resources</phase>
                                 <goals>
-                                    <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
-                                10.0.1-TT.2-SNAPSHOT</goals>
+                                    <goal>copy</goal>
+                                </goals>
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-                                            <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-                                            <version>${version.jakartaee-api}10.0.1-TT.2-SNAPSHOT</version>
-                                            <type>jar10.0.1-TT.2-SNAPSHOT</type>
-                                            <overWrite>true10.0.1-TT.2-SNAPSHOT</overWrite>
+                                            <groupId>org.apache.tomee</groupId>
+                                            <artifactId>jakartaee-api</artifactId>
+                                            <version>${version.jakartaee-api}</version>
+                                            <type>jar</type>
+                                            <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}/signaturedirectory
-                                            10.0.1-TT.2-SNAPSHOT</outputDirectory>
-                                            <destFileName>jakartaee-api.jar10.0.1-TT.2-SNAPSHOT</destFileName>
-                                        10.0.1-TT.2-SNAPSHOT</artifactItem>
-                                    10.0.1-TT.2-SNAPSHOT</artifactItems>
-                                10.0.1-TT.2-SNAPSHOT</configuration>
-                            10.0.1-TT.2-SNAPSHOT</execution>
-                        10.0.1-TT.2-SNAPSHOT</executions>
-                    10.0.1-TT.2-SNAPSHOT</plugin>
+                                            </outputDirectory>
+                                            <destFileName>jakartaee-api.jar</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-                        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-                        <version>${surefire.version}10.0.1-TT.2-SNAPSHOT</version>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${surefire.version}</version>
                         <configuration>
-                            <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
-                            <forkCount>110.0.1-TT.2-SNAPSHOT</forkCount>
+                            <reuseForks>false</reuseForks>
+                            <forkCount>1</forkCount>
                             <dependenciesToScan>
-                                <dependency>jakarta.enterprise.concurrent:jakarta.enterprise.concurrent-tck10.0.1-TT.2-SNAPSHOT</dependency>
-                            10.0.1-TT.2-SNAPSHOT</dependenciesToScan>
+                                <dependency>jakarta.enterprise.concurrent:jakarta.enterprise.concurrent-tck</dependency>
+                            </dependenciesToScan>
                             <includes>
-                                <include>**/signature/**10.0.1-TT.2-SNAPSHOT</include>
-                            10.0.1-TT.2-SNAPSHOT</includes>
+                                <include>**/signature/**</include>
+                            </includes>
                             <systemProperties>
-                                <java.util.logging.config.file>logging.properties10.0.1-TT.2-SNAPSHOT</java.util.logging.config.file>
-                                <jimage.dir>${project.build.directory}/jimage10.0.1-TT.2-SNAPSHOT</jimage.dir>
+                                <java.util.logging.config.file>logging.properties</java.util.logging.config.file>
+                                <jimage.dir>${project.build.directory}/jimage</jimage.dir>
                                 <signature.sigTestClasspath>
                                     ${project.build.directory}/signaturedirectory/jakartaee-api.jar:${project.build.directory}/jimage/java.base:${project.build.directory}/jimage/java.rmi:${project.build.directory}/jimage/java.sql:${project.build.directory}/jimage/java.naming
-                                10.0.1-TT.2-SNAPSHOT</signature.sigTestClasspath>
-                            10.0.1-TT.2-SNAPSHOT</systemProperties>
-                        10.0.1-TT.2-SNAPSHOT</configuration>
-                    10.0.1-TT.2-SNAPSHOT</plugin>
+                                </signature.sigTestClasspath>
+                            </systemProperties>
+                        </configuration>
+                    </plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-                        <artifactId>maven-surefire-report-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-                        <version>${surefire.version}10.0.1-TT.2-SNAPSHOT</version>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-report-plugin</artifactId>
+                        <version>${surefire.version}</version>
                         <executions>
                             <execution>
-                                <id>generate-test-report10.0.1-TT.2-SNAPSHOT</id>
-                                <phase>test10.0.1-TT.2-SNAPSHOT</phase>
+                                <id>generate-test-report</id>
+                                <phase>test</phase>
                                 <goals>
-                                    <goal>report-only10.0.1-TT.2-SNAPSHOT</goal>
-                                10.0.1-TT.2-SNAPSHOT</goals>
-                            10.0.1-TT.2-SNAPSHOT</execution>
-                        10.0.1-TT.2-SNAPSHOT</executions>
+                                    <goal>report-only</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/surefire-reports10.0.1-TT.2-SNAPSHOT</outputDirectory>
-                            <outputName>test-report10.0.1-TT.2-SNAPSHOT</outputName>
-                        10.0.1-TT.2-SNAPSHOT</configuration>
-                    10.0.1-TT.2-SNAPSHOT</plugin>
-                10.0.1-TT.2-SNAPSHOT</plugins>
-            10.0.1-TT.2-SNAPSHOT</build>
-        10.0.1-TT.2-SNAPSHOT</profile>
-    10.0.1-TT.2-SNAPSHOT</profiles>
-10.0.1-TT.2-SNAPSHOT</project>
+                            <outputDirectory>${project.build.directory}/surefire-reports</outputDirectory>
+                            <outputName>test-report</outputName>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

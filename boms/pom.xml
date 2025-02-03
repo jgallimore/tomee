@@ -22,41 +22,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <artifactId>tomee-project10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <artifactId>tomee-project</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-  <artifactId>boms10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: BOMs10.0.1-TT.2-SNAPSHOT</name>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.tomee.bom</groupId>
+  <artifactId>boms</artifactId>
+  <packaging>pom</packaging>
+  <name>TomEE :: BOMs</name>
 
   <modules>
-    <module>jaxb-runtime10.0.1-TT.2-SNAPSHOT</module>
-    <module>tomee-microprofile10.0.1-TT.2-SNAPSHOT</module>
-    <module>tomee-webprofile10.0.1-TT.2-SNAPSHOT</module>
-    <module>tomee-plume10.0.1-TT.2-SNAPSHOT</module>
-    <module>tomee-plus10.0.1-TT.2-SNAPSHOT</module>
-    <module>tomee-microprofile-api10.0.1-TT.2-SNAPSHOT</module>
-    <module>tomee-webprofile-api10.0.1-TT.2-SNAPSHOT</module>
-    <module>tomee-plume-api10.0.1-TT.2-SNAPSHOT</module>
-    <module>tomee-plus-api10.0.1-TT.2-SNAPSHOT</module>
-  10.0.1-TT.2-SNAPSHOT</modules>
+    <module>jaxb-runtime</module>
+    <module>tomee-microprofile</module>
+    <module>tomee-webprofile</module>
+    <module>tomee-plume</module>
+    <module>tomee-plus</module>
+    <module>tomee-microprofile-api</module>
+    <module>tomee-webprofile-api</module>
+    <module>tomee-plume-api</module>
+    <module>tomee-plus-api</module>
+  </modules>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-javadoc-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.plugin.javadoc}10.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${version.plugin.javadoc}</version>
         <configuration>
-          <skip>true10.0.1-TT.2-SNAPSHOT</skip>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
-10.0.1-TT.2-SNAPSHOT</project>
+</project>
 

@@ -17,60 +17,60 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-    <artifactId>connector-ear10.0.1-TT.2-SNAPSHOT</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <artifactId>connector-sample-ear10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>ear10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Connector Examples :: Connector in EAR :: EAR Packaging10.0.1-TT.2-SNAPSHOT</name>
+    <groupId>org.superbiz</groupId>
+    <artifactId>connector-ear</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>connector-sample-ear</artifactId>
+  <packaging>ear</packaging>
+  <name>TomEE :: Connector Examples :: Connector in EAR :: EAR Packaging</name>
   <properties>
-    <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <dependencies>
     <dependency>
-      <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>connector-sample-rar10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-      <type>rar10.0.1-TT.2-SNAPSHOT</type>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.superbiz</groupId>
+      <artifactId>connector-sample-rar</artifactId>
+      <version>${project.version}</version>
+      <type>rar</type>
+    </dependency>
     <dependency>
-      <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>connector-sample-war10.0.1-TT.2-SNAPSHOT</artifactId>
-      <type>war10.0.1-TT.2-SNAPSHOT</type>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.superbiz</groupId>
+      <artifactId>connector-sample-war</artifactId>
+      <type>war</type>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>connector-sample-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <type>jar10.0.1-TT.2-SNAPSHOT</type>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>org.superbiz</groupId>
+      <artifactId>connector-sample-api</artifactId>
+      <type>jar</type>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-ear-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.3.010.0.1-TT.2-SNAPSHOT</version>
+        <artifactId>maven-ear-plugin</artifactId>
+        <version>3.3.0</version>
         <configuration>
-          <version>610.0.1-TT.2-SNAPSHOT</version>
-          <generateApplicationXml>true10.0.1-TT.2-SNAPSHOT</generateApplicationXml>
-          <defaultLibBundleDir>lib10.0.1-TT.2-SNAPSHOT</defaultLibBundleDir>
+          <version>6</version>
+          <generateApplicationXml>true</generateApplicationXml>
+          <defaultLibBundleDir>lib</defaultLibBundleDir>
           <modules>
             <webModule>
-              <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-              <artifactId>connector-sample-war10.0.1-TT.2-SNAPSHOT</artifactId>
-              <contextRoot>/sample10.0.1-TT.2-SNAPSHOT</contextRoot>
-            10.0.1-TT.2-SNAPSHOT</webModule>
+              <groupId>org.superbiz</groupId>
+              <artifactId>connector-sample-war</artifactId>
+              <contextRoot>/sample</contextRoot>
+            </webModule>
             <rarModule>
-              <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-              <artifactId>connector-sample-rar10.0.1-TT.2-SNAPSHOT</artifactId>
-            10.0.1-TT.2-SNAPSHOT</rarModule>
-          10.0.1-TT.2-SNAPSHOT</modules>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+              <groupId>org.superbiz</groupId>
+              <artifactId>connector-sample-rar</artifactId>
+            </rarModule>
+          </modules>
+        </configuration>
+      </plugin>
       
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
-10.0.1-TT.2-SNAPSHOT</project>
+    </plugins>
+  </build>
+</project>

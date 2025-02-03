@@ -17,120 +17,120 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-  <artifactId>change-jaxws-url10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
-  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  <name>TomEE :: Web Examples :: Change JAXWS URL10.0.1-TT.2-SNAPSHOT</name>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.superbiz</groupId>
+  <artifactId>change-jaxws-url</artifactId>
+  <packaging>war</packaging>
+  <version>10.0.1-TT.2-SNAPSHOT</version>
+  <name>TomEE :: Web Examples :: Change JAXWS URL</name>
   <properties>
-    <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
-    <tomee.version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</tomee.version>
-  10.0.1-TT.2-SNAPSHOT</properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <tomee.version>10.0.1-TT.2-SNAPSHOT</tomee.version>
+  </properties>
   <repositories>
     <repository>
-      <id>apache-m2-snapshot10.0.1-TT.2-SNAPSHOT</id>
-      <name>Apache Snapshot Repository10.0.1-TT.2-SNAPSHOT</name>
-      <url>https://repository.apache.org/content/groups/snapshots10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</repository>
-  10.0.1-TT.2-SNAPSHOT</repositories>
+      <id>apache-m2-snapshot</id>
+      <name>Apache Snapshot Repository</name>
+      <url>https://repository.apache.org/content/groups/snapshots</url>
+    </repository>
+  </repositories>
   <pluginRepositories>
     <pluginRepository>
-      <id>apache-m2-snapshot10.0.1-TT.2-SNAPSHOT</id>
-      <name>Apache Snapshot Repository10.0.1-TT.2-SNAPSHOT</name>
-      <url>https://repository.apache.org/content/groups/snapshots10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</pluginRepository>
-  10.0.1-TT.2-SNAPSHOT</pluginRepositories>
+      <id>apache-m2-snapshot</id>
+      <name>Apache Snapshot Repository</name>
+      <url>https://repository.apache.org/content/groups/snapshots</url>
+    </pluginRepository>
+  </pluginRepositories>
   <build>
-    <finalName>${project.artifactId}10.0.1-TT.2-SNAPSHOT</finalName>
-    <defaultGoal>package10.0.1-TT.2-SNAPSHOT</defaultGoal>
+    <finalName>${project.artifactId}</finalName>
+    <defaultGoal>package</defaultGoal>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.13.010.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
         <configuration>
-          <source>1.810.0.1-TT.2-SNAPSHOT</source>
-          <target>1.810.0.1-TT.2-SNAPSHOT</target>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-war-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.4.010.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
         <configuration>
-          <failOnMissingWebXml>false10.0.1-TT.2-SNAPSHOT</failOnMissingWebXml>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
       <plugin>
-        <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomee-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.tomee.maven</groupId>
+        <artifactId>tomee-maven-plugin</artifactId>
+        <version>${tomee.version}</version>
         <configuration>
-          <tomeeVersion>${tomee.version}10.0.1-TT.2-SNAPSHOT</tomeeVersion>
-          <tomeeClassifier>plus10.0.1-TT.2-SNAPSHOT</tomeeClassifier>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <tomeeVersion>${tomee.version}</tomeeVersion>
+          <tomeeClassifier>plus</tomeeClassifier>
+        </configuration>
+      </plugin>
       <plugin>
-        <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>tomee-embedded-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.tomee.maven</groupId>
+        <artifactId>tomee-embedded-maven-plugin</artifactId>
+        <version>${tomee.version}</version>
         <dependencies>
           <dependency>
-            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-          10.0.1-TT.2-SNAPSHOT</dependency>
-        10.0.1-TT.2-SNAPSHOT</dependencies>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>apache-tomee</artifactId>
+            <version>${tomee.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>3.5.210.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.2</version>
         <configuration>
-          <argLine>-Djdk.attach.allowAttachSelf10.0.1-TT.2-SNAPSHOT</argLine>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
+          <argLine>-Djdk.attach.allowAttachSelf</argLine>
+        </configuration>
+      </plugin>
       
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+    </plugins>
+  </build>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-plus-api10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>tomee-plus-api</artifactId>
+      <version>${tomee.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>4.13.210.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>tomee-plus10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee.bom</groupId>
+      <artifactId>tomee-plus</artifactId>
+      <version>${tomee.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>ziplock10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>ziplock</artifactId>
+      <version>${tomee.version}</version>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-tomee-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>arquillian-tomee-embedded</artifactId>
+      <version>${tomee.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.9.3.Final10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <version>1.9.3.Final</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -138,12 +138,12 @@
   -->
   <distributionManagement>
     <repository>
-      <id>local-release-repo10.0.1-TT.2-SNAPSHOT</id>
-      <url>file://${project.build.outputDirectory}/repo/10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</repository>
+      <id>local-release-repo</id>
+      <url>file://${project.build.outputDirectory}/repo/</url>
+    </repository>
     <snapshotRepository>
-      <id>local-snapshot-repo10.0.1-TT.2-SNAPSHOT</id>
-      <url>file://${project.build.outputDirectory}/repo/10.0.1-TT.2-SNAPSHOT</url>
-    10.0.1-TT.2-SNAPSHOT</snapshotRepository>
-  10.0.1-TT.2-SNAPSHOT</distributionManagement>
-10.0.1-TT.2-SNAPSHOT</project>
+      <id>local-snapshot-repo</id>
+      <url>file://${project.build.outputDirectory}/repo/</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>

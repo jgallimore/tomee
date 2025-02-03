@@ -20,75 +20,75 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-	<groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-	<artifactId>import-database-flyway10.0.1-TT.2-SNAPSHOT</artifactId>
-	<version>10.0.1-TT.1-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-	<packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
-	<name>TomEE :: Examples :: Import Database By Flyway Programmatically10.0.1-TT.2-SNAPSHOT</name>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.superbiz</groupId>
+	<artifactId>import-database-flyway</artifactId>
+	<version>10.0.1-TT.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>TomEE :: Examples :: Import Database By Flyway Programmatically</name>
 	<dependencies>		
 		<dependency>
-			<groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-			<artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-			<version>4.13.210.0.1-TT.2-SNAPSHOT</version>
-			<scope>test10.0.1-TT.2-SNAPSHOT</scope>
-		10.0.1-TT.2-SNAPSHOT</dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
-			<groupId>org.flywaydb10.0.1-TT.2-SNAPSHOT</groupId>
-			<artifactId>flyway-core10.0.1-TT.2-SNAPSHOT</artifactId>
-			<version>10.17.310.0.1-TT.2-SNAPSHOT</version>
-			<scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-		10.0.1-TT.2-SNAPSHOT</dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>10.17.3</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
-			<groupId>org.flywaydb10.0.1-TT.2-SNAPSHOT</groupId>
-			<artifactId>flyway-database-hsqldb10.0.1-TT.2-SNAPSHOT</artifactId>
-			<version>10.17.310.0.1-TT.2-SNAPSHOT</version>
-			<scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
-		10.0.1-TT.2-SNAPSHOT</dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-database-hsqldb</artifactId>
+			<version>10.17.3</version>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
-			<groupId>org.hsqldb10.0.1-TT.2-SNAPSHOT</groupId>
-			<artifactId>hsqldb10.0.1-TT.2-SNAPSHOT</artifactId>
-			<version>2.7.310.0.1-TT.2-SNAPSHOT</version>
-			<scope>test10.0.1-TT.2-SNAPSHOT</scope>
-		10.0.1-TT.2-SNAPSHOT</dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.7.3</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
-			<groupId>com.zaxxer10.0.1-TT.2-SNAPSHOT</groupId>
-			<artifactId>HikariCP10.0.1-TT.2-SNAPSHOT</artifactId>
-			<version>6.0.010.0.1-TT.2-SNAPSHOT</version>
-			<scope>test10.0.1-TT.2-SNAPSHOT</scope>
-		10.0.1-TT.2-SNAPSHOT</dependency>
-	10.0.1-TT.2-SNAPSHOT</dependencies>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>6.0.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-war-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-				<version>3.4.010.0.1-TT.2-SNAPSHOT</version>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.4.0</version>
 				<configuration>
-					<failOnMissingWebXml>false10.0.1-TT.2-SNAPSHOT</failOnMissingWebXml>
-				10.0.1-TT.2-SNAPSHOT</configuration>
-			10.0.1-TT.2-SNAPSHOT</plugin>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-				<artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-				<version>3.13.010.0.1-TT.2-SNAPSHOT</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.13.0</version>
 				<configuration>
-					<source>1710.0.1-TT.2-SNAPSHOT</source>
-					<target>1710.0.1-TT.2-SNAPSHOT</target>
-				10.0.1-TT.2-SNAPSHOT</configuration>
-			10.0.1-TT.2-SNAPSHOT</plugin>
-		10.0.1-TT.2-SNAPSHOT</plugins>
-	10.0.1-TT.2-SNAPSHOT</build>
+					<source>17</source>
+					<target>17</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<!-- This section allows you to configure where to publish libraries for 
 		sharing. It is not required and may be deleted. For more information see: 
 		http://maven.apache.org/plugins/maven-deploy-plugin/ -->
 	<distributionManagement>
 		<repository>
-			<id>localhost10.0.1-TT.2-SNAPSHOT</id>
-			<url>file://${basedir}/target/repo/10.0.1-TT.2-SNAPSHOT</url>
-		10.0.1-TT.2-SNAPSHOT</repository>
+			<id>localhost</id>
+			<url>file://${basedir}/target/repo/</url>
+		</repository>
 		<snapshotRepository>
-			<id>localhost10.0.1-TT.2-SNAPSHOT</id>
-			<url>file://${basedir}/target/snapshot-repo/10.0.1-TT.2-SNAPSHOT</url>
-		10.0.1-TT.2-SNAPSHOT</snapshotRepository>
-	10.0.1-TT.2-SNAPSHOT</distributionManagement>
-10.0.1-TT.2-SNAPSHOT</project>
+			<id>localhost</id>
+			<url>file://${basedir}/target/snapshot-repo/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>

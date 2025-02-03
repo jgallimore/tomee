@@ -22,92 +22,92 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>server10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
-  <artifactId>openejb-server10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Server :: Core10.0.1-TT.2-SNAPSHOT</name>
+    <artifactId>server</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>openejb-server</artifactId>
+  <packaging>jar</packaging>
+  <name>TomEE :: Server :: Core</name>
   <build>
     <resources>
       <resource>
-        <directory>src/main/resources10.0.1-TT.2-SNAPSHOT</directory>
-      10.0.1-TT.2-SNAPSHOT</resource>
-    10.0.1-TT.2-SNAPSHOT</resources>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
-        <groupId>org.apache.felix10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-bundle-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
         <configuration>
           <instructions>
-            <Bundle-Activator>org.apache.openejb.server.osgi.Activator10.0.1-TT.2-SNAPSHOT</Bundle-Activator>
-          10.0.1-TT.2-SNAPSHOT</instructions>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+            <Bundle-Activator>org.apache.openejb.server.osgi.Activator</Bundle-Activator>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>jakartaee-api</artifactId>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-jee10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-jee</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-loader10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-loader</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-client10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>openejb-client</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
-      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xbean-asm9-shaded10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-asm9-shaded</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xbean-finder-shaded10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-finder-shaded</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>xbean-reflect10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-reflect</artifactId>
+    </dependency>
     <dependency>
-      <groupId>commons-cli10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-cli10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>commons-cli</groupId>
+      <artifactId>commons-cli</artifactId>
+    </dependency>
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.osgi10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>org.osgi.core10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
-      <groupId>org.osgi10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>org.osgi.compendium10.0.1-TT.2-SNAPSHOT</artifactId>
-      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
 
   <properties>
-    <tomee.build.name>${project.groupId}.server.core10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+    <tomee.build.name>${project.groupId}.server.core</tomee.build.name>
     <openejb.osgi.import.pkg>
       javassist.util;resolution:=optional;version="[3.9,4)",
       javassist.util.proxy;resolution:=optional;version="[3.9,4)",
@@ -284,7 +284,7 @@
       org.w3c.dom.ls,
       org.xml.sax,
       org.xml.sax.helpers
-    10.0.1-TT.2-SNAPSHOT</openejb.osgi.import.pkg>
-  10.0.1-TT.2-SNAPSHOT</properties>
-10.0.1-TT.2-SNAPSHOT</project>
+    </openejb.osgi.import.pkg>
+  </properties>
+</project>
 

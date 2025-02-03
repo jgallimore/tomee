@@ -19,112 +19,112 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
-    <artifactId>resources-jmx10.0.1-TT.2-SNAPSHOT</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <groupId>org.superbiz</groupId>
+    <artifactId>resources-jmx</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <artifactId>resources-jmx-ejb10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>ejb10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Examples :: Resources/JMX Example :: EJB Module10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>resources-jmx-ejb</artifactId>
+  <packaging>ejb</packaging>
+  <name>TomEE :: Examples :: Resources/JMX Example :: EJB Module</name>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>maven-ejb-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>2.310.0.1-TT.2-SNAPSHOT</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ejb-plugin</artifactId>
+        <version>2.3</version>
         <configuration>
-          <ejbVersion>3.110.0.1-TT.2-SNAPSHOT</ejbVersion>
+          <ejbVersion>3.1</ejbVersion>
           <archive>
             <manifest>
-              <addDefaultImplementationEntries>true10.0.1-TT.2-SNAPSHOT</addDefaultImplementationEntries>
-              <addDefaultSpecificationEntries>true10.0.1-TT.2-SNAPSHOT</addDefaultSpecificationEntries>
-            10.0.1-TT.2-SNAPSHOT</manifest>
-          10.0.1-TT.2-SNAPSHOT</archive>
-        10.0.1-TT.2-SNAPSHOT</configuration>
-      10.0.1-TT.2-SNAPSHOT</plugin>
-    10.0.1-TT.2-SNAPSHOT</plugins>
-  10.0.1-TT.2-SNAPSHOT</build>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>jakartaee-api</artifactId>
+    </dependency>
     <dependency>
-      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>arquillian-tomee-remote</artifactId>
+      <version>${tomee.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>openejb-provisionning10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>openejb-provisionning</artifactId>
+      <version>${tomee.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>1.9.3.Final10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <version>1.9.3.Final</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>commons-lang310.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.17.010.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.17.0</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>ziplock10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>ziplock</artifactId>
+      <version>${tomee.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
-      <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>shrinkwrap-resolver-impl-maven10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.3.310.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+      <groupId>org.jboss.shrinkwrap.resolver</groupId>
+      <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+      <version>3.3.3</version>
+      <scope>test</scope>
       <exclusions>
         <exclusion>
-          <artifactId>aether-api10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>org.eclipse.aether10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
+          <artifactId>aether-api</artifactId>
+          <groupId>org.eclipse.aether</groupId>
+        </exclusion>
         <exclusion>
-          <artifactId>aether-impl10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>org.eclipse.aether10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
+          <artifactId>aether-impl</artifactId>
+          <groupId>org.eclipse.aether</groupId>
+        </exclusion>
         <exclusion>
-          <artifactId>aether-spi10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>org.eclipse.aether10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
+          <artifactId>aether-spi</artifactId>
+          <groupId>org.eclipse.aether</groupId>
+        </exclusion>
         <exclusion>
-          <artifactId>aether-util10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>org.eclipse.aether10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
+          <artifactId>aether-util</artifactId>
+          <groupId>org.eclipse.aether</groupId>
+        </exclusion>
         <exclusion>
-          <artifactId>aether-connector-basic10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>org.eclipse.aether10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
+          <artifactId>aether-connector-basic</artifactId>
+          <groupId>org.eclipse.aether</groupId>
+        </exclusion>
         <exclusion>
-          <artifactId>aether-transport-wagon10.0.1-TT.2-SNAPSHOT</artifactId>
-          <groupId>org.eclipse.aether10.0.1-TT.2-SNAPSHOT</groupId>
-        10.0.1-TT.2-SNAPSHOT</exclusion>
-      10.0.1-TT.2-SNAPSHOT</exclusions>
-    10.0.1-TT.2-SNAPSHOT</dependency>
+          <artifactId>aether-transport-wagon</artifactId>
+          <groupId>org.eclipse.aether</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
-      <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
-      <artifactId>maven-aether-provider10.0.1-TT.2-SNAPSHOT</artifactId>
-      <version>3.3.910.0.1-TT.2-SNAPSHOT</version>
-      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-    10.0.1-TT.2-SNAPSHOT</dependency>
-  10.0.1-TT.2-SNAPSHOT</dependencies>
-10.0.1-TT.2-SNAPSHOT</project>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-aether-provider</artifactId>
+      <version>3.3.9</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

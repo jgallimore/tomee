@@ -17,95 +17,95 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <groupId>org.apache.tomee</groupId>
+    <artifactId>tck</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <artifactId>microprofile-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: TCK :: MicroProfile10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>microprofile-tck</artifactId>
+  <packaging>pom</packaging>
+  <name>TomEE :: TCK :: MicroProfile</name>
 
   <modules>
-    <module>config10.0.1-TT.2-SNAPSHOT</module>
-    <module>jwt10.0.1-TT.2-SNAPSHOT</module>
-    <module>health10.0.1-TT.2-SNAPSHOT</module>
-    <module>metrics10.0.1-TT.2-SNAPSHOT</module>
-    <module>rest-client10.0.1-TT.2-SNAPSHOT</module>
-    <module>openapi10.0.1-TT.2-SNAPSHOT</module>
-    <module>fault-tolerance10.0.1-TT.2-SNAPSHOT</module>
-    <module>opentelemetry10.0.1-TT.2-SNAPSHOT</module>
-  10.0.1-TT.2-SNAPSHOT</modules>
+    <module>config</module>
+    <module>jwt</module>
+    <module>health</module>
+    <module>metrics</module>
+    <module>rest-client</module>
+    <module>openapi</module>
+    <module>fault-tolerance</module>
+    <module>opentelemetry</module>
+  </modules>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.testng10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>testng10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
         <!-- This version is needed for MP TCK to work -->
-        <version>7.5.110.0.1-TT.2-SNAPSHOT</version>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <version>7.5.1</version>
+        <scope>test</scope>
+      </dependency>
       <!-- Micro Profile TCK -->
       <dependency>
-        <groupId>org.eclipse.microprofile.config10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>microprofile-config-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.microprofile.config}10.0.1-TT.2-SNAPSHOT</version>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.eclipse.microprofile.config</groupId>
+        <artifactId>microprofile-config-tck</artifactId>
+        <version>${version.microprofile.config}</version>
+        <scope>test</scope>
+      </dependency>
       <dependency>
-        <groupId>org.eclipse.microprofile.fault-tolerance10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>microprofile-fault-tolerance-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.microprofile.fault-tolerance}10.0.1-TT.2-SNAPSHOT</version>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
+        <artifactId>microprofile-fault-tolerance-tck</artifactId>
+        <version>${version.microprofile.fault-tolerance}</version>
+        <scope>test</scope>
+      </dependency>
       <dependency>
-        <groupId>org.eclipse.microprofile.health10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>microprofile-health-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.microprofile.health}10.0.1-TT.2-SNAPSHOT</version>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.eclipse.microprofile.health</groupId>
+        <artifactId>microprofile-health-tck</artifactId>
+        <version>${version.microprofile.health}</version>
+        <scope>test</scope>
+      </dependency>
       <dependency>
-        <groupId>org.eclipse.microprofile.jwt10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>microprofile-jwt-auth-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.microprofile.jwt}10.0.1-TT.2-SNAPSHOT</version>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.eclipse.microprofile.jwt</groupId>
+        <artifactId>microprofile-jwt-auth-tck</artifactId>
+        <version>${version.microprofile.jwt}</version>
+        <scope>test</scope>
+      </dependency>
       <dependency>
-        <groupId>org.eclipse.microprofile.jwt10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>microprofile-jwt-auth-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.microprofile.jwt}10.0.1-TT.2-SNAPSHOT</version>
-        <type>test-jar10.0.1-TT.2-SNAPSHOT</type>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.eclipse.microprofile.jwt</groupId>
+        <artifactId>microprofile-jwt-auth-tck</artifactId>
+        <version>${version.microprofile.jwt}</version>
+        <type>test-jar</type>
+        <scope>test</scope>
+      </dependency>
       <dependency>
-        <groupId>org.eclipse.microprofile.metrics10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>microprofile-metrics-api-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.microprofile.metrics}10.0.1-TT.2-SNAPSHOT</version>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.eclipse.microprofile.metrics</groupId>
+        <artifactId>microprofile-metrics-api-tck</artifactId>
+        <version>${version.microprofile.metrics}</version>
+        <scope>test</scope>
+      </dependency>
       <dependency>
-        <groupId>org.eclipse.microprofile.metrics10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>microprofile-metrics-rest-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.microprofile.metrics}10.0.1-TT.2-SNAPSHOT</version>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.eclipse.microprofile.metrics</groupId>
+        <artifactId>microprofile-metrics-rest-tck</artifactId>
+        <version>${version.microprofile.metrics}</version>
+        <scope>test</scope>
+      </dependency>
       <dependency>
-        <groupId>org.eclipse.microprofile.openapi10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>microprofile-openapi-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.microprofile.openapi}10.0.1-TT.2-SNAPSHOT</version>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
+        <groupId>org.eclipse.microprofile.openapi</groupId>
+        <artifactId>microprofile-openapi-tck</artifactId>
+        <version>${version.microprofile.openapi}</version>
+        <scope>test</scope>
+      </dependency>
       <dependency>
-        <groupId>org.eclipse.microprofile.rest.client10.0.1-TT.2-SNAPSHOT</groupId>
-        <artifactId>microprofile-rest-client-tck10.0.1-TT.2-SNAPSHOT</artifactId>
-        <version>${version.microprofile.rest-client}10.0.1-TT.2-SNAPSHOT</version>
-        <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-      10.0.1-TT.2-SNAPSHOT</dependency>
-    10.0.1-TT.2-SNAPSHOT</dependencies>
-  10.0.1-TT.2-SNAPSHOT</dependencyManagement>
+        <groupId>org.eclipse.microprofile.rest.client</groupId>
+        <artifactId>microprofile-rest-client-tck</artifactId>
+        <version>${version.microprofile.rest-client}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-10.0.1-TT.2-SNAPSHOT</project>
+</project>

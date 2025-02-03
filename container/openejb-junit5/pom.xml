@@ -18,122 +18,122 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>container10.0.1-TT.2-SNAPSHOT</artifactId>
-        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-    10.0.1-TT.2-SNAPSHOT</parent>
-    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+        <artifactId>container</artifactId>
+        <groupId>org.apache.tomee</groupId>
+        <version>10.0.1-TT.2-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>openejb-junit510.0.1-TT.2-SNAPSHOT</artifactId>
-    <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
-    <name>TomEE :: Container :: JUnit 510.0.1-TT.2-SNAPSHOT</name>
+    <artifactId>openejb-junit5</artifactId>
+    <packaging>jar</packaging>
+    <name>TomEE :: Container :: JUnit 5</name>
 
     <properties>
-        <tomee.build.name>${project.groupId}.container.junit510.0.1-TT.2-SNAPSHOT</tomee.build.name>
-        <netbeans.hint.license>openejb10.0.1-TT.2-SNAPSHOT</netbeans.hint.license>
+        <tomee.build.name>${project.groupId}.container.junit5</tomee.build.name>
+        <netbeans.hint.license>openejb</netbeans.hint.license>
         <jacocoArgLine />
-    10.0.1-TT.2-SNAPSHOT</properties>
+    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>openejb-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
-            <groupId>org.junit.jupiter10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>junit-jupiter-api10.0.1-TT.2-SNAPSHOT</artifactId>
-            <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
-            <groupId>org.junit.jupiter10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>junit-jupiter-engine10.0.1-TT.2-SNAPSHOT</artifactId>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
-            <groupId>org.apache.openejb.itests10.0.1-TT.2-SNAPSHOT</groupId>
-            <artifactId>failover-ejb10.0.1-TT.2-SNAPSHOT</artifactId>
-            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
-            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
-        10.0.1-TT.2-SNAPSHOT</dependency>
-    10.0.1-TT.2-SNAPSHOT</dependencies>
+            <groupId>org.apache.openejb.itests</groupId>
+            <artifactId>failover-ejb</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
-                <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <childDelegation>true10.0.1-TT.2-SNAPSHOT</childDelegation>
-                    <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
-                    <forkCount>110.0.1-TT.2-SNAPSHOT</forkCount>
+                    <childDelegation>true</childDelegation>
+                    <reuseForks>false</reuseForks>
+                    <forkCount>1</forkCount>
                     <argLine>
                         ${jacocoArgLine}
                         -enableassertions
-                    10.0.1-TT.2-SNAPSHOT</argLine>
-                    <workingDirectory>${project.basedir}/target10.0.1-TT.2-SNAPSHOT</workingDirectory>
+                    </argLine>
+                    <workingDirectory>${project.basedir}/target</workingDirectory>
                     <systemPropertyVariables>
-                        <openejb.home>${project.basedir}/target/test-classes10.0.1-TT.2-SNAPSHOT</openejb.home>
-                    10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
-                10.0.1-TT.2-SNAPSHOT</configuration>
+                        <openejb.home>${project.basedir}/target/test-classes</openejb.home>
+                    </systemPropertyVariables>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>default-test10.0.1-TT.2-SNAPSHOT</id>
-                        <phase>test10.0.1-TT.2-SNAPSHOT</phase>
+                        <id>default-test</id>
+                        <phase>test</phase>
                         <goals>
-                            <goal>test10.0.1-TT.2-SNAPSHOT</goal>
-                        10.0.1-TT.2-SNAPSHOT</goals>
+                            <goal>test</goal>
+                        </goals>
                         <configuration>
                             <excludes>
-                                <exclude>org/apache/openejb/junit5/SingleAppComposerTest10.0.1-TT.2-SNAPSHOT</exclude>
-                                <exclude>org/apache/openejb/junit5/SingleAppComposerJVMTest10.0.1-TT.2-SNAPSHOT</exclude>
-                                <exclude>org/apache/openejb/junit5/SingleAppComposerResourceInjectionTest10.0.1-TT.2-SNAPSHOT</exclude>
-                            10.0.1-TT.2-SNAPSHOT</excludes>
-                        10.0.1-TT.2-SNAPSHOT</configuration>
-                    10.0.1-TT.2-SNAPSHOT</execution>
+                                <exclude>org/apache/openejb/junit5/SingleAppComposerTest</exclude>
+                                <exclude>org/apache/openejb/junit5/SingleAppComposerJVMTest</exclude>
+                                <exclude>org/apache/openejb/junit5/SingleAppComposerResourceInjectionTest</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
                     <execution>
-                        <id>per-jvm-tests10.0.1-TT.2-SNAPSHOT</id>
-                        <phase>test10.0.1-TT.2-SNAPSHOT</phase>
+                        <id>per-jvm-tests</id>
+                        <phase>test</phase>
                         <goals>
-                            <goal>test10.0.1-TT.2-SNAPSHOT</goal>
-                        10.0.1-TT.2-SNAPSHOT</goals>
+                            <goal>test</goal>
+                        </goals>
                         <configuration>
-                            <forkCount>110.0.1-TT.2-SNAPSHOT</forkCount>
-                            <reuseForks>true10.0.1-TT.2-SNAPSHOT</reuseForks>
+                            <forkCount>1</forkCount>
+                            <reuseForks>true</reuseForks>
                             <includes>
-                                <include>org/apache/openejb/junit5/SingleAppComposerTest10.0.1-TT.2-SNAPSHOT</include>
-                                <include>org/apache/openejb/junit5/SingleAppComposerJVMTest10.0.1-TT.2-SNAPSHOT</include>
-                            10.0.1-TT.2-SNAPSHOT</includes>
+                                <include>org/apache/openejb/junit5/SingleAppComposerTest</include>
+                                <include>org/apache/openejb/junit5/SingleAppComposerJVMTest</include>
+                            </includes>
                             <argLine>
                                 ${jacocoArgLine}
                                 -enableassertions
                                 -Djunit.jupiter.testclass.order.default=org.apache.openejb.junit5.order.AppComposerTestClassOrderer
                                 -Dtomee.application-composer.application=org.apache.openejb.junit5.app.MyApp
-                            10.0.1-TT.2-SNAPSHOT</argLine>
-                        10.0.1-TT.2-SNAPSHOT</configuration>
-                    10.0.1-TT.2-SNAPSHOT</execution>
+                            </argLine>
+                        </configuration>
+                    </execution>
                     <execution>
-                        <id>per-jvm-with-resource-tests10.0.1-TT.2-SNAPSHOT</id>
-                        <phase>test10.0.1-TT.2-SNAPSHOT</phase>
+                        <id>per-jvm-with-resource-tests</id>
+                        <phase>test</phase>
                         <goals>
-                            <goal>test10.0.1-TT.2-SNAPSHOT</goal>
-                        10.0.1-TT.2-SNAPSHOT</goals>
+                            <goal>test</goal>
+                        </goals>
                         <configuration>
-                            <forkCount>110.0.1-TT.2-SNAPSHOT</forkCount>
-                            <reuseForks>true10.0.1-TT.2-SNAPSHOT</reuseForks>
+                            <forkCount>1</forkCount>
+                            <reuseForks>true</reuseForks>
                             <includes>
-                                <include>org/apache/openejb/junit5/SingleAppComposerResourceInjectionTest10.0.1-TT.2-SNAPSHOT</include>
-                            10.0.1-TT.2-SNAPSHOT</includes>
+                                <include>org/apache/openejb/junit5/SingleAppComposerResourceInjectionTest</include>
+                            </includes>
                             <argLine>
                                 ${jacocoArgLine}
                                 -enableassertions
                                 -Dtomee.application-composer.application=org.apache.openejb.junit5.app.MyResourceApp
-                            10.0.1-TT.2-SNAPSHOT</argLine>
-                        10.0.1-TT.2-SNAPSHOT</configuration>
-                    10.0.1-TT.2-SNAPSHOT</execution>
-                10.0.1-TT.2-SNAPSHOT</executions>
-            10.0.1-TT.2-SNAPSHOT</plugin>
-        10.0.1-TT.2-SNAPSHOT</plugins>
-    10.0.1-TT.2-SNAPSHOT</build>
+                            </argLine>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
-10.0.1-TT.2-SNAPSHOT</project>
+</project>

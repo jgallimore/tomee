@@ -17,31 +17,31 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <artifactId>tomee-project10.0.1-TT.2-SNAPSHOT</artifactId>
-    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  10.0.1-TT.2-SNAPSHOT</parent>
+    <artifactId>tomee-project</artifactId>
+    <groupId>org.apache.tomee</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT</version>
+  </parent>
 
-  <artifactId>arquillian10.0.1-TT.2-SNAPSHOT</artifactId>
-  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
-  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
-  <name>TomEE :: Arquillian Adaptors Parent10.0.1-TT.2-SNAPSHOT</name>
+  <artifactId>arquillian</artifactId>
+  <version>10.0.1-TT.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>TomEE :: Arquillian Adaptors Parent</name>
 
   <modules>
-    <module>arquillian-common10.0.1-TT.2-SNAPSHOT</module>
-    <module>arquillian-tomee-common10.0.1-TT.2-SNAPSHOT</module>
-    <module>arquillian-openejb-transaction-provider10.0.1-TT.2-SNAPSHOT</module>
-    <module>arquillian-tomee-embedded10.0.1-TT.2-SNAPSHOT</module>
-    <module>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</module>
-    <module>arquillian-tomee-webapp-remote10.0.1-TT.2-SNAPSHOT</module>
-    <module>arquillian-tomee-tests10.0.1-TT.2-SNAPSHOT</module>
-    <module>arquillian-tomee-moviefun-example10.0.1-TT.2-SNAPSHOT</module>
-    <module>arquillian-openejb-embedded10.0.1-TT.2-SNAPSHOT</module>
-    <module>ziplock10.0.1-TT.2-SNAPSHOT</module>
-    <module>arquillian-tck10.0.1-TT.2-SNAPSHOT</module>
-    <module>functional-tests10.0.1-TT.2-SNAPSHOT</module>
-  10.0.1-TT.2-SNAPSHOT</modules>
-10.0.1-TT.2-SNAPSHOT</project>
+    <module>arquillian-common</module>
+    <module>arquillian-tomee-common</module>
+    <module>arquillian-openejb-transaction-provider</module>
+    <module>arquillian-tomee-embedded</module>
+    <module>arquillian-tomee-remote</module>
+    <module>arquillian-tomee-webapp-remote</module>
+    <module>arquillian-tomee-tests</module>
+    <module>arquillian-tomee-moviefun-example</module>
+    <module>arquillian-openejb-embedded</module>
+    <module>ziplock</module>
+    <module>arquillian-tck</module>
+    <module>functional-tests</module>
+  </modules>
+</project>
