@@ -17,174 +17,174 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <artifactId>tck</artifactId>
-        <groupId>org.apache.tomee</groupId>
-        <version>10.0.1-TT.2-SNAPSHOT</version>
-    </parent>
+        <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>concurrency-standalone</artifactId>
-    <name>TomEE :: TCK :: Concurrency Standalone</name>
+    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>concurrency-standalone10.0.1-TT.2-SNAPSHOT</artifactId>
+    <name>TomEE :: TCK :: Concurrency Standalone10.0.1-TT.2-SNAPSHOT</name>
 
     <properties>
         <!-- General properties -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
+        <maven.compiler.source>1710.0.1-TT.2-SNAPSHOT</maven.compiler.source>
+        <maven.compiler.target>1710.0.1-TT.2-SNAPSHOT</maven.compiler.target>
 
         <!-- Dependency and Plugin Versions -->
-        <jakarta.concurrent.version>3.0.4</jakarta.concurrent.version>
-        <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
-        <testng.version>7.5.1</testng.version>
-        <sigtest.version>1.6</sigtest.version>
-        <maven.dep.plugin.version>3.8.0</maven.dep.plugin.version>
-        <maven.comp.plugin.version>3.13.0</maven.comp.plugin.version>
-        <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+        <jakarta.concurrent.version>3.0.410.0.1-TT.2-SNAPSHOT</jakarta.concurrent.version>
+        <jakarta.servlet.version>6.0.010.0.1-TT.2-SNAPSHOT</jakarta.servlet.version>
+        <testng.version>7.5.110.0.1-TT.2-SNAPSHOT</testng.version>
+        <sigtest.version>1.610.0.1-TT.2-SNAPSHOT</sigtest.version>
+        <maven.dep.plugin.version>3.8.010.0.1-TT.2-SNAPSHOT</maven.dep.plugin.version>
+        <maven.comp.plugin.version>3.13.010.0.1-TT.2-SNAPSHOT</maven.comp.plugin.version>
+        <maven.surefire.plugin.version>2.22.210.0.1-TT.2-SNAPSHOT</maven.surefire.plugin.version>
 
-        <suiteXmlFile>suite-web.xml</suiteXmlFile>
+        <suiteXmlFile>suite-web.xml10.0.1-TT.2-SNAPSHOT</suiteXmlFile>
 
-        <targetDirectory>${project.basedir}/target</targetDirectory>
-    </properties>
+        <targetDirectory>${project.basedir}/target10.0.1-TT.2-SNAPSHOT</targetDirectory>
+    10.0.1-TT.2-SNAPSHOT</properties>
 
     <!-- tag::testClientDep[] -->
     <!-- The Arquillian test framework -->
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <version>${version.arquillian.bom}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+                <groupId>org.jboss.arquillian10.0.1-TT.2-SNAPSHOT</groupId>
+                <artifactId>arquillian-bom10.0.1-TT.2-SNAPSHOT</artifactId>
+                <version>${version.arquillian.bom}10.0.1-TT.2-SNAPSHOT</version>
+                <type>pom10.0.1-TT.2-SNAPSHOT</type>
+                <scope>import10.0.1-TT.2-SNAPSHOT</scope>
+            10.0.1-TT.2-SNAPSHOT</dependency>
+        10.0.1-TT.2-SNAPSHOT</dependencies>
+    10.0.1-TT.2-SNAPSHOT</dependencyManagement>
 
     <!-- Client Dependencies -->
     <dependencies>
         <!-- The TCK -->
         <dependency>
-            <groupId>jakarta.enterprise.concurrent</groupId>
-            <artifactId>jakarta.enterprise.concurrent-tck</artifactId>
-            <version>${jakarta.concurrent.version}</version>
-        </dependency>
+            <groupId>jakarta.enterprise.concurrent10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakarta.enterprise.concurrent-tck10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${jakarta.concurrent.version}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <!-- The API -->
         <dependency>
-            <groupId>jakarta.enterprise.concurrent</groupId>
-            <artifactId>jakarta.enterprise.concurrent-api</artifactId>
-            <version>${jakarta.concurrent.version}</version>
-        </dependency>
+            <groupId>jakarta.enterprise.concurrent10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakarta.enterprise.concurrent-api10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${jakarta.concurrent.version}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <!-- Arquillian Implementation for TestNG -->
         <dependency>
-            <groupId>org.jboss.arquillian.testng</groupId>
-            <artifactId>arquillian-testng-container</artifactId>
-            <version>${version.arquillian}</version>
-        </dependency>
+            <groupId>org.jboss.arquillian.testng10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>arquillian-testng-container10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <!-- Arquillian Deps for Apache TomEE -->
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>apache-tomee</artifactId>
-            <version>${project.version}</version>
-            <type>zip</type>
-            <classifier>plus</classifier>
-            <scope>test</scope>
-        </dependency>
+            <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+            <type>zip10.0.1-TT.2-SNAPSHOT</type>
+            <classifier>plus10.0.1-TT.2-SNAPSHOT</classifier>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>arquillian-tomee-remote</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <!-- End of deps for Apache TomEE -->
 
         <!-- Arquillian transitive dependency on Servlet -->
         <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>${jakarta.servlet.version}</version>
-        </dependency>
+            <groupId>jakarta.servlet10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakarta.servlet-api10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${jakarta.servlet.version}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <!-- TestNG -->
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-        </dependency>
+            <groupId>org.testng10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>testng10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${testng.version}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <!-- To ensure its available for the TomEE lib directory -->
         <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <version>${version.derby}</version>
-            <scope>provided</scope>
-        </dependency>
+            <groupId>org.apache.derby10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>derby10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${version.derby}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derbytools</artifactId>
-            <version>${version.derby}</version>
-            <scope>provided</scope>
-        </dependency>
+            <groupId>org.apache.derby10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>derbytools10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${version.derby}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derbyshared</artifactId>
-            <version>${version.derby}</version>
-            <scope>provided</scope>
-        </dependency>
+            <groupId>org.apache.derby10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>derbyshared10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${version.derby}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
-    </dependencies>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
     <!-- end::testClientDep[] -->
 
     <profiles>
         <profile>
-            <id>tck-concurrency</id>
+            <id>tck-concurrency10.0.1-TT.2-SNAPSHOT</id>
             <build>
-                <directory>${targetDirectory}</directory>
-                <defaultGoal>clean test</defaultGoal>
+                <directory>${targetDirectory}10.0.1-TT.2-SNAPSHOT</directory>
+                <defaultGoal>clean test10.0.1-TT.2-SNAPSHOT</defaultGoal>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <version>${maven.dep.plugin.version}</version>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                        <version>${maven.dep.plugin.version}10.0.1-TT.2-SNAPSHOT</version>
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.testng</groupId>
-                                    <artifactId>testng</artifactId>
-                                    <version>${testng.version}</version>
-                                </artifactItem>
+                                    <groupId>org.testng10.0.1-TT.2-SNAPSHOT</groupId>
+                                    <artifactId>testng10.0.1-TT.2-SNAPSHOT</artifactId>
+                                    <version>${testng.version}10.0.1-TT.2-SNAPSHOT</version>
+                                10.0.1-TT.2-SNAPSHOT</artifactItem>
                                 <artifactItem>
-                                    <groupId>org.apache.derby</groupId>
-                                    <artifactId>derby</artifactId>
-                                    <version>${version.derby}</version>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </plugin>
+                                    <groupId>org.apache.derby10.0.1-TT.2-SNAPSHOT</groupId>
+                                    <artifactId>derby10.0.1-TT.2-SNAPSHOT</artifactId>
+                                    <version>${version.derby}10.0.1-TT.2-SNAPSHOT</version>
+                                10.0.1-TT.2-SNAPSHOT</artifactItem>
+                            10.0.1-TT.2-SNAPSHOT</artifactItems>
+                        10.0.1-TT.2-SNAPSHOT</configuration>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>${maven.comp.plugin.version}</version>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                        <version>${maven.comp.plugin.version}10.0.1-TT.2-SNAPSHOT</version>
                         <configuration>
-                            <source>${maven.compiler.source}</source>
-                            <target>${maven.compiler.target}</target>
-                        </configuration>
-                    </plugin>
+                            <source>${maven.compiler.source}10.0.1-TT.2-SNAPSHOT</source>
+                            <target>${maven.compiler.target}10.0.1-TT.2-SNAPSHOT</target>
+                        10.0.1-TT.2-SNAPSHOT</configuration>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven.surefire.plugin.version}</version>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                        <version>${maven.surefire.plugin.version}10.0.1-TT.2-SNAPSHOT</version>
                         <configuration>
                             <systemPropertyVariables>
-                            </systemPropertyVariables>
+                            10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
                             <suiteXmlFiles>
-                                <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-                            </suiteXmlFiles>
+                                <suiteXmlFile>${suiteXmlFile}10.0.1-TT.2-SNAPSHOT</suiteXmlFile>
+                            10.0.1-TT.2-SNAPSHOT</suiteXmlFiles>
                             <testSourceDirectory>
                                 ${basedir}${file.separarator}src${file.separarator}main${file.separarator}java${file.separarator}
-                            </testSourceDirectory>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-</project>
+                            10.0.1-TT.2-SNAPSHOT</testSourceDirectory>
+                        10.0.1-TT.2-SNAPSHOT</configuration>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
+                10.0.1-TT.2-SNAPSHOT</plugins>
+            10.0.1-TT.2-SNAPSHOT</build>
+        10.0.1-TT.2-SNAPSHOT</profile>
+    10.0.1-TT.2-SNAPSHOT</profiles>
+10.0.1-TT.2-SNAPSHOT</project>

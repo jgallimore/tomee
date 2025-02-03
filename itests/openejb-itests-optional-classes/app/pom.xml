@@ -20,28 +20,28 @@
 <!-- $Rev$ $Date$ -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
     <parent>
-        <groupId>org.apache.tomee.itests</groupId>
-        <artifactId>openejb-itests-optional-classes</artifactId>
-        <version>10.0.1-TT.2-SNAPSHOT</version>
-    </parent>
+        <groupId>org.apache.tomee.itests10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>openejb-itests-optional-classes10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</parent>
 
-    <artifactId>opt-app</artifactId>
+    <artifactId>opt-app10.0.1-TT.2-SNAPSHOT</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.tomee.itests</groupId>
-            <artifactId>opt-lib</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+            <groupId>org.apache.tomee.itests10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>opt-lib10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>openejb-core</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>

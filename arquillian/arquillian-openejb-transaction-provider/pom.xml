@@ -18,82 +18,82 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>arquillian</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <artifactId>arquillian10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
-  <artifactId>arquillian-openejb-transaction-provider</artifactId>
-  <name>TomEE :: Arquillian Adaptors Parent :: Transaction Provider</name>
+  <artifactId>arquillian-openejb-transaction-provider10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: Arquillian Adaptors Parent :: Transaction Provider10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.arquillian.openejb.transaction.provider</tomee.build.name>
-  </properties>
+    <tomee.build.name>${project.groupId}.arquillian.openejb.transaction.provider10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-core</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.extension</groupId>
-      <artifactId>arquillian-transaction-impl-base</artifactId>
-      <version>2.0.0</version>
+      <groupId>org.jboss.arquillian.extension10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-transaction-impl-base10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.0.010.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>org.jboss.arquillian.core</groupId>
-          <artifactId>arquillian-core-spi</artifactId>
-        </exclusion>
+          <groupId>org.jboss.arquillian.core10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>arquillian-core-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>arquillian-core-api</artifactId>
-          <groupId>org.jboss.arquillian.core</groupId>
-        </exclusion>
+          <artifactId>arquillian-core-api10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.jboss.arquillian.core10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>arquillian-core-spi</artifactId>
-          <groupId>org.jboss.arquillian.core</groupId>
-        </exclusion>
+          <artifactId>arquillian-core-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.jboss.arquillian.core10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>arquillian-test-spi</artifactId>
-          <groupId>org.jboss.arquillian.test</groupId>
-        </exclusion>
+          <artifactId>arquillian-test-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.jboss.arquillian.test10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.jboss.arquillian.container</groupId>
-          <artifactId>arquillian-container-spi</artifactId>
-        </exclusion>
+          <groupId>org.jboss.arquillian.container10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>arquillian-container-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.jboss.arquillian.container</groupId>
-          <artifactId>arquillian-container-test-spi</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.jboss.arquillian.container10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>arquillian-container-test-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.jboss.arquillian.container</groupId>
-      <artifactId>arquillian-container-test-spi</artifactId>
-      <version>${version.arquillian}</version>
-    </dependency>
+      <groupId>org.jboss.arquillian.container10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-container-test-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.jboss.arquillian.test</groupId>
-      <artifactId>arquillian-test-spi</artifactId>
-      <version>${version.arquillian}</version>
-    </dependency>
+      <groupId>org.jboss.arquillian.test10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-test-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.jboss.arquillian.core</groupId>
-      <artifactId>arquillian-core-spi</artifactId>
-      <version>${version.arquillian}</version>
-    </dependency>
+      <groupId>org.jboss.arquillian.core10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-core-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.jboss.arquillian.container</groupId>
-      <artifactId>arquillian-container-spi</artifactId>
-      <version>${version.arquillian}</version>
-    </dependency>
+      <groupId>org.jboss.arquillian.container10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-container-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
-  </dependencies>
-</project>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
+10.0.1-TT.2-SNAPSHOT</project>
 

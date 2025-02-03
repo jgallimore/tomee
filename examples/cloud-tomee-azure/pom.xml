@@ -18,103 +18,103 @@
     under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.superbiz</groupId>
-  <artifactId>cloud-tomee-azure</artifactId>
-  <version>10.0.1-TT.2-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>TomEE :: Examples :: Azure deployment example</name>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+  <artifactId>cloud-tomee-azure10.0.1-TT.2-SNAPSHOT</artifactId>
+  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Examples :: Azure deployment example10.0.1-TT.2-SNAPSHOT</name>
   <properties>
-    <jakartaee-api.version>10.0</jakartaee-api.version>
-  </properties>
+    <jakartaee-api.version>10.010.0.1-TT.2-SNAPSHOT</jakartaee-api.version>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>jakartaee-api</artifactId>
-      <version>${jakartaee-api.version}</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${jakartaee-api.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.13.010.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
+          <source>1.810.0.1-TT.2-SNAPSHOT</source>
+          <target>1.810.0.1-TT.2-SNAPSHOT</target>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.tomee.maven</groupId>
-        <artifactId>tomee-maven-plugin</artifactId>
-        <version>${project.version}</version>
+        <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>tomee-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <tomeeClassifier>webprofile</tomeeClassifier>
+          <tomeeClassifier>webprofile10.0.1-TT.2-SNAPSHOT</tomeeClassifier>
           <!--You can tweak this for your case-->
-          <args>-Xmx512m -XX:PermSize=256m</args>
+          <args>-Xmx512m -XX:PermSize=256m10.0.1-TT.2-SNAPSHOT</args>
           <!--Azure requires this port and the default on TomEE is 8080-->
-          <tomeeHttpPort>80</tomeeHttpPort>
+          <tomeeHttpPort>8010.0.1-TT.2-SNAPSHOT</tomeeHttpPort>
           <!--You can place here, if needed, all the config files needed for the tomee/conf folder-->
-          <!--<config>${project.basedir}/src/main/tomee/</config>-->
-        </configuration>
+          <!--<config>${project.basedir}/src/main/tomee/10.0.1-TT.2-SNAPSHOT</config>-->
+        10.0.1-TT.2-SNAPSHOT</configuration>
         <executions>
           <!--This will create a TomEE embedded executable jar-->
           <execution>
-            <id>executable-jar</id>
+            <id>executable-jar10.0.1-TT.2-SNAPSHOT</id>
             <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>package</phase>
+              <goal>exec10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
+            <phase>package10.0.1-TT.2-SNAPSHOT</phase>
             <configuration>
               <!--This creates the exec suffix in the embedded TomEE fat jar-->
-              <classifier>exec</classifier>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+              <classifier>exec10.0.1-TT.2-SNAPSHOT</classifier>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       
-    </plugins>
-  </build>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
   <profiles>
     <profile>
-      <id>azure-single-jar</id>
+      <id>azure-single-jar10.0.1-TT.2-SNAPSHOT</id>
       <build>
         <plugins>
           <plugin>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-webapp-maven-plugin</artifactId>
+            <groupId>com.microsoft.azure10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>azure-webapp-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
             <!-- check Maven Central for the latest version -->
-            <version>2.13.0</version>
+            <version>2.13.010.0.1-TT.2-SNAPSHOT</version>
             <executions>
               <execution>
                 <!-- This needs a working azure account and would break the build. Use explicitly with: -->
                 <!-- mvn -Pazure azure-webapp:deploy -->
-                <phase>none</phase>
-              </execution>
-            </executions>
+                <phase>none10.0.1-TT.2-SNAPSHOT</phase>
+              10.0.1-TT.2-SNAPSHOT</execution>
+            10.0.1-TT.2-SNAPSHOT</executions>
             <configuration>
               <authentication>
                 <!-- If you invoke the plugin from a console with an Azure CLI with -->
                 <!-- authenticated session, you don't need this block. -->
-                <serverId>azure-auth</serverId>
-              </authentication>
-              <deploymentType>jar</deploymentType>
-              <jarFile>${project.build.directory}/${project.build.finalName}-exec.jar</jarFile>
-              <stopAppDuringDeployment>true</stopAppDuringDeployment>
-              <resourceGroup>tomee-group</resourceGroup>
+                <serverId>azure-auth10.0.1-TT.2-SNAPSHOT</serverId>
+              10.0.1-TT.2-SNAPSHOT</authentication>
+              <deploymentType>jar10.0.1-TT.2-SNAPSHOT</deploymentType>
+              <jarFile>${project.build.directory}/${project.build.finalName}-exec.jar10.0.1-TT.2-SNAPSHOT</jarFile>
+              <stopAppDuringDeployment>true10.0.1-TT.2-SNAPSHOT</stopAppDuringDeployment>
+              <resourceGroup>tomee-group10.0.1-TT.2-SNAPSHOT</resourceGroup>
               <!--You need to change this. It must match <your-sub-domain> from the README file instructions.-->
-              <appName>your sub domain</appName>
-              <region>ukwest</region>
-              <pricingTier>B1</pricingTier>
-              <linuxRuntime>jre8</linuxRuntime>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
+              <appName>your sub domain10.0.1-TT.2-SNAPSHOT</appName>
+              <region>ukwest10.0.1-TT.2-SNAPSHOT</region>
+              <pricingTier>B110.0.1-TT.2-SNAPSHOT</pricingTier>
+              <linuxRuntime>jre810.0.1-TT.2-SNAPSHOT</linuxRuntime>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</plugin>
+        10.0.1-TT.2-SNAPSHOT</plugins>
+      10.0.1-TT.2-SNAPSHOT</build>
+    10.0.1-TT.2-SNAPSHOT</profile>
+  10.0.1-TT.2-SNAPSHOT</profiles>
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -122,12 +122,12 @@
   -->
   <distributionManagement>
     <repository>
-      <id>localhost</id>
-      <url>file://${basedir}/target/repo/</url>
-    </repository>
+      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
+      <url>file://${basedir}/target/repo/10.0.1-TT.2-SNAPSHOT</url>
+    10.0.1-TT.2-SNAPSHOT</repository>
     <snapshotRepository>
-      <id>localhost</id>
-      <url>file://${basedir}/target/snapshot-repo/</url>
-    </snapshotRepository>
-  </distributionManagement>
-</project>
+      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
+      <url>file://${basedir}/target/snapshot-repo/10.0.1-TT.2-SNAPSHOT</url>
+    10.0.1-TT.2-SNAPSHOT</snapshotRepository>
+  10.0.1-TT.2-SNAPSHOT</distributionManagement>
+10.0.1-TT.2-SNAPSHOT</project>

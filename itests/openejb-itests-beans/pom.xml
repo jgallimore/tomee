@@ -17,101 +17,101 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
   <parent>
-    <artifactId>itests</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>itests10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <artifactId>openejb-itests-beans</artifactId>
-  <packaging>jar</packaging>
-  <name>TomEE :: iTests :: Beans</name>
+  <artifactId>openejb-itests-beans10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: iTests :: Beans10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.itests.beans</tomee.build.name>
-  </properties>
+    <tomee.build.name>${project.groupId}.itests.beans10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.openjpa</groupId>
-        <artifactId>openjpa-maven-plugin</artifactId>
-        <version>${version.openjpa}</version>
+        <groupId>org.apache.openjpa10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>openjpa-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${version.openjpa}10.0.1-TT.2-SNAPSHOT</version>
 
         <configuration>
-          <includes>org/apache/openejb/test/entity/**/*.class</includes>
-          <addDefaultConstructor>true</addDefaultConstructor>
-          <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
-        </configuration>
+          <includes>org/apache/openejb/test/entity/**/*.class10.0.1-TT.2-SNAPSHOT</includes>
+          <addDefaultConstructor>true10.0.1-TT.2-SNAPSHOT</addDefaultConstructor>
+          <enforcePropertyRestrictions>true10.0.1-TT.2-SNAPSHOT</enforcePropertyRestrictions>
+        10.0.1-TT.2-SNAPSHOT</configuration>
 
         <executions>
           <execution>
-            <id>enhancer-main</id>
-            <phase>process-classes</phase>
+            <id>enhancer-main10.0.1-TT.2-SNAPSHOT</id>
+            <phase>process-classes10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>enhance</goal>
-            </goals>
-          </execution>
+              <goal>enhance10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
+          10.0.1-TT.2-SNAPSHOT</execution>
 
           <execution>
-            <id>enhancer-test</id>
-            <phase>process-test-classes</phase>
+            <id>enhancer-test10.0.1-TT.2-SNAPSHOT</id>
+            <phase>process-test-classes10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>test-enhance</goal>
-            </goals>
-          </execution>
-        </executions>
+              <goal>test-enhance10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
 
         <dependencies>
           <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>jakartaee-api</artifactId>
-            <version>${version.jakartaee-api}</version>
-          </dependency>
+            <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${version.jakartaee-api}10.0.1-TT.2-SNAPSHOT</version>
+          10.0.1-TT.2-SNAPSHOT</dependency>
           <dependency>
-            <groupId>net.sourceforge.serp</groupId>
-            <artifactId>serp</artifactId>
-            <version>1.15.1</version>
+            <groupId>net.sourceforge.serp10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>serp10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>1.15.110.0.1-TT.2-SNAPSHOT</version>
             <exclusions>
               <exclusion>
-                <groupId>*</groupId>
-                <artifactId>*</artifactId>
-              </exclusion>
-            </exclusions>
-          </dependency>
+                <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
+                <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+              10.0.1-TT.2-SNAPSHOT</exclusion>
+            10.0.1-TT.2-SNAPSHOT</exclusions>
+          10.0.1-TT.2-SNAPSHOT</dependency>
           <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-            <version>${version.openjpa}</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-    </plugins>
+            <groupId>org.apache.openjpa10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openjpa10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${version.openjpa}10.0.1-TT.2-SNAPSHOT</version>
+          10.0.1-TT.2-SNAPSHOT</dependency>
+        10.0.1-TT.2-SNAPSHOT</dependencies>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
 
-  </build>
+  10.0.1-TT.2-SNAPSHOT</build>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>jakartaee-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>compile</scope>
-    </dependency>
-  </dependencies>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <!--
     <build>
       <plugins>
         <plugin>
-          <artifactId>maven-antrun-plugin</artifactId>
+          <artifactId>maven-antrun-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
           <executions>
             <execution>
-              <phase>compile</phase>
+              <phase>compile10.0.1-TT.2-SNAPSHOT</phase>
               <configuration>
                 <tasks>
                   <java classname="org.apache.openjpa.enhance.PCEnhancer">
@@ -120,19 +120,19 @@
                     <classpath>
                       <path refid="maven.dependency.classpath" />
                       <path refid="maven.compile.classpath" />
-                    </classpath>
-                  </java>
-                </tasks>
-              </configuration>
+                    10.0.1-TT.2-SNAPSHOT</classpath>
+                  10.0.1-TT.2-SNAPSHOT</java>
+                10.0.1-TT.2-SNAPSHOT</tasks>
+              10.0.1-TT.2-SNAPSHOT</configuration>
               <goals>
-                <goal>run</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </build>
+                <goal>run10.0.1-TT.2-SNAPSHOT</goal>
+              10.0.1-TT.2-SNAPSHOT</goals>
+            10.0.1-TT.2-SNAPSHOT</execution>
+          10.0.1-TT.2-SNAPSHOT</executions>
+        10.0.1-TT.2-SNAPSHOT</plugin>
+      10.0.1-TT.2-SNAPSHOT</plugins>
+    10.0.1-TT.2-SNAPSHOT</build>
   -->
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>
 

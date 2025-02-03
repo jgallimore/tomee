@@ -19,39 +19,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <parent>
-    <artifactId>tomee</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
-  <artifactId>tomee-mojarra</artifactId>
-  <name>TomEE :: TomEE :: Mojarra</name>
+  <artifactId>tomee-mojarra10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: TomEE :: Mojarra10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.tomee.mojorra</tomee.build.name>
-  </properties>
+    <tomee.build.name>${project.groupId}.tomee.mojorra10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-catalina</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!--
     provided = in the webapp
     since MyFaces is our default implementation
     -->
     <dependency>
-      <groupId>org.glassfish</groupId>
-      <artifactId>jakarta.faces</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.glassfish10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakarta.faces10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-catalina</artifactId>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-</project>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
+10.0.1-TT.2-SNAPSHOT</project>

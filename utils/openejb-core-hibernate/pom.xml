@@ -18,121 +18,121 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
   <parent>
-    <artifactId>utils</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>utils10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <artifactId>openejb-core-hibernate</artifactId>
-  <name>TomEE :: Utils :: Core Hibernate</name>
-  <packaging>pom</packaging>
+  <artifactId>openejb-core-hibernate10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: Utils :: Core Hibernate10.0.1-TT.2-SNAPSHOT</name>
+  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
 
   <properties>
-    <tomee.build.name>${project.groupId}.util.hibernate</tomee.build.name>
-  </properties>
+    <tomee.build.name>${project.groupId}.util.hibernate10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-core</artifactId>
-      <version>${project.version}</version>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-core</artifactId>
+      <groupId>org.hibernate.orm10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>hibernate-core10.0.1-TT.2-SNAPSHOT</artifactId>
       <exclusions>
         <exclusion>
-          <groupId>jakarta.persistence</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>jakarta.persistence10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.transaction</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>jakarta.transaction10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.activation</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>jakarta.activation10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.xml.bind</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>jakarta.xml.bind10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.inject</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>jakarta.inject10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.hibernate.validator</groupId>
-      <artifactId>hibernate-validator</artifactId>
+      <groupId>org.hibernate.validator10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>hibernate-validator10.0.1-TT.2-SNAPSHOT</artifactId>
       <exclusions>
         <exclusion>
-          <groupId>jakarta.validation</groupId>
-          <artifactId>jakarta.validation-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.validation10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.validation-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>jboss-logging</artifactId>
-          <groupId>org.jboss.logging</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>jboss-logging10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.jboss.logging10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-jcache</artifactId>
-      <version>${version.hibernate.orm}</version>
+      <groupId>org.hibernate.orm10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>hibernate-jcache10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.hibernate.orm}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>org.hibernate.orm</groupId>
-          <artifactId>hibernate-core</artifactId>
-        </exclusion>
+          <groupId>org.hibernate.orm10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>hibernate-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>net.sf.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>net.sf.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
-      <version>${version.ehcache}</version>
+      <groupId>org.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>ehcache10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.ehcache}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <!-- Exclude some weird transient dependency to jaxb-runtime from ehcache -->
         <exclusion>
-          <groupId>org.glassfish.jaxb</groupId>
-          <artifactId>jaxb-runtime</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.glassfish.jaxb10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-jdk14</artifactId>
-      <version>${version.slf4j}</version>
-    </dependency>
+      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>slf4j-jdk1410.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.slf4j}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!--
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>${version.slf4j}</version>
-    </dependency>
+      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>slf4j-log4j1210.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.slf4j}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>${version.log4j}</version>
-    </dependency>
+      <groupId>log4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>log4j10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.log4j}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     -->
-  </dependencies>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>

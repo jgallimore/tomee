@@ -17,134 +17,134 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
   <parent>
-    <artifactId>maven</artifactId>
-    <groupId>org.apache.tomee.maven</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>maven10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <artifactId>tomee-maven-plugin</artifactId>
-  <version>10.0.1-TT.2-SNAPSHOT</version>
-  <packaging>maven-plugin</packaging>
-  <name>TomEE :: Maven Plugins :: TomEE Maven Plugin</name>
+  <artifactId>tomee-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  <packaging>maven-plugin10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Maven Plugins :: TomEE Maven Plugin10.0.1-TT.2-SNAPSHOT</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-plugin-api</artifactId>
-    </dependency>
+      <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>maven-plugin-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-project</artifactId>
-    </dependency>
+      <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>maven-project10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>openejb-core</artifactId>
-    </dependency>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>openejb-client</artifactId>
-    </dependency>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-client10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>tomee-util</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-util10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.maven.plugin-tools</groupId>
-      <artifactId>maven-plugin-annotations</artifactId>
-    </dependency>
+      <groupId>org.apache.maven.plugin-tools10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>maven-plugin-annotations10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.codehaus.plexus</groupId>
-      <artifactId>plexus-utils</artifactId>
-    </dependency>
+      <groupId>org.codehaus.plexus10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>plexus-utils10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.codehaus.plexus</groupId>
-      <artifactId>plexus-archiver</artifactId>
-    </dependency>
+      <groupId>org.codehaus.plexus10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>plexus-archiver10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-compress</artifactId>
-    </dependency>
+      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-compress10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee.maven</groupId>
-      <artifactId>maven-util</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>maven-util10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>apache-tomee</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-      <classifier>webprofile</classifier>
-      <type>zip</type>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+      <classifier>webprofile10.0.1-TT.2-SNAPSHOT</classifier>
+      <type>zip10.0.1-TT.2-SNAPSHOT</type>
       <exclusions>
         <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.sirona</groupId>
-      <artifactId>sirona-javaagent</artifactId>
-      <version>0.3-incubating</version>
-      <scope>test</scope>
-      <classifier>shaded</classifier>
+      <groupId>org.apache.sirona10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>sirona-javaagent10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>0.3-incubating10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+      <classifier>shaded10.0.1-TT.2-SNAPSHOT</classifier>
       <exclusions>
         <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>tomee-webaccess</artifactId>
-      <version>7.0.0</version>
-      <type>war</type>
-      <scope>test</scope>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-webaccess10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>7.0.010.0.1-TT.2-SNAPSHOT</version>
+      <type>war10.0.1-TT.2-SNAPSHOT</type>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>${version.log4j2}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.apache.logging.log4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>log4j-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.log4j2}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-jul</artifactId>
-      <version>${version.log4j2}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+      <groupId>org.apache.logging.log4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>log4j-jul10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.log4j2}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <properties>
-    <maven-plugin.prefix>tomee</maven-plugin.prefix>
-  </properties>
+    <maven-plugin.prefix>tomee10.0.1-TT.2-SNAPSHOT</maven-plugin.prefix>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration>
           <systemPropertyVariables>
-            <log4j.version>${version.log4j2}</log4j.version>
-            <plexus-utils.version>${plexus-utils.version}</plexus-utils.version>
-          </systemPropertyVariables>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+            <log4j.version>${version.log4j2}10.0.1-TT.2-SNAPSHOT</log4j.version>
+            <plexus-utils.version>${plexus-utils.version}10.0.1-TT.2-SNAPSHOT</plexus-utils.version>
+          10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

@@ -18,61 +18,61 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
   <parent>
-    <artifactId>itests</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>itests10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <artifactId>tomee-server-composer</artifactId>
-  <packaging>jar</packaging>
-  <name>TomEE :: iTests :: Server Composer</name>
+  <artifactId>tomee-server-composer10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: iTests :: Server Composer10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.itests.failover</tomee.build.name>
-  </properties>
+    <tomee.build.name>${project.groupId}.itests.failover10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration>
           <systemPropertyVariables>
-            <version>${project.version}</version>
-          </systemPropertyVariables>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+          10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>tomee-server-version</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-server-version10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.tomitribe</groupId>
-      <artifactId>tomitribe-util</artifactId>
-      <version>2.0.0</version>
-    </dependency>
+      <groupId>org.tomitribe10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomitribe-util10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.0.010.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.tomitribe</groupId>
-      <artifactId>swizzle</artifactId>
-      <version>1.0</version>
-    </dependency>
+      <groupId>org.tomitribe10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>swizzle10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.010.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-compress</artifactId>
-      <version>1.27.1</version>
-    </dependency>
+      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-compress10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.27.110.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>compile</scope>
-    </dependency>
-  </dependencies>
-</project>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
+10.0.1-TT.2-SNAPSHOT</project>
 

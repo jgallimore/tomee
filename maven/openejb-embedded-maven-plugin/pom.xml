@@ -18,46 +18,46 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>maven</artifactId>
-    <groupId>org.apache.tomee.maven</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <artifactId>maven10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
-  <artifactId>openejb-embedded-maven-plugin</artifactId>
-  <packaging>maven-plugin</packaging>
-  <version>10.0.1-TT.2-SNAPSHOT</version>
-  <name>TomEE :: Maven Plugins :: OpenEJB Embedded Maven Plugin</name>
+  <artifactId>openejb-embedded-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>maven-plugin10.0.1-TT.2-SNAPSHOT</packaging>
+  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  <name>TomEE :: Maven Plugins :: OpenEJB Embedded Maven Plugin10.0.1-TT.2-SNAPSHOT</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-plugin-api</artifactId>
-    </dependency>
+      <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>maven-plugin-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-project</artifactId>
-    </dependency>
+      <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>maven-project10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>openejb-core</artifactId>
-    </dependency>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>maven-util</artifactId>
-      <version>${project.parent.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>maven-util10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.parent.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.maven.plugin-tools</groupId>
-      <artifactId>maven-plugin-annotations</artifactId>
-    </dependency>
+      <groupId>org.apache.maven.plugin-tools10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>maven-plugin-annotations10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.codehaus.plexus</groupId>
-      <artifactId>plexus-utils</artifactId>
-    </dependency>
-  </dependencies>
+      <groupId>org.codehaus.plexus10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>plexus-utils10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <properties>
-    <maven-plugin.prefix>openejb-embedded</maven-plugin.prefix>
-  </properties>
-</project>
+    <maven-plugin.prefix>openejb-embedded10.0.1-TT.2-SNAPSHOT</maven-plugin.prefix>
+  10.0.1-TT.2-SNAPSHOT</properties>
+10.0.1-TT.2-SNAPSHOT</project>

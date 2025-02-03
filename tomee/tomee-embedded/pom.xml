@@ -22,26 +22,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <artifactId>tomee</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>tomee-embedded</artifactId>
-  <packaging>jar</packaging>
-  <name>TomEE :: TomEE :: TomEE Embedded</name>
-  <version>10.0.1-TT.2-SNAPSHOT</version>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <artifactId>tomee-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: TomEE :: TomEE Embedded10.0.1-TT.2-SNAPSHOT</name>
+  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-jar-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration>
           <archive combine.children="append">
             <manifest>
-              <Main-Class>org.apache.tomee.embedded.Main</Main-Class>
+              <Main-Class>org.apache.tomee.embedded.Main10.0.1-TT.2-SNAPSHOT</Main-Class>
               <!-- the following is not really required if we shade everything together
               Moreover, it generates a lot of stacktraces because Tomcat reads the class-path
               attribute from the manifest and tries to resolve entries based on tomee-embedded
@@ -49,466 +49,466 @@
 
               We end up with things like
               file:/....../.m2/repository/org/apache/tomee/tomee-embedded/10.0.1-TT.1-SNAPSHOT/tomee-config-10.0.1-TT.1-SNAPSHOT.jar
-              <addClasspath>true</addClasspath>
+              <addClasspath>true10.0.1-TT.2-SNAPSHOT</addClasspath>
               -->
-            </manifest>
+            10.0.1-TT.2-SNAPSHOT</manifest>
             <manifestEntries>
-              <Automatic-Module-Name>${tomee.build.name}</Automatic-Module-Name>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>
+              <Automatic-Module-Name>${tomee.build.name}10.0.1-TT.2-SNAPSHOT</Automatic-Module-Name>
+            10.0.1-TT.2-SNAPSHOT</manifestEntries>
+          10.0.1-TT.2-SNAPSHOT</archive>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-shade-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <executions>
           <execution> <!-- real tomee-embedded (typically webprofile + AMQ) -->
-            <id>uber-shade</id>
-            <phase>package</phase>
+            <id>uber-shade10.0.1-TT.2-SNAPSHOT</id>
+            <phase>package10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>shade</goal>
-            </goals>
+              <goal>shade10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
-              <shadedClassifierName>uber</shadedClassifierName>
+              <shadedClassifierName>uber10.0.1-TT.2-SNAPSHOT</shadedClassifierName>
               <artifactSet>
                 <excludes>
-                  <exclude>junit:junit</exclude>
-                  <exclude>org.junit.jupiter:junit-jupiter-api</exclude>
-                  <exclude>*:jaxb-api</exclude>
-                  <exclude>*:jaxb-impl</exclude>
-                  <exclude>*:jaxb-runtime</exclude>
-                </excludes>
-              </artifactSet>
-            </configuration>
-          </execution>
+                  <exclude>junit:junit10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.junit.jupiter:junit-jupiter-api10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>*:jaxb-api10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>*:jaxb-impl10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>*:jaxb-runtime10.0.1-TT.2-SNAPSHOT</exclude>
+                10.0.1-TT.2-SNAPSHOT</excludes>
+              10.0.1-TT.2-SNAPSHOT</artifactSet>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
           <execution> <!-- kind of webprofile minus JSF -->
-            <id>jaxrs-shade</id>
-            <phase>package</phase>
+            <id>jaxrs-shade10.0.1-TT.2-SNAPSHOT</id>
+            <phase>package10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>shade</goal>
-            </goals>
+              <goal>shade10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
-              <shadedClassifierName>jaxrs</shadedClassifierName>
+              <shadedClassifierName>jaxrs10.0.1-TT.2-SNAPSHOT</shadedClassifierName>
               <artifactSet>
                 <excludes>
-                  <exclude>org.junit.jupiter:junit-jupiter-api</exclude>
-                  <exclude>*:jaxb-api</exclude>
-                  <exclude>*:jaxb-impl</exclude>
-                  <exclude>*:jaxb-runtime</exclude>
-                  <exclude>org.apache.activemq:*</exclude>
-                  <exclude>org.apache.activemq.protobuf:*</exclude>
-                  <exclude>org.fusesource.hawtbuf:hawtbuf</exclude>
-                  <exclude>org.apache.myfaces.core:*</exclude>
+                  <exclude>org.junit.jupiter:junit-jupiter-api10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>*:jaxb-api10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>*:jaxb-impl10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>*:jaxb-runtime10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.activemq:*10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.activemq.protobuf:*10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.fusesource.hawtbuf:hawtbuf10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.myfaces.core:*10.0.1-TT.2-SNAPSHOT</exclude>
                   <!-- jaxws -->
-                  <exclude>joda-time:joda-time</exclude>
-                  <exclude> commons-codec:commons-codec</exclude>
-                  <exclude>${project.groupId}:tomee-webservices</exclude>
-                  <exclude>${project.groupId}:openejb-webservices</exclude>
-                  <exclude>${project.groupId}:openejb-cxf</exclude>
-                  <exclude>org.apache.wss4j:*</exclude>
-                  <exclude>org.apache.santuario:xmlsec</exclude>
-                  <exclude>org.opensaml:*</exclude>
-                  <exclude>org.jasypt:*</exclude>
-                  <exclude>net.shibboleth.utilities:java-support</exclude>
-                  <exclude>org.cryptacular:cryptacular</exclude>
-                  <exclude>org.bouncycastle:bcprov-jdk15to18</exclude>
-                  <exclude>org.apache.neethi:neethi</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-frontend-jaxws</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-bindings-soap</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-bindings-xml</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-frontend-simple</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-wsdl</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-databinding-jaxb</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-ws-addr</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-ws-security</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-ws-policy</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-security-saml</exclude>
-                  <exclude>org.apache.ws.xmlschema:xmlschema-core</exclude>
-                  <exclude>xml-resolver:xml-resolver</exclude>
-                  <exclude>com.sun.xml.messaging.saaj:saaj-impl</exclude>
-                  <exclude>org.jvnet.mimepull:mimepull</exclude>
-                  <exclude>wsdl4j:wsdl4j</exclude>
-                </excludes>
-              </artifactSet>
-            </configuration>
-          </execution>
+                  <exclude>joda-time:joda-time10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude> commons-codec:commons-codec10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>${project.groupId}:tomee-webservices10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>${project.groupId}:openejb-webservices10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>${project.groupId}:openejb-cxf10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.wss4j:*10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.santuario:xmlsec10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.opensaml:*10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.jasypt:*10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>net.shibboleth.utilities:java-support10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.cryptacular:cryptacular10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.bouncycastle:bcprov-jdk15to1810.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.neethi:neethi10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-frontend-jaxws10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-bindings-soap10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-bindings-xml10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-frontend-simple10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-wsdl10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-databinding-jaxb10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-ws-addr10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-ws-security10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-ws-policy10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-security-saml10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.ws.xmlschema:xmlschema-core10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>xml-resolver:xml-resolver10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>com.sun.xml.messaging.saaj:saaj-impl10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.jvnet.mimepull:mimepull10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>wsdl4j:wsdl4j10.0.1-TT.2-SNAPSHOT</exclude>
+                10.0.1-TT.2-SNAPSHOT</excludes>
+              10.0.1-TT.2-SNAPSHOT</artifactSet>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
           <execution> <!-- kind of webprofile plus JAX-WS minus JSF -->
-            <id>jaxws-shade</id>
-            <phase>package</phase>
+            <id>jaxws-shade10.0.1-TT.2-SNAPSHOT</id>
+            <phase>package10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>shade</goal>
-            </goals>
+              <goal>shade10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
-              <shadedClassifierName>jaxws</shadedClassifierName>
+              <shadedClassifierName>jaxws10.0.1-TT.2-SNAPSHOT</shadedClassifierName>
               <artifactSet>
                 <excludes>
-                  <exclude>junit:junit</exclude>
-                  <exclude>org.junit.jupiter:junit-jupiter-api</exclude>
-                  <exclude>*:jaxb-api</exclude>
-                  <exclude>*:jaxb-impl</exclude>
-                  <exclude>*:jaxb-runtime</exclude>
-                  <exclude>org.apache.activemq:*</exclude>
-                  <exclude>org.apache.activemq.protobuf:*</exclude>
-                  <exclude>org.fusesource.hawtbuf:hawtbuf</exclude>
-                  <exclude>org.apache.myfaces.core:*</exclude>
+                  <exclude>junit:junit10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.junit.jupiter:junit-jupiter-api10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>*:jaxb-api10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>*:jaxb-impl10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>*:jaxb-runtime10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.activemq:*10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.activemq.protobuf:*10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.fusesource.hawtbuf:hawtbuf10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.myfaces.core:*10.0.1-TT.2-SNAPSHOT</exclude>
                   <!-- jaxrs -->
-                  <exclude>${project.groupId}:tomee-jaxrs</exclude>
-                  <exclude>${project.groupId}:openejb-rest</exclude>
-                  <exclude>${project.groupId}:openejb-cxf-rs</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-rs-service-description</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-rs-client</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-frontend-jaxrs</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-rs-extension-search</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-rs-json-basic</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-rs-security-cors</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-rs-security-oauth2</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-rs-security-jose-jaxrs</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-rs-security-jose</exclude>
-                  <exclude>org.apache.cxf:cxf-rt-rs-extension-providers</exclude>
-                  <exclude>org.apache.johnzon:johnzon-jaxrs</exclude>
-                  <exclude>org.apache.johnzon:johnzon-mapper</exclude>
-                </excludes>
-              </artifactSet>
-            </configuration>
-          </execution>
-        </executions>
+                  <exclude>${project.groupId}:tomee-jaxrs10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>${project.groupId}:openejb-rest10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>${project.groupId}:openejb-cxf-rs10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-rs-service-description10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-rs-client10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-frontend-jaxrs10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-rs-extension-search10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-rs-json-basic10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-rs-security-cors10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-rs-security-oauth210.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-rs-security-jose-jaxrs10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-rs-security-jose10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.cxf:cxf-rt-rs-extension-providers10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.johnzon:johnzon-jaxrs10.0.1-TT.2-SNAPSHOT</exclude>
+                  <exclude>org.apache.johnzon:johnzon-mapper10.0.1-TT.2-SNAPSHOT</exclude>
+                10.0.1-TT.2-SNAPSHOT</excludes>
+              10.0.1-TT.2-SNAPSHOT</artifactSet>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
         <configuration>
-          <useBaseVersion>true</useBaseVersion>
-          <createDependencyReducedPom>false</createDependencyReducedPom>
-          <shadedArtifactAttached>true</shadedArtifactAttached>
+          <useBaseVersion>true10.0.1-TT.2-SNAPSHOT</useBaseVersion>
+          <createDependencyReducedPom>false10.0.1-TT.2-SNAPSHOT</createDependencyReducedPom>
+          <shadedArtifactAttached>true10.0.1-TT.2-SNAPSHOT</shadedArtifactAttached>
           <transformers>
             <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-              <mainClass>org.apache.tomee.embedded.Main</mainClass>
-            </transformer>
+              <mainClass>org.apache.tomee.embedded.Main10.0.1-TT.2-SNAPSHOT</mainClass>
+            10.0.1-TT.2-SNAPSHOT</transformer>
             <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-              <resource>META-INF/cxf/bus-extensions.txt</resource>
-            </transformer>
+              <resource>META-INF/cxf/bus-extensions.txt10.0.1-TT.2-SNAPSHOT</resource>
+            10.0.1-TT.2-SNAPSHOT</transformer>
             <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-              <resource>META-INF/openwebbeans/openwebbeans.properties</resource>
-            </transformer>
-          </transformers>
+              <resource>META-INF/openwebbeans/openwebbeans.properties10.0.1-TT.2-SNAPSHOT</resource>
+            10.0.1-TT.2-SNAPSHOT</transformer>
+          10.0.1-TT.2-SNAPSHOT</transformers>
           <filters>
             <filter>
-              <artifact>*:*</artifact>
+              <artifact>*:*10.0.1-TT.2-SNAPSHOT</artifact>
               <excludes>
-                <exclude>META-INF/ejb-jar.xml</exclude>
-                <exclude>META-INF/openejb-jar.xml</exclude>
-                <exclude>META-INF/web-fragment.xml</exclude>
+                <exclude>META-INF/ejb-jar.xml10.0.1-TT.2-SNAPSHOT</exclude>
+                <exclude>META-INF/openejb-jar.xml10.0.1-TT.2-SNAPSHOT</exclude>
+                <exclude>META-INF/web-fragment.xml10.0.1-TT.2-SNAPSHOT</exclude>
                 <!--
                 NOTE:
                 we shouldn't exclude faces-config.xml while we didn't impl the feature in another manner
                 but it breaks all apps not using JSF.
                 Solution would be to handle it more deeply in our myfaces integration
                 -->
-                <exclude>META-INF/faces-config.xml</exclude>
+                <exclude>META-INF/faces-config.xml10.0.1-TT.2-SNAPSHOT</exclude>
 
                 <!-- to avoid to not be able to run the shade -->
-                <exclude>META-INF/*.SF</exclude>
-                <exclude>META-INF/*.DSA</exclude>
-                <exclude>META-INF/*.RSA</exclude>
-              </excludes>
-            </filter>
-          </filters>
-        </configuration>
-      </plugin>
+                <exclude>META-INF/*.SF10.0.1-TT.2-SNAPSHOT</exclude>
+                <exclude>META-INF/*.DSA10.0.1-TT.2-SNAPSHOT</exclude>
+                <exclude>META-INF/*.RSA10.0.1-TT.2-SNAPSHOT</exclude>
+              10.0.1-TT.2-SNAPSHOT</excludes>
+            10.0.1-TT.2-SNAPSHOT</filter>
+          10.0.1-TT.2-SNAPSHOT</filters>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <executions>
           <execution>
-            <id>default-test</id>
+            <id>default-test10.0.1-TT.2-SNAPSHOT</id>
             <goals>
-              <goal>test</goal>
-            </goals>
+              <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <excludes>
-                <exclude>**/SingleInstanceRunnerTest*</exclude>
-                <exclude>**/SingleInstanceRunnerExtensionTest*</exclude>
-                <exclude>**/NoScannerSingleRunnerTest*</exclude>
-                <exclude>**/NoScannerSingleRunnerExtensionTest*</exclude>
-              </excludes>
-            </configuration>
-          </execution>
+                <exclude>**/SingleInstanceRunnerTest*10.0.1-TT.2-SNAPSHOT</exclude>
+                <exclude>**/SingleInstanceRunnerExtensionTest*10.0.1-TT.2-SNAPSHOT</exclude>
+                <exclude>**/NoScannerSingleRunnerTest*10.0.1-TT.2-SNAPSHOT</exclude>
+                <exclude>**/NoScannerSingleRunnerExtensionTest*10.0.1-TT.2-SNAPSHOT</exclude>
+              10.0.1-TT.2-SNAPSHOT</excludes>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
           <execution>
-            <id>single-server-default-scanning</id>
+            <id>single-server-default-scanning10.0.1-TT.2-SNAPSHOT</id>
             <goals>
-              <goal>test</goal>
-            </goals>
+              <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <includes>
-                <include>**/SingleInstanceRunnerTest*</include>
-              </includes>
+                <include>**/SingleInstanceRunnerTest*10.0.1-TT.2-SNAPSHOT</include>
+              10.0.1-TT.2-SNAPSHOT</includes>
               <systemPropertyVariables>
-                <tomee.application-composer.application>org.apache.tomee.embedded.SingleInstanceRunnerTest$TheApp</tomee.application-composer.application>
-              </systemPropertyVariables>
-            </configuration>
-          </execution>
+                <tomee.application-composer.application>org.apache.tomee.embedded.SingleInstanceRunnerTest$TheApp10.0.1-TT.2-SNAPSHOT</tomee.application-composer.application>
+              10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
           <execution>
-            <id>single-server-custom-scanning</id>
+            <id>single-server-custom-scanning10.0.1-TT.2-SNAPSHOT</id>
             <goals>
-              <goal>test</goal>
-            </goals>
+              <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <includes>
-                <include>**/NoScannerSingleRunnerTest*</include>
-              </includes>
+                <include>**/NoScannerSingleRunnerTest*10.0.1-TT.2-SNAPSHOT</include>
+              10.0.1-TT.2-SNAPSHOT</includes>
               <systemPropertyVariables>
-                <tomee.application-composer.application>org.apache.tomee.embedded.NoScannerSingleRunnerTest$ScanApp</tomee.application-composer.application>
-              </systemPropertyVariables>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+                <tomee.application-composer.application>org.apache.tomee.embedded.NoScannerSingleRunnerTest$ScanApp10.0.1-TT.2-SNAPSHOT</tomee.application-composer.application>
+              10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-catalina</artifactId>
-      <version>${project.version}</version>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <artifactId>jakartaee-api</artifactId>
-          <groupId>${project.groupId}</groupId>
-        </exclusion>
+          <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>tomcat-annotations-api</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>tomcat-annotations-api10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-util</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-util10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.myfaces.core</groupId>
-      <artifactId>myfaces-api</artifactId>
-    </dependency>
+      <groupId>org.apache.myfaces.core10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>myfaces-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>jakartaee-api</artifactId>
-      <scope>compile</scope>
-      <classifier>tomcat</classifier>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
+      <classifier>tomcat10.0.1-TT.2-SNAPSHOT</classifier>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-websocket-api</artifactId>
-      <version>${tomcat.version}</version>
-    </dependency>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-websocket-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-websocket-client-api</artifactId>
-      <version>${tomcat.version}</version>
-    </dependency>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-websocket-client-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-myfaces</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-myfaces10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-core</artifactId>
-      <scope>compile</scope>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <artifactId>commons-beautils-core</artifactId>
-          <groupId>commons-beautils</groupId>
-        </exclusion>
+          <artifactId>commons-beautils-core10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>commons-beautils10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>jakartaee-api</artifactId>
-          <groupId>${project.groupId}</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-jsf</artifactId>
-      <scope>compile</scope>
+      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openwebbeans-jsf10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
       <!-- we already have jakarta version coming from core. We don't want non jakarta version transitively -->
       <exclusions>
         <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.myfaces.core</groupId>
-      <artifactId>myfaces-impl</artifactId>
-      <scope>compile</scope>
-    </dependency>
+      <groupId>org.apache.myfaces.core10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>myfaces-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>taglibs-shade</artifactId>
-      <version>${project.version}</version>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>taglibs-shade10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>*10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jdbc</artifactId>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-jdbc10.0.1-TT.2-SNAPSHOT</artifactId>
       <exclusions>
         <exclusion>
-          <artifactId>tomcat-juli</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>tomcat-juli10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-dbcp</artifactId>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-dbcp10.0.1-TT.2-SNAPSHOT</artifactId>
       <exclusions>
         <exclusion>
-          <artifactId>tomcat-juli</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>tomcat-juli10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-catalina</artifactId>
-      <scope>compile</scope>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <artifactId>tomcat-annotations-api</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-        </exclusion>
+          <artifactId>tomcat-annotations-api10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>tomcat-juli</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>tomcat-juli10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-catalina-ha</artifactId>
-      <scope>compile</scope>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-catalina-ha10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <artifactId>tomcat-juli</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>tomcat-juli10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-coyote</artifactId>
-      <scope>compile</scope>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-coyote10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <artifactId>tomcat-juli</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>tomcat-juli10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jasper</artifactId>
-      <scope>compile</scope>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-jasper10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <groupId>org.eclipse.jdt</groupId>
-          <artifactId>ecj</artifactId>
-        </exclusion>
+          <groupId>org.eclipse.jdt10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>ecj10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>tomcat-juli</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>tomcat-juli10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jasper-el</artifactId>
-      <version>${tomcat.version}</version>
-    </dependency>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-jasper-el10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.junit.jupiter10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit-jupiter-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.junit.jupiter10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit-jupiter-engine10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!-- Required for running JUnit 4 via JUnit 5 environment -->
     <dependency>
-      <groupId>org.junit.vintage</groupId>
-      <artifactId>junit-vintage-engine</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.junit.vintage10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit-vintage-engine10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.eclipse.jdt</groupId>
-      <artifactId>ecj</artifactId>
-      <type>jar</type>
-      <scope>compile</scope>
-    </dependency>
+      <groupId>org.eclipse.jdt10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>ecj10.0.1-TT.2-SNAPSHOT</artifactId>
+      <type>jar10.0.1-TT.2-SNAPSHOT</type>
+      <scope>compile10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.velocity</groupId>
-      <artifactId>velocity-engine-core</artifactId>
-    </dependency>
+      <groupId>org.apache.velocity10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>velocity-engine-core10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-client</artifactId>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-client10.0.1-TT.2-SNAPSHOT</artifactId>
       <exclusions>
         <exclusion>
-          <artifactId>jakartaee-api</artifactId>
-          <groupId>${project.groupId}</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency> <!-- now in webprofile -->
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-jaxrs</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-jaxrs10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-webservices</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-webservices10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-websocket</artifactId>
-      <version>${tomcat.version}</version>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-websocket10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <artifactId>tomcat-juli</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>tomcat-juli10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>commons-io10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-io10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.shrinkwrap</groupId>
-      <artifactId>shrinkwrap-impl-base</artifactId>
-      <version>${version.shrinkwrap.shrinkwrap}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.jboss.shrinkwrap10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>shrinkwrap-impl-base10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.shrinkwrap.shrinkwrap}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcmail-jdk15to18</artifactId>
-      <version>1.80</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>bcmail-jdk15to1810.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.8010.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
-  </dependencies>
-</project>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
+10.0.1-TT.2-SNAPSHOT</project>

@@ -18,71 +18,71 @@
     under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
   <parent>
-    <groupId>org.superbiz</groupId>
-    <artifactId>bval-evaluation-redeployment</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <artifactId>WebApp2</artifactId>
-  <packaging>war</packaging>
-  <name>WebApp2</name>
+    <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+    <artifactId>bval-evaluation-redeployment10.0.1-TT.2-SNAPSHOT</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <artifactId>WebApp210.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>WebApp210.0.1-TT.2-SNAPSHOT</name>
   <properties>
-    <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-  </properties>
+    <endorsed.dir>${project.build.directory}/endorsed10.0.1-TT.2-SNAPSHOT</endorsed.dir>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee.bom</groupId>
-      <artifactId>tomee-webprofile-api</artifactId>
-    </dependency>
-  </dependencies>
+      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-webprofile-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
   <build>
-    <finalName>${project.artifactId}</finalName>
+    <finalName>${project.artifactId}10.0.1-TT.2-SNAPSHOT</finalName>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.13.010.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>1.810.0.1-TT.2-SNAPSHOT</source>
+          <target>1.810.0.1-TT.2-SNAPSHOT</target>
           <compilerArguments>
-            <endorseddirs>${endorsed.dir}</endorseddirs>
-          </compilerArguments>
-        </configuration>
-      </plugin>
+            <endorseddirs>${endorsed.dir}10.0.1-TT.2-SNAPSHOT</endorseddirs>
+          10.0.1-TT.2-SNAPSHOT</compilerArguments>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-war-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
+          <failOnMissingWebXml>false10.0.1-TT.2-SNAPSHOT</failOnMissingWebXml>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <executions>
           <execution>
-            <phase>validate</phase>
+            <phase>validate10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>copy</goal>
-            </goals>
+              <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
-              <outputDirectory>${endorsed.dir}</outputDirectory>
-              <silent>true</silent>
+              <outputDirectory>${endorsed.dir}10.0.1-TT.2-SNAPSHOT</outputDirectory>
+              <silent>true10.0.1-TT.2-SNAPSHOT</silent>
               <artifactItems>
                 <artifactItem>
-                  <groupId>javax</groupId>
-                  <artifactId>javaee-endorsed-api</artifactId>
-                  <version>6.0</version>
-                  <type>jar</type>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+                  <groupId>javax10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>javaee-endorsed-api10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <version>6.010.0.1-TT.2-SNAPSHOT</version>
+                  <type>jar10.0.1-TT.2-SNAPSHOT</type>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
+              10.0.1-TT.2-SNAPSHOT</artifactItems>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       
-    </plugins>
-  </build>
-</project>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

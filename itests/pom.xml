@@ -22,50 +22,50 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <artifactId>tomee-project</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>tomee-project10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>itests</artifactId>
-  <packaging>pom</packaging>
-  <name>TomEE :: iTests</name>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <artifactId>itests10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: iTests10.0.1-TT.2-SNAPSHOT</name>
 
   <modules>
-    <module>tomee-server-composer</module>
-    <module>tomee-server-version</module>
-    <module>microprofile-jwt-itests</module>
-    <module>failover</module>
-    <module>failover-ejb</module>
-    <module>legacy-client</module>
-    <module>legacy-server</module>
-    <module>openejb-itests-app</module>
-    <module>openejb-itests-beans</module>
-    <module>openejb-itests-client</module>
-    <module>openejb-itests-interceptor-beans</module>
-    <module>openejb-itests-servlets</module>
-    <module>openejb-itests-web</module>
-    <module>jaxrs</module>
-    <module>ejb</module>
-    <module>itest-common</module>
-    <module>itest-util</module>
-    <module>tomee-security-itests</module>
-    <module>tomee-microprofile-itests</module>
-    <module>openejb-itests-optional-classes</module>
-  </modules>
+    <module>tomee-server-composer10.0.1-TT.2-SNAPSHOT</module>
+    <module>tomee-server-version10.0.1-TT.2-SNAPSHOT</module>
+    <module>microprofile-jwt-itests10.0.1-TT.2-SNAPSHOT</module>
+    <module>failover10.0.1-TT.2-SNAPSHOT</module>
+    <module>failover-ejb10.0.1-TT.2-SNAPSHOT</module>
+    <module>legacy-client10.0.1-TT.2-SNAPSHOT</module>
+    <module>legacy-server10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-itests-app10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-itests-beans10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-itests-client10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-itests-interceptor-beans10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-itests-servlets10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-itests-web10.0.1-TT.2-SNAPSHOT</module>
+    <module>jaxrs10.0.1-TT.2-SNAPSHOT</module>
+    <module>ejb10.0.1-TT.2-SNAPSHOT</module>
+    <module>itest-common10.0.1-TT.2-SNAPSHOT</module>
+    <module>itest-util10.0.1-TT.2-SNAPSHOT</module>
+    <module>tomee-security-itests10.0.1-TT.2-SNAPSHOT</module>
+    <module>tomee-microprofile-itests10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-itests-optional-classes10.0.1-TT.2-SNAPSHOT</module>
+  10.0.1-TT.2-SNAPSHOT</modules>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${version.plugin.javadoc}</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-javadoc-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${version.plugin.javadoc}10.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+          <skip>true10.0.1-TT.2-SNAPSHOT</skip>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>
 

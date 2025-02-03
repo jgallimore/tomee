@@ -18,66 +18,66 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>utils</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <artifactId>utils10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
-  <artifactId>openejb-core-eclipselink</artifactId>
-  <name>TomEE :: Utils :: Core EclipseLink</name>
-  <packaging>jar</packaging>
+  <artifactId>openejb-core-eclipselink10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: Utils :: Core EclipseLink10.0.1-TT.2-SNAPSHOT</name>
+  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
 
   <properties>
-    <tomee.build.name>${project.groupId}.util.eclipselink</tomee.build.name>
-  </properties>
+    <tomee.build.name>${project.groupId}.util.eclipselink10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-core</artifactId>
-      <version>${project.version}</version>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>org.apache.openjpa</groupId>
-          <artifactId>openjpa</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.apache.openjpa10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>openjpa10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.eclipse.persistence</groupId>
-      <artifactId>eclipselink</artifactId>
-      <version>${version.eclipselink}</version>
+      <groupId>org.eclipse.persistence10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>eclipselink10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.eclipselink}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>org.eclipse.persistence</groupId>
-          <artifactId>jakarta.persistence</artifactId>
-        </exclusion>
+          <groupId>org.eclipse.persistence10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.persistence10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.eclipse.persistence</groupId>
-          <artifactId>jakarta.persistence</artifactId>
-        </exclusion>
+          <groupId>org.eclipse.persistence10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.persistence10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.validation</groupId>
-          <artifactId>validation-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.validation10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>validation-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.glassfish</groupId>
-          <artifactId>jakarta.json</artifactId>
-        </exclusion>
+          <groupId>org.glassfish10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.json10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.eclipse.parsson</groupId>
-          <artifactId>jakarta.json</artifactId>
-        </exclusion>
+          <groupId>org.eclipse.parsson10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.json10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>com.sun.xml.bind</groupId>
-          <artifactId>jaxb-xjc</artifactId>
-        </exclusion>
+          <groupId>com.sun.xml.bind10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jaxb-xjc10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>com.sun.xml.bind</groupId>
-          <artifactId>jaxb-core</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-  </dependencies>
+          <groupId>com.sun.xml.bind10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jaxb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>

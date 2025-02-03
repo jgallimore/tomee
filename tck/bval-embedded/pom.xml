@@ -17,164 +17,164 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>tck</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
-  <artifactId>bval-embedded</artifactId>
-  <name>TomEE :: TCK :: Bean Validation Embedded</name>
+  <artifactId>bval-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: TCK :: Bean Validation Embedded10.0.1-TT.2-SNAPSHOT</name>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>jakartaee-api</artifactId>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-core</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-jdk14</artifactId>
-      <version>${version.slf4j}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>slf4j-jdk1410.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.slf4j}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.testng10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>testng10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>arquillian-openejb-embedded</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-openejb-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <groupId>org.jboss.shrinkwrap</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>org.jboss.shrinkwrap10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.jboss.shrinkwrap.descriptors</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.jboss.shrinkwrap.descriptors10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jasper-el</artifactId>
-      <version>${tomcat.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-jasper-el10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>jakarta.validation</groupId>
-      <artifactId>beanvalidation-tck-tests</artifactId>
-      <version>${bval-tck.version}</version>
+      <groupId>jakarta.validation10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>beanvalidation-tck-tests10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${bval-tck.version}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>jakarta.validation</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>jakarta.validation10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.interceptor</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>jakarta.interceptor10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.annotation</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>jakarta.annotation10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.testng</groupId>
-      <artifactId>arquillian-testng-container</artifactId>
-      <version>${version.arquillian}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.jboss.arquillian.testng10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-testng-container10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.protocol</groupId>
-      <artifactId>arquillian-protocol-servlet-jakarta</artifactId>
-      <version>${version.arquillian-protocol-servlet-jakarta}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.jboss.arquillian.protocol10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-protocol-servlet-jakarta10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.arquillian-protocol-servlet-jakarta}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-base</artifactId>
-      <version>11</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+      <groupId>org.openjfx10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>javafx-base10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1110.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.8.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.8.010.0.1-TT.2-SNAPSHOT</version>
         <executions>
           <execution>
-            <id>copy-tck-test-suite-file</id>
-            <phase>generate-test-sources</phase>
+            <id>copy-tck-test-suite-file10.0.1-TT.2-SNAPSHOT</id>
+            <phase>generate-test-sources10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>copy</goal>
-            </goals>
+              <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
-              <stripVersion>true</stripVersion>
+              <stripVersion>true10.0.1-TT.2-SNAPSHOT</stripVersion>
               <artifactItems>
                 <artifactItem>
-                  <groupId>jakarta.validation</groupId>
-                  <artifactId>beanvalidation-tck-tests</artifactId>
-                  <type>xml</type>
-                  <classifier>suite</classifier>
-                  <overWrite>false</overWrite>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+                  <groupId>jakarta.validation10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>beanvalidation-tck-tests10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <type>xml10.0.1-TT.2-SNAPSHOT</type>
+                  <classifier>suite10.0.1-TT.2-SNAPSHOT</classifier>
+                  <overWrite>false10.0.1-TT.2-SNAPSHOT</overWrite>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
+              10.0.1-TT.2-SNAPSHOT</artifactItems>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${surefire.version}</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${surefire.version}10.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <reuseForks>false</reuseForks>
+          <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.build.directory}/dependency/beanvalidation-tck-tests-suite.xml</suiteXmlFile>
-          </suiteXmlFiles>
+            <suiteXmlFile>${project.build.directory}/dependency/beanvalidation-tck-tests-suite.xml10.0.1-TT.2-SNAPSHOT</suiteXmlFile>
+          10.0.1-TT.2-SNAPSHOT</suiteXmlFiles>
           <systemPropertyVariables>
-            <validation.provider>${validation.provider}</validation.provider>
-          </systemPropertyVariables>
-          <parallel>none</parallel>
-          <threadCount>4</threadCount>
-        </configuration>
-      </plugin>
+            <validation.provider>${validation.provider}10.0.1-TT.2-SNAPSHOT</validation.provider>
+          10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+          <parallel>none10.0.1-TT.2-SNAPSHOT</parallel>
+          <threadCount>410.0.1-TT.2-SNAPSHOT</threadCount>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>${surefire.version}</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-surefire-report-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${surefire.version}10.0.1-TT.2-SNAPSHOT</version>
         <executions>
           <execution>
-            <id>generate-test-report</id>
-            <phase>test</phase>
+            <id>generate-test-report10.0.1-TT.2-SNAPSHOT</id>
+            <phase>test10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>report-only</goal>
-            </goals>
-          </execution>
-        </executions>
+              <goal>report-only10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
         <configuration>
-          <outputDirectory>${project.build.directory}/surefire-reports</outputDirectory>
-          <outputName>test-report</outputName>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+          <outputDirectory>${project.build.directory}/surefire-reports10.0.1-TT.2-SNAPSHOT</outputDirectory>
+          <outputName>test-report10.0.1-TT.2-SNAPSHOT</outputName>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

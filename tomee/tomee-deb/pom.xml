@@ -15,206 +15,206 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>tomee</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <artifactId>tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.1-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+    <relativePath>../pom.xml10.0.1-TT.2-SNAPSHOT</relativePath>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>tomee-deb</artifactId>
-  <packaging>jar</packaging>
-  <name>TomEE :: TomEE :: Debian Package Builder</name>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <artifactId>tomee-deb10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: TomEE :: Debian Package Builder10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <distribution.workdir>${project.build.directory}/work-dir</distribution.workdir>
-  </properties>
+    <distribution.workdir>${project.build.directory}/work-dir10.0.1-TT.2-SNAPSHOT</distribution.workdir>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <dependencies>
     <!-- Dependencies used by builder logic. -->
     <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-core</artifactId>
-      <version>3.2.1</version>
-    </dependency>
+      <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>maven-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>3.2.110.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-all</artifactId>
-    </dependency>
+      <groupId>org.codehaus.groovy10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>groovy-all10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-compress</artifactId>
-    </dependency>
+      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-compress10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-    </dependency>
+      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-lang310.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-    </dependency>
+      <groupId>commons-io10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-io10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-    </dependency>
+      <groupId>commons-codec10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-codec10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <!-- We need to be sure the ZIP files are built before the debian package. -->
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>apache-tomee</artifactId>
-      <version>${project.version}</version>
-      <type>pom</type>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <type>pom10.0.1-TT.2-SNAPSHOT</type>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <!-- We use resources from these guys below. -->
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-core</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-cxf</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-cxf10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-cxf-rs</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-cxf-rs10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-hsql</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-  </dependencies>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-hsql10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <executions>
           <execution>
-            <id>copy-tomee-zip</id>
-            <phase>prepare-package</phase>
+            <id>copy-tomee-zip10.0.1-TT.2-SNAPSHOT</id>
+            <phase>prepare-package10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>copy</goal>
-            </goals>
+              <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>${project.groupId}</groupId>
-                  <artifactId>apache-tomee</artifactId>
-                  <version>${project.version}</version>
-                  <classifier>plus</classifier>
-                  <type>zip</type>
-                  <outputDirectory>${distribution.workdir}</outputDirectory>
-                  <destFileName>tomee-plus.zip</destFileName>
-                </artifactItem>
+                  <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+                  <classifier>plus10.0.1-TT.2-SNAPSHOT</classifier>
+                  <type>zip10.0.1-TT.2-SNAPSHOT</type>
+                  <outputDirectory>${distribution.workdir}10.0.1-TT.2-SNAPSHOT</outputDirectory>
+                  <destFileName>tomee-plus.zip10.0.1-TT.2-SNAPSHOT</destFileName>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
                 <artifactItem>
-                  <groupId>${project.groupId}</groupId>
-                  <artifactId>apache-tomee</artifactId>
-                  <version>${project.version}</version>
-                  <classifier>webprofile</classifier>
-                  <type>zip</type>
-                  <outputDirectory>${distribution.workdir}</outputDirectory>
-                  <destFileName>tomee-webprofile.zip</destFileName>
-                </artifactItem>
+                  <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+                  <classifier>webprofile10.0.1-TT.2-SNAPSHOT</classifier>
+                  <type>zip10.0.1-TT.2-SNAPSHOT</type>
+                  <outputDirectory>${distribution.workdir}10.0.1-TT.2-SNAPSHOT</outputDirectory>
+                  <destFileName>tomee-webprofile.zip10.0.1-TT.2-SNAPSHOT</destFileName>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
                 <artifactItem>
-                  <groupId>${project.groupId}</groupId>
-                  <artifactId>apache-tomee</artifactId>
-                  <version>${project.version}</version>
-                  <classifier>plume</classifier>
-                  <type>zip</type>
-                  <outputDirectory>${distribution.workdir}</outputDirectory>
-                  <destFileName>tomee-plume.zip</destFileName>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+                  <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+                  <classifier>plume10.0.1-TT.2-SNAPSHOT</classifier>
+                  <type>zip10.0.1-TT.2-SNAPSHOT</type>
+                  <outputDirectory>${distribution.workdir}10.0.1-TT.2-SNAPSHOT</outputDirectory>
+                  <destFileName>tomee-plume.zip10.0.1-TT.2-SNAPSHOT</destFileName>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
+              10.0.1-TT.2-SNAPSHOT</artifactItems>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.codehaus.gmaven</groupId>
-        <artifactId>groovy-maven-plugin</artifactId>
+        <groupId>org.codehaus.gmaven10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>groovy-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration>
-          <classpathScope>runtime</classpathScope>
+          <classpathScope>runtime10.0.1-TT.2-SNAPSHOT</classpathScope>
           <scriptpath>
-            <path>${project.basedir}/src/main/groovy</path>
-          </scriptpath>
+            <path>${project.basedir}/src/main/groovy10.0.1-TT.2-SNAPSHOT</path>
+          10.0.1-TT.2-SNAPSHOT</scriptpath>
           <defaults>
-            <testSectionsFile>${project.basedir}/sections.properties</testSectionsFile>
-            <logOutputDirectory>${project.build.directory}/logs</logOutputDirectory>
-            <backupLogs>true</backupLogs>
-          </defaults>
-        </configuration>
+            <testSectionsFile>${project.basedir}/sections.properties10.0.1-TT.2-SNAPSHOT</testSectionsFile>
+            <logOutputDirectory>${project.build.directory}/logs10.0.1-TT.2-SNAPSHOT</logOutputDirectory>
+            <backupLogs>true10.0.1-TT.2-SNAPSHOT</backupLogs>
+          10.0.1-TT.2-SNAPSHOT</defaults>
+        10.0.1-TT.2-SNAPSHOT</configuration>
         <executions>
           <execution>
-            <id>build-distribution</id>
-            <phase>package</phase>
+            <id>build-distribution10.0.1-TT.2-SNAPSHOT</id>
+            <phase>package10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>execute</goal>
-            </goals>
+              <goal>execute10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <source>
                 new org.apache.tomee.deb.PackageBuilder(project).createPackage()
-              </source>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+              10.0.1-TT.2-SNAPSHOT</source>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>build-helper-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <executions>
           <execution>
-            <id>attach-artifacts</id>
-            <phase>package</phase>
+            <id>attach-artifacts10.0.1-TT.2-SNAPSHOT</id>
+            <phase>package10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>attach-artifact</goal>
-            </goals>
+              <goal>attach-artifact10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <artifacts>
                 <artifact>
-                  <file>${project.build.directory}/work-dir/apache-tomee-plus.deb</file>
-                  <type>deb</type>
-                  <classifier>plus</classifier>
-                </artifact>
+                  <file>${project.build.directory}/work-dir/apache-tomee-plus.deb10.0.1-TT.2-SNAPSHOT</file>
+                  <type>deb10.0.1-TT.2-SNAPSHOT</type>
+                  <classifier>plus10.0.1-TT.2-SNAPSHOT</classifier>
+                10.0.1-TT.2-SNAPSHOT</artifact>
                 <artifact>
                   <file>${project.build.directory}/work-dir/apache-tomee-webprofile.deb
-                  </file>
-                  <type>deb</type>
-                  <classifier>webprofile</classifier>
-                </artifact>
+                  10.0.1-TT.2-SNAPSHOT</file>
+                  <type>deb10.0.1-TT.2-SNAPSHOT</type>
+                  <classifier>webprofile10.0.1-TT.2-SNAPSHOT</classifier>
+                10.0.1-TT.2-SNAPSHOT</artifact>
                 <artifact>
                   <file>${project.build.directory}/work-dir/apache-tomee-plume.deb
-                  </file>
-                  <type>deb</type>
-                  <classifier>plume</classifier>
-                </artifact>
+                  10.0.1-TT.2-SNAPSHOT</file>
+                  <type>deb10.0.1-TT.2-SNAPSHOT</type>
+                  <classifier>plume10.0.1-TT.2-SNAPSHOT</classifier>
+                10.0.1-TT.2-SNAPSHOT</artifact>
                 <artifact>
                   <file>${project.build.directory}/work-dir/apache-libtomee-plume-java.deb
-                  </file>
-                  <type>deb</type>
-                  <classifier>lib-plume</classifier>
-                </artifact>
+                  10.0.1-TT.2-SNAPSHOT</file>
+                  <type>deb10.0.1-TT.2-SNAPSHOT</type>
+                  <classifier>lib-plume10.0.1-TT.2-SNAPSHOT</classifier>
+                10.0.1-TT.2-SNAPSHOT</artifact>
                 <artifact>
                   <file>${project.build.directory}/work-dir/apache-libtomee-plus-java.deb
-                  </file>
-                  <type>deb</type>
-                  <classifier>lib-plus</classifier>
-                </artifact>
+                  10.0.1-TT.2-SNAPSHOT</file>
+                  <type>deb10.0.1-TT.2-SNAPSHOT</type>
+                  <classifier>lib-plus10.0.1-TT.2-SNAPSHOT</classifier>
+                10.0.1-TT.2-SNAPSHOT</artifact>
                 <artifact>
                   <file>${project.build.directory}/work-dir/apache-libtomee-webprofile-java.deb
-                  </file>
-                  <type>deb</type>
-                  <classifier>lib-webprofile</classifier>
-                </artifact>
-              </artifacts>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+                  10.0.1-TT.2-SNAPSHOT</file>
+                  <type>deb10.0.1-TT.2-SNAPSHOT</type>
+                  <classifier>lib-webprofile10.0.1-TT.2-SNAPSHOT</classifier>
+                10.0.1-TT.2-SNAPSHOT</artifact>
+              10.0.1-TT.2-SNAPSHOT</artifacts>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

@@ -17,121 +17,121 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <artifactId>tck</artifactId>
-        <groupId>org.apache.tomee</groupId>
-        <version>10.0.1-TT.2-SNAPSHOT</version>
-    </parent>
+        <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>jsonp-standalone</artifactId>
-    <name>TomEE :: TCK :: JSON-P Standalone</name>
+    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>jsonp-standalone10.0.1-TT.2-SNAPSHOT</artifactId>
+    <name>TomEE :: TCK :: JSON-P Standalone10.0.1-TT.2-SNAPSHOT</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>jakartaee-api</artifactId>
-        </dependency>
+            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>jakarta.json</groupId>
-            <artifactId>jakarta.json-tck-tests</artifactId>
-            <version>${jsonp-tck.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <groupId>jakarta.json10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakarta.json-tck-tests10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${jsonp-tck.version}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>jakarta.json</groupId>
-            <artifactId>jakarta.json-tck-tests-pluggability</artifactId>
-            <version>${jsonp-tck.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <groupId>jakarta.json10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakarta.json-tck-tests-pluggability10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${jsonp-tck.version}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-core</artifactId>
-        </dependency>
+            <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>johnzon-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-se</artifactId>
-            <version>${version.openwebbeans}</version>
-        </dependency>
+            <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openwebbeans-se10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${version.openwebbeans}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-impl</artifactId>
-        </dependency>
+            <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openwebbeans-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-spi</artifactId>
-        </dependency>
-    </dependencies>
+            <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openwebbeans-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
 
     <profiles>
         <profile>
-            <id>tck-jsonp</id>
+            <id>tck-jsonp10.0.1-TT.2-SNAPSHOT</id>
             <build>
                 <testResources>
                     <testResource>
-                        <directory>src/test/resources</directory>
-                        <filtering>true</filtering>
-                    </testResource>
-                </testResources>
+                        <directory>src/test/resources10.0.1-TT.2-SNAPSHOT</directory>
+                        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
+                    10.0.1-TT.2-SNAPSHOT</testResource>
+                10.0.1-TT.2-SNAPSHOT</testResources>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${surefire.version}</version>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                        <version>${surefire.version}10.0.1-TT.2-SNAPSHOT</version>
                         <configuration>
-                            <reuseForks>false</reuseForks>
-                            <forkCount>1</forkCount>
-                        </configuration>
+                            <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
+                            <forkCount>110.0.1-TT.2-SNAPSHOT</forkCount>
+                        10.0.1-TT.2-SNAPSHOT</configuration>
 
                         <!-- Pluggability tests need to be run separately from normal TCKs as they bring their
                              own JsonProvider implementation which would break other TCK tests -->
                         <executions>
                             <execution>
-                                <id>tck-pluggability</id>
+                                <id>tck-pluggability10.0.1-TT.2-SNAPSHOT</id>
 
                                 <goals>
-                                    <goal>test</goal>
-                                </goals>
+                                    <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                                10.0.1-TT.2-SNAPSHOT</goals>
 
                                 <configuration>
                                     <dependenciesToScan>jakarta.json:jakarta.json-tck-tests-pluggability
-                                    </dependenciesToScan>
+                                    10.0.1-TT.2-SNAPSHOT</dependenciesToScan>
 
                                     <classpathDependencyExcludes>
                                         <classpathDependencyExclude>jakarta.json:jakarta.json-tck-tests
-                                        </classpathDependencyExclude>
-                                    </classpathDependencyExcludes>
-                                </configuration>
+                                        10.0.1-TT.2-SNAPSHOT</classpathDependencyExclude>
+                                    10.0.1-TT.2-SNAPSHOT</classpathDependencyExcludes>
+                                10.0.1-TT.2-SNAPSHOT</configuration>
 
-                            </execution>
+                            10.0.1-TT.2-SNAPSHOT</execution>
 
                             <execution>
-                                <id>tck</id>
+                                <id>tck10.0.1-TT.2-SNAPSHOT</id>
 
                                 <goals>
-                                    <goal>test</goal>
-                                </goals>
+                                    <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                                10.0.1-TT.2-SNAPSHOT</goals>
 
                                 <configuration>
-                                    <dependenciesToScan>jakarta.json:jakarta.json-tck-tests</dependenciesToScan>
+                                    <dependenciesToScan>jakarta.json:jakarta.json-tck-tests10.0.1-TT.2-SNAPSHOT</dependenciesToScan>
 
                                     <classpathDependencyExcludes>
                                         <classpathDependencyExclude>jakarta.json:jakarta.json-tck-tests-pluggability
-                                        </classpathDependencyExclude>
-                                    </classpathDependencyExcludes>
+                                        10.0.1-TT.2-SNAPSHOT</classpathDependencyExclude>
+                                    10.0.1-TT.2-SNAPSHOT</classpathDependencyExcludes>
 
                                     <excludes>
-                                        <exclude>**/JSONPSigTest</exclude>
-                                    </excludes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-</project>
+                                        <exclude>**/JSONPSigTest10.0.1-TT.2-SNAPSHOT</exclude>
+                                    10.0.1-TT.2-SNAPSHOT</excludes>
+                                10.0.1-TT.2-SNAPSHOT</configuration>
+                            10.0.1-TT.2-SNAPSHOT</execution>
+                        10.0.1-TT.2-SNAPSHOT</executions>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
+                10.0.1-TT.2-SNAPSHOT</plugins>
+            10.0.1-TT.2-SNAPSHOT</build>
+        10.0.1-TT.2-SNAPSHOT</profile>
+    10.0.1-TT.2-SNAPSHOT</profiles>
+10.0.1-TT.2-SNAPSHOT</project>

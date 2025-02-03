@@ -21,20 +21,20 @@
 <!-- $Rev$ $Date$ -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
   <parent>
-    <artifactId>container</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>container10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <artifactId>openejb-core</artifactId>
-  <packaging>jar</packaging>
-  <name>TomEE :: Container :: Core</name>
+  <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Container :: Core10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.container.core</tomee.build.name>
+    <tomee.build.name>${project.groupId}.container.core10.0.1-TT.2-SNAPSHOT</tomee.build.name>
     <openejb.osgi.import.pkg>
       jakarta.annotation;version="[1.1.0,2.0.0)",
       jakarta.annotation.security;version="[1.1.0,2.0.0)",
@@ -217,21 +217,21 @@
       org.w3c.dom.ls,
       org.xml.sax,
       org.xml.sax.helpers
-    </openejb.osgi.import.pkg>
+    10.0.1-TT.2-SNAPSHOT</openejb.osgi.import.pkg>
     <openejb.osgi.export>
       '=META-INF.org^.apache^.openejb',
       org.apache.openejb.cdi.*;version=${openejb.osgi.export.version},
       org.apache.openejb*;version=${openejb.osgi.export.version},
       org.apache.openejb;version=${openejb.osgi.export.version}
-    </openejb.osgi.export>
+    10.0.1-TT.2-SNAPSHOT</openejb.osgi.export>
     <jacocoArgLine />
-  </properties>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <build>
     <resources>
       <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
+        <directory>src/main/resources10.0.1-TT.2-SNAPSHOT</directory>
+        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
         <excludes>
           <!--
           This file is encoded in UTF-16LE so it causes trouble
@@ -239,86 +239,86 @@
           obviously only used as an input file for the corresponding
           properties we're just ignoring it here.
           -->
-          <exclude>**/Messages_hi_input.txt</exclude>
-        </excludes>
-      </resource>
-    </resources>
+          <exclude>**/Messages_hi_input.txt10.0.1-TT.2-SNAPSHOT</exclude>
+        10.0.1-TT.2-SNAPSHOT</excludes>
+      10.0.1-TT.2-SNAPSHOT</resource>
+    10.0.1-TT.2-SNAPSHOT</resources>
     <testResources>
       <testResource>
-        <directory>src/test/resources</directory>
-        <filtering>true</filtering>
-      </testResource>
-    </testResources>
+        <directory>src/test/resources10.0.1-TT.2-SNAPSHOT</directory>
+        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
+      10.0.1-TT.2-SNAPSHOT</testResource>
+    10.0.1-TT.2-SNAPSHOT</testResources>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration>
           <compilerArgs>
-            <arg>-Xlint:path</arg>
-          </compilerArgs>
-        </configuration>
-      </plugin>
+            <arg>-Xlint:path10.0.1-TT.2-SNAPSHOT</arg>
+          10.0.1-TT.2-SNAPSHOT</compilerArgs>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <executions>
           <execution>
-            <id>copy</id>
-            <phase>process-resources</phase>
+            <id>copy10.0.1-TT.2-SNAPSHOT</id>
+            <phase>process-resources10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>copy</goal>
-            </goals>
+              <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>${project.groupId}</groupId>
-                  <artifactId>openejb-javaagent</artifactId>
-                  <version>${project.version}</version>
-                  <outputDirectory>${project.build.directory}</outputDirectory>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
+                  <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>openejb-javaagent10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+                  <outputDirectory>${project.build.directory}10.0.1-TT.2-SNAPSHOT</outputDirectory>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
+              10.0.1-TT.2-SNAPSHOT</artifactItems>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
           <execution>
-            <id>AlternateDriverJarTest</id>
-            <phase>process-test-resources</phase>
+            <id>AlternateDriverJarTest10.0.1-TT.2-SNAPSHOT</id>
+            <phase>process-test-resources10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>copy</goal>
-            </goals>
+              <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>org.apache.derby</groupId>
-                  <artifactId>derby</artifactId>
-                  <version>${version.derby}</version>
-                  <type>jar</type>
-                  <overWrite>false</overWrite>
-                  <outputDirectory>${project.build.directory}/drivers</outputDirectory>
-                  <destFileName>derby-${version.derby}.jar</destFileName>
-                </artifactItem>
+                  <groupId>org.apache.derby10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>derby10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <version>${version.derby}10.0.1-TT.2-SNAPSHOT</version>
+                  <type>jar10.0.1-TT.2-SNAPSHOT</type>
+                  <overWrite>false10.0.1-TT.2-SNAPSHOT</overWrite>
+                  <outputDirectory>${project.build.directory}/drivers10.0.1-TT.2-SNAPSHOT</outputDirectory>
+                  <destFileName>derby-${version.derby}.jar10.0.1-TT.2-SNAPSHOT</destFileName>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
                 <artifactItem>
-                  <groupId>org.apache.derby</groupId>
-                  <artifactId>derby</artifactId>
-                  <version>${version.derby}</version>
-                  <type>jar</type>
-                  <overWrite>false</overWrite>
-                  <outputDirectory>${project.build.directory}/drivers</outputDirectory>
-                  <destFileName>derby-${version.derby}.jar</destFileName>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+                  <groupId>org.apache.derby10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>derby10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <version>${version.derby}10.0.1-TT.2-SNAPSHOT</version>
+                  <type>jar10.0.1-TT.2-SNAPSHOT</type>
+                  <overWrite>false10.0.1-TT.2-SNAPSHOT</overWrite>
+                  <outputDirectory>${project.build.directory}/drivers10.0.1-TT.2-SNAPSHOT</outputDirectory>
+                  <destFileName>derby-${version.derby}.jar10.0.1-TT.2-SNAPSHOT</destFileName>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
+              10.0.1-TT.2-SNAPSHOT</artifactItems>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration>
-          <childDelegation>true</childDelegation>
-          <reuseForks>false</reuseForks>
-          <forkCount>1</forkCount>
-          <testNGArtifactName>none:none</testNGArtifactName>
+          <childDelegation>true10.0.1-TT.2-SNAPSHOT</childDelegation>
+          <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
+          <forkCount>110.0.1-TT.2-SNAPSHOT</forkCount>
+          <testNGArtifactName>none:none10.0.1-TT.2-SNAPSHOT</testNGArtifactName>
           <argLine>
             ${jacocoArgLine}
             -javaagent:${project.basedir}/target/openejb-javaagent-${project.version}.jar
@@ -327,427 +327,427 @@
             -enableassertions
             -Dopenejb.descriptors.output.folder=./dump/
             -Dorg.apache.activemq.SERIALIZABLE_PACKAGES=org,java
-          </argLine>
-          <workingDirectory>${project.basedir}/target</workingDirectory>
+          10.0.1-TT.2-SNAPSHOT</argLine>
+          <workingDirectory>${project.basedir}/target10.0.1-TT.2-SNAPSHOT</workingDirectory>
           <systemPropertyVariables>
-            <openejb.home>${project.basedir}/target/test-classes</openejb.home>
-          </systemPropertyVariables>
+            <openejb.home>${project.basedir}/target/test-classes10.0.1-TT.2-SNAPSHOT</openejb.home>
+          10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
           <excludes>
-            <exclude>**/TestHandler.java</exclude>
-            <exclude>org/apache/openejb/cdi/**</exclude>
-          </excludes>
+            <exclude>**/TestHandler.java10.0.1-TT.2-SNAPSHOT</exclude>
+            <exclude>org/apache/openejb/cdi/**10.0.1-TT.2-SNAPSHOT</exclude>
+          10.0.1-TT.2-SNAPSHOT</excludes>
           <!--
                     <properties>
                       <property>
-                        <name>listener</name>
-                        <value>org.apache.openejb.tool.junit.OpenEJBJUnitDebugListener</value>
-                      </property>
-                    </properties>
+                        <name>listener10.0.1-TT.2-SNAPSHOT</name>
+                        <value>org.apache.openejb.tool.junit.OpenEJBJUnitDebugListener10.0.1-TT.2-SNAPSHOT</value>
+                      10.0.1-TT.2-SNAPSHOT</property>
+                    10.0.1-TT.2-SNAPSHOT</properties>
           -->
-        </configuration>
+        10.0.1-TT.2-SNAPSHOT</configuration>
         <executions>
           <execution>
-            <id>test-testng</id>
-            <phase>test</phase>
+            <id>test-testng10.0.1-TT.2-SNAPSHOT</id>
+            <phase>test10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>test</goal>
-            </goals>
+              <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
-              <junitArtifactName>none:none</junitArtifactName>
+              <junitArtifactName>none:none10.0.1-TT.2-SNAPSHOT</junitArtifactName>
               <excludes>
-                <exclude>**</exclude>
-              </excludes>
+                <exclude>**10.0.1-TT.2-SNAPSHOT</exclude>
+              10.0.1-TT.2-SNAPSHOT</excludes>
               <includes>
-                <include>org/apache/openejb/cdi/**</include>
-              </includes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+                <include>org/apache/openejb/cdi/**10.0.1-TT.2-SNAPSHOT</include>
+              10.0.1-TT.2-SNAPSHOT</includes>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-antrun-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <executions>
           <execution>
-            <phase>process-classes</phase>
+            <phase>process-classes10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>run</goal>
-            </goals>
+              <goal>run10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <target>
                 <tstamp>
                   <format property="TSTAMP" pattern="hh:mm" />
-                </tstamp>
+                10.0.1-TT.2-SNAPSHOT</tstamp>
                 <replace file="target/classes/openejb-version.properties" token="@DATE-REPLACED-BY-MAVEN@" value="${DSTAMP}" />
                 <replace file="target/classes/openejb-version.properties" token="@TIME-REPLACED-BY-MAVEN@" value="${TSTAMP}" />
-              </target>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+              10.0.1-TT.2-SNAPSHOT</target>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-jar-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration>
           <archive combine.children="append">
             <manifest>
-              <mainClass>org.apache.openejb.cli.Bootstrap</mainClass>
-              <!--<addClasspath>true</addClasspath>-->
-            </manifest>
+              <mainClass>org.apache.openejb.cli.Bootstrap10.0.1-TT.2-SNAPSHOT</mainClass>
+              <!--<addClasspath>true10.0.1-TT.2-SNAPSHOT</addClasspath>-->
+            10.0.1-TT.2-SNAPSHOT</manifest>
             <manifestEntries>
-              <Automatic-Module-Name>${tomee.build.name}</Automatic-Module-Name>
+              <Automatic-Module-Name>${tomee.build.name}10.0.1-TT.2-SNAPSHOT</Automatic-Module-Name>
               <Class-Path>openejb-loader-${project.version}.jar openejb-client-${project.version}.jar xbean-finder-shaded-${version.xbean}.jar xbean-asm9-shaded-${version.xbean}.jar
-              </Class-Path>
+              10.0.1-TT.2-SNAPSHOT</Class-Path>
               <J2EE-DeploymentFactory-Implementation-Class>
                 org.apache.openejb.config.VmDeploymentFactory
-              </J2EE-DeploymentFactory-Implementation-Class>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+              10.0.1-TT.2-SNAPSHOT</J2EE-DeploymentFactory-Implementation-Class>
+            10.0.1-TT.2-SNAPSHOT</manifestEntries>
+          10.0.1-TT.2-SNAPSHOT</archive>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>mbean-annotation-api</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>mbean-annotation-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-jpa-integration</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-jpa-integration10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>jakartaee-api</artifactId>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee.bom</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <type>pom</type>
-    </dependency>
+      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
+      <type>pom10.0.1-TT.2-SNAPSHOT</type>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>log4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>log4j10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>${version.log4j2}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.logging.log4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>log4j-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.log4j2}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <artifactId>commons-lang3</artifactId>
-      <groupId>org.apache.commons</groupId>
-    </dependency>
+      <artifactId>commons-lang310.0.1-TT.2-SNAPSHOT</artifactId>
+      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-api</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-loader</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-loader10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-javaagent</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-javaagent10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-jee</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-jee10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-jee-accessors</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-jee-accessors10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-itests-app</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-itests-app10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openejb.itests</groupId>
-      <artifactId>failover-ejb</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.apache.openejb.itests10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>failover-ejb10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-itests-beans</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-itests-beans10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-itests-interceptor-beans</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-itests-interceptor-beans10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-itests-client</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-itests-client10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>commons-cli</groupId>
-      <artifactId>commons-cli</artifactId>
-    </dependency>
+      <groupId>commons-cli10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-cli10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!-- ActiveMQ -->
     <dependency>
-      <groupId>org.apache.activemq</groupId>
-      <artifactId>activemq-ra</artifactId>
-      <optional>true</optional>
-    </dependency>
+      <groupId>org.apache.activemq10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>activemq-ra10.0.1-TT.2-SNAPSHOT</artifactId>
+      <optional>true10.0.1-TT.2-SNAPSHOT</optional>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.activemq</groupId>
-      <artifactId>activemq-broker</artifactId>
-      <optional>true</optional>
-    </dependency>
+      <groupId>org.apache.activemq10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>activemq-broker10.0.1-TT.2-SNAPSHOT</artifactId>
+      <optional>true10.0.1-TT.2-SNAPSHOT</optional>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.activemq</groupId>
-      <artifactId>activemq-jdbc-store</artifactId>
-      <optional>true</optional>
+      <groupId>org.apache.activemq10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>activemq-jdbc-store10.0.1-TT.2-SNAPSHOT</artifactId>
+      <optional>true10.0.1-TT.2-SNAPSHOT</optional>
       <exclusions>
         <exclusion>
-          <groupId>org.apache.activemq</groupId>
-          <artifactId>activemq-broker</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.apache.activemq10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>activemq-broker10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.geronimo.components</groupId>
-      <artifactId>geronimo-connector</artifactId>
-    </dependency>
+      <groupId>org.apache.geronimo.components10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>geronimo-connector10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.geronimo.components</groupId>
-      <artifactId>geronimo-transaction</artifactId>
-    </dependency>
+      <groupId>org.apache.geronimo.components10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>geronimo-transaction10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.objectweb.howl</groupId>
-      <artifactId>howl</artifactId>
-    </dependency>
+      <groupId>org.objectweb.howl10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>howl10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!-- Jackson required by OpenAPI Impl and ActiveMQ Broker -->
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <optional>true</optional>
-    </dependency>
+      <groupId>com.fasterxml.jackson.core10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jackson-databind10.0.1-TT.2-SNAPSHOT</artifactId>
+      <optional>true10.0.1-TT.2-SNAPSHOT</optional>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.geronimo.mail</groupId>
-      <artifactId>geronimo-mail_2.1_provider</artifactId>
-    </dependency>
+      <groupId>org.apache.geronimo.mail10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>geronimo-mail_2.1_provider10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-asm9-shaded</artifactId>
-    </dependency>
+      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xbean-asm9-shaded10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-finder-shaded</artifactId>
-    </dependency>
+      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xbean-finder-shaded10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-reflect</artifactId>
-    </dependency>
+      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xbean-reflect10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-naming</artifactId>
-    </dependency>
+      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xbean-naming10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-bundleutils</artifactId>
-    </dependency>
+      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xbean-bundleutils10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.testng10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>testng10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-    </dependency>
+      <groupId>org.hsqldb10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>hsqldb10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <artifactId>commons-dbcp2-shade</artifactId>
-      <groupId>org.apache.tomee</groupId>
+      <artifactId>commons-dbcp2-shade10.0.1-TT.2-SNAPSHOT</artifactId>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
       <exclusions>
         <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>commons-pool2</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>commons-pool210.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-pool2</artifactId>
-    </dependency>
+      <groupId>org.apache.commons10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-pool210.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.tomitribe</groupId>
-      <artifactId>swizzle</artifactId>
-    </dependency>
+      <groupId>org.tomitribe10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>swizzle10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-    </dependency>
+      <groupId>commons-logging10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-logging10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!-- webservices  -->
     <dependency>
-      <groupId>wsdl4j</groupId>
-      <artifactId>wsdl4j</artifactId>
-      <optional>true</optional>
-    </dependency>
+      <groupId>wsdl4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>wsdl4j10.0.1-TT.2-SNAPSHOT</artifactId>
+      <optional>true10.0.1-TT.2-SNAPSHOT</optional>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openejb.shade</groupId>
-      <artifactId>quartz-openejb-shade</artifactId>
-    </dependency>
+      <groupId>org.apache.openejb.shade10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>quartz-openejb-shade10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!-- Dependency of Quartz -->
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-jdk14</artifactId>
-    </dependency>
+      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>slf4j-jdk1410.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!-- Dependency of Quartz -->
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
+      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>slf4j-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>xmlunit</groupId>
-      <artifactId>xmlunit</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>xmlunit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xmlunit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.codehaus.swizzle</groupId>
-      <artifactId>swizzle-confluence</artifactId>
-      <version>1.1</version>
-      <type>jar</type>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.codehaus.swizzle10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>swizzle-confluence10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.110.0.1-TT.2-SNAPSHOT</version>
+      <type>jar10.0.1-TT.2-SNAPSHOT</type>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-impl</artifactId>
-    </dependency>
+      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openwebbeans-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-spi</artifactId>
-    </dependency>
+      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openwebbeans-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-el22</artifactId>
-    </dependency>
+      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openwebbeans-el2210.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-ejb</artifactId>
+      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openwebbeans-ejb10.0.1-TT.2-SNAPSHOT</artifactId>
       <exclusions>
         <exclusion>
-          <groupId>org.apache.geronimo.specs</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>org.apache.geronimo.specs10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.apache.openwebbeans</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-ee</artifactId>
-    </dependency>
+      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openwebbeans-ee10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <artifactId>openwebbeans-ee-common</artifactId>
-      <groupId>org.apache.openwebbeans</groupId>
-    </dependency>
+      <artifactId>openwebbeans-ee-common10.0.1-TT.2-SNAPSHOT</artifactId>
+      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openwebbeans</groupId>
-      <artifactId>openwebbeans-web</artifactId>
-    </dependency>
+      <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openwebbeans-web10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.openjpa</groupId>
-      <artifactId>openjpa</artifactId>
-    </dependency>
+      <groupId>org.apache.openjpa10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openjpa10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!--
     <dependency>
-      <groupId>stax</groupId>
-      <artifactId>stax-api</artifactId>
-    </dependency>
+      <groupId>stax10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>stax-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     -->
     <dependency>
-      <groupId>org.apache.bval</groupId>
-      <artifactId>bval-jsr</artifactId>
-    </dependency>
+      <groupId>org.apache.bval10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>bval-jsr10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency> <!-- licence apache, only 110ko -->
-      <groupId>org.fusesource.jansi</groupId>
-      <artifactId>jansi</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.fusesource.jansi10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jansi10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.apache.batchee</groupId>
-      <artifactId>batchee-jbatch</artifactId>
-      <version>${version.batchee}</version>
-      <scope>provided</scope>
+      <groupId>org.apache.batchee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>batchee-jbatch10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.batchee}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <groupId>org.glassfish.jaxb</groupId>
-          <artifactId>jaxb-runtime</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.glassfish.jaxb10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
-  </dependencies>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <profiles>
     <profile>
-      <id>openejb.debug</id>
+      <id>openejb.debug10.0.1-TT.2-SNAPSHOT</id>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
+            <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
             <configuration>
-              <!--<reuseForks>false</reuseForks>-->
+              <!--<reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>-->
               <argLine>"-javaagent:${project.basedir}/target/openejb-javaagent-${project.version}.jar" -Xdebug
                 -Xnoagent -Djava.compiler=NONE
                 -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
                 -Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m
-              </argLine>
-              <runOrder>alphabetical</runOrder>
+              10.0.1-TT.2-SNAPSHOT</argLine>
+              <runOrder>alphabetical10.0.1-TT.2-SNAPSHOT</runOrder>
               <!-- make local/buildbot runs deterministic and the same -->
-              <workingDirectory>${project.basedir}/target</workingDirectory>
+              <workingDirectory>${project.basedir}/target10.0.1-TT.2-SNAPSHOT</workingDirectory>
               <systemPropertyVariables>
-                <openejb.home>${project.basedir}/target/test-classes</openejb.home>
-              </systemPropertyVariables>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
+                <openejb.home>${project.basedir}/target/test-classes10.0.1-TT.2-SNAPSHOT</openejb.home>
+              10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</plugin>
+        10.0.1-TT.2-SNAPSHOT</plugins>
+      10.0.1-TT.2-SNAPSHOT</build>
+    10.0.1-TT.2-SNAPSHOT</profile>
     <profile>
-      <id>coverage</id>
+      <id>coverage10.0.1-TT.2-SNAPSHOT</id>
       <properties>
-        <jacocoArgLine>@{argLine}</jacocoArgLine>
-      </properties>
+        <jacocoArgLine>@{argLine}10.0.1-TT.2-SNAPSHOT</jacocoArgLine>
+      10.0.1-TT.2-SNAPSHOT</properties>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-</project>
+            <groupId>org.jacoco10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jacoco-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+          10.0.1-TT.2-SNAPSHOT</plugin>
+        10.0.1-TT.2-SNAPSHOT</plugins>
+      10.0.1-TT.2-SNAPSHOT</build>
+    10.0.1-TT.2-SNAPSHOT</profile>
+  10.0.1-TT.2-SNAPSHOT</profiles>
+10.0.1-TT.2-SNAPSHOT</project>

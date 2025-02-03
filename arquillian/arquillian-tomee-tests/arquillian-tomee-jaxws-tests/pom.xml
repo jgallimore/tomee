@@ -16,61 +16,61 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
   <parent>
-    <artifactId>arquillian-tomee-tests</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>arquillian-tomee-tests10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <artifactId>arquillian-tomee-jaxws-tests</artifactId>
-  <name>TomEE :: Arquillian Adaptors Parent :: Tests :: JAXWS</name>
+  <artifactId>arquillian-tomee-jaxws-tests10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: Arquillian Adaptors Parent :: Tests :: JAXWS10.0.1-TT.2-SNAPSHOT</name>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-webservices</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-webservices10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-      <version>2.13.0</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+      <groupId>joda-time10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>joda-time10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.13.010.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <properties>
-    <profile-under-test>plus</profile-under-test>
-  </properties>
+    <profile-under-test>plus10.0.1-TT.2-SNAPSHOT</profile-under-test>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.8.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.8.010.0.1-TT.2-SNAPSHOT</version>
         <executions>
           <execution>
-            <id>get-joda</id>
+            <id>get-joda10.0.1-TT.2-SNAPSHOT</id>
             <goals>
-              <goal>copy</goal>
-            </goals>
+              <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>joda-time</groupId>
-                  <artifactId>joda-time</artifactId>
-                  <version>2.13.0</version>
-                  <outputDirectory>${project.build.directory}/placeholder-dep</outputDirectory>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+                  <groupId>joda-time10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>joda-time10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <version>2.13.010.0.1-TT.2-SNAPSHOT</version>
+                  <outputDirectory>${project.build.directory}/placeholder-dep10.0.1-TT.2-SNAPSHOT</outputDirectory>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
+              10.0.1-TT.2-SNAPSHOT</artifactItems>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

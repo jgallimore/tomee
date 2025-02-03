@@ -18,46 +18,46 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>utils</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <artifactId>utils10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
-  <artifactId>log4j2-tomee</artifactId>
-  <name>TomEE :: Utils :: Log4j2</name>
-  <description>Add this module if you use log4j2 in TomEE/lib and rely on shutdown hook and don't want to loose logs.</description>
+  <artifactId>log4j2-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: Utils :: Log4j210.0.1-TT.2-SNAPSHOT</name>
+  <description>Add this module if you use log4j2 in TomEE/lib and rely on shutdown hook and don't want to loose logs.10.0.1-TT.2-SNAPSHOT</description>
 
   <properties>
-    <tomee.build.name>${project.groupId}.util.log4j2</tomee.build.name>
-    <log4j.groupId>org.apache.logging.log4j</log4j.groupId>
-  </properties>
+    <tomee.build.name>${project.groupId}.util.log4j210.0.1-TT.2-SNAPSHOT</tomee.build.name>
+    <log4j.groupId>org.apache.logging.log4j10.0.1-TT.2-SNAPSHOT</log4j.groupId>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <dependencies>
     <dependency>
-      <groupId>${log4j.groupId}</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>${version.log4j2}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>${log4j.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>log4j-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.log4j2}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${log4j.groupId}</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>${version.log4j2}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>${log4j.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>log4j-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.log4j2}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-catalina</artifactId>
-      <version>${tomcat.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-catalina</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-catalina10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>

@@ -17,31 +17,31 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
   <parent>
-    <artifactId>container</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>container10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <artifactId>mbean-annotation-api</artifactId>
-  <name>TomEE :: Container :: MBean Annotation API</name>
+  <artifactId>mbean-annotation-api10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: Container :: MBean Annotation API10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.container.mbean.api</tomee.build.name>
-  </properties>
+    <tomee.build.name>${project.groupId}.container.mbean.api10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration combine.self="append">
           <compilerArgs>
-            <arg>--patch-module=java.management=${basedir}/src/main/java</arg>
-          </compilerArgs>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+            <arg>--patch-module=java.management=${basedir}/src/main/java10.0.1-TT.2-SNAPSHOT</arg>
+          10.0.1-TT.2-SNAPSHOT</compilerArgs>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

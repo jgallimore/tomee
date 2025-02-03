@@ -16,33 +16,33 @@
   limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.superbiz</groupId>
-  <artifactId>jaxrs-filter</artifactId>
-  <packaging>war</packaging>
-  <version>10.0.1-TT.2-SNAPSHOT</version>
-  <name>TomEE :: Examples :: JAXRS Filter</name>
-  <url>http://maven.apache.org</url>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+  <artifactId>jaxrs-filter10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
+  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  <name>TomEE :: Examples :: JAXRS Filter10.0.1-TT.2-SNAPSHOT</name>
+  <url>http://maven.apache.org10.0.1-TT.2-SNAPSHOT</url>
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>3.8.110.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>jakartaee-api</artifactId>
-      <version>10.0</version>
-    </dependency>
-  </dependencies>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>10.010.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
   <build>
-    <finalName>jaxrs-filter</finalName>
-  </build>
+    <finalName>jaxrs-filter10.0.1-TT.2-SNAPSHOT</finalName>
+  10.0.1-TT.2-SNAPSHOT</build>
   <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+    <maven.compiler.source>1.810.0.1-TT.2-SNAPSHOT</maven.compiler.source>
+    <maven.compiler.target>1.810.0.1-TT.2-SNAPSHOT</maven.compiler.target>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -50,12 +50,12 @@
   -->
   <distributionManagement>
     <repository>
-      <id>localhost</id>
-      <url>file://${basedir}/target/repo/</url>
-    </repository>
+      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
+      <url>file://${basedir}/target/repo/10.0.1-TT.2-SNAPSHOT</url>
+    10.0.1-TT.2-SNAPSHOT</repository>
     <snapshotRepository>
-      <id>localhost</id>
-      <url>file://${basedir}/target/snapshot-repo/</url>
-    </snapshotRepository>
-  </distributionManagement>
-</project>
+      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
+      <url>file://${basedir}/target/snapshot-repo/10.0.1-TT.2-SNAPSHOT</url>
+    10.0.1-TT.2-SNAPSHOT</snapshotRepository>
+  10.0.1-TT.2-SNAPSHOT</distributionManagement>
+10.0.1-TT.2-SNAPSHOT</project>

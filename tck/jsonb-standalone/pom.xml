@@ -17,110 +17,110 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <artifactId>tck</artifactId>
-        <groupId>org.apache.tomee</groupId>
-        <version>10.0.1-TT.2-SNAPSHOT</version>
-    </parent>
+        <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>jsonb-standalone</artifactId>
-    <name>TomEE :: TCK :: JSON-B Standalone</name>
+    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>jsonb-standalone10.0.1-TT.2-SNAPSHOT</artifactId>
+    <name>TomEE :: TCK :: JSON-B Standalone10.0.1-TT.2-SNAPSHOT</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-core</artifactId>
-        </dependency>
+            <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>johnzon-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-mapper</artifactId>
-        </dependency>
+            <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>johnzon-mapper10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-jsonb</artifactId>
-        </dependency>
+            <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>johnzon-jsonb10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>jakartaee-api</artifactId>
-        </dependency>
+            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>jakarta.json.bind</groupId>
-            <artifactId>jakarta.json.bind-tck</artifactId>
-            <version>${jsonb-tck.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <groupId>jakarta.json.bind10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakarta.json.bind-tck10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${jsonb-tck.version}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-se</artifactId>
-            <version>${version.openwebbeans}</version>
-        </dependency>
+            <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openwebbeans-se10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${version.openwebbeans}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-impl</artifactId>
-        </dependency>
+            <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openwebbeans-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-spi</artifactId>
-        </dependency>
+            <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openwebbeans-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.xbean</groupId>
-            <artifactId>xbean-finder-shaded</artifactId>
-        </dependency>
-    </dependencies>
+            <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>xbean-finder-shaded10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
 
     <profiles>
         <profile>
-            <id>tck-jsonb</id>
+            <id>tck-jsonb10.0.1-TT.2-SNAPSHOT</id>
             <build>
                 <testResources>
                     <testResource>
-                        <directory>src/test/resources</directory>
-                        <filtering>true</filtering>
-                    </testResource>
-                </testResources>
+                        <directory>src/test/resources10.0.1-TT.2-SNAPSHOT</directory>
+                        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
+                    10.0.1-TT.2-SNAPSHOT</testResource>
+                10.0.1-TT.2-SNAPSHOT</testResources>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                    </plugin>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
 
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${surefire.version}</version>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                        <version>${surefire.version}10.0.1-TT.2-SNAPSHOT</version>
                         <configuration>
-                            <reuseForks>false</reuseForks>
-                            <forkCount>1</forkCount>
+                            <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
+                            <forkCount>110.0.1-TT.2-SNAPSHOT</forkCount>
                             <dependenciesToScan>
-                                <dependency>jakarta.json.bind:jakarta.json.bind-tck</dependency>
-                            </dependenciesToScan>
+                                <dependency>jakarta.json.bind:jakarta.json.bind-tck10.0.1-TT.2-SNAPSHOT</dependency>
+                            10.0.1-TT.2-SNAPSHOT</dependenciesToScan>
 
                             <excludes>
                                 <!-- https://github.com/jakartaee/jsonb-api/issues/344 -->
-                                <exclude>**/SerializersCustomizationCDITest</exclude>
+                                <exclude>**/SerializersCustomizationCDITest10.0.1-TT.2-SNAPSHOT</exclude>
 
                                 <!-- https://github.com/jakartaee/jsonb-api/issues/347 -->
-                                <exclude>**/AnnotationTypeInfoTest</exclude>
+                                <exclude>**/AnnotationTypeInfoTest10.0.1-TT.2-SNAPSHOT</exclude>
 
-                                <exclude>**/JSONBSigTest</exclude>
-                            </excludes>
+                                <exclude>**/JSONBSigTest10.0.1-TT.2-SNAPSHOT</exclude>
+                            10.0.1-TT.2-SNAPSHOT</excludes>
 
                             <systemProperties>
                                 <!-- don't serialize BigDecimal/BigInteger as strings. Usually enabled by default in johnzon, see https://github.com/jakartaee/jsonb-api/issues/187 -->
-                                <johnzon.use-bigdecimal-stringadapter>false</johnzon.use-bigdecimal-stringadapter>
-                                <johnzon.use-biginteger-stringadapter>false</johnzon.use-biginteger-stringadapter>
+                                <johnzon.use-bigdecimal-stringadapter>false10.0.1-TT.2-SNAPSHOT</johnzon.use-bigdecimal-stringadapter>
+                                <johnzon.use-biginteger-stringadapter>false10.0.1-TT.2-SNAPSHOT</johnzon.use-biginteger-stringadapter>
 
                                 <!-- needed to pass JSON-B 3 TCKs on jdk 13+, see https://github.com/jakartaee/jsonb-api/issues/272 -->
-                                <java.locale.providers>COMPAT</java.locale.providers>
-                            </systemProperties>
-                            <argLine>-Duser.language=en -Duser.region=US</argLine>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+                                <java.locale.providers>COMPAT10.0.1-TT.2-SNAPSHOT</java.locale.providers>
+                            10.0.1-TT.2-SNAPSHOT</systemProperties>
+                            <argLine>-Duser.language=en -Duser.region=US10.0.1-TT.2-SNAPSHOT</argLine>
+                        10.0.1-TT.2-SNAPSHOT</configuration>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
+                10.0.1-TT.2-SNAPSHOT</plugins>
+            10.0.1-TT.2-SNAPSHOT</build>
+        10.0.1-TT.2-SNAPSHOT</profile>
+    10.0.1-TT.2-SNAPSHOT</profiles>
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>

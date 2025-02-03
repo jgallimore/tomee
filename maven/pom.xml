@@ -16,121 +16,121 @@
     limitations under the License.
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
   <parent>
-    <artifactId>tomee-project</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>tomee-project10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <groupId>org.apache.tomee.maven</groupId>
-  <artifactId>maven</artifactId>
-  <packaging>pom</packaging>
-  <name>TomEE :: Maven Plugins</name>
+  <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
+  <artifactId>maven10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Maven Plugins10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <maven.version>2.2.1</maven.version>
-    <plexus-utils.version>3.0.24</plexus-utils.version>
-  </properties>
+    <maven.version>2.2.110.0.1-TT.2-SNAPSHOT</maven.version>
+    <plexus-utils.version>3.0.2410.0.1-TT.2-SNAPSHOT</plexus-utils.version>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <modules>
-    <module>tomee-maven-plugin</module>
-    <module>tomee-embedded-maven-plugin</module>
-    <module>openejb-embedded-maven-plugin</module>
-    <module>maven-util</module>
-    <module>tomee-webapp-archetype</module>
-    <module>jarstxt-maven-plugin</module>
-    <module>applicationcomposer-maven-plugin</module>
-  </modules>
+    <module>tomee-maven-plugin10.0.1-TT.2-SNAPSHOT</module>
+    <module>tomee-embedded-maven-plugin10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-embedded-maven-plugin10.0.1-TT.2-SNAPSHOT</module>
+    <module>maven-util10.0.1-TT.2-SNAPSHOT</module>
+    <module>tomee-webapp-archetype10.0.1-TT.2-SNAPSHOT</module>
+    <module>jarstxt-maven-plugin10.0.1-TT.2-SNAPSHOT</module>
+    <module>applicationcomposer-maven-plugin10.0.1-TT.2-SNAPSHOT</module>
+  10.0.1-TT.2-SNAPSHOT</modules>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.apache.maven.plugin-tools</groupId>
-        <artifactId>maven-plugin-annotations</artifactId>
-        <version>3.15.1</version>
-      </dependency>
+        <groupId>org.apache.maven.plugin-tools10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-plugin-annotations10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.15.110.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-        <groupId>org.codehaus.plexus</groupId>
-        <artifactId>plexus-utils</artifactId>
-        <version>${plexus-utils.version}</version>
-      </dependency>
+        <groupId>org.codehaus.plexus10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>plexus-utils10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${plexus-utils.version}10.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-        <groupId>org.apache.maven</groupId>
-        <artifactId>maven-plugin-api</artifactId>
-        <version>${maven.version}</version>
-      </dependency>
+        <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-plugin-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${maven.version}10.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-        <groupId>org.apache.maven</groupId>
-        <artifactId>maven-project</artifactId>
-        <version>${maven.version}</version>
-      </dependency>
+        <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-project10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${maven.version}10.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-        <groupId>org.apache.maven</groupId>
-        <artifactId>maven-core</artifactId>
-        <version>${maven.version}</version>
-      </dependency>
+        <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${maven.version}10.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-        <groupId>org.apache.maven</groupId>
-        <artifactId>maven-artifact</artifactId>
-        <version>${maven.version}</version>
-      </dependency>
+        <groupId>org.apache.maven10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-artifact10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${maven.version}10.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-        <groupId>org.sonatype.aether</groupId>
-        <artifactId>aether-api</artifactId>
-        <version>${version.aether}</version>
-      </dependency>
+        <groupId>org.sonatype.aether10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>aether-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${version.aether}10.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-        <groupId>org.apache.tomee</groupId>
-        <artifactId>openejb-core</artifactId>
-        <version>${project.version}</version>
-      </dependency>
+        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-        <groupId>org.apache.tomee</groupId>
-        <artifactId>openejb-client</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>openejb-client10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</dependency>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
+  10.0.1-TT.2-SNAPSHOT</dependencyManagement>
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-  </dependencies>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-plugin-plugin</artifactId>
-        <version>3.15.1</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-plugin-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.15.110.0.1-TT.2-SNAPSHOT</version>
         <executions>
           <execution>
-            <id>mojo-descriptor</id>
+            <id>mojo-descriptor10.0.1-TT.2-SNAPSHOT</id>
             <goals>
-              <goal>descriptor</goal>
-              <goal>helpmojo</goal>
-            </goals>
-          </execution>
-        </executions>
+              <goal>descriptor10.0.1-TT.2-SNAPSHOT</goal>
+              <goal>helpmojo10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
         <configuration>
-          <goalPrefix>${maven-plugin.prefix}</goalPrefix>
-          <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+          <goalPrefix>${maven-plugin.prefix}10.0.1-TT.2-SNAPSHOT</goalPrefix>
+          <skipErrorNoDescriptorsFound>true10.0.1-TT.2-SNAPSHOT</skipErrorNoDescriptorsFound>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
 
   <reporting>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-plugin-plugin</artifactId>
-        <version>3.15.1</version>
-      </plugin>
-    </plugins>
-  </reporting>
-</project>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-plugin-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.15.110.0.1-TT.2-SNAPSHOT</version>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</reporting>
+10.0.1-TT.2-SNAPSHOT</project>

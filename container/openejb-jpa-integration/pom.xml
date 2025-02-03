@@ -19,87 +19,87 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>container</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <artifactId>container10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
-  <artifactId>openejb-jpa-integration</artifactId>
-  <name>TomEE :: Container :: JPA Integration</name>
+  <artifactId>openejb-jpa-integration10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: Container :: JPA Integration10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.container.jpa</tomee.build.name>
-  </properties>
+    <tomee.build.name>${project.groupId}.container.jpa10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-asm9-shaded</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xbean-asm9-shaded10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-core</artifactId>
+      <groupId>org.hibernate.orm10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>hibernate-core10.0.1-TT.2-SNAPSHOT</artifactId>
       <exclusions>
         <exclusion>
-          <groupId>jakarta.persistence</groupId>
-          <artifactId>jakarta.persistence-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.persistence10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.persistence-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.transaction</groupId>
-          <artifactId>jakarta.transaction-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.transaction10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.transaction-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.activation</groupId>
-          <artifactId>jakarta.activation-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.activation10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.activation-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>jboss-logging</artifactId>
-          <groupId>org.jboss.logging</groupId>
-        </exclusion>
-      </exclusions>
-      <optional>true</optional>
-    </dependency>
+          <artifactId>jboss-logging10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>org.jboss.logging10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+      <optional>true10.0.1-TT.2-SNAPSHOT</optional>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.eclipse.persistence</groupId>
-      <artifactId>eclipselink</artifactId>
-      <optional>true</optional>
-    </dependency>
+      <groupId>org.eclipse.persistence10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>eclipselink10.0.1-TT.2-SNAPSHOT</artifactId>
+      <optional>true10.0.1-TT.2-SNAPSHOT</optional>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>jakarta.transaction</groupId>
-      <artifactId>jakarta.transaction-api</artifactId>
-      <version>2.0.1</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>jakarta.transaction10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakarta.transaction-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.0.110.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.geronimo.components</groupId>
-      <artifactId>geronimo-transaction</artifactId>
-    </dependency>
-  </dependencies>
+      <groupId>org.apache.geronimo.components10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>geronimo-transaction10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>exec-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <executions>
           <execution>
-            <id>generate-integration</id>
-            <phase>process-classes</phase>
+            <id>generate-integration10.0.1-TT.2-SNAPSHOT</id>
+            <phase>process-classes10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>java</goal>
-            </goals>
-          </execution>
-        </executions>
+              <goal>java10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
         <configuration>
-          <mainClass>org.apache.openejb.jpa.integration.MakeTxLookup</mainClass>
-          <classpathScope>compile</classpathScope>
+          <mainClass>org.apache.openejb.jpa.integration.MakeTxLookup10.0.1-TT.2-SNAPSHOT</mainClass>
+          <classpathScope>compile10.0.1-TT.2-SNAPSHOT</classpathScope>
           <arguments>
-            <argument>${project.build.directory}</argument>
-          </arguments>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+            <argument>${project.build.directory}10.0.1-TT.2-SNAPSHOT</argument>
+          10.0.1-TT.2-SNAPSHOT</arguments>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

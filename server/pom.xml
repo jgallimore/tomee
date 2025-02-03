@@ -18,44 +18,44 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
   <parent>
-    <artifactId>tomee-project</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>tomee-project10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <artifactId>server</artifactId>
-  <packaging>pom</packaging>
-  <name>TomEE :: Server</name>
+  <artifactId>server10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Server10.0.1-TT.2-SNAPSHOT</name>
 
   <modules>
-    <module>openejb-ejbd</module>
-    <module>openejb-server</module>
-    <module>openejb-client</module>
-    <module>openejb-http</module>
-    <module>openejb-activemq</module>
-    <module>openejb-derbynet</module>
-    <module>openejb-hsql</module>
-    <module>openejb-webservices</module>
-    <module>openejb-cxf</module>
-    <module>openejb-multicast</module>
-    <module>openejb-daemon</module>
-    <module>openejb-cxf-rs</module>
-    <module>openejb-cxf-transport</module>
-    <module>openejb-rest</module>
-    <module>openejb-ssh</module>
-    <module>openejb-common-cli</module>
-    <module>openejb-bonecp</module>
-    <module>openejb-hessian</module>
-  </modules>
+    <module>openejb-ejbd10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-server10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-client10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-http10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-activemq10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-derbynet10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-hsql10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-webservices10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-cxf10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-multicast10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-daemon10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-cxf-rs10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-cxf-transport10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-rest10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-ssh10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-common-cli10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-bonecp10.0.1-TT.2-SNAPSHOT</module>
+    <module>openejb-hessian10.0.1-TT.2-SNAPSHOT</module>
+  10.0.1-TT.2-SNAPSHOT</modules>
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-  </dependencies>
-</project>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
+10.0.1-TT.2-SNAPSHOT</project>
 

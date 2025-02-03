@@ -13,321 +13,321 @@
    limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
   <parent>
-    <artifactId>tomee</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <artifactId>tomee-webaccess</artifactId>
-  <packaging>war</packaging>
-  <name>TomEE :: TomEE :: webaccess</name>
+    <artifactId>tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <artifactId>tomee-webaccess10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: TomEE :: webaccess10.0.1-TT.2-SNAPSHOT</name>
   <properties>
-    <tomee.build.name>${project.groupId}.tomee.webaccess</tomee.build.name>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <version.groovy>3.0.23</version.groovy>
-  </properties>
+    <tomee.build.name>${project.groupId}.tomee.webaccess10.0.1-TT.2-SNAPSHOT</tomee.build.name>
+    <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
+    <version.groovy>3.0.2310.0.1-TT.2-SNAPSHOT</version.groovy>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <profiles>
     <profile>
-      <id>tomee</id>
+      <id>tomee10.0.1-TT.2-SNAPSHOT</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-    </profile>
-  </profiles>
+        <activeByDefault>true10.0.1-TT.2-SNAPSHOT</activeByDefault>
+      10.0.1-TT.2-SNAPSHOT</activation>
+    10.0.1-TT.2-SNAPSHOT</profile>
+  10.0.1-TT.2-SNAPSHOT</profiles>
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.jboss.shrinkwrap.resolver</groupId>
-        <artifactId>shrinkwrap-resolver-bom</artifactId>
-        <version>${version.shrinkwrap.resolver.bom}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
+        <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>shrinkwrap-resolver-bom10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${version.shrinkwrap.resolver.bom}10.0.1-TT.2-SNAPSHOT</version>
+        <scope>import10.0.1-TT.2-SNAPSHOT</scope>
+        <type>pom10.0.1-TT.2-SNAPSHOT</type>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-        <groupId>org.jboss.arquillian</groupId>
-        <artifactId>arquillian-bom</artifactId>
-        <version>${version.arquillian.bom}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+        <groupId>org.jboss.arquillian10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>arquillian-bom10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${version.arquillian.bom}10.0.1-TT.2-SNAPSHOT</version>
+        <scope>import10.0.1-TT.2-SNAPSHOT</scope>
+        <type>pom10.0.1-TT.2-SNAPSHOT</type>
+      10.0.1-TT.2-SNAPSHOT</dependency>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
+  10.0.1-TT.2-SNAPSHOT</dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-servlet-api</artifactId>
-      <version>${tomcat.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-servlet-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${junit.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-embedded</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-cxf-rs</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-cxf-rs10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>arquillian-tomee-embedded</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-tomee-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.junit</groupId>
-      <artifactId>arquillian-junit-container</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-websocket</artifactId>
-      <version>${tomcat.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat-websocket10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tomee-webservices</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-webservices10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>ziplock</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>ziplock10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>${version.commons-io}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>commons-io10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-io10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.commons-io}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.3.2</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.apache.httpcomponents10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>httpclient10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>4.3.210.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>backbonejs</artifactId>
-      <version>1.0.0</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>backbonejs10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.0.010.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>bootstrap</artifactId>
-      <version>3.1.0</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>bootstrap10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>3.1.010.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>jquery</artifactId>
-      <version>2.1.0-1</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jquery10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.1.0-110.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>handlebars</artifactId>
-      <version>1.2.1</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>handlebars10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.2.110.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>json2</artifactId>
-      <version>20110223</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>json210.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2011022310.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>less</artifactId>
-      <version>1.6.0-1</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>less10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.6.0-110.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>requirejs</artifactId>
-      <version>2.1.10</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>requirejs10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.1.1010.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>requirejs-text</artifactId>
-      <version>2.0.15</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>requirejs-text10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.0.1510.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>underscorejs</artifactId>
-      <version>1.5.2-2</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>underscorejs10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.5.2-210.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>underscore.string</artifactId>
-      <version>2.3.0</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>underscore.string10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.3.010.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>codemirror</artifactId>
-      <version>3.21</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.webjars10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>codemirror10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>3.2110.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-      <version>${version.commons-codec}</version>
-    </dependency>
+      <groupId>commons-codec10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>commons-codec10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.commons-codec}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-core</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-server</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-server10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>jakartaee-api</artifactId>
-      <version>${version.jakartaee-api}</version>
-      <classifier>tomcat</classifier>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.jakartaee-api}10.0.1-TT.2-SNAPSHOT</version>
+      <classifier>tomcat10.0.1-TT.2-SNAPSHOT</classifier>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-jsr223</artifactId>
-      <version>${version.groovy}</version>
-    </dependency>
+      <groupId>org.codehaus.groovy10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>groovy-jsr22310.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.groovy}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-json</artifactId>
-      <version>${version.groovy}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.codehaus.groovy10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>groovy-json10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.groovy}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.openjdk.nashorn</groupId>
-      <artifactId>nashorn-core</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.openjdk.nashorn10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>nashorn-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.ivy</groupId>
-      <artifactId>ivy</artifactId>
-      <version>2.5.3</version>
-      <scope>runtime</scope>
-    </dependency>
+      <groupId>org.apache.ivy10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>ivy10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.5.310.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee.bom</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <type>pom</type>
+      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
+      <type>pom10.0.1-TT.2-SNAPSHOT</type>
       <exclusions>
         <exclusion> <!-- Is already included in java-ee-api -->
-          <artifactId>jakarta.activation</artifactId>
-          <groupId>jakarta.activation-api</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-  </dependencies>
+          <artifactId>jakarta.activation10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>jakarta.activation-api10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${surefire.version}</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${surefire.version}10.0.1-TT.2-SNAPSHOT</version>
         <configuration>
           <systemPropertyVariables>
-            <arquillian.tomee.path>${project.basedir}/target/arquillian-tomee</arquillian.tomee.path>
-            <java.security.auth.login.config>${project.basedir}/target/arquillian-tomee/conf/login.config</java.security.auth.login.config>
-          </systemPropertyVariables>
-          <reuseForks>true</reuseForks>
-        </configuration>
-      </plugin>
+            <arquillian.tomee.path>${project.basedir}/target/arquillian-tomee10.0.1-TT.2-SNAPSHOT</arquillian.tomee.path>
+            <java.security.auth.login.config>${project.basedir}/target/arquillian-tomee/conf/login.config10.0.1-TT.2-SNAPSHOT</java.security.auth.login.config>
+          10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+          <reuseForks>true10.0.1-TT.2-SNAPSHOT</reuseForks>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>com.googlecode.jslint4java</groupId>
-        <artifactId>jslint4java-maven-plugin</artifactId>
+        <groupId>com.googlecode.jslint4java10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>jslint4java-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <dependencies>
           <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-utils</artifactId>
-            <version>3.0.24</version>
-          </dependency>
-        </dependencies>
+            <groupId>org.codehaus.plexus10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>plexus-utils10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>3.0.2410.0.1-TT.2-SNAPSHOT</version>
+          10.0.1-TT.2-SNAPSHOT</dependency>
+        10.0.1-TT.2-SNAPSHOT</dependencies>
         <configuration>
-          <failOnError>true</failOnError>
+          <failOnError>true10.0.1-TT.2-SNAPSHOT</failOnError>
           <options>
-            <vars>true</vars>
-            <unparam>true</unparam>
-            <predef>define,require,requirejs,window,Backbone,_,$,Handlebars,CodeMirror,APP_CONFIG</predef>
-            <indent>4</indent>
-          </options>
+            <vars>true10.0.1-TT.2-SNAPSHOT</vars>
+            <unparam>true10.0.1-TT.2-SNAPSHOT</unparam>
+            <predef>define,require,requirejs,window,Backbone,_,$,Handlebars,CodeMirror,APP_CONFIG10.0.1-TT.2-SNAPSHOT</predef>
+            <indent>410.0.1-TT.2-SNAPSHOT</indent>
+          10.0.1-TT.2-SNAPSHOT</options>
           <sourceFolders>
-            <sourceFolder>${basedir}/src/main/webapp/app/js</sourceFolder>
-          </sourceFolders>
-        </configuration>
+            <sourceFolder>${basedir}/src/main/webapp/app/js10.0.1-TT.2-SNAPSHOT</sourceFolder>
+          10.0.1-TT.2-SNAPSHOT</sourceFolders>
+        10.0.1-TT.2-SNAPSHOT</configuration>
         <executions>
           <execution>
-            <phase>install</phase>
+            <phase>install10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>lint</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+              <goal>lint10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.codehaus.gmavenplus</groupId>
-        <artifactId>gmavenplus-plugin</artifactId>
-        <version>4.1.1</version>
+        <groupId>org.codehaus.gmavenplus10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>gmavenplus-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>4.1.110.0.1-TT.2-SNAPSHOT</version>
         <executions>
           <execution>
             <goals>
-              <goal>compile</goal>
-              <goal>compileTests</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+              <goal>compile10.0.1-TT.2-SNAPSHOT</goal>
+              <goal>compileTests10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.tomee.maven</groupId>
-        <artifactId>tomee-maven-plugin</artifactId>
-        <version>${project.version}</version>
+        <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>tomee-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <simpleLog>true</simpleLog>
-          <context>webaccess</context>
-          <tomeeClassifier>webprofile</tomeeClassifier>
-          <config>${project.basedir}/src/main/tomee/conf</config>
-        </configuration>
-      </plugin>
+          <simpleLog>true10.0.1-TT.2-SNAPSHOT</simpleLog>
+          <context>webaccess10.0.1-TT.2-SNAPSHOT</context>
+          <tomeeClassifier>webprofile10.0.1-TT.2-SNAPSHOT</tomeeClassifier>
+          <config>${project.basedir}/src/main/tomee/conf10.0.1-TT.2-SNAPSHOT</config>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>codenarc-maven-plugin</artifactId>
-        <version>0.22-1</version>
+        <groupId>org.codehaus.mojo10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>codenarc-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>0.22-110.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <sourceDirectory>${project.basedir}/src/main/groovy</sourceDirectory>
-          <groovyVersion>${version.groovy}</groovyVersion>
-          <codeNarcVersion>0.20</codeNarcVersion>
-          <maxPriority1Violations>0</maxPriority1Violations>
-          <maxPriority2Violations>0</maxPriority2Violations>
-          <maxPriority3Violations>0</maxPriority3Violations>
+          <sourceDirectory>${project.basedir}/src/main/groovy10.0.1-TT.2-SNAPSHOT</sourceDirectory>
+          <groovyVersion>${version.groovy}10.0.1-TT.2-SNAPSHOT</groovyVersion>
+          <codeNarcVersion>0.2010.0.1-TT.2-SNAPSHOT</codeNarcVersion>
+          <maxPriority1Violations>010.0.1-TT.2-SNAPSHOT</maxPriority1Violations>
+          <maxPriority2Violations>010.0.1-TT.2-SNAPSHOT</maxPriority2Violations>
+          <maxPriority3Violations>010.0.1-TT.2-SNAPSHOT</maxPriority3Violations>
           <rulesetfiles>
             rulesets/basic.xml,rulesets/exceptions.xml,rulesets/imports.xml,rulesets/unnecessary.xml,rulesets/convention.xml
-          </rulesetfiles>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+          10.0.1-TT.2-SNAPSHOT</rulesetfiles>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

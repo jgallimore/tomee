@@ -17,147 +17,147 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.superbiz</groupId>
-  <artifactId>mp-rest-jwt-jwk</artifactId>
-  <version>10.0.1-TT.2-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>TomEE :: Examples :: MP REST JWT JWK</name>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+  <artifactId>mp-rest-jwt-jwk10.0.1-TT.2-SNAPSHOT</artifactId>
+  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Examples :: MP REST JWT JWK10.0.1-TT.2-SNAPSHOT</name>
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>10.0.1-TT.2-SNAPSHOT</tomee.version>
-    <version.shrinkwrap.resolver>3.3.3</version.shrinkwrap.resolver>
-  </properties>
+    <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
+    <tomee.version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</tomee.version>
+    <version.shrinkwrap.resolver>3.3.310.0.1-TT.2-SNAPSHOT</version.shrinkwrap.resolver>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <build>
-    <defaultGoal>install</defaultGoal>
-    <finalName>phonestore</finalName>
+    <defaultGoal>install10.0.1-TT.2-SNAPSHOT</defaultGoal>
+    <finalName>phonestore10.0.1-TT.2-SNAPSHOT</finalName>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.5.2</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.5.210.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <reuseForks>false</reuseForks>
-        </configuration>
-      </plugin>
+          <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.4.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-war-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.4.010.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
+          <failOnMissingWebXml>false10.0.1-TT.2-SNAPSHOT</failOnMissingWebXml>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.13.010.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
+          <source>1.810.0.1-TT.2-SNAPSHOT</source>
+          <target>1.810.0.1-TT.2-SNAPSHOT</target>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.tomee.maven</groupId>
-        <artifactId>tomee-maven-plugin</artifactId>
-        <version>${tomee.version}</version>
+        <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>tomee-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <tomeeClassifier>microprofile</tomeeClassifier>
-          <args>-Xmx512m -XX:PermSize=256m</args>
-          <config>${project.basedir}/src/main/tomee/</config>
-        </configuration>
-      </plugin>
+          <tomeeClassifier>microprofile10.0.1-TT.2-SNAPSHOT</tomeeClassifier>
+          <args>-Xmx512m -XX:PermSize=256m10.0.1-TT.2-SNAPSHOT</args>
+          <config>${project.basedir}/src/main/tomee/10.0.1-TT.2-SNAPSHOT</config>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       
-    </plugins>
-  </build>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
   <dependencyManagement>
     <dependencies>
       <!-- Override dependency resolver with test version. This must go *BEFORE*
         the Arquillian BOM. -->
       <dependency>
-        <groupId>org.jboss.shrinkwrap.resolver</groupId>
-        <artifactId>shrinkwrap-resolver-bom</artifactId>
-        <version>${version.shrinkwrap.resolver}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
+        <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>shrinkwrap-resolver-bom10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${version.shrinkwrap.resolver}10.0.1-TT.2-SNAPSHOT</version>
+        <scope>import10.0.1-TT.2-SNAPSHOT</scope>
+        <type>pom10.0.1-TT.2-SNAPSHOT</type>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <!-- Now pull in our server-based unit testing framework -->
       <dependency>
-        <groupId>org.jboss.arquillian</groupId>
-        <artifactId>arquillian-bom</artifactId>
-        <version>1.9.3.Final</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+        <groupId>org.jboss.arquillian10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>arquillian-bom10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>1.9.3.Final10.0.1-TT.2-SNAPSHOT</version>
+        <scope>import10.0.1-TT.2-SNAPSHOT</scope>
+        <type>pom10.0.1-TT.2-SNAPSHOT</type>
+      10.0.1-TT.2-SNAPSHOT</dependency>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
+  10.0.1-TT.2-SNAPSHOT</dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee.bom</groupId>
-      <artifactId>tomee-microprofile-api</artifactId>
-      <version>${tomee.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-microprofile-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>com.nimbusds</groupId>
-      <artifactId>nimbus-jose-jwt</artifactId>
-      <version>10.0.1</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>com.nimbusds10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>nimbus-jose-jwt10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>10.0.110.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>net.minidev</groupId>
-      <artifactId>json-smart</artifactId>
-      <version>1.3.1</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>net.minidev10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>json-smart10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.3.110.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
       <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>4.13.210.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.junit</groupId>
-      <artifactId>arquillian-junit-container</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.shrinkwrap.resolver</groupId>
-      <artifactId>shrinkwrap-resolver-depchain</artifactId>
-      <type>pom</type>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+      <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>shrinkwrap-resolver-depchain10.0.1-TT.2-SNAPSHOT</artifactId>
+      <type>pom10.0.1-TT.2-SNAPSHOT</type>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
   <profiles>
     <profile>
-      <id>arquillian-tomee-remote</id>
+      <id>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
+        <activeByDefault>true10.0.1-TT.2-SNAPSHOT</activeByDefault>
+      10.0.1-TT.2-SNAPSHOT</activation>
       <dependencies>
         <dependency>
-          <groupId>org.apache.tomee</groupId>
-          <artifactId>arquillian-tomee-remote</artifactId>
-          <version>${tomee.version}</version>
-          <scope>test</scope>
-        </dependency>
+          <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
+          <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
+          <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-          <groupId>org.apache.tomee</groupId>
-          <artifactId>apache-tomee</artifactId>
-          <version>${tomee.version}</version>
-          <type>zip</type>
-          <classifier>microprofile</classifier>
-          <scope>test</scope>
-        </dependency>
+          <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+          <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
+          <type>zip10.0.1-TT.2-SNAPSHOT</type>
+          <classifier>microprofile10.0.1-TT.2-SNAPSHOT</classifier>
+          <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-          <groupId>org.apache.tomee</groupId>
-          <artifactId>mp-jwt</artifactId>
-          <version>${tomee.version}</version>
-          <scope>provided</scope>
-        </dependency>
-      </dependencies>
-    </profile>
-  </profiles>
+          <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>mp-jwt10.0.1-TT.2-SNAPSHOT</artifactId>
+          <version>${tomee.version}10.0.1-TT.2-SNAPSHOT</version>
+          <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
+      10.0.1-TT.2-SNAPSHOT</dependencies>
+    10.0.1-TT.2-SNAPSHOT</profile>
+  10.0.1-TT.2-SNAPSHOT</profiles>
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -165,12 +165,12 @@
   -->
   <distributionManagement>
     <repository>
-      <id>localhost</id>
-      <url>file://${basedir}/target/repo/</url>
-    </repository>
+      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
+      <url>file://${basedir}/target/repo/10.0.1-TT.2-SNAPSHOT</url>
+    10.0.1-TT.2-SNAPSHOT</repository>
     <snapshotRepository>
-      <id>localhost</id>
-      <url>file://${basedir}/target/snapshot-repo/</url>
-    </snapshotRepository>
-  </distributionManagement>
-</project>
+      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
+      <url>file://${basedir}/target/snapshot-repo/10.0.1-TT.2-SNAPSHOT</url>
+    10.0.1-TT.2-SNAPSHOT</snapshotRepository>
+  10.0.1-TT.2-SNAPSHOT</distributionManagement>
+10.0.1-TT.2-SNAPSHOT</project>

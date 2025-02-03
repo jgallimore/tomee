@@ -17,39 +17,39 @@ Licensed to the Apache Software Foundation (ASF) under one or more
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>maven</artifactId>
-    <groupId>org.apache.tomee.maven</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <artifactId>maven10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee.maven10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
-  <artifactId>tomee-webapp-archetype</artifactId>
-  <name>TomEE :: Maven Plugins :: TomEE Webapp Archetype</name>
+  <artifactId>tomee-webapp-archetype10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: Maven Plugins :: TomEE Webapp Archetype10.0.1-TT.2-SNAPSHOT</name>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-antrun-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <executions>
           <execution>
-            <id>remove-apps</id>
-            <phase>process-resources</phase>
+            <id>remove-apps10.0.1-TT.2-SNAPSHOT</id>
+            <phase>process-resources10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>run</goal>
-            </goals>
+              <goal>run10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <target>
                 <replace file="${project.build.directory}/classes/archetype-resources/pom.xml" token="[TOMEE]" value="${project.version}" />
                 <replace file="${project.build.directory}/classes/archetype-resources/pom.xml" token="[OPENEJB]" value="${project.version}" />
                 <replace file="${project.build.directory}/classes/archetype-resources/pom.xml" token="[OPENJPA]" value="${version.openjpa}" />
                 <replace file="${project.build.directory}/classes/archetype-resources/pom.xml" token="[JAVAEE]" value="${version.jakartaee-api}" />
-              </target>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+              10.0.1-TT.2-SNAPSHOT</target>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>

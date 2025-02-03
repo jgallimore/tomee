@@ -17,53 +17,53 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>tomee-project</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>tck</artifactId>
-  <packaging>pom</packaging>
-  <name>TomEE :: TCK</name>
+    <artifactId>tomee-project10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: TCK10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <cdi-tck.version>4.0.13</cdi-tck.version>
-    <jaxrs.tck.version>3.1.5</jaxrs.tck.version>
-    <bval-tck.version>3.0.1</bval-tck.version>
-    <jsonb-tck.version>3.0.0</jsonb-tck.version>
-    <jsonp-tck.version>2.1.1</jsonp-tck.version>
-    <validation.provider>org.apache.bval.jsr.ApacheValidationProvider</validation.provider>
-  </properties>
+    <cdi-tck.version>4.0.1310.0.1-TT.2-SNAPSHOT</cdi-tck.version>
+    <jaxrs.tck.version>3.1.510.0.1-TT.2-SNAPSHOT</jaxrs.tck.version>
+    <bval-tck.version>3.0.110.0.1-TT.2-SNAPSHOT</bval-tck.version>
+    <jsonb-tck.version>3.0.010.0.1-TT.2-SNAPSHOT</jsonb-tck.version>
+    <jsonp-tck.version>2.1.110.0.1-TT.2-SNAPSHOT</jsonp-tck.version>
+    <validation.provider>org.apache.bval.jsr.ApacheValidationProvider10.0.1-TT.2-SNAPSHOT</validation.provider>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <modules>
-    <module>tck-common</module>
-    <module>cdi-embedded</module>
-    <module>cdi-tomee</module>
-    <module>cdi-signature-test</module>
-    <module>bval-embedded</module>
-    <module>bval-tomee</module>
-    <module>bval-signature-test</module>
-    <module>jsonp-standalone</module>
-    <module>jsonp-signature-test</module>
-    <module>jsonb-standalone</module>
-    <module>jsonb-signature-test</module>
-    <module>concurrency-standalone</module>
-    <module>concurrency-signature-test</module>
-    <module>microprofile-tck</module>
-    <module>jax-rs</module>
-  </modules>
+    <module>tck-common10.0.1-TT.2-SNAPSHOT</module>
+    <module>cdi-embedded10.0.1-TT.2-SNAPSHOT</module>
+    <module>cdi-tomee10.0.1-TT.2-SNAPSHOT</module>
+    <module>cdi-signature-test10.0.1-TT.2-SNAPSHOT</module>
+    <module>bval-embedded10.0.1-TT.2-SNAPSHOT</module>
+    <module>bval-tomee10.0.1-TT.2-SNAPSHOT</module>
+    <module>bval-signature-test10.0.1-TT.2-SNAPSHOT</module>
+    <module>jsonp-standalone10.0.1-TT.2-SNAPSHOT</module>
+    <module>jsonp-signature-test10.0.1-TT.2-SNAPSHOT</module>
+    <module>jsonb-standalone10.0.1-TT.2-SNAPSHOT</module>
+    <module>jsonb-signature-test10.0.1-TT.2-SNAPSHOT</module>
+    <module>concurrency-standalone10.0.1-TT.2-SNAPSHOT</module>
+    <module>concurrency-signature-test10.0.1-TT.2-SNAPSHOT</module>
+    <module>microprofile-tck10.0.1-TT.2-SNAPSHOT</module>
+    <module>jax-rs10.0.1-TT.2-SNAPSHOT</module>
+  10.0.1-TT.2-SNAPSHOT</modules>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${version.plugin.javadoc}</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-javadoc-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${version.plugin.javadoc}10.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+          <skip>true10.0.1-TT.2-SNAPSHOT</skip>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>

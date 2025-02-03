@@ -17,118 +17,118 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>tck</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>cdi-signature-test</artifactId>
-  <name>TomEE :: TCK :: CDI TCK Signature Tests</name>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <artifactId>cdi-signature-test10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: TCK :: CDI TCK Signature Tests10.0.1-TT.2-SNAPSHOT</name>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>jakartaee-api</artifactId>
-      <version>${version.jakartaee-api}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.jakartaee-api}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>jakarta.enterprise</groupId>
-      <artifactId>cdi-tck-core-impl</artifactId>
-      <version>${cdi-tck.version}</version>
+      <groupId>jakarta.enterprise10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>cdi-tck-core-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${cdi-tck.version}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>jakarta.xml.soap</groupId>
-          <artifactId>jakarta.xml.soap-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.xml.soap10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.xml.soap-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.inject</groupId>
-          <artifactId>jakarta.inject</artifactId>
-        </exclusion>
+          <groupId>jakarta.inject10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.inject10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.enterprise</groupId>
-          <artifactId>cdi-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.enterprise10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>cdi-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.faces</groupId>
-          <artifactId>jsf-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.faces10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jsf-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.servlet</groupId>
-          <artifactId>jakarta.servlet-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.servlet10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.servlet-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.servlet.jsp</groupId>
-          <artifactId>jsp-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.servlet.jsp10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jsp-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.transaction</groupId>
-          <artifactId>jta</artifactId>
-        </exclusion>
+          <groupId>jakarta.transaction10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jta10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.annotation</groupId>
-          <artifactId>jakarta.annotation-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-  </dependencies>
+          <groupId>jakarta.annotation10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.annotation-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <profiles>
     <profile>
-      <id>tck-cdi</id>
+      <id>tck-cdi10.0.1-TT.2-SNAPSHOT</id>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <version>3.8.0</version>
+            <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>3.8.010.0.1-TT.2-SNAPSHOT</version>
             <executions>
               <execution>
-                <id>copy-tck-cdi-api-signature-file</id>
-                <phase>generate-test-sources</phase>
+                <id>copy-tck-cdi-api-signature-file10.0.1-TT.2-SNAPSHOT</id>
+                <phase>generate-test-sources10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>copy</goal>
-                </goals>
+                  <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
                   <artifactItems>
                     <artifactItem>
-                      <groupId>jakarta.enterprise</groupId>
-                      <artifactId>cdi-tck-core-impl</artifactId>
-                      <classifier>sigtest-jdk11</classifier>
-                      <type>sig</type>
-                      <version>${cdi-tck.version}</version>
-                      <overWrite>true</overWrite>
-                    </artifactItem>
-                  </artifactItems>
-                  <outputDirectory>${project.build.directory}/api-signature</outputDirectory>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
+                      <groupId>jakarta.enterprise10.0.1-TT.2-SNAPSHOT</groupId>
+                      <artifactId>cdi-tck-core-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+                      <classifier>sigtest-jdk1110.0.1-TT.2-SNAPSHOT</classifier>
+                      <type>sig10.0.1-TT.2-SNAPSHOT</type>
+                      <version>${cdi-tck.version}10.0.1-TT.2-SNAPSHOT</version>
+                      <overWrite>true10.0.1-TT.2-SNAPSHOT</overWrite>
+                    10.0.1-TT.2-SNAPSHOT</artifactItem>
+                  10.0.1-TT.2-SNAPSHOT</artifactItems>
+                  <outputDirectory>${project.build.directory}/api-signature10.0.1-TT.2-SNAPSHOT</outputDirectory>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
+            10.0.1-TT.2-SNAPSHOT</executions>
+          10.0.1-TT.2-SNAPSHOT</plugin>
 
           <plugin>
-            <groupId>org.netbeans.tools</groupId>
-            <artifactId>sigtest-maven-plugin</artifactId>
-            <version>1.5</version>
+            <groupId>org.netbeans.tools10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>sigtest-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>1.510.0.1-TT.2-SNAPSHOT</version>
             <executions>
               <execution>
-                <id>sigtest</id>
-                <phase>verify</phase>
+                <id>sigtest10.0.1-TT.2-SNAPSHOT</id>
+                <phase>verify10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>check</goal>
-                </goals>
-              </execution>
-            </executions>
+                  <goal>check10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
+              10.0.1-TT.2-SNAPSHOT</execution>
+            10.0.1-TT.2-SNAPSHOT</executions>
             <configuration>
               <sigfile>${project.build.directory}/api-signature/cdi-tck-core-impl-${cdi-tck.version}-sigtest-jdk11.sig
-              </sigfile>
-              <packages>jakarta.decorator,jakarta.enterprise,jakarta.interceptor</packages>
-            </configuration>
-          </plugin>
+              10.0.1-TT.2-SNAPSHOT</sigfile>
+              <packages>jakarta.decorator,jakarta.enterprise,jakarta.interceptor10.0.1-TT.2-SNAPSHOT</packages>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</plugin>
 
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-</project>
+        10.0.1-TT.2-SNAPSHOT</plugins>
+      10.0.1-TT.2-SNAPSHOT</build>
+    10.0.1-TT.2-SNAPSHOT</profile>
+  10.0.1-TT.2-SNAPSHOT</profiles>
+10.0.1-TT.2-SNAPSHOT</project>

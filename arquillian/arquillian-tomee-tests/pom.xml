@@ -11,245 +11,245 @@
   language governing permissions and limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
          
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
   
   <parent>
-    <artifactId>arquillian</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>arquillian10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
   
-  <artifactId>arquillian-tomee-tests</artifactId>
-  <packaging>pom</packaging>
+  <artifactId>arquillian-tomee-tests10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
 
-  <name>TomEE :: Arquillian Adaptors Parent :: Tests</name>
+  <name>TomEE :: Arquillian Adaptors Parent :: Tests10.0.1-TT.2-SNAPSHOT</name>
 
   <modules>
-    <module>arquillian-tomee-webprofile-tests</module>
-    <module>arquillian-tomee-jaxrs-tests</module>
-    <module>arquillian-tomee-jaxws-tests</module>
-    <module>arquillian-tomee-jms-tests</module>
-    <module>arquillian-tomee-config-tests</module>
-  </modules>
+    <module>arquillian-tomee-webprofile-tests10.0.1-TT.2-SNAPSHOT</module>
+    <module>arquillian-tomee-jaxrs-tests10.0.1-TT.2-SNAPSHOT</module>
+    <module>arquillian-tomee-jaxws-tests10.0.1-TT.2-SNAPSHOT</module>
+    <module>arquillian-tomee-jms-tests10.0.1-TT.2-SNAPSHOT</module>
+    <module>arquillian-tomee-config-tests10.0.1-TT.2-SNAPSHOT</module>
+  10.0.1-TT.2-SNAPSHOT</modules>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>jakartaee-api</artifactId>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.jboss.shrinkwrap.resolver</groupId>
-      <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
-      <version>${version.shrinkwrap.resolver.bom}</version>
-      <scope>test</scope>
+      <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>shrinkwrap-resolver-impl-maven10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.shrinkwrap.resolver.bom}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <groupId>org.apache.httpcomponents</groupId>
-          <artifactId>httpcore</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.apache.httpcomponents10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>httpcore10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpcore</artifactId>
-      <version>4.4.16</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.apache.httpcomponents10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>httpcore10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>4.4.1610.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>ziplock</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>ziplock10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.jboss.arquillian.junit</groupId>
-      <artifactId>arquillian-junit-container</artifactId>
-      <version>${version.arquillian}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-jdk14</artifactId>
-    </dependency>
+      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>slf4j-jdk1410.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.2.2</version>
-    </dependency>
+      <groupId>org.apache.httpcomponents10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>httpclient10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>4.2.210.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.jboss.shrinkwrap.descriptors</groupId>
-      <artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
-      <version>${version.shrinkwrap.descriptor}</version>
-    </dependency>
+      <groupId>org.jboss.shrinkwrap.descriptors10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>shrinkwrap-descriptors-impl-javaee10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.shrinkwrap.descriptor}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.shrinkwrap.descriptors</groupId>
-      <artifactId>shrinkwrap-descriptors-api-javaee</artifactId>
-      <version>${version.shrinkwrap.descriptor}</version>
-    </dependency>
+      <groupId>org.jboss.shrinkwrap.descriptors10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>shrinkwrap-descriptors-api-javaee10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.shrinkwrap.descriptor}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>arquillian-tomee-embedded</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-tomee-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>arquillian-tomee-remote</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>arquillian-tomee-webapp-remote</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-tomee-webapp-remote10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency> <!-- tomee-embedded needs it + dependencies but tomee-*-remote doesn't need dependencies so to avoid conflicts bringing it back here -->
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-core</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <!-- ActiveMQ is optional in openejb-core -->
     <dependency>
-      <groupId>org.apache.activemq</groupId>
-      <artifactId>activemq-ra</artifactId>
-    </dependency>
+      <groupId>org.apache.activemq10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>activemq-ra10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.activemq</groupId>
-      <artifactId>activemq-broker</artifactId>
-    </dependency>
+      <groupId>org.apache.activemq10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>activemq-broker10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.activemq</groupId>
-      <artifactId>activemq-jdbc-store</artifactId>
+      <groupId>org.apache.activemq10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>activemq-jdbc-store10.0.1-TT.2-SNAPSHOT</artifactId>
       <exclusions>
         <exclusion>
-          <groupId>org.apache.activemq</groupId>
-          <artifactId>activemq-broker</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.apache.activemq10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>activemq-broker10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <!-- for tests with Hibernate -->
 
     <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>${version.hibernate.orm}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.hibernate.orm10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>hibernate-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.hibernate.orm}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.hibernate.common</groupId>
-      <artifactId>hibernate-commons-annotations</artifactId>
-      <version>6.0.4.Final</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.hibernate.common10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>hibernate-commons-annotations10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>6.0.4.Final10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>antlr</groupId>
-      <artifactId>antlr</artifactId>
-      <version>2.7.7</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>antlr10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>antlr10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.7.710.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss</groupId>
-      <artifactId>jandex</artifactId>
-      <version>2.4.5.Final</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.jboss10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jandex10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.4.5.Final10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.logging</groupId>
-      <artifactId>jboss-logging</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.jboss.logging10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jboss-logging10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>net.bytebuddy</groupId>
-      <artifactId>byte-buddy</artifactId>
-      <version>1.16.1</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>net.bytebuddy10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>byte-buddy10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.16.110.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!-- just to get it in the correct order -->
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>apache-tomee</artifactId>
-      <version>${project.version}</version>
-      <classifier>webprofile</classifier>
-      <type>zip</type>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <classifier>webprofile10.0.1-TT.2-SNAPSHOT</classifier>
+      <type>zip10.0.1-TT.2-SNAPSHOT</type>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat</artifactId>
-      <version>${tomcat.version}</version>
-      <type>zip</type>
-    </dependency>
-  </dependencies>
+      <groupId>org.apache.tomcat10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomcat10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${tomcat.version}10.0.1-TT.2-SNAPSHOT</version>
+      <type>zip10.0.1-TT.2-SNAPSHOT</type>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <profiles>
 
     <profile>
-      <id>default</id>
+      <id>default10.0.1-TT.2-SNAPSHOT</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
+        <activeByDefault>true10.0.1-TT.2-SNAPSHOT</activeByDefault>
+      10.0.1-TT.2-SNAPSHOT</activation>
 
       <build>
         <plugins>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
+            <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
             <executions>
               <execution>
-                <id>test-tomee-embedded</id>
-                <phase>test</phase>
+                <id>test-tomee-embedded10.0.1-TT.2-SNAPSHOT</id>
+                <phase>test10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>test</goal>
-                </goals>
+                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
-                  <skip>${maven.test.skip}</skip>
-                  <argLine>-javaagent:${settings.localRepository}/org/apache/tomee/openejb-javaagent/${project.version}/openejb-javaagent-${project.version}.jar</argLine>
+                  <skip>${maven.test.skip}10.0.1-TT.2-SNAPSHOT</skip>
+                  <argLine>-javaagent:${settings.localRepository}/org/apache/tomee/openejb-javaagent/${project.version}/openejb-javaagent-${project.version}.jar10.0.1-TT.2-SNAPSHOT</argLine>
                   <systemPropertyVariables>
-                    <tomee.version>${project.version}</tomee.version>
-                    <arquillian.launch>tomee-embedded</arquillian.launch>
-                    <openejb.arquillian.adapter>tomee-embedded</openejb.arquillian.adapter>
-                  </systemPropertyVariables>
-                </configuration>
-              </execution>
-            </executions>
+                    <tomee.version>${project.version}10.0.1-TT.2-SNAPSHOT</tomee.version>
+                    <arquillian.launch>tomee-embedded10.0.1-TT.2-SNAPSHOT</arquillian.launch>
+                    <openejb.arquillian.adapter>tomee-embedded10.0.1-TT.2-SNAPSHOT</openejb.arquillian.adapter>
+                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
+            10.0.1-TT.2-SNAPSHOT</executions>
             <configuration>
-              <skip>true</skip>
-              <parallel>none</parallel>
-              <threadCount>1</threadCount>
-              <reuseForks>true</reuseForks>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
+              <skip>true10.0.1-TT.2-SNAPSHOT</skip>
+              <parallel>none10.0.1-TT.2-SNAPSHOT</parallel>
+              <threadCount>110.0.1-TT.2-SNAPSHOT</threadCount>
+              <reuseForks>true10.0.1-TT.2-SNAPSHOT</reuseForks>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</plugin>
+        10.0.1-TT.2-SNAPSHOT</plugins>
+      10.0.1-TT.2-SNAPSHOT</build>
+    10.0.1-TT.2-SNAPSHOT</profile>
 
     <profile>
-      <id>all-adapters</id>
+      <id>all-adapters10.0.1-TT.2-SNAPSHOT</id>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.codehaus.gmaven</groupId>
-            <artifactId>groovy-maven-plugin</artifactId>
-            <version>2.1.1</version>
+            <groupId>org.codehaus.gmaven10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>groovy-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>2.1.110.0.1-TT.2-SNAPSHOT</version>
             <executions>
               <execution>
-                <id>configure-adapters</id>
-                <phase>test</phase>
+                <id>configure-adapters10.0.1-TT.2-SNAPSHOT</id>
+                <phase>test10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>execute</goal>
-                </goals>
+                  <goal>execute10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
                   <source>
                     // goal: manage the profile-under-test property
@@ -299,172 +299,172 @@
                         !Boolean.parseBoolean(props['skip.webapp.webprofile']))
                     println("Webapp plus adapter activated ? " + !Boolean.parseBoolean(props['skip.webapp.plus']))
                     println("Webapp plume adapter activated ? " + !Boolean.parseBoolean(props['skip.webapp.plume']))
-                  </source>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
+                  10.0.1-TT.2-SNAPSHOT</source>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
+            10.0.1-TT.2-SNAPSHOT</executions>
+          10.0.1-TT.2-SNAPSHOT</plugin>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
+            <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
             <executions>
 
               <execution>
-                <id>test-tomee-remote</id>
-                <phase>test</phase>
+                <id>test-tomee-remote10.0.1-TT.2-SNAPSHOT</id>
+                <phase>test10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>test</goal>
-                </goals>
+                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
-                  <skip>${skip.remote.webprofile}</skip>
+                  <skip>${skip.remote.webprofile}10.0.1-TT.2-SNAPSHOT</skip>
                   <systemPropertyVariables>
-                    <openejb.arquillian.debug>true</openejb.arquillian.debug>
-                    <tomee.version>${project.version}</tomee.version>
-                    <tomee.classifier>webprofile</tomee.classifier>
-                    <arquillian.launch>tomee-remote</arquillian.launch>
-                    <openejb.arquillian.adapter>tomee-remote</openejb.arquillian.adapter>
-                  </systemPropertyVariables>
-                </configuration>
-              </execution>
+                    <openejb.arquillian.debug>true10.0.1-TT.2-SNAPSHOT</openejb.arquillian.debug>
+                    <tomee.version>${project.version}10.0.1-TT.2-SNAPSHOT</tomee.version>
+                    <tomee.classifier>webprofile10.0.1-TT.2-SNAPSHOT</tomee.classifier>
+                    <arquillian.launch>tomee-remote10.0.1-TT.2-SNAPSHOT</arquillian.launch>
+                    <openejb.arquillian.adapter>tomee-remote10.0.1-TT.2-SNAPSHOT</openejb.arquillian.adapter>
+                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
               <execution>
-                <id>test-tomee-remote-secpol</id>
-                <phase>test</phase>
+                <id>test-tomee-remote-secpol10.0.1-TT.2-SNAPSHOT</id>
+                <phase>test10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>test</goal>
-                </goals>
+                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
-                  <skip>${skip.remote.webprofile}</skip>
+                  <skip>${skip.remote.webprofile}10.0.1-TT.2-SNAPSHOT</skip>
                   <systemPropertyVariables>
-                    <openejb.arquillian.debug>true</openejb.arquillian.debug>
-                    <tomee.version>${project.version}</tomee.version>
-                    <tomee.classifier>webprofile</tomee.classifier>
-                    <arquillian.launch>tomee-remote-secpol</arquillian.launch>
-                    <openejb.arquillian.adapter>tomee-remote</openejb.arquillian.adapter>
-                  </systemPropertyVariables>
-                </configuration>
-              </execution>
+                    <openejb.arquillian.debug>true10.0.1-TT.2-SNAPSHOT</openejb.arquillian.debug>
+                    <tomee.version>${project.version}10.0.1-TT.2-SNAPSHOT</tomee.version>
+                    <tomee.classifier>webprofile10.0.1-TT.2-SNAPSHOT</tomee.classifier>
+                    <arquillian.launch>tomee-remote-secpol10.0.1-TT.2-SNAPSHOT</arquillian.launch>
+                    <openejb.arquillian.adapter>tomee-remote10.0.1-TT.2-SNAPSHOT</openejb.arquillian.adapter>
+                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
               <execution>
-                <id>test-tomee-embedded</id>
-                <phase>test</phase>
+                <id>test-tomee-embedded10.0.1-TT.2-SNAPSHOT</id>
+                <phase>test10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>test</goal>
-                </goals>
+                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
-                  <skip>${skip.embedded}</skip>
-                  <argLine>-javaagent:${settings.localRepository}/org/apache/tomee/openejb-javaagent/${project.version}/openejb-javaagent-${project.version}.jar</argLine>
+                  <skip>${skip.embedded}10.0.1-TT.2-SNAPSHOT</skip>
+                  <argLine>-javaagent:${settings.localRepository}/org/apache/tomee/openejb-javaagent/${project.version}/openejb-javaagent-${project.version}.jar10.0.1-TT.2-SNAPSHOT</argLine>
                   <systemPropertyVariables>
-                    <tomee.version>${project.version}</tomee.version>
-                    <arquillian.launch>tomee-embedded</arquillian.launch>
-                    <openejb.arquillian.adapter>tomee-embedded</openejb.arquillian.adapter>
-                  </systemPropertyVariables>
-                </configuration>
-              </execution>
+                    <tomee.version>${project.version}10.0.1-TT.2-SNAPSHOT</tomee.version>
+                    <arquillian.launch>tomee-embedded10.0.1-TT.2-SNAPSHOT</arquillian.launch>
+                    <openejb.arquillian.adapter>tomee-embedded10.0.1-TT.2-SNAPSHOT</openejb.arquillian.adapter>
+                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
               <execution>
-                <id>test-tomee-remote-plume</id>
-                <phase>test</phase>
+                <id>test-tomee-remote-plume10.0.1-TT.2-SNAPSHOT</id>
+                <phase>test10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>test</goal>
-                </goals>
+                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
-                  <skip>${skip.remote.plume}</skip>
+                  <skip>${skip.remote.plume}10.0.1-TT.2-SNAPSHOT</skip>
                   <systemPropertyVariables>
-                    <openejb.arquillian.debug>true</openejb.arquillian.debug>
-                    <tomee.version>${project.version}</tomee.version>
-                    <tomee.classifier>plume</tomee.classifier>
-                    <arquillian.launch>tomee-remote</arquillian.launch>
-                    <openejb.arquillian.adapter>tomee-remote</openejb.arquillian.adapter>
-                  </systemPropertyVariables>
+                    <openejb.arquillian.debug>true10.0.1-TT.2-SNAPSHOT</openejb.arquillian.debug>
+                    <tomee.version>${project.version}10.0.1-TT.2-SNAPSHOT</tomee.version>
+                    <tomee.classifier>plume10.0.1-TT.2-SNAPSHOT</tomee.classifier>
+                    <arquillian.launch>tomee-remote10.0.1-TT.2-SNAPSHOT</arquillian.launch>
+                    <openejb.arquillian.adapter>tomee-remote10.0.1-TT.2-SNAPSHOT</openejb.arquillian.adapter>
+                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
                   <excludes>
-                    <exclude>**/AppComposerTest.java</exclude>
-                  </excludes>
-                </configuration>
-              </execution>
+                    <exclude>**/AppComposerTest.java10.0.1-TT.2-SNAPSHOT</exclude>
+                  10.0.1-TT.2-SNAPSHOT</excludes>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
               <execution>
-                <id>test-tomee-remote-plus</id>
-                <phase>test</phase>
+                <id>test-tomee-remote-plus10.0.1-TT.2-SNAPSHOT</id>
+                <phase>test10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>test</goal>
-                </goals>
+                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
-                  <skip>${skip.remote.plus}</skip>
+                  <skip>${skip.remote.plus}10.0.1-TT.2-SNAPSHOT</skip>
                   <systemPropertyVariables>
-                    <openejb.arquillian.debug>true</openejb.arquillian.debug>
-                    <tomee.version>${project.version}</tomee.version>
-                    <tomee.classifier>plus</tomee.classifier>
-                    <arquillian.launch>tomee-remote</arquillian.launch>
-                    <openejb.arquillian.adapter>tomee-remote</openejb.arquillian.adapter>
-                  </systemPropertyVariables>
-                </configuration>
-              </execution>
+                    <openejb.arquillian.debug>true10.0.1-TT.2-SNAPSHOT</openejb.arquillian.debug>
+                    <tomee.version>${project.version}10.0.1-TT.2-SNAPSHOT</tomee.version>
+                    <tomee.classifier>plus10.0.1-TT.2-SNAPSHOT</tomee.classifier>
+                    <arquillian.launch>tomee-remote10.0.1-TT.2-SNAPSHOT</arquillian.launch>
+                    <openejb.arquillian.adapter>tomee-remote10.0.1-TT.2-SNAPSHOT</openejb.arquillian.adapter>
+                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
               <execution>
-                <id>test-tomee-remote-microprofile</id>
-                <phase>test</phase>
+                <id>test-tomee-remote-microprofile10.0.1-TT.2-SNAPSHOT</id>
+                <phase>test10.0.1-TT.2-SNAPSHOT</phase>
                 <goals>
-                  <goal>test</goal>
-                </goals>
+                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
-                  <skip>${skip.remote.microprofile}</skip>
+                  <skip>${skip.remote.microprofile}10.0.1-TT.2-SNAPSHOT</skip>
                   <systemPropertyVariables>
-                    <openejb.arquillian.debug>true</openejb.arquillian.debug>
-                    <tomee.version>${project.version}</tomee.version>
-                    <tomee.classifier>microprofile</tomee.classifier>
-                    <arquillian.launch>tomee-remote</arquillian.launch>
-                    <openejb.arquillian.adapter>tomee-remote</openejb.arquillian.adapter>
-                  </systemPropertyVariables>
-                </configuration>
-              </execution>
-            </executions>
+                    <openejb.arquillian.debug>true10.0.1-TT.2-SNAPSHOT</openejb.arquillian.debug>
+                    <tomee.version>${project.version}10.0.1-TT.2-SNAPSHOT</tomee.version>
+                    <tomee.classifier>microprofile10.0.1-TT.2-SNAPSHOT</tomee.classifier>
+                    <arquillian.launch>tomee-remote10.0.1-TT.2-SNAPSHOT</arquillian.launch>
+                    <openejb.arquillian.adapter>tomee-remote10.0.1-TT.2-SNAPSHOT</openejb.arquillian.adapter>
+                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
+            10.0.1-TT.2-SNAPSHOT</executions>
             <configuration>
-              <skip>true</skip>
-              <parallel>none</parallel>
-              <threadCount>1</threadCount>
-              <reuseForks>true</reuseForks>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
+              <skip>true10.0.1-TT.2-SNAPSHOT</skip>
+              <parallel>none10.0.1-TT.2-SNAPSHOT</parallel>
+              <threadCount>110.0.1-TT.2-SNAPSHOT</threadCount>
+              <reuseForks>true10.0.1-TT.2-SNAPSHOT</reuseForks>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</plugin>
+        10.0.1-TT.2-SNAPSHOT</plugins>
+      10.0.1-TT.2-SNAPSHOT</build>
+    10.0.1-TT.2-SNAPSHOT</profile>
 
     <profile>
       <!--
       Added to make it easy to quickly verify if something "should" work
       -->
-      <id>glassfish-embedded</id>
+      <id>glassfish-embedded10.0.1-TT.2-SNAPSHOT</id>
       <properties>
-        <version.glassfish>3.1.2.2</version.glassfish>
-        <version.arquillian.glassfish.embedded>1.0.2</version.arquillian.glassfish.embedded>
-        <version.mockito>1.9.0</version.mockito>
-        <version.maven.embedded.glassfish.plugin>3.1.1</version.maven.embedded.glassfish.plugin>
-        <version.maven.war.plugin>2.1.1</version.maven.war.plugin>
-        <version.maven.compiler.plugin>2.3.2</version.maven.compiler.plugin>
-        <version.maven.failsafe.plugin>2.11</version.maven.failsafe.plugin>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-      </properties>
+        <version.glassfish>3.1.2.210.0.1-TT.2-SNAPSHOT</version.glassfish>
+        <version.arquillian.glassfish.embedded>1.0.210.0.1-TT.2-SNAPSHOT</version.arquillian.glassfish.embedded>
+        <version.mockito>1.9.010.0.1-TT.2-SNAPSHOT</version.mockito>
+        <version.maven.embedded.glassfish.plugin>3.1.110.0.1-TT.2-SNAPSHOT</version.maven.embedded.glassfish.plugin>
+        <version.maven.war.plugin>2.1.110.0.1-TT.2-SNAPSHOT</version.maven.war.plugin>
+        <version.maven.compiler.plugin>2.3.210.0.1-TT.2-SNAPSHOT</version.maven.compiler.plugin>
+        <version.maven.failsafe.plugin>2.1110.0.1-TT.2-SNAPSHOT</version.maven.failsafe.plugin>
+        <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.reporting.outputEncoding>
+      10.0.1-TT.2-SNAPSHOT</properties>
       <dependencies>
         <dependency>
-          <groupId>org.jboss.arquillian.junit</groupId>
-          <artifactId>arquillian-junit-container</artifactId>
-          <version>${version.arquillian}</version>
-          <scope>test</scope>
-        </dependency>
+          <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
+          <version>${version.arquillian}10.0.1-TT.2-SNAPSHOT</version>
+          <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-          <groupId>org.glassfish.main.extras</groupId>
-          <artifactId>glassfish-embedded-all</artifactId>
-          <version>${version.glassfish}</version>
-          <scope>provided</scope>
-        </dependency>
+          <groupId>org.glassfish.main.extras10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>glassfish-embedded-all10.0.1-TT.2-SNAPSHOT</artifactId>
+          <version>${version.glassfish}10.0.1-TT.2-SNAPSHOT</version>
+          <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-          <groupId>org.jboss.arquillian.container</groupId>
-          <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
-          <version>${version.arquillian.glassfish.embedded}</version>
-          <scope>test</scope>
-        </dependency>
-      </dependencies>
-    </profile>
-  </profiles>
+          <groupId>org.jboss.arquillian.container10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>arquillian-glassfish-embedded-3.110.0.1-TT.2-SNAPSHOT</artifactId>
+          <version>${version.arquillian.glassfish.embedded}10.0.1-TT.2-SNAPSHOT</version>
+          <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
+      10.0.1-TT.2-SNAPSHOT</dependencies>
+    10.0.1-TT.2-SNAPSHOT</profile>
+  10.0.1-TT.2-SNAPSHOT</profiles>
 
   <properties>
-    <profile-under-test>webprofile</profile-under-test>
-  </properties>
-</project>
+    <profile-under-test>webprofile10.0.1-TT.2-SNAPSHOT</profile-under-test>
+  10.0.1-TT.2-SNAPSHOT</properties>
+10.0.1-TT.2-SNAPSHOT</project>

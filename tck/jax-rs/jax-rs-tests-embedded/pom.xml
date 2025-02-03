@@ -16,106 +16,106 @@
   limitations under the License.
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
     <parent>
-        <groupId>org.apache.tomee</groupId>
-        <artifactId>jax-rs</artifactId>
-        <version>10.0.1-TT.2-SNAPSHOT</version>
-    </parent>
+        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>jax-rs10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</parent>
 
-    <artifactId>jax-rs-tests-embedded</artifactId>
-    <packaging>jar</packaging>
-    <name>TomEE :: TCK :: JAX-RS TCK :: Tests Embedded</name>
+    <artifactId>jax-rs-tests-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
+    <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
+    <name>TomEE :: TCK :: JAX-RS TCK :: Tests Embedded10.0.1-TT.2-SNAPSHOT</name>
 
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.ws.rs</groupId>
-            <artifactId>jakarta-restful-ws-tck</artifactId>
-            <version>${jaxrs.tck.version}</version>
-        </dependency>
+            <groupId>jakarta.ws.rs10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakarta-restful-ws-tck10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${jaxrs.tck.version}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <!-- Added for test-->
         <dependency>
-            <groupId>org.junit</groupId>
-            <artifactId>junit-bom</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+            <groupId>org.junit10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>junit-bom10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${junit.jupiter.version}10.0.1-TT.2-SNAPSHOT</version>
+            <type>pom10.0.1-TT.2-SNAPSHOT</type>
+            <scope>import10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <!-- Needed by some TCK tests:
             JsonbContextProviderIT.shouldUseApplicationProvidedJsonbInstance
             UriBuilderIT.shouldBuildValidInstanceFromScratch
         -->
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>2.2</version>
-            <scope>test</scope>
-        </dependency>
+            <groupId>org.hamcrest10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>hamcrest-library10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>2.210.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <!--Tomee-Deps:-->
         <!-- https://mvnrepository.com/artifact/org.apache.tomee/arquillian-tomee-remote -->
         <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>arquillian-tomee-embedded</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>arquillian-tomee-embedded10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+            <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>tomee-webservices</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>tomee-webservices10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>tomee-jaxrs</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>tomee-jaxrs10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
 
     <profiles>
         <profile>
-            <id>tck-jax-rs</id>
+            <id>tck-jax-rs10.0.1-TT.2-SNAPSHOT</id>
             <build>
                 <testResources>
                     <testResource>
-                        <directory>src/test/resources</directory>
-                        <filtering>true</filtering>
-                    </testResource>
-                </testResources>
+                        <directory>src/test/resources10.0.1-TT.2-SNAPSHOT</directory>
+                        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
+                    10.0.1-TT.2-SNAPSHOT</testResource>
+                10.0.1-TT.2-SNAPSHOT</testResources>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                    </plugin>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-antrun-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
                         <configuration>
-                            <skip>true</skip>
-                        </configuration>
-                    </plugin>
+                            <skip>true10.0.1-TT.2-SNAPSHOT</skip>
+                        10.0.1-TT.2-SNAPSHOT</configuration>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
                         <configuration>
-                            <reuseForks>false</reuseForks>
-                            <forkCount>1</forkCount>
-                            <useFile>false</useFile>
-                            <disableXmlReport>false</disableXmlReport>
+                            <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
+                            <forkCount>110.0.1-TT.2-SNAPSHOT</forkCount>
+                            <useFile>false10.0.1-TT.2-SNAPSHOT</useFile>
+                            <disableXmlReport>false10.0.1-TT.2-SNAPSHOT</disableXmlReport>
 
                             <!--Hint: Default naming of surefire is not followed.-->
                             <includes>
-                                <include>**/*.java</include>
-                            </includes>
+                                <include>**/*.java10.0.1-TT.2-SNAPSHOT</include>
+                            10.0.1-TT.2-SNAPSHOT</includes>
 
                             <excludes>
                                 <!--
@@ -123,48 +123,48 @@
                                 It is also only listed as a Java-SE Publication Mechanism in the Specification (2.3.1.2).
                                 Therefore, we exclude its IT.
                                 -->
-                                <exclude>**/SeBootstrapIT.java</exclude>
+                                <exclude>**/SeBootstrapIT.java10.0.1-TT.2-SNAPSHOT</exclude>
                                 <!-- We have an own module for signature-Tests-->
-                                <exclude>**/JAXRSSigTestIT.java</exclude>
+                                <exclude>**/JAXRSSigTestIT.java10.0.1-TT.2-SNAPSHOT</exclude>
 
                                 <!-- TODO: TOMEE-4321 / CXF-9005
                                  ee.jakarta.tck.ws.rs.jaxrs31.spec.extensions.JAXRSClientIT#featureIsRegisteredTest
                                  ee.jakarta.tck.ws.rs.jaxrs31.spec.extensions.JAXRSClientIT#dynamicFeatureIsRegisteredTest
                                  -->
-                                <exclude>**/JAXRSClientIT.java</exclude>
+                                <exclude>**/JAXRSClientIT.java10.0.1-TT.2-SNAPSHOT</exclude>
                                 <!-- TODO: TOMEE-4436 -->
-                                <exclude>**/spec/provider/standard/JAXRSClientIT.java</exclude>
-                                <exclude>**/interceptor/clientwriter/interceptorcontext/JAXRSClientIT.java</exclude>
-                                <exclude>**/interceptor/containerreader/interceptorcontext/JAXRSClientIT.java</exclude>
-                                <exclude>**/interceptor/reader/interceptorcontext/JAXRSClientIT.java</exclude>
-                                <exclude>**/interceptor/containerwriter/interceptorcontext/JAXRSClientIT.java</exclude>
-                                <exclude>**/spec/client/invocations/JAXRSClientIT.java</exclude>
-                            </excludes>
+                                <exclude>**/spec/provider/standard/JAXRSClientIT.java10.0.1-TT.2-SNAPSHOT</exclude>
+                                <exclude>**/interceptor/clientwriter/interceptorcontext/JAXRSClientIT.java10.0.1-TT.2-SNAPSHOT</exclude>
+                                <exclude>**/interceptor/containerreader/interceptorcontext/JAXRSClientIT.java10.0.1-TT.2-SNAPSHOT</exclude>
+                                <exclude>**/interceptor/reader/interceptorcontext/JAXRSClientIT.java10.0.1-TT.2-SNAPSHOT</exclude>
+                                <exclude>**/interceptor/containerwriter/interceptorcontext/JAXRSClientIT.java10.0.1-TT.2-SNAPSHOT</exclude>
+                                <exclude>**/spec/client/invocations/JAXRSClientIT.java10.0.1-TT.2-SNAPSHOT</exclude>
+                            10.0.1-TT.2-SNAPSHOT</excludes>
 
                             <dependenciesToScan>
-                                <dependency>jakarta.ws.rs:jakarta-restful-ws-tck</dependency>
-                            </dependenciesToScan>
+                                <dependency>jakarta.ws.rs:jakarta-restful-ws-tck10.0.1-TT.2-SNAPSHOT</dependency>
+                            10.0.1-TT.2-SNAPSHOT</dependenciesToScan>
 
                             <systemPropertyVariables>
-                                <servlet_adaptor>org.apache.openejb.server.rest.OpenEJBRestServlet</servlet_adaptor>
-                                <webServerHost>localhost</webServerHost>
-                                <webServerPort>8080</webServerPort>
+                                <servlet_adaptor>org.apache.openejb.server.rest.OpenEJBRestServlet10.0.1-TT.2-SNAPSHOT</servlet_adaptor>
+                                <webServerHost>localhost10.0.1-TT.2-SNAPSHOT</webServerHost>
+                                <webServerPort>808010.0.1-TT.2-SNAPSHOT</webServerPort>
                                 <porting.ts.url.class.1>ee.jakarta.tck.ws.rs.lib.implementation.sun.common.SunRIURL
-                                </porting.ts.url.class.1>
+                                10.0.1-TT.2-SNAPSHOT</porting.ts.url.class.1>
                                 <org.apache.cxf.transport.http.forceURLConnection>true
-                                </org.apache.cxf.transport.http.forceURLConnection>
-                                <openejb.jaxrs.fail-on-constrainedto>false</openejb.jaxrs.fail-on-constrainedto>
-                                <tomee.embedded.tck.enable_tracing>true</tomee.embedded.tck.enable_tracing>
-                                <user>j2ee</user>
-                                <password>j2ee</password>
-                                <authuser>javajoe</authuser>
-                                <authpassword>javajoe</authpassword>
-                                <openejb.jaxrs.skip.jakarta.json.providers.registration>false</openejb.jaxrs.skip.jakarta.json.providers.registration>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-</project>
+                                10.0.1-TT.2-SNAPSHOT</org.apache.cxf.transport.http.forceURLConnection>
+                                <openejb.jaxrs.fail-on-constrainedto>false10.0.1-TT.2-SNAPSHOT</openejb.jaxrs.fail-on-constrainedto>
+                                <tomee.embedded.tck.enable_tracing>true10.0.1-TT.2-SNAPSHOT</tomee.embedded.tck.enable_tracing>
+                                <user>j2ee10.0.1-TT.2-SNAPSHOT</user>
+                                <password>j2ee10.0.1-TT.2-SNAPSHOT</password>
+                                <authuser>javajoe10.0.1-TT.2-SNAPSHOT</authuser>
+                                <authpassword>javajoe10.0.1-TT.2-SNAPSHOT</authpassword>
+                                <openejb.jaxrs.skip.jakarta.json.providers.registration>false10.0.1-TT.2-SNAPSHOT</openejb.jaxrs.skip.jakarta.json.providers.registration>
+                            10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+                        10.0.1-TT.2-SNAPSHOT</configuration>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
+                10.0.1-TT.2-SNAPSHOT</plugins>
+            10.0.1-TT.2-SNAPSHOT</build>
+        10.0.1-TT.2-SNAPSHOT</profile>
+    10.0.1-TT.2-SNAPSHOT</profiles>
+10.0.1-TT.2-SNAPSHOT</project>

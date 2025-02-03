@@ -19,119 +19,119 @@
 <!-- $Rev: 638272 $ $Date: 2008-03-18 01:59:59 -0700 (Tue, 18 Mar 2008) $ -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <groupId>org.superbiz</groupId>
-    <artifactId>connector-ear</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>connector-sample-functional-test</artifactId>
-  <packaging>jar</packaging>
-  <name>TomEE :: Connector Examples :: Connector in EAR :: Functional Tests</name>
+    <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+    <artifactId>connector-ear10.0.1-TT.2-SNAPSHOT</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <artifactId>connector-sample-functional-test10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Connector Examples :: Connector in EAR :: Functional Tests10.0.1-TT.2-SNAPSHOT</name>
   <properties>
-    <version.shrinkwrap.resolver>3.3.3</version.shrinkwrap.resolver>
-  </properties>
+    <version.shrinkwrap.resolver>3.3.310.0.1-TT.2-SNAPSHOT</version.shrinkwrap.resolver>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <dependencyManagement>
     <dependencies>
       <!-- Override dependency resolver with test version. This must go *BEFORE*
         the Arquillian BOM. -->
       <dependency>
-        <groupId>org.jboss.shrinkwrap.resolver</groupId>
-        <artifactId>shrinkwrap-resolver-bom</artifactId>
-        <version>${version.shrinkwrap.resolver}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
+        <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>shrinkwrap-resolver-bom10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>${version.shrinkwrap.resolver}10.0.1-TT.2-SNAPSHOT</version>
+        <scope>import10.0.1-TT.2-SNAPSHOT</scope>
+        <type>pom10.0.1-TT.2-SNAPSHOT</type>
+      10.0.1-TT.2-SNAPSHOT</dependency>
       <!-- Now pull in our server-based unit testing framework -->
       <dependency>
-        <groupId>org.jboss.arquillian</groupId>
-        <artifactId>arquillian-bom</artifactId>
-        <version>1.9.3.Final</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+        <groupId>org.jboss.arquillian10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>arquillian-bom10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>1.9.3.Final10.0.1-TT.2-SNAPSHOT</version>
+        <scope>import10.0.1-TT.2-SNAPSHOT</scope>
+        <type>pom10.0.1-TT.2-SNAPSHOT</type>
+      10.0.1-TT.2-SNAPSHOT</dependency>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
+  10.0.1-TT.2-SNAPSHOT</dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>jakartaee-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.superbiz</groupId>
-      <artifactId>connector-sample-api</artifactId>
-      <version>${project.version}</version>
-      <type>jar</type>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>connector-sample-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <type>jar10.0.1-TT.2-SNAPSHOT</type>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.superbiz</groupId>
-      <artifactId>connector-sample-impl</artifactId>
-      <version>${project.version}</version>
-      <type>jar</type>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>connector-sample-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <type>jar10.0.1-TT.2-SNAPSHOT</type>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.superbiz</groupId>
-      <artifactId>connector-sample-war</artifactId>
-      <version>${project.version}</version>
-      <classifier>classes</classifier>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>connector-sample-war10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <classifier>classes10.0.1-TT.2-SNAPSHOT</classifier>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.superbiz</groupId>
-      <artifactId>connector-sample-ear</artifactId>
-      <version>${project.version}</version>
-      <type>ear</type>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>connector-sample-ear10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <type>ear10.0.1-TT.2-SNAPSHOT</type>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.arquillian.junit</groupId>
-      <artifactId>arquillian-junit-container</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.jboss.arquillian.junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-junit-container10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.shrinkwrap.resolver</groupId>
-      <artifactId>shrinkwrap-resolver-depchain</artifactId>
-      <type>pom</type>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>shrinkwrap-resolver-depchain10.0.1-TT.2-SNAPSHOT</artifactId>
+      <type>pom10.0.1-TT.2-SNAPSHOT</type>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.jboss.shrinkwrap.resolver</groupId>
-      <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
-      <version>${version.shrinkwrap.resolver}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.jboss.shrinkwrap.resolver10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>shrinkwrap-resolver-impl-maven10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.shrinkwrap.resolver}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>arquillian-tomee-remote</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>ziplock</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>ziplock10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>tomee-jaxrs</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tomee-jaxrs10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
   <build>
     <testResources>
       <testResource>
-        <directory>src/test/resources</directory>
-        <filtering>true</filtering>
-      </testResource>
-    </testResources>
-  </build>
-</project>
+        <directory>src/test/resources10.0.1-TT.2-SNAPSHOT</directory>
+        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
+      10.0.1-TT.2-SNAPSHOT</testResource>
+    10.0.1-TT.2-SNAPSHOT</testResources>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

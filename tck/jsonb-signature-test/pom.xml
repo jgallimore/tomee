@@ -17,125 +17,125 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <artifactId>tck</artifactId>
-        <groupId>org.apache.tomee</groupId>
-        <version>10.0.1-TT.2-SNAPSHOT</version>
-    </parent>
+        <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
+        <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+        <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>jsonb-signature-test</artifactId>
-    <name>TomEE :: TCK :: JSON-B Signature Tests</name>
+    <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+    <artifactId>jsonb-signature-test10.0.1-TT.2-SNAPSHOT</artifactId>
+    <name>TomEE :: TCK :: JSON-B Signature Tests10.0.1-TT.2-SNAPSHOT</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-core</artifactId>
-        </dependency>
+            <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>johnzon-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-mapper</artifactId>
-        </dependency>
+            <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>johnzon-mapper10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-jsonb</artifactId>
-        </dependency>
+            <groupId>org.apache.johnzon10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>johnzon-jsonb10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>jakartaee-api</artifactId>
-        </dependency>
+            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>jakarta.json.bind</groupId>
-            <artifactId>jakarta.json.bind-tck</artifactId>
-            <version>${jsonb-tck.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <groupId>jakarta.json.bind10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>jakarta.json.bind-tck10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${jsonb-tck.version}10.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-se</artifactId>
-            <version>${version.openwebbeans}</version>
-        </dependency>
+            <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openwebbeans-se10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>${version.openwebbeans}10.0.1-TT.2-SNAPSHOT</version>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-impl</artifactId>
-        </dependency>
+            <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openwebbeans-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-spi</artifactId>
-        </dependency>
+            <groupId>org.apache.openwebbeans10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>openwebbeans-spi10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</dependency>
 
         <dependency>
-            <groupId>org.netbeans.tools</groupId>
-            <artifactId>sigtest-maven-plugin</artifactId>
-            <version>1.6</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+            <groupId>org.netbeans.tools10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>sigtest-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+            <version>1.610.0.1-TT.2-SNAPSHOT</version>
+            <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+        10.0.1-TT.2-SNAPSHOT</dependency>
+    10.0.1-TT.2-SNAPSHOT</dependencies>
 
     <profiles>
         <profile>
-            <id>tck-jsonb</id>
+            <id>tck-jsonb10.0.1-TT.2-SNAPSHOT</id>
             <build>
                 <testResources>
                     <testResource>
-                        <directory>src/test/resources</directory>
-                        <filtering>true</filtering>
-                    </testResource>
-                </testResources>
+                        <directory>src/test/resources10.0.1-TT.2-SNAPSHOT</directory>
+                        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
+                    10.0.1-TT.2-SNAPSHOT</testResource>
+                10.0.1-TT.2-SNAPSHOT</testResources>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
                         <executions>
                             <execution>
-                                <id>copy</id>
-                                <phase>generate-test-resources</phase>
+                                <id>copy10.0.1-TT.2-SNAPSHOT</id>
+                                <phase>generate-test-resources10.0.1-TT.2-SNAPSHOT</phase>
                                 <goals>
-                                    <goal>copy</goal>
-                                </goals>
+                                    <goal>copy10.0.1-TT.2-SNAPSHOT</goal>
+                                10.0.1-TT.2-SNAPSHOT</goals>
 
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>org.apache.tomee</groupId>
-                                            <artifactId>jakartaee-api</artifactId>
-                                            <version>${version.jakartaee-api}</version>
-                                            <type>jar</type>
-                                            <overWrite>true</overWrite>
+                                            <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+                                            <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+                                            <version>${version.jakartaee-api}10.0.1-TT.2-SNAPSHOT</version>
+                                            <type>jar10.0.1-TT.2-SNAPSHOT</type>
+                                            <overWrite>true10.0.1-TT.2-SNAPSHOT</overWrite>
                                             <outputDirectory>${project.build.directory}/signaturedirectory
-                                            </outputDirectory>
-                                            <destFileName>jakartaee-api.jar</destFileName>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
+                                            10.0.1-TT.2-SNAPSHOT</outputDirectory>
+                                            <destFileName>jakartaee-api.jar10.0.1-TT.2-SNAPSHOT</destFileName>
+                                        10.0.1-TT.2-SNAPSHOT</artifactItem>
+                                    10.0.1-TT.2-SNAPSHOT</artifactItems>
+                                10.0.1-TT.2-SNAPSHOT</configuration>
+                            10.0.1-TT.2-SNAPSHOT</execution>
+                        10.0.1-TT.2-SNAPSHOT</executions>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${surefire.version}</version>
+                        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+                        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+                        <version>${surefire.version}10.0.1-TT.2-SNAPSHOT</version>
                         <configuration>
-                            <reuseForks>false</reuseForks>
-                            <forkCount>1</forkCount>
+                            <reuseForks>false10.0.1-TT.2-SNAPSHOT</reuseForks>
+                            <forkCount>110.0.1-TT.2-SNAPSHOT</forkCount>
                             <dependenciesToScan>
-                                <dependency>jakarta.json.bind:jakarta.json.bind-tck</dependency>
-                            </dependenciesToScan>
+                                <dependency>jakarta.json.bind:jakarta.json.bind-tck10.0.1-TT.2-SNAPSHOT</dependency>
+                            10.0.1-TT.2-SNAPSHOT</dependenciesToScan>
                             <includes>
-                                <include>**/JSONBSigTest</include>
-                            </includes>
+                                <include>**/JSONBSigTest10.0.1-TT.2-SNAPSHOT</include>
+                            10.0.1-TT.2-SNAPSHOT</includes>
                             <systemProperties>
-                                <jimage.dir>${project.build.directory}/jimage</jimage.dir>
+                                <jimage.dir>${project.build.directory}/jimage10.0.1-TT.2-SNAPSHOT</jimage.dir>
                                 <signature.sigTestClasspath>
                                     ${project.build.directory}/signaturedirectory/jakartaee-api.jar:${project.build.directory}/jimage/java.base:${project.build.directory}/jimage/java.rmi:${project.build.directory}/jimage/java.sql:${project.build.directory}/jimage/java.naming
-                                </signature.sigTestClasspath>
-                            </systemProperties>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-</project>
+                                10.0.1-TT.2-SNAPSHOT</signature.sigTestClasspath>
+                            10.0.1-TT.2-SNAPSHOT</systemProperties>
+                        10.0.1-TT.2-SNAPSHOT</configuration>
+                    10.0.1-TT.2-SNAPSHOT</plugin>
+                10.0.1-TT.2-SNAPSHOT</plugins>
+            10.0.1-TT.2-SNAPSHOT</build>
+        10.0.1-TT.2-SNAPSHOT</profile>
+    10.0.1-TT.2-SNAPSHOT</profiles>
+10.0.1-TT.2-SNAPSHOT</project>

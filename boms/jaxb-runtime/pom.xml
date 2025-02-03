@@ -22,55 +22,55 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <groupId>org.apache.tomee.bom</groupId>
-    <artifactId>boms</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
+    <artifactId>boms10.0.1-TT.2-SNAPSHOT</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>jaxb-runtime</artifactId>
-  <packaging>pom</packaging>
-  <name>TomEE :: BOMs :: JAXB Runtime</name>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>pom10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: BOMs :: JAXB Runtime10.0.1-TT.2-SNAPSHOT</name>
 
   <!-- For easy copy and paste
     <dependency>
-      <groupId>org.apache.tomee.bom</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <version>${project.version}</version>
-      <type>pom</type>
-    </dependency>
+      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <type>pom10.0.1-TT.2-SNAPSHOT</type>
+    10.0.1-TT.2-SNAPSHOT</dependency>
   -->
 
   <dependencies>
     <dependency>
-      <groupId>jakarta.xml.bind</groupId>
-      <artifactId>jakarta.xml.bind-api</artifactId>
-      <version>4.0.2</version>
+      <groupId>jakarta.xml.bind10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakarta.xml.bind-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>4.0.210.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion> <!-- Is already included in jakarta-ee-api -->
-          <artifactId>jakarta.activation</artifactId>
-          <groupId>jakarta.activation-api</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>jakarta.activation10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>jakarta.activation-api10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.glassfish.jaxb</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <version>4.0.4</version>
-      <scope>runtime</scope>
+      <groupId>org.glassfish.jaxb10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>4.0.410.0.1-TT.2-SNAPSHOT</version>
+      <scope>runtime10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion> <!-- Is already included in jakarta-ee-api -->
-          <artifactId>jakarta.activation</artifactId>
-          <groupId>jakarta.activation-api</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <artifactId>jakarta.activation10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>jakarta.activation-api10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.eclipse.angus</groupId>
-      <artifactId>angus-activation</artifactId>
-      <version>2.0.2</version>
-    </dependency>
-  </dependencies>
+      <groupId>org.eclipse.angus10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>angus-activation10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>2.0.210.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>
 

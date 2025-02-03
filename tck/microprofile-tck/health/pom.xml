@@ -17,108 +17,108 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
   <parent>
-    <groupId>org.apache.tomee</groupId>
-    <artifactId>microprofile-tck</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <artifactId>microprofile-tck10.0.1-TT.2-SNAPSHOT</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <artifactId>microprofile-health-tck</artifactId>
-  <name>TomEE :: TCK :: MicroProfile Health TCK</name>
+  <artifactId>microprofile-health-tck10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: TCK :: MicroProfile Health TCK10.0.1-TT.2-SNAPSHOT</name>
 
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.5.2</version>
+        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.5.210.0.1-TT.2-SNAPSHOT</version>
         <configuration>
           <dependenciesToScan>
-            <dependency>org.eclipse.microprofile.health:microprofile-health-tck</dependency>
-          </dependenciesToScan>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+            <dependency>org.eclipse.microprofile.health:microprofile-health-tck10.0.1-TT.2-SNAPSHOT</dependency>
+          10.0.1-TT.2-SNAPSHOT</dependenciesToScan>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
 
   <profiles>
     <profile>
-      <id>mp-tck-all</id>
+      <id>mp-tck-all10.0.1-TT.2-SNAPSHOT</id>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
+            <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+            <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
             <executions>
               <execution>
-                <id>tomee-plus</id>
+                <id>tomee-plus10.0.1-TT.2-SNAPSHOT</id>
                 <goals>
-                  <goal>test</goal>
-                </goals>
+                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
                   <systemPropertyVariables>
-                    <arquillian.launch>tomee-plus</arquillian.launch>
-                  </systemPropertyVariables>
-                </configuration>
-              </execution>
+                    <arquillian.launch>tomee-plus10.0.1-TT.2-SNAPSHOT</arquillian.launch>
+                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
               <execution>
-                <id>tomee-plume</id>
+                <id>tomee-plume10.0.1-TT.2-SNAPSHOT</id>
                 <goals>
-                  <goal>test</goal>
-                </goals>
+                  <goal>test10.0.1-TT.2-SNAPSHOT</goal>
+                10.0.1-TT.2-SNAPSHOT</goals>
                 <configuration>
                   <systemPropertyVariables>
-                    <arquillian.launch>tomee-plume</arquillian.launch>
-                  </systemPropertyVariables>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
+                    <arquillian.launch>tomee-plume10.0.1-TT.2-SNAPSHOT</arquillian.launch>
+                  10.0.1-TT.2-SNAPSHOT</systemPropertyVariables>
+                10.0.1-TT.2-SNAPSHOT</configuration>
+              10.0.1-TT.2-SNAPSHOT</execution>
+            10.0.1-TT.2-SNAPSHOT</executions>
+          10.0.1-TT.2-SNAPSHOT</plugin>
+        10.0.1-TT.2-SNAPSHOT</plugins>
+      10.0.1-TT.2-SNAPSHOT</build>
+    10.0.1-TT.2-SNAPSHOT</profile>
+  10.0.1-TT.2-SNAPSHOT</profiles>
 
   <dependencies>
     <dependency>
-      <groupId>org.eclipse.microprofile.health</groupId>
-      <artifactId>microprofile-health-api</artifactId>
+      <groupId>org.eclipse.microprofile.health10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>microprofile-health-api10.0.1-TT.2-SNAPSHOT</artifactId>
       <exclusions>
         <exclusion>
-          <groupId>javax.inject</groupId>
-          <artifactId>javax.inject</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>javax.inject10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>javax.inject10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.eclipse.microprofile.health</groupId>
-      <artifactId>microprofile-health-tck</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.eclipse.microprofile.health10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>microprofile-health-tck10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>apache-tomee</artifactId>
-      <version>${project.version}</version>
-      <type>zip</type>
-      <classifier>microprofile</classifier>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>apache-tomee10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <type>zip10.0.1-TT.2-SNAPSHOT</type>
+      <classifier>microprofile10.0.1-TT.2-SNAPSHOT</classifier>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.testng10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>testng10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>arquillian-tomee-remote</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>arquillian-tomee-remote10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>

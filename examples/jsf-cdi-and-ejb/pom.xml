@@ -18,86 +18,86 @@
  * under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.superbiz.jsf</groupId>
-  <artifactId>jsf-cdi-and-ejb</artifactId>
-  <packaging>war</packaging>
-  <name>TomEE :: Web Examples :: JSF - CDI and EJB</name>
-  <version>10.0.1-TT.2-SNAPSHOT</version>
-  <url>http://tomee.apache.org</url>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <groupId>org.superbiz.jsf10.0.1-TT.2-SNAPSHOT</groupId>
+  <artifactId>jsf-cdi-and-ejb10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>war10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Web Examples :: JSF - CDI and EJB10.0.1-TT.2-SNAPSHOT</name>
+  <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  <url>http://tomee.apache.org10.0.1-TT.2-SNAPSHOT</url>
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <version.myfaces>4.0.2</version.myfaces>
-  </properties>
+    <project.build.sourceEncoding>UTF-810.0.1-TT.2-SNAPSHOT</project.build.sourceEncoding>
+    <version.myfaces>4.0.210.0.1-TT.2-SNAPSHOT</version.myfaces>
+  10.0.1-TT.2-SNAPSHOT</properties>
   <build>
-    <finalName>jsf-cdi-and-ejb</finalName>
+    <finalName>jsf-cdi-and-ejb10.0.1-TT.2-SNAPSHOT</finalName>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-compiler-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.13.010.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
+          <source>1.810.0.1-TT.2-SNAPSHOT</source>
+          <target>1.810.0.1-TT.2-SNAPSHOT</target>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.4.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-war-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.4.010.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
+          <failOnMissingWebXml>false10.0.1-TT.2-SNAPSHOT</failOnMissingWebXml>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>tomcat-maven-plugin</artifactId>
-        <version>1.1</version>
+        <groupId>org.codehaus.mojo10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>tomcat-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>1.110.0.1-TT.2-SNAPSHOT</version>
         <configuration>
           <url>http://localhost:8080/manager/html
-          </url>
-        </configuration>
-      </plugin>
+          10.0.1-TT.2-SNAPSHOT</url>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       
-    </plugins>
-  </build>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
   <repositories>
     <repository>
       <releases>
-        <enabled>false</enabled>
-      </releases>
+        <enabled>false10.0.1-TT.2-SNAPSHOT</enabled>
+      10.0.1-TT.2-SNAPSHOT</releases>
       <snapshots />
-      <id>apache-maven-snapshots</id>
+      <id>apache-maven-snapshots10.0.1-TT.2-SNAPSHOT</id>
       <url>https://repository.apache.org/content/groups/snapshots/
-      </url>
-    </repository>
-  </repositories>
+      10.0.1-TT.2-SNAPSHOT</url>
+    10.0.1-TT.2-SNAPSHOT</repository>
+  10.0.1-TT.2-SNAPSHOT</repositories>
   <dependencies>
     <dependency>
-      <groupId>org.apache.myfaces.core</groupId>
-      <artifactId>myfaces-api</artifactId>
-      <version>${version.myfaces}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.myfaces.core10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>myfaces-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.myfaces}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.myfaces.core</groupId>
-      <artifactId>myfaces-impl</artifactId>
-      <version>${version.myfaces}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.apache.myfaces.core10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>myfaces-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.myfaces}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>4.13.210.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>jakartaee-api</artifactId>
-      <version>10.0</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+      <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jakartaee-api10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>10.010.0.1-TT.2-SNAPSHOT</version>
+      <scope>provided10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
   <!--
   This section allows you to configure where to publish libraries for sharing.
   It is not required and may be deleted.  For more information see:
@@ -105,12 +105,12 @@
   -->
   <distributionManagement>
     <repository>
-      <id>localhost</id>
-      <url>file://${basedir}/target/repo/</url>
-    </repository>
+      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
+      <url>file://${basedir}/target/repo/10.0.1-TT.2-SNAPSHOT</url>
+    10.0.1-TT.2-SNAPSHOT</repository>
     <snapshotRepository>
-      <id>localhost</id>
-      <url>file://${basedir}/target/snapshot-repo/</url>
-    </snapshotRepository>
-  </distributionManagement>
-</project>
+      <id>localhost10.0.1-TT.2-SNAPSHOT</id>
+      <url>file://${basedir}/target/snapshot-repo/10.0.1-TT.2-SNAPSHOT</url>
+    10.0.1-TT.2-SNAPSHOT</snapshotRepository>
+  10.0.1-TT.2-SNAPSHOT</distributionManagement>
+10.0.1-TT.2-SNAPSHOT</project>

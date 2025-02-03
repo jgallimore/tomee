@@ -18,46 +18,46 @@
   ~ under the License.
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
   <parent>
-    <groupId>org.superbiz</groupId>
-    <artifactId>resources-jmx</artifactId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <artifactId>resources-jmx-ear</artifactId>
-  <packaging>ear</packaging>
-  <name>TomEE :: Examples :: Resources/JMX Example :: EAR Module</name>
+    <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+    <artifactId>resources-jmx10.0.1-TT.2-SNAPSHOT</artifactId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <artifactId>resources-jmx-ear10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>ear10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Examples :: Resources/JMX Example :: EAR Module10.0.1-TT.2-SNAPSHOT</name>
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-ear-plugin</artifactId>
-        <version>3.3.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-ear-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.3.010.0.1-TT.2-SNAPSHOT</version>
         <configuration>
-          <version>6</version>
-          <defaultLibBundleDir>lib</defaultLibBundleDir>
+          <version>610.0.1-TT.2-SNAPSHOT</version>
+          <defaultLibBundleDir>lib10.0.1-TT.2-SNAPSHOT</defaultLibBundleDir>
           <archive>
             <manifest>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-            </manifest>
-          </archive>
+              <addDefaultImplementationEntries>true10.0.1-TT.2-SNAPSHOT</addDefaultImplementationEntries>
+              <addDefaultSpecificationEntries>true10.0.1-TT.2-SNAPSHOT</addDefaultSpecificationEntries>
+            10.0.1-TT.2-SNAPSHOT</manifest>
+          10.0.1-TT.2-SNAPSHOT</archive>
           <modules>
             <ejbModule>
-              <groupId>org.superbiz</groupId>
-              <artifactId>resources-jmx-ejb</artifactId>
-            </ejbModule>
-          </modules>
-        </configuration>
-      </plugin>
+              <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+              <artifactId>resources-jmx-ejb10.0.1-TT.2-SNAPSHOT</artifactId>
+            10.0.1-TT.2-SNAPSHOT</ejbModule>
+          10.0.1-TT.2-SNAPSHOT</modules>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       
-    </plugins>
-  </build>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
   <dependencies>
     <dependency>
-      <groupId>org.superbiz</groupId>
-      <artifactId>resources-jmx-ejb</artifactId>
-      <type>ejb</type>
-    </dependency>
-  </dependencies>
-</project>
+      <groupId>org.superbiz10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>resources-jmx-ejb10.0.1-TT.2-SNAPSHOT</artifactId>
+      <type>ejb10.0.1-TT.2-SNAPSHOT</type>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
+10.0.1-TT.2-SNAPSHOT</project>

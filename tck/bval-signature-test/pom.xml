@@ -17,117 +17,117 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>tck</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <artifactId>tck10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
 
-  <artifactId>bval-signature-test</artifactId>
-  <name>TomEE :: TCK :: Bean Validation TCK Signature tests</name>
+  <artifactId>bval-signature-test10.0.1-TT.2-SNAPSHOT</artifactId>
+  <name>TomEE :: TCK :: Bean Validation TCK Signature tests10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <suiteFile>${project.build.directory}/dependency/beanvalidation-tck-tests-suite.xml</suiteFile>
-  </properties>
+    <suiteFile>${project.build.directory}/dependency/beanvalidation-tck-tests-suite.xml10.0.1-TT.2-SNAPSHOT</suiteFile>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>tck-common</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>tck-common10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
       <exclusions>
         <exclusion>
-          <groupId>org.jboss.test-harness</groupId>
-          <artifactId>jboss-test-harness</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.jboss.test-harness10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jboss-test-harness10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-core</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <scope>test</scope>
-    </dependency>
+      <groupId>org.testng10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>testng10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>jakarta.validation</groupId>
-      <artifactId>beanvalidation-tck-tests</artifactId>
-      <version>${bval-tck.version}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+      <groupId>jakarta.validation10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>beanvalidation-tck-tests10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${bval-tck.version}10.0.1-TT.2-SNAPSHOT</version>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
   <build>
     <resources>
       <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
+        <directory>src/main/resources10.0.1-TT.2-SNAPSHOT</directory>
+        <filtering>true10.0.1-TT.2-SNAPSHOT</filtering>
+      10.0.1-TT.2-SNAPSHOT</resource>
+    10.0.1-TT.2-SNAPSHOT</resources>
 
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-surefire-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
         <configuration>
-          <useFile>false</useFile>
-          <disableXmlReport>false</disableXmlReport>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
+          <useFile>false10.0.1-TT.2-SNAPSHOT</useFile>
+          <disableXmlReport>false10.0.1-TT.2-SNAPSHOT</disableXmlReport>
+          <skip>true10.0.1-TT.2-SNAPSHOT</skip>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.8.0</version>
+        <groupId>org.apache.maven.plugins10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>maven-dependency-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>3.8.010.0.1-TT.2-SNAPSHOT</version>
         <executions>
           <execution>
-            <id>copy-tck-bv-api-signature-file</id>
-            <phase>generate-test-sources</phase>
+            <id>copy-tck-bv-api-signature-file10.0.1-TT.2-SNAPSHOT</id>
+            <phase>generate-test-sources10.0.1-TT.2-SNAPSHOT</phase>
             <goals>
-              <goal>unpack</goal>
-            </goals>
+              <goal>unpack10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>jakarta.validation</groupId>
-                  <artifactId>beanvalidation-tck-tests</artifactId>
-                  <version>${bval-tck.version}</version>
-                  <type>jar</type>
-                  <overWrite>false</overWrite>
-                </artifactItem>
-              </artifactItems>
+                  <groupId>jakarta.validation10.0.1-TT.2-SNAPSHOT</groupId>
+                  <artifactId>beanvalidation-tck-tests10.0.1-TT.2-SNAPSHOT</artifactId>
+                  <version>${bval-tck.version}10.0.1-TT.2-SNAPSHOT</version>
+                  <type>jar10.0.1-TT.2-SNAPSHOT</type>
+                  <overWrite>false10.0.1-TT.2-SNAPSHOT</overWrite>
+                10.0.1-TT.2-SNAPSHOT</artifactItem>
+              10.0.1-TT.2-SNAPSHOT</artifactItems>
               <!-- We just need the signature file and nothing else -->
-              <includes>**/*.sig</includes>
-              <outputDirectory>${project.build.directory}/api-signature</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+              <includes>**/*.sig10.0.1-TT.2-SNAPSHOT</includes>
+              <outputDirectory>${project.build.directory}/api-signature10.0.1-TT.2-SNAPSHOT</outputDirectory>
+            10.0.1-TT.2-SNAPSHOT</configuration>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
+      10.0.1-TT.2-SNAPSHOT</plugin>
       <plugin>
-        <groupId>org.netbeans.tools</groupId>
-        <artifactId>sigtest-maven-plugin</artifactId>
-        <version>1.5</version>
+        <groupId>org.netbeans.tools10.0.1-TT.2-SNAPSHOT</groupId>
+        <artifactId>sigtest-maven-plugin10.0.1-TT.2-SNAPSHOT</artifactId>
+        <version>1.510.0.1-TT.2-SNAPSHOT</version>
         <executions>
           <execution>
             <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
+              <goal>check10.0.1-TT.2-SNAPSHOT</goal>
+            10.0.1-TT.2-SNAPSHOT</goals>
+          10.0.1-TT.2-SNAPSHOT</execution>
+        10.0.1-TT.2-SNAPSHOT</executions>
         <configuration>
           <packages>jakarta.validation,jakarta.validation.bootstrap,jakarta.validation.constraints,
             jakarta.validation.constraintvalidation,jakarta.validation.executable,jakarta.validation.groups,
             jakarta.validation.metadata,jakarta.validation.spi,jakarta.validation.valueextraction
-          </packages>
-          <sigfile>${project.build.directory}/api-signature/validation-api-java8.sig</sigfile>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+          10.0.1-TT.2-SNAPSHOT</packages>
+          <sigfile>${project.build.directory}/api-signature/validation-api-java8.sig10.0.1-TT.2-SNAPSHOT</sigfile>
+        10.0.1-TT.2-SNAPSHOT</configuration>
+      10.0.1-TT.2-SNAPSHOT</plugin>
+    10.0.1-TT.2-SNAPSHOT</plugins>
+  10.0.1-TT.2-SNAPSHOT</build>
+10.0.1-TT.2-SNAPSHOT</project>

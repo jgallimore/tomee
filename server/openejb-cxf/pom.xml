@@ -21,288 +21,288 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>server</artifactId>
-    <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.2-SNAPSHOT</version>
-  </parent>
+    <artifactId>server10.0.1-TT.2-SNAPSHOT</artifactId>
+    <groupId>org.apache.tomee10.0.1-TT.2-SNAPSHOT</groupId>
+    <version>10.0.1-TT.2-SNAPSHOT10.0.1-TT.2-SNAPSHOT</version>
+  10.0.1-TT.2-SNAPSHOT</parent>
 
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>openejb-cxf</artifactId>
-  <packaging>jar</packaging>
-  <name>TomEE :: Server :: CXF</name>
+  <modelVersion>4.0.010.0.1-TT.2-SNAPSHOT</modelVersion>
+  <artifactId>openejb-cxf10.0.1-TT.2-SNAPSHOT</artifactId>
+  <packaging>jar10.0.1-TT.2-SNAPSHOT</packaging>
+  <name>TomEE :: Server :: CXF10.0.1-TT.2-SNAPSHOT</name>
 
   <properties>
-    <tomee.build.name>${project.groupId}.server.cxf</tomee.build.name>
+    <tomee.build.name>${project.groupId}.server.cxf10.0.1-TT.2-SNAPSHOT</tomee.build.name>
     <openejb.osgi.import.pkg>
       org.apache.xml.resolver*;resolution:=optional,
       *
-    </openejb.osgi.import.pkg>
-  </properties>
+    10.0.1-TT.2-SNAPSHOT</openejb.osgi.import.pkg>
+  10.0.1-TT.2-SNAPSHOT</properties>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-webservices</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-webservices10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>openejb-cxf-transport</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+      <groupId>${project.groupId}10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>openejb-cxf-transport10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${project.version}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-core</artifactId>
-    </dependency>
+      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>cxf-core10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-frontend-jaxws</artifactId>
-    </dependency>
+      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>cxf-rt-frontend-jaxws10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-ws-security</artifactId>
-    </dependency>
+      <groupId>org.apache.cxf10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>cxf-rt-ws-security10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>wsdl4j</groupId>
-      <artifactId>wsdl4j</artifactId>
-    </dependency>
+      <groupId>wsdl4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>wsdl4j10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <!-- override woodstox to mitigate woodstox CVE-2022-40152 -->
     <dependency>
-      <groupId>com.fasterxml.woodstox</groupId>
-      <artifactId>woodstox-core</artifactId>
-      <version>6.6.2</version>
-    </dependency>
+      <groupId>com.fasterxml.woodstox10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>woodstox-core10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>6.6.210.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.santuario</groupId>
-      <artifactId>xmlsec</artifactId>
-      <version>${version.xmlsec}</version>
+      <groupId>org.apache.santuario10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xmlsec10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.xmlsec}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>com.fasterxml.woodstox</groupId>
-          <artifactId>woodstox-core</artifactId>
-        </exclusion>
+          <groupId>com.fasterxml.woodstox10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>woodstox-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.xml.bind</groupId>
-          <artifactId>jakarta.xml.bind-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>jakarta.xml.bind10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.xml.bind-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
 
     <dependency>
-      <groupId>org.apache.wss4j</groupId>
-      <artifactId>wss4j-ws-security-dom</artifactId>
-      <version>${version.wss4j}</version>
+      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>wss4j-ws-security-dom10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.wss4j}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>org.apache.santuario</groupId>
-          <artifactId>xmlsec</artifactId>
-        </exclusion>
+          <groupId>org.apache.santuario10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>xmlsec10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.apache.geronimo.specs</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>org.apache.geronimo.specs10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.apache.geronimo.javamail</groupId>
-          <artifactId>geronimo-javamail_1.4_mail</artifactId>
-        </exclusion>
+          <groupId>org.apache.geronimo.javamail10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>geronimo-javamail_1.4_mail10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>net.sf.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>net.sf.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>org.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>guava</artifactId>
-          <groupId>com.google.guava</groupId>
-        </exclusion>
+          <artifactId>guava10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>com.google.guava10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.codehaus.woodstox</groupId>
-          <artifactId>woodstox-core-asl</artifactId>
-        </exclusion>
+          <groupId>org.codehaus.woodstox10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>woodstox-core-asl10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>io.dropwizard.metrics</groupId>
-          <artifactId>metrics-core</artifactId>
-        </exclusion>
+          <groupId>io.dropwizard.metrics10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>metrics-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>jakarta.activation-api</artifactId>
-          <groupId>jakarta.activation</groupId>
-        </exclusion>
+          <artifactId>jakarta.activation-api10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>jakarta.activation10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcprov-jdk15on</artifactId>
-        </exclusion>
+          <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>bcprov-jdk15on10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcpkix-jdk15on</artifactId>
-        </exclusion>
+          <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>bcpkix-jdk15on10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcprov-jdk18on</artifactId>
-        </exclusion>
+          <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>bcprov-jdk18on10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcpkix-jdk18on</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>bcpkix-jdk18on10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.wss4j</groupId>
-      <artifactId>wss4j-ws-security-common</artifactId>
-      <version>${version.wss4j}</version>
+      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>wss4j-ws-security-common10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.wss4j}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>org.apache.santuario</groupId>
-          <artifactId>xmlsec</artifactId>
-        </exclusion>
+          <groupId>org.apache.santuario10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>xmlsec10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.apache.geronimo.specs</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>org.apache.geronimo.specs10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.apache.geronimo.javamail</groupId>
-          <artifactId>geronimo-javamail_1.4_mail</artifactId>
-        </exclusion>
+          <groupId>org.apache.geronimo.javamail10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>geronimo-javamail_1.4_mail10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>net.sf.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>net.sf.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>org.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>guava</artifactId>
-          <groupId>com.google.guava</groupId>
-        </exclusion>
+          <artifactId>guava10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>com.google.guava10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.codehaus.woodstox</groupId>
-          <artifactId>woodstox-core-asl</artifactId>
-        </exclusion>
+          <groupId>org.codehaus.woodstox10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>woodstox-core-asl10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>io.dropwizard.metrics</groupId>
-          <artifactId>metrics-core</artifactId>
-        </exclusion>
+          <groupId>io.dropwizard.metrics10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>metrics-core10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <artifactId>jakarta.activation-api</artifactId>
-          <groupId>jakarta.activation</groupId>
-        </exclusion>
+          <artifactId>jakarta.activation-api10.0.1-TT.2-SNAPSHOT</artifactId>
+          <groupId>jakarta.activation10.0.1-TT.2-SNAPSHOT</groupId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcprov-jdk15on</artifactId>
-        </exclusion>
+          <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>bcprov-jdk15on10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcpkix-jdk15on</artifactId>
-        </exclusion>
+          <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>bcpkix-jdk15on10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcprov-jdk18on</artifactId>
-        </exclusion>
+          <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>bcprov-jdk18on10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.bouncycastle</groupId>
-          <artifactId>bcpkix-jdk18on</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>bcpkix-jdk18on10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <!-- Override the bcprov & bcpkix from the previous artifact -->
     <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk15to18</artifactId>
-      <version>1.80</version>
-    </dependency>
+      <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>bcprov-jdk15to1810.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.8010.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcpkix-jdk15to18</artifactId>
-      <version>1.80</version>
-    </dependency>
+      <groupId>org.bouncycastle10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>bcpkix-jdk15to1810.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>1.8010.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.wss4j</groupId>
-      <artifactId>wss4j-policy</artifactId>
-      <version>${version.wss4j}</version>
-    </dependency>
+      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>wss4j-policy10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.wss4j}10.0.1-TT.2-SNAPSHOT</version>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.wss4j</groupId>
-      <artifactId>wss4j-ws-security-stax</artifactId>
-      <version>${version.wss4j}</version>
+      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>wss4j-ws-security-stax10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.wss4j}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>net.sf.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>net.sf.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>org.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.glassfish.jaxb</groupId>
-          <artifactId>jaxb-runtime</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.glassfish.jaxb10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.wss4j</groupId>
-      <artifactId>wss4j-ws-security-policy-stax</artifactId>
-      <version>${version.wss4j}</version>
+      <groupId>org.apache.wss4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>wss4j-ws-security-policy-stax10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.wss4j}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>net.sf.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
+          <groupId>net.sf.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>org.ehcache</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>org.ehcache10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>*10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-finder-shaded</artifactId>
-    </dependency>
+      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xbean-finder-shaded10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.geronimo.components</groupId>
-      <artifactId>geronimo-transaction</artifactId>
-    </dependency>
+      <groupId>org.apache.geronimo.components10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>geronimo-transaction10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.xbean</groupId>
-      <artifactId>xbean-reflect</artifactId>
-    </dependency>
+      <groupId>org.apache.xbean10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>xbean-reflect10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
+      <groupId>org.slf4j10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>slf4j-api10.0.1-TT.2-SNAPSHOT</artifactId>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>org.apache.tomee.bom</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <type>pom</type>
-    </dependency>
+      <groupId>org.apache.tomee.bom10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>jaxb-runtime10.0.1-TT.2-SNAPSHOT</artifactId>
+      <type>pom10.0.1-TT.2-SNAPSHOT</type>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>com.sun.xml.messaging.saaj</groupId>
-      <artifactId>saaj-impl</artifactId>
-      <version>${version.impl.saaj}</version>
+      <groupId>com.sun.xml.messaging.saaj10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>saaj-impl10.0.1-TT.2-SNAPSHOT</artifactId>
+      <version>${version.impl.saaj}10.0.1-TT.2-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <groupId>jakarta.activation</groupId>
-          <artifactId>jakarta.activation-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.activation10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.activation-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>jakarta.xml.soap</groupId>
-          <artifactId>jakarta.xml.soap-api</artifactId>
-        </exclusion>
+          <groupId>jakarta.xml.soap10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.xml.soap-api10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
         <exclusion>
-          <groupId>com.sun.activation</groupId>
-          <artifactId>jakarta.activation</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+          <groupId>com.sun.activation10.0.1-TT.2-SNAPSHOT</groupId>
+          <artifactId>jakarta.activation10.0.1-TT.2-SNAPSHOT</artifactId>
+        10.0.1-TT.2-SNAPSHOT</exclusion>
+      10.0.1-TT.2-SNAPSHOT</exclusions>
+    10.0.1-TT.2-SNAPSHOT</dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+      <groupId>junit10.0.1-TT.2-SNAPSHOT</groupId>
+      <artifactId>junit10.0.1-TT.2-SNAPSHOT</artifactId>
+      <scope>test10.0.1-TT.2-SNAPSHOT</scope>
+    10.0.1-TT.2-SNAPSHOT</dependency>
+  10.0.1-TT.2-SNAPSHOT</dependencies>
 
 
-</project>
+10.0.1-TT.2-SNAPSHOT</project>
