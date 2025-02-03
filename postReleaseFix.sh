@@ -7,7 +7,7 @@ findTomEEVersion(){
 
 findOldTomEEVersion(){
 #  This is a common path where the version is not updated during maven release via maven-release-plugin
-   xmllint --xpath '/*[local-name()="project"]/*[local-name()="version"]/text()' examples/bean-validation-design-by-contract/pom.xml
+   xmllint --xpath '/*[local-name()="project"]/*[local-name()="version"]/text()' examples/polling-parent/pom.xml
 }
 
 echo "Detecting post release pom.xml inconsistencies..."
