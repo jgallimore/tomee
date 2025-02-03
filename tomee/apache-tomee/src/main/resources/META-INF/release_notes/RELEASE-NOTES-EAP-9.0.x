@@ -2,6 +2,7 @@
 
 === Changes in TomEE EAP 9.0.1-TT.14
 * Update to Tomcat 10.0.28-TT.12
+* Update to CXF 3.5.10 to mitigate CVE-2025-23184
 
 === Changes in TomEE EAP 9.0.1-TT.13
 * Update Geronimo Javamail to mitigate CVE-2024-21742
