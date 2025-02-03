@@ -237,7 +237,7 @@
     <!-- JDBC Drivers -->
     <version.derby>10.15.2.0</version.derby>
     <version.hsqldb>2.7.4</version.hsqldb>
-
+    <version.maven-gpg-plugin>3.0.1</version.maven-gpg-plugin>
   </properties>
 
   <build>
