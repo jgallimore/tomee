@@ -215,7 +215,11 @@
                 </goals>
                 <configuration>
                   <skip>${maven.test.skip}</skip>
-                  <argLine>-javaagent:${settings.localRepository}/org/apache/tomee/openejb-javaagent/${project.version}/openejb-javaagent-${project.version}.jar</argLine>
+                  <argLine>
+                    -javaagent:${settings.localRepository}/org/apache/tomee/openejb-javaagent/${project.version}/openejb-javaagent-${project.version}.jar
+                    --add-opens java.base/java.io=ALL-UNNAMED
+                    --add-opens java.base/java.lang.reflect=ALL-UNNAMEDs
+                  </argLine>
                   <systemPropertyVariables>
                     <tomee.version>${project.version}</tomee.version>
                     <arquillian.launch>tomee-embedded</arquillian.launch>
