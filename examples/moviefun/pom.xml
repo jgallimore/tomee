@@ -72,6 +72,10 @@
         <configuration>
           <reuseForks>false</reuseForks>
           <!-- otherwise openejb embedded and tomee embedded shares the same context and EJBContainer is broken -->
+          <argLine>
+            --add-opens java.base/java.io=ALL-UNNAMED
+            --add-opens java.base/java.lang.reflect=ALL-UNNAMEDs
+          </argLine>
         </configuration>
       </plugin>
       <plugin>

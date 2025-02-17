@@ -67,7 +67,12 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.2</version>
         <configuration>
-          <argLine>-Djdk.attach.allowAttachSelf</argLine>
+          <argLine>
+            -Djdk.attach.allowAttachSelf
+            --add-opens java.base/java.io=ALL-UNNAMED
+            --add-opens java.base/java.lang.reflect=ALL-UNNAMEDs
+          </argLine>
+
         </configuration>
       </plugin>
       <plugin>

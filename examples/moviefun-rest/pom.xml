@@ -77,6 +77,10 @@
         <version>3.5.2</version>
         <configuration>
           <reuseForks>false</reuseForks>
+          <argLine>
+            --add-opens java.base/java.io=ALL-UNNAMED
+            --add-opens java.base/java.lang.reflect=ALL-UNNAMEDs
+          </argLine>
         </configuration>
       </plugin>
       <plugin>

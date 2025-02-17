@@ -53,6 +53,19 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>
+            --add-opens java.base/java.io=ALL-UNNAMED
+            --add-opens java.base/java.lang.reflect=ALL-UNNAMEDs
+          </argLine>
+          <trimStackTrace>false</trimStackTrace>
+          <reuseForks>false</reuseForks>
+          <!-- to be removed when all test lifecycles are fixed -->
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
