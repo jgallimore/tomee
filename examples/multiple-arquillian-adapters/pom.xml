@@ -59,7 +59,11 @@
             </goals>
             <configuration>
               <skip>${maven.test.skip}</skip>
-              <argLine>-Djdk.attach.allowAttachSelf</argLine>
+              <argLine>
+                -Djdk.attach.allowAttachSelf
+                --add-opens java.base/java.io=ALL-UNNAMED
+                --add-opens java.base/java.lang.reflect=ALL-UNNAMEDs
+              </argLine>
               <groups>org.superbiz.embedded.standalone.Embedded</groups>
               <systemPropertyVariables>
                 <arquillian.launch>embedded</arquillian.launch>
@@ -91,7 +95,11 @@
             <configuration>
               <skip>${maven.test.skip}</skip>
               <groups>org.superbiz.tomee.embedded.TomEEEmbedded</groups>
-              <argLine>-Djdk.attach.allowAttachSelf</argLine>
+              <argLine>
+                -Djdk.attach.allowAttachSelf
+                --add-opens java.base/java.io=ALL-UNNAMED
+                --add-opens java.base/java.lang.reflect=ALL-UNNAMEDs
+              </argLine>
               <systemPropertyVariables>
                 <arquillian.launch>tomee-embedded</arquillian.launch>
                 <openejb.arquillian.adapter>tomee-embedded</openejb.arquillian.adapter>
