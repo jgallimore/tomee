@@ -204,7 +204,7 @@
     <version.geronimo-mail_2.1_spec>1.0.0-M1</version.geronimo-mail_2.1_spec>
 
     <!-- Jakarta EE Impl. -->
-    <tomcat.version>10.1.34</tomcat.version>
+    <tomcat.version>10.1.36</tomcat.version>
     <!-- com.sun -->
     <version.impl.saaj>2.0.1</version.impl.saaj>
     <!-- org.apache -->
@@ -471,7 +471,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <argLine>-Dfile.encoding=UTF-8</argLine>
+          <argLine>
+            -Dfile.encoding=UTF-8
+            --add-opens java.base/java.io=ALL-UNNAMED
+            --add-opens java.base/java.lang.reflect=ALL-UNNAMEDs
+          </argLine>
           <trimStackTrace>false</trimStackTrace>
           <reuseForks>false</reuseForks>
           <!-- to be removed when all test lifecycles are fixed -->
