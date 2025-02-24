@@ -31,7 +31,7 @@
   <parent>
     <groupId>org.apache.tomee.bom</groupId>
     <artifactId>boms</artifactId>
-    <version>9.0.1-TT.15-SNAPSHOT</version>
+    <version>9.0.1-TT.15</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -43,7 +43,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>tomee-bootstrap</artifactId>
-      <version>9.0.1-TT.15-SNAPSHOT</version>
+      <version>9.0.1-TT.15</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.woodstox</groupId>
@@ -714,7 +714,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>commons-dbcp2-shade</artifactId>
-      <version>9.0.1-TT.15-SNAPSHOT</version>
+      <version>9.0.1-TT.15</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -725,7 +725,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>cxf-shade</artifactId>
-      <version>9.0.1-TT.15-SNAPSHOT</version>
+      <version>9.0.1-TT.15</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -945,7 +945,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>servicemix-bcel-shade</artifactId>
-      <version>9.0.1-TT.15-SNAPSHOT</version>
+      <version>9.0.1-TT.15</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -956,7 +956,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>sxc-shade</artifactId>
-      <version>9.0.1-TT.15-SNAPSHOT</version>
+      <version>9.0.1-TT.15</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -967,7 +967,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>taglibs-shade</artifactId>
-      <version>9.0.1-TT.15-SNAPSHOT</version>
+      <version>9.0.1-TT.15</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
