@@ -1,5 +1,8 @@
 TomEE EAP 9.0.x-TT.x
 
+Changes in TomEE EAP 9.0.1-TT.15
+- Update to Tomcat 10.0.28-TT.13 to mitigate TTSA-p8zxw-9x4m8-8v5q8
+
 Changes in TomEE EAP 9.0.1-TT.14
 - Update to Tomcat 10.0.28-TT.12
 - Update to CXF 3.5.10 to mitigate CVE-2025-23184
