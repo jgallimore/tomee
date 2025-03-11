@@ -4,7 +4,7 @@ Changes in TomEE EAP 8.0.17-TT.4
 - Update to Tomcat 9.0.100 to mitigate https://bz.apache.org/bugzilla/show_bug.cgi?id=69576
 
 Changes in TomEE EAP 8.0.17-TT.3
-- Update to Tomcat 9.0.99 to mitigate TTSA-p8zxw-9x4m8-8v5q8 - CONFIDENTIAL
+- Update to Tomcat 9.0.99 to mitigate TTSA-p8zxw-9x4m8-8v5q8 - CONFIDENTIAL (CVE-2025-24813)
 
 Changes in TomEE EAP 8.0.17-TT.2
 - Update to CXF 3.5.10 to mitigate CVE-2025-23184
