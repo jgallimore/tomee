@@ -195,6 +195,10 @@
           <groupId>jakarta.enterprise</groupId>
           <artifactId>*</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>org.jboss.logging</groupId>
+          <artifactId>jboss-logging</artifactId>
+        </exclusion>
         <!--
         <exclusion>
           <groupId>org.ow2.asm</groupId>

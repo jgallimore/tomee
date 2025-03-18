@@ -378,7 +378,18 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance-api</artifactId>
-      <version>6.2.2</version>
+      <version>6.9.0</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>io.smallrye</groupId>
+      <artifactId>smallrye-fault-tolerance-apiimpl</artifactId>
+      <version>6.9.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -389,7 +400,7 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance-autoconfig-core</artifactId>
-      <version>6.2.2</version>
+      <version>6.9.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -400,7 +411,7 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance-core</artifactId>
-      <version>6.2.2</version>
+      <version>6.9.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -411,7 +422,7 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance</artifactId>
-      <version>6.2.2</version>
+      <version>6.9.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2200,7 +2211,7 @@
     <dependency>
       <groupId>org.jboss.logging</groupId>
       <artifactId>jboss-logging</artifactId>
-      <version>3.5.0.Final</version>
+      <version>3.6.0.Final</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
