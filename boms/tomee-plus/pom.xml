@@ -2222,7 +2222,7 @@
     <dependency>
       <groupId>org.jboss.logging</groupId>
       <artifactId>jboss-logging</artifactId>
-      <version>3.5.0.Final</version>
+      <version>3.6.0.Final</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
