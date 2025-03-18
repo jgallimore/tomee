@@ -86,7 +86,7 @@
     <connection>scm:git:https://github.com/tomitribe/tomee.git</connection>
     <developerConnection>scm:git:https://github.com/tomitribe/tomee.git</developerConnection>
     <url>https://github.com/tomitribe/tomee.git</url>
-    <tag>tomee-9.0.1-TT.16-SNAPSHOT</tag>
+    <tag>tomee-9.0.1-TT.17-SNAPSHOT</tag>
   </scm>
 
   <properties>
