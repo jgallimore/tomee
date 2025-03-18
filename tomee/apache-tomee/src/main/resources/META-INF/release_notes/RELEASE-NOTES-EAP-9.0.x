@@ -1,5 +1,8 @@
 TomEE EAP 9.0.x-TT.x
 
+Changes in TomEE EAP 9.0.1-TT.16
+- Update to smallrye-fault-tolerance-api 6.9.0 to mitigate CVE-2025-2240
+
 Changes in TomEE EAP 9.0.1-TT.15
 - Update to Tomcat 10.0.28-TT.13 to mitigate TTSA-p8zxw-9x4m8-8v5q8 (CVE-2025-24813)
 
