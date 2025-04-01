@@ -543,7 +543,7 @@
     <dependency>
       <groupId>io.smallrye.config</groupId>
       <artifactId>smallrye-config-common</artifactId>
-      <version>3.10.2</version>
+      <version>3.12.3</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -554,7 +554,7 @@
     <dependency>
       <groupId>io.smallrye.config</groupId>
       <artifactId>smallrye-config-core</artifactId>
-      <version>3.10.2</version>
+      <version>3.12.3</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -565,7 +565,7 @@
     <dependency>
       <groupId>io.smallrye.config</groupId>
       <artifactId>smallrye-config</artifactId>
-      <version>3.10.2</version>
+      <version>3.12.3</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -631,7 +631,18 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance-api</artifactId>
-      <version>6.4.3</version>
+      <version>6.9.0</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>io.smallrye</groupId>
+      <artifactId>smallrye-fault-tolerance-apiimpl</artifactId>
+      <version>6.9.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -642,7 +653,7 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance-autoconfig-core</artifactId>
-      <version>6.4.3</version>
+      <version>6.9.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -653,7 +664,7 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance-core</artifactId>
-      <version>6.4.3</version>
+      <version>6.9.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -664,7 +675,7 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance</artifactId>
-      <version>6.4.3</version>
+      <version>6.9.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -807,7 +818,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-kahadb-store</artifactId>
-      <version>6.1.5</version>
+      <version>6.1.6</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
