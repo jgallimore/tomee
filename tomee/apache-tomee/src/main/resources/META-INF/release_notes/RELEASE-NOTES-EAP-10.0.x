@@ -1,7 +1,7 @@
 TomEE EAP 10.0.x-TT.x
 
 Changes in TomEE EAP 10.0.2-TT.1
-  - Merged TomEE 10.1.2 release including update to Tomcat 10.1.39
+  - Merged TomEE 10.0.1 release including update to Tomcat 10.1.39
 
 Changes in TomEE EAP 10.0.1-TT.4
 - Update to smallrye-fault-tolerance-api 6.9.0 to mitigate CVE-2025-2240
