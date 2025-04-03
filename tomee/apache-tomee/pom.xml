@@ -23,7 +23,7 @@
   <parent>
     <artifactId>tomee</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.5-SNAPSHOT</version>
+    <version>10.0.2-TT.1-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -95,28 +95,28 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>tomee-webapp</artifactId>
       <version>${project.version}</version>
-      <type>war</type>
+      <type>pom</type>
       <scope>provided</scope>
     </dependency>
     <dependency> <!-- to be sure to have it -->
       <groupId>${project.groupId}</groupId>
       <artifactId>tomee-plus-webapp</artifactId>
       <version>${project.version}</version>
-      <type>war</type>
+      <type>pom</type>
       <scope>provided</scope>
     </dependency>
     <dependency> <!-- to be sure to have it -->
       <groupId>${project.groupId}</groupId>
       <artifactId>tomee-plume-webapp</artifactId>
       <version>${project.version}</version>
-      <type>war</type>
+      <type>pom</type>
       <scope>provided</scope>
     </dependency>
     <dependency> <!-- to be sure to have it -->
       <groupId>${project.groupId}</groupId>
       <artifactId>tomee-microprofile-webapp</artifactId>
       <version>${project.version}</version>
-      <type>war</type>
+      <type>pom</type>
       <scope>provided</scope>
     </dependency>
 
@@ -145,9 +145,6 @@
       <type>jar</type>
       <scope>runtime</scope>
     </dependency>
-
-
-
 
     <!-- needed to compile in intellij for tomcat patches -->
     <dependency>

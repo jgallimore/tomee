@@ -16,7 +16,7 @@
   <parent>
     <artifactId>arquillian</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>10.0.1-TT.5-SNAPSHOT</version>
+    <version>10.0.2-TT.1-SNAPSHOT</version>
   </parent>
   
   <artifactId>arquillian-tomee-tests</artifactId>
@@ -109,11 +109,6 @@
       <artifactId>arquillian-tomee-remote</artifactId>
       <version>${project.version}</version>
     </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>arquillian-tomee-webapp-remote</artifactId>
-      <version>${project.version}</version>
-    </dependency>
     <dependency> <!-- tomee-embedded needs it + dependencies but tomee-*-remote doesn't need dependencies so to avoid conflicts bringing it back here -->
       <groupId>${project.groupId}</groupId>
       <artifactId>openejb-core</artifactId>
@@ -174,7 +169,7 @@
     <dependency>
       <groupId>net.bytebuddy</groupId>
       <artifactId>byte-buddy</artifactId>
-      <version>1.16.1</version>
+      <version>1.17.2</version>
       <scope>provided</scope>
     </dependency>
     <!-- just to get it in the correct order -->

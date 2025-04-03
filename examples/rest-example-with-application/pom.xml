@@ -21,11 +21,11 @@
   <groupId>org.superbiz</groupId>
   <artifactId>rest-example-with-application</artifactId>
   <packaging>war</packaging>
-  <version>10.0.1-TT.5-SNAPSHOT</version>
+  <version>10.0.2-TT.1-SNAPSHOT</version>
   <name>TomEE :: Web Examples :: REST Example With Application</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>10.0.1-TT.5-SNAPSHOT</tomee.version>
+    <tomee.version>10.0.2-TT.1-SNAPSHOT</tomee.version>
   </properties>
   <repositories>
     <repository>
@@ -47,7 +47,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <version>3.14.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>

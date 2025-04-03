@@ -21,12 +21,12 @@
   <groupId>org.superbiz</groupId>
   <artifactId>datasource-versioning</artifactId>
   <packaging>jar</packaging>
-  <version>10.0.1-TT.5-SNAPSHOT</version>
+  <version>10.0.2-TT.1-SNAPSHOT</version>
   <name>TomEE :: Examples :: Datasource Versioning</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>10.0.1-TT.5-SNAPSHOT</tomee.version>
+    <tomee.version>10.0.2-TT.1-SNAPSHOT</tomee.version>
   </properties>
 
   <build>
@@ -35,7 +35,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <version>3.14.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -105,7 +105,7 @@
       <dependency>
         <groupId>org.jboss.shrinkwrap.resolver</groupId>
         <artifactId>shrinkwrap-resolver-bom</artifactId>
-        <version>3.3.3</version>
+        <version>3.3.4</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -164,19 +164,19 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>openejb-core</artifactId>
-      <version>10.0.1-TT.5-SNAPSHOT</version>
+      <version>10.0.2-TT.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-jdbc</artifactId>
-      <version>10.1.35</version>
+      <version>10.1.39</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>tomee-jdbc</artifactId>
-      <version>10.0.1-TT.5-SNAPSHOT</version>
+      <version>10.0.2-TT.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

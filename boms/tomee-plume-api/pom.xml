@@ -31,7 +31,7 @@
   <parent>
     <groupId>org.apache.tomee.bom</groupId>
     <artifactId>boms</artifactId>
-    <version>10.0.1-TT.5-SNAPSHOT</version>
+    <version>10.0.2-TT.1-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -241,7 +241,7 @@
     <dependency>
       <groupId>org.glassfish</groupId>
       <artifactId>jakarta.faces</artifactId>
-      <version>4.0.8</version>
+      <version>4.0.11</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
