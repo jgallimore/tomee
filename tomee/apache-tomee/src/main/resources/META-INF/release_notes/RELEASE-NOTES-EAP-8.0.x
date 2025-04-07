@@ -1,4 +1,7 @@
-TomEE EAP 8.0.17-TT.4
+TomEE EAP 8.0.x-TT.x
+
+Changes in TomEE EAP 8.0.17-TT.5
+- Update to Tomcat 9.0.104 to mitigate TTSA-hvxq9-pgm57-5j7j2 and TTSA-t6j76-mtwcv-5hjqj
 
 Changes in TomEE EAP 8.0.17-TT.4
 - Update to Tomcat 9.0.100 to mitigate https://bz.apache.org/bugzilla/show_bug.cgi?id=69576
