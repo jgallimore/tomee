@@ -1719,19 +1719,8 @@
     </dependency>
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
-      <artifactId>commonj.sdo</artifactId>
-      <version>2.1.1</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.persistence</groupId>
       <artifactId>eclipselink</artifactId>
-      <version>2.7.12</version>
+      <version>2.7.15-SP.1</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
