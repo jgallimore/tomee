@@ -124,6 +124,17 @@
     </dependency>
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-core</artifactId>
+      <version>3.0.2</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
       <version>2.3.4</version>
       <exclusions>
@@ -579,6 +590,17 @@
       <artifactId>bval-jsr</artifactId>
       <version>2.0.6</version>
       <classifier>jakarta</classifier>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-compress</artifactId>
+      <version>1.22</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1759,6 +1781,28 @@
     </dependency>
     <dependency>
       <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-server-composer</artifactId>
+      <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomee</groupId>
+      <artifactId>tomee-server-version</artifactId>
+      <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomee</groupId>
       <artifactId>tomee-webservices</artifactId>
       <version>${project.version}</version>
       <exclusions>
@@ -2144,17 +2188,6 @@
     </dependency>
     <dependency>
       <groupId>org.glassfish.jaxb</groupId>
-      <artifactId>jaxb-core</artifactId>
-      <version>3.0.2</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>*</artifactId>
-          <groupId>*</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jaxb</groupId>
       <artifactId>jaxb-runtime</artifactId>
       <version>3.0.2</version>
       <exclusions>
@@ -2421,6 +2454,28 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-jdk14</artifactId>
       <version>2.0.9</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.tomitribe</groupId>
+      <artifactId>swizzle</artifactId>
+      <version>1.0</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.tomitribe</groupId>
+      <artifactId>tomitribe-util</artifactId>
+      <version>1.2.3</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
