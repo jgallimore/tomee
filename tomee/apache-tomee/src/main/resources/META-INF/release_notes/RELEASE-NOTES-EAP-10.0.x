@@ -8,6 +8,7 @@ Changes in TomEE EAP 10.0.2-TT.2
 
 Changes in TomEE EAP 10.0.2-TT.1
  - Merged TomEE 10.0.1 release including update to Tomcat 10.1.39
+ - Updated to ActiveMQ 6.1.6
 
 Changes in TomEE EAP 10.0.1-TT.4
  - Update to smallrye-fault-tolerance-api 6.9.0 to mitigate CVE-2025-2240
