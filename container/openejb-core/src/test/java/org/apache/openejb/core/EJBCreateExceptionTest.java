@@ -16,11 +16,11 @@
  */
 package org.apache.openejb.core;
 
-import jakarta.ejb.CreateException;
-import jakarta.ejb.EJBException;
-import jakarta.ejb.EJBObject;
-import jakarta.ejb.EntityBean;
-import jakarta.ejb.RemoveException;
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
+import javax.ejb.EJBObject;
+import javax.ejb.EntityBean;
+import javax.ejb.RemoveException;
 import org.apache.openejb.InvalidateReferenceException;
 import org.apache.openejb.OpenEJBException;
 import org.apache.openejb.core.entity.EntityContext;
@@ -134,7 +134,7 @@ public class EJBCreateExceptionTest {
         return ejbJar;
     }
 
-    public interface HotelEJBHome extends jakarta.ejb.EJBHome {
+    public interface HotelEJBHome extends javax.ejb.EJBHome {
         HotelEJBObject create(String id, String name) throws CreateException;
 
         HotelEJBObject findByPrimaryKey(String id);
@@ -203,7 +203,7 @@ public class EJBCreateExceptionTest {
         }
     }
 
-    public static class HelloBeanStateless implements jakarta.ejb.SessionBean {
+    public static class HelloBeanStateless implements javax.ejb.SessionBean {
 
         public String sayHello(String name) {
             return "Hello, " + name + " from EJB 2.0!";
@@ -217,7 +217,7 @@ public class EJBCreateExceptionTest {
             throw new RuntimeException("BOOM!");
         }
 
-        public void setSessionContext(jakarta.ejb.SessionContext ctx) {
+        public void setSessionContext(javax.ejb.SessionContext ctx) {
         }
 
         public void ejbRemove() {
@@ -230,7 +230,7 @@ public class EJBCreateExceptionTest {
         }
     }
 
-    public static class HelloBeanStateful implements jakarta.ejb.SessionBean {
+    public static class HelloBeanStateful implements javax.ejb.SessionBean {
 
         private String lastNameUSed;
 
@@ -251,7 +251,7 @@ public class EJBCreateExceptionTest {
             throw new RuntimeException("BOOM!");
         }
 
-        public void setSessionContext(jakarta.ejb.SessionContext ctx) {
+        public void setSessionContext(javax.ejb.SessionContext ctx) {
         }
 
         public void ejbRemove() {
@@ -264,11 +264,11 @@ public class EJBCreateExceptionTest {
         }
     }
 
-    public interface HelloHome extends jakarta.ejb.EJBHome {
-        HelloRemote create() throws jakarta.ejb.CreateException, RemoteException;
+    public interface HelloHome extends javax.ejb.EJBHome {
+        HelloRemote create() throws javax.ejb.CreateException, RemoteException;
     }
 
-    public interface HelloRemote extends jakarta.ejb.EJBObject {
+    public interface HelloRemote extends javax.ejb.EJBObject {
         String sayHello(String name) throws RemoteException;
 
         String sayHelloBoom(String name) throws RemoteException;
