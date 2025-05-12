@@ -1,5 +1,10 @@
 TomEE EAP 8.0.x-TT.x
 
+Changes in TomEE EAP 8.0.17-TT.6
+
+- Update to ActiveMQ 5.16.9-TT.1
+- TOMEE-4484 Don't expose InvalidateReferenceException to remote client
+
 Changes in TomEE EAP 8.0.17-TT.5
 - Update to Tomcat 9.0.104 to mitigate CVE-2025-31651 (TTSA-hvxq9-pgm57-5j7j2) and CVE-2025-31650 (TTSA-t6j76-mtwcv-5hjqj)
 
