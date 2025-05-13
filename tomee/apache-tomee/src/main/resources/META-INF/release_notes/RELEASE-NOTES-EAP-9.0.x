@@ -2,6 +2,7 @@ TomEE EAP 9.1.x-TT.x
 
 Changes in TomEE EAP 9.1.4-TT.7
 - Update to Geronimo mail 1.0.1-TT.1 to us a buffered output stream to improve mail sending performance
+- Update to ActiveMQ 5.18.8-TT.1 to mitigate CVE-2025-27533
 
 Changes in TomEE EAP 9.1.4-TT.6
 - Update to Tomcat 10.0.28-TT.14 to mitigate CVE-2025-31651 (TTSA-hvxq9-pgm57-5j7j2)
