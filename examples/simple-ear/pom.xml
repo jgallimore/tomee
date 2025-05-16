@@ -76,7 +76,7 @@
             <systemProperties>
               <property>
                 <name>tomee.version</name>
-                <value>8.0.17-TT.6-SNAPSHOT</value>
+                <value>8.0.17-TT.7-SNAPSHOT</value>
               </property>
             </systemProperties>
           </configuration>
