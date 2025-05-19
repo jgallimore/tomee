@@ -33,7 +33,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.5.2</version>
+        <version>3.5.3</version>
         <configuration>
           <reuseForks>false</reuseForks>
           <dependenciesToScan>
@@ -41,6 +41,7 @@
             <dependency>org.eclipse.microprofile.metrics:microprofile-metrics-rest-tck</dependency>
             <dependency>org.eclipse.microprofile.metrics:microprofile-metrics-optional-tck</dependency>
           </dependenciesToScan>
+
           <excludes>
             <!-- Exclude some of the OPTIONAL tests because they aren't supported in TomEE and result in failures atm -->
             <!-- MPMetricBaseMetricsTest.testGcTimeMetrics -->
@@ -51,6 +52,7 @@
             -->
             <exclude>**/MpMetricOptionalTest.java</exclude>
           </excludes>
+
           <environmentVariables>
             <MP_METRICS_TAGS>tier=integration</MP_METRICS_TAGS>
           </environmentVariables>
