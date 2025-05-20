@@ -1,7 +1,9 @@
 TomEE EAP 8.0.x-TT.x
 
-Changes in TomEE EAP 8.0.17-TT.6
+Changes in TomEE EAP 8.0.17-TT.7
+- Update to OpenWebBeans 2.0.28
 
+Changes in TomEE EAP 8.0.17-TT.6
 - Update to ActiveMQ 5.16.9-TT.1 to mitigate CVE-2025-27533
 - TOMEE-4484 Don't expose InvalidateReferenceException to remote client
 
