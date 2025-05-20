@@ -1,5 +1,10 @@
 TomEE EAP 10.0.x-TT.x
 
+Changes in TomEE EAP 10.0.2-TT.3
+- Include concurrency changes to stop attempting to propagate the transaction when using an executor service
+- Update to ActiveMQ 6.1.7-TT.2 to resolve deadlock issue in resource adapter
+
+
 Changes in TomEE EAP 10.0.2-TT.2
 - Update to Geronimo mail 1.0.1-TT.1 to us a buffered output stream to improve mail sending performance
 
