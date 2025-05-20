@@ -175,7 +175,7 @@
     <dependency>
       <groupId>org.eclipse.microprofile.config</groupId>
       <artifactId>microprofile-config-api</artifactId>
-      <version>3.0.3</version>
+      <version>3.1</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -219,7 +219,7 @@
     <dependency>
       <groupId>org.eclipse.microprofile.metrics</groupId>
       <artifactId>microprofile-metrics-api</artifactId>
-      <version>5.0.2</version>
+      <version>5.1.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>

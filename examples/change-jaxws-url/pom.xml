@@ -86,7 +86,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.5.2</version>
+        <version>3.5.3</version>
         <configuration>
           <argLine>
             -Djdk.attach.allowAttachSelf
@@ -132,7 +132,7 @@
     <dependency>
       <groupId>org.jboss.arquillian.junit</groupId>
       <artifactId>arquillian-junit-container</artifactId>
-      <version>1.9.3.Final</version>
+      <version>1.9.4.Final</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
