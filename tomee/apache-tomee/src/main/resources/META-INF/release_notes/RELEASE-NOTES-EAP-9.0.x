@@ -1,5 +1,8 @@
 TomEE EAP 9.0.x-TT.x
 
+Changes in TomEE EAP 9.0.1-TT.19
+- Update to commons-beanutils 1.11.0 to mitigate CVE-2025-48734
+
 Changes in TomEE EAP 9.0.1-TT.18
 - Update to Geronimo mail 1.0.1-TT.1 to use a buffered output stream to improve mail sending performance
 - Update to ActiveMQ 5.18.8-TT.1 to mitigate CVE-2025-27533
