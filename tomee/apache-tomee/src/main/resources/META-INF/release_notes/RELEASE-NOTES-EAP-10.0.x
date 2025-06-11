@@ -1,5 +1,8 @@
 TomEE EAP 10.0.x-TT.x
 
+Changes in TomEE EAP 10.0.2-TT.3
+- Update to Tomcat 10.1.42 to mitigate CVE-2025-46701
+
 Changes in TomEE EAP 10.0.2-TT.2
 - Include concurrency changes to stop attempting to propagate the transaction when using an executor service
 - Update to ActiveMQ 6.1.7-TT.2 to resolve deadlock issue in resource adapter
