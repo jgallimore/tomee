@@ -583,11 +583,11 @@
 <!--              <attach>true</attach>-->
               <skips>
                 <jars>
-                  <bcpkix-jdk15on-1.78.jar>org.bouncycastle:bcpkix-jdk15on:jar:1.78</bcpkix-jdk15on-1.78.jar>
-                  <bcprov-jdk15on-1.78.jar>org.bouncycastle:bcprov-jdk15on:jar:1.78</bcprov-jdk15on-1.78.jar>
-                  <bcprov-jdk15to18-1.78.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.78</bcprov-jdk15to18-1.78.jar>
-                  <bcprov-jdk18on-1.78.jar>org.bouncycastle:bcprov-jdk18on:jar:1.78</bcprov-jdk18on-1.78.jar>
-                  <bcutil-jdk15on-1.78.jar>org.bouncycastle:bcutil-jdk15on:jar:1.78</bcutil-jdk15on-1.78.jar>
+                  <bcpkix-jdk15on-1.81.jar>org.bouncycastle:bcpkix-jdk15on:jar:1.81</bcpkix-jdk15on-1.81.jar>
+                  <bcprov-jdk15on-1.81.jar>org.bouncycastle:bcprov-jdk15on:jar:1.81</bcprov-jdk15on-1.81.jar>
+                  <bcprov-jdk15to18-1.81.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.81</bcprov-jdk15to18-1.81.jar>
+                  <bcprov-jdk18on-1.81.jar>org.bouncycastle:bcprov-jdk18on:jar:1.81</bcprov-jdk18on-1.81.jar>
+                  <bcutil-jdk15on-1.81.jar>org.bouncycastle:bcutil-jdk15on:jar:1.81</bcutil-jdk15on-1.81.jar>
                 </jars>
               </skips>
             </configuration>
@@ -819,9 +819,9 @@
               <attach>true</attach>
               <replace>
                 <resources>
-                  <bcpkix-jdk15to18-1.76.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.76</bcpkix-jdk15to18-1.76.jar>
-                  <bcprov-jdk15to18-1.76.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.76</bcprov-jdk15to18-1.76.jar>
-                  <bcutil-jdk15to18-1.76.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.76</bcutil-jdk15to18-1.76.jar>
+                  <bcpkix-jdk15to18-1.81.jar>org.bouncycastle:bcpkix-jdk15to18:jar:1.81</bcpkix-jdk15to18-1.81.jar>
+                  <bcprov-jdk15to18-1.81.jar>org.bouncycastle:bcprov-jdk15to18:jar:1.81</bcprov-jdk15to18-1.81.jar>
+                  <bcutil-jdk15to18-1.81.jar>org.bouncycastle:bcutil-jdk15to18:jar:1.81</bcutil-jdk15to18-1.81.jar>
                 </resources>
               </replace>
             </configuration>
