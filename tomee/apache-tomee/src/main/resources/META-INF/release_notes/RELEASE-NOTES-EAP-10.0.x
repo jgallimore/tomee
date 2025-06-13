@@ -2,6 +2,7 @@ TomEE EAP 10.0.x-TT.x
 
 Changes in TomEE EAP 10.0.2-TT.3
 - Update to Tomcat 10.1.42 to mitigate CVE-2025-46701
+- Update to Bouncy Castle 1.81 to mitigate sonatype-2025-001911 & sonatype-2025-001912
 
 Changes in TomEE EAP 10.0.2-TT.2
 - Include concurrency changes to stop attempting to propagate the transaction when using an executor service
