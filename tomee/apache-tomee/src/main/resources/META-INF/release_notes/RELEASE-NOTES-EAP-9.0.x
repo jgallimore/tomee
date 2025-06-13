@@ -4,6 +4,7 @@ TomEE EAP 9.1.x-TT.x
 Changes in TomEE EAP 9.1.4-TT.8
 - Update to commons-beanutils 1.11.0 to mitigate CVE-2025-48734
 - Update to Tomcat 10.0.28-TT.15 to mitigate CVE-2025-46701
+- Update to Bouncy Castle 1.81 to mitigate sonatype-2025-001911 & sonatype-2025-001912
 
 Changes in TomEE EAP 9.1.4-TT.7
 - Update to Geronimo mail 1.0.1-TT.1 to us a buffered output stream to improve mail sending performance
