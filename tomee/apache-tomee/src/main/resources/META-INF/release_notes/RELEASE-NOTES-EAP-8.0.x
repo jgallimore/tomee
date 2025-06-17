@@ -2,7 +2,7 @@ TomEE EAP 8.0.x-TT.x
 
 Changes in TomEE EAP 8.0.17-TT.8
 - Update to commons-beanutils 1.11.0 to mitigate CVE-2025-48734
-- Update to tomcat 9.0.106 to mitigate CVE-2025-46701
+- Update to tomcat 9.0.106 to mitigate CVE-2025-46701 CVE-2025-48988 CVE-2025-49125 CVE-2025-49124
 - Update to bcprov-jdk15to18 1.81 to mitigate sonatype-2025-001911 & sonatype-2025-001912
 
 Changes in TomEE EAP 8.0.17-TT.7
