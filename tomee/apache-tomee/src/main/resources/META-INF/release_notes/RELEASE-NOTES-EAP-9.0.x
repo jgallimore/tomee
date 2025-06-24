@@ -1,5 +1,7 @@
 TomEE EAP 9.1.x-TT.x
 
+Changes in TomEE EAP 9.1.4-TT.9
+- Update to OpenWebBeans 2.0.28
 
 Changes in TomEE EAP 9.1.4-TT.8
 - Update to commons-beanutils 1.11.0 to mitigate CVE-2025-48734
