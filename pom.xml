@@ -217,7 +217,7 @@
     <version.johnzon>1.2.21</version.johnzon>
     <version.myfaces>3.0.2</version.myfaces>
     <version.openjpa>3.2.2</version.openjpa>
-    <version.openwebbeans>2.0.27</version.openwebbeans>
+    <version.openwebbeans>2.0.28</version.openwebbeans>
     <!-- org.eclipse -->
     <version.eclipselink>3.0.4</version.eclipselink>
     <!-- org.glassfish -->
