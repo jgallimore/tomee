@@ -488,7 +488,7 @@
     <dependency>
       <groupId>io.smallrye.common</groupId>
       <artifactId>smallrye-common-annotation</artifactId>
-      <version>2.10.0</version>
+      <version>2.12.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -499,7 +499,7 @@
     <dependency>
       <groupId>io.smallrye.common</groupId>
       <artifactId>smallrye-common-classloader</artifactId>
-      <version>2.10.0</version>
+      <version>2.12.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -510,7 +510,7 @@
     <dependency>
       <groupId>io.smallrye.common</groupId>
       <artifactId>smallrye-common-constraint</artifactId>
-      <version>2.10.0</version>
+      <version>2.12.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -521,7 +521,7 @@
     <dependency>
       <groupId>io.smallrye.common</groupId>
       <artifactId>smallrye-common-expression</artifactId>
-      <version>2.10.0</version>
+      <version>2.12.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -532,7 +532,7 @@
     <dependency>
       <groupId>io.smallrye.common</groupId>
       <artifactId>smallrye-common-function</artifactId>
-      <version>2.10.0</version>
+      <version>2.12.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -796,7 +796,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-broker</artifactId>
-      <version>6.1.6</version>
+      <version>6.1.7</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -807,7 +807,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-client</artifactId>
-      <version>6.1.6</version>
+      <version>6.1.7</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -818,7 +818,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-jdbc-store</artifactId>
-      <version>6.1.6</version>
+      <version>6.1.7</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -829,7 +829,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-kahadb-store</artifactId>
-      <version>6.1.6</version>
+      <version>6.1.7</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -840,7 +840,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-openwire-legacy</artifactId>
-      <version>6.1.6</version>
+      <version>6.1.7</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -851,7 +851,7 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-ra</artifactId>
-      <version>6.1.6</version>
+      <version>6.1.7</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -906,7 +906,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-core</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -917,7 +917,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-bindings-soap</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -928,7 +928,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-bindings-xml</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -939,7 +939,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-databinding-jaxb</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -950,7 +950,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -961,7 +961,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-frontend-jaxws</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -972,7 +972,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-frontend-simple</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -983,7 +983,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-management</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -994,7 +994,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-client</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1005,7 +1005,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-extension-providers</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1016,7 +1016,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-mp-client</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1027,7 +1027,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-service-description</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1038,7 +1038,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-sse</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1049,7 +1049,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-security-saml</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1060,7 +1060,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-security</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1071,7 +1071,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-transports-http</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1082,7 +1082,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-ws-addr</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1093,7 +1093,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-ws-policy</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1104,7 +1104,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-ws-security</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1115,7 +1115,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-wsdl</artifactId>
-      <version>4.1.1</version>
+      <version>4.1.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1170,7 +1170,7 @@
     <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-core</artifactId>
-      <version>2.0.1</version>
+      <version>2.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1181,7 +1181,7 @@
     <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-jaxrs</artifactId>
-      <version>2.0.1</version>
+      <version>2.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1192,7 +1192,7 @@
     <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-jsonb</artifactId>
-      <version>2.0.1</version>
+      <version>2.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1203,7 +1203,7 @@
     <dependency>
       <groupId>org.apache.johnzon</groupId>
       <artifactId>johnzon-mapper</artifactId>
-      <version>2.0.1</version>
+      <version>2.0.2</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2105,7 +2105,7 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcpkix-jdk15to18</artifactId>
-      <version>1.80</version>
+      <version>1.81</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2116,7 +2116,7 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk15to18</artifactId>
-      <version>1.80</version>
+      <version>1.81</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2127,7 +2127,7 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcutil-jdk15to18</artifactId>
-      <version>1.80</version>
+      <version>1.81</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2171,7 +2171,7 @@
     <dependency>
       <groupId>org.eclipse.jdt</groupId>
       <artifactId>ecj</artifactId>
-      <version>3.40.0</version>
+      <version>3.42.0</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -2259,7 +2259,7 @@
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>eclipselink</artifactId>
-      <version>4.0.6</version>
+      <version>4.0.7</version>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
