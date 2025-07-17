@@ -16,6 +16,7 @@
  */
 package org.apache.openejb.resource.thread;
 
+import org.apache.openejb.threads.impl.ContextServiceImpl;
 import org.apache.openejb.threads.impl.ManagedExecutorServiceImpl;
 import org.apache.openejb.threads.impl.ManagedThreadFactoryImpl;
 import org.apache.openejb.threads.reject.CURejectHandler;
@@ -28,6 +29,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class ManagedExecutorServiceImplFactory {
@@ -41,10 +43,16 @@ public class ManagedExecutorServiceImplFactory {
         return new ManagedExecutorServiceImpl(createExecutorService());
     }
 
+    public ManagedExecutorServiceImpl create(final ContextServiceImpl contextService) {
+        return new ManagedExecutorServiceImpl(createExecutorService(), contextService);
+    }
+
     private ExecutorService createExecutorService() {
         final BlockingQueue<Runnable> blockingQueue;
-        if (queue <= 0) {
+        if (queue < 0) {
             blockingQueue = new LinkedBlockingQueue<>();
+        } else if (queue == 0) {
+            blockingQueue = new SynchronousQueue<>();
         } else {
             blockingQueue = new ArrayBlockingQueue<>(queue);
         }
