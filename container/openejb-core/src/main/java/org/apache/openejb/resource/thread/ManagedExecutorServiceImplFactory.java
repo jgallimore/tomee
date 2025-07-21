@@ -16,7 +16,6 @@
  */
 package org.apache.openejb.resource.thread;
 
-import org.apache.openejb.threads.impl.ContextServiceImpl;
 import org.apache.openejb.threads.impl.ManagedExecutorServiceImpl;
 import org.apache.openejb.threads.impl.ManagedThreadFactoryImpl;
 import org.apache.openejb.threads.reject.CURejectHandler;
@@ -41,10 +40,6 @@ public class ManagedExecutorServiceImplFactory {
 
     public ManagedExecutorServiceImpl create() {
         return new ManagedExecutorServiceImpl(createExecutorService());
-    }
-
-    public ManagedExecutorServiceImpl create(final ContextServiceImpl contextService) {
-        return new ManagedExecutorServiceImpl(createExecutorService(), contextService);
     }
 
     private ExecutorService createExecutorService() {
