@@ -48,7 +48,7 @@ public class ManagedExecutorServiceImplFactoryTest {
     @Test
     public void testExecutorServiceFactoryWithQueue() throws Exception {
         // we expect two core threads to be used, and everything else to queue up
-
+        forceSecurityService();
         final ManagedExecutorServiceImplFactory factory = new ManagedExecutorServiceImplFactory();
         factory.setCore(2);
         factory.setMax(4);
@@ -81,6 +81,7 @@ public class ManagedExecutorServiceImplFactoryTest {
 
     @Test
     public void testExecutorServiceFactoryWithoutQueue() throws Exception {
+        forceSecurityService();
         final ManagedExecutorServiceImplFactory factory = new ManagedExecutorServiceImplFactory();
         factory.setCore(2);
         factory.setMax(4);
@@ -119,6 +120,7 @@ public class ManagedExecutorServiceImplFactoryTest {
 
     @Test
     public void testExecutorServiceFactoryWithoutScalingThePool() throws Exception {
+        forceSecurityService();
         final ManagedExecutorServiceImplFactory factory = new ManagedExecutorServiceImplFactory();
         factory.setCore(2);
         factory.setMax(4);
