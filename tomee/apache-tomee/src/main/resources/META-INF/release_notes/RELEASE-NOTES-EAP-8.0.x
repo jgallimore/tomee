@@ -1,5 +1,10 @@
 TomEE EAP 8.0.x-TT.x
 
+Changes in TomEE EAP 8.0.17-TT.9
+- Update to Tomcat 9.0.17 to mitigate CVE-2025-52434, CVE-2025-52520 and CVE-2025-53506
+- Update CXF to 3.5.11 to mitigate CVE-2025-48795
+- Update to Commons-Lang 3.18.0 to mitigate CVE-2025-48924
+- Fix issue where ManagedExecutorService couldn't have a queue length of 0
 
 Changes in TomEE EAP 8.0.17-TT.8
 - Update Eclipselink to provide further logging

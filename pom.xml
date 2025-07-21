@@ -151,7 +151,7 @@
     <version.commons-fileupload>1.5</version.commons-fileupload>
     <version.commons-io>2.11.0</version.commons-io>
     <version.commons-jcs-cache>2.1</version.commons-jcs-cache>
-    <version.commons-lang3>3.12.0</version.commons-lang3>
+    <version.commons-lang3>3.18.0</version.commons-lang3>
     <version.commons-net>3.8.0</version.commons-net>
     <version.commons-pool2>2.11.1</version.commons-pool2>
 
@@ -189,14 +189,14 @@
     <version.geronimo-javamail_1.6_spec>1.0.1</version.geronimo-javamail_1.6_spec>
 
     <!-- Jakarta EE Impl. -->
-    <tomcat.version>9.0.106</tomcat.version>
+    <tomcat.version>9.0.107</tomcat.version>
     <!-- com.sun -->
     <version.impl.saaj>1.5.3</version.impl.saaj>
     <!-- org.apache -->
     <version.activemq>5.16.9-TT.1</version.activemq>
     <version.batchee>1.0.2</version.batchee>
     <version.bval>2.0.5</version.bval>
-    <version.cxf>3.5.10</version.cxf>
+    <version.cxf>3.5.11</version.cxf>
     <version.geronimo.components>3.1.5</version.geronimo.components>
     <version.geronimo-javamail_1.6_mail>1.0.2-TT.3</version.geronimo-javamail_1.6_mail>
     <version.johnzon>1.2.21</version.johnzon>

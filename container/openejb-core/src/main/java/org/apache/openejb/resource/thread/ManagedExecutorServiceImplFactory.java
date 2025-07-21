@@ -43,10 +43,6 @@ public class ManagedExecutorServiceImplFactory {
         return new ManagedExecutorServiceImpl(createExecutorService());
     }
 
-    public ManagedExecutorServiceImpl create(final ContextServiceImpl contextService) {
-        return new ManagedExecutorServiceImpl(createExecutorService(), contextService);
-    }
-
     private ExecutorService createExecutorService() {
         final BlockingQueue<Runnable> blockingQueue;
         if (queue < 0) {

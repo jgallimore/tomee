@@ -17,20 +17,16 @@
 package org.apache.openejb.resource.thread;
 
 
-import jakarta.enterprise.concurrent.ManagedThreadFactory;
+import javax.enterprise.concurrent.ManagedThreadFactory;
 import org.apache.openejb.loader.SystemInstance;
 import org.apache.openejb.ri.sp.PseudoSecurityService;
 import org.apache.openejb.spi.SecurityService;
-import org.apache.openejb.threads.impl.ContextServiceImpl;
-import org.apache.openejb.threads.impl.ContextServiceImplFactory;
 import org.apache.openejb.threads.impl.ManagedExecutorServiceImpl;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinWorkerThread;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
@@ -55,9 +51,8 @@ public class ManagedExecutorServiceImplFactoryTest {
         factory.setQueue(1000);
         factory.setThreadFactory("org.apache.openejb.resource.thread.ManagedExecutorServiceImplFactoryTest$MyThreadFactory");
 
-        final ContextServiceImpl contextService = ContextServiceImplFactory.newDefaultContextService();
 
-        final ManagedExecutorServiceImpl executorService = factory.create(contextService);
+        final ManagedExecutorServiceImpl executorService = factory.create();
 
         final CountDownLatch latch = new CountDownLatch(10);
 
@@ -87,9 +82,7 @@ public class ManagedExecutorServiceImplFactoryTest {
         factory.setQueue(0);
         factory.setThreadFactory("org.apache.openejb.resource.thread.ManagedExecutorServiceImplFactoryTest$MyThreadFactory");
 
-        final ContextServiceImpl contextService = ContextServiceImplFactory.newDefaultContextService();
-
-        final ManagedExecutorServiceImpl executorService = factory.create(contextService);
+        final ManagedExecutorServiceImpl executorService = factory.create();
 
         final CountDownLatch latch = new CountDownLatch(10);
         final AtomicInteger rejectedCount = new AtomicInteger(0);
@@ -125,9 +118,7 @@ public class ManagedExecutorServiceImplFactoryTest {
         factory.setQueue(-1);
         factory.setThreadFactory("org.apache.openejb.resource.thread.ManagedExecutorServiceImplFactoryTest$MyThreadFactory");
 
-        final ContextServiceImpl contextService = ContextServiceImplFactory.newDefaultContextService();
-
-        final ManagedExecutorServiceImpl executorService = factory.create(contextService);
+        final ManagedExecutorServiceImpl executorService = factory.create();
 
         final CountDownLatch latch = new CountDownLatch(10);
         final AtomicInteger rejectedCount = new AtomicInteger(0);
@@ -163,12 +154,6 @@ public class ManagedExecutorServiceImplFactoryTest {
             return new Thread(r, "tpe-" + threadCount.getAndIncrement());
         }
 
-        @Override
-        public ForkJoinWorkerThread newThread(ForkJoinPool pool) {
-            return null;
-        }
     }
-
-
 
 }
