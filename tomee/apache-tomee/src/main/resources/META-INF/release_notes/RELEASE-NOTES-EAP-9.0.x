@@ -1,18 +1,13 @@
 TomEE EAP 9.1.x-TT.x
 
-Changes in TomEE EAP 9.1.4-TT.11
+Changes in TomEE EAP 9.1.4-TT.10
 - Update Tomcat to 10.0.28-TT.18 to avoid caching bogus 0 content length
 
-Changes in TomEE EAP 9.1.4-TT.10
-
+Changes in TomEE EAP 9.1.4-TT.9
 - Update to Tomcat 10.0.28-TT.17 to mitigate CVE-2025-52434, CVE-2025-52520 and CVE-2025-53506
 - Update CXF to 3.5.11 to mitigate CVE-2025-48795
 - Update to Commons-Lang 3.18.0 to mitigate CVE-2025-48924
 - Fix issue where ManagedExecutorService couldn't have a queue length of 0
-
-
-
-Changes in TomEE EAP 9.1.4-TT.9
 - Update to OpenWebBeans 2.0.28
 
 Changes in TomEE EAP 9.1.4-TT.8
