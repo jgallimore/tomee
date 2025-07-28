@@ -1,5 +1,8 @@
 TomEE EAP 9.1.x-TT.x
 
+Changes in TomEE EAP 9.1.4-TT.11
+- Update Tomcat to 10.0.28-TT.18 to avoid caching bogus 0 content length
+
 Changes in TomEE EAP 9.1.4-TT.10
 
 - Update to Tomcat 10.0.28-TT.17 to mitigate CVE-2025-52434, CVE-2025-52520 and CVE-2025-53506
