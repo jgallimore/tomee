@@ -1,5 +1,8 @@
 TomEE EAP 9.1.x-TT.x
 
+Changes in TomEE EAP 9.1.4-TT.11
+- Fix issue classNotFound issue for org/apache/tomcat/util/http/fileupload/FileUploadBase
+
 Changes in TomEE EAP 9.1.4-TT.10
 - Update Tomcat to 10.0.28-TT.18 to avoid caching bogus 0 content length
 
