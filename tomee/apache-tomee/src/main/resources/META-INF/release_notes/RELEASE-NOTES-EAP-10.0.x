@@ -1,5 +1,8 @@
 TomEE EAP 10.0.x-TT.x
 
+Changes in TomEE EAP 10.0.2-TT.5
+- Update to CXF 4.1.3 to mitigate CVE-2025-48913
+
 Changes in TomEE EAP 10.0.2-TT.4
 - Update to Tomcat 10.1.43 to mitigate CVE-2025-52520 and CVE-2025-53506
 - Update to Commons-Lang 3.18.0 to mitigate CVE-2025-48924
