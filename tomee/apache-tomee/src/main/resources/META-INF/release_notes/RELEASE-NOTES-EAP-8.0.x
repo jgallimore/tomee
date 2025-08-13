@@ -1,5 +1,8 @@
 TomEE EAP 8.0.x-TT.x
 
+Changes in TomEE EAP 8.0.17-TT.11
+- Update to CXF 3.5.12-TT.1 to mitigate CVE-2025-48913
+
 Changes in TomEE EAP 8.0.17-TT.10
 - Update to Tomcat 9.0.17 to mitigate CVE-2025-52434, CVE-2025-52520 and CVE-2025-53506
 - Update CXF to 3.5.11 to mitigate CVE-2025-48795
