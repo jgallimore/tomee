@@ -5,9 +5,6 @@ Changes in TomEE EAP 9.0.1-TT.20
 - Update CXF to 3.5.11 to mitigate CVE-2025-48795
 - Update to Commons-Lang 3.18.0 to mitigate CVE-2025-48924
 - Fix issue where ManagedExecutorService couldn't have a queue length of 0
-
-
-Changes in TomEE EAP 9.0.1-TT.20
 - Update to OpenWebBeans 2.0.28
 
 Changes in TomEE EAP 9.0.1-TT.19
