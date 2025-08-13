@@ -20,7 +20,7 @@
     <parent>
         <groupId>org.apache.tomee</groupId>
         <artifactId>jax-rs</artifactId>
-        <version>10.0.2-TT.4-SNAPSHOT</version>
+        <version>10.0.2-TT.5-SNAPSHOT</version>
     </parent>
 
     <artifactId>jax-rs-tests-embedded</artifactId>
