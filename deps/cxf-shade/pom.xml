@@ -527,7 +527,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <createSourcesJar>true</createSourcesJar>
+              <createSourcesJar>false</createSourcesJar>
               <useBaseVersion>true</useBaseVersion>
               <createDependencyReducedPom>false</createDependencyReducedPom>
               <promoteTransitiveDependencies>true</promoteTransitiveDependencies>
