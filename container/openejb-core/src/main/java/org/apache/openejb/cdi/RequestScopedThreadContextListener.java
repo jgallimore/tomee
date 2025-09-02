@@ -28,6 +28,9 @@ import org.apache.webbeans.spi.ContextsService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.spi.Context;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 /**
  * @version $Rev$ $Date$
  */
@@ -37,12 +40,16 @@ public class RequestScopedThreadContextListener implements ThreadContextListener
 
     @Override
     public void contextEntered(final ThreadContext oldContext, final ThreadContext newContext, boolean propagateTx) {
-        LOG.info("ThreadContextListener contextEntered: oldContext=" + oldContext + ", newContext=" + newContext);
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("ThreadContextListener contextEntered: oldContext=" + oldContext + ", newContext=" + newContext + ", from=" + fromStackTrace(new Exception()));
+        }
         final BeanContext beanContext = newContext.getBeanContext();
 
         final WebBeansContext webBeansContext = beanContext.getModuleContext().getAppContext().getWebBeansContext();
         if (webBeansContext == null) {
-            LOG.info("ThreadContextListener contextEntered: webBeansContext is null");
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("ThreadContextListener contextEntered: webBeansContext is null");
+            }
             return;
         }
 
@@ -51,7 +58,9 @@ public class RequestScopedThreadContextListener implements ThreadContextListener
         final Context requestContext = CdiAppContextsService.class.cast(contextsService).getRequestContext(false);
 
         if (requestContext == null) {
-            LOG.info("ThreadContextListener contextEntered: requestContext is null, creating new request scope");
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("ThreadContextListener contextEntered: requestContext is null, creating new request scope");
+            }
             contextsService.startContext(RequestScoped.class, CdiAppContextsService.EJB_REQUEST_EVENT);
             newContext.set(DestroyContext.class, new DestroyContext(contextsService, newContext));
         }
@@ -59,25 +68,35 @@ public class RequestScopedThreadContextListener implements ThreadContextListener
 
     @Override
     public void contextExited(final ThreadContext exitedContext, final ThreadContext reenteredContext) {
-        LOG.info("ThreadContextListener contextExited: exitedContext=" + exitedContext + ", reenteredContext=" + reenteredContext);
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("ThreadContextListener contextExited: exitedContext=" + exitedContext + ", reenteredContext=" + reenteredContext + ", from=" + fromStackTrace(new Exception()));
+        }
         if (exitedContext == null) {
-            LOG.info("ThreadContextListener contextExited: exitedContext is null, not destroying RequestScope");
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("ThreadContextListener contextExited: exitedContext is null, not destroying RequestScope");
+            }
             return;
         }
 
         final DestroyContext destroyContext = exitedContext.get(DestroyContext.class);
 
         if (destroyContext == null) {
-            LOG.info("ThreadContextListener contextExited: destroyContext is null, not destroying RequestScope");
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("ThreadContextListener contextExited: destroyContext is null, not destroying RequestScope");
+            }
             return;
         }
 
         if (destroyContext.threadContext != exitedContext) {
-            LOG.info("ThreadContextListener contextExited: destroyContext does not match exited context, not destroying RequestScope");
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("ThreadContextListener contextExited: destroyContext does not match exited context, not destroying RequestScope");
+            }
             return;
         }
 
-        LOG.info("ThreadContextListener contextExited: destroying RequestScope");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("ThreadContextListener contextExited: destroying RequestScope");
+        }
         destroyContext.contextsService.endContext(RequestScoped.class, CdiAppContextsService.EJB_REQUEST_EVENT);
         destroyContext.contextsService.removeThreadLocals();
     }
@@ -90,5 +109,14 @@ public class RequestScopedThreadContextListener implements ThreadContextListener
             this.contextsService = contextsService;
             this.threadContext = threadContext;
         }
+    }
+
+    private static String fromStackTrace(final Throwable throwable) {
+        final StringWriter sw = new StringWriter();
+        final PrintWriter pw = new PrintWriter(sw);
+        throwable.printStackTrace(pw);
+        pw.flush();
+
+        return sw.toString();
     }
 }
