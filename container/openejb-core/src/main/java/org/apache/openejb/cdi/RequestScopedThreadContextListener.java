@@ -36,7 +36,7 @@ import java.io.StringWriter;
  */
 public class RequestScopedThreadContextListener implements ThreadContextListener {
 
-    private static Logger LOG = Logger.getInstance(LogCategory.OPENEJB, "org.apache.openejb.cdi");
+    private static Logger LOG = Logger.getInstance(LogCategory.OPENEJB.createChild("ThreadContext"), "org.apache.openejb.cdi");
 
     @Override
     public void contextEntered(final ThreadContext oldContext, final ThreadContext newContext, boolean propagateTx) {
