@@ -41,7 +41,7 @@ public class ThreadContext {
     }
 
     public static ThreadContext enter(final ThreadContext newContext, final boolean propagateTx) {
-        if (newContext == null) {
+            if (newContext == null) {
             throw new NullPointerException("newContext is null");
         }
 

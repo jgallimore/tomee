@@ -17,6 +17,7 @@
 
 package org.apache.openejb.cdi;
 
+import jakarta.inject.Singleton;
 import org.apache.openejb.AppContext;
 import org.apache.openejb.assembler.classic.AppInfo;
 import org.apache.openejb.assembler.classic.EjbJarInfo;
@@ -266,7 +267,11 @@ public class ThreadSingletonServiceImpl implements ThreadSingletonService {
             old = contextEntered(webBeansContext);
             setConfiguration(webBeansContext.getOpenWebBeansConfiguration());
             try {
-                webBeansContext.getService(ContainerLifecycle.class).startApplication(startupObject);
+                // TODO: get the service, start the singleton context, then start the application
+                final ContainerLifecycle containerLifecycle = webBeansContext.getService(ContainerLifecycle.class);
+                final ContextsService contextService = containerLifecycle.getContextService();
+                contextService.startContext(Singleton.class, startupObject);
+                containerLifecycle.startApplication(startupObject);
             } catch (final Exception e) {
                 throw new DeploymentException("couldn't start owb context", e);
             }
