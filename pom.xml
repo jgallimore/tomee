@@ -31,7 +31,7 @@
   <groupId>org.apache.tomee</groupId>
   <artifactId>tomee-project</artifactId>
   <packaging>pom</packaging>
-  <version>10.1.1-TT.1-SNAPSHOT</version>
+  <version>10.1.2</version>
 
   <name>Apache TomEE</name>
   <description>Apache TomEE is a JakartaEE 10 Web Profile stack for Apache Tomcat</description>
@@ -86,7 +86,7 @@
     <connection>scm:git:https://github.com/apache/tomee.git</connection>
     <developerConnection>scm:git:git@github.com:apache/tomee.git</developerConnection>
     <url>https://github.com/apache/tomee.git</url>
-    <tag>HEAD</tag>
+    <tag>tomee-project-10.1.2</tag>
   </scm>
 
   <properties>
@@ -98,7 +98,7 @@
     <tomee.build.name>${project.groupId}.${project.artifactId}</tomee.build.name>
 
     <!-- To easily change the javaee api version -->
-    <version.jakartaee-api>10.0</version.jakartaee-api>
+    <version.jakartaee-api>10.0.1</version.jakartaee-api>
     <version.tomee-patch-plugin>0.10</version.tomee-patch-plugin>
 
     <!-- Project encoding -->
@@ -108,7 +108,7 @@
     <!-- Plugins and Build -->
     <maven.version>3.0.5</maven.version>
     <version.plugin.bundle>6.0.0</version.plugin.bundle>
-    <version.plugin.javadoc>3.11.2</version.plugin.javadoc>
+    <version.plugin.javadoc>3.11.3</version.plugin.javadoc>
     <asciidoclet.version>1.5.0</asciidoclet.version>
     <surefire.version>3.5.3</surefire.version>
 
@@ -138,15 +138,15 @@
     <version.xbean>4.27</version.xbean>
     <version.groovy>2.4.21</version.groovy>
     <!-- Starting from 3.34.0 it requires J17+ -->
-    <version.ecj>3.42.0</version.ecj>
+    <version.ecj>3.43.0</version.ecj>
     <version.jetty>11.0.20</version.jetty>
-    <version.ehcache>3.10.8</version.ehcache>
+    <version.ehcache>3.11.1</version.ehcache>
     <junit.version>4.13.2</junit.version>
     <junit.jupiter.version>5.12.0</junit.jupiter.version>
     <version.osgi.framework>4.2.0</version.osgi.framework>
     <version.aether>1.13.1</version.aether>
     <version.xalan>2.7.3</version.xalan>
-    <version.nashorn>15.6</version.nashorn>
+    <version.nashorn>15.7</version.nashorn>
 
     <!-- Logging frameworks -->
     <version.slf4j>2.0.16</version.slf4j>
@@ -155,13 +155,12 @@
     <version.commons-logging>1.3.5</version.commons-logging>
 
     <!-- Apache Commons -->
-    <version.commons-cli>1.9.0</version.commons-cli>
-    <version.commons-codec>1.18.0</version.commons-codec>
+    <version.commons-cli>1.10.0</version.commons-cli>
+    <version.commons-codec>1.19.0</version.commons-codec>
     <version.commons-dbcp2>2.13.0</version.commons-dbcp2>
     <version.commons-discovery>0.5</version.commons-discovery>
-    <version.commons-io>2.19.0</version.commons-io>
+    <version.commons-io>2.20.0</version.commons-io>
     <version.commons-lang3>3.18.0</version.commons-lang3>
-    <version.commons-net>3.11.1</version.commons-net>
     <version.commons-pool>2.12.1</version.commons-pool>
     <version.commons-fileupload>2.0.0-M4</version.commons-fileupload>
 
@@ -185,23 +184,23 @@
     <version.io.opentracing>0.33.0</version.io.opentracing>
 
     <!-- Micro Profile Impl. -->
-    <version.microprofile.impl.config>3.12.4</version.microprofile.impl.config>
-    <version.microprofile.impl.fault-tolerance>6.9.0</version.microprofile.impl.fault-tolerance>
+    <version.microprofile.impl.config>3.13.4</version.microprofile.impl.config>
+    <version.microprofile.impl.fault-tolerance>6.4.3</version.microprofile.impl.fault-tolerance>
     <version.microprofile.impl.health>4.0.4</version.microprofile.impl.health>
     <version.microprofile.impl.metrics>5.1.0</version.microprofile.impl.metrics>
     <version.microprofile.impl.openapi>3.13.0</version.microprofile.impl.openapi>
     <version.microprofile.impl.opentelemetry>2.7.0</version.microprofile.impl.opentelemetry>
 
     <!-- Jackson and snakeyaml required by OpenAPI Impl -->
-    <version.jackson>2.19.1</version.jackson>
-    <version.snakeyaml>2.4</version.snakeyaml>
+    <version.jackson>2.20.0</version.jackson>
+    <version.snakeyaml>2.5</version.snakeyaml>
 
     <!-- Jakarta EE API -->
     <!-- we currently rely on Mail API from Geronimo, this might change in the future -->
     <version.geronimo-mail_2.1_spec>1.0.1-TT.1</version.geronimo-mail_2.1_spec>
 
     <!-- Jakarta EE Impl. -->
-    <tomcat.version>10.1.43</tomcat.version>
+    <tomcat.version>10.1.46</tomcat.version>
     <!-- com.sun -->
     <version.impl.saaj>3.0.4</version.impl.saaj>
     <!-- org.apache -->
@@ -260,7 +259,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>3.6.0</version>
+          <version>3.6.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -285,7 +284,7 @@
             <dependency>
               <groupId>org.codehaus.plexus</groupId>
               <artifactId>plexus-archiver</artifactId>
-              <version>4.10.0</version>
+              <version>4.10.1</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -297,7 +296,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.5.3</version>
+          <version>3.5.4</version>
         </plugin>
         <plugin> <!-- maven-dependency-plugin:properties doesn't work as well as this one for us -->
           <groupId>org.apache.geronimo.buildsupport</groupId>
@@ -1248,6 +1247,10 @@
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
@@ -1366,11 +1369,6 @@
         <groupId>org.apache.activemq</groupId>
         <artifactId>activemq-ra</artifactId>
         <version>${version.activemq}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-net</groupId>
-        <artifactId>commons-net</artifactId>
-        <version>${version.commons-net}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.activemq</groupId>
@@ -1553,9 +1551,9 @@
         <version>${version.xmlsec}</version>
       </dependency>
       <dependency>
-        <groupId>wsdl4j</groupId>
-        <artifactId>wsdl4j</artifactId>
-        <version>1.6.3</version>
+        <groupId>io.github.librewsdl4j</groupId>
+        <artifactId>libre-wsdl4j</artifactId>
+        <version>1.12.0</version>
       </dependency>
       <dependency>
         <groupId>xmlunit</groupId>
@@ -1628,7 +1626,7 @@
       <dependency>
         <groupId>org.apache.sshd</groupId>
         <artifactId>sshd-core</artifactId>
-        <version>2.15.0</version>
+        <version>2.16.0</version>
       </dependency>
       <dependency>
         <groupId>jline</groupId>
@@ -1822,12 +1820,12 @@
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-compress</artifactId>
-        <version>1.27.1</version>
+        <version>1.28.0</version>
       </dependency>
       <dependency>
         <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-archiver</artifactId>
-        <version>4.10.0</version>
+        <version>4.10.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
