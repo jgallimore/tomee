@@ -1,7 +1,7 @@
 TomEE EAP 10.0.x-TT.x
 
 Changes in TomEE EAP 10.0.2-TT.7
- - Update to Tomcat 10.1.46 to mitigate CVE-2025-48989 and CVE-2025-55668
+ - Update to Tomcat 10.1.46 to mitigate CVE-2025-48989
 
 Changes in TomEE EAP 10.0.2-TT.6
  - Fix to prevent ThreadContext being entered multiple times
@@ -16,7 +16,7 @@ Changes in TomEE EAP 10.0.2-TT.4
  - Fix issue where ManagedExecutorService couldn't have a queue length of 0
 
 Changes in TomEE EAP 10.0.2-TT.3
- - Update to Tomcat 10.1.42 to mitigate CVE-2025-46701 CVE-2025-48988 CVE-2025-49125 CVE-2025-49124
+ - Update to Tomcat 10.1.42 to mitigate CVE-2025-46701 CVE-2025-48988 CVE-2025-49125 CVE-2025-49124 CVE-2025-55668
  - Update to Bouncy Castle 1.81 to mitigate sonatype-2025-001911 & sonatype-2025-001912
 
 Changes in TomEE EAP 10.0.2-TT.2
