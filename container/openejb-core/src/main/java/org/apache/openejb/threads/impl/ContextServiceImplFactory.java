@@ -167,7 +167,7 @@ public class ContextServiceImplFactory {
         // add the in-build ThreadContextProviders
         threadContextProviders.put(ContextServiceDefinition.APPLICATION, ApplicationThreadContextProvider.INSTANCE);
         threadContextProviders.put(ContextServiceDefinition.SECURITY, SecurityThreadContextProvider.INSTANCE);
-        threadContextProviders.put(ContextServiceDefinition.TRANSACTION, TxThreadContextProvider.INSTANCE);
+//        threadContextProviders.put(ContextServiceDefinition.TRANSACTION, TxThreadContextProvider.INSTANCE);
         getThreadContextProviders().forEach(t -> threadContextProviders.putIfAbsent(t.getThreadContextType(), t));
 
         // Let's resolve what should actually be in each bucket:
