@@ -291,23 +291,23 @@ public class ContextServiceImpl implements ContextService, Serializable {
             ArrayList<ThreadContextProvider> cleared = new ArrayList<>(contextService.cleared);
             ArrayList<ThreadContextProvider> unchanged = new ArrayList<>(contextService.unchanged);
 
-//            if (ManagedTask.SUSPEND.equals(props.get(ManagedTask.TRANSACTION))) {
-//                if (!cleared.contains(TxThreadContextProvider.INSTANCE)) {
-//                    cleared.add(TxThreadContextProvider.INSTANCE);
-//                }
-//
-//                propagated.remove(TxThreadContextProvider.INSTANCE);
-//                unchanged.remove(TxThreadContextProvider.INSTANCE);
-//            }
-//
-//            if (ManagedTask.USE_TRANSACTION_OF_EXECUTION_THREAD.equals(props.get(ManagedTask.TRANSACTION))) {
-//                if (!propagated.contains(TxThreadContextProvider.INSTANCE)) {
-//                    propagated.add(TxThreadContextProvider.INSTANCE);
-//                }
-//
-//                cleared.remove(TxThreadContextProvider.INSTANCE);
-//                unchanged.remove(TxThreadContextProvider.INSTANCE);
-//            }
+            if (ManagedTask.SUSPEND.equals(props.get(ManagedTask.TRANSACTION))) {
+                if (!cleared.contains(TxThreadContextProvider.INSTANCE)) {
+                    cleared.add(TxThreadContextProvider.INSTANCE);
+                }
+
+                propagated.remove(TxThreadContextProvider.INSTANCE);
+                unchanged.remove(TxThreadContextProvider.INSTANCE);
+            }
+
+            if (ManagedTask.USE_TRANSACTION_OF_EXECUTION_THREAD.equals(props.get(ManagedTask.TRANSACTION))) {
+                if (!propagated.contains(TxThreadContextProvider.INSTANCE)) {
+                    propagated.add(TxThreadContextProvider.INSTANCE);
+                }
+
+                cleared.remove(TxThreadContextProvider.INSTANCE);
+                unchanged.remove(TxThreadContextProvider.INSTANCE);
+            }
 
             return new ContextServiceImpl(
                     new ArrayList<>(propagated),
