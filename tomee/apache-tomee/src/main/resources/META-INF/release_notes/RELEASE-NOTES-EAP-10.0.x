@@ -1,5 +1,8 @@
 TomEE EAP 10.0.x-TT.x
 
+Changes in TomEE EAP 10.0.2-TT.7
+ - Update to Tomcat 10.1.46 to mitigate CVE-2025-48989 and CVE-2025-55668
+
 Changes in TomEE EAP 10.0.2-TT.6
  - Fix to prevent ThreadContext being entered multiple times
 
