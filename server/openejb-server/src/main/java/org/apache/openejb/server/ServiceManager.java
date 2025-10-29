@@ -245,7 +245,9 @@ public abstract class ServiceManager {
                 }
             }
 
-            addProperties(conf, legacySchema, new File(conf, serviceName + ".properties"), serviceProperties, true);
+            final boolean dumpProperties = Boolean.valueOf(SystemInstance.get().getProperty("openejb.servicemanager.dumpproperties", "false"));
+
+            addProperties(conf, legacySchema, new File(conf, serviceName + ".properties"), serviceProperties, dumpProperties);
             addProperties(conf, legacySchema, new File(conf, SystemInstance.get().currentProfile() + "." + serviceName + ".properties"), serviceProperties, false);
         }
 

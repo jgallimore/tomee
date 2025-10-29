@@ -884,6 +884,7 @@ public class Installer implements InstallerInterface {
                 systemPropertiesWriter.write("\n");
                 systemPropertiesWriter.write("# openejb.system.apps = true\n");
                 systemPropertiesWriter.write("# openejb.servicemanager.enabled = true\n");
+                systemPropertiesWriter.write("# openejb.servicemanager.dumpproperties = false\n");
                 systemPropertiesWriter.write("# openejb.jmx.active = false\n");
                 systemPropertiesWriter.write("# openejb.descriptors.output = false\n");
                 systemPropertiesWriter.write("# openejb.strict.interface.declaration = false\n");
@@ -921,7 +922,7 @@ public class Installer implements InstallerInterface {
                 systemPropertiesWriter.write("# jakarta.persistence.nonJtaDataSource = \n");
 
                 systemPropertiesWriter.write("#\n");
-                systemPropertiesWriter.write("# Properties for JAS RS\n");
+                systemPropertiesWriter.write("# Properties for JAX RS\n");
                 systemPropertiesWriter.write("# openejb.jaxrs.application = \n");
                 systemPropertiesWriter.write("# openejb.cxf-rs.wadl-generator.ignoreRequests = false\n");
                 systemPropertiesWriter.write("# openejb.cxf-rs.wadl-generator.ignoreMessageWriters = true\n");
