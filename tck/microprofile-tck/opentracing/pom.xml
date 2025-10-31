@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.apache.tomee</groupId>
     <artifactId>microprofile-tck</artifactId>
-    <version>8.0.17-TT.12</version>
+    <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
   </parent>
 
   <artifactId>microprofile-opentracing-tck</artifactId>

@@ -23,7 +23,7 @@
   <parent>
     <groupId>org.superbiz</groupId>
     <artifactId>bval-evaluation-redeployment</artifactId>
-    <version>8.0.17-TT.12</version>
+    <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
   </parent>
 
   <artifactId>WebApp1</artifactId>
