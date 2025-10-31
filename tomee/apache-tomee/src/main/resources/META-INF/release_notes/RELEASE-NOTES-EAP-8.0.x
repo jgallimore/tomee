@@ -1,5 +1,8 @@
 TomEE EAP 8.0.x-TT.x
 
+Changes in TomEE EAP 8.0.17-TT.12
+- Update BouncyCastle libraries to 1.81 to mitigate CVE-2025-8916
+
 Changes in TomEE EAP 8.0.17-TT.11
 - Update to CXF 3.5.12-TT.1 to mitigate CVE-2025-48913
 - Update to Tomcat 9.0.108 to mitigate CVE-2025-48989
