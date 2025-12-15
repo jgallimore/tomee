@@ -225,20 +225,20 @@ public abstract class ProviderFactory {
         providers.add(MULTIPART_PROVIDER_CLASS.tryCreateInstance(factory.getBus()));
 
         // property set in CxfRsHttpListener
-        if (!PropertyUtils.isFalse(factory.getBus().getProperty("org.apache.openejb.server.cxf.rs.johnzon.TomEEJsonpProvider.activated"))) {
-            providers.add(JSONP_PROVIDER_CLASS.tryCreateInstance(factory.getBus()));
-        }
-        if (!PropertyUtils.isFalse(factory.getBus().getProperty("org.apache.openejb.server.cxf.rs.johnzon.TomEEJsonbProvider.activated"))) {
-            providers.add(JSONB_PROVIDER_CLASS.tryCreateInstance(factory.getBus()));
-        }
+//        if (!PropertyUtils.isFalse(factory.getBus().getProperty("org.apache.openejb.server.cxf.rs.johnzon.TomEEJsonpProvider.activated"))) {
+//            providers.add(JSONP_PROVIDER_CLASS.tryCreateInstance(factory.getBus()));
+//        }
+//        if (!PropertyUtils.isFalse(factory.getBus().getProperty("org.apache.openejb.server.cxf.rs.johnzon.TomEEJsonbProvider.activated"))) {
+//            providers.add(JSONB_PROVIDER_CLASS.tryCreateInstance(factory.getBus()));
+//        }
 
         // ensure to not load providers not available in a module environment if not needed
         factory.setProviders(false, false, providers.toArray(new Object[0]));
 
-        Object prop = factory.getBus().getProperty("skip.default.json.provider.registration");
-        if (!PropertyUtils.isTrue(prop)) {
-            factory.setProviders(false, false, createProvider(JSON_PROVIDER_NAME, factory.getBus()));
-        }
+            Object prop = factory.getBus().getProperty("skip.default.json.provider.registration");
+            if (!PropertyUtils.isTrue(prop)) {
+                factory.setProviders(false, false, createProvider(JSON_PROVIDER_NAME, factory.getBus()));
+            }
     }
 
     protected static Object createProvider(String className, Bus bus) {
