@@ -22,7 +22,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>dynamic-datasource-routing</artifactId>
   <packaging>jar</packaging>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>TomEE :: Examples :: Dynamic Datasource Routing</name>
 
   <properties>

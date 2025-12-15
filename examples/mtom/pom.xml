@@ -22,7 +22,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.superbiz</groupId>
   <artifactId>mtom</artifactId>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>TomEE :: Examples :: MTOM</name>
 
   <properties>
@@ -61,7 +61,7 @@
     <dependency>
       <groupId>org.apache.tomee.bom</groupId>
       <artifactId>tomee-microprofile</artifactId>
-      <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+      <version>8.0.17-TT.13-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

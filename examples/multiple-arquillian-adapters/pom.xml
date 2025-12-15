@@ -23,7 +23,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>multiple-arquillian-adapters</artifactId>
   <packaging>jar</packaging>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>TomEE :: Examples :: Multiple Arquillian Adapters</name>
 
   <properties>

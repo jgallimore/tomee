@@ -23,7 +23,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>change-jaxws-url</artifactId>
   <packaging>war</packaging>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>TomEE :: Web Examples :: Change JAXWS URL</name>
 
   <properties>

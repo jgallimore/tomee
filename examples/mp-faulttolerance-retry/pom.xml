@@ -21,7 +21,7 @@
 
   <groupId>org.superbiz</groupId>
   <artifactId>mp-faulttolerance-retry</artifactId>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>TomEE :: Examples :: Microprofile Fault Tolerance :: Retry</name>
 
@@ -41,7 +41,7 @@
     <dependency>
       <groupId>org.apache.tomee.bom</groupId>
       <artifactId>tomee-microprofile-api</artifactId>
-      <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+      <version>8.0.17-TT.13-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -53,7 +53,7 @@
     <dependency>
       <groupId>org.apache.tomee.bom</groupId>
       <artifactId>tomee-microprofile</artifactId>
-      <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+      <version>8.0.17-TT.13-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>

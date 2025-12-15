@@ -21,7 +21,7 @@
 
   <groupId>org.superbiz</groupId>
   <artifactId>mp-faulttolerance-timeout</artifactId>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>TomEE :: Examples :: Microprofile Fault Tolerance :: Timeout</name>
 

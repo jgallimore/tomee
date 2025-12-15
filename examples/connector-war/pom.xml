@@ -17,7 +17,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>connector-war</artifactId>
   <packaging>war</packaging>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>TomEE :: Connector Examples :: Connector in WAR</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

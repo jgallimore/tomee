@@ -20,7 +20,7 @@
 
   <groupId>org.superbiz</groupId>
   <artifactId>mp-config-source-database</artifactId>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>MicroProfile :: Examples :: Config Source Database</name>

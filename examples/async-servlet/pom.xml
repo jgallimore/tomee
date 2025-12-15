@@ -21,7 +21,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>async-servlet</artifactId>
   <packaging>war</packaging>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>OpenEJB :: Examples :: Async Servlet</name>
   <url>http://maven.apache.org</url>
 
@@ -62,7 +62,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>ziplock</artifactId>
-      <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+      <version>8.0.17-TT.13-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -99,7 +99,7 @@
       <plugin>
         <groupId>org.apache.tomee.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
-        <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+        <version>8.0.17-TT.13-SNAPSHOT</version>
         <configuration>
           <args>-Xmx512m -XX:PermSize=256m</args>
         </configuration>

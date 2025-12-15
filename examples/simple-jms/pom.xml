@@ -24,7 +24,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>simple-jms</artifactId>
   <packaging>war</packaging>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>TomEE :: Examples :: Simple JMS</name>
 
   <properties>

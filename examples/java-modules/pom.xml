@@ -23,7 +23,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>java-modules</artifactId>
   <packaging>war</packaging>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>TomEE :: Web Examples :: Java Modules (Simple REST resource)</name>
 
   <properties>

@@ -20,7 +20,7 @@
   <groupId>org.superbiz</groupId>
   <artifactId>datasource-versioning</artifactId>
   <packaging>jar</packaging>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>TomEE :: Examples :: Datasource Versioning</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -163,7 +163,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>openejb-core</artifactId>
-      <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+      <version>8.0.17-TT.13-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -175,7 +175,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>tomee-jdbc</artifactId>
-      <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+      <version>8.0.17-TT.13-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

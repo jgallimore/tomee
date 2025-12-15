@@ -21,7 +21,7 @@
 
   <groupId>jug</groupId>
   <artifactId>polling-parent</artifactId>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>TomEE :: Examples :: Polling</name>
 

@@ -20,7 +20,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.superbiz</groupId>
   <artifactId>javamail-with-velocity</artifactId>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <name>TomEE :: Examples :: JavaMail API with Velocity</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

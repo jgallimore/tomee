@@ -22,7 +22,7 @@
   <parent>
     <artifactId>tomee</artifactId>
     <groupId>org.apache.tomee</groupId>
-    <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+    <version>8.0.17-TT.13-SNAPSHOT</version>
   </parent>
 
   <artifactId>tomee-myfaces</artifactId>

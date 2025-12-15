@@ -25,7 +25,7 @@
 
   <name>TomEE :: Examples :: MVC (CXF-based) with Hibernate</name>
   <description>OpenEJB :: Web Examples :: MVC 1.0 - Deltaspike - Hibernate</description>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <url>http://tomee.apache.org</url>
 
   <properties>
@@ -57,7 +57,7 @@
       <plugin>
         <groupId>org.apache.tomee.maven</groupId>
         <artifactId>tomee-maven-plugin</artifactId>
-        <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+        <version>8.0.17-TT.13-SNAPSHOT</version>
         <configuration>
           <args>-Xmx512m -XX:PermSize=256m</args>
           <libs>
@@ -194,7 +194,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>ziplock</artifactId>
-      <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+      <version>8.0.17-TT.13-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

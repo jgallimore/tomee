@@ -24,7 +24,7 @@
   <packaging>war</packaging>
   <name>TomEE :: Examples :: MVC (RestEasy-based)</name>
   <description>OpenEJB :: Web Examples :: MVC 1.0 - RestEasy</description>
-  <version>tomee-8.0.17-TT.13-SNAPSHOT</version>
+  <version>8.0.17-TT.13-SNAPSHOT</version>
   <url>http://tomee.apache.org</url>
 
   <properties>
