@@ -1,5 +1,9 @@
 TomEE EAP 10.0.x-TT.x
 
+Changes in TomEE EAP 10.0.2-TT.8
+- Update to Tomcat 10.1.50
+- Update to ActiveMQ 6.1.8-TT.3
+
 Changes in TomEE EAP 10.0.2-TT.7
  - Update to Tomcat 10.1.46 to mitigate CVE-2025-48989
 
