@@ -38,6 +38,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -179,10 +180,12 @@ public class GenerateBoms {
             final URL url = this.getClass().getClassLoader().getResource("pom-template.xml");
             final String template = IO.slurp(url);
 
+            final String dependenciesManaged = Join.join("", Artifact::asManagedDep, distribution.getArtifacts());
             final String dependencies = Join.join("", Artifact::asBomDep, distribution.getArtifacts());
 
             final String pom = template.replace("TomEE Distribution", distribution.getDisplayName())
                     .replace("tomee-distribution", distribution.getName())
+                    .replace("<!--dependencies-managed-->", dependenciesManaged)
                     .replace("<!--dependencies-->", dependencies);
 
             final File dist = Files.mkdir(boms, distribution.getName());
@@ -227,11 +230,13 @@ public class GenerateBoms {
                     .filter(isApi)
                     .collect(Collectors.toList());
 
+            final String dependenciesManaged = Join.join("", Artifact::asManagedDep, apiArtifacts);
             final String dependencies = Join.join("", Artifact::asBomDep, apiArtifacts);
 
             final String pom = template.replace("TomEE Distribution", distribution.getDisplayName() + " API")
                     .replace("tomee-distribution", distribution.getName() + "-api")
                     .replaceAll("<dependency>.*</dependency>", "")
+                    .replace("<!--dependencies-managed-->", dependenciesManaged)
                     .replace("<!--dependencies-->", dependencies);
 
             final File dist = Files.mkdir(boms, distribution.getName() + "-api");
@@ -443,8 +448,9 @@ public class GenerateBoms {
          *
          * There is another known limitation that the Eclipse Compiler jar (ecj-4.27.jar)
          * found in the Tomcat distribution is not available in Maven Central.  The Tomcat
-         * build will download it directly from the Eclipse website.  Very strangely, the
-         * Eclipse Compiler team does publish jars to Maven Central, but only for version 3.x
+         * build will download it directly from the Eclipse website. The Version in this jar name actually describes
+         * the release version of the eclipse umbrella, not the version of JDT/ECJ.
+         * To actually determine what the JDT version is one needs to look at the Bundle-Version inside the jars manifest.
          */
         public Artifact from(final File jar) {
             if (jar.getName().equals("commons-daemon.jar")) {
@@ -531,8 +537,18 @@ public class GenerateBoms {
                 return new Artifact("org.apache.tomcat", "tomcat-jsp-api", "${tomcat.version}", null);
             }
 
+            /* ECJ is special as we cannot easily determine its version from the filename,
+             * as this version is the eclipse version and NOT the release version of JDT/ECJ.
+             * Tomcat downloads this directly from the eclipse website, hence the wrong version.
+             * To actually determine the version we must look at the Jars manifest. */
             if (jar.getName().startsWith("ecj-")) {
-                return new Artifact("org.eclipse.jdt", "ecj", "3.42.0", null);
+                String version = readBundleVersion(jar);
+                Objects.requireNonNull(version, "ECJ version could not be read");
+
+                // e.g. Bundle-Version is 3.33.0.v20230218-1114 but version deployed to maven central is 3.33.0
+                version = version.split("\\.v")[0];
+
+                return new Artifact("org.eclipse.jdt", "ecj", version, null);
             }
 
             if (jar.getName().equals("openejb-javaagent.jar")) {
@@ -586,6 +602,14 @@ public class GenerateBoms {
 
             throw new IllegalStateException(jar.getName());
         }
+
+        private String readBundleVersion(final File jar) {
+            try (JarFile jarFile = new JarFile(jar)) {
+                return jarFile.getManifest().getMainAttributes().getValue("Bundle-Version");
+            } catch (IOException e) {
+                return null;
+            }
+        }
     }
 
     /**
@@ -606,15 +630,10 @@ public class GenerateBoms {
             return a.compareTo(b);
         }
 
-        /**
-         * Long term the dep in the BOM should not have a version
-         * and all such data would be in the parent pom.
-         */
         public String asBomDep() {
             return "    <dependency>\n" +
                     "      <groupId>" + groupId + "</groupId>\n" +
                     "      <artifactId>" + artifactId + "</artifactId>\n" +
-                    "      <version>" + version + "</version>\n" +
                     (classifier != null ? "      <classifier>" + classifier + "</classifier>\n" : "") +
                     "      <exclusions>\n" +
                     "        <exclusion>\n" +
@@ -625,18 +644,13 @@ public class GenerateBoms {
                     "    </dependency>\n";
         }
 
-        /**
-         * Currently unused, but long term this will be the entry we'd need
-         * to add to the parent pom to ensure that the BOMs can just list
-         * the dependencies needed, but not duplicate the version information.
-         */
         public String asManagedDep() {
-            return "    <dependency>\n" +
-                    "      <groupId>" + groupId + "</groupId>\n" +
-                    "      <artifactId>" + artifactId + "</artifactId>\n" +
-                    "      <version>" + version + "</version>\n" +
-                    (classifier != null ? "      <classifier>" + classifier + "</classifier>\n" : "") +
-                    "    </dependency>\n";
+            return "      <dependency>\n" +
+                    "        <groupId>" + groupId + "</groupId>\n" +
+                    "        <artifactId>" + artifactId + "</artifactId>\n" +
+                    "        <version>" + version + "</version>\n" +
+                    (classifier != null ? "        <classifier>" + classifier + "</classifier>\n" : "") +
+                    "      </dependency>\n";
         }
     }
 
