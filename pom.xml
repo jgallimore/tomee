@@ -31,7 +31,7 @@
   <groupId>org.apache.tomee</groupId>
   <artifactId>tomee-project</artifactId>
   <packaging>pom</packaging>
-  <version>10.1.5-TT.1-SNAPSHOT</version>
+  <version>10.1.4-TT.1-SNAPSHOT</version>
 
   <name>Apache TomEE</name>
   <description>Apache TomEE is a JakartaEE 10 Web Profile stack for Apache Tomcat</description>
@@ -212,7 +212,7 @@
     <version.johnzon>2.0.2</version.johnzon>
     <version.myfaces>4.0.3</version.myfaces>
     <version.openjpa>4.1.1</version.openjpa>
-    <version.openwebbeans>4.0.3</version.openwebbeans>
+    <version.openwebbeans>4.0.4-TT.1</version.openwebbeans>
     <!-- org.eclipse -->
     <version.eclipselink>4.0.8</version.eclipselink>
     <!-- org.glassfish -->

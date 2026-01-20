@@ -31,7 +31,7 @@
   <parent>
     <groupId>org.apache.tomee.bom</groupId>
     <artifactId>boms</artifactId>
-    <version>10.1.5-TT.1-SNAPSHOT</version>
+    <version>10.1.4-TT.1-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -584,42 +584,42 @@
       <dependency>
         <groupId>org.apache.openwebbeans</groupId>
         <artifactId>openwebbeans-ee-common</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.4-TT.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.openwebbeans</groupId>
         <artifactId>openwebbeans-ee</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.4-TT.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.openwebbeans</groupId>
         <artifactId>openwebbeans-ejb</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.4-TT.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.openwebbeans</groupId>
         <artifactId>openwebbeans-el22</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.4-TT.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.openwebbeans</groupId>
         <artifactId>openwebbeans-impl</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.4-TT.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.openwebbeans</groupId>
         <artifactId>openwebbeans-jsf</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.4-TT.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.openwebbeans</groupId>
         <artifactId>openwebbeans-spi</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.4-TT.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.openwebbeans</groupId>
         <artifactId>openwebbeans-web</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.4-TT.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.santuario</groupId>
@@ -744,7 +744,7 @@
       <dependency>
         <groupId>org.apache.tomee</groupId>
         <artifactId>commons-dbcp2-shade</artifactId>
-        <version>10.1.5-TT.1-SNAPSHOT</version>
+        <version>10.1.4-TT.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.apache.tomee</groupId>
@@ -859,7 +859,7 @@
       <dependency>
         <groupId>org.apache.tomee</groupId>
         <artifactId>taglibs-shade</artifactId>
-        <version>10.1.5-TT.1-SNAPSHOT</version>
+        <version>10.1.4-TT.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.apache.tomee</groupId>
@@ -1223,7 +1223,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>tomee-bootstrap</artifactId>
-      <version>10.1.5-TT.1-SNAPSHOT</version>
+      <version>10.1.4-TT.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>

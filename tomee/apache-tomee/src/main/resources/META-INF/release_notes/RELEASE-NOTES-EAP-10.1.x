@@ -1,5 +1,8 @@
 TomEE EAP 10.1.x-TT.x
 
+Changes in TomEE EAP 10.1.4-TT.1
+- Update to OpenWebBeans 4.0.4-TT.1
+
 Changes in TomEE EAP 10.1.3-TT.1
 - Update to Tomcat 10.1.50
 - Update to ActiveMQ 6.1.8-TT.3
