@@ -3,6 +3,7 @@ TomEE EAP 9.1.x-TT.x
 Changes in TomEE EAP 9.1.4-TT.13
 - Update to Tomcat 10.0.28-TT.20
 - Update to ActiveMQ 5.18.8-TT.5
+- Mitigates CVE-2025-55752, CVE-2025-55754, CVE-2025-61795
 
 Changes in TomEE EAP 9.1.4-TT.12
 - Update to CXF 3.1.19-TT.13 to mitigate CVE-2025-48913
