@@ -1,7 +1,10 @@
 # Changelog
 
+Changes in TomEE EAP 9.0.1-TT.23
+Update to Tomcat 10.0.28-TT.21 to mitigate CVE-2026-24733, CVE-2025-66614 and CVE-2026-24734
+
 Changes in TomEE EAP 9.0.1-TT.22
-- Update to Tomcat 10.0.28-TT.22
+- Update to Tomcat 10.0.28-TT.20
 - Update to ActiveMQ 5.18.8-TT.5
 - Mitigates CVE-2025-55752, CVE-2025-55754, and CVE-2025-61795
 
