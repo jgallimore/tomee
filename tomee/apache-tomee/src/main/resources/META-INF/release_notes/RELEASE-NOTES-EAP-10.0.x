@@ -3,6 +3,7 @@ TomEE EAP 10.0.x-TT.x
 Changes in TomEE EAP 10.0.2-TT.9
 - Update to Tomcat 10.1.52 to mitigate CVE-2026-24733, CVE-2025-66614 and CVE-2026-24734
 - Update to CXF 4.1.5
+- Upgrade Jackson to 2.21.1
 
 Changes in TomEE EAP 10.0.2-TT.8
 - Update to Tomcat 10.1.50
