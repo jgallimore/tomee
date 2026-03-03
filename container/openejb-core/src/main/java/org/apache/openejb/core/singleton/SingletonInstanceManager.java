@@ -55,7 +55,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
@@ -115,11 +114,7 @@ public class SingletonInstanceManager {
             // The singleton has not been created nor is being created
             // We will construct this FutureTask and compete with the
             // other threads for the right to create the singleton
-            final FutureTask<Instance> task = new FutureTask<Instance>(new Callable<Instance>() {
-                public Instance call() throws Exception {
-                    return createInstance(callContext, beanContext);
-                }
-            });
+            final FutureTask<Instance> task = new FutureTask<>(() -> createInstance(callContext, beanContext));
 
             do {
                 // If our FutureTask was the one to win the slot
@@ -164,8 +159,7 @@ public class SingletonInstanceManager {
 
             // Bean may not be a singleton or may be a singleton
             // managed by a different container implementation
-            if (containerData instanceof Data) {
-                final Data data = (Data) containerData;
+            if (containerData instanceof Data data) {
 
                 data.initialize();
             }

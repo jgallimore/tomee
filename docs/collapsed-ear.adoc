@@ -9,18 +9,18 @@
 The basic idea of this approach is that your Servlets and EJBs are
 together in your WAR file as one app.
 
-* No classloader boundries between Servlets and EJBs
+* No classloader boundaries between Servlets and EJBs
 * EJBs and Servlets can share all third-party libraries (like Spring!) -
 no EAR required.
-* Can put the web.xml and ejb-jar.xml in the same archive (the WAR
+* Can put the `web.xml` and `ejb-jar.xml` in the same archive (the WAR
 file).
 * EJBs can see Servlet classes and vice versa.
 
 = Not quite J2EE (it is truly Java EE6)
 
-This is very different than J2EE or Java EE 5 as there aren't several
+This is very different from J2EE or Java EE 5 as there aren't several
 levels of separation and classloader hierarchy. This is going to take
-some getting used to and it should be understood that this style of
+some getting used to, and it should be understood that this style of
 packaging isn't J2EE compliant. Who would care tough as it is a feature
 of Java EE 6 we would've been waiting for so long.
 

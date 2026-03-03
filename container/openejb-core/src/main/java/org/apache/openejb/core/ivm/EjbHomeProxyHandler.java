@@ -100,21 +100,16 @@ public abstract class EjbHomeProxyHandler extends BaseEjbProxyHandler {
                                                            final InterfaceType interfaceType,
                                                            final List<Class> interfaces,
                                                            final Class mainInterface) {
-        switch (beanContext.getComponentType()) {
-            case STATEFUL:
-                return new StatefulEjbHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
-            case STATELESS:
-                return new StatelessEjbHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
-            case SINGLETON:
-                return new SingletonEjbHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
-            case MANAGED:
-                return new ManagedHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
-            case CMP_ENTITY:
-            case BMP_ENTITY:
-                return new EntityEjbHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
-            default:
-                throw new IllegalStateException("Component type does not support rpc interfaces: " + beanContext.getComponentType());
-        }
+        return switch (beanContext.getComponentType()) {
+            case STATEFUL -> new StatefulEjbHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
+            case STATELESS -> new StatelessEjbHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
+            case SINGLETON -> new SingletonEjbHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
+            case MANAGED -> new ManagedHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
+            case CMP_ENTITY, BMP_ENTITY ->
+                    new EntityEjbHomeHandler(beanContext, interfaceType, interfaces, mainInterface);
+            default ->
+                    throw new IllegalStateException("Component type does not support rpc interfaces: " + beanContext.getComponentType());
+        };
     }
 
     public static Object createHomeProxy(final BeanContext beanContext, final InterfaceType interfaceType) {
@@ -243,8 +238,7 @@ public abstract class EjbHomeProxyHandler extends BaseEjbProxyHandler {
 
         } catch (final InvalidateReferenceException ire) {
             Throwable cause = ire.getRootCause();
-            if (cause instanceof RemoteException && interfaceType.isLocal()) {
-                final RemoteException re = (RemoteException) cause;
+            if (cause instanceof RemoteException re && interfaceType.isLocal()) {
                 final Throwable detail = re.detail != null ? re.detail : re;
                 cause = new EJBException(re.getMessage()).initCause(detail);
             }
@@ -309,15 +303,12 @@ public abstract class EjbHomeProxyHandler extends BaseEjbProxyHandler {
             return beanContext.getModuleContext()
                 .getAppContext()
                 .getAsynchronousPool()
-                .invoke(new CUCallable<Object>(new Callable<Object>() {
-                    @Override
-                    public Object call() throws Exception {
-                        try {
-                            return homeMethodInvoke(interfce, method, args);
-                        } catch (final ApplicationException ae) {
-                            logger.error("EjbHomeProxyHandler: Asynchronous call to '" + interfce.getSimpleName() + "' on '" + method.getName() + "' failed", ae);
-                            throw ae;
-                        }
+                .invoke(new CUCallable<>((Callable<Object>) () -> {
+                    try {
+                        return homeMethodInvoke(interfce, method, args);
+                    } catch (final ApplicationException ae) {
+                        logger.error("EjbHomeProxyHandler: Asynchronous call to '" + interfce.getSimpleName() + "' on '" + method.getName() + "' failed", ae);
+                        throw ae;
                     }
                 }), method.getReturnType() == Void.TYPE);
         } else {

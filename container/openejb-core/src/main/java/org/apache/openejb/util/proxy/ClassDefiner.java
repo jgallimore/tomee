@@ -67,8 +67,8 @@ public class ClassDefiner implements DefiningClassService, InstantiatingClassSer
         DEFINE_CLASS = defineClass;
     }
 
-    // needs to be public because OpenWebBeans will instanciate it as a service to call the
-    // implmemented methods at the bottom of the class
+    // needs to be public because OpenWebBeans will instantiate it as a service to call the
+    // implemented methods at the bottom of the class
     public ClassDefiner() {
         // no-op
     }
@@ -93,7 +93,7 @@ public class ClassDefiner implements DefiningClassService, InstantiatingClassSer
                                            final Class<?> originalClass, final ProtectionDomain protectionDomain) {
         try {
             return (Class<?>) CLASS_LOADER_DEFINE_CLASS.invoke(
-                    loader, className, b, Integer.valueOf(0), Integer.valueOf(b.length), protectionDomain);
+                    loader, className, b, 0, b.length, protectionDomain);
         } catch (final Exception e) {
             throw e instanceof RuntimeException ? ((RuntimeException) e) : new RuntimeException(e);
         }

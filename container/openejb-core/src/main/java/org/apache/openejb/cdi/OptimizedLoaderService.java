@@ -139,7 +139,7 @@ public class OptimizedLoaderService implements LoaderService {
 
         if ("true".equals(OptimizedLoaderService.this.config.getProperty("openejb.cdi.extensions.sorted",
                 SystemInstance.get().getProperty("openejb.cdi.extensions.sorted")))) {
-            list.sort(new Comparator<Extension>() {
+            list.sort(new Comparator<>() {
                 @Override
                 public int compare(final Extension o1, final Extension o2) {
                     final int val1 = getVal(o1);
@@ -170,7 +170,7 @@ public class OptimizedLoaderService implements LoaderService {
         }
     }
 
-    // mainly intended to avoid conflicts between internal and overrided spec extensions
+    // mainly intended to avoid conflicts between internal and overridden spec extensions
     private boolean isFiltered(final Collection<Extension> extensions, final Extension next) {
         final ClassLoader containerLoader = ParentClassLoaderFinder.Helper.get();
         final Class<? extends Extension> extClass = next.getClass();

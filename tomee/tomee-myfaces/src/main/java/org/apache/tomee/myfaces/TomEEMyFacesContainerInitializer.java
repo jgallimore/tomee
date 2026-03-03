@@ -81,7 +81,7 @@ public class TomEEMyFacesContainerInitializer implements ServletContainerInitial
             // forcing classes to not be empty
             Set<Class<?>> passedClasses = classes;
             if (passedClasses == null) {
-                passedClasses = new HashSet<Class<?>>();
+                passedClasses = new HashSet<>();
             }
             if (passedClasses.isEmpty()) {
                 passedClasses.add(TomEEMyFacesContainerInitializer.class);
@@ -162,13 +162,7 @@ public class TomEEMyFacesContainerInitializer implements ServletContainerInitial
             }
 
             // remove our internal faces-config.xml
-            final Iterator<URL> it = metaInfFacesConfigUrls.iterator();
-            while (it.hasNext()) {
-                final URL next = it.next();
-                if (isOwb(next)) {
-                    it.remove();
-                }
-            }
+            metaInfFacesConfigUrls.removeIf(TomEEMyFacesContainerInitializer::isOwb);
 
             return !metaInfFacesConfigUrls.isEmpty();
         } catch (final Exception e) {

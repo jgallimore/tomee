@@ -68,9 +68,9 @@ public class EJBCronTrigger extends CronTriggerImpl {
 
     private static final String LAST_IDENTIFIER = "LAST";
 
-    private static final Map<String, Integer> WEEKDAYS_MAP = new HashMap<String, Integer>();
+    private static final Map<String, Integer> WEEKDAYS_MAP = new HashMap<>();
 
-    private static final Map<String, Integer> MONTHS_MAP = new HashMap<String, Integer>();
+    private static final Map<String, Integer> MONTHS_MAP = new HashMap<>();
 
     static {
         int i = 0;
@@ -87,7 +87,7 @@ public class EJBCronTrigger extends CronTriggerImpl {
 
     private static final int[] ORDERED_CALENDAR_FIELDS = {Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, Calendar.HOUR_OF_DAY, Calendar.MINUTE, Calendar.SECOND};
 
-    private static final Map<Integer, Integer> CALENDAR_FIELD_TYPE_ORDERED_INDEX_MAP = new LinkedHashMap<Integer, Integer>();
+    private static final Map<Integer, Integer> CALENDAR_FIELD_TYPE_ORDERED_INDEX_MAP = new LinkedHashMap<>();
 
     static {
         //Initialize a calendar field -> ordered array index map
@@ -642,14 +642,12 @@ public class EJBCronTrigger extends CronTriggerImpl {
             }
 
             // Try converting a textual value to numeric
-            switch (field) {
-                case Calendar.MONTH:
-                    return MONTHS_MAP.get(value);
-                case Calendar.DAY_OF_WEEK:
-                    return WEEKDAYS_MAP.get(value);
-            }
+            return switch (field) {
+                case Calendar.MONTH -> MONTHS_MAP.get(value);
+                case Calendar.DAY_OF_WEEK -> WEEKDAYS_MAP.get(value);
+                default -> throw new ParseException(field, value, "Unparseable value");
+            };
 
-            throw new ParseException(field, value, "Unparseable value");
         }
 
         public final int field;

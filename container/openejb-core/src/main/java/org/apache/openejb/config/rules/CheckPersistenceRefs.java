@@ -32,8 +32,7 @@ public class CheckPersistenceRefs extends ValidationBase {
     public void validate(final EjbModule ejbModule) {
 
         for (final EnterpriseBean bean : ejbModule.getEjbJar().getEnterpriseBeans()) {
-            if (bean instanceof SessionBean) {
-                final SessionBean sessionBean = (SessionBean) bean;
+            if (bean instanceof SessionBean sessionBean) {
                 if (sessionBean.getSessionType() == null) {
                     continue; // skipping since we don't know here what is the type
                 }
@@ -64,26 +63,20 @@ public class CheckPersistenceRefs extends ValidationBase {
     }
 
     private String getType(final EnterpriseBean bean) {
-        if (bean instanceof SessionBean) {
-            final SessionBean sessionBean = (SessionBean) bean;
-            switch (sessionBean.getSessionType()) {
-                case STATEFUL:
-                    return "Stateful";
-                case STATELESS:
-                    return "Stateless";
-                case SINGLETON:
-                    return "Singleton";
-                case MANAGED:
-                    return "Managed";
-                default:
-                    throw new IllegalArgumentException("Uknown SessionBean type " + bean.getClass());
-            }
+        if (bean instanceof SessionBean sessionBean) {
+            return switch (sessionBean.getSessionType()) {
+                case STATEFUL -> "Stateful";
+                case STATELESS -> "Stateless";
+                case SINGLETON -> "Singleton";
+                case MANAGED -> "Managed";
+                default -> throw new IllegalArgumentException("Unknown SessionBean type " + bean.getClass());
+            };
         } else if (bean instanceof MessageDrivenBean) {
             return "MessageDriven";
         } else if (bean instanceof EntityBean) {
             return "EJB 2.1 Entity";
         } else {
-            throw new IllegalArgumentException("Uknown bean type " + bean.getClass());
+            throw new IllegalArgumentException("Unknown bean type " + bean.getClass());
         }
     }
 }

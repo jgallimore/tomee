@@ -202,8 +202,7 @@ class AppInfoBuilder {
                      * This code adjusts the container id for the associated MDBs by sticking the message listener interface on the end.
                      * 
                      */
-                    if (bean instanceof MessageDrivenBeanInfo && !containerIds.contains(d.getContainerId()) && !skipMdb(bean)) {
-                        final MessageDrivenBeanInfo mdb = (MessageDrivenBeanInfo) bean;
+                    if (bean instanceof MessageDrivenBeanInfo mdb && !containerIds.contains(d.getContainerId()) && !skipMdb(bean)) {
                         final String newContainerId = d.getContainerId() + "-" + mdb.mdbInterface;
                         if (containerIds.contains(newContainerId)) {
                             d.setContainerId(newContainerId);
@@ -275,7 +274,7 @@ class AppInfoBuilder {
 
         // Check for circular references in Singleton @DependsOn
         try {
-            References.sort(beans, new References.Visitor<EnterpriseBeanInfo>() {
+            References.sort(beans, new References.Visitor<>() {
                 @Override
                 public String getName(final EnterpriseBeanInfo bean) {
                     return bean.ejbDeploymentId;
@@ -547,17 +546,11 @@ class AppInfoBuilder {
                 String transactionSupport = "none";
                 final TransactionSupportType transactionSupportType = outbound.getTransactionSupport();
                 if (transactionSupportType != null) {
-                    switch (transactionSupportType) {
-                        case LOCAL_TRANSACTION:
-                            transactionSupport = "local";
-                            break;
-                        case NO_TRANSACTION:
-                            transactionSupport = "none";
-                            break;
-                        case XA_TRANSACTION:
-                            transactionSupport = "xa";
-                            break;
-                    }
+                    transactionSupport = switch (transactionSupportType) {
+                        case LOCAL_TRANSACTION -> "local";
+                        case NO_TRANSACTION -> "none";
+                        case XA_TRANSACTION -> "xa";
+                    };
                 }
                 for (final ConnectionDefinition connection : outbound.getConnectionDefinition()) {
 
@@ -1067,11 +1060,10 @@ class AppInfoBuilder {
     }
 
     private void configureWebserviceScurity(final List<PortInfo> infoList, final Object altDD) {
-        if (altDD == null || !(altDD instanceof OpenejbJar)) {
+        if (altDD == null || !(altDD instanceof OpenejbJar openejbJar)) {
             return;
         }
 
-        final OpenejbJar openejbJar = (OpenejbJar) altDD;
         final Map<String, EjbDeployment> deploymentsByEjbName = openejbJar.getDeploymentsByEjbName();
 
         for (final PortInfo portInfo : infoList) {

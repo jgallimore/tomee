@@ -28,7 +28,7 @@ public class DeterminedRouter extends AbstractRouter {
     private String dataSourceNames;
     private String defaultDataSourceName;
     private Map<String, DataSource> dataSources = null;
-    private ThreadLocal<DataSource> currentDataSource = new ThreadLocal<DataSource>();
+    private ThreadLocal<DataSource> currentDataSource = new ThreadLocal<>();
 
     /**
      * @param datasourceList datasource resource name, separator is a space
@@ -41,7 +41,7 @@ public class DeterminedRouter extends AbstractRouter {
      * lookup datasource in openejb resources
      */
     private void init() {
-        dataSources = new ConcurrentHashMap<String, DataSource>();
+        dataSources = new ConcurrentHashMap<>();
         for (String ds : dataSourceNames.split(" ")) {
             try {
                 Object o = getOpenEJBResource(ds);
@@ -76,7 +76,7 @@ public class DeterminedRouter extends AbstractRouter {
             }
         }
 
-        // the developper set the datasource to use
+        // the developer set the datasource to use
         return currentDataSource.get();
     }
 

@@ -93,26 +93,18 @@ public abstract class EJBObjectHandler extends EJBInvocationHandler {
                                                           final Object primaryKey,
                                                           final JNDIContext.AuthenticationInfo auth) {
 
-        switch (ejb.type) {
-            case EJBMetaDataImpl.BMP_ENTITY:
-            case EJBMetaDataImpl.CMP_ENTITY:
+        return switch (ejb.type) {
+            case EJBMetaDataImpl.BMP_ENTITY, EJBMetaDataImpl.CMP_ENTITY ->
+                    new EntityEJBObjectHandler(executorService, ejb, server, client, primaryKey, auth);
+            case EJBMetaDataImpl.STATEFUL ->
+                    new StatefulEJBObjectHandler(executorService, ejb, server, client, primaryKey, auth);
+            case EJBMetaDataImpl.STATELESS ->
+                    new StatelessEJBObjectHandler(executorService, ejb, server, client, primaryKey, auth);
+            case EJBMetaDataImpl.SINGLETON ->
+                    new SingletonEJBObjectHandler(executorService, ejb, server, client, primaryKey, auth);
+            default -> throw new IllegalStateException("Unknown bean type code '" + ejb.type + "' : " + ejb.toString());
+        };
 
-                return new EntityEJBObjectHandler(executorService, ejb, server, client, primaryKey, auth);
-
-            case EJBMetaDataImpl.STATEFUL:
-
-                return new StatefulEJBObjectHandler(executorService, ejb, server, client, primaryKey, auth);
-
-            case EJBMetaDataImpl.STATELESS:
-
-                return new StatelessEJBObjectHandler(executorService, ejb, server, client, primaryKey, auth);
-
-            case EJBMetaDataImpl.SINGLETON:
-
-                return new SingletonEJBObjectHandler(executorService, ejb, server, client, primaryKey, auth);
-        }
-
-        throw new IllegalStateException("Uknown bean type code '" + ejb.type + "' : " + ejb.toString());
     }
 
     public abstract Object getRegistryId();
@@ -122,7 +114,7 @@ public abstract class EJBObjectHandler extends EJBInvocationHandler {
         EJBObjectProxy ejbObject = null;
 
         try {
-            final List<Class> interfaces = new ArrayList<Class>();
+            final List<Class> interfaces = new ArrayList<>();
             // Interface class must be listed first, before EJBObjectProxy,
             // otherwise the proxy code will select the openejb system class
             // loader for proxy creation instead of the application class loader

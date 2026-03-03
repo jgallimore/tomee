@@ -14,7 +14,7 @@ Depending which one you use the accept configuration are not 100% the
 same even if we try to align the most common entries to the historical
 configuration (ie DBCP).
 
-Here are a more detailled list of accepted properties by creator.
+Here are a more detailed list of accepted properties by creator.
 
 == DBCP2 (TomEE 7.x and 8.x)
 
@@ -60,8 +60,7 @@ the latest version of DBCP but TomEE 1.7.x is not using this version).
 
 == Tomcat JDBC
 
-Note: details are at
-https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html
+Note: details are at https://tomcat.apache.org/tomcat-10.1-doc/jdbc-pool.html
 
 * AbandonWhenPercentageFull
 * AccessToUnderlyingConnectionAllowed

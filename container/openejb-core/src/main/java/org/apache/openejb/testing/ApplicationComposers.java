@@ -473,10 +473,8 @@ public class ApplicationComposers {
                             globalJarsAnnotation, jarsAnnotation,
                             classes, excludes, cdiInterceptors, cdiAlternatives, cdiDecorators, cdiStereotypes, cdi, innerClassesAsBean,
                             defaultConfig);
-                } else if (obj instanceof WebModule) { // will add the ejbmodule too
+                } else if (obj instanceof WebModule webModule) { // will add the ejbmodule too
                     webModulesNb++;
-
-                    final WebModule webModule = (WebModule) obj;
 
                     webModule.getAltDDs().putAll(additionalDescriptors);
                     webModule.getAltDDs().putAll(descriptorsToMap(method.getAnnotation(Descriptors.class)));
@@ -493,8 +491,7 @@ public class ApplicationComposers {
                     }
                     webModule.setFinder(finderFromClasses(webModule, classes, files, excludes));
                     ejbModule.setFinder(webModule.getFinder());
-                } else if (obj instanceof EjbModule) {
-                    final EjbModule ejbModule = (EjbModule) obj;
+                } else if (obj instanceof EjbModule ejbModule) {
 
                     ejbModule.getAltDDs().putAll(additionalDescriptors);
                     ejbModule.getAltDDs().putAll(descriptorsToMap(method.getAnnotation(Descriptors.class)));
@@ -510,9 +507,8 @@ public class ApplicationComposers {
                         (files == null ? files = new LinkedList<>() : files).add(jarLocation(testClass));
                     }
                     ejbModule.setFinder(finderFromClasses(ejbModule, classes, files, excludes));
-                } else if (obj instanceof EjbJar) {
+                } else if (obj instanceof EjbJar ejbJar) {
 
-                    final EjbJar ejbJar = (EjbJar) obj;
                     setId(ejbJar, method);
 
                     final EjbModule ejbModule = new EjbModule(ejbJar);
@@ -530,9 +526,8 @@ public class ApplicationComposers {
                         (files == null ? files = new LinkedList<>() : files).add(jarLocation(testClass));
                     }
                     ejbModule.setFinder(finderFromClasses(ejbModule, classes, files, excludes));
-                } else if (obj instanceof EnterpriseBean) {
+                } else if (obj instanceof EnterpriseBean bean) {
 
-                    final EnterpriseBean bean = (EnterpriseBean) obj;
                     final EjbJar ejbJar = new EjbJar(method.getName());
                     ejbJar.addEnterpriseBean(bean);
                     final EjbModule ejbModule = new EjbModule(ejbJar);
@@ -553,27 +548,23 @@ public class ApplicationComposers {
                     application = (Application) obj;
                     setId(application, method);
 
-                } else if (obj instanceof Connector) {
+                } else if (obj instanceof Connector connector) {
 
-                    final Connector connector = (Connector) obj;
                     setId(connector, method);
                     appModule.getConnectorModules().add(new ConnectorModule(connector));
 
-                } else if (obj instanceof Persistence) {
+                } else if (obj instanceof Persistence persistence) {
 
-                    final Persistence persistence = (Persistence) obj;
                     appModule.addPersistenceModule(
                             new PersistenceModule(appModule, implicitRootUrl(method.getAnnotation(PersistenceRootUrl.class)), persistence));
                     notBusinessModuleNumber++;
-                } else if (obj instanceof PersistenceUnit) {
+                } else if (obj instanceof PersistenceUnit unit) {
 
-                    final PersistenceUnit unit = (PersistenceUnit) obj;
                     appModule.addPersistenceModule(
                             new PersistenceModule(appModule, implicitRootUrl(method.getAnnotation(PersistenceRootUrl.class)), new Persistence(unit)));
                     notBusinessModuleNumber++;
-                } else if (obj instanceof Beans) {
+                } else if (obj instanceof Beans beans) {
 
-                    final Beans beans = (Beans) obj;
                     final EjbModule ejbModule = new EjbModule(new EjbJar(method.getName()));
                     ejbModule.setBeans(beans);
                     appModule.getEjbModules().add(ejbModule);
@@ -585,16 +576,14 @@ public class ApplicationComposers {
                         (files == null ? files = new LinkedList<>() : files).add(jarLocation(testClass));
                     }
                     ejbModule.setFinder(finderFromClasses(ejbModule, classes, files, excludes));
-                } else if (obj instanceof Class[]) {
+                } else if (obj instanceof Class[] beans) {
 
-                    final Class[] beans = (Class[]) obj;
                     final EjbModule ejbModule = new EjbModule(new EjbJar(method.getName()));
                     ejbModule.setFinder(new AnnotationFinder(new ClassesArchive(beans)).link());
                     ejbModule.setBeans(new Beans());
                     appModule.getEjbModules().add(ejbModule);
-                } else if (obj instanceof Class) {
+                } else if (obj instanceof Class bean) {
 
-                    final Class bean = (Class) obj;
                     final EjbModule ejbModule = new EjbModule(new EjbJar(method.getName()));
                     ejbModule.setFinder(new AnnotationFinder(new ClassesArchive(bean)).link());
                     ejbModule.setBeans(new Beans());
@@ -616,9 +605,8 @@ public class ApplicationComposers {
                     appModule.getResources().addAll(asResources.getResource());
                     appModule.getContainers().addAll(asResources.getContainer());
                     notBusinessModuleNumber++;
-                } else if (obj instanceof AppModule) {
+                } else if (obj instanceof AppModule module) {
                     // we can probably go further here
-                    final AppModule module = (AppModule) obj;
 
                     module.getAltDDs().putAll(additionalDescriptors);
                     module.getAltDDs().putAll(descriptorsToMap(method.getAnnotation(Descriptors.class)));
@@ -779,13 +767,11 @@ public class ApplicationComposers {
             if (remove != null) {
                 testClassFinders.put(inputTestInstance, remove);
                 testClassFinder = remove;
-                afterRunnables.add(new Runnable() { // reset state for next test
-                    @Override
-                    public void run() {
-                        final ClassFinder classFinder = testClassFinders.remove(inputTestInstance);
-                        if (classFinder != null) {
-                            testClassFinders.put(self, classFinder);
-                        }
+                // reset state for next test
+                afterRunnables.add(() -> {
+                    final ClassFinder classFinder = testClassFinders.remove(inputTestInstance);
+                    if (classFinder != null) {
+                        testClassFinders.put(self, classFinder);
                     }
                 });
             }
@@ -1080,12 +1066,9 @@ public class ApplicationComposers {
     }
 
     public void evaluate(final Object testInstance, final Runnable next) throws Exception {
-        evaluate(testInstance, new Callable<Void>() {
-            @Override
-            public Void call() throws Exception {
-                next.run();
-                return null;
-            }
+        evaluate(testInstance, (Callable<Void>) () -> {
+            next.run();
+            return null;
         });
     }
 
@@ -1345,8 +1328,7 @@ public class ApplicationComposers {
         for (final Map.Entry<Object, List<Method>> method : configs.entrySet()) {
             for (final Method m : method.getValue()) {
                 final Object o = m.invoke(method.getKey());
-                if (o instanceof Properties) {
-                    final Properties properties = (Properties) o;
+                if (o instanceof Properties properties) {
                     configuration.putAll(properties);
                 } else if (Openejb.class.isInstance(o)) {
                     openejb = Openejb.class.cast(o);
@@ -1550,23 +1532,17 @@ public class ApplicationComposers {
 
             final CountDownLatch latch = new CountDownLatch(1);
 
-            final Thread hook = new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        composer.after();
-                    } catch (final Exception e) {
-                        // no-op
-                    }
+            final Thread hook = new Thread(() -> {
+                try {
+                    composer.after();
+                } catch (final Exception e) {
+                    // no-op
                 }
-            };
+            });
             Runtime.getRuntime().addShutdownHook(hook);
-            composer.afterRunnables.add(new Runnable() {
-                @Override
-                public void run() {
-                    Runtime.getRuntime().removeShutdownHook(hook);
-                    latch.countDown();
-                }
+            composer.afterRunnables.add(() -> {
+                Runtime.getRuntime().removeShutdownHook(hook);
+                latch.countDown();
             });
 
             // do it after having added the latch countdown hook to avoid to block if start and stop very fast
@@ -1581,42 +1557,36 @@ public class ApplicationComposers {
     }
 
     public void handleLifecycle(final Class<?> type, final Object appInstance) throws IllegalAccessException, InvocationTargetException {
-        beforeDestroyAfterRunnables.add(new Runnable() {
-            @Override
-            public void run() {
-                for (final Map.Entry<Object, ClassFinder> m : testClassFinders.entrySet()) {
-                    for (final Method mtd : m.getValue().findAnnotatedMethods(PreDestroy.class)) {
-                        if (mtd.getParameterTypes().length == 0) {
-                            if (!mtd.isAccessible()) {
-                                mtd.setAccessible(true);
-                            }
-                            try {
-                                mtd.invoke(mtd.getDeclaringClass() == type ? appInstance : m.getKey());
-                            } catch (final IllegalAccessException | InvocationTargetException e) {
-                                // no-op
-                            }
+        beforeDestroyAfterRunnables.add(() -> {
+            for (final Map.Entry<Object, ClassFinder> m : testClassFinders.entrySet()) {
+                for (final Method mtd : m.getValue().findAnnotatedMethods(PreDestroy.class)) {
+                    if (mtd.getParameterTypes().length == 0) {
+                        if (!mtd.isAccessible()) {
+                            mtd.setAccessible(true);
+                        }
+                        try {
+                            mtd.invoke(mtd.getDeclaringClass() == type ? appInstance : m.getKey());
+                        } catch (final IllegalAccessException | InvocationTargetException e) {
+                            // no-op
                         }
                     }
                 }
             }
         });
         if (!appContext.getWebContexts().isEmpty()) {
-            beforeDestroyAfterRunnables.add(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        final Object sessionManager = SystemInstance.get().getComponent(
-                                ParentClassLoaderFinder.Helper.get().loadClass("org.apache.openejb.server.httpd.session.SessionManager")
-                        );
-                        if (sessionManager != null) {
-                            final Class<?>[] paramTypes = {WebContext.class};
-                            for (final WebContext web : appContext.getWebContexts()) {
-                                Reflections.invokeByReflection(sessionManager, "destroy", paramTypes, new Object[]{web});
-                            }
+            beforeDestroyAfterRunnables.add(() -> {
+                try {
+                    final Object sessionManager = SystemInstance.get().getComponent(
+                            ParentClassLoaderFinder.Helper.get().loadClass("org.apache.openejb.server.httpd.session.SessionManager")
+                    );
+                    if (sessionManager != null) {
+                        final Class<?>[] paramTypes = {WebContext.class};
+                        for (final WebContext web : appContext.getWebContexts()) {
+                            Reflections.invokeByReflection(sessionManager, "destroy", paramTypes, new Object[]{web});
                         }
-                    } catch (final Throwable e) {
-                        // no-op
                     }
+                } catch (final Throwable e) {
+                    // no-op
                 }
             });
         }

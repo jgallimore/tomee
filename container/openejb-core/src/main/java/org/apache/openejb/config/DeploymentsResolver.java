@@ -154,14 +154,11 @@ public class DeploymentsResolver implements DeploymentFilterable {
         Files.notHidden(dir);
 
         final Map<String, File> files = new LinkedHashMap<>();
-        final File[] list = dir.listFiles(new FileFilter() {
-            @Override
-            public boolean accept(final File f) {
-                if (f.isDirectory()) {
-                    return DeploymentsResolver.isValidDirectory(f) && !DeploymentsResolver.isExtractedDir(f);
-                }
-                return true;
+        final File[] list = dir.listFiles(f -> {
+            if (f.isDirectory()) {
+                return DeploymentsResolver.isValidDirectory(f) && !DeploymentsResolver.isExtractedDir(f);
             }
+            return true;
         });
 
         if (list != null) {
@@ -218,7 +215,7 @@ public class DeploymentsResolver implements DeploymentFilterable {
      */
     public static List<URL> loadFromClasspath(final ClassLoader classLoader) {
         final ClasspathSearcher searchResult = new ClasspathSearcher().loadUrls(classLoader);
-        if (searchResult.prefiltered == null || searchResult.urlSet == null) { // an error occured
+        if (searchResult.prefiltered == null || searchResult.urlSet == null) { // an error occurred
             return new ArrayList<>(); // allow iterator to fully work compared to emptyList()
         }
 

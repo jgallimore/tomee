@@ -87,13 +87,10 @@ public class HsqlService implements ServerService, SelfManaging {
         final Properties properties = new Properties();
         for (final Map.Entry<Object, Object> entry : p.entrySet()) {
             // Sometimes the properties object has non string values
-            if (!(entry.getKey() instanceof String))
+            if (!(entry.getKey() instanceof String property))
                 continue;
-            if (!(entry.getValue() instanceof String))
+            if (!(entry.getValue() instanceof String value))
                 continue;
-
-            final String property = (String) entry.getKey();
-            final String value = (String) entry.getValue();
 
             if (property.startsWith(sc_key_dbname + ".") ||
                 property.startsWith(sc_key_database + ".")) {
@@ -118,11 +115,10 @@ public class HsqlService implements ServerService, SelfManaging {
             final NamingEnumeration<Binding> bindings;
             try {
                 bindings = containerSystem.getJNDIContext().listBindings("openejb/Resource/");
-                final Set<String> dbnames = new TreeSet<String>();
+                final Set<String> dbnames = new TreeSet<>();
                 for (final Binding binding : Collections.list(bindings)) {
                     final Object value = binding.getObject();
-                    if (value instanceof DataSource) {
-                        final DataSource jdbc = (DataSource) value;
+                    if (value instanceof DataSource jdbc) {
                         Connection connection = null;
                         String path = null;
                         try {

@@ -93,36 +93,23 @@ public class JNDIContext implements InitialContextFactory, Context {
             container = Class.forName("org.apache.openejb.OpenEJB", false, classLoader);
             final Class<?> propertyPlaceHolderHelper  = Class.forName("org.apache.openejb.util.PropertyPlaceHolderHelper", false, classLoader);
             final Method simpleValue = propertyPlaceHolderHelper.getMethod("simpleValue", String.class);
-            decipher = new Decipher() {
-                @Override
-                public String decipher(final String from) {
-                    try {
-                        return String.class.cast(simpleValue.invoke(null, from));
-                    } catch (final IllegalAccessException e) {
-                        throw new IllegalStateException(e);
-                    } catch (final InvocationTargetException e) {
-                        throw new IllegalStateException(e.getCause());
-                    }
+            decipher = from -> {
+                try {
+                    return String.class.cast(simpleValue.invoke(null, from));
+                } catch (final IllegalAccessException e) {
+                    throw new IllegalStateException(e);
+                } catch (final InvocationTargetException e) {
+                    throw new IllegalStateException(e.getCause());
                 }
             };
         } catch (final Throwable e) {
             container = null;
-            decipher = new Decipher() {
-                @Override
-                public String decipher(final String from) {
-                    return from;
-                }
-            };
+            decipher = from -> from;
         }
         DECIPHER = decipher;
         if (classLoader == ClassLoader.getSystemClassLoader() || Boolean.getBoolean("openejb.client.flus-tasks")
             || (container != null && container.getClassLoader() == classLoader)) {
-            Runtime.getRuntime().addShutdownHook(new Thread() {
-                @Override
-                public void run() {
-                    waitEndOfTasks(GLOBAL_CLIENT_POOL);
-                }
-            });
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> waitEndOfTasks(GLOBAL_CLIENT_POOL)));
         }
     }
 
@@ -164,7 +151,7 @@ public class JNDIContext implements InitialContextFactory, Context {
          is true then a final attempt is made to run the process in the current thread (the service thread).
          */
 
-        final ThreadPoolExecutor executorService = new ThreadPoolExecutor(3, (threads < 3 ? 3 : threads), 1, TimeUnit.MINUTES, blockingQueue == null ? new LinkedBlockingDeque<Runnable>(Integer.parseInt(getProperty(null, POOL_QUEUE_SIZE, "2"))) : blockingQueue);
+        final ThreadPoolExecutor executorService = new ThreadPoolExecutor(3, (threads < 3 ? 3 : threads), 1, TimeUnit.MINUTES, blockingQueue == null ? new LinkedBlockingDeque<>(Integer.parseInt(getProperty(null, POOL_QUEUE_SIZE, "2"))) : blockingQueue);
         executorService.setThreadFactory(new ThreadFactory() {
 
             private final AtomicInteger i = new AtomicInteger(0);
@@ -173,42 +160,34 @@ public class JNDIContext implements InitialContextFactory, Context {
             public Thread newThread(final Runnable r) {
                 final Thread t = new Thread(r, "OpenEJB.Client." + i.incrementAndGet());
                 t.setDaemon(true);
-                t.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-                    @Override
-                    public void uncaughtException(final Thread t, final Throwable e) {
-                        Logger.getLogger(EJBObjectHandler.class.getName()).log(Level.SEVERE, "Uncaught error in: " + t.getName(), e);
-                    }
-                });
+                t.setUncaughtExceptionHandler((t1, e) -> Logger.getLogger(EJBObjectHandler.class.getName()).log(Level.SEVERE, "Uncaught error in: " + t1.getName(), e));
 
                 return t;
             }
 
         });
 
-        executorService.setRejectedExecutionHandler(new RejectedExecutionHandler() {
-            @Override
-            public void rejectedExecution(final Runnable r, final ThreadPoolExecutor tpe) {
+        executorService.setRejectedExecutionHandler((r, tpe) -> {
 
-                if (null == r || null == tpe || tpe.isShutdown() || tpe.isTerminated() || tpe.isTerminating()) {
-                    return;
-                }
+            if (null == r || null == tpe || tpe.isShutdown() || tpe.isTerminated() || tpe.isTerminating()) {
+                return;
+            }
 
-                final Logger log = Logger.getLogger(EJBObjectHandler.class.getName());
+            final Logger log = Logger.getLogger(EJBObjectHandler.class.getName());
 
-                if (log.isLoggable(Level.WARNING)) {
-                    log.log(Level.WARNING, "EJBObjectHandler ExecutorService at capicity for process: " + r);
-                }
+            if (log.isLoggable(Level.WARNING)) {
+                log.log(Level.WARNING, "EJBObjectHandler ExecutorService at capicity for process: " + r);
+            }
 
-                boolean offer = false;
-                try {
-                    offer = tpe.getQueue().offer(r, 10, TimeUnit.SECONDS);
-                } catch (InterruptedException e) {
-                    //Ignore
-                }
+            boolean offer = false;
+            try {
+                offer = tpe.getQueue().offer(r, 10, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                //Ignore
+            }
 
-                if (!offer) {
-                    log.log(Level.SEVERE, "EJBObjectHandler ExecutorService failed to run asynchronous process: " + r);
-                }
+            if (!offer) {
+                log.log(Level.SEVERE, "EJBObjectHandler ExecutorService failed to run asynchronous process: " + r);
             }
         });
         return executorService;
@@ -303,7 +282,7 @@ public class JNDIContext implements InitialContextFactory, Context {
         }
 
         final int queue = Integer.parseInt(getProperty(env, JNDIContext.POOL_QUEUE_SIZE, "2"));
-        blockingQueue = new LinkedBlockingQueue<Runnable>((queue < 2 ? 2 : queue));
+        blockingQueue = new LinkedBlockingQueue<>((queue < 2 ? 2 : queue));
         threads = Integer.parseInt(getProperty(env, "openejb.client.invoker.threads", "-1"));
 
         return this;
@@ -651,10 +630,9 @@ public class JNDIContext implements InitialContextFactory, Context {
     @Override
     public NamingEnumeration<Binding> listBindings(final String name) throws NamingException {
         final Object o = lookup(name);
-        if (o instanceof Context) {
-            final Context context = (Context) o;
+        if (o instanceof Context context) {
             final NamingEnumeration<NameClassPair> enumeration = context.list("");
-            final List<NameClassPair> bindings = new ArrayList<NameClassPair>();
+            final List<NameClassPair> bindings = new ArrayList<>();
 
             while (enumeration.hasMoreElements()) {
                 final NameClassPair pair = enumeration.nextElement();

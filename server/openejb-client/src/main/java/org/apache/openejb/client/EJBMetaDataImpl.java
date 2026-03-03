@@ -53,11 +53,11 @@ public class EJBMetaDataImpl implements jakarta.ejb.EJBMetaData, java.io.Externa
 
     protected transient Class remoteClass;
 
-    protected final transient List<Class> businessClasses = new ArrayList<Class>();
+    protected final transient List<Class> businessClasses = new ArrayList<>();
 
     protected transient Class mainInterface;
 
-    protected final transient Set<String> asynchronousMethods = new HashSet<String>();
+    protected final transient Set<String> asynchronousMethods = new HashSet<>();
 
     protected final transient Properties properties = new Properties();
 
@@ -350,8 +350,7 @@ public class EJBMetaDataImpl implements jakarta.ejb.EJBMetaData, java.io.Externa
 
     public void loadProperties(final Properties properties) {
         for (final Map.Entry<Object, Object> entry : properties.entrySet()) {
-            if (entry.getKey() instanceof String) {
-                final String key = (String) entry.getKey();
+            if (entry.getKey() instanceof String key) {
                 if (key.startsWith("openejb.client.")) {
                     this.properties.put(key, entry.getValue());
                 }

@@ -55,7 +55,7 @@ myStatelessContainer.sweepInterval = 5 minutes
 
 Properties and xml can be mixed. Properties will override the xml
 allowing for easy configuration change without the need for $\{} style
-variable substitution. Properties are not case sensitive. If a property
+variable substitution. Properties are not case-sensitive. If a property
 is specified that is not supported by the declared StatelessContainer a
 warning will be logged. If a StatelessContainer is needed by the
 application and one is not declared, TomEE will create one dynamically
@@ -76,7 +76,7 @@ time
 
 30 seconds
 
-Specifies the time an invokation should wait for an instance of the pool
+Specifies the time an invocation should wait for an instance of the pool
 to become available.
 
 callbackThreads
@@ -190,13 +190,13 @@ expired instances.
 
 == accessTimeout
 
-Specifies the time an invokation should wait for an instance of the pool
+Specifies the time an invocation should wait for an instance of the pool
 to become available.
 
 After the timeout is reached, if an instance in the pool cannot be
 obtained, the method invocation will fail.
 
-Usable time units: nanoseconds, microsecons, milliseconds, seconds,
+Usable time units: nanoseconds, microseconds, milliseconds, seconds,
 minutes, hours, days. Or any combination such as "1 hour and 27 minutes
 and 10 seconds"
 
@@ -224,7 +224,7 @@ bean is undeployed and its pool is closed. The `CloseTimeout` specifies
 the maximum time to wait for the pool to close and `PostConstruct`
 methods to be invoked.
 
-Usable time units: nanoseconds, microsecons, milliseconds, seconds,
+Usable time units: nanoseconds, microseconds, milliseconds, seconds,
 minutes, hours, days. Or any combination such as
 `1 hour and 27 minutes and 10 seconds`
 
@@ -258,7 +258,7 @@ Only instances in surplus of the pool's `MinSize` are eligible to expire
 via `IdleTimeout` Instances that expire due to `IdleTimeout` will have
 their `@PreDestroy` methods invoked before being completely destroyed.
 
-Usable time units: nanoseconds, microsecons, milliseconds, seconds,
+Usable time units: nanoseconds, microseconds, milliseconds, seconds,
 minutes, hours, days. Or any combination such as "1 hour and 27 minutes
 and 10 seconds"
 
@@ -271,7 +271,7 @@ This will happen gracefully. Useful for situations where bean instances
 are designed to hold potentially expensive resources such as memory or
 file handles and need to be periodically cleared out.
 
-Usable time units: nanoseconds, microsecons, milliseconds, seconds,
+Usable time units: nanoseconds, microseconds, milliseconds, seconds,
 minutes, hours, days. Or any combination such as
 `1 hour and 27 minutes and 10 seconds`
 
@@ -413,7 +413,7 @@ StrictPooling tells the container what to do when the pool reaches it's
 maximum size and there are incoming requests that need instances.
 
 With strict pooling, requests will have to wait for instances to become
-available. The pool size will never grow beyond the the set `MaxSize`
+available. The pool size will never grow beyond the set `MaxSize`
 value. The maximum amount of time a request should wait is specified via
 the `AccessTimeout` setting.
 
@@ -422,7 +422,7 @@ meet demand. The instances will last for just one method invocation and
 then are removed.
 
 Setting `StrictPooling` to `false` and `MaxSize` to `0` will result in
-no pooling. Instead instances will be created on demand and live for
+no pooling. Instead, instances will be created on demand and live for
 exactly one method call before being removed.
 
 == sweepInterval
@@ -436,10 +436,10 @@ functionality is enforced. Higher intervals are better.
 Instances in use are excluded from sweeping. Should an instance expire
 while in use it will be evicted immediately upon return to the pool.
 Effectively `MaxAge` and flushes will be enforced as a part of normal
-activity or sweeping, while IdleTimeout is only enforcable via sweeping.
+activity or sweeping, while IdleTimeout is only enforceable via sweeping.
 This makes aggressive sweeping less important for a pool under moderate
 load.
 
-Usable time units: nanoseconds, microsecons, milliseconds, seconds,
+Usable time units: nanoseconds, microseconds, milliseconds, seconds,
 minutes, hours, days. Or any combination such as
 `1 hour and 27 minutes and 10 seconds`

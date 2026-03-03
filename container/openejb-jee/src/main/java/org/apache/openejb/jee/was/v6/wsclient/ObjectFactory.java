@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
  * element interface generated in the org.apache.openejb.jee.was.v6.wsclient
  * package.
  *
- * An ObjectFactory allows you to programatically construct new instances of the
+ * An ObjectFactory allows you to programmatically construct new instances of the
  * Java representation for XML content. The Java representation of XML content
  * can consist of schema derived interfaces and classes representing the binding
  * of schema type definitions, element declarations and model groups. Factory
@@ -96,8 +96,8 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "webservice_client.xmi", name = "WebServicesClient")
     public JAXBElement<WebServicesClient> createWebServicesClient(
         final WebServicesClient value) {
-        return new JAXBElement<WebServicesClient>(_WebServicesClient_QNAME,
-            WebServicesClient.class, null, value);
+        return new JAXBElement<>(_WebServicesClient_QNAME,
+                WebServicesClient.class, null, value);
     }
 
     /**
@@ -107,8 +107,8 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "webservice_client.xmi", name = "ComponentScopedRefs")
     public JAXBElement<ComponentScopedRefs> createComponentScopedRefs(
         final ComponentScopedRefs value) {
-        return new JAXBElement<ComponentScopedRefs>(_ComponentScopedRefs_QNAME,
-            ComponentScopedRefs.class, null, value);
+        return new JAXBElement<>(_ComponentScopedRefs_QNAME,
+                ComponentScopedRefs.class, null, value);
     }
 
     /**
@@ -117,8 +117,8 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "webservice_client.xmi", name = "Handler")
     public JAXBElement<Handler> createHandler(final Handler value) {
-        return new JAXBElement<Handler>(_Handler_QNAME, Handler.class, null,
-            value);
+        return new JAXBElement<>(_Handler_QNAME, Handler.class, null,
+                value);
     }
 
     /**
@@ -128,8 +128,8 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "webservice_client.xmi", name = "PortComponentRef")
     public JAXBElement<PortComponentRef> createPortComponentRef(
         final PortComponentRef value) {
-        return new JAXBElement<PortComponentRef>(_PortComponentRef_QNAME,
-            PortComponentRef.class, null, value);
+        return new JAXBElement<>(_PortComponentRef_QNAME,
+                PortComponentRef.class, null, value);
     }
 
     /**
@@ -138,8 +138,8 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "webservice_client.xmi", name = "ServiceRef")
     public JAXBElement<ServiceRef> createServiceRef(final ServiceRef value) {
-        return new JAXBElement<ServiceRef>(_ServiceRef_QNAME, ServiceRef.class,
-            null, value);
+        return new JAXBElement<>(_ServiceRef_QNAME, ServiceRef.class,
+                null, value);
     }
 
 }

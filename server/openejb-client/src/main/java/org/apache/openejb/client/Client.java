@@ -75,7 +75,7 @@ public class Client {
 
     public Client() {
         final String retryValue = System.getProperty("openejb.client.requestretry", getRetry() + "");
-        retry = Boolean.valueOf(retryValue);
+        retry = Boolean.parseBoolean(retryValue);
 
         observers.addObserver(new EventLogger());
         observers.fireEvent(new ClientVersion());
@@ -336,10 +336,8 @@ public class Client {
             }
 
             if (retryConditions.size() > 0) {
-                if (res instanceof EJBResponse) {
-                    final EJBResponse ejbResponse = (EJBResponse) res;
-                    if (ejbResponse.getResult() instanceof ThrowableArtifact) {
-                        final ThrowableArtifact artifact = (ThrowableArtifact) ejbResponse.getResult();
+                if (res instanceof EJBResponse ejbResponse) {
+                    if (ejbResponse.getResult() instanceof ThrowableArtifact artifact) {
                         //noinspection ThrowableResultOfMethodCallIgnored
                         if (retryConditions.contains(artifact.getThrowable().getClass())) {
 
@@ -449,7 +447,7 @@ public class Client {
     public static Set<URI> getFailed() {
         Set<URI> set = failed.get();
         if (set == null) {
-            set = new HashSet<URI>();
+            set = new HashSet<>();
             failed.set(set);
         }
         return set;
@@ -467,10 +465,10 @@ public class Client {
     //openejb.client.connection.strategy
 
     private boolean getRetry() {
-        return retry = Boolean.valueOf(System.getProperty("openejb.client.requestretry", retry + ""));
+        return retry = Boolean.parseBoolean(System.getProperty("openejb.client.requestretry", retry + ""));
     }
 
-    private static final Map<ServerMetaData, Context> contexts = new ConcurrentHashMap<ServerMetaData, Context>();
+    private static final Map<ServerMetaData, Context> contexts = new ConcurrentHashMap<>();
 
     public static Context getContext(final ServerMetaData serverMetaData) {
         Context context = contexts.get(serverMetaData);
@@ -533,7 +531,7 @@ public class Client {
         }
 
         private HashSet<URI> locations(final ClusterMetaData updated) {
-            return new HashSet<URI>(Arrays.asList(updated.getLocations()));
+            return new HashSet<>(Arrays.asList(updated.getLocations()));
         }
 
         public Properties getProperties() {
@@ -545,7 +543,7 @@ public class Client {
         }
 
         public Set<URI> diff(final Set<URI> a, final Set<URI> b) {
-            final Set<URI> diffs = new HashSet<URI>();
+            final Set<URI> diffs = new HashSet<>();
             for (final URI uri : b) {
                 if (!a.contains(uri)) {
                     diffs.add(uri);

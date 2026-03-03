@@ -23,7 +23,7 @@ import java.util.Stack;
 public class HeartbeatMonitor {
 
     public static void main(final String[] args) throws Exception {
-        final Stack<String> stack = new Stack<String>();
+        final Stack<String> stack = new Stack<>();
         for (final String s : args) {
             stack.push(s);
         }
@@ -47,13 +47,9 @@ public class HeartbeatMonitor {
 
         final MulticastSearch search = new MulticastSearch(host, port);
         try {
-            search.search(new MulticastSearch.Filter() {
-                @Override
-                @SuppressWarnings("UseOfSystemOutOrSystemErr")
-                public boolean accept(final URI service) {
-                    System.out.println(service);
-                    return false;
-                }
+            search.search((MulticastSearch.Filter) service -> {
+                System.out.println(service);
+                return false;
             });
         } finally {
             search.close();

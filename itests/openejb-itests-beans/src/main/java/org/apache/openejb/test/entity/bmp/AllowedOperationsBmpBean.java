@@ -36,7 +36,7 @@ public class AllowedOperationsBmpBean implements jakarta.ejb.EntityBean {
     protected String firstName;
     protected String lastName;
     protected EntityContext ejbContext;
-    private Map<String, OperationsPolicy> allowedOperationsTable = new TreeMap<String, OperationsPolicy>();
+    private Map<String, OperationsPolicy> allowedOperationsTable = new TreeMap<>();
 
 
     //=============================
@@ -80,7 +80,7 @@ public class AllowedOperationsBmpBean implements jakarta.ejb.EntityBean {
      */
     public Integer ejbFindByPrimaryKey(final Integer primaryKey) {
         testAllowedOperations("ejbFind");
-        return new Integer(-1);
+        return -1;
     }
 
     /**
@@ -89,7 +89,7 @@ public class AllowedOperationsBmpBean implements jakarta.ejb.EntityBean {
     public Integer ejbCreateObject(final String name) throws CreateException {
         testAllowedOperations("ejbCreate");
 
-        return new Integer(-1);
+        return -1;
     }
 
     public void ejbPostCreateObject(final String name) throws CreateException {
@@ -150,10 +150,10 @@ public class AllowedOperationsBmpBean implements jakarta.ejb.EntityBean {
     /**
      * Maps to BasicBmpObject.getAllowedOperationsReport
      *
-     * Returns a report of the allowed opperations
+     * Returns a report of the allowed operations
      * for one of the bean's methods.
      *
-     * @param methodName The method for which to get the allowed opperations report
+     * @param methodName The method for which to get the allowed operations report
      * @return OperationsPolicy
      */
     public OperationsPolicy getAllowedOperationsReport(final String methodName) {

@@ -12,7 +12,7 @@ in other vms_ access your ejbs. _Note, you do not need to go to this
 extreme to unit test ejbs with remote interfaces._
 
 The basic recipe is the same for a standard embedded scenario but with
-these added ingreditents:
+these added ingredients:
 
 * _openejb.embedded.remotable_ property
 * _openejb-ejbd_ jar
@@ -23,7 +23,7 @@ is seen by the LocalInitialContextFactory, it will boot up the Server
 ServiceManager in the VM which will in turn look for ServerServices in
 the classpath.
 
-Provided you have the openejb-ejbd jar in your classpath along with it's
+Provided you have the openejb-ejbd jar in your classpath along with its
 dependencies (openejb-server, openejb-client, openejb-core), then those
 services will be brought online and remote clients will be able to
 connect into your vm and invoke beans.

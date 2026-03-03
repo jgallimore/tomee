@@ -32,18 +32,16 @@ public class PersistenceContextFactory extends AbstractObjectFactory {
     @Override
     public Object getObjectInstance(final Object object, final Name name, final Context context, final Hashtable environment) throws Exception {
         // ignore non resource-refs
-        if (!(object instanceof ResourceRef)) {
+        if (!(object instanceof ResourceRef ref)) {
             return null;
         }
-
-        final Reference ref = (Reference) object;
 
         final Object value;
         if (getProperty(ref, JNDI_NAME) != null) {
             // lookup the value in JNDI
             value = super.getObjectInstance(object, name, context, environment);
         } else {
-            // value is hard hard coded in the properties
+            // value is hard coded in the properties
             value = getStaticValue(ref);
         }
 

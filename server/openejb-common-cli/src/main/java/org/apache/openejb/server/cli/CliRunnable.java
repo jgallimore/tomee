@@ -62,7 +62,7 @@ public class CliRunnable implements Runnable {
 
     private static final Properties PROPERTIES = new Properties();
     private static final boolean tomee;
-    private static final Map<String, Class<?>> COMMANDS = new TreeMap<String, Class<?>>();
+    private static final Map<String, Class<?>> COMMANDS = new TreeMap<>();
     private static final OpenEJBScripter scripter = new OpenEJBScripter();
 
     static {
@@ -106,7 +106,7 @@ public class CliRunnable implements Runnable {
                 }
             }
         } catch (RuntimeException e) {
-            LOGGER.error("an error occured while getting commands", e);
+            LOGGER.error("an error occurred while getting commands", e);
         } catch (IOException e) {
             LOGGER.error("can't get commands");
         }

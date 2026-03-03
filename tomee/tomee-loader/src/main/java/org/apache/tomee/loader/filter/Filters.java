@@ -27,11 +27,7 @@ import java.util.Set;
  * @version $Rev$ $Date$
  */
 public class Filters {
-    private static final Filter NONE = new Filter() {
-        public boolean accept(final String name) {
-            return false;
-        }
-    };
+    private static final Filter NONE = name -> false;
 
     public static Filter packages(final String... packages) {
         final List<Filter> filters = new ArrayList<>();
@@ -100,13 +96,7 @@ public class Filters {
         }
 
         if (unwrapped.size() > 1) {
-            final Iterator<Filter> iterator = unwrapped.iterator();
-            while (iterator.hasNext()) {
-                final Filter filter = iterator.next();
-                if (filter == NONE) {
-                    iterator.remove();
-                }
-            }
+            unwrapped.removeIf(filter -> filter == NONE);
         }
 
         if (unwrapped.isEmpty()) {
@@ -130,8 +120,7 @@ public class Filters {
      * @return
      */
     public static Filter invert(final Filter filter) {
-        if (filter instanceof NegativeFilter) {
-            final NegativeFilter negativeFilter = (NegativeFilter) filter;
+        if (filter instanceof NegativeFilter negativeFilter) {
             return negativeFilter.getFilter();
         }
 
@@ -140,8 +129,7 @@ public class Filters {
 
     private static void unwrap(final List<Filter> filters, final Set<Filter> unwrapped) {
         for (final Filter filter : filters) {
-            if (filter instanceof FilterList) {
-                final FilterList filterList = (FilterList) filter;
+            if (filter instanceof FilterList filterList) {
                 unwrap(filterList.getFilters(), unwrapped);
             } else {
                 unwrapped.add(filter);

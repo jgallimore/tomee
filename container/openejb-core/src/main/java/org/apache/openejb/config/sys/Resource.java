@@ -61,7 +61,7 @@ public class Resource extends AbstractService {
 
     @XmlAttribute(name = "aliases")
     @XmlJavaTypeAdapter(ListAdapter.class)
-    protected List<String> aliases = new ArrayList<String>();
+    protected List<String> aliases = new ArrayList<>();
 
     @XmlAttribute(name = "depends-on")
     @XmlJavaTypeAdapter(ListAdapter.class)
@@ -131,14 +131,12 @@ public class Resource extends AbstractService {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Resource)) {
+        if (!(o instanceof Resource resource)) {
             return false;
         }
         if (!super.equals(o)) {
             return false;
         }
-
-        final Resource resource = (Resource) o;
 
         if (!Objects.equals(jndi, resource.jndi)) {
             return false;

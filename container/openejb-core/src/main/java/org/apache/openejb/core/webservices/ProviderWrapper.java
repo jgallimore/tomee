@@ -67,7 +67,7 @@ public class ProviderWrapper extends Provider {
     // Magic to get our provider wrapper installed with the PortRefData
     //
 
-    private static final ThreadLocal<ProviderWrapperData> threadPortRefs = new ThreadLocal<ProviderWrapperData>();
+    private static final ThreadLocal<ProviderWrapperData> threadPortRefs = new ThreadLocal<>();
 
     public static void beforeCreate(final List<PortRefData> portRefData, final JaxWsServiceReference.WebServiceClientCustomizer customizer, final Properties properties) {
         // Axis JAXWS api is non compliant and checks system property before classloader
@@ -386,7 +386,7 @@ public class ProviderWrapper extends Provider {
                 }
                 // no-op
             }
-        } catch (final Exception ingored) {
+        } catch (final Exception ignored) {
             // no-op
         }
 

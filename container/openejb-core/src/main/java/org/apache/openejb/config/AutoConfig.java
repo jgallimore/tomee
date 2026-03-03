@@ -118,7 +118,7 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
 
     private static final int MAX_IMPLICIT_POOL_SIZE = 5;
 
-    private static final Set<String> ignoredReferenceTypes = new TreeSet<String>();
+    private static final Set<String> ignoredReferenceTypes = new TreeSet<>();
     public static final String AUTOCREATE_JTA_DATASOURCE_FROM_NON_JTA_ONE_KEY = "openejb.autocreate.jta-datasource-from-non-jta-one";
 
     static {
@@ -381,8 +381,7 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
         final Map<String, EjbDeployment> deployments = openejbJar.getDeploymentsByEjbName();
 
         for (final EnterpriseBean bean : ejbModule.getEjbJar().getEnterpriseBeans()) {
-            if (bean instanceof MessageDrivenBean) {
-                final MessageDrivenBean mdb = (MessageDrivenBean) bean;
+            if (bean instanceof MessageDrivenBean mdb) {
 
                 if (mdb.getActivationConfig() == null) {
                     mdb.setActivationConfig(new ActivationConfig());
@@ -521,8 +520,7 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
 
             for (final EnterpriseBean bean : ejbModule.getEjbJar().getEnterpriseBeans()) {
                 // MDB destination is deploymentId if none set
-                if (bean instanceof MessageDrivenBean) {
-                    final MessageDrivenBean mdb = (MessageDrivenBean) bean;
+                if (bean instanceof MessageDrivenBean mdb) {
 
                     final EjbDeployment ejbDeployment = openejbJar.getDeploymentsByEjbName().get(bean.getEjbName());
                     if (ejbDeployment == null) {
@@ -635,8 +633,7 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
 
             for (final EnterpriseBean bean : ejbModule.getEjbJar().getEnterpriseBeans()) {
                 // MDB destination is deploymentId if none set
-                if (bean instanceof MessageDrivenBean) {
-                    final MessageDrivenBean mdb = (MessageDrivenBean) bean;
+                if (bean instanceof MessageDrivenBean mdb) {
 
                     if (!isJms(mdb)) {
                         continue;
@@ -922,8 +919,7 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
             }
 
             // mdb message destination id
-            if (autoCreateResources && bean instanceof MessageDrivenBean) {
-                final MessageDrivenBean mdb = (MessageDrivenBean) bean;
+            if (autoCreateResources && bean instanceof MessageDrivenBean mdb) {
 
                 final ResourceLink resourceLink = ejbDeployment.getResourceLink("openejb/destination");
                 if (resourceLink != null) {
@@ -1922,6 +1918,7 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
         b.description = a.description;
         b.factoryMethod = a.factoryMethod;
         b.constructorArgs.addAll(a.constructorArgs);
+        b.constructorArgTypes.addAll(a.constructorArgTypes);
         b.originAppName = a.originAppName;
         b.types.addAll(a.types);
         b.properties = new SuperProperties();
@@ -2098,19 +2095,17 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
             return null;
         }
 
-        return Collections.min(resourceIds, new Comparator<String>() { // sort from webapp to global resources
-            @Override
-            public int compare(final String o1, final String o2) { // don't change global order, just put app scoped resource before others
-                if (o1.startsWith(prefix) && o2.startsWith(prefix)) {
-                    return resourceIds.indexOf(o1) - resourceIds.indexOf(o2);
-                } else if (o1.startsWith(prefix)) {
-                    return -1;
-                } else if (o2.startsWith(prefix)) {
-                    return 1;
-                }
-                // make it stable with prefixed comparison + keep existing ordering (bck compat)
+        // sort from webapp to global resources
+        return Collections.min(resourceIds, (o1, o2) -> { // don't change global order, just put app scoped resource before others
+            if (o1.startsWith(prefix) && o2.startsWith(prefix)) {
                 return resourceIds.indexOf(o1) - resourceIds.indexOf(o2);
+            } else if (o1.startsWith(prefix)) {
+                return -1;
+            } else if (o2.startsWith(prefix)) {
+                return 1;
             }
+            // make it stable with prefixed comparison + keep existing ordering (bck compat)
+            return resourceIds.indexOf(o1) - resourceIds.indexOf(o2);
         });
     }
 
@@ -2343,7 +2338,7 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
     }
 
     private String getContainerIds(final Collection<ContainerInfo> containerInfos) {
-        final Set<String> containerIds = new HashSet<String>();
+        final Set<String> containerIds = new HashSet<>();
 
         for (final ContainerInfo containerInfo : containerInfos) {
             containerIds.add(containerInfo.id);

@@ -62,12 +62,7 @@ public class TomcatWebappDeployer implements WebAppDeployer {
 
         if (info == null) { // try another time doing a diff with apps before deployment and apps after
             final Collection<String> deployedNow = tomcatWebAppBuilder.availableApps();
-            final Iterator<String> it = deployedNow.iterator();
-            while (it.hasNext()) {
-                if (alreadyDeployed.contains(it.next())) {
-                    it.remove();
-                }
-            }
+            deployedNow.removeIf(alreadyDeployed::contains);
 
             if (deployedNow.size() == 1) {
                 info = contextInfo(new File(deployedNow.iterator().next()));
@@ -75,7 +70,7 @@ public class TomcatWebappDeployer implements WebAppDeployer {
         }
 
         if (info == null || info.appInfo == null) {
-            LOGGER.error("Can't find of appInfo for " + (file != null ? file.getAbsolutePath() : null) + ", availables: " + tomcatWebAppBuilder.availableApps());
+            LOGGER.error("Can't find appInfo for " + (file != null ? file.getAbsolutePath() : null) + ", available apps: " + tomcatWebAppBuilder.availableApps());
         }
 
         if (info == null) { // error

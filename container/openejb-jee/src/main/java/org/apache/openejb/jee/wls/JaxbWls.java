@@ -47,9 +47,9 @@ import java.io.IOException;
  * @version $Rev$ $Date$
  */
 public class JaxbWls {
-    public static final ThreadLocal<Set<String>> currentPublicId = new ThreadLocal<Set<String>>();
+    public static final ThreadLocal<Set<String>> currentPublicId = new ThreadLocal<>();
 
-    private static final Map<Class<?>, JAXBContext> jaxbContexts = new HashMap<Class<?>, JAXBContext>();
+    private static final Map<Class<?>, JAXBContext> jaxbContexts = new HashMap<>();
 
     public static <T> String marshal(final Class<T> type, final Object object) throws JAXBException {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -87,11 +87,9 @@ public class JaxbWls {
 
         final JAXBContext ctx = JaxbWls.getContext(type);
         final Unmarshaller unmarshaller = ctx.createUnmarshaller();
-        unmarshaller.setEventHandler(new ValidationEventHandler() {
-            public boolean handleEvent(final ValidationEvent validationEvent) {
-                System.out.println(validationEvent);
-                return false;
-            }
+        unmarshaller.setEventHandler((ValidationEventHandler) validationEvent -> {
+            System.out.println(validationEvent);
+            return false;
         });
 
 
@@ -100,7 +98,7 @@ public class JaxbWls {
 
         final SAXSource source = new SAXSource(xmlFilter, inputSource);
 
-        JaxbWls.currentPublicId.set(new TreeSet<String>());
+        JaxbWls.currentPublicId.set(new TreeSet<>());
         try {
             return unmarshaller.unmarshal(source, type);
         } finally {

@@ -39,7 +39,7 @@ public class AllowedOperationsCmpBean implements EntityBean {
     public String lastName;
     public int number;
     public EntityContext ejbContext;
-    public static Map<String, OperationsPolicy> allowedOperationsTable = new TreeMap<String, OperationsPolicy>();
+    public static Map<String, OperationsPolicy> allowedOperationsTable = new TreeMap<>();
 
 
     //=============================
@@ -137,10 +137,10 @@ public class AllowedOperationsCmpBean implements EntityBean {
     /**
      * Maps to BasicCmpObject.getAllowedOperationsReport
      *
-     * Returns a report of the allowed opperations
+     * Returns a report of the allowed operations
      * for one of the bean's methods.
      *
-     * @param methodName The method for which to get the allowed opperations report
+     * @param methodName The method for which to get the allowed operations report
      * @return
      * @see BasicCmpObject#getAllowedOperationsReport
      */

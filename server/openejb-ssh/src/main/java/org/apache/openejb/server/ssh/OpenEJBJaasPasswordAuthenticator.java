@@ -34,23 +34,21 @@ import java.io.IOException;
 public class OpenEJBJaasPasswordAuthenticator extends JaasPasswordAuthenticator {
     private static final Logger LOGGER = Logger.getInstance(LogCategory.OPENEJB_SERVER, OpenEJBJaasPasswordAuthenticator.class);
 
-    public static final Session.AttributeKey<String> USERNAME_KEY = new Session.AttributeKey<String>();
-    public static final Session.AttributeKey<LoginContext> LOGIN_CONTEXT_KEY = new Session.AttributeKey<LoginContext>();
+    public static final Session.AttributeKey<String> USERNAME_KEY = new Session.AttributeKey<>();
+    public static final Session.AttributeKey<LoginContext> LOGIN_CONTEXT_KEY = new Session.AttributeKey<>();
 
     @Override
     public boolean authenticate(final String username, final String password, final ServerSession session) {
         try {
             final Subject subject = new Subject();
-            final LoginContext loginContext = new LoginContext(getDomain(), subject, new CallbackHandler() {
-                public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
-                    for (final Callback callback : callbacks) {
-                        if (callback instanceof NameCallback) {
-                            ((NameCallback) callback).setName(username);
-                        } else if (callback instanceof PasswordCallback) {
-                            ((PasswordCallback) callback).setPassword(password.toCharArray());
-                        } else {
-                            throw new UnsupportedCallbackException(callback);
-                        }
+            final LoginContext loginContext = new LoginContext(getDomain(), subject, callbacks -> {
+                for (final Callback callback : callbacks) {
+                    if (callback instanceof NameCallback) {
+                        ((NameCallback) callback).setName(username);
+                    } else if (callback instanceof PasswordCallback) {
+                        ((PasswordCallback) callback).setPassword(password.toCharArray());
+                    } else {
+                        throw new UnsupportedCallbackException(callback);
                     }
                 }
             });

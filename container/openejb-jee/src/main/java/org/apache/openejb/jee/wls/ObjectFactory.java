@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
  * This object contains factory methods for each
  * Java content interface and Java element interface
  * generated in the org.apache.openejb.jee.wls package.
- * <p>An ObjectFactory allows you to programatically
+ * <p>An ObjectFactory allows you to programmatically
  * construct new instances of the Java representation
  * for XML content. The Java representation of XML
  * content can consist of schema derived interfaces
@@ -577,7 +577,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.bea.com/ns/weblogic/90", name = "cmp-field", scope = FieldGroup.class)
     public JAXBElement<String> createFieldGroupCmpField(final String value) {
-        return new JAXBElement<String>(_FieldGroupCmpField_QNAME, String.class, FieldGroup.class, value);
+        return new JAXBElement<>(_FieldGroupCmpField_QNAME, String.class, FieldGroup.class, value);
     }
 
     /**
@@ -585,7 +585,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.bea.com/ns/weblogic/90", name = "cmr-field", scope = FieldGroup.class)
     public JAXBElement<String> createFieldGroupCmrField(final String value) {
-        return new JAXBElement<String>(_FieldGroupCmrField_QNAME, String.class, FieldGroup.class, value);
+        return new JAXBElement<>(_FieldGroupCmrField_QNAME, String.class, FieldGroup.class, value);
     }
 
     /**
@@ -594,7 +594,7 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.bea.com/ns/weblogic/90", name = "principal-name", scope = SecurityRoleAssignment.class)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     public JAXBElement<String> createSecurityRoleAssignmentPrincipalName(final String value) {
-        return new JAXBElement<String>(_SecurityRoleAssignmentPrincipalName_QNAME, String.class, SecurityRoleAssignment.class, value);
+        return new JAXBElement<>(_SecurityRoleAssignmentPrincipalName_QNAME, String.class, SecurityRoleAssignment.class, value);
     }
 
     /**
@@ -602,7 +602,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.bea.com/ns/weblogic/90", name = "weblogic-ejb-jar")
     public JAXBElement<WeblogicEjbJar> createWeblogicEjbJar(final WeblogicEjbJar value) {
-        return new JAXBElement<WeblogicEjbJar>(_WeblogicEjbJar_QNAME, WeblogicEjbJar.class, null, value);
+        return new JAXBElement<>(_WeblogicEjbJar_QNAME, WeblogicEjbJar.class, null, value);
     }
 
     /**
@@ -610,7 +610,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.bea.com/ns/weblogic/90", name = "weblogic-relationship-role", scope = WeblogicRdbmsRelation.class)
     public JAXBElement<WeblogicRelationshipRole> createWeblogicRdbmsRelationWeblogicRelationshipRole(final WeblogicRelationshipRole value) {
-        return new JAXBElement<WeblogicRelationshipRole>(_WeblogicRdbmsRelationWeblogicRelationshipRole_QNAME, WeblogicRelationshipRole.class, WeblogicRdbmsRelation.class, value);
+        return new JAXBElement<>(_WeblogicRdbmsRelationWeblogicRelationshipRole_QNAME, WeblogicRelationshipRole.class, WeblogicRdbmsRelation.class, value);
     }
 
     /**
@@ -618,7 +618,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.bea.com/ns/weblogic/90", name = "table-name", scope = WeblogicRdbmsRelation.class)
     public JAXBElement<String> createWeblogicRdbmsRelationTableName(final String value) {
-        return new JAXBElement<String>(_WeblogicRdbmsRelationTableName_QNAME, String.class, WeblogicRdbmsRelation.class, value);
+        return new JAXBElement<>(_WeblogicRdbmsRelationTableName_QNAME, String.class, WeblogicRdbmsRelation.class, value);
     }
 
     /**
@@ -626,7 +626,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.bea.com/ns/weblogic/90", name = "relation-name", scope = WeblogicRdbmsRelation.class)
     public JAXBElement<String> createWeblogicRdbmsRelationRelationName(final String value) {
-        return new JAXBElement<String>(_WeblogicRdbmsRelationRelationName_QNAME, String.class, WeblogicRdbmsRelation.class, value);
+        return new JAXBElement<>(_WeblogicRdbmsRelationRelationName_QNAME, String.class, WeblogicRdbmsRelation.class, value);
     }
 
 }

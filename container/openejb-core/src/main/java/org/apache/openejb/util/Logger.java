@@ -213,39 +213,33 @@ public class Logger {
      * Computes the parent of a resource name. E.g. if we pass in a key of
      * a.b.c, it returns the value a.b
      */
-    private static final Computable<String, String> heirarchyResolver = new Computable<String, String>() {
-        @Override
-        public String compute(final String key) throws InterruptedException {
-            final int index = key.lastIndexOf('.');
-            if (index == -1) {
-                return null;
-            }
-            final String parent = key.substring(0, index);
-            if (parent.contains(OPENEJB)) {
-                return parent;
-            }
+    private static final Computable<String, String> heirarchyResolver = key -> {
+        final int index = key.lastIndexOf('.');
+        if (index == -1) {
             return null;
         }
+        final String parent = key.substring(0, index);
+        if (parent.contains(OPENEJB)) {
+            return parent;
+        }
+        return null;
     };
 
     /**
      * Simply returns the ResourceBundle for a given baseName
      */
-    private static final Computable<String, ResourceBundle> bundleResolver = new Computable<String, ResourceBundle>() {
-        @Override
-        public ResourceBundle compute(final String baseName) throws InterruptedException {
-            try {
-                return ResourceBundle.getBundle(baseName + SUFFIX);
-            } catch (final MissingResourceException e) {
-                return null;
-            }
+    private static final Computable<String, ResourceBundle> bundleResolver = baseName -> {
+        try {
+            return ResourceBundle.getBundle(baseName + SUFFIX);
+        } catch (final MissingResourceException e) {
+            return null;
         }
     };
 
     /**
      * Builds a Logger object and returns it
      */
-    private static final Computable<LoggerKey, Logger> loggerResolver = new Computable<LoggerKey, Logger>() {
+    private static final Computable<LoggerKey, Logger> loggerResolver = new Computable<>() {
         @Override
         public Logger compute(final LoggerKey args) throws InterruptedException {
             return new Logger(args.category, logStreamFactory.createLogStream(args.category), args.baseName);
@@ -426,19 +420,14 @@ public class Logger {
     @SuppressWarnings("UnusedDeclaration")
     public boolean isLevelEnable(final String level) {
         final String levelLowerCase = level.toLowerCase(Locale.ENGLISH);
-        switch (levelLowerCase) {
-            case "info":
-                return isInfoEnabled();
-            case "debug":
-                return isDebugEnabled();
-            case "warning":
-                return isWarningEnabled();
-            case "fatal":
-                return isFatalEnabled();
-            case "error":
-                return isErrorEnabled();
-        }
-        return false;
+        return switch (levelLowerCase) {
+            case "info" -> isInfoEnabled();
+            case "debug" -> isDebugEnabled();
+            case "warning" -> isWarningEnabled();
+            case "fatal" -> isFatalEnabled();
+            case "error" -> isErrorEnabled();
+            default -> false;
+        };
     }
 
     public void log(final String level, final String message) {

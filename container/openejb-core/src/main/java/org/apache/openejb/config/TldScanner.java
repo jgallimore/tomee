@@ -25,7 +25,6 @@ import org.apache.xbean.finder.UrlSet;
 import org.apache.xbean.finder.filter.Filters;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -39,7 +38,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -66,11 +64,11 @@ import static org.apache.openejb.util.URLs.toFile;
 public class TldScanner {
 
     // first cache, it is the faster one but not relevant between temp and runtime phases
-    private static final Map<ClassLoader, Set<URL>> cache = new WeakHashMap<ClassLoader, Set<URL>>();
+    private static final Map<ClassLoader, Set<URL>> cache = new WeakHashMap<>();
 
     // tld by classloader identified by hash on urls (same hash for temp and runtime classloaders)
     // a bit longer to compute but let scanning be reused over temp and runtime classloaders
-    private static final Map<Integer, Set<URL>> cacheByhashCode = new WeakHashMap<Integer, Set<URL>>();
+    private static final Map<Integer, Set<URL>> cacheByhashCode = new WeakHashMap<>();
 
     public static Set<URL> scan(final ClassLoader classLoader) throws OpenEJBException {
         if (skip()) {
@@ -152,12 +150,7 @@ public class TldScanner {
                     continue;
                 }
 
-                futures.add(es.submit(new Callable<Set<URL>>() {
-                    @Override
-                    public Set<URL> call() throws Exception {
-                        return scanForTagLibs(file);
-                    }
-                }));
+                futures.add(es.submit(() -> scanForTagLibs(file)));
             }
 
             es.shutdown();
@@ -199,12 +192,7 @@ public class TldScanner {
         final File webInfMetaInf = new File(webInfDir, "classes/META-INF");
         if (webInfMetaInf.exists()) {
             // filter directly to let it be faster in next loop
-            files.addAll(asList(webInfMetaInf.listFiles(new FilenameFilter() {
-                @Override
-                public boolean accept(final File dir, final String name) {
-                    return name.endsWith(".tld");
-                }
-            })));
+            files.addAll(asList(webInfMetaInf.listFiles((dir, name) -> name.endsWith(".tld"))));
         }
 
         if (files.isEmpty()) {
@@ -306,9 +294,8 @@ public class TldScanner {
     private static List<URL> urls(final ClassLoader classLoader) {
         UrlSet urlSet = new UrlSet();
 
-        if (classLoader instanceof URLClassLoader) {
+        if (classLoader instanceof URLClassLoader urlClassLoader) {
 
-            final URLClassLoader urlClassLoader = (URLClassLoader) classLoader;
             try {
                 urlSet = new UrlSet(urlClassLoader.getURLs());
             } catch (final NullPointerException npe) { // happen for closeable classloaders like WebappClassLoader when already clean up

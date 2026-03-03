@@ -83,6 +83,9 @@ public abstract class AbstractService implements Service {
     @XmlAttribute(name = "constructor")
     protected String constructor;
 
+    @XmlAttribute(name = "constructor-types")
+    protected String constructorArgTypes;
+
     /**
      * Mutually exclusive with 'provider'
      */
@@ -231,6 +234,15 @@ public abstract class AbstractService implements Service {
         this.constructor = constructor;
     }
 
+    @Override
+    public String getConstructorArgTypes() {
+        return constructorArgTypes;
+    }
+
+    public void setConstructorArgTypes(String constructorArgTypes) {
+        this.constructorArgTypes = constructorArgTypes;
+    }
+
     public String getFactoryName() {
         return factoryName;
     }
@@ -260,11 +272,9 @@ public abstract class AbstractService implements Service {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof AbstractService)) {
+        if (!(o instanceof AbstractService that)) {
             return false;
         }
-
-        final AbstractService that = (AbstractService) o;
 
         if (!Objects.equals(id, that.id)) {
             return false;

@@ -41,7 +41,7 @@ import org.apache.openejb.jee.JAXBContextFactory;
  */
 public class JaxbOpenejbJar2 {
 
-    private static final Map<Class<?>, JAXBContext> contexts = new HashMap<Class<?>, JAXBContext>();
+    private static final Map<Class<?>, JAXBContext> contexts = new HashMap<>();
 
     private static JAXBContext getContext(final Class<?> type) throws JAXBException {
         JAXBContext jaxbContext = contexts.get(type);
@@ -83,13 +83,11 @@ public class JaxbOpenejbJar2 {
 
         final JAXBContext ctx = getContext(type);
         final Unmarshaller unmarshaller = ctx.createUnmarshaller();
-        unmarshaller.setEventHandler(new ValidationEventHandler() {
-            public boolean handleEvent(final ValidationEvent validationEvent) {
-                if (logErrors) {
-                    System.out.println(validationEvent);
-                }
-                return false;
+        unmarshaller.setEventHandler((ValidationEventHandler) validationEvent -> {
+            if (logErrors) {
+                System.out.println(validationEvent);
             }
+            return false;
         });
 
         unmarshaller.setListener(new Unmarshaller.Listener() {

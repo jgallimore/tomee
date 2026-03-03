@@ -839,11 +839,10 @@ public class SunConversion implements DynamicDeployer {
 
             // skip all non-CMP beans
             final EnterpriseBean enterpriseBean = ejbJar.getEnterpriseBean(ejb.getEjbName());
-            if (!(enterpriseBean instanceof EntityBean) ||
-                ((EntityBean) enterpriseBean).getPersistenceType() != PersistenceType.CONTAINER) {
+            if (!(enterpriseBean instanceof EntityBean bean) ||
+                bean.getPersistenceType() != PersistenceType.CONTAINER) {
                 continue;
             }
-            final EntityBean bean = (EntityBean) enterpriseBean;
             final EntityData entityData = entities.get(moduleId + "#" + ejb.getEjbName());
             if (entityData == null) {
                 // todo warn no such ejb in the ejb-jar.xml
@@ -1090,7 +1089,7 @@ public class SunConversion implements DynamicDeployer {
             return Collections.emptyList();
         }
 
-        final List bits = Collections.list(new StringTokenizer(queryParams, " \t\n\r\f,", false));
+        final List<Object> bits = Collections.list(new StringTokenizer(queryParams, " \t\n\r\f,", false));
         final List<List<String>> params = new ArrayList<>(bits.size() / 2);
         for (int i = 0; i < bits.size(); i++) {
             final String type = resolveType((String) bits.get(i));
@@ -1167,35 +1166,25 @@ public class SunConversion implements DynamicDeployer {
 
     private List<String> tokenize(final String queryFilter) {
         final LinkedList<String> tokens = new LinkedList<>();
-        final List bits = Collections.list(new StringTokenizer(queryFilter, " \t\n\r\f()&|<>=!~+-/*", true));
+        final List<Object> bits = Collections.list(new StringTokenizer(queryFilter, " \t\n\r\f()&|<>=!~+-/*", true));
 
         boolean inWitespace = false;
         StringBuilder currentSymbol = new StringBuilder();
         for (Object bit1 : bits) {
             final TokenType tokenType;
             final String bit = (String) bit1;
-            switch (bit.charAt(0)) {
-                case ' ':
-                case '\t':
-                case '\n':
-                case '\r':
-                case '\f':
+            tokenType = switch (bit.charAt(0)) {
+                case ' ', '\t', '\n', '\r', '\f' -> {
                     inWitespace = true;
-                    tokenType = TokenType.WHITESPACE;
-                    break;
-                case '&':
-                case '|':
-                case '=':
-                case '>':
-                case '<':
-                case '!':
+                    yield TokenType.WHITESPACE;
+                }
+                case '&', '|', '=', '>', '<', '!' -> {
                     // symbols are blindly coalesced so you can end up with nonsence like +-=+
                     currentSymbol.append(bit.charAt(0));
-                    tokenType = TokenType.SYMBOL;
-                    break;
-                default:
-                    tokenType = TokenType.NORMAL;
-            }
+                    yield TokenType.SYMBOL;
+                }
+                default -> TokenType.NORMAL;
+            };
             if (tokenType != TokenType.WHITESPACE && inWitespace) {
                 // sequences of white space are simply removed
                 inWitespace = false;

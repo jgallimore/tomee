@@ -84,14 +84,14 @@ public class CdiEjbBean<T> extends BaseEjbBean<T> implements InterceptedMarker, 
 
     public CdiEjbBean(final BeanContext beanContext, final WebBeansContext webBeansContext, final AnnotatedType<T> at,
                       final BeanAttributes<T> attributes) {
-        this(beanContext, webBeansContext, beanContext.getManagedClass(), at, new EjbInjectionTargetFactory<T>(beanContext, at, webBeansContext), attributes);
+        this(beanContext, webBeansContext, beanContext.getManagedClass(), at, new EjbInjectionTargetFactory<>(beanContext, at, webBeansContext), attributes);
         EjbInjectionTargetImpl.class.cast(getInjectionTarget()).setCdiEjbBean(this);
     }
 
     public CdiEjbBean(final BeanContext bc, final WebBeansContext webBeansContext, final Class beanClass, final AnnotatedType<T> at,
                       final InjectionTargetFactoryImpl<T> factory, final BeanAttributes<T> attributes) {
         super(webBeansContext, toSessionType(bc.getComponentType()), at,
-                new EJBBeanAttributesImpl<T>(bc, attributes),
+                new EJBBeanAttributesImpl<>(bc, attributes),
                 beanClass, factory);
         this.beanContext = bc;
         bc.set(Bean.class, this);
@@ -138,18 +138,16 @@ public class CdiEjbBean<T> extends BaseEjbBean<T> implements InterceptedMarker, 
     }
 
     private static SessionBeanType toSessionType(final BeanType beanType) {
-        switch (beanType) {
-            case SINGLETON:
-                return SessionBeanType.SINGLETON;
-            case MESSAGE_DRIVEN: // OWB implementation test stateful or not so do we really care?
-            case STATELESS:
-            case MANAGED: // can't be stateful since it will prevent every integration using ManagedBean to get injections to work + it is never used
-                return SessionBeanType.STATELESS;
-            case STATEFUL:
-                return SessionBeanType.STATEFUL;
-            default:
-                throw new IllegalStateException("Unknown Session BeanType " + beanType);
-        }
+        return switch (beanType) {
+            case SINGLETON ->
+                    SessionBeanType.SINGLETON;
+            case MESSAGE_DRIVEN, // OWB implementation test stateful or not so do we really care?
+                 STATELESS,
+                 MANAGED -> // can't be stateful since it will prevent every integration using ManagedBean to get injections to work + it is never used
+                    SessionBeanType.STATELESS;
+            case STATEFUL -> SessionBeanType.STATEFUL;
+            default -> throw new IllegalStateException("Unknown Session BeanType " + beanType);
+        };
     }
 
     public String getEjbName() {

@@ -16,7 +16,7 @@ Spring beans. The injection system supports arbitrarily complex nesting
 (e.g., Spring bean injected into a Java EE component, which is then
 injected into another Spring bean), including:
 
-* @Resouce injection of any Spring bean into EJB
+* @Resource injection of any Spring bean into EJB
 * Injection of any Java EE resource into a Spring bean, including: **
 EJB 3.0 beans ** EJB 3.1 Singleton Bean ** JDBC Connector ** JMS
 Connector ** JMS Queue and Topic ** Generic Java EE Connector (JCA)
@@ -52,7 +52,7 @@ org.apache.openejb.spring.Application
 Scrapes an individual jar file for EJB, RAR, and Persistence
 applications, deploys them, and imports them into the current
 ApplicationContext. The 'jarFile' property is required. The application
-is treated as it's own self-contained EAR, separate from other uses of
+is treated as its own self-contained EAR, separate from other uses of
 'Application'
 
 org.apache.openejb.spring.Resource
@@ -127,13 +127,13 @@ any error message(s) and the following information:
 _JavaAgent_ - OpenEJB uses OpenJPA to provide JPA and CMP persistence,
 and OpenJPA currently requires a JavaAgent to function properly in a
 Java 1.5 environment. OpenJPA does not require a JavaAgent in Java 1.6.
-Use Hibernate as your the provider in your persistence.xml files if you
+Use Hibernate as the provider in your `persistence.xml` files if you
 wish to avoid this requirement.
 
 _EntityManager_ - Having an OpenEJB created EntityManager or
 EntityManagerFactory injected into Spring beans is currently not
 supported. This will be added to the next release. A small workaround
 for this is to use an EJB as a factory by adding a 'getEntityManager'
-method an using it as a
+method using it as a
 http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-factory-class-instance-factory-method[Spring
 instance factory method] .

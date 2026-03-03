@@ -79,39 +79,36 @@ public class TomEEFacesConfigResourceProvider extends DefaultFacesConfigResource
                 continue;
             }
 
-            futures.add(es.submit(new Callable<Set<URL>>() {
-                @Override
-                public Set<URL> call() throws Exception {
-                    final Set<URL> currentSet = new HashSet<>();
+            futures.add(es.submit(() -> {
+                final Set<URL> currentSet = new HashSet<>();
 
-                    if (!file.isDirectory()) { // browse all entries to see if we have a matching file
-                        final Enumeration<JarEntry> e = new JarFile(file).entries();
-                        while (e.hasMoreElements()) {
-                            try {
-                                final String name = e.nextElement().getName();
-                                if (name.startsWith(META_INF_PREFIX) && name.endsWith(FACES_CONFIG_SUFFIX)) {
-                                    final Enumeration<URL> e2 = loader.getResources(name);
-                                    while (e2.hasMoreElements()) {
-                                        currentSet.add(e2.nextElement());
-                                    }
+                if (!file.isDirectory()) { // browse all entries to see if we have a matching file
+                    final Enumeration<JarEntry> e = new JarFile(file).entries();
+                    while (e.hasMoreElements()) {
+                        try {
+                            final String name = e.nextElement().getName();
+                            if (name.startsWith(META_INF_PREFIX) && name.endsWith(FACES_CONFIG_SUFFIX)) {
+                                final Enumeration<URL> e2 = loader.getResources(name);
+                                while (e2.hasMoreElements()) {
+                                    currentSet.add(e2.nextElement());
                                 }
-                            } catch (final Throwable ignored) {
-                                // no-op
                             }
+                        } catch (final Throwable ignored) {
+                            // no-op
                         }
-                    } else {
-                        final File metaInf = new File(file, META_INF_PREFIX);
-                        if (metaInf.exists() && metaInf.isDirectory()) {
-                            for (final File f : Files.collect(metaInf, FacesConfigSuffixFilter.INSTANCE)) {
-                                if (!f.isDirectory()) {
-                                    currentSet.add(f.toURI().toURL());
-                                }
+                    }
+                } else {
+                    final File metaInf = new File(file, META_INF_PREFIX);
+                    if (metaInf.exists() && metaInf.isDirectory()) {
+                        for (final File f : Files.collect(metaInf, FacesConfigSuffixFilter.INSTANCE)) {
+                            if (!f.isDirectory()) {
+                                currentSet.add(f.toURI().toURL());
                             }
                         }
                     }
-
-                    return currentSet;
                 }
+
+                return currentSet;
             }));
         }
 
@@ -128,13 +125,7 @@ public class TomEEFacesConfigResourceProvider extends DefaultFacesConfigResource
         try {
             if (AppFinder.findAppContextOrWeb(
                     Thread.currentThread().getContextClassLoader(), AppFinder.WebBeansContextTransformer.INSTANCE) == null) {
-                final Iterator<URL> toFilter = urlSet.iterator();
-                while (toFilter.hasNext()) {
-                    final URL url = toFilter.next();
-                    if (TomEEMyFacesContainerInitializer.isOwb(url)) {
-                        toFilter.remove();
-                    }
-                }
+                urlSet.removeIf(TomEEMyFacesContainerInitializer::isOwb);
             }
         } catch (final Throwable th) {
             // no-op

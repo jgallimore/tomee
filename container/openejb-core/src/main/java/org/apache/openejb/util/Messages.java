@@ -28,8 +28,8 @@ import java.util.ResourceBundle;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Messages {
-    private static Map<String, ResourceBundle> _rbBundles = new ConcurrentHashMap<String, ResourceBundle>();
-    private static Map<String, Map<String, MessageFormat>> _rbFormats = new ConcurrentHashMap<String, Map<String, MessageFormat>>();
+    private static Map<String, ResourceBundle> _rbBundles = new ConcurrentHashMap<>();
+    private static Map<String, Map<String, MessageFormat>> _rbFormats = new ConcurrentHashMap<>();
     private static Locale _globalLocale;
 
     private ResourceBundle messages;
@@ -108,7 +108,7 @@ public class Messages {
             }
             return mf.format(args);
         } catch (final Exception except) {
-            return "An internal error occured while processing message " + message;
+            return "An internal error occurred while processing message " + message;
         }
     }
 

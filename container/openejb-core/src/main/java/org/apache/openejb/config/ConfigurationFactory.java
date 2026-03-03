@@ -19,6 +19,7 @@ package org.apache.openejb.config;
 
 import org.apache.openejb.Extensions;
 import org.apache.openejb.OpenEJBException;
+import org.apache.openejb.OpenEJBRuntimeException;
 import org.apache.openejb.Vendor;
 import org.apache.openejb.api.Proxy;
 import org.apache.openejb.api.resource.PropertiesResourceProvider;
@@ -106,6 +107,7 @@ import jakarta.ejb.embeddable.EJBContainer;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -122,6 +124,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.apache.openejb.config.DeploymentsResolver.DEPLOYMENTS_CLASSPATH_PROPERTY;
 import static org.apache.openejb.config.ServiceUtils.implies;
@@ -372,11 +375,10 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
         public AppModule deploy(final AppModule appModule) throws OpenEJBException {
             for (final EjbModule module : appModule.getEjbModules()) {
                 for (final EnterpriseBean eb : module.getEjbJar().getEnterpriseBeans()) {
-                    if (!(eb instanceof SessionBean)) {
+                    if (!(eb instanceof SessionBean bean)) {
                         continue;
                     }
 
-                    final SessionBean bean = (SessionBean) eb;
                     final Class<?> ejbClass;
                     try {
                         ejbClass = module.getClassLoader().loadClass(bean.getEjbClass());
@@ -787,13 +789,13 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
                 throw new OpenEJBException("Unable to parse URI parameters '" + uri + "'. URISyntaxException: " + e.getMessage());
             }
 
-            if (object instanceof AbstractService) {
-                final AbstractService service = (AbstractService) object;
+            if (object instanceof AbstractService service) {
                 service.setId(id);
                 service.setType(map.remove("type"));
                 service.setProvider(map.remove("provider"));
                 service.setClassName(map.remove("class-name"));
                 service.setConstructor(map.remove("constructor"));
+                service.setConstructorArgTypes(map.remove("constructor-types"));
                 service.setFactoryName(map.remove("factory-name"));
                 service.setPropertiesProvider(map.remove("properties-provider"));
                 service.setTemplate(map.remove("template"));
@@ -820,8 +822,7 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
                 }
 
                 service.getProperties().putAll(map);
-            } else if (object instanceof Deployments) {
-                final Deployments deployments = (Deployments) object;
+            } else if (object instanceof Deployments deployments) {
                 deployments.setDir(map.remove("dir"));
                 deployments.setFile(map.remove("jar"));
                 final String cp = map.remove("classpath");
@@ -942,13 +943,11 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
                     if (existingValue == null) {
                         altDDs.put(entry.getKey(), entry.getValue());
                     } else if (entry.getValue() instanceof Collection) {
-                        if (existingValue instanceof Collection) {
-                            final Collection values = (Collection) existingValue;
+                        if (existingValue instanceof Collection values) {
                             values.addAll((Collection) entry.getValue());
                         }
                     } else if (entry.getValue() instanceof Map) {
-                        if (existingValue instanceof Map) {
-                            final Map values = (Map) existingValue;
+                        if (existingValue instanceof Map values) {
                             values.putAll((Map) entry.getValue());
                         }
                     }
@@ -1076,9 +1075,9 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
         }
     }
 
-    private static final Map<Class<? extends ServiceInfo>, DefaultService> defaultProviders = new HashMap<Class<? extends ServiceInfo>, DefaultService>();
+    private static final Map<Class<? extends ServiceInfo>, DefaultService> defaultProviders = new HashMap<>();
 
-    private static final Map<Class<? extends ServiceInfo>, Class<? extends org.apache.openejb.config.Service>> types = new HashMap<Class<? extends ServiceInfo>, Class<? extends org.apache.openejb.config.Service>>();
+    private static final Map<Class<? extends ServiceInfo>, Class<? extends org.apache.openejb.config.Service>> types = new HashMap<>();
 
     /**
      * This is the magic that allows people to be really vague in their openejb.xml and not specify
@@ -1289,7 +1288,8 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
             info.factoryMethod = provider.getFactoryName();
             info.id = service.getId();
             info.properties = props;
-            info.constructorArgs.addAll(parseConstructorArgs(provider));
+            info.constructorArgs.addAll(parseList(provider.getConstructor()));
+            info.constructorArgTypes.addAll(parseList(provider.getConstructorTypes()));
             if (info instanceof ResourceInfo && service instanceof Resource) {
                 final ResourceInfo ri = ResourceInfo.class.cast(info);
                 final Resource resource = Resource.class.cast(service);
@@ -1361,16 +1361,12 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
     }
 
     private static String unaliasPropertiesProvider(final String propertiesProvider) {
-        switch (propertiesProvider.toLowerCase(Locale.ENGLISH)) {
-            case "heroku":
-                return "org.apache.openejb.resource.heroku.HerokuDatabasePropertiesProvider";
-            case "openshift:mysql":
-                return "org.apache.openejb.resource.openshift.OpenshiftMySQLPropertiesProvider";
-            case "openshift:postgresql":
-                return "org.apache.openejb.resource.openshift.OpenshiftPostgreSQLPropertiesProvider";
-            default:
-                return propertiesProvider;
-        }
+        return switch (propertiesProvider.toLowerCase(Locale.ENGLISH)) {
+            case "heroku" -> "org.apache.openejb.resource.heroku.HerokuDatabasePropertiesProvider";
+            case "openshift:mysql" -> "org.apache.openejb.resource.openshift.OpenshiftMySQLPropertiesProvider";
+            case "openshift:postgresql" -> "org.apache.openejb.resource.openshift.OpenshiftPostgreSQLPropertiesProvider";
+            default -> propertiesProvider;
+        };
     }
 
     private static String unaliasTemplate(final String value) {
@@ -1429,8 +1425,7 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
     private static Properties trim(final Properties properties) {
         for (final Map.Entry<Object, Object> entry : properties.entrySet()) {
             final Object o = entry.getValue();
-            if (o instanceof String) {
-                final String value = (String) o;
+            if (o instanceof String value) {
                 final String trimmed = value.trim();
                 if (value.length() != trimmed.length()) {
                     properties.put(entry.getKey(), trimmed);
@@ -1458,6 +1453,7 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
             provider.getTypes().add(service.getType());
             provider.setClassName(service.getClassName());
             provider.setConstructor(service.getConstructor());
+            provider.setConstructorTypes(service.getConstructorArgTypes());
             provider.setFactoryName(service.getFactoryName());
             return provider;
         }
@@ -1582,7 +1578,7 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
         return overrides;
     }
 
-    private static final Map<String, Class<? extends ContainerInfo>> containerTypes = new HashMap<String, Class<? extends ContainerInfo>>();
+    private static final Map<String, Class<? extends ContainerInfo>> containerTypes = new HashMap<>();
 
     static {
         containerTypes.put(BeanTypes.SINGLETON, SingletonSessionContainerInfo.class);
@@ -1598,12 +1594,11 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
         return containerTypes.get(ctype);
     }
 
-    private List<String> parseConstructorArgs(final ServiceProvider service) {
-        final String constructor = service.getConstructor();
-        if (constructor == null) {
+    private List<String> parseList(final String raw) {
+        if (raw == null) {
             return Collections.emptyList();
         }
-        return Arrays.asList(constructor.split("[ ,]+"));
+        return Arrays.asList(raw.split("[ ,]+"));
     }
 
     protected List<String> getResourceIds() {
@@ -1761,7 +1756,7 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
 
     public static List<ResourceInfo> sort(final List<ResourceInfo> infos, final String prefix) {
         final Collection<String> ids = new HashSet<>();
-        return References.sort(infos, new References.Visitor<ResourceInfo>() {
+        return References.sort(infos, new References.Visitor<>() {
             @Override // called first so we can rely on it to ensure we have ids full before any getReferences call
             public String getName(final ResourceInfo resourceInfo) {
                 final String name = prefix != null && resourceInfo.id.startsWith(prefix) ? resourceInfo.id.substring(prefix.length()) : resourceInfo.id;

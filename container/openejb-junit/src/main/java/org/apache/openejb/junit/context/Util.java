@@ -36,7 +36,7 @@ public final class Util {
      */
     public static boolean isInstance(final Class type, final Object instance) {
         if (type.isPrimitive()) {
-            // for primitives the insance can't be null
+            // for primitives the instance can't be null
             if (instance == null) {
                 return false;
             }
@@ -59,7 +59,7 @@ public final class Util {
             } else if (type.equals(double.class)) {
                 return instance instanceof Double;
             } else {
-                throw new AssertionError("Invalid primitve type: " + type);
+                throw new AssertionError("Invalid primitive type: " + type);
             }
         }
 
@@ -117,7 +117,7 @@ public final class Util {
 
         final String setterName = "set" + Character.toUpperCase(propertyName.charAt(0)) + propertyName.substring(1);
 
-        final List<Method> methods = new ArrayList<Method>(Arrays.asList(testClazz.getMethods()));
+        final List<Method> methods = new ArrayList<>(Arrays.asList(testClazz.getMethods()));
         methods.addAll(Arrays.asList(testClazz.getDeclaredMethods()));
         Method unpreferredValidMethod = null;
         for (final Method clazzMethod : methods) {

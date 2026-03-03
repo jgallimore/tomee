@@ -105,7 +105,7 @@ on a persistence unit setup as RESOURCE_LOCAL ...
 </persistence-unit>
 ----
 
-inside of a transaction.
+inside a transaction.
 
 [source,java]
 ----
@@ -123,10 +123,10 @@ unless explicitly set otherwise in the bean class or method in question.
 You can either:
 
 [arabic]
-. Change your bean or it's method to use
+. Change your bean, or it's method to use
 `TransactionAttributeType.NOT_REQUIRED` or
 `TransactionAttributeType.NEVER` which will guarantee it will not be
 invoked in a JTA transaction.
-. Change your persistence.xml so the persistence-unit uses
+. Change your `persistence.xml` so the persistence-unit uses
 `transaction-type="TRANSACTION"` making it capable of participating in a
 JTA transaction.

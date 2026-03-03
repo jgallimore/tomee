@@ -50,7 +50,7 @@ server will automatically deploy all the EJB's contained in this JAR. -
 _conf_: This directory contains all the configuration files. Although
 you may not see any file except for a README.txt file right now, but
 after you start the server, the required configuration files will be
-automatically created. It is highly recommeded to read the README.txt
+automatically created. It is highly recommended to read the README.txt
 file under this directory - _logs_: Contains log files.
 
 == Setup your development environment
@@ -73,7 +73,7 @@ karan@poweredge:~$ cd projects
 We will do all our work in this directory. ### Install Java Download and
 install Java (version 5 or higher). Also set it up so that you can run
 the java and javac commands from any directory ### Set OPENEJB_HOME We
-will setup this variable to refer to the openejb install location.
+will set up this variable to refer to the openejb install location.
 
 [source,bash]
 ----
@@ -114,7 +114,7 @@ public class HelloBean implements Hello{
 === Compile the source code Since we have imported the
 jakarta.ejb.Stateless and jakarta.ejb.Remote annotations, we need these in
 our classpath to compile our source code. These annotations can be found
-in the $OPENEJB_HOME/lib/javaee-5.0-1.jar. Lets compile our source (make
+in the $OPENEJB_HOME/lib/javaee-5.0-1.jar. Let's compile our source (make
 sure you are in the projects directory)
 
 [source,bash]
@@ -125,7 +125,7 @@ karan@poweredge:~/projects$ javac -cp $OPENEJB_HOME/lib/javaee-5.0-1.jar -d
 . *.java
 
 The above will compile all the .java files and also create the required
-packages. You should now see a package named org under the projects
+packages. You should now see a package named org under the project's
 directory. All class files should be under org/acme directory. ###
 Package the EJB To package the EJB into a JAR, run the following command
 while you are in the projects directory
@@ -253,7 +253,7 @@ The above should give you the following output:
 Hello World!!!!
 ----
 
-== Help! , it didn't work for me!!. No problem, we are here to help.
+== Help! It didn't work for me!!. No problem, we are here to help.
 Just send us an email at users@tomee.apache.org. If possible, send us
 the contents of logs/openejb.log file in the email.
 

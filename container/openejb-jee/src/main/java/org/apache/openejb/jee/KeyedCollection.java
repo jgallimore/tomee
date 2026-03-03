@@ -29,7 +29,7 @@ import java.util.Map;
  * the value using either the provided KeyExtractor, or if no KeyExtractor was
  * provided, the value is cast to Keyable and the getKey() method is called.
  *
- * The underlying Map can be obtainded with the toMap method.  Any changes to this
+ * The underlying Map can be obtained with the toMap method.  Any changes to this
  * map are directly reflected in this collection.  Additions to the map do not
  * need to implement Keyable, nor do the values need to be keyed using the key
  * returned from the KeyExtractor.getKey(value) or the key returned from the
@@ -43,25 +43,24 @@ public class KeyedCollection<K, V> extends AbstractCollection<V> {
     public KeyedCollection() {
         // NOTE: V must implement Keyable or class cast exception will be thrown on add
         keyExtractor = null;
-        map = new LinkedHashMap<K, V>();
+        map = new LinkedHashMap<>();
     }
 
     public KeyedCollection(final KeyExtractor<? extends K, ? super V> keyExtractor) {
         this.keyExtractor = keyExtractor;
-        map = new LinkedHashMap<K, V>();
+        map = new LinkedHashMap<>();
     }
 
     @SuppressWarnings({"unchecked"})
     public KeyedCollection(final Collection<? extends V> c) {
-        if (c instanceof KeyedCollection) {
-            final KeyedCollection keyedCollection = (KeyedCollection) c;
+        if (c instanceof KeyedCollection keyedCollection) {
             // NOTE: if types don't match bad things could happen
             keyExtractor = keyedCollection.keyExtractor;
         } else {
             // NOTE: V must implement Keyable or class cast exception will be thrown on add
             keyExtractor = null;
         }
-        map = new LinkedHashMap<K, V>();
+        map = new LinkedHashMap<>();
         addAll(c);
     }
 
@@ -69,7 +68,7 @@ public class KeyedCollection<K, V> extends AbstractCollection<V> {
     public KeyedCollection(final int initialCapacity) {
         // NOTE: V must implement Keyable or class cast exception will be thrown on add
         keyExtractor = null;
-        map = new LinkedHashMap<K, V>(initialCapacity);
+        map = new LinkedHashMap<>(initialCapacity);
     }
 
     /**

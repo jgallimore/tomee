@@ -43,7 +43,7 @@ import org.apache.openejb.test.interceptor.SecondClassInterceptor;
 public class ThirdStatefulInterceptedBean extends SuperInterceptedBean
     implements BasicStatefulInterceptedLocal, BasicStatefulInterceptedRemote {
 
-    private static Map<String, Object> contextData = new HashMap<String, Object>();
+    private static Map<String, Object> contextData = new HashMap<>();
 
     /**
      * A simple dummy business method to concat 2 strings
@@ -53,7 +53,7 @@ public class ThirdStatefulInterceptedBean extends SuperInterceptedBean
     }
 
     /**
-     * A simple dummy busines method to reverse a string
+     * A simple dummy business method to reverse a string
      */
     @Interceptors({MethodInterceptor.class})
     public String reverse(final String str) {

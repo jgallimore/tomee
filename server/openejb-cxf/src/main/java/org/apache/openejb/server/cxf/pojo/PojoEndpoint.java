@@ -91,13 +91,7 @@ public class PojoEndpoint extends CxfEndpoint {
         service = doServiceCreate();
 
         { // cleanup jax-ws injections
-            final Iterator<Injection> injections = port.getInjections().iterator();
-            while (injections.hasNext()) {
-                final Injection next = injections.next();
-                if (WebServiceContext.class.equals(type(loader, next))) {
-                    injections.remove();
-                }
-            }
+            port.getInjections().removeIf(next -> WebServiceContext.class.equals(type(loader, next)));
         }
 
         ResourceInjector injector = null;
@@ -125,8 +119,7 @@ public class PojoEndpoint extends CxfEndpoint {
 
                                     final Producer producer = aob.getProducer();
                                     implementor = producer.produce(creationalContext);
-                                    if (producer instanceof InjectionTarget) {
-                                        final InjectionTarget injectionTarget = (InjectionTarget) producer;
+                                    if (producer instanceof InjectionTarget injectionTarget) {
                                         injectionTarget.inject(implementor, creationalContext);
                                         injector = injectCxfResources(implementor); // we need it before postconstruct
                                         injectionTarget.postConstruct(implementor);
@@ -167,7 +160,7 @@ public class PojoEndpoint extends CxfEndpoint {
                 }
             }
             if (implementor == null) { // old pojo style
-                final InjectionProcessor<Object> injectionProcessor = new InjectionProcessor<Object>(instance, port.getInjections(), null, null, unwrap(context), bindings);
+                final InjectionProcessor<Object> injectionProcessor = new InjectionProcessor<>(instance, port.getInjections(), null, null, unwrap(context), bindings);
                 injectionProcessor.createInstance();
                 implementor = injectionProcessor.getInstance();
                 injector = injectCxfResources(implementor);

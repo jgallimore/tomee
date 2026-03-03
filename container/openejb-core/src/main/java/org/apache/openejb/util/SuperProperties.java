@@ -588,26 +588,15 @@ public class SuperProperties extends Properties {
             }
 
             // Decode encoded separator characters
-            switch (nextByte) {
-                case ENCODED_EQUALS:
-                    nextChar = '=';
-                    break;
-                case ENCODED_COLON:
-                    nextChar = ':';
-                    break;
-                case ENCODED_SPACE:
-                    nextChar = ' ';
-                    break;
-                case ENCODED_TAB:
-                    nextChar = '\t';
-                    break;
-                case ENCODED_NEWLINE:
-                    nextChar = '\n';
-                    break;
-                case ENCODED_CARRIAGE_RETURN:
-                    nextChar = '\r';
-                    break;
-            }
+            nextChar = switch (nextByte) {
+                case ENCODED_EQUALS -> '=';
+                case ENCODED_COLON -> ':';
+                case ENCODED_SPACE -> ' ';
+                case ENCODED_TAB -> '\t';
+                case ENCODED_NEWLINE -> '\n';
+                case ENCODED_CARRIAGE_RETURN -> '\r';
+                default -> nextChar;
+            };
 
             inSeparator = false;
             if (value == null) {
@@ -728,22 +717,15 @@ public class SuperProperties extends Properties {
     }
 
     private char decodeEscapeChar(final char nextChar) {
-        switch (nextChar) {
-            case 'b':
-                return '\b';
-            case 'f':
-                return '\f';
-            case 'n':
-                return '\n';
-            case 'r':
-                return '\r';
-            case 't':
-                return '\t';
-            case 'u':
-                throw new IllegalArgumentException("decodeEscapeChar can not decode an unicode sequence");
-            default:
-                return nextChar;
-        }
+        return switch (nextChar) {
+            case 'b' -> '\b';
+            case 'f' -> '\f';
+            case 'n' -> '\n';
+            case 'r' -> '\r';
+            case 't' -> '\t';
+            case 'u' -> throw new IllegalArgumentException("decodeEscapeChar can not decode an unicode sequence");
+            default -> nextChar;
+        };
     }
 
     private char readUnicode(final InputStream in) throws IOException {
@@ -1067,16 +1049,13 @@ public class SuperProperties extends Properties {
                 }
             });
 
-            builder.setEntityResolver(new EntityResolver() {
-                public InputSource resolveEntity(final String publicId,
-                                                 final String systemId) throws SAXException, IOException {
-                    if (systemId.equals(PROP_DTD_NAME)) {
-                        final InputSource result = new InputSource(new StringReader(PROP_DTD));
-                        result.setSystemId(PROP_DTD_NAME);
-                        return result;
-                    }
-                    throw new SAXException("Invalid DOCTYPE declaration: " + systemId);
+            builder.setEntityResolver((publicId, systemId) -> {
+                if (systemId.equals(PROP_DTD_NAME)) {
+                    final InputSource result = new InputSource(new StringReader(PROP_DTD));
+                    result.setSystemId(PROP_DTD_NAME);
+                    return result;
                 }
+                throw new SAXException("Invalid DOCTYPE declaration: " + systemId);
             });
         }
         return builder;
@@ -1196,8 +1175,7 @@ public class SuperProperties extends Properties {
 
     public Object put(Object key, final Object value) {
         key = normalize(key);
-        if (key instanceof String) {
-            final String name = (String) key;
+        if (key instanceof String name) {
             if (!attributes.containsKey(name)) {
                 attributes.put(name, new LinkedHashMap<>());
             }
@@ -1216,8 +1194,7 @@ public class SuperProperties extends Properties {
         for (final Map.Entry<?, ?> entry : t.entrySet()) {
             put(entry.getKey(), entry.getValue());
         }
-        if (t instanceof SuperProperties) {
-            final SuperProperties superProperties = (SuperProperties) t;
+        if (t instanceof SuperProperties superProperties) {
             for (final Map.Entry<String, String> entry : superProperties.comments.entrySet()) {
                 comments.put(normalize(entry.getKey()), entry.getValue());
             }
@@ -1326,8 +1303,7 @@ public class SuperProperties extends Properties {
         }
 
         for (final Object o : keySet()) {
-            if (o instanceof String) {
-                final String key = (String) o;
+            if (o instanceof String key) {
                 if (key.equalsIgnoreCase(property)) {
                     return key;
                 }
@@ -1336,8 +1312,7 @@ public class SuperProperties extends Properties {
 
         if (defaults != null) {
             for (final Object o : defaults.keySet()) {
-                if (o instanceof String) {
-                    final String key = (String) o;
+                if (o instanceof String key) {
                     if (key.equalsIgnoreCase(property)) {
                         return key;
                     }

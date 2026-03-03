@@ -62,8 +62,8 @@ import java.util.zip.ZipFile;
 public class ClassLoaderUtil {
 
     private static final Logger logger = Logger.getInstance(LogCategory.OPENEJB, ClassLoaderUtil.class);
-    private static final Map<String, List<ClassLoader>> classLoadersByApp = new HashMap<String, List<ClassLoader>>();
-    private static final Map<ClassLoader, Set<String>> appsByClassLoader = new HashMap<ClassLoader, Set<String>>();
+    private static final Map<String, List<ClassLoader>> classLoadersByApp = new HashMap<>();
+    private static final Map<ClassLoader, Set<String>> appsByClassLoader = new HashMap<>();
     private static final UrlCache localUrlCache = new UrlCache();
     private static final AtomicBoolean skipClearSunJarFile = new AtomicBoolean();
 
@@ -73,13 +73,7 @@ public class ClassLoaderUtil {
     }
 
     public static ClassLoader getContextClassLoader() {
-        return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
-
-            @Override
-            public ClassLoader run() {
-                return Thread.currentThread().getContextClassLoader();
-            }
-        });
+        return AccessController.doPrivileged((PrivilegedAction<ClassLoader>) () -> Thread.currentThread().getContextClassLoader());
     }
 
     public static File getUrlCachedName(final String appId, final URL url) {
@@ -170,9 +164,8 @@ public class ClassLoaderUtil {
 
         final List<String> files = new ArrayList<>();
 
-        if (null != cl && cl instanceof URLClassLoader) {
+        if (null != cl && cl instanceof URLClassLoader ucl) {
 
-            final URLClassLoader ucl = (URLClassLoader) cl;
             final Class clazz = URLClassLoader.class;
 
             try {
@@ -229,11 +222,10 @@ public class ClassLoaderUtil {
             //Ignore
         }
 
-        if (!(obj instanceof Vector)) {
+        if (!(obj instanceof Vector javaLangClassLoaderNativeLibrary)) {
             return false;
         }
 
-        final Vector javaLangClassLoaderNativeLibrary = (Vector) obj;
         Method finalize;
 
         for (final Object lib : javaLangClassLoaderNativeLibrary) {
@@ -337,7 +329,7 @@ public class ClassLoaderUtil {
     /**
      * Cleans well known class loader leaks in VMs and libraries.  There is a lot of bad code out there and this method
      * will clear up the know problems.  This method should only be called when the class loader will no longer be used.
-     * It this method is called two often it can have a serious impact on preformance.
+     * It this method is called two often it can have a serious impact on performance.
      */
     public static void clearClassLoaderCaches() {
         clearSunSoftCache(ObjectInputStream.class, "subclassAudits");
@@ -394,8 +386,7 @@ public class ClassLoaderUtil {
                 final Map.Entry entry = (Map.Entry) iterator.next();
                 final Object key = entry.getKey();
 
-                if (key instanceof ZipFile) {
-                    final ZipFile zf = (ZipFile) key;
+                if (key instanceof ZipFile zf) {
                     final File file = new File(zf.getName());  //getName returns File.getPath()
                     if (isParent(jarLocation, file)) {
                         //Flag for removal
@@ -493,7 +484,7 @@ public class ClassLoaderUtil {
      * Clears the caches maintained by the SunVM object stream implementation.
      * This method uses reflection and setAccessable to obtain access to the Sun cache.
      * The cache Class synchronizes upon itself for access to the cache Map.
-     * This method completely clears the class loader cache which will impact preformance of object serialization.
+     * This method completely clears the class loader cache which will impact performance of object serialization.
      *
      * @param clazz     the name of the class containing the cache field
      * @param fieldName the name of the cache field

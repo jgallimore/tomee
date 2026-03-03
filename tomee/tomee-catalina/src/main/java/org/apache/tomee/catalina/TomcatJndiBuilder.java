@@ -163,7 +163,7 @@ public class TomcatJndiBuilder {
             // no-op
         }
 
-        // classical deployment - needed because can be overriden through META-INF/context.xml
+        // classical deployment - needed because can be overridden through META-INF/context.xml
         final String hostname = org.apache.tomee.catalina.Contexts.getHostname(standardContext);
         String path = standardContext.findParameter(TomcatWebAppBuilder.OPENEJB_WEBAPP_MODULE_ID);
         if (path == null) { // standardContext not created by OpenEJB
@@ -319,11 +319,9 @@ public class TomcatJndiBuilder {
     private static Object normalize(final Object value) {
         try {
 
-            if (!(value instanceof LinkRef)) {
+            if (!(value instanceof LinkRef ref)) {
                 return value;
             }
-
-            final LinkRef ref = (LinkRef) value;
 
             final RefAddr refAddr = ref.getAll().nextElement();
 
@@ -815,7 +813,7 @@ public class TomcatJndiBuilder {
             naming.addResource(resource);
         }
 
-        // or replace the exisitng resource entry
+        // or replace the existing resource entry
         if (replaceEntry) {
             ContextAccessController.setWritable(namingContextListener.getName(), standardContext.getNamingToken());
             if (!addEntry) {
@@ -875,7 +873,7 @@ public class TomcatJndiBuilder {
 
         for (final ResourceInfo info : resources) {
             final String name = info.id;
-            // if invalid or existing or lazy just skip it cause doesnt work during startup
+            // if invalid or existing or lazy just skip it cause doesn't work during startup
             if (name == null || naming.findResource(name) != null || info.properties.containsKey("UseAppClassLoader")) {
                 continue;
             }

@@ -235,16 +235,12 @@ public class LocalFileHandler extends Handler {
 
         final String[] split = str.split("_", -1);
         final int occurrences = split.length -1;
-        switch (occurrences) {
-            case 0:
-                return new Locale(str.toUpperCase(Locale.ENGLISH));
-            case 1:
-                return new Locale(split[0], split[1]);
-            case 2:
-                return new Locale(split[0], split[1], split[2]);
-            default:
-                throw new IllegalArgumentException("Invalid locale format: " + str);
-        }
+        return switch (occurrences) {
+            case 0 -> new Locale(str.toUpperCase(Locale.ENGLISH));
+            case 1 -> new Locale(split[0], split[1]);
+            case 2 -> new Locale(split[0], split[1], split[2]);
+            default -> throw new IllegalArgumentException("Invalid locale format: " + str);
+        };
     }
 
     protected String currentDate() {
@@ -407,29 +403,21 @@ public class LocalFileHandler extends Handler {
             writerLock.writeLock().unlock();
         }
 
-        BackgroundTaskRunner.push(new Runnable() {
-            @Override
-            public void run() {
-                backgroundTaskLock.lock();
-                try {
-                    evict(beforeRotation);
-                } catch (final Exception e) {
-                    reportError("Can't do the log eviction", e, ErrorManager.GENERIC_FAILURE);
-                } finally {
-                    backgroundTaskLock.unlock();
-                }
+        BackgroundTaskRunner.push(() -> {
+            backgroundTaskLock.lock();
+            try {
+                evict(beforeRotation);
+            } catch (final Exception e) {
+                reportError("Can't do the log eviction", e, ErrorManager.GENERIC_FAILURE);
+            } finally {
+                backgroundTaskLock.unlock();
             }
         });
     }
 
     private void evict(final long now) {
         if (purgeExpiryDuration > 0) { // purging archives
-            final File[] archives = archiveDir.listFiles(new FilenameFilter() {
-                @Override
-                public boolean accept(final File dir, final String name) {
-                    return archiveFilenameRegex.matcher(name).matches();
-                }
-            });
+            final File[] archives = archiveDir.listFiles((dir, name) -> archiveFilenameRegex.matcher(name).matches());
 
             if (archives != null) {
                 for (final File archive : archives) {
@@ -437,7 +425,7 @@ public class LocalFileHandler extends Handler {
                         final BasicFileAttributes attr = Files.readAttributes(archive.toPath(), BasicFileAttributes.class);
                         if (now - attr.creationTime().toMillis() > purgeExpiryDuration) {
                             if (!Files.deleteIfExists(archive.toPath())) {
-                                // dont try to delete on exit cause we will find it again
+                                // don't try to delete on exit cause we will find it again
                                 reportError("Can't delete " + archive.getAbsolutePath() + ".", null, ErrorManager.GENERIC_FAILURE);
                             }
                         }
@@ -449,12 +437,7 @@ public class LocalFileHandler extends Handler {
         }
         if (archiveExpiryDuration > 0) { // archiving log files
             final File[] logs = new File(formatFilename(filenamePattern, "0000-00-00", 0)).getParentFile()
-                    .listFiles(new FilenameFilter() {
-                        @Override
-                        public boolean accept(final File dir, final String name) {
-                            return filenameRegex.matcher(name).matches();
-                        }
-                    });
+                    .listFiles((dir, name) -> filenameRegex.matcher(name).matches());
 
             if (logs != null) {
                 for (final File file : logs) {
@@ -609,12 +592,7 @@ public class LocalFileHandler extends Handler {
     }
 
     public static class PatternFormatter extends Formatter {
-        private final ThreadLocal<Date> date = new ThreadLocal<Date>() {
-            @Override
-            protected Date initialValue() {
-                return new Date();
-            }
-        };
+        private final ThreadLocal<Date> date = ThreadLocal.withInitial(Date::new);
 
         private final String format;
         private final Locale locale;

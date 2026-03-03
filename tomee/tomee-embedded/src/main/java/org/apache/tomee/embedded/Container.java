@@ -359,13 +359,8 @@ public class Container implements AutoCloseable {
         // we don't care of these
         callers.remove("org.apache.tomee.embedded.Container");
         callers.remove("org.apache.tomee.gradle.embedded.TomEEEmbeddedTask");
-        final Iterator<String> callerIt = callers.iterator();
-        while (callerIt.hasNext()) { // TomEEEmbeddedMojo is also used with some anonymous classes (TomEEEmbeddedMojo$x)
-            if (callerIt.next().startsWith("org.apache.openejb.maven.plugins.TomEEEmbeddedMojo")) {
-                callerIt.remove();
-                // no break since we remove anonymous class+the mojo itself
-            }
-        }
+        // TomEEEmbeddedMojo is also used with some anonymous classes (TomEEEmbeddedMojo$x)
+        callers.removeIf(s -> s.startsWith("org.apache.openejb.maven.plugins.TomEEEmbeddedMojo"));
         if (additionalCallers != null && additionalCallers.length > 0) {
             callers.addAll(asList(additionalCallers));
         }
@@ -511,7 +506,7 @@ public class Container implements AutoCloseable {
 
         final String catalinaBase = base.getAbsolutePath();
 
-        // set the env before calling anoything on tomcat or Catalina!!
+        // set the env before calling anything on tomcat or Catalina!!
         // TODO: save previous value and restore in stop
         System.setProperty("catalina.base", catalinaBase);
         System.setProperty("openejb.deployments.classpath", "false");
@@ -547,7 +542,7 @@ public class Container implements AutoCloseable {
                 configuration.setHttpPort(Integer.parseInt(ports.http()));
                 configuration.setStopPort(Integer.parseInt(ports.stop()));
             } else {
-                final Map<String, String> replacements = new HashMap<String, String>();
+                final Map<String, String> replacements = new HashMap<>();
                 replacements.put(ports.http(), String.valueOf(configuration.getHttpPort()));
                 replacements.put(ports.https(), String.valueOf(configuration.getHttpsPort()));
                 replacements.put(ports.stop(), String.valueOf(configuration.getStopPort()));

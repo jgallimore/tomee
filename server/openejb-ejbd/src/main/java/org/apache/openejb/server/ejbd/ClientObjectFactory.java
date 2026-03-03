@@ -33,7 +33,7 @@ import java.util.Properties;
 
 class ClientObjectFactory implements org.apache.openejb.spi.ApplicationServer {
 
-    public static final ThreadLocal<ServerMetaData> SERVER_META_DATA = new ThreadLocal<ServerMetaData>();
+    public static final ThreadLocal<ServerMetaData> SERVER_META_DATA = new ThreadLocal<>();
 
     protected ServerMetaData defaultServerMetaData;
 
@@ -104,9 +104,9 @@ class ClientObjectFactory implements org.apache.openejb.spi.ApplicationServer {
         final ClientMetaData cMetaData = new ClientMetaData(securityIdentity);
         final EJBMetaDataImpl eMetaData = buildEjbMetaData(info, beanContext, idCode);
 
-        final EJBHomeHandler hanlder = EJBHomeHandler.createEJBHomeHandler(JNDIContext.globalExecutor(), eMetaData, getServerMetaData(), cMetaData, call.get(JNDIContext.AuthenticationInfo.class));
+        final EJBHomeHandler handler = EJBHomeHandler.createEJBHomeHandler(JNDIContext.globalExecutor(), eMetaData, getServerMetaData(), cMetaData, call.get(JNDIContext.AuthenticationInfo.class));
 
-        return new EJBHomeHandle(hanlder.createEJBHomeProxy());
+        return new EJBHomeHandle(handler.createEJBHomeProxy());
     }
 
     @Override
@@ -126,9 +126,9 @@ class ClientObjectFactory implements org.apache.openejb.spi.ApplicationServer {
         final EJBMetaDataImpl eMetaData = buildEjbMetaData(info, beanContext, idCode);
         final Object primKey = info.getPrimaryKey();
 
-        final EJBObjectHandler hanlder = EJBObjectHandler.createEJBObjectHandler(JNDIContext.globalExecutor(), eMetaData, getServerMetaData(), cMetaData, primKey, null);
+        final EJBObjectHandler handler = EJBObjectHandler.createEJBObjectHandler(JNDIContext.globalExecutor(), eMetaData, getServerMetaData(), cMetaData, primKey, null);
 
-        return (jakarta.ejb.EJBObject) hanlder.createEJBObjectProxy();
+        return (jakarta.ejb.EJBObject) handler.createEJBObjectProxy();
     }
 
     @Override
@@ -157,31 +157,23 @@ class ClientObjectFactory implements org.apache.openejb.spi.ApplicationServer {
 
         final Object primKey = info.getPrimaryKey();
 
-        final EJBObjectHandler hanlder = EJBObjectHandler.createEJBObjectHandler(JNDIContext.globalExecutor(), eMetaData, getServerMetaData(), cMetaData, primKey, null);
+        final EJBObjectHandler handler = EJBObjectHandler.createEJBObjectHandler(JNDIContext.globalExecutor(), eMetaData, getServerMetaData(), cMetaData, primKey, null);
 
-        return hanlder.createEJBObjectProxy();
+        return handler.createEJBObjectProxy();
     }
 
     public static InterfaceType convert(final org.apache.openejb.InterfaceType type) {
-        switch (type) {
-            case EJB_HOME:
-                return InterfaceType.EJB_HOME;
-            case EJB_OBJECT:
-                return InterfaceType.EJB_OBJECT;
-            case EJB_LOCAL_HOME:
-                return InterfaceType.EJB_LOCAL_HOME;
-            case EJB_LOCAL:
-                return InterfaceType.EJB_LOCAL;
-            case BUSINESS_LOCAL:
-                return InterfaceType.BUSINESS_LOCAL;
-            case BUSINESS_LOCAL_HOME:
-                return InterfaceType.BUSINESS_LOCAL_HOME;
-            case BUSINESS_REMOTE:
-                return InterfaceType.BUSINESS_REMOTE;
-            case BUSINESS_REMOTE_HOME:
-                return InterfaceType.BUSINESS_REMOTE_HOME;
-        }
-        return null;
+        return switch (type) {
+            case EJB_HOME -> InterfaceType.EJB_HOME;
+            case EJB_OBJECT -> InterfaceType.EJB_OBJECT;
+            case EJB_LOCAL_HOME -> InterfaceType.EJB_LOCAL_HOME;
+            case EJB_LOCAL -> InterfaceType.EJB_LOCAL;
+            case BUSINESS_LOCAL -> InterfaceType.BUSINESS_LOCAL;
+            case BUSINESS_LOCAL_HOME -> InterfaceType.BUSINESS_LOCAL_HOME;
+            case BUSINESS_REMOTE -> InterfaceType.BUSINESS_REMOTE;
+            case BUSINESS_REMOTE_HOME -> InterfaceType.BUSINESS_REMOTE_HOME;
+            default -> null;
+        };
     }
 
     @Override
@@ -200,9 +192,9 @@ class ClientObjectFactory implements org.apache.openejb.spi.ApplicationServer {
         final ClientMetaData cMetaData = new ClientMetaData(securityIdentity);
         final EJBMetaDataImpl eMetaData = buildEjbMetaData(info, beanContext, idCode);
 
-        final EJBHomeHandler hanlder = EJBHomeHandler.createEJBHomeHandler(JNDIContext.globalExecutor(), eMetaData, getServerMetaData(), cMetaData, null);
+        final EJBHomeHandler handler = EJBHomeHandler.createEJBHomeHandler(JNDIContext.globalExecutor(), eMetaData, getServerMetaData(), cMetaData, null);
 
-        return hanlder.createEJBHomeProxy();
+        return handler.createEJBHomeProxy();
     }
 
     private EJBMetaDataImpl buildEjbMetaData(final ProxyInfo info, final BeanContext beanContext, final int idCode) {

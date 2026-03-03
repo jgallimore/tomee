@@ -832,7 +832,7 @@ public class Cmp2Generator implements Opcodes {
     /**
      * Generate the OpenEJB_addCmr logic for an individual
      * CMR field.  Each CMR field has a test against the
-     * property name, which is passed to the wrappering
+     * property name, which is passed to the wrapping
      * addCmr method.  This results in a series of
      * if blocks for each defined CMD property.
      *
@@ -1157,7 +1157,7 @@ public class Cmp2Generator implements Opcodes {
             }
         }
 
-        private static final Map<Class, Convert> conversionsByPrimitive = new HashMap<Class, Convert>();
+        private static final Map<Class, Convert> conversionsByPrimitive = new HashMap<>();
 
         public static Convert getConversion(final Class primitive) {
             if (!primitive.isPrimitive()) {

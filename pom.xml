@@ -23,7 +23,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>35</version>
+    <version>37</version>
     <relativePath><!--Resolve on repository--></relativePath>
   </parent>
 
@@ -86,7 +86,7 @@
     <connection>scm:git:https://github.com/apache/tomee.git</connection>
     <developerConnection>scm:git:git@github.com:apache/tomee.git</developerConnection>
     <url>https://github.com/apache/tomee.git</url>
-    <tag>tomee-project-10.1.0</tag>
+    <tag>tomee-project-10.1.4</tag>
   </scm>
 
   <properties>
@@ -107,10 +107,10 @@
 
     <!-- Plugins and Build -->
     <maven.version>3.0.5</maven.version>
-    <version.plugin.bundle>6.0.0</version.plugin.bundle>
+    <version.plugin.bundle>6.0.2</version.plugin.bundle>
     <version.plugin.javadoc>3.12.0</version.plugin.javadoc>
     <asciidoclet.version>1.5.0</asciidoclet.version>
-    <surefire.version>3.5.3</surefire.version>
+    <surefire.version>3.5.5</surefire.version>
 
     <!-- OSGi bundles properties -->
     <openejb.bundle.activator />
@@ -131,11 +131,11 @@
     <version.arquillian.bom>1.10.0.Final</version.arquillian.bom>
     <version.arquillian-protocol-servlet-jakarta>1.8.0.Final</version.arquillian-protocol-servlet-jakarta>
     <version.shrinkwrap.descriptor>2.0.0</version.shrinkwrap.descriptor>
-    <version.shrinkwrap.resolver.bom>3.3.4</version.shrinkwrap.resolver.bom>
+    <version.shrinkwrap.resolver.bom>3.3.5</version.shrinkwrap.resolver.bom>
     <version.shrinkwrap.shrinkwrap>1.2.6</version.shrinkwrap.shrinkwrap>
 
     <version.tomee-quartz-shade>2.5.1</version.tomee-quartz-shade>
-    <version.xbean>4.28</version.xbean>
+    <version.xbean>4.30</version.xbean>
     <version.groovy>2.4.21</version.groovy>
     <version.jetty>11.0.20</version.jetty>
     <version.ehcache>3.11.1</version.ehcache>
@@ -154,13 +154,13 @@
 
     <!-- Apache Commons -->
     <version.commons-cli>1.11.0</version.commons-cli>
-    <version.commons-codec>1.20.0</version.commons-codec>
+    <version.commons-codec>1.21.0</version.commons-codec>
     <version.commons-dbcp2>2.14.0</version.commons-dbcp2>
     <version.commons-discovery>0.5</version.commons-discovery>
     <version.commons-io>2.21.0</version.commons-io>
     <version.commons-lang3>3.20.0</version.commons-lang3>
-    <version.commons-pool>2.13.0</version.commons-pool>
-    <version.commons-fileupload>2.0.0-M4</version.commons-fileupload>
+    <version.commons-pool>2.13.1</version.commons-pool>
+    <version.commons-fileupload>2.0.0-M5</version.commons-fileupload>
 
 
     <!-- Java SE version -->
@@ -182,7 +182,7 @@
     <version.io.opentracing>0.33.0</version.io.opentracing>
 
     <!-- Micro Profile Impl. -->
-    <version.microprofile.impl.config>3.15.0</version.microprofile.impl.config>
+    <version.microprofile.impl.config>3.16.0</version.microprofile.impl.config>
     <version.microprofile.impl.fault-tolerance>6.4.3</version.microprofile.impl.fault-tolerance>
     <version.microprofile.impl.health>4.0.4</version.microprofile.impl.health>
     <version.microprofile.impl.metrics>5.1.0</version.microprofile.impl.metrics>
@@ -190,22 +190,22 @@
     <version.microprofile.impl.opentelemetry>2.7.0</version.microprofile.impl.opentelemetry>
 
     <!-- Jackson and snakeyaml required by OpenAPI Impl -->
-    <version.jackson>2.20.1</version.jackson>
-    <version.snakeyaml>2.5</version.snakeyaml>
+    <version.jackson>2.21.1</version.jackson>
+    <version.snakeyaml>2.6</version.snakeyaml>
 
     <!-- Jakarta EE API -->
     <!-- we currently rely on Mail API from Geronimo, this might change in the future -->
     <version.geronimo-mail_2.1_spec>1.0.2</version.geronimo-mail_2.1_spec>
 
     <!-- Jakarta EE Impl. -->
-    <tomcat.version>10.1.50</tomcat.version>
+    <tomcat.version>10.1.52</tomcat.version>
     <!-- com.sun -->
     <version.impl.saaj>3.0.4</version.impl.saaj>
     <!-- org.apache -->
-    <version.activemq>6.2.0</version.activemq>
+    <version.activemq>6.2.1</version.activemq>
     <version.batchee>2.0.0</version.batchee>
     <version.bval>3.0.1</version.bval>
-    <version.cxf>4.1.4</version.cxf>
+    <version.cxf>4.1.5</version.cxf>
     <version.geronimo.components>4.0.0</version.geronimo.components>
     <!-- we currently rely on Mail Impl. from Geronimo, this might change in the future -->
     <version.geronimo-mail_2.1_provider>1.0.2</version.geronimo-mail_2.1_provider>
@@ -214,11 +214,11 @@
     <version.openjpa>4.1.1</version.openjpa>
     <version.openwebbeans>4.0.4-TT.1</version.openwebbeans>
     <!-- org.eclipse -->
-    <version.eclipselink>4.0.8</version.eclipselink>
+    <version.eclipselink>4.0.9</version.eclipselink>
     <!-- org.glassfish -->
-    <version.mojarra>4.0.13</version.mojarra>
+    <version.mojarra>4.0.14</version.mojarra>
     <!-- org.hibernate -->
-    <version.hibernate.orm>6.6.40.Final</version.hibernate.orm>
+    <version.hibernate.orm>6.6.44.Final</version.hibernate.orm>
     <version.hibernate.validator>8.0.3.Final</version.hibernate.validator>
 
     <!-- Other API and Impl. not in Jakarta EE -->
@@ -272,7 +272,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.8.0</version>
+          <version>3.10.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -282,7 +282,7 @@
             <dependency>
               <groupId>org.codehaus.plexus</groupId>
               <artifactId>plexus-archiver</artifactId>
-              <version>4.10.4</version>
+              <version>4.11.0</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -294,7 +294,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.5.4</version>
+          <version>3.5.5</version>
         </plugin>
         <plugin> <!-- maven-dependency-plugin:properties doesn't work as well as this one for us -->
           <groupId>org.apache.geronimo.buildsupport</groupId>
@@ -329,7 +329,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>jaxb2-maven-plugin</artifactId>
-          <version>4.0.0</version>
+          <version>4.1.0</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -374,7 +374,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.14.1</version>
+          <version>3.15.0</version>
         </plugin>
         <plugin>
           <groupId>org.jacoco</groupId>
@@ -514,7 +514,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>3.10.0</version>
       </plugin>
       <plugin>
         <groupId>org.codehaus.swizzle</groupId>
@@ -1031,7 +1031,7 @@
 <dependency>
         <groupId>org.jboss.logging</groupId>
         <artifactId>jboss-logging</artifactId>
-        <version>3.6.1.Final</version>
+        <version>3.6.2.Final</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
@@ -1601,7 +1601,7 @@
       <dependency>
         <groupId>org.apache.sshd</groupId>
         <artifactId>sshd-core</artifactId>
-        <version>2.16.0</version>
+        <version>2.17.1</version>
       </dependency>
       <dependency>
         <groupId>jline</groupId>
@@ -1800,7 +1800,7 @@
       <dependency>
         <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-archiver</artifactId>
-        <version>4.10.4</version>
+        <version>4.11.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>

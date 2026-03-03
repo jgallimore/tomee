@@ -37,7 +37,7 @@ Here, you can configure any number of security realms to authenticate
 against. To specify which of the realms you want to authenticate
 against, you can set the _openejb.authentication.realmName_ property to
 any of the configured realm names in _login.config_. If you don't
-speficy a realm name, the default (currently _PropertiesLogin_) is used.
+specify a realm name, the default (currently _PropertiesLogin_) is used.
 For examples and more information on JAAS configuration, see the
 http://java.sun.com/javase/6/docs/technotes/guides/security/jaas/JAASRefGuide.html[JAAS
 Reference Guide] .
@@ -180,7 +180,7 @@ JaccProvider impl.
 things you have to do to create and plugin a JACC provider, but you can
 still plugin a JACC provider in the standard ways. Read the JACC spec
 for that info.
-* _JAAS LoginModule_. You can setup a different JAAS LoginModule to do
+* _JAAS LoginModule_. You can set up a different JAAS LoginModule to do
 all your authentication by simply editing the conf/login.config file
 which is a plain JAAS config file. At the moment we only support
 username/password based login modules. At some point it would be nice to
@@ -197,5 +197,5 @@ would have to implement to supply the OpenEJB client with alternate data
 to send to the server with each invocation request. If you're plugging
 in a new version of this it is likely that you may also want to plugin
 in your own SecurityService implementation. Reason being, the object
-returned from IdentiyResolve.getIdentity() is sent across the wire and
+returned from IdentityResolve.getIdentity() is sent across the wire and
 straight in to the SecurityService.associate(Object) method.

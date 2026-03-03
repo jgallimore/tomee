@@ -56,7 +56,7 @@ public class JWTCallerPrincipal implements JsonWebToken {
      * Create the DefaultJWTCallerPrincipal from the parsed JWT token and the extracted principal name
      *
      * @param jwt  - the parsed JWT token representation
-     * @param name - the extracted unqiue name to use as the principal name; from "upn", "preferred_username" or "sub" claim
+     * @param name - the extracted unique name to use as the principal name; from "upn", "preferred_username" or "sub" claim
      */
     public JWTCallerPrincipal(final String jwt, final String type, final JwtClaims claimsSet, final String name) {
         this.name = name;
@@ -291,7 +291,7 @@ public class JWTCallerPrincipal implements JsonWebToken {
                 builder.add(entry.getKey(), value);
 
             } else if (entryValue instanceof Boolean) {
-                final boolean flag = ((Boolean) entryValue).booleanValue();
+                final boolean flag = (Boolean) entryValue;
                 builder.add(entry.getKey(), flag);
 
             } else if (entryValue instanceof String) {
@@ -303,8 +303,7 @@ public class JWTCallerPrincipal implements JsonWebToken {
 
     private JsonValue wrapValue(final Object value) {
         JsonValue jsonValue = null;
-        if (value instanceof Number) {
-            final Number number = (Number) value;
+        if (value instanceof Number number) {
             if ((number instanceof Long) || (number instanceof Integer)) {
                 jsonValue = Json.createObjectBuilder()
                         .add("tmp", number.longValue())
@@ -318,13 +317,11 @@ public class JWTCallerPrincipal implements JsonWebToken {
                         .getJsonNumber("tmp");
             }
 
-        } else if (value instanceof Boolean) {
-            final Boolean flag = (Boolean) value;
+        } else if (value instanceof Boolean flag) {
             jsonValue = flag ? JsonValue.TRUE : JsonValue.FALSE;
 
-        } else if (value instanceof List) {
+        } else if (value instanceof List list) {
             final JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-            final List list = (List) value;
             for (Object element : list) {
                 if (element instanceof String) {
                     arrayBuilder.add(element.toString());

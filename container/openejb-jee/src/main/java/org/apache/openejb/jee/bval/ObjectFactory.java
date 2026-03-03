@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
  * generated in the org.apache.bval.jsr.xml package. 
- * <p>An ObjectFactory allows you to programatically 
+ * <p>An ObjectFactory allows you to programmatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
  * content can consist of schema derived interfaces 
@@ -243,7 +243,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://jboss.org/xml/ns/javax/validation/configuration", name = "validation-config")
     public JAXBElement<ValidationConfigType> createValidationConfig(ValidationConfigType value) {
-        return new JAXBElement<ValidationConfigType>(_ValidationConfig_QNAME, ValidationConfigType.class, null, value);
+        return new JAXBElement<>(_ValidationConfig_QNAME, ValidationConfigType.class, null, value);
     }
 
     /**
@@ -252,7 +252,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://jboss.org/xml/ns/javax/validation/mapping", name = "constraint-mappings")
     public JAXBElement<ConstraintMappingsType> createConstraintMappings(ConstraintMappingsType value) {
-        return new JAXBElement<ConstraintMappingsType>(_ConstraintMappings_QNAME, ConstraintMappingsType.class, null, value);
+        return new JAXBElement<>(_ConstraintMappings_QNAME, ConstraintMappingsType.class, null, value);
     }
 
     /**
@@ -261,7 +261,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://jboss.org/xml/ns/javax/validation/mapping", name = "annotation", scope = ElementType.class)
     public JAXBElement<AnnotationType> createElementTypeAnnotation(AnnotationType value) {
-        return new JAXBElement<AnnotationType>(_ElementTypeAnnotation_QNAME, AnnotationType.class, ElementType.class, value);
+        return new JAXBElement<>(_ElementTypeAnnotation_QNAME, AnnotationType.class, ElementType.class, value);
     }
 
     /**
@@ -271,7 +271,7 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://jboss.org/xml/ns/javax/validation/mapping", name = "value", scope = ElementType.class)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     public JAXBElement<String> createElementTypeValue(String value) {
-        return new JAXBElement<String>(_ElementTypeValue_QNAME, String.class, ElementType.class, value);
+        return new JAXBElement<>(_ElementTypeValue_QNAME, String.class, ElementType.class, value);
     }
 
 }

@@ -36,7 +36,7 @@ The default configuration allows to start tomee without issue but you can desire
 |properties|-|container properties
 |quickSession | true|use Random instead of SecureRandom (for dev)
 |skipHttp|false|don't use the http connector
-|httpsPort | 8443|https potr
+|httpsPort | 8443|https port
 |ssl|false| activate https
 |withEjbRemote|false|use EJBd
 |keystoreFile|-|https keystore location
@@ -52,7 +52,7 @@ The default configuration allows to start tomee without issue but you can desire
 |deployOpenEjbApp|false|should internal openejb application be delpoyed
 |users|-|a map of user/password
 |roles|-|a map of role/users
-|tempDir|${java.io.tmpdir}/tomee-embedded_${timestamp}|tomcat needs a docBase, in case you don't provide one one will be created there
+|tempDir|${java.io.tmpdir}/tomee-embedded_${timestamp}|tomcat needs a docBase, in case you don't provide one, one will be created there
 |webResourceCached |true|should web resources be cached by tomcat (set false in frontend dev)
 |configuration-location|-|location (classpath or file) to a .properties to configure the server
 [pre-task|-|Runnable or org.apache.tomee.embedded.LifecycleTask implementations to execute before the container starts
@@ -184,7 +184,7 @@ properties.openejb.container.additional.include = com.fasterxml.jackson,org.apac
 
 == Application Runner
 
-SInce TomEE 7.0.2, TomEE provide a light ApplicationComposer integration for TomEE Embedded (all features are not yet supported but the main ones are):
+Since TomEE 7.0.2, TomEE provide a light ApplicationComposer integration for TomEE Embedded (all features are not yet supported but the main ones are):
 `org.apache.tomee.embedded.TomEEEmbeddedApplicationRunner`. It relies on the definition of an `@Application`:
 
 [source,java]

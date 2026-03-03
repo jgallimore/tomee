@@ -47,11 +47,11 @@ attribute pointing to the directory containing the jar files.
 ----
 
 The directories listed will be searched for jars containing
-'META-INF/ejb-jar.xml' files and will be added to the list of jars to
+`META-INF/ejb-jar.xml` files and will be added to the list of jars to
 load if they do. Better said, it's completely safe to point to a
 directory containing a mix of ejbs and regular jar files. TomEE will
 simply skip over jars that do contain the required
-'META-INF/ejb-jar.xml' file.
+`META-INF/ejb-jar.xml` file.
 
 The last Deployments element declares a 'beans' directory relative to
 catalina.base for holding ejb jars. This declaration is simply convention
@@ -60,9 +60,9 @@ and not required.
 == An unpacked jar
 
 As of 1.0 beta1, TomEE supports unpacked ejb jars. Simply meaning that
-you don't need to pack your ejb's into a jar file in order to use them
+you don't need to pack your ejbs into a jar file in order to use them
 in TomEE. You still need to follow the ejb jar layout and include an
-"META-INF/ejb-jar.xml" in the directory that contains your ejbs.
+`META-INF/ejb-jar.xml` in the directory that contains your ejbs.
 
 For example, if you have a directory structure like this:
 
@@ -79,7 +79,7 @@ For example, if you have a directory structure like this:
 > C:\myapp\acmeEjbs\org\acme\BarHome.class
 ----
 
-Then you would delcare a 'Deployments' element with the 'dir' attribute
+Then you would declare a 'Deployments' element with the 'dir' attribute
 set to 'C:' as shown below.
 
 [source,xml]
@@ -92,8 +92,8 @@ set to 'C:' as shown below.
 ----
 
 Note that this syntax is the same as the directory syntax above. If
-TomEE finds a META-INF directory with an 'ejb-jar.xml' fine inside,
-then TomEE will treat the directory as an unpacked ejb jar. Otherwise
+TomEE finds a META-INF directory with an `ejb-jar.xml` fine inside,
+then TomEE will treat the directory as an unpacked ejb jar. Otherwise,
 TomEE will look for ejb jar files to load as detailed in the above
 section.
 
@@ -124,7 +124,7 @@ Jar failed validation.  Use the validation tool for more details
 
 Additionally, all the successfully loaded ejbs are individually listed
 in the log file at startup. The Deployment ID listed is the JNDI name
-used to lookup the ejb from a client of the Local or Remote Servers. The
+used to look up the ejb from a client of the Local or Remote Servers. The
 beans listed below are from our test suite.
 
 [source,properties]

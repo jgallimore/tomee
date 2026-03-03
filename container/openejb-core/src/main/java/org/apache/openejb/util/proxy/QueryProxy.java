@@ -133,18 +133,11 @@ public class QueryProxy implements InvocationHandler {
         int matched = 0;
         Query query;
         if (String.class.isAssignableFrom(args[0].getClass())) {
-            switch (type) {
-                case NAMED:
-                    query = em.createNamedQuery((String) args[0]);
-                    break;
-
-                case NATIVE:
-                    query = em.createNativeQuery((String) args[0]);
-                    break;
-
-                default:
-                    query = em.createQuery((String) args[0]);
-            }
+            query = switch (type) {
+                case NAMED -> em.createNamedQuery((String) args[0]);
+                case NATIVE -> em.createNativeQuery((String) args[0]);
+                default -> em.createQuery((String) args[0]);
+            };
 
             matched++;
 
@@ -297,8 +290,7 @@ public class QueryProxy implements InvocationHandler {
     }
 
     private Class<?> getGenericType(final Type type) {
-        if (type instanceof ParameterizedType) {
-            final ParameterizedType pt = (ParameterizedType) type;
+        if (type instanceof ParameterizedType pt) {
             if (pt.getActualTypeArguments().length == 1) {
                 return (Class<?>) pt.getActualTypeArguments()[0];
             }

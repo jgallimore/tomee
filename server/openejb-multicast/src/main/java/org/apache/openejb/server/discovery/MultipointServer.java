@@ -111,7 +111,7 @@ public class MultipointServer {
     private final Condition stopped = lock.newCondition();
 
     public MultipointServer(final int port, final Tracker tracker) throws IOException {
-        this("localhost", "localhost", port, tracker, randomColor(), true, new HashSet<URI>(0), new Duration(30, TimeUnit.SECONDS));
+        this("localhost", "localhost", port, tracker, randomColor(), true, new HashSet<>(0), new Duration(30, TimeUnit.SECONDS));
     }
 
     public MultipointServer(final String bindHost, String broadcastHost, final int port, final Tracker tracker, final String name, final boolean debug, final Set<URI> roots, Duration reconnectDelay) throws IOException {
@@ -258,15 +258,12 @@ public class MultipointServer {
             final String multipointServer = Join.join(".", "MultipointServer", name, port);
             LOGGER.info("MultipointServer Starting : Thread '" + multipointServer + "'");
 
-            final Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    signal(started);
-                    try {
-                        _run();
-                    } finally {
-                        signal(stopped);
-                    }
+            final Thread thread = new Thread(() -> {
+                signal(started);
+                try {
+                    _run();
+                } finally {
+                    signal(stopped);
                 }
             });
             thread.setName(multipointServer);
@@ -1008,17 +1005,13 @@ public class MultipointServer {
 
                 if (!sessions[0].client && !sessions[1].client) {
                     // Case 1 -- Client is calling back
-                    Arrays.sort(sessions, new Comparator<Session>() {
-                        @Override
-                        public int compare(final Session a, final Session b) {
-                            return (int) (b.created - a.created);
-                        }
-                    });
+                    Arrays.sort(sessions, (a, b) -> (int) (b.created - a.created));
                 } else {
                     // Case 2 -- We called each other at the same time
 
-                    Arrays.sort(sessions, new Comparator<Session>() {
+                    Arrays.sort(sessions, new Comparator<>() {
                         // Goal: Keep the connection with the lowest port number
+
                         ///
                         // Low vs high is not very significant.  The critical
                         // part is that they both choose the same connection.
@@ -1216,12 +1209,7 @@ public class MultipointServer {
 
         private Host(final URI uri) {
             this.uri = uri;
-            this.address = new FutureTask<InetAddress>(new Callable<InetAddress>() {
-                @Override
-                public InetAddress call() throws Exception {
-                    return InetAddress.getByName(Host.this.uri.getHost());
-                }
-            });
+            this.address = new FutureTask<>(() -> InetAddress.getByName(Host.this.uri.getHost()));
         }
 
         public void resolveDns() {

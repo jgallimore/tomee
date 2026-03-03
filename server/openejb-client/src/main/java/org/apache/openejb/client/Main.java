@@ -123,11 +123,9 @@ public class Main {
 
             // call the main method in a doAs so the subject is associated with the thread
             try {
-                Subject.doAs(subject, new PrivilegedExceptionAction() {
-                    public Object run() throws Exception {
-                        invoke(mainMethod, mainArgs);
-                        return null;
-                    }
+                Subject.doAs(subject, (PrivilegedExceptionAction) () -> {
+                    invoke(mainMethod, mainArgs);
+                    return null;
                 });
             } finally {
                 // And finally, logout
@@ -161,7 +159,7 @@ public class Main {
     }
 
     private static String[] siftArgs(final String[] args) {
-        final List<String> argsList = new ArrayList<String>();
+        final List<String> argsList = new ArrayList<>();
         for (int i = 0; i < args.length; i++) {
             final String arg = args[i];
             if (arg.indexOf("-D") == -1) {
@@ -176,11 +174,9 @@ public class Main {
     }
 
     private static void setAccessible(final Field field) {
-        AccessController.doPrivileged(new PrivilegedAction<Object>() {
-            public Object run() {
-                field.setAccessible(true);
-                return null;
-            }
+        AccessController.doPrivileged((PrivilegedAction<Object>) () -> {
+            field.setAccessible(true);
+            return null;
         });
     }
 }

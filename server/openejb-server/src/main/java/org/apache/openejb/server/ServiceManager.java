@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import static org.apache.openejb.util.PropertyPlaceHolderHelper.holdsWithUpdate;
 
@@ -146,6 +147,11 @@ public abstract class ServiceManager {
                             serviceClass, "createServerService", null, null, serviceProperties.stringPropertyNames(), Collections.singleton(Option.NAMED_PARAMETERS));
                     if (factory != null) {
                         recipe.setConstructorArgNames(factory.getParameterNames()); // can throw an exception so call it before next line
+                        final List<Class<?>> argTypes = factory.getParameterTypes().stream()
+                                    .filter(t -> t instanceof Class<?>)
+                                    .map(t -> (Class<?>) t)
+                                    .collect(Collectors.toList());
+                        recipe.setConstructorArgTypes(argTypes);
                         recipe.setFactoryMethod("createServerService");
                     } else if (ReflectionUtil.findStaticFactory(serviceClass, "createServerService", null, null) != null) { // old behavior, remove when sure previous check is ok
                         recipe.setFactoryMethod("createServerService");
@@ -165,8 +171,7 @@ public abstract class ServiceManager {
 
                 service.init(serviceProperties);
 
-                if (service instanceof DiscoveryAgent) {
-                    final DiscoveryAgent agent = (DiscoveryAgent) service;
+                if (service instanceof DiscoveryAgent agent) {
                     registry.addDiscoveryAgent(agent);
                 }
 
@@ -229,15 +234,12 @@ public abstract class ServiceManager {
             if (null == legacy) {
                 //Legacy is not configured either way, so make an educated guess.
                 //If we find at least 2 known service.properties files then assume legacy
-                final File[] files = conf.listFiles(new FilenameFilter() {
-                    @Override
-                    public boolean accept(final File dir, String name) {
-                        name = name.toLowerCase(Locale.ENGLISH);
-                        return name.equals("ejbd.properties")
-                            || name.equals("ejbds.properties")
-                            || name.equals("admin.properties")
-                            || name.equals("httpejbd.properties");
-                    }
+                final File[] files = conf.listFiles((dir, name) -> {
+                    name = name.toLowerCase(Locale.ENGLISH);
+                    return name.equals("ejbd.properties")
+                        || name.equals("ejbds.properties")
+                        || name.equals("admin.properties")
+                        || name.equals("httpejbd.properties");
                 });
 
                 if (null != files && files.length > 1) {

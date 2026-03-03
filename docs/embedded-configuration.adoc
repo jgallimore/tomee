@@ -14,7 +14,7 @@ there is quite a bit of flexibility to how things are configured.
 OpenEJB will function fine with no configuration at all and will happily
 create things as needed and select defaults for everything. So in a real
 sense configuration is all about overriding those defaults. There are
-several places to put your overrides and an a specific order how they
+several places to put your overrides and a specific order how they
 are applied. Here they are in order of preference; 1 = highest, 5 =
 lowest.
 
@@ -35,7 +35,7 @@ lowest.
 
 It opens up some interesting possibilities in how you configure your
 environment. You could do 100% of your configuration in your test case
-via InitialContext propertes, or you could do say 80% in a
+via InitialContext properties, or you could do say 80% in a
 jndi.properties file or openejb.xml file and 20% in your test case via
 InitialContext properties. You can put 100% of your configuration in a
 `jndi.properties` or `openejb.xml` file and override them via
@@ -56,7 +56,7 @@ Everything in your logging.properties can be configured/overridden via
 properties. See link:configuring-logging-in-tests.html[Configuring
 Logging in Tests].
 
-The properties of persistence units declared in a persistence.xml can be
+The properties of persistence units declared in a `persistence.xml` can be
 configured/overridden via properties. See
 link:configuring-persistenceunits-in-tests.html[Configuring
 PersistenceUnits in Tests].

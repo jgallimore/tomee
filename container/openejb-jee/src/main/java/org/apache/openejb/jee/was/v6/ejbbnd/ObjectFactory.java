@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
  * element interface generated in the org.apache.openejb.jee.was.v6.ejbbnd
  * package.
  *
- * An ObjectFactory allows you to programatically construct new instances of the
+ * An ObjectFactory allows you to programmatically construct new instances of the
  * Java representation for XML content. The Java representation of XML content
  * can consist of schema derived interfaces and classes representing the binding
  * of schema type definitions, element declarations and model groups. Factory
@@ -85,8 +85,8 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "ejbbnd.xmi", name = "EJBJarBinding")
     public JAXBElement<EJBJarBinding> createEJBJarBinding(final EJBJarBinding value) {
-        return new JAXBElement<EJBJarBinding>(_EJBJarBinding_QNAME,
-            EJBJarBinding.class, null, value);
+        return new JAXBElement<>(_EJBJarBinding_QNAME,
+                EJBJarBinding.class, null, value);
     }
 
     /**
@@ -96,9 +96,9 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "ejbbnd.xmi", name = "MessageDrivenBeanBinding")
     public JAXBElement<MessageDrivenBeanBinding> createMessageDrivenBeanBinding(
         final MessageDrivenBeanBinding value) {
-        return new JAXBElement<MessageDrivenBeanBinding>(
-            _MessageDrivenBeanBinding_QNAME,
-            MessageDrivenBeanBinding.class, null, value);
+        return new JAXBElement<>(
+                _MessageDrivenBeanBinding_QNAME,
+                MessageDrivenBeanBinding.class, null, value);
     }
 
     /**
@@ -108,9 +108,9 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "ejbbnd.xmi", name = "CMPConnectionFactoryBinding")
     public JAXBElement<CMPConnectionFactoryBinding> createCMPConnectionFactoryBinding(
         final CMPConnectionFactoryBinding value) {
-        return new JAXBElement<CMPConnectionFactoryBinding>(
-            _CMPConnectionFactoryBinding_QNAME,
-            CMPConnectionFactoryBinding.class, null, value);
+        return new JAXBElement<>(
+                _CMPConnectionFactoryBinding_QNAME,
+                CMPConnectionFactoryBinding.class, null, value);
     }
 
     /**
@@ -120,9 +120,9 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "ejbbnd.xmi", name = "EnterpriseBeanBinding")
     public JAXBElement<EnterpriseBeanBinding> createEnterpriseBeanBinding(
         final EnterpriseBeanBinding value) {
-        return new JAXBElement<EnterpriseBeanBinding>(
-            _EnterpriseBeanBinding_QNAME, EnterpriseBeanBinding.class,
-            null, value);
+        return new JAXBElement<>(
+                _EnterpriseBeanBinding_QNAME, EnterpriseBeanBinding.class,
+                null, value);
     }
 
 }

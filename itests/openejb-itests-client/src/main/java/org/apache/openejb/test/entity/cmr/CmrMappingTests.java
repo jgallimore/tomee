@@ -46,9 +46,9 @@ public class CmrMappingTests extends AbstractCMRTest {
     private Integer compoundPK_20_20;
     private Integer compoundPK_20_20_field1;
 
-    private Set<Integer> oneOwningCreated = new HashSet<Integer>();
-    private Set<Integer> oneInverseCreated = new HashSet<Integer>();
-    private Set<Integer> manyCreated = new HashSet<Integer>();
+    private Set<Integer> oneOwningCreated = new HashSet<>();
+    private Set<Integer> oneInverseCreated = new HashSet<>();
+    private Set<Integer> manyCreated = new HashSet<>();
 
     private OneInverseSideLocalHome oneInverseHome;
     private OneOwningSideLocalHome oneOwningHome;
@@ -60,10 +60,10 @@ public class CmrMappingTests extends AbstractCMRTest {
 
     protected void setUp() throws Exception {
         super.setUp();
-        compoundPK_20_10 = new Integer(20);
-        compoundPK_20_10_field1 = new Integer(10);
-        compoundPK_20_20 = new Integer(20);
-        compoundPK_20_20_field1 = new Integer(20);
+        compoundPK_20_10 = 20;
+        compoundPK_20_10_field1 = 10;
+        compoundPK_20_20 = 20;
+        compoundPK_20_20_field1 = 20;
 
         oneInverseHome = (OneInverseSideLocalHome) initialContext.lookup("java:openejb/local/client/tests/entity/cmp2/OneInverseSideBean/EJBHomeLocal");
         oneOwningHome = (OneOwningSideLocalHome) initialContext.lookup("java:openejb/local/client/tests/entity/cmp2/OneOwningSideBean/EJBHomeLocal");

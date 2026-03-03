@@ -78,7 +78,7 @@ import java.util.Set;
  * @version $Rev:$ $Date:$
  */
 public class OpenEJBLifecycle implements ContainerLifecycle {
-    public static final ThreadLocal<AppInfo> CURRENT_APP_INFO = new ThreadLocal<AppInfo>();
+    public static final ThreadLocal<AppInfo> CURRENT_APP_INFO = new ThreadLocal<>();
 
     //Logger instance
     private static final Logger logger = Logger.getInstance(LogCategory.OPENEJB_CDI, OpenEJBLifecycle.class);
@@ -137,7 +137,7 @@ public class OpenEJBLifecycle implements ContainerLifecycle {
         final StartupObject stuff = (StartupObject) startupObject;
         final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
 
-        // Initalize Application Context
+        // Initialize Application Context
         logger.info("OpenWebBeans Container is starting...");
 
         final long begin = System.currentTimeMillis();
@@ -162,7 +162,7 @@ public class OpenEJBLifecycle implements ContainerLifecycle {
             //Configure EJB Deployments
             cdiPlugin.configureDeployments(stuff.getBeanContexts());
 
-            //Resournce Injection Service
+            //Resource Injection Service
             final CdiResourceInjectionService injectionService = (CdiResourceInjectionService) webBeansContext.getService(ResourceInjectionService.class);
             // todo use startupObject allDeployments to find Comp in priority (otherwise we can keep N times comps and loose time at injection time
             injectionService.setAppContext(stuff.getAppContext(), stuff.getBeanContexts() != null ? stuff.getBeanContexts() : Collections.<BeanContext>emptyList());
@@ -344,7 +344,7 @@ public class OpenEJBLifecycle implements ContainerLifecycle {
             WebBeansFinder.clearInstances(WebBeansUtil.getCurrentClassLoader());
 
         } catch (final Exception e) {
-            logger.error("An error occured while stopping the container.", e);
+            logger.error("An error occurred while stopping the container.", e);
         }
 
     }
@@ -452,7 +452,7 @@ public class OpenEJBLifecycle implements ContainerLifecycle {
 
         protected InternalBean(final WebBeansContext webBeansContext, final Class<T> api, final Class<?> type) {
             super(webBeansContext, WebBeansType.MANAGED, api,
-                    new SimpleProducerFactory<T>(
+                    new SimpleProducerFactory<>(
                             new ProviderBasedProducer<>(webBeansContext, type, new OpenEJBComponentProvider(webBeansContext, type), false)));
             this.id = "openejb#container#" + api.getName();
         }

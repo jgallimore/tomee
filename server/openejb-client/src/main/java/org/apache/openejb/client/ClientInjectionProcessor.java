@@ -78,7 +78,7 @@ public class ClientInjectionProcessor<T> {
     }
 
     private void construct() {
-        final Map<Injection, Object> values = new HashMap<Injection, Object>();
+        final Map<Injection, Object> values = new HashMap<>();
         for (final Injection injection : injections) {
             // only process injections for this class
             final Class<?> targetClass = loadClass(injection.getTargetClass());
@@ -109,7 +109,7 @@ public class ClientInjectionProcessor<T> {
             throw new IllegalStateException("Error while creating bean " + beanClass.getName(), e);
         }
 
-        final List<String> unsetProperties = new ArrayList<String>();
+        final List<String> unsetProperties = new ArrayList<>();
         for (final Map.Entry<Injection, Object> entry : values.entrySet()) {
             final Injection injection = entry.getKey();
             final Object value = entry.getValue();
@@ -167,8 +167,8 @@ public class ClientInjectionProcessor<T> {
     }
 
     private List<Method> toMethod(final List<CallbackMetaData> callbacks) {
-        final List<String> methodsNotFound = new ArrayList<String>(1);
-        final List<Method> methods = new ArrayList<Method>(callbacks.size());
+        final List<String> methodsNotFound = new ArrayList<>(1);
+        final List<Method> methods = new ArrayList<>(callbacks.size());
         for (final CallbackMetaData callback : callbacks) {
             final Method method = toMethod(callback);
             if (method != null) {
@@ -232,7 +232,7 @@ public class ClientInjectionProcessor<T> {
             setterName += propertyName.substring(1);
         }
 
-        final List<Method> methods = new ArrayList<Method>(Arrays.asList(typeClass.getMethods()));
+        final List<Method> methods = new ArrayList<>(Arrays.asList(typeClass.getMethods()));
         methods.addAll(Arrays.asList(typeClass.getDeclaredMethods()));
         for (final Method method : methods) {
             if (method.getName().equals(setterName)) {
@@ -284,7 +284,7 @@ public class ClientInjectionProcessor<T> {
             throw new IllegalArgumentException("name is an empty string");
         }
 
-        final List<Field> fields = new ArrayList<Field>(Arrays.asList(typeClass.getDeclaredFields()));
+        final List<Field> fields = new ArrayList<>(Arrays.asList(typeClass.getDeclaredFields()));
         Class parent = typeClass.getSuperclass();
         while (parent != null) {
             fields.addAll(Arrays.asList(parent.getDeclaredFields()));
@@ -319,18 +319,15 @@ public class ClientInjectionProcessor<T> {
     }
 
     private static void setAccessible(final AccessibleObject accessibleObject) {
-        AccessController.doPrivileged(new PrivilegedAction<Object>() {
-            @Override
-            public Object run() {
-                accessibleObject.setAccessible(true);
-                return null;
-            }
+        AccessController.doPrivileged((PrivilegedAction<Object>) () -> {
+            accessibleObject.setAccessible(true);
+            return null;
         });
     }
 
     private static boolean isInstance(final Class type, final Object instance) {
         if (type.isPrimitive()) {
-            // for primitives the insance can't be null
+            // for primitives the instance can't be null
             if (instance == null) {
                 return false;
             }
@@ -353,7 +350,7 @@ public class ClientInjectionProcessor<T> {
             } else if (type.equals(double.class)) {
                 return instance instanceof Double;
             } else {
-                throw new AssertionError("Invalid primitve type: " + type);
+                throw new AssertionError("Invalid primitive type: " + type);
             }
         }
 
@@ -365,11 +362,10 @@ public class ClientInjectionProcessor<T> {
     }
 
     private Object convert(final Class type, Object value) {
-        if (type == Object.class || !(value instanceof String)) {
+        if (type == Object.class || !(value instanceof String stringValue)) {
             return value;
         }
 
-        final String stringValue = (String) value;
         final PropertyEditor editor = findEditor(type);
         if (editor != null) {
             editor.setAsText(stringValue);

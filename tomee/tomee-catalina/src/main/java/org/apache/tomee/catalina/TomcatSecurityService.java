@@ -44,11 +44,7 @@ import java.util.concurrent.Callable;
 
 public class TomcatSecurityService extends AbstractSecurityService {
     private static final boolean ONLY_DEFAULT_REALM = "true".equals(SystemInstance.get().getProperty("tomee.realm.only-default", "false"));
-    protected static final ThreadLocal<LinkedList<Subject>> RUN_AS_STACK = new ThreadLocal<LinkedList<Subject>>() {
-        protected LinkedList<Subject> initialValue() {
-            return new LinkedList<>();
-        }
-    };
+    protected static final ThreadLocal<LinkedList<Subject>> RUN_AS_STACK = ThreadLocal.withInitial(LinkedList::new);
 
     private Realm defaultRealm;
 
@@ -132,8 +128,7 @@ public class TomcatSecurityService extends AbstractSecurityService {
             subject.getPrincipals().add(p);
         }
 
-        if (p instanceof GenericPrincipal) {
-            final GenericPrincipal genericPrincipal = (GenericPrincipal) p;
+        if (p instanceof GenericPrincipal genericPrincipal) {
             subject.getPrincipals().add(genericPrincipal.getUserPrincipal());
 
             // todo should we create credentials with the roles? groups?
@@ -148,8 +143,7 @@ public class TomcatSecurityService extends AbstractSecurityService {
         final Set<String> roles = new LinkedHashSet<>(logicalRoles.size());
         for (final String logicalRole : logicalRoles) {
             for (final Principal principal : principals) {
-                if (principal instanceof TomcatUser) {
-                    final TomcatUser user = (TomcatUser) principal;
+                if (principal instanceof TomcatUser user) {
                     if (TomcatHelper.hasRole(user.getRealm(), user.getTomcatPrincipal(), logicalRole)) {
                         roles.add(logicalRole);
                         break;
@@ -213,8 +207,7 @@ public class TomcatSecurityService extends AbstractSecurityService {
     }
 
     public void exitWebApp(final Object state) {
-        if (state instanceof WebAppState) {
-            final WebAppState webAppState = (WebAppState) state;
+        if (state instanceof WebAppState webAppState) {
             if (webAppState.oldIdentity == null) {
                 clientIdentity.remove();
             } else {
@@ -249,7 +242,7 @@ public class TomcatSecurityService extends AbstractSecurityService {
 
         final Set<Principal> principals = new HashSet<>();
         principals.add(new RunAsRole(role));
-        return new Subject(true, principals, new HashSet(), new HashSet());
+        return new Subject(true, principals, new HashSet<>(), new HashSet<>());
     }
 
     @CallerPrincipal
@@ -393,15 +386,13 @@ public class TomcatSecurityService extends AbstractSecurityService {
 
     @Override
     public Object getContext(final String key, final Object data) throws PolicyContextException {
-        switch (key) {
-            case KEY_REQUEST:
-                return OpenEJBSecurityListener.requests.get();
-            case KEY_SUBJECT:
+        return switch (key) {
+            case KEY_REQUEST -> OpenEJBSecurityListener.requests.get();
+            case KEY_SUBJECT ->
                 // quite obvious as internally we keep track of it
                 // but we could also grab the request and the principals and build a new Subject with the principals
-                return getSubject();
-            default:
-                throw new PolicyContextException("Handler does not support key: " + key);
-        }
+                    getSubject();
+            default -> throw new PolicyContextException("Handler does not support key: " + key);
+        };
     }
 }

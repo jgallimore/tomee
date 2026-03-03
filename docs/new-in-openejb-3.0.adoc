@@ -13,7 +13,7 @@ OpenEJB 3.0 supports the EJB 3.0 specification as well as the prior EJB
 * No home interfaces
 * Business Interfaces
 * Dependency Injection
-* Intercpetors
+* Interceptors
 * Java Persistence API
 * Service Locator (ala SessionContext.lookup)
 * POJO-style beans
@@ -72,9 +72,9 @@ public class MyBean {
 == The META-INF/env-entries.properties
 
 Along the lines of injection, one of the last remaining things in EJB 3
-that people need an ejb-jar.xml file for is to supply the value of
+that people need an `ejb-jar.xml` file for is to supply the value of
 env-entries. Env Entries are the source of data for all user supplied
-data injected into your bean; the afore mentioned String, Boolean,
+data injected into your bean; the aforementioned String, Boolean,
 Integer, etc. This is a very big burden as each env-entry is going to
 cost you 5 lines of xml and the complication of having to figure out how
 to add you bean declaration in xml as an override of an existing bean
@@ -83,10 +83,10 @@ all you want is to supply the value of a few `@Resource` String fields in
 you bean class.
 
 To fix this, OpenEJB supports the idea of a
-META-INF/env-entries.properties file where we will look for the value of
+`META-INF/env-entries.properties` file where we will look for the value of
 things that need injection that are not container controlled resources
 (i.e. datasources and things of that nature). You can configure you ejbs
-via a properties file and skip the need for an ejb-jar.xml and it's 5
+via a properties file and skip the need for an `ejb-jar.xml` and its 5
 lines per property madness.
 
 [source,properties]
@@ -151,7 +151,7 @@ this property:
   openejb.remotable.businessLocals=true
 ----
 
-Then you can lookup your business local interfaces from remote clients.
+Then you can look up your business local interfaces from remote clients.
 
-You'd still have to ensure that the you pass back and forth is
+You'd still have to ensure that you pass back and forth is
 serializable.

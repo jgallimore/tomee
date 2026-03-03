@@ -30,7 +30,7 @@ import java.util.HashMap;
 
 public abstract class ComplexCmp2Bean implements EntityBean {
     public EntityContext ejbContext;
-    public Map<String, OperationsPolicy> allowedOperationsTable = new HashMap<String, OperationsPolicy>();
+    public Map<String, OperationsPolicy> allowedOperationsTable = new HashMap<>();
 
     public abstract String getFirstName();
 
@@ -119,10 +119,10 @@ public abstract class ComplexCmp2Bean implements EntityBean {
     /**
      * Maps to BasicCmpObject.getAllowedOperationsReport
      *
-     * Returns a report of the allowed opperations
+     * Returns a report of the allowed operations
      * for one of the bean's methods.
      *
-     * @param methodName The method for which to get the allowed opperations report
+     * @param methodName The method for which to get the allowed operations report
      */
     public OperationsPolicy getAllowedOperationsReport(final String methodName) {
         return allowedOperationsTable.get(methodName);

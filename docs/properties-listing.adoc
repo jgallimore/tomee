@@ -25,7 +25,7 @@ prefix>.threads
 host or IP, port, bool
 
 override the host. Available for ejbd and httpejbd services (used by
-jaxws and jaxrs), number of thread to maneg requests
+jaxws and jaxrs), number of thread to manage requests
 
 openejb.embedded.initialcontext.close
 
@@ -33,7 +33,7 @@ LOGOUT or DESTROY
 
 configure the hook called when closing the initial context. Useful when
 starting OpenEJB from a new InitialContext([properties]) instantiation.
-By default it simply logs out the logged user if it exists. DESTROY
+By default, it simply logs out the logged user if it exists. DESTROY
 means clean the container.
 
 jakarta.persistence.provider
@@ -98,7 +98,7 @@ openejb.debuggable-vm-hackery
 
 bool
 
-remove JMS informations from deployment
+remove JMS information from deployment
 
 openejb.validation.skip
 
@@ -471,7 +471,7 @@ string separated by comma
 +
 +
 +
-list of prefixes you want to remove from thedefault list of exclusion
+list of prefixes you want to remove from the default list of exclusion
 +
 +
 +
@@ -643,7 +643,7 @@ openejb.crosscontext
 bool
 
 set the cross context property on tomcat context (can be done in the
-traditionnal way if the deployment is don through the webapp discovery
+traditional way if the deployment is done through the webapp discovery
 and not the OpenEJB Deployer EJB)
 
 openejb.jsessionid-support
@@ -665,7 +665,7 @@ openejb.web.xml.major
 int
 
 major version of web.xml. Can be useful to force tomcat to scan servlet
-3 annotatino when deploying with a servlet 2.x web.xml
+3 annotation when deploying with a servlet 2.x web.xml
 
 tomee.jaxws.subcontext
 
@@ -683,7 +683,7 @@ tomee.jaxws.oldsubcontext
 
 bool
 
-wether or not activate old way to bind jaxws webservices directly on
+whether or not activate old way to bind jaxws webservices directly on
 root context
 
 openejb.modulename.useHash
@@ -699,7 +699,7 @@ openejb.session.manager
 
 qualified name (string)
 
-configure a session managaer to use for all contexts
+configure a session manager to use for all contexts
 
 == TomEE Arquillian adaptor
 
@@ -713,7 +713,7 @@ tomee.ejbcontainer.http.port
 
 int
 
-tomee port, -1 means random. When using a random port you can retreive
+tomee port, -1 means random. When using a random port you can retrieve
 it getting this property too.
 
 tomee.arquillian.http

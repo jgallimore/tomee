@@ -49,7 +49,7 @@ public final class Mvn {
         private File classes;
         private String basePackage;
         private String name = "test.war";
-        private Map<File, String> additionalResources = new HashMap<File, String>();
+        private Map<File, String> additionalResources = new HashMap<>();
         private ScopeType[] scopes = { ScopeType.COMPILE, ScopeType.RUNTIME };
         private Filter<ArchivePath> filter = Filters.includeAll();
 
@@ -204,7 +204,7 @@ public final class Mvn {
     }
 
     /**
-     * Server war without tests clases.
+     * Server war without tests classes.
      *
      * @return create a war with src/main/resources, src/main/webapp and all compile, runtime and test dependencies
      */
@@ -219,7 +219,7 @@ public final class Mvn {
     public static class KnownResourcesFilter implements Filter<ArchivePath> {
         private final File base;
         private final String prefix;
-        private final Map<ArchivePath, Asset> paths = new HashMap<ArchivePath, Asset>();
+        private final Map<ArchivePath, Asset> paths = new HashMap<>();
         private final Filter<ArchivePath> delegate;
 
         public KnownResourcesFilter(final File base, final String prefix, final Filter<ArchivePath> filter) {

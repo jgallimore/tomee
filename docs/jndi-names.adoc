@@ -18,7 +18,7 @@ before you start reading:
 {deploymentId}{interfaceType.annotationName}
 ----
 
-Lets try and understand the above format. Both _deploymentId_ and
+Let's try and understand the above format. Both _deploymentId_ and
 _interfaceType.annotationName_ are pre-defined variables. There are
 other pre-defined variables available which you could use to customize
 the JNDI name format.
@@ -38,7 +38,7 @@ description
 
 moduleId
 
-Typically the name of the ejb-jar file or the id value if specified
+Typically, the name of the ejb-jar file or the id value if specified
 
 ejbType
 
@@ -60,13 +60,13 @@ org.acme.superfun
 
 ejbName
 
-The ejb-name as specified in xml or via the 'name' attribute in an
+The ejb-name as specified in xml or via the 'name' attribute in
 @Stateful, `@Stateless`, or `@MessageDriven` annotation
 
 deploymentId
 
-The unique system id for the ejb. Typically the ejbName unless specified
-in the openejb-jar.xml or via changing the openejb.deploymentId.format
+The unique system id for the ejb. Typically, the ejbName unless specified
+in the `openejb-jar.xml` or via changing the `openejb.deploymentId.format`
 
 interfaceType
 
@@ -85,7 +85,7 @@ This is the same as interfaceType.annotationName, but all in lower case.
 
 interfaceType.xmlName
 
-Following the ejb-jar.xml descriptor elements , , , , and : home (EJB 2
+Following the `ejb-jar.xml` descriptor elements , , , , and : home (EJB 2
 EJBHome) local-home (EJB 2 EJBLocalHome) business-remote (EJB 3 Business
 Remote) business-local (EJB 3 Business Local) service-endpoint (EJB
 webservice endpoint)
@@ -150,7 +150,7 @@ InitialContext properties when embedded.
 == Via properties in the openejb-jar.xml
 
 It's possible to set the openejb.jndiname.format for an ejb-jar jar in a
-META-INF/openejb-jar.xml file as follows:
+`META-INF/openejb-jar.xml` file as follows:
 
 [source,xml]
 ----
@@ -307,7 +307,7 @@ _six_ proxies bound into JNDI. +
 
 Bordeline optimistic: +
 
-The above two settings would work if you the interface wasn't shared by
+The above two settings would work if the interface wasn't shared by
 other beans.
 
 === Pragmatic settings
@@ -387,7 +387,7 @@ follows: +
 - Implementation: void doIt()\{}
 
 This is fine for a bean class as it does not need to throw the RMI
-required javax.rmi.RemoteException. However if we create a proxy from
+required javax.rmi.RemoteException. However, if we create a proxy from
 these two interfaces it will also wind up with a 'doIt()\{}' method that
 cannot throw javax.rmi.RemoteException. This is very bad as the
 container does need to throw RemoteException to any business interfaces

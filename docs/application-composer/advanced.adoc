@@ -4,7 +4,7 @@
 :index-group: Testing
 
 link:getting-started.html[Getting Started] page gives you already a lot
-of inputs but you caneven go further.
+of inputs but you can even go further.
 
 == @Descriptors
 
@@ -63,7 +63,7 @@ which is our embedded http layer).
 
 == Nice logs
 
-`@SimpleLog` annotation allows you to have one liner logs
+`@SimpleLog` annotation allows you to have one-liner logs
 
 == @JaxrsProvider
 

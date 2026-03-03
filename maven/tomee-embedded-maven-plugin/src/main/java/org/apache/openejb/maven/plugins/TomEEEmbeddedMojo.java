@@ -411,29 +411,26 @@ public class TomEEEmbeddedMojo extends AbstractMojo {
         final Configuration config = getConfig();
         container.setup(config);
 
-        final Thread hook = new Thread() {
-            @Override
-            public void run() {
-                if (container.getTomcat() != null && container.getTomcat().getServer().getState() != LifecycleState.DESTROYED) {
-                    final Thread thread = Thread.currentThread();
-                    final ClassLoader old = thread.getContextClassLoader();
-                    thread.setContextClassLoader(ParentClassLoaderFinder.Helper.get());
-                    try {
-                        if (!classpathAsWar) {
-                            container.undeploy(warFile.getAbsolutePath());
-                        }
-                        container.stop();
-                    } catch (final NoClassDefFoundError noClassDefFoundError) {
-                        // debug cause it is too late to shutdown properly so don't pollute logs
-                        getLog().debug("can't stop TomEE", noClassDefFoundError);
-                    } catch (final Exception e) {
-                        getLog().error("can't stop TomEE", e);
-                    } finally {
-                        thread.setContextClassLoader(old);
+        final Thread hook = new Thread(() -> {
+            if (container.getTomcat() != null && container.getTomcat().getServer().getState() != LifecycleState.DESTROYED) {
+                final Thread thread1 = Thread.currentThread();
+                final ClassLoader old = thread1.getContextClassLoader();
+                thread1.setContextClassLoader(ParentClassLoaderFinder.Helper.get());
+                try {
+                    if (!classpathAsWar) {
+                        container.undeploy(warFile.getAbsolutePath());
                     }
+                    container.stop();
+                } catch (final NoClassDefFoundError noClassDefFoundError) {
+                    // debug cause it is too late to shutdown properly so don't pollute logs
+                    getLog().debug("can't stop TomEE", noClassDefFoundError);
+                } catch (final Exception e) {
+                    getLog().error("can't stop TomEE", e);
+                } finally {
+                    thread1.setContextClassLoader(old);
                 }
             }
-        };
+        });
         hook.setName("TomEE-Embedded-ShutdownHook");
 
         try {
@@ -595,7 +592,7 @@ public class TomEEEmbeddedMojo extends AbstractMojo {
         final String classifier;
         final String type;
         if (infos.length < 3) {
-            throw new MojoExecutionException("format for librairies should be <groupId>:<artifactId>:<version>[:<type>[:<classifier>]]");
+            throw new MojoExecutionException("format for libraries should be <groupId>:<artifactId>:<version>[:<type>[:<classifier>]]");
         }
         if (infos.length >= 4) {
             type = infos[3];
@@ -727,11 +724,11 @@ public class TomEEEmbeddedMojo extends AbstractMojo {
      *
      * Note that reload and quit/exit are built in commands.
      *
-     * It is recommanded to prefix the command by something specific to your set of commands.
+     * It is recommended to prefix the command by something specific to your set of commands.
      */
     public interface Command {
         /**
-         * @return the string to invoke this comamnd.
+         * @return the string to invoke this command.
          */
         String name();
 

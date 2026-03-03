@@ -5,7 +5,7 @@
 :jbake-status: published
 
 
-It is possible to setup client/server requests over SSL. EJB requests
+It is possible to set up client/server requests over SSL. EJB requests
 from a remote client can happen two different ways:
 
 * *https* for when an EJB is running in TomEE
@@ -15,9 +15,9 @@ Note, TomEE can be setup to support *ejbds*.
 
 == https
 
-First, you'll need to setup Tomcat (TomEE) with SSL as described here:
+First, you'll need to set up Tomcat (TomEE) with SSL as described here:
 
-http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html
+http://tomcat.apache.org/tomcat-10.1-doc/ssl-howto.html
 
 Once that is done and the `tomee` webapp can be accessed with `https`,
 an EJB client can invoke over `https` using the following
@@ -37,15 +37,15 @@ InitialContext ctx = new InitialContext(p);
 MyBean myBean = (MyBean) ctx.lookup("MyBeanRemote");
 ----
 
-If you setup Tomcat (TomEE) to use the APR (Apache Portable Runitme)
+If you set up Tomcat (TomEE) to use the APR (Apache Portable Runtime)
 implementation of SSL on the server side, and you have connection issues
 like connection reset, you'll have to set 'https.protocols' system
 property. 'https.protocols' property must be set according to the
 SSLProtocol parameter of the HTTPS connector configuration :
 
-http://tomcat.apache.org/tomcat-7.0-doc/config/http.html
+http://tomcat.apache.org/tomcat-10.1-doc/config/http.html
 
-You can also have a look a this :
+You can also have a look at this :
 
 http://docs.oracle.com/javase/1.4.2/docs/guide/plugin/developer_guide/faq/troubleshooting.html
 
@@ -130,8 +130,8 @@ On the client, you must supply a property:
 ----
 
 The final piece is to make sure your server has available a private
-certificate that the the client can trust. This can be certificate from
-an authority or a self signed certificate. The javax.net.ssl.trustStore
+certificate that the client can trust. This can be certificate from
+an authority or a self-signed certificate. The javax.net.ssl.trustStore
 and javax.net.ssl.keyStore JVM properties
 http://fusesource.com/docs/broker/5.3/security/SSL-SysProps.html[are
 used to set this up.]

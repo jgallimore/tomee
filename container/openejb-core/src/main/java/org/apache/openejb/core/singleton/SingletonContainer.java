@@ -250,7 +250,7 @@ public class SingletonContainer implements RpcContainer {
         final Duration accessTimeout = getAccessTimeout(beanContext, runMethod);
         final boolean read = jakarta.ejb.LockType.READ.equals(beanContext.getConcurrencyAttribute(runMethod));
 
-        final Lock lock = aquireLock(read, accessTimeout, instance, runMethod);
+        final Lock lock = acquireLock(read, accessTimeout, instance, runMethod);
 
         Object returnValue;
         try {
@@ -307,7 +307,7 @@ public class SingletonContainer implements RpcContainer {
         return accessTimeout;
     }
 
-    private Lock aquireLock(final boolean read, final Duration accessTimeout, final Instance instance, final Method runMethod) {
+    private Lock acquireLock(final boolean read, final Duration accessTimeout, final Instance instance, final Method runMethod) {
         final Lock lock;
         if (read) {
             lock = instance.lock.readLock();
@@ -417,7 +417,7 @@ public class SingletonContainer implements RpcContainer {
             ThreadContext.getThreadContext().set(jakarta.xml.ws.handler.MessageContext.class, (jakarta.xml.ws.handler.MessageContext) messageContext);
             return interceptorStack.invoke((jakarta.xml.ws.handler.MessageContext) messageContext, params);
         }
-        throw new IllegalArgumentException("Uknown MessageContext type: " + messageContext.getClass().getName());
+        throw new IllegalArgumentException("Unknown MessageContext type: " + messageContext.getClass().getName());
     }
 
     protected ProxyInfo createEJBObject(final BeanContext beanContext, final Method callMethod) {

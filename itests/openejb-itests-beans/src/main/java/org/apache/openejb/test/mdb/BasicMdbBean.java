@@ -32,7 +32,7 @@ import java.util.Properties;
 
 public class BasicMdbBean implements BasicMdbObject, MessageDrivenBean, MessageListener {
     private MessageDrivenContext mdbContext = null;
-    private static final HashMap<String, OperationsPolicy> allowedOperationsTable = new HashMap<String, OperationsPolicy>();
+    private static final HashMap<String, OperationsPolicy> allowedOperationsTable = new HashMap<>();
     protected MdbInvoker mdbInvoker;
 
     @Override
@@ -124,10 +124,10 @@ public class BasicMdbBean implements BasicMdbObject, MessageDrivenBean, MessageL
     /**
      * Maps to BasicStatelessObject.getAllowedOperationsReport
      *
-     * Returns a report of the allowed opperations
+     * Returns a report of the allowed operations
      * for one of the bean's methods.
      *
-     * @param methodName The method for which to get the allowed opperations report
+     * @param methodName The method for which to get the allowed operations report
      * @return
      */
     @Override

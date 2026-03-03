@@ -85,8 +85,7 @@ public class CmpJarBuilder {
             final Map<String, Entry> classes = new HashMap<>();
             for (final EjbJarInfo ejbJar : appInfo.ejbJars) {
                 for (final EnterpriseBeanInfo beanInfo : ejbJar.enterpriseBeans) {
-                    if (beanInfo instanceof EntityBeanInfo) {
-                        final EntityBeanInfo entityBeanInfo = (EntityBeanInfo) beanInfo;
+                    if (beanInfo instanceof EntityBeanInfo entityBeanInfo) {
                         if ("CONTAINER".equalsIgnoreCase(entityBeanInfo.persistenceType)) {
                             final Entry entry = generateClass(jarOutputStream, entityBeanInfo);
                             classes.put(entry.clazz, entry);
@@ -128,8 +127,7 @@ public class CmpJarBuilder {
     private boolean hasCmpBeans() {
         for (final EjbJarInfo ejbJar : appInfo.ejbJars) {
             for (final EnterpriseBeanInfo beanInfo : ejbJar.enterpriseBeans) {
-                if (beanInfo instanceof EntityBeanInfo) {
-                    final EntityBeanInfo entityBeanInfo = (EntityBeanInfo) beanInfo;
+                if (beanInfo instanceof EntityBeanInfo entityBeanInfo) {
                     if ("CONTAINER".equalsIgnoreCase(entityBeanInfo.persistenceType)) {
                         return true;
                     }
@@ -149,7 +147,7 @@ public class CmpJarBuilder {
      * @throws IOException
      */
     private Entry generateClass(final JarOutputStream jarOutputStream, final EntityBeanInfo entityBeanInfo) throws IOException {
-        // don't generate if there is aleady an implementation class
+        // don't generate if there is already an implementation class
         final String cmpImplClass = CmpUtil.getCmpImplClassName(entityBeanInfo.abstractSchemaName, entityBeanInfo.ejbClass);
         final String entryName = cmpImplClass.replace(".", "/") + ".class";
         if (entries.contains(entryName) || tempClassLoader.getResource(entryName) != null) {

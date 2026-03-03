@@ -174,11 +174,9 @@ public class OpenEJBContextConfig extends ContextConfig {
         if (children != null) {
             // index potential rest containers by class to cleanup applications defined as servlet
             for (final Container c : children) {
-                if (!(c instanceof StandardWrapper)) {
+                if (!(c instanceof StandardWrapper wrapper)) {
                     continue;
                 }
-
-                final StandardWrapper wrapper = (StandardWrapper) c;
 
                 final String appSpec = wrapper.getInitParameter("jakarta.ws.rs.Application");
                 if (appSpec != null) {
@@ -274,8 +272,7 @@ public class OpenEJBContextConfig extends ContextConfig {
             ((OpenEJBNamingResource) resources).setTomcatResource(false);
         }
 
-        if (context instanceof StandardContext) {
-            final StandardContext standardContext = (StandardContext) context;
+        if (context instanceof StandardContext standardContext) {
             final NamingContextListener namingContextListener = standardContext.getNamingContextListener();
             if (null != namingContextListener) {
                 namingContextListener.setExceptionOnFailedWrite(standardContext.getJndiExceptionOnFailedWrite());
@@ -347,8 +344,7 @@ public class OpenEJBContextConfig extends ContextConfig {
     @Override
     protected WebXml createWebXml() {
         String prefix = "";
-        if (context instanceof StandardContext) {
-            final StandardContext standardContext = (StandardContext) context;
+        if (context instanceof StandardContext standardContext) {
             prefix = standardContext.getEncodedPath();
             if (prefix.startsWith("/")) {
                 prefix = prefix.substring(1);
@@ -388,7 +384,7 @@ public class OpenEJBContextConfig extends ContextConfig {
 
         @Override
         public void addFilterMapping(final FilterMap filterMap) {
-            // we need to add this one before the mapping cause of tomcat validation (ie dont make deployment fail)
+            // we need to add this one before the mapping cause of tomcat validation (ie don't make deployment fail)
             if ("CDI Conversation Filter".equals(filterMap.getFilterName()) && !cdiConversation) {
                 final FilterDef conversationFilter = new FilterDef();
                 conversationFilter.setAsyncSupported("true");

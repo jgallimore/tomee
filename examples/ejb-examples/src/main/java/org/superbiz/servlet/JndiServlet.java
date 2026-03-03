@@ -36,7 +36,7 @@ public class JndiServlet extends HttpServlet {
         response.setContentType("text/plain");
         ServletOutputStream out = response.getOutputStream();
 
-        Map<String, Object> bindings = new TreeMap<String, Object>(String.CASE_INSENSITIVE_ORDER);
+        Map<String, Object> bindings = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         try {
             Context context = (Context) new InitialContext().lookup("java:comp/");
             addBindings("", bindings, context);
@@ -64,8 +64,7 @@ public class JndiServlet extends HttpServlet {
                 } else {
                     try {
                         Object value = context.lookup(name);
-                        if (value instanceof Context) {
-                            Context nextedContext = (Context) value;
+                        if (value instanceof Context nextedContext) {
                             bindings.put(path + name, "");
                             addBindings(path + name + "/", bindings, nextedContext);
                         } else {
