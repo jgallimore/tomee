@@ -1,5 +1,8 @@
 TomEE EAP 9.1.x-TT.x
 
+Changes in TomEE EAP 9.1.4-TT.14
+- Update to Jackson 2.18.6 to mitigate GHSA-72hv-8253-57qq
+
 Changes in TomEE EAP 9.1.4-TT.13
 - Update to Tomcat 10.0.28-TT.21 to mitigate CVE-2026-24733, CVE-2025-66614 and CVE-2026-24734
 
