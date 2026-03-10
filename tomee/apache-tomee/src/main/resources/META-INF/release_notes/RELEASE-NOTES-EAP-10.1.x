@@ -1,5 +1,8 @@
 TomEE EAP 10.1.x-TT.x
 
+Changes in TomEE EAP 10.1.5-TT.2
+- Update to resolve deadlock in static initializers
+
 Changes in TomEE EAP 10.1.5-TT.1
 - Update to Tomcat 10.1.52 to mitigate CVE-2026-24733, CVE-2025-66614 and CVE-2026-24734
 - Update to CXF 4.1.5
