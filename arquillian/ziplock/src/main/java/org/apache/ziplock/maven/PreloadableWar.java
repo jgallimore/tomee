@@ -18,6 +18,7 @@ package org.apache.ziplock.maven;
 
 import org.jboss.shrinkwrap.api.Archive;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -27,7 +28,12 @@ public final class PreloadableWar {
 
     static {
         final ExecutorService es = Executors.newSingleThreadExecutor();
-        war = es.submit(Mvn::war);
+        war = es.submit(new Callable<Archive<?>>() {
+            @Override
+            public Archive<?> call() throws Exception {
+                return Mvn.war();
+            }
+        });
         es.shutdown();
     }
 

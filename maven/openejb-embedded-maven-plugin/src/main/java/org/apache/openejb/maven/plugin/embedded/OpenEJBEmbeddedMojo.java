@@ -67,12 +67,15 @@ public class OpenEJBEmbeddedMojo extends AbstractMojo {
         final ClassLoader oldCl = Thread.currentThread().getContextClassLoader();
         Thread.currentThread().setContextClassLoader(createClassLoader(oldCl));
 
-        EJBContainer container = null;
-        try {
-            container = EJBContainer.createEJBContainer(map());
+        try (EJBContainer container = EJBContainer.createEJBContainer(map())) {
             if (await) {
                 final CountDownLatch latch = new CountDownLatch(1);
-                Runtime.getRuntime().addShutdownHook(new Thread(latch::countDown));
+                Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        latch.countDown();
+                    }
+                }));
                 try {
                     latch.await();
                 } catch (final InterruptedException e) {
@@ -80,9 +83,6 @@ public class OpenEJBEmbeddedMojo extends AbstractMojo {
                 }
             }
         } finally {
-            if (container != null) {
-                container.close();
-            }
             Thread.currentThread().setContextClassLoader(oldCl);
         }
     }
