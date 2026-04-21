@@ -1,5 +1,9 @@
 # Changelog
 
+Changes in TomEE EAP 9.0.1-TT.25
+- Update bcpkix, bcprov, bcutil, bcmail to 1.84
+- Update Tomcat and ActiveMQ versions
+
 Changes in TomEE EAP 9.0.1-TT.23
 - Update to Jackson 2.18.6 to mitigate GHSA-72hv-8253-57qq
 
