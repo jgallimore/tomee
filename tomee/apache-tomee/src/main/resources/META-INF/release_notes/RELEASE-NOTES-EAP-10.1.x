@@ -1,5 +1,9 @@
 TomEE EAP 10.1.x-TT.x
 
+Changes in TomEE EAP 10.1.5-TT.3
+- Update bcpkix, bcprov, bcutil, bcmail to 1.84
+- Update Tomcat and ActiveMQ versions
+
 Changes in TomEE EAP 10.1.5-TT.2
 - Update to resolve deadlock in static initializers
 
