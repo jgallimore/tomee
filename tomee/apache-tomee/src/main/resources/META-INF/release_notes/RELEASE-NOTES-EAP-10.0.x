@@ -1,5 +1,9 @@
 TomEE EAP 10.0.x-TT.x
 
+Changes to TomEE EAP 10.0.2-TT.10
+- Update bcpkix, bcprov, bcutil, bcmail to 1.84
+- Update Tomcat and ActiveMQ versions
+
 Changes in TomEE EAP 10.0.2-TT.9
 - Update to Tomcat 10.1.52 to mitigate CVE-2026-24733, CVE-2025-66614 and CVE-2026-24734
 - Update to CXF 4.1.5
