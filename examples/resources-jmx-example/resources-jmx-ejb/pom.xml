@@ -24,7 +24,7 @@
   <parent>
     <groupId>org.superbiz</groupId>
     <artifactId>resources-jmx</artifactId>
-    <version>9.0.1-TT.25</version>
+    <version>9.0.1-TT.26-SNAPSHOT</version>
   </parent>
 
   <artifactId>resources-jmx-ejb</artifactId>
