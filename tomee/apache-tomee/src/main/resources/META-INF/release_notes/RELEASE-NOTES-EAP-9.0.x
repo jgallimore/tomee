@@ -1,5 +1,9 @@
 # Changelog
 
+Changes in TomEE EAP 9.0.1-TT.26
+- Update org.apache.neethi:neethi to 3.2.2 to mitigate CVE-2026-42403 (Apache Neethi DoS via circular WS-Policy refs)
+  See https://github.com/tomitribe/cve/issues/240
+
 Changes in TomEE EAP 9.0.1-TT.25
 - Update bcpkix, bcprov, bcutil, bcmail to 1.84
 - Update Tomcat and ActiveMQ versions
