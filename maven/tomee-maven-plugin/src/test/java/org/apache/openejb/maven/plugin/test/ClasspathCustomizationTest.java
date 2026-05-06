@@ -31,8 +31,8 @@ import static org.junit.Assert.assertTrue;
 
 public class ClasspathCustomizationTest {
 
-    // Read the Log4j version from system properties (set via Maven Surefire plugin)
-    private static final String LOG4J_VERSION = System.getProperty("log4j.version", "2.6.2");
+    // Use the version declared in this module so the test stays self-contained.
+    private static final String LOG4J_VERSION = "2.6.2";
 
     @Rule
     public TomEEMavenPluginRule TMPRule = new TomEEMavenPluginRule();

@@ -79,7 +79,11 @@ public class SavedRequest implements Serializable {
 
     public static SavedRequest fromJson(String json) {
         try (Jsonb jsonb = JsonbBuilder.create(jsonbConfig)) {
-            return jsonb.fromJson(json, SavedRequest.class);
+            final SavedRequest request = jsonb.fromJson(json, SavedRequest.class);
+            if (request != null && request.getParameterMap() == null) {
+                request.setParameterMap(Collections.emptyMap());
+            }
+            return request;
         } catch (Exception e) {
             LOGGER.error("Could not restore request from JSON", e);
             return null;
