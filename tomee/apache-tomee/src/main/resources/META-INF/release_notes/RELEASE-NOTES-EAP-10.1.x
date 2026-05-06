@@ -1,5 +1,8 @@
 TomEE EAP 10.1.x-TT.x
 
+Changes in TomEE EAP 10.1.5-TT.4
+- Update Apache Neethi to 3.2.2 to mitigate CVE-2026-42403
+
 Changes in TomEE EAP 10.1.5-TT.3
 - Update bcpkix, bcprov, bcutil, bcmail to 1.84
 - Update Tomcat and ActiveMQ versions
