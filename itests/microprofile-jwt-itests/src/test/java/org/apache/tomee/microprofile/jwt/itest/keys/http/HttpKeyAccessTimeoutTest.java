@@ -50,6 +50,7 @@ import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
 
 public class HttpKeyAccessTimeoutTest {
+    private static final int THREADS = 100;
 
     @Test
     public void test() throws Exception {
@@ -97,17 +98,22 @@ public class HttpKeyAccessTimeoutTest {
         /*
          * Verify calls do fail as noted above
          */
-        Runner.threads(100).run(() -> assertKeys(tomee, unknownKey, publicKey, 401)).assertNoExceptions();
+        Runner.threads(THREADS).run(() -> assertKeys(tomee, unknownKey, publicKey, 401)).assertNoExceptions();
 
         /*
          * Unblock the key server and allow it to communicate the public key to TomEE
          */
         IO.slurp(keyServer.toURI().resolve("/keys/release").toURL());
+
+        /*
+         * Warm the key cache before stressing the protected endpoint with concurrent clients.
+         */
+        assertKeys(tomee, unknownKey, publicKey, 200);
                 
         /*
          * Verify calls now succeed
          */
-        Runner.threads(100).run(() -> assertKeys(tomee, unknownKey, publicKey, 200)).assertNoExceptions();
+        Runner.threads(THREADS).run(() -> assertKeys(tomee, unknownKey, publicKey, 200)).assertNoExceptions();
     }
 
     private void assertKeys(final TomEE tomee, final Tokens invalidKey, final Tokens validKey, final int expected) {
@@ -197,7 +203,7 @@ public class HttpKeyAccessTimeoutTest {
             @GET
             @Path("release")
             public void release() {
-                semaphore.release();
+                semaphore.release(THREADS * 2);
             }
         }
     }
