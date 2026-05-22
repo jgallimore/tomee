@@ -37,8 +37,8 @@ public class MyWebSocketClientObject {
         }
 
         if(message.contains("Received:")) {
-            payloadLatch.countDown();
             response = message;
+            payloadLatch.countDown();
         }
     }
 }
