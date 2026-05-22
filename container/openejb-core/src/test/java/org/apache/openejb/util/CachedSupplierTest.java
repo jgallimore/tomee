@@ -105,14 +105,24 @@ public class CachedSupplierTest {
      */
     @Test
     public void delayedInitializationTimeout() throws InterruptedException {
+        // Timing is scaled up (vs. the original 100ms/150ms/50ms) so that
+        // thread-spawn overhead (~25ms for 100 threads, see Runner javadoc)
+        // cannot eat into the residual supplier sleep on a fast CI machine.
+        // The first batch must time out (firstSleep > accessTimeout) and the
+        // second batch must observe blocking (secondSleep clearly > 30ms even
+        // after thread-startup overhead).
+        final int accessTimeoutMs = 200;
+        final int firstSleepMs = 300;   // > accessTimeout, so first batch always times out
+        final int secondSleepMs = 100;  // > thread-startup overhead, so second batch always blocks
+
         final CountDownLatch causeSomeDelays = new CountDownLatch(1);
         final CountDownLatch nearlyThere = new CountDownLatch(1);
         final AtomicInteger count = new AtomicInteger();
         final Supplier<Integer> supplier = () -> {
             await(causeSomeDelays);
-            sleep(150);
+            sleep(firstSleepMs);
             nearlyThere.countDown();
-            sleep(50);
+            sleep(secondSleepMs);
             try {
                 return count.incrementAndGet();
             } finally {
@@ -121,7 +131,7 @@ public class CachedSupplierTest {
         };
 
         final CachedSupplier<Integer> cached = CachedSupplier.builder(supplier)
-                .accessTimeout(100, MILLISECONDS)
+                .accessTimeout(accessTimeoutMs, MILLISECONDS)
                 .build();
 
         final Runner runner = Runner.threads(100);
@@ -129,8 +139,8 @@ public class CachedSupplierTest {
         runner.pre(causeSomeDelays::countDown)
                 .run(() -> assertEquals(1, (int) cached.get()))
                 .assertExceptions(CachedSupplier.AccessTimeoutException.class)
-                .assertTimesGreaterThan(99, MILLISECONDS)
-                .assertTimesLessThan(150, MILLISECONDS);
+                .assertTimesGreaterThan(accessTimeoutMs - 1, MILLISECONDS)
+                .assertTimesLessThan(firstSleepMs, MILLISECONDS);
 
         // Wait for the supplier to get near completion
         assertTrue(nearlyThere.await(1, MINUTES));
