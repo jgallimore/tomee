@@ -147,6 +147,18 @@ public class HttpKeyRotationHttp500Test {
         }
 
         /*
+         * The server-side counter reaching 3 only proves TomEE polled three
+         * times; it does NOT prove the cached PublicKey inside TomEE has
+         * actually been swapped to secondKey for every code path. The refresh
+         * is asynchronous, and under load a single straggler thread can still
+         * validate against the previous key (~1% transient failure under
+         * 100 concurrent requests). Poll the steady state we actually care
+         * about -- "secondKey works and firstKey does not" -- before starting
+         * the stress run so the assertion is deterministic.
+         */
+        waitForKeyRotated(tomee, firstKey, secondKey);
+
+        /*
          * Make sure the new key works and the first key no longer works
          */
         Runner.threads(100).run(() -> assertKeys(tomee, firstKey, secondKey)).assertNoExceptions();
@@ -168,6 +180,28 @@ public class HttpKeyRotationHttp500Test {
                 .assertPresent(total - 2, "Refresh failed. Supplier PublicKeys\\{location=http://localhost:[0-9]+/keys/publicKey\\} " +
                         "threw an exception.  Next refresh will be in 1 SECONDS")
         ;
+    }
+
+    /**
+     * Poll TomEE single-threaded until the rotation has actually taken
+     * effect (validKey -> 200, invalidKey -> 401). This avoids races where
+     * the key-refresh thread has updated the publicKey counter on the
+     * key-server but hasn't yet swapped TomEE's cached PublicKey for every
+     * request path. Bounded wait so a real bug still surfaces as a failure.
+     */
+    private void waitForKeyRotated(final TomEE tomee, final Tokens invalidKey, final Tokens validKey) throws InterruptedException {
+        final long deadline = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(30);
+        AssertionError lastFailure = null;
+        while (System.currentTimeMillis() < deadline) {
+            try {
+                assertKeys(tomee, invalidKey, validKey);
+                return;
+            } catch (AssertionError e) {
+                lastFailure = e;
+                Thread.sleep(200);
+            }
+        }
+        throw new AssertionError("Key rotation did not take effect within 30s", lastFailure);
     }
 
     private void assertKeys(final TomEE tomee, final Tokens invalidKey, final Tokens validKey) {
