@@ -31,7 +31,7 @@
   <parent>
     <groupId>org.apache.tomee.bom</groupId>
     <artifactId>boms</artifactId>
-    <version>10.1.5-TT.6-SNAPSHOT</version>
+    <version>10.1.5-TT.6</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -183,18 +183,18 @@
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
-        <artifactId>opentelemetry-api-events</artifactId>
-        <version>1.32.0-alpha</version>
+        <artifactId>opentelemetry-api</artifactId>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
-        <artifactId>opentelemetry-api</artifactId>
-        <version>1.32.0</version>
+        <artifactId>opentelemetry-common</artifactId>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-context</artifactId>
-        <version>1.32.0</version>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
@@ -209,37 +209,37 @@
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-sdk-common</artifactId>
-        <version>1.32.0</version>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-sdk-extension-autoconfigure-spi</artifactId>
-        <version>1.32.0</version>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
-        <version>1.32.0</version>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-sdk-logs</artifactId>
-        <version>1.32.0</version>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-sdk-metrics</artifactId>
-        <version>1.32.0</version>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-sdk-trace</artifactId>
-        <version>1.32.0</version>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-sdk</artifactId>
-        <version>1.32.0</version>
+        <version>1.62.0</version>
       </dependency>
       <dependency>
         <groupId>io.prometheus</groupId>
@@ -414,102 +414,102 @@
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-core</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-bindings-soap</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-bindings-xml</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-databinding-jaxb</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-frontend-jaxws</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-frontend-simple</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-management</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-rs-client</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-rs-extension-providers</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-rs-mp-client</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-rs-service-description</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-rs-sse</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-security-saml</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-security</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-transports-http</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-ws-addr</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-ws-policy</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-ws-security</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-wsdl</artifactId>
-        <version>4.1.5</version>
+        <version>4.1.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.geronimo.components</groupId>
@@ -714,7 +714,7 @@
       <dependency>
         <groupId>org.apache.tomee</groupId>
         <artifactId>commons-dbcp2-shade</artifactId>
-        <version>10.1.5-TT.6-SNAPSHOT</version>
+        <version>10.1.5-TT.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.tomee</groupId>
@@ -824,7 +824,7 @@
       <dependency>
         <groupId>org.apache.tomee</groupId>
         <artifactId>taglibs-shade</artifactId>
-        <version>10.1.5-TT.6-SNAPSHOT</version>
+        <version>10.1.5-TT.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.tomee</groupId>
@@ -1178,7 +1178,7 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>tomee-bootstrap</artifactId>
-      <version>10.1.5-TT.6-SNAPSHOT</version>
+      <version>10.1.5-TT.6</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -1462,7 +1462,7 @@
     </dependency>
     <dependency>
       <groupId>io.opentelemetry</groupId>
-      <artifactId>opentelemetry-api-events</artifactId>
+      <artifactId>opentelemetry-api</artifactId>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
@@ -1472,7 +1472,7 @@
     </dependency>
     <dependency>
       <groupId>io.opentelemetry</groupId>
-      <artifactId>opentelemetry-api</artifactId>
+      <artifactId>opentelemetry-common</artifactId>
       <exclusions>
         <exclusion>
           <artifactId>*</artifactId>
