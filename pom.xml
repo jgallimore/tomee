@@ -992,6 +992,19 @@
   </pluginRepositories>
   <dependencyManagement>
     <dependencies>
+      <!-- CVE-2026-45292: pin OpenTelemetry to 1.62.0+ (W3C Baggage Propagator
+           Unbounded Memory Allocation, GHSA-rcgg-9c38-7xpx). Smallrye 2.x /
+           3.0.0-RC1 transitively pull OT 1.49.0 (still vulnerable); explicit
+           BOM import at the head of dependencyManagement takes precedence
+           over smallrye's transitive declarations and aligns ALL OT modules
+           (api / sdk / context / instrumentation) to the same fixed line. -->
+      <dependency>
+        <groupId>io.opentelemetry</groupId>
+        <artifactId>opentelemetry-bom</artifactId>
+        <version>1.62.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <!-- Micro Profile API -->
       <dependency>
         <groupId>org.eclipse.microprofile.config</groupId>
