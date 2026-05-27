@@ -667,12 +667,14 @@
       <modules>
         <module>deps</module>
         <module>boms</module>
+        <module>itests</module>
         <module>maven</module>
         <module>gradle</module>
         <module>container</module>
         <module>server</module>
         <module>mp-jwt</module>
         <module>assembly</module>
+        <module>tck</module>
         <module>arquillian</module>
         <module>utils</module>
         <module>tomee</module>
