@@ -456,7 +456,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>3.1.1</version>
+        <!-- Pinned to 3.0.0-M7: 3.1.1 has a regression resolving
+             <tomee.version>${project.version}</tomee.version> property indirection
+             (used e.g. by tomee-microprofile/mp-common's dependency on mp-jwt),
+             causing release:prepare to fail with "Could not find properties
+             resolving version expression : ${tomee.version}". See 1f868c5d00. -->
+        <version>3.0.0-M7</version>
         <configuration>
           <!-- the following settings are important when working with git -->
           <localCheckout>true</localCheckout>
