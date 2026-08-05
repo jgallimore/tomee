@@ -1,0 +1,56 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# OpenTelemetry declarative (file) configuration document.
+#
+# Point the SDK at this file with either:
+#   -Dotel.config.file=/absolute/path/to/otel-config.yaml
+#   OTEL_CONFIG_FILE=/absolute/path/to/otel-config.yaml
+#
+# On a TomEE build that does NOT ship opentelemetry-sdk-extension-declarative-config
+# (the renamed -incubator module), simply having this property set makes the SDK
+# build fail with:
+#   ConfigurationException: Cannot autoconfigure from config file without
+#     opentelemetry-sdk-extension-declarative-config on the classpath
+#
+# Once that module IS on the classpath, this document configures the SDK to emit
+# spans to the console (stdout), which keeps the example self-contained.
+
+# Schema version of this document. Use the value that matches the SDK on your
+# server (0.4 is current for the OpenTelemetry 1.62.0 line); bump it if the SDK
+# rejects it as unsupported.
+file_format: "0.4"
+
+# Master switch. false => the SDK is enabled (equivalent to otel.sdk.disabled=false).
+disabled: false
+
+# Attributes describing this service, attached to every span.
+resource:
+  attributes:
+    - name: service.name
+      value: mp-telemetry-tracing
+
+# Context propagation across process boundaries (W3C trace context + baggage).
+propagator:
+  composite:
+    - tracecontext
+    - baggage
+
+# Tracing pipeline: batch spans and write them to stdout.
+tracer_provider:
+  processors:
+    - batch:
+        exporter:
+          console: {}

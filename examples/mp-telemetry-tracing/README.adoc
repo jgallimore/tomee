@@ -1,0 +1,208 @@
+= MicroProfile Telemetry - Tracing
+:index-group: MicroProfile
+:jbake-type: page
+:jbake-status: published
+
+This is an example of how to use MicroProfile Telemetry tracing in TomEE.
+
+[discrete]
+== Telemetry Feature
+
+MicroProfile Telemetry adopts OpenTelemetry so that applications can produce
+distributed traces without depending on a specific vendor. TomEE automatically
+starts a span for every incoming JAX-RS request, and applications can create
+their own spans either declaratively, with the `@WithSpan` annotation, or
+programmatically, with an injected `Tracer`. The current `Span` and the
+`Tracer` are available for injection as regular CDI beans. +
+Check the
+https://download.eclipse.org/microprofile/microprofile-telemetry-1.1/tracing/microprofile-telemetry-tracing-spec-1.1.html[specification]
+for more details.
+
+MicroProfile Telemetry is *disabled by default*. It is switched on for this
+application through `src/main/resources/META-INF/microprofile-config.properties`:
+
+[source,properties]
+----
+otel.sdk.disabled=false
+otel.service.name=mp-telemetry-tracing
+otel.traces.exporter=none
+----
+
+`otel.traces.exporter=none` keeps the example self-contained - spans are created
+and recorded but not shipped anywhere. To send traces to a real backend, set
+`otel.traces.exporter=otlp` and configure `otel.exporter.otlp.endpoint`.
+
+[discrete]
+== Example
+
+[discrete]
+=== Run the application
+
+[source,text]
+----
+mvn clean install tomee:run
+----
+
+[discrete]
+=== How does it work?
+
+`@WithSpan` makes MicroProfile Telemetry create a span around
+`WeatherGateway.forecast`, and `@SpanAttribute` records the method argument as
+an attribute on that span. The injected `Span` is used to add a further
+attribute, and the injected `Tracer` creates a child span by hand.
+
+[source,java]
+----
+@RequestScoped
+public class WeatherGateway {
+
+    @Inject
+    private Span span;
+
+    @Inject
+    private Tracer tracer;
+
+    @WithSpan("weather.forecast")
+    public String forecast(@SpanAttribute("weather.city") final String city) {
+        span.setAttribute("weather.source", "AccuWeather");
+        return lookUp(city);
+    }
+
+    private String lookUp(final String city) {
+        final Span child = tracer.spanBuilder("weather.lookUp").startSpan();
+        try {
+            return "Sunny in " + city;
+        } finally {
+            child.end();
+        }
+    }
+}
+----
+
+Forecast call
+
+[source,text]
+----
+GET http://localhost:8080/mp-telemetry-tracing/weather/forecast/London
+----
+
+Response
+
+[source,text]
+----
+Sunny in London
+----
+
+The `WeatherService` resource also exposes the trace id of the current request
+span. With Telemetry enabled this is a valid, non-zero id, which shows that the
+request is being traced.
+
+[source,text]
+----
+GET http://localhost:8080/mp-telemetry-tracing/weather/traceid
+----
+
+[source,text]
+----
+8f3a1c2b4d5e6f7089a0b1c2d3e4f5a6
+----
+
+[discrete]
+=== Running the test
+
+The
+link:src/test/java/org/superbiz/rest/WeatherServiceTest.java[WeatherServiceTest.java]
+deploys the application to TomEE with Arquillian, checks the forecast response
+and asserts that a valid trace id is returned - proving that tracing is active.
+
+[source,text]
+----
+mvn clean test
+----
+
+----
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+----
+
+[discrete]
+== Reproducing the declarative-config ConfigurationException
+
+This example can also be built as a *reproducer* for the failure
+
+[source,text]
+----
+Caused by: io.opentelemetry.sdk.autoconfigure.spi.ConfigurationException:
+    Cannot autoconfigure from config file without
+    opentelemetry-sdk-extension-declarative-config on the classpath
+----
+
+seen on TomEE builds that upgrade OpenTelemetry (e.g. to 1.62.0).
+
+[discrete]
+=== Why it happens
+
+MicroProfile Telemetry builds the OpenTelemetry SDK through
+`AutoConfiguredOpenTelemetrySdk` (see SmallRye's `OpenTelemetryProducer`). If the
+`otel.config.file` property is set, OpenTelemetry switches from property-based
+autoconfiguration to *declarative* (YAML file) configuration. That code lives in
+a separate module, `io.opentelemetry:opentelemetry-sdk-extension-declarative-config`
+(named `opentelemetry-sdk-extension-incubator` before the rename), which TomEE
+does not bundle - so the SDK build throws, and because SmallRye builds the SDK
+eagerly while the CDI beans start, the whole application fails to deploy.
+
+SmallRye forwards MicroProfile Config `otel.*` properties into OpenTelemetry
+autoconfigure, so the property can be supplied either from the war (below) or as
+a JVM system property / environment variable.
+
+[discrete]
+=== Option 1 - self-contained reproducer war
+
+Build the war with the `reproducer` profile. It swaps in a
+`microprofile-config.properties` that sets `otel.config.file` and bundles a
+sample `otel-config.yaml`:
+
+[source,text]
+----
+mvn -Preproducer clean package
+----
+
+Deploy `target/mp-telemetry-tracing-*.war` to the affected TomEE install and call
+any endpoint, e.g.
+`http://localhost:8080/mp-telemetry-tracing/weather/forecast/London`. The app
+fails to start and the log shows the `ConfigurationException` above.
+
+[discrete]
+=== Option 2 - any war, server-wide property
+
+Deploy the normal example war (or any MicroProfile Telemetry app) and start TomEE
+with the property set. This is the version-independent trigger and does not need
+the reproducer profile:
+
+[source,text]
+----
+# environment variable
+export OTEL_CONFIG_FILE=/path/to/otel-config.yaml
+
+# or via CATALINA_OPTS
+export CATALINA_OPTS="-Dotel.config.file=/path/to/otel-config.yaml"
+----
+
+[discrete]
+=== The fix
+
+Add the declarative-config module to the server (or the application) so the
+file-based configuration path can be satisfied:
+
+[source,xml]
+----
+<dependency>
+  <groupId>io.opentelemetry</groupId>
+  <artifactId>opentelemetry-sdk-extension-declarative-config</artifactId>
+  <!-- match the server's OpenTelemetry version; alpha artifact -->
+</dependency>
+----
+
+Alternatively, do not set `otel.config.file` and rely on the property-based
+`otel.*` configuration that this example otherwise uses.
