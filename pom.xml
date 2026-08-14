@@ -231,7 +231,7 @@
     <!-- JDBC Drivers -->
     <version.derby>10.15.2.0</version.derby>
     <version.hsqldb>2.7.4</version.hsqldb>
-
+    <version.maven-gpg-plugin>3.0.1</version.maven-gpg-plugin>
   </properties>
 
   <build>
@@ -426,10 +426,13 @@
           <!-- the following settings are important when working with git -->
           <localCheckout>true</localCheckout>
           <pushChanges>false</pushChanges>
-          <releaseProfiles />
+          <!-- Profiles activated only during release:prepare's forked Maven invocation
+               and during release:perform's deploy. Centralised here instead of being
+               buried in <arguments>, so that the active set during a release is obvious
+               from the plugin config alone. -->
+          <releaseProfiles>no-examples,apache-release</releaseProfiles>
           <autoVersionSubmodules>true</autoVersionSubmodules>
-          <arguments>-Pno-examples,apache-release -DskipTests -DfailIfNoTests=false -Dadditionalparam=-Xdoclint:none -DadditionalJOption=-Xdoclint:none ${arguments}</arguments>
-          <preparationGoals>clean install</preparationGoals>
+          <arguments>-DskipTests -DfailIfNoTests=false -Dadditionalparam=-Xdoclint:none -DadditionalJOption=-Xdoclint:none ${arguments}</arguments>
         </configuration>
       </plugin>
       <plugin>
@@ -632,8 +635,28 @@
           <id>Apache Snapshots</id>
           <url>https://repository.apache.org/content/repositories/snapshots</url>
         </repository>
+        <repository>
+          <id>tomitribe-all</id>
+          <name>Tomitribe Repository</name>
+          <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
+        </repository>
       </repositories>
     </profile>
+    <!--
+      Used during release:prepare / release:perform via <releaseProfiles> on the
+      maven-release-plugin. Skips modules that are NOT released to Tomitribe Nexus
+      and that have historically introduced version-bump bugs in the release flow:
+
+        - examples      → snippets, never deployed
+        - itests        → integration tests, never deployed
+        - tck           → TCK runs, never deployed
+
+      The arquillian/ module IS released (the customer-facing adapters live there)
+      but its own pom currently includes test/example sub-modules
+      (arquillian-tomee-tests, arquillian-tomee-moviefun-example, arquillian-tck,
+      ziplock) that should also be skipped during release. That requires a
+      sibling change in arquillian/pom.xml — see follow-up issue.
+    -->
     <profile>
       <id>no-examples</id>
       <modules>
@@ -753,6 +776,11 @@
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
+        </repository>
+        <repository>
+          <id>tomitribe-all</id>
+          <name>Tomitribe Repository</name>
+          <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
         </repository>
       </repositories>
     </profile>
@@ -888,6 +916,11 @@
   </profiles>
   <repositories>
     <repository>
+      <id>tomitribe-all</id>
+      <name>Tomitribe Repository</name>
+      <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
+    </repository>
+    <repository>
       <id>apache-snapshots</id>
       <name>Apache Snapshots Repository</name>
       <url>https://repository.apache.org/content/groups/snapshots</url>
@@ -920,6 +953,11 @@
     </repository>
   </repositories>
   <pluginRepositories>
+    <pluginRepository>
+      <id>tomitribe-all</id>
+      <name>Tomitribe Repository</name>
+      <url>https://repository.tomitribe.com/content/groups/tomitribe/</url>
+    </pluginRepository>
     <pluginRepository>
       <id>apache-plugin-snapshot</id>
       <name>Apache Software Foundation Plugin Snapshot Repository</name>
@@ -1904,9 +1942,16 @@
   </dependencyManagement>
 
   <distributionManagement>
-    <site>
-      <id>openejb-website</id>
-      <url>scp://people.apache.org/www/tomee.apache.org/openejb/maven</url>
-    </site>
+    <repository>
+      <id>tomitribe.releases.https</id>
+      <name>Tomitribe Release Distribution Repository</name>
+      <url>https://repository.tomitribe.com/service/local/staging/deploy/maven2</url>
+    </repository>
+
+    <snapshotRepository>
+      <id>tomitribe.snapshots.https</id>
+      <name>Tomitribe Development Snapshot Repository</name>
+      <url>https://repository.tomitribe.com/content/repositories/snapshots-tomitribe</url>
+    </snapshotRepository>
   </distributionManagement>
 </project>
