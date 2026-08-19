@@ -39,7 +39,8 @@ public class PasskeyAuthenticationMechanism implements HttpAuthenticationMechani
 
         final Credential credential = httpMessageContext.getAuthParameters().getCredential();
 
-        if (credential instanceof PasskeyCredential passkey) {
+        if (credential instanceof PasskeyCredential) {
+            final PasskeyCredential passkey = (PasskeyCredential) credential;
             return httpMessageContext.notifyContainerAboutLogin(passkey.getCallerName(),
                                                                 passkey.getGroups());
         }
