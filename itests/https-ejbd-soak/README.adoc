@@ -1,0 +1,66 @@
+= HTTPS EJBd Soak Harness
+
+Manual, long-running reproduction harness for the reported TomEE-to-TomEE
+EJB-over-HTTP (`httpejbd`) failure over `https` that appears only after many hours
+(connection refused / read timed out / cannot open input stream).
+
+== Topology
+
+[source]
+----
+driver (this JVM) --http--> Server B (CallerBean) --https/ejbd--> Server A (CalculatorBean)
+----
+
+* *Server A* – a real (Tomcat) TomEE with an NIO `Http11NioProtocol` *https* connector,
+  hosting `CalculatorBean`. This is the server whose `SecureNioChannel` write/reset path
+  (BZ 69982) is under investigation.
+* *Server B* – a real TomEE hosting `CallerBean`, which on each call relays to `Calculator`
+  on A over `https` using the `openejb-client` `HttpConnectionFactory` (the same keep-alive /
+  drain path a TomEE uses for outbound EJB calls).
+* *driver* – loops forever invoking `CallerBean` on B, so both hops stay under continuous load.
+
+Both servers are unpacked from the `apache-tomee` webprofile zip into fresh temp homes, given
+free ports, and share a throwaway self-signed PKCS12 keystore generated at runtime with
+`keytool` (CN/SAN `localhost`, `127.0.0.1`). Nothing binary is committed.
+
+== It is excluded from the build
+
+The driver class is deliberately named `HttpsEjbdSoak` (not `*Test`), so Surefire skips it
+during a normal `mvn install`. The module still compiles as part of the reactor.
+
+== Running it
+
+[source]
+----
+# via Surefire (from the repo root)
+mvn test -pl itests/https-ejbd-soak -am -Dtest=HttpsEjbdSoak
+
+# or straight from an IDE / plain java: run HttpsEjbdSoak#main
+----
+
+=== Tunables (system properties)
+
+[cols="1,3"]
+|===
+| `soak.threads`          | concurrent driver threads (default 4)
+| `soak.duration.seconds` | stop after N seconds; `0` = run forever (default 0)
+| `soak.report.seconds`   | stats print interval (default 10)
+| `soak.caller.jndi`      | remote JNDI name of `CallerBean` on B (default `global/soak/CallerBean!...Caller`)
+| `soak.callee.jndi`      | remote JNDI name of `CalculatorBean` on A (passed to B; default `global/soak/CalculatorBean!...Calculator`)
+| `version`               | `apache-tomee` version to unpack (Surefire sets it; else derived from the running build)
+|===
+
+== What to watch
+
+The interesting signal is on *server A* (the https callee). While the soak runs, find A's PID
+from the console output and watch its file descriptors / sockets climb over time:
+
+[source]
+----
+ls /proc/<pidA>/fd | wc -l           # or: lsof -p <pidA> | wc -l
+ss -tanp | grep <pidA>               # look for growing CLOSE_WAIT / ESTABLISHED
+----
+
+A steady climb toward `ulimit -n` that ends in "connection refused" reproduces the symptom.
+To A/B different Tomcat versions, override `tomcat.version` when building the `apache-tomee`
+distribution the harness consumes, then re-run.

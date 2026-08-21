@@ -38,6 +38,7 @@
     <module>microprofile-jwt-itests</module>
     <module>failover</module>
     <module>failover-ejb</module>
+    <module>https-ejbd-soak</module>
     <module>legacy-client</module>
     <module>legacy-server</module>
     <module>openejb-itests-app</module>
