@@ -91,7 +91,7 @@ This will only build a module and the modules using it as a dependency.
 To build just TomEE distribution execute:
 
 ....
-mvn clean install -pl tomee/apache-tomee -am -Dmaven.test.skip=true
+mvn clean install -pl tomee/apache-tomee -am -DskipTests
 ....
 
 TomEE zip/tar.gz will be in tomee/apache-tomee/target

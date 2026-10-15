@@ -226,7 +226,7 @@ The `connector-sample-rar` module has `rar` packaging and a single dependency on
 
 == The web application
 
-The WAR also has a TomEE-specific `WEB-INF/resources.xml`. It declares the resource adapter, a message-driven container bound to it, and the connection factory:
+The WAR also has a TomEE-specific `WEB-INF/resources.xml`. It declares the resource adapter and a message-driven container bound to it:
 
 [source,xml]
 ----
@@ -239,24 +239,25 @@ The WAR also has a TomEE-specific `WEB-INF/resources.xml`. It declares the resou
         ActivationSpecClass=org.superbiz.connector.adapter.SampleActivationSpec
         MessageListenerInterface=org.superbiz.connector.api.InboundListener
     </Container>
-
-    <Resource id="SampleConnectionFactory" type="org.superbiz.connector.api.SampleConnectionFactory" class-name="org.superbiz.connector.adapter.SampleManagedConnectionFactory">
-        ResourceAdapter=SampleResourceAdapter
-        TransactionSupport=none
-    </Resource>
 </resources>
 ----
+
+The connection factory is not declared in `resources.xml`. `Sender` defines it with the standard `@ConnectionFactoryDefinition` annotation, bound to `java:app/SampleConnectionFactory` and backed by `SampleResourceAdapter`, and injects it with `@Resource(lookup = "java:app/SampleConnectionFactory")`.
 
 `Sender` is a singleton EJB that is also a JAX-RS resource. A POST takes a connection from the injected `SampleConnectionFactory` and sends the request body. A GET returns every message received so far, one per line:
 
 [source,java]
 ----
+@ConnectionFactoryDefinition(name = "java:app/SampleConnectionFactory",
+        interfaceName = "org.superbiz.connector.api.SampleConnectionFactory",
+        resourceAdapter = "SampleResourceAdapter",
+        transactionSupport = TransactionSupport.TransactionSupportLevel.NoTransaction)
 @Singleton
 @Lock(LockType.READ)
 @Path("")
 public class Sender {
 
-    @Resource
+    @Resource(lookup = "java:app/SampleConnectionFactory")
     private SampleConnectionFactory cf;
 
     @EJB

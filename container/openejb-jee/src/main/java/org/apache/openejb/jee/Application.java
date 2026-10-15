@@ -97,6 +97,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "dataSource",
     "jmsConnectionFactories",
     "jmsDestinations",
+    "connectionFactories",
     "contextService",
     "managedExecutor",
     "managedScheduledExecutor",
@@ -156,6 +157,8 @@ public class Application implements JndiConsumer, NamedModule {
     protected KeyedCollection<String, JMSConnectionFactory> jmsConnectionFactories;
     @XmlElement(name = "jms-destination")
     protected KeyedCollection<String, JMSDestination> jmsDestinations;
+    @XmlElement(name = "connection-factory")
+    protected KeyedCollection<String, ConnectionFactoryResource> connectionFactories;
     @XmlAttribute(required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected java.lang.String version;
@@ -450,6 +453,16 @@ public class Application implements JndiConsumer, NamedModule {
     @Override
     public Map<String, JMSDestination> getJMSDestinationMap() {
         return KeyedCollection.class.cast(getJMSDestination()).toMap();
+    }
+
+    @Override
+    public Collection<ConnectionFactoryResource> getConnectionFactories() {
+        return connectionFactories == null ? (connectionFactories = new KeyedCollection<>()) : connectionFactories;
+    }
+
+    @Override
+    public Map<String, ConnectionFactoryResource> getConnectionFactoriesMap() {
+        return KeyedCollection.class.cast(getConnectionFactories()).toMap();
     }
 
     @Override

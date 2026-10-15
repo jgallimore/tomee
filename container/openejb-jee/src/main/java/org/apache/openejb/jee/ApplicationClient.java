@@ -92,6 +92,7 @@ import java.util.Objects;
     "dataSource",
     "jmsConnectionFactories",
     "jmsDestinations",
+    "connectionFactories",
     "contextService",
     "managedExecutor",
     "managedScheduledExecutor",
@@ -140,6 +141,8 @@ public class ApplicationClient implements JndiConsumer, Lifecycle, NamedModule {
     protected KeyedCollection<String, JMSConnectionFactory> jmsConnectionFactories;
     @XmlElement(name = "jms-destination")
     protected KeyedCollection<String, JMSDestination> jmsDestinations;
+    @XmlElement(name = "connection-factory")
+    protected KeyedCollection<String, ConnectionFactoryResource> connectionFactories;
 
 
     @XmlAttribute
@@ -455,6 +458,16 @@ public class ApplicationClient implements JndiConsumer, Lifecycle, NamedModule {
     @Override
     public Map<String, JMSDestination> getJMSDestinationMap() {
         return KeyedCollection.class.cast(getJMSDestination()).toMap();
+    }
+
+    @Override
+    public Collection<ConnectionFactoryResource> getConnectionFactories() {
+        return connectionFactories == null ? (connectionFactories = new KeyedCollection<>()) : connectionFactories;
+    }
+
+    @Override
+    public Map<String, ConnectionFactoryResource> getConnectionFactoriesMap() {
+        return KeyedCollection.class.cast(getConnectionFactories()).toMap();
     }
 
     @Override

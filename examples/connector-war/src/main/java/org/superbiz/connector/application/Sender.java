@@ -24,6 +24,8 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Lock;
 import jakarta.ejb.LockType;
 import jakarta.ejb.Singleton;
+import jakarta.resource.ConnectionFactoryDefinition;
+import jakarta.resource.spi.TransactionSupport;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -32,12 +34,16 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
+@ConnectionFactoryDefinition(name = "java:app/SampleConnectionFactory",
+        interfaceName = "org.superbiz.connector.api.SampleConnectionFactory",
+        resourceAdapter = "SampleResourceAdapter",
+        transactionSupport = TransactionSupport.TransactionSupportLevel.NoTransaction)
 @Singleton
 @Lock(LockType.READ)
 @Path("")
 public class Sender {
 
-    @Resource
+    @Resource(lookup = "java:app/SampleConnectionFactory")
     private SampleConnectionFactory cf;
 
     @EJB

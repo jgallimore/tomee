@@ -53,6 +53,8 @@ import static org.apache.openejb.jee.JMSConnectionFactory$JAXB.readJMSConnection
 import static org.apache.openejb.jee.JMSConnectionFactory$JAXB.writeJMSConnectionFactory;
 import static org.apache.openejb.jee.JMSDestination$JAXB.readJMSDestination;
 import static org.apache.openejb.jee.JMSDestination$JAXB.writeJMSDestination;
+import static org.apache.openejb.jee.ConnectionFactoryResource$JAXB.readConnectionFactoryResource;
+import static org.apache.openejb.jee.ConnectionFactoryResource$JAXB.writeConnectionFactoryResource;
 import static org.apache.openejb.jee.JspConfig$JAXB.readJspConfig;
 import static org.apache.openejb.jee.JspConfig$JAXB.writeJspConfig;
 import static org.apache.openejb.jee.LifecycleCallback$JAXB.readLifecycleCallback;
@@ -113,7 +115,7 @@ public class WebFragment$JAXB
 
 
     public WebFragment$JAXB() {
-        super(WebFragment.class, new QName("http://java.sun.com/xml/ns/javaee".intern(), "web-fragment".intern()), new QName("http://java.sun.com/xml/ns/javaee".intern(), "web-fragmentType".intern()), Text$JAXB.class, Icon$JAXB.class, Empty$JAXB.class, ParamValue$JAXB.class, Filter$JAXB.class, FilterMapping$JAXB.class, Listener$JAXB.class, Servlet$JAXB.class, ServletMapping$JAXB.class, SessionConfig$JAXB.class, MimeMapping$JAXB.class, WelcomeFileList$JAXB.class, ErrorPage$JAXB.class, JspConfig$JAXB.class, SecurityConstraint$JAXB.class, LoginConfig$JAXB.class, SecurityRole$JAXB.class, LocaleEncodingMappingList$JAXB.class, EnvEntry$JAXB.class, EjbRef$JAXB.class, EjbLocalRef$JAXB.class, ServiceRef$JAXB.class, ResourceRef$JAXB.class, ResourceEnvRef$JAXB.class, MessageDestinationRef$JAXB.class, PersistenceContextRef$JAXB.class, PersistenceUnitRef$JAXB.class, LifecycleCallback$JAXB.class, MessageDestination$JAXB.class, Ordering$JAXB.class, DataSource$JAXB.class, JMSConnectionFactory$JAXB.class, JMSDestination$JAXB.class, ContextService$JAXB.class, ManagedExecutor$JAXB.class, ManagedScheduledExecutor$JAXB.class, ManagedThreadFactory$JAXB.class);
+        super(WebFragment.class, new QName("http://java.sun.com/xml/ns/javaee".intern(), "web-fragment".intern()), new QName("http://java.sun.com/xml/ns/javaee".intern(), "web-fragmentType".intern()), Text$JAXB.class, Icon$JAXB.class, Empty$JAXB.class, ParamValue$JAXB.class, Filter$JAXB.class, FilterMapping$JAXB.class, Listener$JAXB.class, Servlet$JAXB.class, ServletMapping$JAXB.class, SessionConfig$JAXB.class, MimeMapping$JAXB.class, WelcomeFileList$JAXB.class, ErrorPage$JAXB.class, JspConfig$JAXB.class, SecurityConstraint$JAXB.class, LoginConfig$JAXB.class, SecurityRole$JAXB.class, LocaleEncodingMappingList$JAXB.class, EnvEntry$JAXB.class, EjbRef$JAXB.class, EjbLocalRef$JAXB.class, ServiceRef$JAXB.class, ResourceRef$JAXB.class, ResourceEnvRef$JAXB.class, MessageDestinationRef$JAXB.class, PersistenceContextRef$JAXB.class, PersistenceUnitRef$JAXB.class, LifecycleCallback$JAXB.class, MessageDestination$JAXB.class, Ordering$JAXB.class, DataSource$JAXB.class, JMSConnectionFactory$JAXB.class, JMSDestination$JAXB.class, ConnectionFactoryResource$JAXB.class, ContextService$JAXB.class, ManagedExecutor$JAXB.class, ManagedScheduledExecutor$JAXB.class, ManagedThreadFactory$JAXB.class);
     }
 
     public static WebFragment readWebFragment(XoXMLStreamReader reader, RuntimeContext context)
@@ -184,6 +186,7 @@ public class WebFragment$JAXB
         KeyedCollection<String, DataSource> dataSource = null;
         KeyedCollection<String, JMSConnectionFactory> jmsConnectionFactories = null;
         KeyedCollection<String, JMSDestination> jmsDestinations = null;
+        KeyedCollection<String, ConnectionFactoryResource> connectionFactories = null;
         KeyedCollection<String, ContextService> contextService = null;
         KeyedCollection<String, ManagedExecutor> managedExecutor = null;
         KeyedCollection<String, ManagedScheduledExecutor> managedScheduledExecutor = null;
@@ -620,6 +623,18 @@ public class WebFragment$JAXB
                     }
                 }
                 jmsDestinations.add(jmsDestinationsItem);
+            } else if (("connection-factory" == elementReader.getLocalName())&&("http://java.sun.com/xml/ns/javaee" == elementReader.getNamespaceURI())) {
+                // ELEMENT: connectionFactories
+                final ConnectionFactoryResource connectionFactoriesItem = readConnectionFactoryResource(elementReader, context);
+                if (connectionFactories == null) {
+                    connectionFactories = webFragment.connectionFactories;
+                    if (connectionFactories!= null) {
+                        connectionFactories.clear();
+                    } else {
+                        connectionFactories = new KeyedCollection<>();
+                    }
+                }
+                connectionFactories.add(connectionFactoriesItem);
             } else if (("name" == elementReader.getLocalName())&&("http://java.sun.com/xml/ns/javaee" == elementReader.getNamespaceURI())) {
                 // ELEMENT: name
                 String nameRaw = elementReader.getElementText();
@@ -682,7 +697,7 @@ public class WebFragment$JAXB
                 }
                 managedThreadFactory.add(managedThreadFactoryItem);
             } else {
-                context.unexpectedElement(elementReader, new QName("http://java.sun.com/xml/ns/javaee", "description"), new QName("http://java.sun.com/xml/ns/javaee", "display-name"), new QName("http://java.sun.com/xml/ns/javaee", "icon"), new QName("http://java.sun.com/xml/ns/javaee", "distributable"), new QName("http://java.sun.com/xml/ns/javaee", "context-param"), new QName("http://java.sun.com/xml/ns/javaee", "filter"), new QName("http://java.sun.com/xml/ns/javaee", "filter-mapping"), new QName("http://java.sun.com/xml/ns/javaee", "listener"), new QName("http://java.sun.com/xml/ns/javaee", "servlet"), new QName("http://java.sun.com/xml/ns/javaee", "servlet-mapping"), new QName("http://java.sun.com/xml/ns/javaee", "session-config"), new QName("http://java.sun.com/xml/ns/javaee", "mime-mapping"), new QName("http://java.sun.com/xml/ns/javaee", "welcome-file-list"), new QName("http://java.sun.com/xml/ns/javaee", "error-page"), new QName("http://java.sun.com/xml/ns/javaee", "jsp-config"), new QName("http://java.sun.com/xml/ns/javaee", "security-constraint"), new QName("http://java.sun.com/xml/ns/javaee", "login-config"), new QName("http://java.sun.com/xml/ns/javaee", "security-role"), new QName("http://java.sun.com/xml/ns/javaee", "locale-encoding-mapping-list"), new QName("http://java.sun.com/xml/ns/javaee", "env-entry"), new QName("http://java.sun.com/xml/ns/javaee", "ejb-ref"), new QName("http://java.sun.com/xml/ns/javaee", "ejb-local-ref"), new QName("http://java.sun.com/xml/ns/javaee", "service-ref"), new QName("http://java.sun.com/xml/ns/javaee", "resource-ref"), new QName("http://java.sun.com/xml/ns/javaee", "resource-env-ref"), new QName("http://java.sun.com/xml/ns/javaee", "message-destination-ref"), new QName("http://java.sun.com/xml/ns/javaee", "persistence-context-ref"), new QName("http://java.sun.com/xml/ns/javaee", "persistence-unit-ref"), new QName("http://java.sun.com/xml/ns/javaee", "post-construct"), new QName("http://java.sun.com/xml/ns/javaee", "pre-destroy"), new QName("http://java.sun.com/xml/ns/javaee", "message-destination"), new QName("http://java.sun.com/xml/ns/javaee", "ordering"), new QName("http://java.sun.com/xml/ns/javaee", "data-source"), new QName("http://java.sun.com/xml/ns/javaee", "jms-connection-factory"), new QName("http://java.sun.com/xml/ns/javaee", "jms-destination"), new QName("http://java.sun.com/xml/ns/javaee", "name"), new QName("http://java.sun.com/xml/ns/javaee", "context-service"), new QName("http://java.sun.com/xml/ns/javaee", "managed-executor"), new QName("http://java.sun.com/xml/ns/javaee", "managed-scheduled-executor"), new QName("http://java.sun.com/xml/ns/javaee", "managed-thread-factory"));
+                context.unexpectedElement(elementReader, new QName("http://java.sun.com/xml/ns/javaee", "description"), new QName("http://java.sun.com/xml/ns/javaee", "display-name"), new QName("http://java.sun.com/xml/ns/javaee", "icon"), new QName("http://java.sun.com/xml/ns/javaee", "distributable"), new QName("http://java.sun.com/xml/ns/javaee", "context-param"), new QName("http://java.sun.com/xml/ns/javaee", "filter"), new QName("http://java.sun.com/xml/ns/javaee", "filter-mapping"), new QName("http://java.sun.com/xml/ns/javaee", "listener"), new QName("http://java.sun.com/xml/ns/javaee", "servlet"), new QName("http://java.sun.com/xml/ns/javaee", "servlet-mapping"), new QName("http://java.sun.com/xml/ns/javaee", "session-config"), new QName("http://java.sun.com/xml/ns/javaee", "mime-mapping"), new QName("http://java.sun.com/xml/ns/javaee", "welcome-file-list"), new QName("http://java.sun.com/xml/ns/javaee", "error-page"), new QName("http://java.sun.com/xml/ns/javaee", "jsp-config"), new QName("http://java.sun.com/xml/ns/javaee", "security-constraint"), new QName("http://java.sun.com/xml/ns/javaee", "login-config"), new QName("http://java.sun.com/xml/ns/javaee", "security-role"), new QName("http://java.sun.com/xml/ns/javaee", "locale-encoding-mapping-list"), new QName("http://java.sun.com/xml/ns/javaee", "env-entry"), new QName("http://java.sun.com/xml/ns/javaee", "ejb-ref"), new QName("http://java.sun.com/xml/ns/javaee", "ejb-local-ref"), new QName("http://java.sun.com/xml/ns/javaee", "service-ref"), new QName("http://java.sun.com/xml/ns/javaee", "resource-ref"), new QName("http://java.sun.com/xml/ns/javaee", "resource-env-ref"), new QName("http://java.sun.com/xml/ns/javaee", "message-destination-ref"), new QName("http://java.sun.com/xml/ns/javaee", "persistence-context-ref"), new QName("http://java.sun.com/xml/ns/javaee", "persistence-unit-ref"), new QName("http://java.sun.com/xml/ns/javaee", "post-construct"), new QName("http://java.sun.com/xml/ns/javaee", "pre-destroy"), new QName("http://java.sun.com/xml/ns/javaee", "message-destination"), new QName("http://java.sun.com/xml/ns/javaee", "ordering"), new QName("http://java.sun.com/xml/ns/javaee", "data-source"), new QName("http://java.sun.com/xml/ns/javaee", "jms-connection-factory"), new QName("http://java.sun.com/xml/ns/javaee", "jms-destination"), new QName("http://java.sun.com/xml/ns/javaee", "connection-factory"), new QName("http://java.sun.com/xml/ns/javaee", "name"), new QName("http://java.sun.com/xml/ns/javaee", "context-service"), new QName("http://java.sun.com/xml/ns/javaee", "managed-executor"), new QName("http://java.sun.com/xml/ns/javaee", "managed-scheduled-executor"), new QName("http://java.sun.com/xml/ns/javaee", "managed-thread-factory"));
             }
         }
         if (descriptions!= null) {
@@ -794,6 +809,9 @@ public class WebFragment$JAXB
         }
         if (jmsDestinations!= null) {
             webFragment.jmsDestinations = jmsDestinations;
+        }
+        if (connectionFactories!= null) {
+            webFragment.connectionFactories = connectionFactories;
         }
         if (contextService!= null) {
             webFragment.contextService = contextService;
@@ -1333,6 +1351,18 @@ public class WebFragment$JAXB
                 if (jmsDestinationsItem!= null) {
                     writer.writeStartElement(prefix, "jms-destination", "http://java.sun.com/xml/ns/javaee");
                     writeJMSDestination(writer, jmsDestinationsItem, context);
+                    writer.writeEndElement();
+                }
+            }
+        }
+
+        // ELEMENT: connectionFactories
+        final KeyedCollection<String, ConnectionFactoryResource> connectionFactories = webFragment.connectionFactories;
+        if (connectionFactories!= null) {
+            for (final ConnectionFactoryResource connectionFactoriesItem: connectionFactories) {
+                if (connectionFactoriesItem!= null) {
+                    writer.writeStartElement(prefix, "connection-factory", "http://java.sun.com/xml/ns/javaee");
+                    writeConnectionFactoryResource(writer, connectionFactoriesItem, context);
                     writer.writeEndElement();
                 }
             }

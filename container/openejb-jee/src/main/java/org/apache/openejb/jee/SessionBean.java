@@ -140,6 +140,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "dataSource",
     "jmsConnectionFactories",
     "jmsDestinations",
+    "connectionFactories",
     "postActivate",
     "prePassivate",
     "securityRoleRef",
@@ -245,6 +246,8 @@ public class SessionBean implements RemoteBean, Session, TimerConsumer {
     protected KeyedCollection<String, JMSConnectionFactory> jmsConnectionFactories;
     @XmlElement(name = "jms-destination")
     protected KeyedCollection<String, JMSDestination> jmsDestinations;
+    @XmlElement(name = "connection-factory")
+    protected KeyedCollection<String, ConnectionFactoryResource> connectionFactories;
     @XmlElement(name = "post-activate", required = true)
     protected List<LifecycleCallback> postActivate;
     @XmlElement(name = "pre-passivate", required = true)
@@ -966,6 +969,16 @@ public class SessionBean implements RemoteBean, Session, TimerConsumer {
     @Override
     public Map<String, JMSDestination> getJMSDestinationMap() {
         return KeyedCollection.class.cast(getJMSDestination()).toMap();
+    }
+
+    @Override
+    public Collection<ConnectionFactoryResource> getConnectionFactories() {
+        return connectionFactories == null ? (connectionFactories = new KeyedCollection<>()) : connectionFactories;
+    }
+
+    @Override
+    public Map<String, ConnectionFactoryResource> getConnectionFactoriesMap() {
+        return KeyedCollection.class.cast(getConnectionFactories()).toMap();
     }
 
     @Override

@@ -18,6 +18,7 @@
 package org.apache.openejb.cdi;
 
 import org.apache.openejb.Injection;
+import org.apache.openejb.jee.ConnectionFactoryResource;
 import org.apache.openejb.jee.ContextService;
 import org.apache.openejb.jee.DataSource;
 import org.apache.openejb.jee.EjbLocalRef;
@@ -62,6 +63,7 @@ public class CdiBeanInfo implements JndiConsumer {
     protected KeyedCollection<String, DataSource> dataSource;
     protected KeyedCollection<String, JMSConnectionFactory> jmsConnectionFactories;
     protected KeyedCollection<String, JMSDestination> jmsDestinations;
+    protected KeyedCollection<String, ConnectionFactoryResource> connectionFactories;
     protected List<LifecycleCallback> postActivate;
     protected List<LifecycleCallback> prePassivate;
     protected List<SecurityRoleRef> securityRoleRef;
@@ -320,6 +322,16 @@ public class CdiBeanInfo implements JndiConsumer {
     @Override
     public Map<String, JMSDestination> getJMSDestinationMap() {
         return KeyedCollection.class.cast(getJMSDestination()).toMap();
+    }
+
+    @Override
+    public Collection<ConnectionFactoryResource> getConnectionFactories() {
+        return connectionFactories == null ? (connectionFactories = new KeyedCollection<>()) : connectionFactories;
+    }
+
+    @Override
+    public Map<String, ConnectionFactoryResource> getConnectionFactoriesMap() {
+        return KeyedCollection.class.cast(getConnectionFactories()).toMap();
     }
 
     public String getJndiConsumerName() {

@@ -95,6 +95,7 @@ import java.util.Map;
     "dataSource",
     "jmsConnectionFactories",
     "jmsDestinations",
+    "connectionFactories",
     "name",
     "contextService",
     "managedExecutor",
@@ -168,6 +169,8 @@ public class WebFragment implements WebCommon {
     protected KeyedCollection<String, JMSConnectionFactory> jmsConnectionFactories;
     @XmlElement(name = "jms-destination")
     protected KeyedCollection<String, JMSDestination> jmsDestinations;
+    @XmlElement(name = "connection-factory")
+    protected KeyedCollection<String, ConnectionFactoryResource> connectionFactories;
     @XmlElement(name = "post-construct", required = true)
     protected List<LifecycleCallback> postConstruct;
     @XmlElement(name = "pre-destroy", required = true)
@@ -644,6 +647,16 @@ public class WebFragment implements WebCommon {
     @Override
     public Map<String, JMSDestination> getJMSDestinationMap() {
         return KeyedCollection.class.cast(getJMSDestination()).toMap();
+    }
+
+    @Override
+    public Collection<ConnectionFactoryResource> getConnectionFactories() {
+        return connectionFactories == null ? (connectionFactories = new KeyedCollection<>()) : connectionFactories;
+    }
+
+    @Override
+    public Map<String, ConnectionFactoryResource> getConnectionFactoriesMap() {
+        return KeyedCollection.class.cast(getConnectionFactories()).toMap();
     }
 
     @Override

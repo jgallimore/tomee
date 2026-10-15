@@ -296,6 +296,7 @@ public class ConfigurationFactory implements OpenEjbConfigurationFactory {
         chain.add(new ConvertManagedThreadFactoryDefinitions());
         chain.add(new ConvertJMSConnectionFactoryDefinitions());
         chain.add(new ConvertJMSDestinationDefinitions());
+        chain.add(new ConvertConnectionFactoryDefinitions());
         chain.add(new CleanEnvEntries());
         chain.add(new LinkBuiltInTypes());
 

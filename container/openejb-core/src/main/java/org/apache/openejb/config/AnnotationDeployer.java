@@ -51,6 +51,7 @@ import org.apache.openejb.jee.ConcurrentMethod;
 import org.apache.openejb.jee.ConfigProperty;
 import org.apache.openejb.jee.ContainerConcurrency;
 import org.apache.openejb.jee.ContainerTransaction;
+import org.apache.openejb.jee.ConnectionFactoryResource;
 import org.apache.openejb.jee.ContextService;
 import org.apache.openejb.jee.DataSource;
 import org.apache.openejb.jee.EjbJar;
@@ -230,6 +231,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceContexts;
 import jakarta.persistence.PersistenceUnit;
 import jakarta.persistence.PersistenceUnits;
+import jakarta.resource.ConnectionFactoryDefinition;
+import jakarta.resource.ConnectionFactoryDefinitions;
 import jakarta.resource.spi.Activation;
 import jakarta.resource.spi.AdministeredObject;
 import jakarta.resource.spi.ConnectionDefinition;
@@ -4126,6 +4129,21 @@ public class AnnotationDeployer implements DynamicDeployer {
             for (final Annotated<Class<?>> annotated : annotationFinder.findMetaAnnotatedClasses(JMSDestinationDefinition.class)) {
                 buildDestinationDefinition(consumer, annotated.getAnnotation(JMSDestinationDefinition.class));
             }
+
+            //
+            // @ConnectionFactoryDefinition
+            //
+
+            for (final Annotated<Class<?>> annotated : annotationFinder.findMetaAnnotatedClasses(ConnectionFactoryDefinitions.class)) {
+                final ConnectionFactoryDefinitions defs = annotated.getAnnotation(ConnectionFactoryDefinitions.class);
+                for (final ConnectionFactoryDefinition definition : defs.value()) {
+                    buildConnectorConnectionFactoryDefinition(consumer, definition);
+                }
+            }
+
+            for (final Annotated<Class<?>> annotated : annotationFinder.findMetaAnnotatedClasses(ConnectionFactoryDefinition.class)) {
+                buildConnectorConnectionFactoryDefinition(consumer, annotated.getAnnotation(ConnectionFactoryDefinition.class));
+            }
         }
 
         private void buildContextServiceDefinition(final JndiConsumer consumer, final ContextServiceDefinition definition) {
@@ -4985,6 +5003,52 @@ public class AnnotationDeployer implements DynamicDeployer {
             }
 
             consumer.getJMSConnectionFactories().add(connectionFactory);
+        }
+
+        private void buildConnectorConnectionFactoryDefinition(final JndiConsumer consumer, final ConnectionFactoryDefinition definition) {
+            final ConnectionFactoryResource connectionFactory = new ConnectionFactoryResource();
+            connectionFactory.setName(definition.name());
+
+            // a <connection-factory> from the deployment descriptor overrides the annotation
+            if (consumer.getConnectionFactoriesMap().containsKey(connectionFactory.getKey())) {
+                return;
+            }
+
+            if (!definition.description().isEmpty()) {
+                connectionFactory.setDescriptions(new Text[]{new Text(null, definition.description())});
+            }
+            connectionFactory.setInterfaceName(definition.interfaceName());
+            connectionFactory.setResourceAdapter(definition.resourceAdapter());
+            connectionFactory.setTransactionSupport(TransactionSupportType.fromValue(definition.transactionSupport().toString()));
+            if (definition.maxPoolSize() >= 0) {
+                connectionFactory.setMaxPoolSize(definition.maxPoolSize());
+            }
+            if (definition.minPoolSize() >= 0) {
+                connectionFactory.setMinPoolSize(definition.minPoolSize());
+            }
+
+            for (final String s : definition.properties()) {
+                final int equal = s.indexOf('=');
+                if (equal < s.length() - 1) {
+                    final SuperProperties props = new SuperProperties();
+                    try {
+                        props.load(new ByteArrayInputStream(s.getBytes()));
+                        for (final String key : props.stringPropertyNames()) {
+                            if (!key.isEmpty()) {
+                                connectionFactory.property(key, props.getProperty(key));
+                            }
+                        }
+                    } catch (final IOException e) {
+                        final String key = s.substring(0, equal).trim();
+                        final String value = s.substring(equal + 1).trim();
+                        connectionFactory.property(key, value);
+                    }
+                } else {
+                    connectionFactory.property(s.trim(), "");
+                }
+            }
+
+            consumer.getConnectionFactories().add(connectionFactory);
         }
 
         private void buildDataSourceDefinition(final JndiConsumer consumer, final DataSourceDefinition d) {

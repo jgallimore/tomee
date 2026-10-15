@@ -55,6 +55,8 @@ import static org.apache.openejb.jee.JMSConnectionFactory$JAXB.readJMSConnection
 import static org.apache.openejb.jee.JMSConnectionFactory$JAXB.writeJMSConnectionFactory;
 import static org.apache.openejb.jee.JMSDestination$JAXB.readJMSDestination;
 import static org.apache.openejb.jee.JMSDestination$JAXB.writeJMSDestination;
+import static org.apache.openejb.jee.ConnectionFactoryResource$JAXB.readConnectionFactoryResource;
+import static org.apache.openejb.jee.ConnectionFactoryResource$JAXB.writeConnectionFactoryResource;
 import static org.apache.openejb.jee.JspConfig$JAXB.readJspConfig;
 import static org.apache.openejb.jee.JspConfig$JAXB.writeJspConfig;
 import static org.apache.openejb.jee.LifecycleCallback$JAXB.readLifecycleCallback;
@@ -115,7 +117,7 @@ public class WebApp$JAXB
 
 
     public WebApp$JAXB() {
-        super(WebApp.class, new QName("http://java.sun.com/xml/ns/javaee".intern(), "web-app".intern()), new QName("http://java.sun.com/xml/ns/javaee".intern(), "web-appType".intern()), Text$JAXB.class, Icon$JAXB.class, Empty$JAXB.class, ParamValue$JAXB.class, Filter$JAXB.class, FilterMapping$JAXB.class, Listener$JAXB.class, Servlet$JAXB.class, ServletMapping$JAXB.class, SessionConfig$JAXB.class, MimeMapping$JAXB.class, WelcomeFileList$JAXB.class, ErrorPage$JAXB.class, Taglib$JAXB.class, JspConfig$JAXB.class, SecurityConstraint$JAXB.class, LoginConfig$JAXB.class, SecurityRole$JAXB.class, LocaleEncodingMappingList$JAXB.class, EnvEntry$JAXB.class, EjbRef$JAXB.class, EjbLocalRef$JAXB.class, ServiceRef$JAXB.class, ResourceRef$JAXB.class, ResourceEnvRef$JAXB.class, MessageDestinationRef$JAXB.class, PersistenceContextRef$JAXB.class, PersistenceUnitRef$JAXB.class, LifecycleCallback$JAXB.class, MessageDestination$JAXB.class, AbsoluteOrdering$JAXB.class, DataSource$JAXB.class, JMSConnectionFactory$JAXB.class, JMSDestination$JAXB.class, ContextService$JAXB.class, ManagedExecutor$JAXB.class, ManagedScheduledExecutor$JAXB.class, ManagedThreadFactory$JAXB.class);
+        super(WebApp.class, new QName("http://java.sun.com/xml/ns/javaee".intern(), "web-app".intern()), new QName("http://java.sun.com/xml/ns/javaee".intern(), "web-appType".intern()), Text$JAXB.class, Icon$JAXB.class, Empty$JAXB.class, ParamValue$JAXB.class, Filter$JAXB.class, FilterMapping$JAXB.class, Listener$JAXB.class, Servlet$JAXB.class, ServletMapping$JAXB.class, SessionConfig$JAXB.class, MimeMapping$JAXB.class, WelcomeFileList$JAXB.class, ErrorPage$JAXB.class, Taglib$JAXB.class, JspConfig$JAXB.class, SecurityConstraint$JAXB.class, LoginConfig$JAXB.class, SecurityRole$JAXB.class, LocaleEncodingMappingList$JAXB.class, EnvEntry$JAXB.class, EjbRef$JAXB.class, EjbLocalRef$JAXB.class, ServiceRef$JAXB.class, ResourceRef$JAXB.class, ResourceEnvRef$JAXB.class, MessageDestinationRef$JAXB.class, PersistenceContextRef$JAXB.class, PersistenceUnitRef$JAXB.class, LifecycleCallback$JAXB.class, MessageDestination$JAXB.class, AbsoluteOrdering$JAXB.class, DataSource$JAXB.class, JMSConnectionFactory$JAXB.class, JMSDestination$JAXB.class, ConnectionFactoryResource$JAXB.class, ContextService$JAXB.class, ManagedExecutor$JAXB.class, ManagedScheduledExecutor$JAXB.class, ManagedThreadFactory$JAXB.class);
     }
 
     public static WebApp readWebApp(XoXMLStreamReader reader, RuntimeContext context)
@@ -186,6 +188,7 @@ public class WebApp$JAXB
         KeyedCollection<String, DataSource> dataSource = null;
         KeyedCollection<String, JMSConnectionFactory> jmsConnectionFactories = null;
         KeyedCollection<String, JMSDestination> jmsDestinations = null;
+        KeyedCollection<String, ConnectionFactoryResource> connectionFactories = null;
         KeyedCollection<String, ContextService> contextService = null;
         KeyedCollection<String, ManagedExecutor> managedExecutor = null;
         KeyedCollection<String, ManagedScheduledExecutor> managedScheduledExecutor = null;
@@ -644,6 +647,18 @@ public class WebApp$JAXB
                     }
                 }
                 jmsDestinations.add(jmsDestinationsItem);
+            } else if (("connection-factory" == elementReader.getLocalName())&&("http://java.sun.com/xml/ns/javaee" == elementReader.getNamespaceURI())) {
+                // ELEMENT: connectionFactories
+                final ConnectionFactoryResource connectionFactoriesItem = readConnectionFactoryResource(elementReader, context);
+                if (connectionFactories == null) {
+                    connectionFactories = webApp.connectionFactories;
+                    if (connectionFactories!= null) {
+                        connectionFactories.clear();
+                    } else {
+                        connectionFactories = new KeyedCollection<>();
+                    }
+                }
+                connectionFactories.add(connectionFactoriesItem);
             } else if (("module-name" == elementReader.getLocalName())&&("http://java.sun.com/xml/ns/javaee" == elementReader.getNamespaceURI())) {
                 // ELEMENT: moduleName
                 String moduleNameRaw = elementReader.getElementText();
@@ -827,6 +842,9 @@ public class WebApp$JAXB
         }
         if (jmsDestinations!= null) {
             webApp.jmsDestinations = jmsDestinations;
+        }
+        if (connectionFactories!= null) {
+            webApp.connectionFactories = connectionFactories;
         }
         if (contextService!= null) {
             webApp.contextService = contextService;
@@ -1396,6 +1414,18 @@ public class WebApp$JAXB
                 if (jmsDestinationsItem!= null) {
                     writer.writeStartElement(prefix, "jms-destination", "http://java.sun.com/xml/ns/javaee");
                     writeJMSDestination(writer, jmsDestinationsItem, context);
+                    writer.writeEndElement();
+                }
+            }
+        }
+
+        // ELEMENT: connectionFactories
+        final KeyedCollection<String, ConnectionFactoryResource> connectionFactories = webApp.connectionFactories;
+        if (connectionFactories!= null) {
+            for (final ConnectionFactoryResource connectionFactoriesItem: connectionFactories) {
+                if (connectionFactoriesItem!= null) {
+                    writer.writeStartElement(prefix, "connection-factory", "http://java.sun.com/xml/ns/javaee");
+                    writeConnectionFactoryResource(writer, connectionFactoriesItem, context);
                     writer.writeEndElement();
                 }
             }

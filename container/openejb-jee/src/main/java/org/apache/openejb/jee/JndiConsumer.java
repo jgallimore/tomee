@@ -78,6 +78,11 @@ public interface JndiConsumer {
     Collection<JMSDestination> getJMSDestination();
 
     Map<String, JMSDestination> getJMSDestinationMap();
+
+    Collection<ConnectionFactoryResource> getConnectionFactories();
+
+    Map<String, ConnectionFactoryResource> getConnectionFactoriesMap();
+
     Map<String, ContextService> getContextServiceMap();
     Map<String, ManagedExecutor> getManagedExecutorMap();
     Map<String, ManagedScheduledExecutor> getManagedScheduledExecutorMap();

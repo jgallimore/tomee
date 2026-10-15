@@ -1024,10 +1024,20 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
             resourcesMap.put(resourceInfo, resource);
         }
 
+        // resource adapters of the connectors of the application are created with the application (see AppInfoBuilder),
+        // they can't be resolved yet but their ids are already final
+        final Set<String> connectorResourceAdapterIds = new HashSet<>();
+        for (final ConnectorModule connectorModule : module.getConnectorModules()) {
+            final ResourceAdapter resourceAdapter = connectorModule.getConnector().getResourceAdapter();
+            if (resourceAdapter != null && resourceAdapter.getResourceAdapterClass() != null) {
+                connectorResourceAdapterIds.add(resourceAdapter.getId() != null ? resourceAdapter.getId() : connectorModule.getModuleId() + "RA");
+            }
+        }
+
         resourceInfos = ConfigurationFactory.sort(resourceInfos, module.getModuleId() + "/");
         for (final ResourceInfo resourceInfo : resourceInfos) {
             final int originalSize = resourceInfo.aliases.size();
-            final String id = installResource(module.getModuleId(), resourceInfo);
+            final String id = installResource(module.getModuleId(), resourceInfo, connectorResourceAdapterIds);
 
             final Resource resource = resourcesMap.remove(resourceInfo);
             resource.setId(id);
@@ -2172,8 +2182,13 @@ public class AutoConfig implements DynamicDeployer, JndiConstants {
     }
 
     private String installResource(final String beanName, final ResourceInfo resourceInfo) throws OpenEJBException {
+        return installResource(beanName, resourceInfo, Collections.emptySet());
+    }
+
+    private String installResource(final String beanName, final ResourceInfo resourceInfo,
+                                   final Set<String> connectorResourceAdapterIds) throws OpenEJBException {
         final String resourceAdapterId = resourceInfo.properties.getProperty("ResourceAdapter");
-        if (resourceAdapterId != null) {
+        if (resourceAdapterId != null && !connectorResourceAdapterIds.contains(resourceAdapterId)) {
             final String newResourceId = getResourceId(beanName, resourceAdapterId, null, null);
             if (!resourceAdapterId.equals(newResourceId)) {
                 resourceInfo.properties.setProperty("ResourceAdapter", newResourceId);
